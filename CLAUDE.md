@@ -6,8 +6,8 @@ Architecture: docs/ARCHITECTURE.md, docs/PORT-MAP.md. Progress: docs/PLAN.md.
 Decisions: docs/DECISIONS.md. Approved deviations: docs/DEVIATIONS.md. Review notes: docs/REVIEW-NOTES.md.
 
 ## Java original (read-only, the specification)
-- Path: `/home/valueerror/STUFF/DEV/LanguageTool/LT-JS/languagetool`
-- Pinned commit: `unknown`
+- Path: `/home/valueerror/STUFF/DEV/LanguageTool/languagetool`
+- Pinned commit: `9b0be9db8cb4589cd031e85bd929c95c8ce57e49` (2026-10-12, 6.9-SNAPSHOT)
 - Working clone for build/run: `oracle/java-src/` (gitignored, never edit sources there)
 - JDK: <filled in by java-analyst>
 - Build: <filled in by java-analyst>
