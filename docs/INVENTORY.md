@@ -1,6 +1,6 @@
 # Inventory (parity contract)
 
-Index. Details per area in docs/inventory/*.md. Status: todo | spec | ported | verified | later (deferred per D-005).
+Index. Details per area in docs/inventory/*.md. Status: todo | spec | ported | verified | later (deferred per D-005) | n/a (not observable, not ported per D-010; excluded from totals).
 
 ## ID scheme
 - `CORE-nnnn` core engine (languagetool-core) -> docs/inventory/core.md
@@ -17,3 +17,11 @@ Index. Details per area in docs/inventory/*.md. Status: todo | spec | ported | v
 
 ## Totals
 (maintained by java-analyst after each change)
+
+| file | IDs | todo | spec | ported | verified | later | n/a |
+|---|---|---|---|---|---|---|---|
+| core.md | 233 | 218 | 0 | 0 | 0 | 15 | 0 |
+| cli.md | 71 | 68 | 0 | 0 | 0 | 3 | 0 |
+| server.md | 146 | 126 | 0 | 0 | 0 | 20 | 0 |
+
+Oracle build/run/test commands and the JUnit baseline: docs/inventory/BUILD.md.
