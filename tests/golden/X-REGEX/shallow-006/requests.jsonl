@@ -1,0 +1,700 @@
+{"id":1,"op":"regex","args":{"pattern":"Aérobus|Aérodyne|Aéroglisseur|Aéronef|Aéroplane|Aérostat|Aérotrain|Ascenseur|Autobus|Autocar|Automobile|Avion|Barque|Bateau|Bus|Calèche|Camion|Camionnette|Canot|Car|Carrosse|Charrette|Deltaplane|Diligence|Escalator|Fiacre|Funiculaire|Fusée|Galère|Goélette|Gondole|Hélicoptère|Hoverboard|Hydravion|Jet|Jonque|Kayak|Landau|Langoustier|Ligneur|Limonièr|eLimousine|Locomobile|Locomotrice|Locotracteur|Ludospace|Luge|Métro|Montgolfièr|eMoto|Motoneige|Navette|Navire|Omnibus|Papamobile|Paquebot|Parachute|Pédalo|Péniche|Pétrolier|Pirogue|Planche-à-voile|Planeur|Quad|Quadricycle|Quadrimoteur|Quadriréacteur|Roller|Scooter|Segway|Side-car|Skate|Skateboard|Sous-marin|Sulky|Tank|Tapis|Taxi|Téléphérique|Télésiège|Tracteu|rTrain|Tramway|Triporteur|Trottinette|Tyrolienne|ULM|Voilier|Voiture|Wagon|Yacht|Yole|Zeppelin","flags":66,"inputs":["Aérobus","travail","é"],"ops":["matches","lookingAt","find"]}}
+{"id":2,"op":"regex","args":{"pattern":"B(ei|ie|i|o)dens?","flags":66,"inputs":["Beiden","wenn"," "],"ops":["matches","lookingAt","find"]}}
+{"id":3,"op":"regex","args":{"pattern":"B-(ADJP|NP.*|PP)","flags":0,"inputs":["B-ADJP","NN","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":4,"op":"regex","args":{"pattern":"B-(ADVP|PP|SBAR)","flags":0,"inputs":["B-ADVP","N f s"," "],"ops":["matches","lookingAt","find"]}}
+{"id":5,"op":"regex","args":{"pattern":"B-(ADV|P)P","flags":0,"inputs":["B-ADVP","NNP","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":6,"op":"regex","args":{"pattern":"B-(NP.*|PP)","flags":0,"inputs":["B-NP","PCT","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":7,"op":"regex","args":{"pattern":"B-(PP|ADVP)","flags":0,"inputs":["B-PP","JJ","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":8,"op":"regex","args":{"pattern":"B-(PP|PRT)","flags":0,"inputs":["B-PP","VER:1:SIN:PRÄ:NON","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":9,"op":"regex","args":{"pattern":"B-(PP|SBAR)","flags":0,"inputs":["B-PP","NNP","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":10,"op":"regex","args":{"pattern":"B-(VP|LST|NP-singular)","flags":0,"inputs":["B-VP","V ind pres 3 s","über"],"ops":["matches","lookingAt","find"]}}
+{"id":11,"op":"regex","args":{"pattern":"B-(V|P)P|O","flags":0,"inputs":["B-VP","ADJ:PRD:GRU","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":12,"op":"regex","args":{"pattern":"B-AD(J|V)P","flags":0,"inputs":["B-ADJP","_PUNCT","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":13,"op":"regex","args":{"pattern":"B-ADJP","flags":0,"inputs":["B-ADJP","JJ","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":14,"op":"regex","args":{"pattern":"B-ADJP|B-ADVP","flags":0,"inputs":["B-ADJP","SUB:NOM:SIN:MAS","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":15,"op":"regex","args":{"pattern":"B-ADJP|B-NP-.*","flags":0,"inputs":["B-ADJP","SENT_START","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":16,"op":"regex","args":{"pattern":"B-ADVP","flags":0,"inputs":["B-ADVP","NNP","-"],"ops":["matches","lookingAt","find"]}}
+{"id":17,"op":"regex","args":{"pattern":"B-ADVP|.-VP","flags":0,"inputs":["B-ADVP","JJ","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":18,"op":"regex","args":{"pattern":"B-ADVP|.-VP|E-NP.*","flags":0,"inputs":["B-ADVP","V ind pres 3 s","a"],"ops":["matches","lookingAt","find"]}}
+{"id":19,"op":"regex","args":{"pattern":"B-NP-(singular|plural)","flags":0,"inputs":["B-NP-singular","SENT_START","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":20,"op":"regex","args":{"pattern":"B-NP-.*","flags":0,"inputs":["B-NP-","NNP","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":21,"op":"regex","args":{"pattern":"B-NP-plural","flags":0,"inputs":["B-NP-plural","SENT_START","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":22,"op":"regex","args":{"pattern":"B-NP-singular","flags":0,"inputs":["B-NP-singular","JJ","K"],"ops":["matches","lookingAt","find"]}}
+{"id":23,"op":"regex","args":{"pattern":"B-NP-singular|B-ADJP","flags":0,"inputs":["B-NP-singular","UNKNOWN","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":24,"op":"regex","args":{"pattern":"B-NP-singular|I-VP","flags":0,"inputs":["B-NP-singular","VB","."],"ops":["matches","lookingAt","find"]}}
+{"id":25,"op":"regex","args":{"pattern":"B-NP-singular|O","flags":0,"inputs":["B-NP-singular","ADJ:PRD:GRU","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":26,"op":"regex","args":{"pattern":"B-NP.*","flags":0,"inputs":["B-NP","NN","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":27,"op":"regex","args":{"pattern":"B-NP.*|B-ADVP","flags":0,"inputs":["B-NP","_PUNCT","-"],"ops":["matches","lookingAt","find"]}}
+{"id":28,"op":"regex","args":{"pattern":"B-NP.*|B-PP","flags":0,"inputs":["B-NP","VB","über"],"ops":["matches","lookingAt","find"]}}
+{"id":29,"op":"regex","args":{"pattern":"B-NP.*|B-PP|O","flags":0,"inputs":["B-NP","ADJ:PRD:GRU","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":30,"op":"regex","args":{"pattern":"B-NP.*|I-ADJP","flags":0,"inputs":["B-NP","NN","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":31,"op":"regex","args":{"pattern":"B-NP.*|O","flags":0,"inputs":["B-NP","SENT_START","über"],"ops":["matches","lookingAt","find"]}}
+{"id":32,"op":"regex","args":{"pattern":"B-NP.+","flags":0,"inputs":["B-NPx","VB","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":33,"op":"regex","args":{"pattern":"B-PP","flags":0,"inputs":["B-PP","NNP","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":34,"op":"regex","args":{"pattern":"B-PP|.-VP","flags":0,"inputs":["B-PP","UNKNOWN","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":35,"op":"regex","args":{"pattern":"B-PP|B-ADVP","flags":0,"inputs":["B-PP","SENT_START","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":36,"op":"regex","args":{"pattern":"B-PP|B-NP.*|B-PRT","flags":0,"inputs":["B-PP","PCT","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":37,"op":"regex","args":{"pattern":"B-PP|B-SBAR","flags":0,"inputs":["B-PP","_PUNCT","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":38,"op":"regex","args":{"pattern":"B-PP|B-VP","flags":0,"inputs":["B-PP","SUB:NOM:SIN:MAS","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":39,"op":"regex","args":{"pattern":"B-PRT","flags":0,"inputs":["B-PRT","NN"," "],"ops":["matches","lookingAt","find"]}}
+{"id":40,"op":"regex","args":{"pattern":"B-SBAR","flags":0,"inputs":["B-SBAR","PCT","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":41,"op":"regex","args":{"pattern":"B-SBAR|B-PP","flags":0,"inputs":["B-SBAR","SUB:NOM:SIN:MAS","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":42,"op":"regex","args":{"pattern":"B-SBAR|E-NP.*|B-PP","flags":0,"inputs":["B-SBAR","N f s","é"],"ops":["matches","lookingAt","find"]}}
+{"id":43,"op":"regex","args":{"pattern":"B-VP","flags":0,"inputs":["B-VP","_PUNCT",""],"ops":["matches","lookingAt","find"]}}
+{"id":44,"op":"regex","args":{"pattern":"B-VP.*","flags":0,"inputs":["B-VP","ADJ:PRD:GRU","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":45,"op":"regex","args":{"pattern":"BCE?|AD","flags":66,"inputs":["BC","est","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":46,"op":"regex","args":{"pattern":"BC|AD","flags":66,"inputs":["BC","Northwest","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":47,"op":"regex","args":{"pattern":"BMW|Renault","flags":66,"inputs":["BMW","électricité","é"],"ops":["matches","lookingAt","find"]}}
+{"id":48,"op":"regex","args":{"pattern":"BR|PT|MZ","flags":66,"inputs":["BR","attached","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":49,"op":"regex","args":{"pattern":"B[éèe]l[àáa]","flags":66,"inputs":["Bélà","Sport-Journalist","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":50,"op":"regex","args":{"pattern":"Ba(hn|nk)|Bundes(rat|tag)s?|Gewerkschaftsbund(e?s)?|Fu(ss|ß)ball-Bund(e?s)?","flags":0,"inputs":["Bahn","Er"," "],"ops":["matches","lookingAt","find"]}}
+{"id":51,"op":"regex","args":{"pattern":"Babyphones?","flags":0,"inputs":["Babyphone","2","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":52,"op":"regex","args":{"pattern":"Baby|Darling|Mama|Papa|Oma|Opa","flags":66,"inputs":["Baby","hast","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":53,"op":"regex","args":{"pattern":"Backbord|Steuerbord","flags":66,"inputs":["Backbord","mit","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":54,"op":"regex","args":{"pattern":"Baden-Württemberg|Bayern|Berlin|Brandenburg|Bremen|Hamburg|Hessen|Mecklenburg-Vorpommern|Niedersachsen|Nordrhein-Westfalen|Rheinland-Pfalz|Saarland|Sachsen-Anhalt|Schleswig-Holstein|Thüringen","flags":0,"inputs":["Baden-Württemberg","Thüringen"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":55,"op":"regex","args":{"pattern":"Baden-Württemberg|Bayern|Berlin|Brandenburg|Bremen|Hamburg|Hessen|Mecklenburg-Vorpommern|Niedersachsen|Nordrhein-Westfalen|Rheinland-Pfalz|Saarland|Sachsen-Anhalt|Schleswig-Holstein|Thüringen|Ministerpräsident(en)?","flags":0,"inputs":["Baden-Württemberg","Anwesend","é"],"ops":["matches","lookingAt","find"]}}
+{"id":56,"op":"regex","args":{"pattern":"Bader","flags":0,"inputs":["Bader"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":57,"op":"regex","args":{"pattern":"Baders?","flags":66,"inputs":["Bader","Andreas","über"],"ops":["matches","lookingAt","find"]}}
+{"id":58,"op":"regex","args":{"pattern":"Baeckers?|Kaufmans?|Liebermans?|Muellers?|Schaefers?|Schattes?|Seels?","flags":0,"inputs":["Baecker","placed","a"],"ops":["matches","lookingAt","find"]}}
+{"id":59,"op":"regex","args":{"pattern":"Baerbocks?|BAERBOCKS?","flags":0,"inputs":["Baerbock","ist","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":60,"op":"regex","args":{"pattern":"Bah[aáā]|al-\\w+|Shafi|Hawai|Lana|Kaua|Mau|Moloka|ali|ch","flags":66,"inputs":["Baha","view","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":61,"op":"regex","args":{"pattern":"Bahamas|États-Unis|Philippines|Tonga|Seychelles|Fidji|Maldives|Pays-Bas|Emirats|Comores","flags":66,"inputs":["Bahamas","vais","a"],"ops":["matches","lookingAt","find"]}}
+{"id":62,"op":"regex","args":{"pattern":"Bahnübergang|Übergang","flags":0,"inputs":["Bahnübergang","Sie","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":63,"op":"regex","args":{"pattern":"Bahreïn|Oman|Singapour|Taïwan|Chypre|Cuba|Madagascar|Malte","flags":66,"inputs":["Bahreïn","Chypre","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":64,"op":"regex","args":{"pattern":"Ball?mer","flags":66,"inputs":["Balmer","Steve","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":65,"op":"regex","args":{"pattern":"Ballast(e?s)?","flags":66,"inputs":["Ballast","Das","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":66,"op":"regex","args":{"pattern":"Balls?|Age|Quests?|\\d+","flags":0,"inputs":["Ball","says","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":67,"op":"regex","args":{"pattern":"Balls|Dank|Eis|Tee|Kaffee|Whisky|Bier|Wasser|Sack|Glas|.*teilen|Übereinkommen|Mal|.*Prozent|Fuß|Fuss|Paar|Mark|D-?Mark|Reichsmark|Rentenmark|Pfund|Dollar|US-Dollar|DM|Euro|Pfennig|Stück|Rand|Goldmark|Grad|Gramm|Kilo.*|Milli.+|.+beamte|Mann|Schuss|Uhr|Zoll|Bar|Promille|Barrel|Schilling|Sigma|Charisma|Komma|Donnerwetter|Fieber|Durchschnitt","flags":66,"inputs":["Balls","Wir","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":68,"op":"regex","args":{"pattern":"Bands?|Impact","flags":0,"inputs":["Band","dispatched","é"],"ops":["matches","lookingAt","find"]}}
+{"id":69,"op":"regex","args":{"pattern":"Band|Beichte|Beule|Binde|Bitte|Blase|Bräune|Breite|Bremse|Buche|Bürde|Bürste|Decke|Dichte|Dusche|Düse|Ecke|Ehre|Eiche|Eile|Erde|Falle|Falte|Feile|Flamme|Fliege|Fliese|Flöte|Folge|Frage|Fresse|Geige|Grenze|Hacke|Härte|Hecke|Heimfahrt|Höhle|Illustrierte|Kappe|Keule|Kippe|Klage|Klappe|Klaue|Klemme|Klinge|Klingel|Krähe|Kralle|Kürze|Lehre|Leine|Leiste|Leuchte|Liege|Linse|Liste|Lüge|Menge|Messe|Miete|Nähe|Pauke|Pause|Perle|Pfeife|Presse|Probe|Pumpe|Puste|Quelle|Rede|Reibe|Reife|Reihe|Reise|Ritze|Robbe|Rolle|Rüge|Ruhe|Runde|Rutsche|Sage|Säge|Salbe|Scheide|Scheiße|Scheisse|Schere|Schiene|Schippe|Schlampe|Schleife|Schleuse|Schlinge|Schmelze|Schmiede|Schnalle|Schneide|Schule|Schürze|Schwäche|Schwärze|Schwebe|Schwelle|Sehne|Seife|Sonne|Sorge|Spalte|Speise|Spitze|Spritze|Stärke|Starre|Stelle|Stille|Stimme|Strafe|Strecke|Strippe|Stufe|Stütze|Suche|Summe|Taste|Tat|Taufe|Trage|Wache|Wärme|Weiche|Weide|Weihe|Weile|Weise|Wende|Wiege|Winde|Würde|Würze|Wüste|Zeche|Zwinge","flags":0,"inputs":["Band","auf","é"],"ops":["matches","lookingAt","find"]}}
+{"id":70,"op":"regex","args":{"pattern":"Band|Kapitel|Maß|.*[Vv]erbrechen|Orchester|Gestalten|Gebirge|.*[vV]orkommen|.*[Vv]erfahren|.*[gG]utachten|Schreiben|Bayern|Theater|Verlangen|.*[sS]chlüssel|.*[mM]eister|.*[vV]erhalten|.*[Aa]benteuer|.*[wW]asser|Leben|Bauen|.*[gG]ewerbe|.*[Zz]immer|.*[Ee]ssen|.*[rR]asen|.*[hH]ebel|.*[oO]pfer|.*[cC]hirurgen|.*[Pp]räsidenten|.*[kK]reuzer|.*[wW]appen|Morgen","flags":66,"inputs":["Band","Do","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":71,"op":"regex","args":{"pattern":"Band|Tat|Sucht|Würde|Macht|Haut","flags":0,"inputs":["Band","Sie","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":72,"op":"regex","args":{"pattern":"Bange?","flags":0,"inputs":["Bang","gemacht",""],"ops":["matches","lookingAt","find"]}}
+{"id":73,"op":"regex","args":{"pattern":"Bangladesh|Bélize|Luxembourg|Ghana|Burkina|Burundi|Gabon|Liechtenstein|Népal|Niagara|Nigéria|Palaos|Rwanda|Samoa|Sénégal|Tchad|Timor|Turkéministan|Vénézuela|Vietnam|Yémen|Zimbabwe|Soudan|Sri Lanka|Swaziland|Suriname|Tadjikistan|Panama|Paraguay|Pérou|Portugual|Qatar|Mali|Malwi|Maroc|Mexuque|Monténégro|Mozamibuqe|Guatemala|Guyana|Kirghistan|Kosovo|Koweït|Laos|Lesotho|Livan|Honduras|Cameroun|Canada|Chili|Congo|Danemark|Emiras|Bénin|Bhoutan|Brésil|Botswana","flags":66,"inputs":["Bangladesh","dans","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":74,"op":"regex","args":{"pattern":"Bank|Bibliothek|Bildung|Empfänger|Episkopat|Erbe|Erbin|Gelehrte?|Genie|Geschichte|Grammatik|Indikator|Instrument|Lexikon|Maschine|Mittel|Motor|Prinzip|Religion|Sorte|Spender|Sprache|Sukzession|Talent","flags":0,"inputs":["Bank","Galilei","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":75,"op":"regex","args":{"pattern":"Barba?ra","flags":66,"inputs":["Barbra","est","K"],"ops":["matches","lookingAt","find"]}}
+{"id":76,"op":"regex","args":{"pattern":"Barbaren|Erneuerbaren|(Schwer|Leicht)erziehbaren","flags":0,"inputs":["Barbaren","Unsichtbaren","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":77,"op":"regex","args":{"pattern":"Barbuda|Hove|Herzegovina|Hobbes|Boone|Labrador|Juliet|May|Tobago","flags":66,"inputs":["Barbuda","base","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":78,"op":"regex","args":{"pattern":"Barfuß|Barfuss","flags":0,"inputs":["Barfuß","im","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":79,"op":"regex","args":{"pattern":"Barr?ac?[ck]","flags":66,"inputs":["Barac","Barack","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":80,"op":"regex","args":{"pattern":"Barrels?|Farmings?|Needling|Countys?","flags":0,"inputs":["Barrel","renewed"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":81,"op":"regex","args":{"pattern":"Barsch|Druck|Fernsehen|Geschirr|Käfer|Metall|Nessel|Papier|Sandstein|Specht|Stift|Weberei|Wäsche","flags":0,"inputs":["Barsch","Spechte","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":82,"op":"regex","args":{"pattern":"Bart|Fu(ß|ss)|Geschirr|Haar|Hand|Hemd|Hose|Wäsche","flags":66,"inputs":["Bart","wachen","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":83,"op":"regex","args":{"pattern":"Baton|Moulin","flags":0,"inputs":["Baton","needle","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":84,"op":"regex","args":{"pattern":"Batterie|Bau|Beere|Blume|Boden|Brache|Diät|Dock|Ei|Eis|Element|Farbe|Fäule|Fleisch|Frucht|Futter|Fütterung|Gebiet|Gemüse|Gesteck|Gewicht|Grenze|Hefe|Kammer|Kurs|Masse|Mauer|Milch|Mittel|Obst|Periode|Pflaume|Platz|Presse|Präparat|Rasierer|Rasur|Raum|Reinigung|Schleuder|Shampoo|Spiritus|Starre|Substanz|Tal|Wald|Wolle|Wäsche|Zeit|Übung","flags":0,"inputs":["Batterie","immer"," "],"ops":["matches","lookingAt","find"]}}
+{"id":85,"op":"regex","args":{"pattern":"Baumalleen?","flags":322,"inputs":["Baumallee","Diese Baumallee ist wirklich herrlich!","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":86,"op":"regex","args":{"pattern":"Bausch|Pfeil","flags":0,"inputs":["Bausch","es","é"],"ops":["matches","lookingAt","find"]}}
+{"id":87,"op":"regex","args":{"pattern":"Bayerischen","flags":0,"inputs":["Bayerischen","seaside",""],"ops":["matches","lookingAt","find"]}}
+{"id":88,"op":"regex","args":{"pattern":"Bayern|.*moll|.*de-Fonds|Brands|Plus|Master","flags":66,"inputs":["Bayern","Hotspots","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":89,"op":"regex","args":{"pattern":"Bays?|Days?|Lanterns?|Books?|IT|Cards?|Tech","flags":0,"inputs":["Bay","bush","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":90,"op":"regex","args":{"pattern":"Bay|BAY","flags":0,"inputs":["Bay","is","."],"ops":["matches","lookingAt","find"]}}
+{"id":91,"op":"regex","args":{"pattern":"Bazaar|BAZAAR|Magazine|MAGAZINE","flags":0,"inputs":["Bazaar","is","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":92,"op":"regex","args":{"pattern":"Beachtung|Berücksichtigung","flags":0,"inputs":["Beachtung","Kleinschreiben"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":93,"op":"regex","args":{"pattern":"Beach|BEACH","flags":0,"inputs":["Beach","in","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":94,"op":"regex","args":{"pattern":"Beach|Island","flags":0,"inputs":["Beach","master","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":95,"op":"regex","args":{"pattern":"Beauvoirs?","flags":0,"inputs":["Beauvoir","loss","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":96,"op":"regex","args":{"pattern":"Bedauern|Leidwesen|Entsetzen","flags":66,"inputs":["Bedauern","Zu","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":97,"op":"regex","args":{"pattern":"Bedenken|Forderung|Haltung","flags":66,"inputs":["Bedenken","ethnische","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":98,"op":"regex","args":{"pattern":"Bedürfnis|Verlangen","flags":66,"inputs":["Bedürfnis","suchen","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":99,"op":"regex","args":{"pattern":"Bedürfnis|Wunsch","flags":66,"inputs":["Bedürfnis","auf","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":100,"op":"regex","args":{"pattern":"Bee?te|Milans?","flags":0,"inputs":["Bete","ist","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":101,"op":"regex","args":{"pattern":"Beere|Dolde|Gold|Fieber|Filter|Klee|Kreuz|Körper|Rost|Rübe|Schnabel|Spötter|Stich|Sucht|Sünder|Wurst","flags":0,"inputs":["Beere","hat","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":102,"op":"regex","args":{"pattern":"Befragten|Teilnehmenden","flags":0,"inputs":["Befragten","park","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":103,"op":"regex","args":{"pattern":"Begabung|Behinderter?|Belastung|Impfung|Mörder|Mörderin|Spezialist|Spezialistin|Sprengkopf|Steckdose|Stecker|Telegrafie|Täter|Versicherung","flags":0,"inputs":["Begabung","unter","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":104,"op":"regex","args":{"pattern":"Beginn|Anfang","flags":66,"inputs":["Beginn","vom","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":105,"op":"regex","args":{"pattern":"Beginn|Anfang|Start","flags":66,"inputs":["Beginn","Tröpfchen","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":106,"op":"regex","args":{"pattern":"Beginn|Geburt|Anfang","flags":66,"inputs":["Beginn","eine","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":107,"op":"regex","args":{"pattern":"Begriffe?|Einsatz|Haus|Garten|Park|.*zimmer","flags":0,"inputs":["Begriff","du","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":108,"op":"regex","args":{"pattern":"Begriffe?|Einsatz|Haus|Garten|Park|Preis|.*zimmer","flags":0,"inputs":["Begriff","nicht","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":109,"op":"regex","args":{"pattern":"Begründen|Berechnen|Beschreiben|Bestimmen|Beurteilen|Beweisen|Erklären|Erläutern|Ermitteln|Interpretieren|Nennen|Vergleichen|Zeichnen|Zeigen","flags":0,"inputs":["Begründen","den","K"],"ops":["matches","lookingAt","find"]}}
+{"id":110,"op":"regex","args":{"pattern":"Behinderte.*|Gestörte.*|Kranke.*","flags":66,"inputs":["Behinderte","Über","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":111,"op":"regex","args":{"pattern":"Bei|Für|Gegen|Hinter|Mit|Nach|Neben|Über|Vo[nr]|Zu|Zwischen","flags":0,"inputs":["Bei","immer","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":112,"op":"regex","args":{"pattern":"Belehrung(en)?|Belästigung(en)?|Bevormundung(en)?|Bezeichnung(en)?|Einflussnahme|Einmischung.*|Impertinenz|Kritik|Unterstellung(en)?|Vorverurteilung(en)?|Ton","flags":66,"inputs":["Belehrung","jede","é"],"ops":["matches","lookingAt","find"]}}
+{"id":113,"op":"regex","args":{"pattern":"Belli|Foederis|knacksus|obliquus|rectus","flags":66,"inputs":["Belli","mother","-"],"ops":["matches","lookingAt","find"]}}
+{"id":114,"op":"regex","args":{"pattern":"Benedict|Croix|Petersburg|Valentin|Patrick","flags":66,"inputs":["Benedict","Les","K"],"ops":["matches","lookingAt","find"]}}
+{"id":115,"op":"regex","args":{"pattern":"Bengale|Botnie|Gascogne|Gabès|Guinée|Lion|Morbihan|Mexique|Porto|Saint[-‑‐]Laurent|Thaïlande|Tonkin|Tunis|Winam","flags":66,"inputs":["Bengale","fait","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":116,"op":"regex","args":{"pattern":"Berechtigte[rn]?","flags":66,"inputs":["Berechtigte","achttausend","K"],"ops":["matches","lookingAt","find"]}}
+{"id":117,"op":"regex","args":{"pattern":"Bereichs?|Zone","flags":0,"inputs":["Bereich","hat","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":118,"op":"regex","args":{"pattern":"Bereich|Departement|Stabsstellen?|Dienststellen?|AG|Arbeitsgruppe|Edition","flags":0,"inputs":["Bereich","dining-hall","."],"ops":["matches","lookingAt","find"]}}
+{"id":119,"op":"regex","args":{"pattern":"Bericht|Interview|Lieferant|Lieferantin|Partner|Partnerin|Recht|Vertrag","flags":0,"inputs":["Bericht","Interviews","-"],"ops":["matches","lookingAt","find"]}}
+{"id":120,"op":"regex","args":{"pattern":"Bernardino|Gottardo|Remo","flags":0,"inputs":["Bernardino","told","_"],"ops":["matches","lookingAt","find"]}}
+{"id":121,"op":"regex","args":{"pattern":"Berth?old","flags":0,"inputs":["Bertold","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":122,"op":"regex","args":{"pattern":"Berufliche[snm]","flags":0,"inputs":["Berufliches","parlour","-"],"ops":["matches","lookingAt","find"]}}
+{"id":123,"op":"regex","args":{"pattern":"Berufliche[snm]|Geschäftliche[snm]","flags":0,"inputs":["Berufliches","hand","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":124,"op":"regex","args":{"pattern":"Bescheid[es]","flags":66,"inputs":["Bescheide","geben","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":125,"op":"regex","args":{"pattern":"Besitz|Mut","flags":66,"inputs":["Besitz","Once","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":126,"op":"regex","args":{"pattern":"Besserung|Reise","flags":66,"inputs":["Besserung","wünsche","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":127,"op":"regex","args":{"pattern":"Best-?Ofs?","flags":0,"inputs":["BestOf","mehrere","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":128,"op":"regex","args":{"pattern":"Bestands.*","flags":0,"inputs":["Bestands","sich","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":129,"op":"regex","args":{"pattern":"Besten|Liebsten","flags":0,"inputs":["Besten","magst","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":130,"op":"regex","args":{"pattern":"Bestof","flags":0,"inputs":["Bestof","Hits","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":131,"op":"regex","args":{"pattern":"Bestofs?","flags":0,"inputs":["Bestof","veröffentlichten",""],"ops":["matches","lookingAt","find"]}}
+{"id":132,"op":"regex","args":{"pattern":"Best|BEST","flags":0,"inputs":["Best","best","_"],"ops":["matches","lookingAt","find"]}}
+{"id":133,"op":"regex","args":{"pattern":"Bete","flags":66,"inputs":["Bete","steak","é"],"ops":["matches","lookingAt","find"]}}
+{"id":134,"op":"regex","args":{"pattern":"Beton|Blei|Faser|Fett|Futter|Geld|Gestein|Glas|Gummi|Guss|Holz|Käse|Metall|Papier|Pappe|Platz|Porzellan|Riegel|Schädel|Spiritus|Weizen|Wurst","flags":0,"inputs":["Beton","Die","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":135,"op":"regex","args":{"pattern":"Beton|Kohle|Käse|Milch|Motor|Quark|Sucht|Wiese","flags":0,"inputs":["Beton","Quark","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":136,"op":"regex","args":{"pattern":"Betrag|Haus|Kind|Lebewesen|Ma(Ss|ẞ)|Packung|Serie|Wohnung","flags":0,"inputs":["Betrag","Wasser"," "],"ops":["matches","lookingAt","find"]}}
+{"id":137,"op":"regex","args":{"pattern":"Betriebs?|Welt|Universums?","flags":0,"inputs":["Betrieb","ein","-"],"ops":["matches","lookingAt","find"]}}
+{"id":138,"op":"regex","args":{"pattern":"Bett?[ae]ncc?our[ts]?","flags":66,"inputs":["Betancour","Ingrid","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":139,"op":"regex","args":{"pattern":"Bettag(e[ns]?)?","flags":66,"inputs":["Bettag","und","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":140,"op":"regex","args":{"pattern":"Beurteilung|Anzahl|Kunstwerk(es|s)?|Stundenanzahl|Besucherzahl|Werk(es|s)?|Bei?trags?|Kosten|Kaufpreis(es)?|Verkaufspreis(es)?|Preis(es)?|Umsatz(es)?|Gewinns?|Schule|Schulden|Volumen|Bevölkerung|Einkommens?|Höhe|Jahr(es|s)?|Menge|Paket(es|s)?|Länge|Situation|Ausgangssituation|Wert(es|s)?|Fläche|Schadens?|Produktion|Gewicht(es|s)?|Betriebsrat(es|s)?|Unterricht(es|s)?|Auflage|Bild(es|s)?|Eindruck(es|s)?|Ergebnis(ses)?|Erscheinung|Interesses?|Wertung|Mannschaft|Zahl|Vergrö(ß|ss)erung|Budget|Laufleistung|Leistung|Niederschlags?|Ausgaben|Einnahmen|Anteils?|Objekt(es|s)?|Miete|Note","flags":0,"inputs":["Beurteilung","Kunstwerk","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":141,"op":"regex","args":{"pattern":"Beute|Dank|Dauerleihgabe|Eigentum|Leihgabe|Schenkung|Sicherheit|Zeitarbeits(kräfte|kraft)","flags":66,"inputs":["Beute","Dauerleihgabe","."],"ops":["matches","lookingAt","find"]}}
+{"id":142,"op":"regex","args":{"pattern":"Bewegung","flags":66,"inputs":["Bewegung","guest","a"],"ops":["matches","lookingAt","find"]}}
+{"id":143,"op":"regex","args":{"pattern":"Bezug|Relation","flags":0,"inputs":["Bezug","é"],"ops":["matches","lookingAt","find"]}}
+{"id":144,"op":"regex","args":{"pattern":"Be|Say|Save|See|Tell|Lose|Force|Discover|Ban|Obey|Kill|Punch|Reform|Bang|Grow|Welcome","flags":0,"inputs":["Be","to","é"],"ops":["matches","lookingAt","find"]}}
+{"id":145,"op":"regex","args":{"pattern":"Bh?ah?dd?h?ue?h?","flags":66,"inputs":["Badu","est","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":146,"op":"regex","args":{"pattern":"Bibliographische[ns]?","flags":66,"inputs":["Bibliographische","User","é"],"ops":["matches","lookingAt","find"]}}
+{"id":147,"op":"regex","args":{"pattern":"Bidd?en","flags":66,"inputs":["Biden","Joe","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":148,"op":"regex","args":{"pattern":"Bidens?|BIDENS?","flags":0,"inputs":["Biden","passiert",""],"ops":["matches","lookingAt","find"]}}
+{"id":149,"op":"regex","args":{"pattern":"Biden|Obama|Trump|Clinton|Biden|Bush|Reagan|Carter|Ford|Nixon|Kennedy","flags":0,"inputs":["Biden","für","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":150,"op":"regex","args":{"pattern":"Biebers?","flags":0,"inputs":["Bieber","told"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":151,"op":"regex","args":{"pattern":"Bier|Sekt|Champagner|Wasser|Glas|.*teilen|Übereinkommen|Mal|.*Prozent|Fuß|Fuss|Paar|Mark|Reichsmark|Rentenmark|Pfund|Dollar|Euro|Stück|Grad|Gramm|Kilo.*|Milli.+|Mann|Schuss|Zoll|Bar|Promille|Barrel|Schilling","flags":66,"inputs":["Bier","Ei","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":152,"op":"regex","args":{"pattern":"Bighorn|Boy|Italy|John|Rock","flags":0,"inputs":["Bighorn","cheerful","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":153,"op":"regex","args":{"pattern":"Big|Small","flags":0,"inputs":["Big","waiting",""],"ops":["matches","lookingAt","find"]}}
+{"id":154,"op":"regex","args":{"pattern":"Bild(e?s)?|Bildern?|Fotos?|Vergleich(e?[ns]?)?|Selfies?|Porträts?|Analyse","flags":66,"inputs":["Bild","einen","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":155,"op":"regex","args":{"pattern":"Bild(es|s)?|Foto","flags":0,"inputs":["Bild","im",""],"ops":["matches","lookingAt","find"]}}
+{"id":156,"op":"regex","args":{"pattern":"Bild|Blei|Ei|Eisen|Futter|Glas|Holz|Käfer|Käse|Lot|Macher|Porzellan|Spüler|Teil|Tier","flags":0,"inputs":["Bild","Schnecken","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":157,"op":"regex","args":{"pattern":"Bill?[iy]e?","flags":66,"inputs":["Bili","Holiday","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":158,"op":"regex","args":{"pattern":"Billigdiscounter[ns]?","flags":322,"inputs":["Billigdiscounter","Dieser Billigdiscounter hat nur Schrott im Angebot!","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":159,"op":"regex","args":{"pattern":"Bingewatching|Breakeven.*|Blow-up|Cancel-Culture|Carving-Ski|Chill-out-Area|Chill-out|Corned-Beef-Büchse|Conférencier|De-Luxe-Ausstattung|Egoshooter|Fun-Fact|Glam-Rock|Cybergrooming|Jam-Session|Low-[fF]at-Diät|Low-[Cc]arb-Rezept|Health-?food|Hacienda|Learning-by-Doing-Methode|Lowbudget-Film","flags":0,"inputs":["Bingewatching","cups","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":160,"op":"regex","args":{"pattern":"Bin|Kannst|Musst","flags":66,"inputs":["Bin","Now","K"],"ops":["matches","lookingAt","find"]}}
+{"id":161,"op":"regex","args":{"pattern":"Biol?","flags":66,"inputs":["Bio","bin","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":162,"op":"regex","args":{"pattern":"Bis|Seit|Ab|Von","flags":66,"inputs":["Bis","gilt","é"],"ops":["matches","lookingAt","find"]}}
+{"id":163,"op":"regex","args":{"pattern":"Bitte|So|Aber|Und|Danke|Oder","flags":0,"inputs":["Bitte","Aber","K"],"ops":["matches","lookingAt","find"]}}
+{"id":164,"op":"regex","args":{"pattern":"Bj?arne?s?","flags":66,"inputs":["Barn","l’auteur",""],"ops":["matches","lookingAt","find"]}}
+{"id":165,"op":"regex","args":{"pattern":"Bl[ae]us?","flags":66,"inputs":["Blau","Ich","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":166,"op":"regex","args":{"pattern":"Blacks?","flags":0,"inputs":["Black","riches","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":167,"op":"regex","args":{"pattern":"Black|BLACK","flags":0,"inputs":["Black","Matter","é"],"ops":["matches","lookingAt","find"]}}
+{"id":168,"op":"regex","args":{"pattern":"Black|Dead|BLACK|DEAD","flags":0,"inputs":["Black","into","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":169,"op":"regex","args":{"pattern":"Blanchet?t?e?","flags":66,"inputs":["Blanche","Kate","."],"ops":["matches","lookingAt","find"]}}
+{"id":170,"op":"regex","args":{"pattern":"Blanc|Jour|Idée","flags":66,"inputs":["Blanc","words","a"],"ops":["matches","lookingAt","find"]}}
+{"id":171,"op":"regex","args":{"pattern":"Blanc|Ventoux|Vully","flags":0,"inputs":["Blanc","mother"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":172,"op":"regex","args":{"pattern":"Blasio|Maupassant|Niro","flags":0,"inputs":["Blasio","plain","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":173,"op":"regex","args":{"pattern":"Bletchley|Central|Hyde","flags":0,"inputs":["Bletchley","its","a"],"ops":["matches","lookingAt","find"]}}
+{"id":174,"op":"regex","args":{"pattern":"Blinds?","flags":0,"inputs":["Blind","mornings","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":175,"op":"regex","args":{"pattern":"Blitz|Blut|Donner(wetter)?|Marter|Teufel","flags":66,"inputs":["Blitz","street","é"],"ops":["matches","lookingAt","find"]}}
+{"id":176,"op":"regex","args":{"pattern":"Blocker[sn]?|Radweg(en|s)?|Fenster[sn]?|Zelt(e|es|en)?|Verkaufs?|Restaurants?|Buch(es|s)?|Büchern?|Stores?|Menüs?|Campings?|Campingplatz(es)?|Campingplätze|Freizeitpark(e?s?)|Camps?","flags":66,"inputs":["Blocker","schnell","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":177,"op":"regex","args":{"pattern":"Blomens?","flags":66,"inputs":["Blomen","something","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":178,"op":"regex","args":{"pattern":"Blomen|BLOMEN","flags":0,"inputs":["Blomen","Park","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":179,"op":"regex","args":{"pattern":"Bloo?men","flags":66,"inputs":["Blomen","Park","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":180,"op":"regex","args":{"pattern":"Blue[ -](Ray|Rai|Rei)","flags":322,"inputs":["Blue Ray","Das ist eine Blue-ray Disc.","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":181,"op":"regex","args":{"pattern":"Bluerays|bluerays|BlueRays|Blue-rays|blue-rays|Blue-Rays|Blu-Rays|blu-rays","flags":0,"inputs":["Bluerays","Blu-rays","über"],"ops":["matches","lookingAt","find"]}}
+{"id":182,"op":"regex","args":{"pattern":"Blueray|blueray|BlueRay|Blue-ray|blue-ray|Blue-Ray|Blu-Ray|blu-ray","flags":0,"inputs":["Blueray","their","a"],"ops":["matches","lookingAt","find"]}}
+{"id":183,"op":"regex","args":{"pattern":"Blumen|Pflanzen","flags":0,"inputs":["Blumen","kommen","é"],"ops":["matches","lookingAt","find"]}}
+{"id":184,"op":"regex","args":{"pattern":"Blut|Ei|Eisen|Fisch|Fleisch|Gemüse|Gewicht|Kost|Käse|Luft|Milch|Stahl|Ware|Wasser|Zelle","flags":0,"inputs":["Blut","und","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":185,"op":"regex","args":{"pattern":"Blu|blu","flags":0,"inputs":["Blu","their","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":186,"op":"regex","args":{"pattern":"Boards?","flags":66,"inputs":["Board","landlord"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":187,"op":"regex","args":{"pattern":"Bob|Harry|Matt|Jack|Carol","flags":0,"inputs":["Bob","American"," "],"ops":["matches","lookingAt","find"]}}
+{"id":188,"op":"regex","args":{"pattern":"Bocc?h?ell?i","flags":66,"inputs":["Boceli","Boccelli","a"],"ops":["matches","lookingAt","find"]}}
+{"id":189,"op":"regex","args":{"pattern":"Body|BODY","flags":0,"inputs":["Body","body","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":190,"op":"regex","args":{"pattern":"Body|BODY|Thing|THING","flags":0,"inputs":["Body","seems","é"],"ops":["matches","lookingAt","find"]}}
+{"id":191,"op":"regex","args":{"pattern":"Bolivarische[mnrs]?","flags":0,"inputs":["Bolivarische","Take","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":192,"op":"regex","args":{"pattern":"Bonjour|Salut|Coucou","flags":0,"inputs":["Bonjour","frère","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":193,"op":"regex","args":{"pattern":"Bonn?[yi]e?","flags":66,"inputs":["Bony","Rate","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":194,"op":"regex","args":{"pattern":"Bourne|Unix|Linux|bash|code|electron","flags":66,"inputs":["Bourne","for","é"],"ops":["matches","lookingAt","find"]}}
+{"id":195,"op":"regex","args":{"pattern":"Bowls?","flags":0,"inputs":["Bowl","curling","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":196,"op":"regex","args":{"pattern":"Boxing|Welcome|Prime|Community","flags":0,"inputs":["Boxing","become"," "],"ops":["matches","lookingAt","find"]}}
+{"id":197,"op":"regex","args":{"pattern":"Boys|Girls","flags":66,"inputs":["Boys","2000","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":198,"op":"regex","args":{"pattern":"Boy|BOY","flags":0,"inputs":["Boy","is","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":199,"op":"regex","args":{"pattern":"Brahma|Hanoi","flags":66,"inputs":["Brahma","stops","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":200,"op":"regex","args":{"pattern":"Brand?t","flags":66,"inputs":["Brant","politicien","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":201,"op":"regex","args":{"pattern":"Brands?|Designs?","flags":66,"inputs":["Brand","halb","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":202,"op":"regex","args":{"pattern":"Brandts?","flags":0,"inputs":["Brandt","Winzig","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":203,"op":"regex","args":{"pattern":"Brassens|ç'a","flags":0,"inputs":["Brassens","s'y","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":204,"op":"regex","args":{"pattern":"Brasília(.*)","flags":0,"inputs":["Brasília","über"],"ops":["matches","lookingAt","find"]}}
+{"id":205,"op":"regex","args":{"pattern":"Brasílias?","flags":0,"inputs":["Brasília","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":206,"op":"regex","args":{"pattern":"Braten|Teig","flags":0,"inputs":["Braten","Der","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":207,"op":"regex","args":{"pattern":"Brauns?","flags":0,"inputs":["Braun","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":208,"op":"regex","args":{"pattern":"Braun|BRAUN","flags":0,"inputs":["Braun","_"],"ops":["matches","lookingAt","find"]}}
+{"id":209,"op":"regex","args":{"pattern":"Break-even-Points?","flags":0,"inputs":["Break-even-Point","Even","-"],"ops":["matches","lookingAt","find"]}}
+{"id":210,"op":"regex","args":{"pattern":"Breaking|Soft|Fake","flags":0,"inputs":["Breaking","ends","_"],"ops":["matches","lookingAt","find"]}}
+{"id":211,"op":"regex","args":{"pattern":"Brechts?","flags":0,"inputs":["Brecht","Berthold","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":212,"op":"regex","args":{"pattern":"Breiten?|[A-ZÄÖÜ].+breiten?|innerhalb|Verzögerung(en)?|Gewichte?s?|[A-ZÄÖÜ].+gewichte?s?|Dauer|Umfange?s?|Größen?|Grössen?|Längen?|Durchmesser([ns])?|(R|.+r)adius|Masse|(T|.+t)emperatur(en)?|(D|.+d)ruck(e?s)?|Anzahl(en)?|Alters?|Tagesdosis|Dosis|Bereichs?|[A-ZÄÖÜ].+wert(en?)?|Wert(en?)?|(A|[A-ZÄÖÜ].+a)nteil(s|en?)?|(K|.+k)onzentration(en)?|(R|[A-ZÄÖÜ].+r)aten?|(B|[A-ZÄÖÜ].+b)estand(e?s)?|(G|[A-ZÄÖÜ].+g)eschwindigkeit(en)?|Tragfähigkeit","flags":0,"inputs":["Breite","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":213,"op":"regex","args":{"pattern":"Bretts?","flags":66,"inputs":["Brett","Drei","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":214,"op":"regex","args":{"pattern":"Britannica|Iranica","flags":0,"inputs":["Britannica","oddity","a"],"ops":["matches","lookingAt","find"]}}
+{"id":215,"op":"regex","args":{"pattern":"British|American|correct","flags":66,"inputs":["British","of"," "],"ops":["matches","lookingAt","find"]}}
+{"id":216,"op":"regex","args":{"pattern":"Britt?a?nn?(y|ie?)|Britt?ne?y","flags":66,"inputs":["Britny","Spear","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":217,"op":"regex","args":{"pattern":"Bro[ou]ke?","flags":66,"inputs":["Brook","Brooke","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":218,"op":"regex","args":{"pattern":"Brothers|College","flags":0,"inputs":["Brothers","was","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":219,"op":"regex","args":{"pattern":"Brothers|College","flags":66,"inputs":["Brothers","Lehmann","K"],"ops":["matches","lookingAt","find"]}}
+{"id":220,"op":"regex","args":{"pattern":"Browser|Chrome|Firefox|Safari|Edge|Opera|Word|Audio|Grafik|Java|WordPress","flags":66,"inputs":["Browser","LanguageTool","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":221,"op":"regex","args":{"pattern":"Browser|Chrome|Firefox|Safari|Edge|Opera|Word|Audio|Grafik|Java|WordPress|LanguageTool","flags":66,"inputs":["Browser","LanguageTool","é"],"ops":["matches","lookingAt","find"]}}
+{"id":222,"op":"regex","args":{"pattern":"Brücke|Damms?|Tors?","flags":0,"inputs":["Brücke","But","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":223,"op":"regex","args":{"pattern":"Brüggens?","flags":66,"inputs":["Brüggen","wohne","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":224,"op":"regex","args":{"pattern":"Bu[sß]","flags":66,"inputs":["Bus","Bettag"," "],"ops":["matches","lookingAt","find"]}}
+{"id":225,"op":"regex","args":{"pattern":"Buch|Artikel|Text|Geschichte","flags":66,"inputs":["Buch","durch","-"],"ops":["matches","lookingAt","find"]}}
+{"id":226,"op":"regex","args":{"pattern":"Buff?et?ts?","flags":0,"inputs":["Bufet","ist","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":227,"op":"regex","args":{"pattern":"Buff?ett?","flags":66,"inputs":["Bufet","en","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":228,"op":"regex","args":{"pattern":"Buffetts?","flags":0,"inputs":["Buffett","Waren","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":229,"op":"regex","args":{"pattern":"Bund(e?s)?","flags":66,"inputs":["Bund","Naturschutz","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":230,"op":"regex","args":{"pattern":"Bunde?s?","flags":0,"inputs":["Bund","nichts","."],"ops":["matches","lookingAt","find"]}}
+{"id":231,"op":"regex","args":{"pattern":"Bundesamt(s|es)?","flags":66,"inputs":["Bundesamt","Die","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":232,"op":"regex","args":{"pattern":"Bundesamt|Landesamt","flags":66,"inputs":["Bundesamt","Zahlen","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":233,"op":"regex","args":{"pattern":"Bundesland|Freistaat","flags":0,"inputs":["Bundesland","herzlich","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":234,"op":"regex","args":{"pattern":"Bundesminister(iums?|s?)","flags":66,"inputs":["Bundesministerium","ist","-"],"ops":["matches","lookingAt","find"]}}
+{"id":235,"op":"regex","args":{"pattern":"Bundesrat(e?s)?","flags":66,"inputs":["Bundesrat","halb","K"],"ops":["matches","lookingAt","find"]}}
+{"id":236,"op":"regex","args":{"pattern":"Bund|Hafen|[iI]n|[vV]or","flags":0,"inputs":["Bund","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":237,"op":"regex","args":{"pattern":"Burg|Schloss|Pfarrei|Martin","flags":66,"inputs":["Burg","Ich","."],"ops":["matches","lookingAt","find"]}}
+{"id":238,"op":"regex","args":{"pattern":"Burn-?down","flags":66,"inputs":["Burndown","malte","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":239,"op":"regex","args":{"pattern":"Business|Bank|Managements?|Association|Organisation|Offices?","flags":66,"inputs":["Business","machen","_"],"ops":["matches","lookingAt","find"]}}
+{"id":240,"op":"regex","args":{"pattern":"Business|Committee|Convention","flags":66,"inputs":["Business","The",""],"ops":["matches","lookingAt","find"]}}
+{"id":241,"op":"regex","args":{"pattern":"Business|Grammar|Public|Old|Media|Law|Medical","flags":0,"inputs":["Business","bosom","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":242,"op":"regex","args":{"pattern":"Butter|BUTTER","flags":0,"inputs":["Butter","butter"," "],"ops":["matches","lookingAt","find"]}}
+{"id":243,"op":"regex","args":{"pattern":"But|However|Initially|Moreover|Nevertheless|Really","flags":0,"inputs":["But","situation","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":244,"op":"regex","args":{"pattern":"Buy-?Outs?","flags":0,"inputs":["BuyOut","die"," "],"ops":["matches","lookingAt","find"]}}
+{"id":245,"op":"regex","args":{"pattern":"Buy\\-?([Ii]n|[Oo]ut)s?","flags":0,"inputs":["BuyIn","kann","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":246,"op":"regex","args":{"pattern":"Buy|BUY","flags":0,"inputs":["Buy","online","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":247,"op":"regex","args":{"pattern":"B|M","flags":66,"inputs":["B","Eng","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":248,"op":"regex","args":{"pattern":"B|M|F","flags":0,"inputs":["B","macht","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":249,"op":"regex","args":{"pattern":"B|M|Sc|D|F|Ed|Phil|Eng|Th","flags":0,"inputs":["B","macht","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":250,"op":"regex","args":{"pattern":"Bär|Wagen","flags":0,"inputs":["Bär","genannt","K"],"ops":["matches","lookingAt","find"]}}
+{"id":251,"op":"regex","args":{"pattern":"Béla|BÉLA","flags":0,"inputs":["Béla","."],"ops":["matches","lookingAt","find"]}}
+{"id":252,"op":"regex","args":{"pattern":"Böhsen?","flags":0,"inputs":["Böhse","son’s","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":253,"op":"regex","args":{"pattern":"Bü","flags":0,"inputs":["Bü","sich","é"],"ops":["matches","lookingAt","find"]}}
+{"id":254,"op":"regex","args":{"pattern":"Bücken?","flags":0,"inputs":["Bücke","hinter","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":255,"op":"regex","args":{"pattern":"C (coord|sub) .*","flags":0,"inputs":["C coord ","NNP","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":256,"op":"regex","args":{"pattern":"C .*","flags":0,"inputs":["C ","feseur","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":257,"op":"regex","args":{"pattern":"C coor.*","flags":0,"inputs":["C coor","SUB:NOM:SIN:MAS","_"],"ops":["matches","lookingAt","find"]}}
+{"id":258,"op":"regex","args":{"pattern":"C coor.*|M nonfin","flags":0,"inputs":["C coor","PCT",""],"ops":["matches","lookingAt","find"]}}
+{"id":259,"op":"regex","args":{"pattern":"C coor.*|R m s|R pers obj.*|R [123].*","flags":0,"inputs":["C coor","ADJ:PRD:GRU","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":260,"op":"regex","args":{"pattern":"C coor.*|[DP].*","flags":0,"inputs":["C coor","VER:1:SIN:PRÄ:NON","é"],"ops":["matches","lookingAt","find"]}}
+{"id":261,"op":"regex","args":{"pattern":"C coor|A","flags":0,"inputs":["C coor","SENT_START"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":262,"op":"regex","args":{"pattern":"C coor|A|M nonfin|[DP].*","flags":0,"inputs":["C coor","V ind pres 3 s","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":263,"op":"regex","args":{"pattern":"C coor|M nonfin","flags":0,"inputs":["C coor","JJ","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":264,"op":"regex","args":{"pattern":"C coor|M nonfin|SENT_START","flags":0,"inputs":["C coor","VER:1:SIN:PRÄ:NON","."],"ops":["matches","lookingAt","find"]}}
+{"id":265,"op":"regex","args":{"pattern":"C coor|N.*","flags":0,"inputs":["C coor","ADJ:PRD:GRU","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":266,"op":"regex","args":{"pattern":"C coor|P","flags":0,"inputs":["C coor","V ind pres 3 s","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":267,"op":"regex","args":{"pattern":"C coor|R pers obj.*","flags":0,"inputs":["C coor","N f s","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":268,"op":"regex","args":{"pattern":"C coor|SENT_END|M nonfin","flags":0,"inputs":["C coor","VB","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":269,"op":"regex","args":{"pattern":"C coor|SENT_END|P|M nonfin","flags":0,"inputs":["C coor","ADJ:PRD:GRU",""],"ops":["matches","lookingAt","find"]}}
+{"id":270,"op":"regex","args":{"pattern":"C coor|SENT_START|M nonfin","flags":0,"inputs":["C coor","SUB:NOM:SIN:MAS","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":271,"op":"regex","args":{"pattern":"C coor|UNKNOWN","flags":0,"inputs":["C coor","SENT_START","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":272,"op":"regex","args":{"pattern":"C coor|[JNV].*","flags":0,"inputs":["C coor","NNP","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":273,"op":"regex","args":{"pattern":"C coor|[JN].*","flags":0,"inputs":["C coor","N f s","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":274,"op":"regex","args":{"pattern":"C sub.*","flags":0,"inputs":["C sub","PCT",""],"ops":["matches","lookingAt","find"]}}
+{"id":275,"op":"regex","args":{"pattern":"C sub.*|C coor.*","flags":0,"inputs":["C sub","NNP","."],"ops":["matches","lookingAt","find"]}}
+{"id":276,"op":"regex","args":{"pattern":"C sub|A|R pers suj.*","flags":0,"inputs":["C sub","UNKNOWN",""],"ops":["matches","lookingAt","find"]}}
+{"id":277,"op":"regex","args":{"pattern":"C sub|C coor|M nonfin","flags":0,"inputs":["C sub","N f s","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":278,"op":"regex","args":{"pattern":"C sub|C coor|R rel e sp|A inte","flags":0,"inputs":["C sub","SUB:NOM:SIN:MAS","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":279,"op":"regex","args":{"pattern":"C sub|C coor|R rel e sp|A inte|P","flags":0,"inputs":["C sub","NNP","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":280,"op":"regex","args":{"pattern":"C sub|C coor|R rel.*|A inte|[PV].*","flags":0,"inputs":["C sub","UNKNOWN","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":281,"op":"regex","args":{"pattern":"C sub|M nonfin|C coor","flags":0,"inputs":["C sub","VER:1:SIN:PRÄ:NON","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":282,"op":"regex","args":{"pattern":"C sub|M nonfin|SENT_START","flags":0,"inputs":["C sub","PCT","K"],"ops":["matches","lookingAt","find"]}}
+{"id":283,"op":"regex","args":{"pattern":"C sub|P.*|V etre.*","flags":0,"inputs":["C sub","JJ","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":284,"op":"regex","args":{"pattern":"C sub|R pers obj.*","flags":0,"inputs":["C sub","_PUNCT","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":285,"op":"regex","args":{"pattern":"C sub|R rel.*","flags":0,"inputs":["C sub","VB","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":286,"op":"regex","args":{"pattern":"C sub|SENT_START|M nonfin","flags":0,"inputs":["C sub","V ind pres 3 s","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":287,"op":"regex","args":{"pattern":"C(anaveral|od|oral)","flags":0,"inputs":["Canaveral","here","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":288,"op":"regex","args":{"pattern":"C.*","flags":0,"inputs":["C","_PUNCT","é"],"ops":["matches","lookingAt","find"]}}
+{"id":289,"op":"regex","args":{"pattern":"C.* sub","flags":0,"inputs":["C sub","VB","é"],"ops":["matches","lookingAt","find"]}}
+{"id":290,"op":"regex","args":{"pattern":"C.*|M nonfin","flags":0,"inputs":["C","V ind pres 3 s","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":291,"op":"regex","args":{"pattern":"C.*|M nonfin|M fin|SENT_END","flags":0,"inputs":["C","PCT","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":292,"op":"regex","args":{"pattern":"C.*|M nonfin|P|SENT_START","flags":0,"inputs":["C","_PUNCT"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":293,"op":"regex","args":{"pattern":"C.*|M nonfin|R rel.*","flags":0,"inputs":["C","N f s","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":294,"op":"regex","args":{"pattern":"C.*|M nonfin|SENT_START","flags":0,"inputs":["C","NN","a"],"ops":["matches","lookingAt","find"]}}
+{"id":295,"op":"regex","args":{"pattern":"C.*|R rel.*|M nonfin","flags":0,"inputs":["C","PCT","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":296,"op":"regex","args":{"pattern":"C.*|R rel.*|M.*","flags":0,"inputs":["C","NNP","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":297,"op":"regex","args":{"pattern":"C.*|SENT_START","flags":0,"inputs":["C","JJ","_"],"ops":["matches","lookingAt","find"]}}
+{"id":298,"op":"regex","args":{"pattern":"C.*|SENT_START|M nonfin","flags":0,"inputs":["C","SENT_START","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":299,"op":"regex","args":{"pattern":"CC","flags":0,"inputs":["CC","passed","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":300,"op":"regex","args":{"pattern":"CCD|CCED","flags":0,"inputs":["CCD","Palomar-Quest","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":301,"op":"regex","args":{"pattern":"CC|,","flags":0,"inputs":["CC","ADJ:PRD:GRU","é"],"ops":["matches","lookingAt","find"]}}
+{"id":302,"op":"regex","args":{"pattern":"CC|DT|IN|MD|NP|RP|WDT|WP|WRB","flags":0,"inputs":["CC","_PUNCT","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":303,"op":"regex","args":{"pattern":"CC|DT|IN|MD|POS|PP|RB|WDT|WP|WRB","flags":0,"inputs":["CC","N f s","K"],"ops":["matches","lookingAt","find"]}}
+{"id":304,"op":"regex","args":{"pattern":"CC|DT|MD|PRP\\$.*|W.*","flags":0,"inputs":["CC","SUB:NOM:SIN:MAS","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":305,"op":"regex","args":{"pattern":"CC|DT|RB|RP|JJ|IN|CD|JJR|RBS|VB[DN]|MD|NNP?S|NNP|WRB","flags":0,"inputs":["CC","SENT_START","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":306,"op":"regex","args":{"pattern":"CC|DT|RB|RP|JJ|IN|CD|JJR|RBS|VB[DN]|MD|NNS","flags":0,"inputs":["CC","NNP","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":307,"op":"regex","args":{"pattern":"CC|DT|RB|RP|JJ|IN|CD|JJR|RBS|VB[DN]|MD|NN[SP]|WRB","flags":0,"inputs":["CC","N f s","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":308,"op":"regex","args":{"pattern":"CC|DT|SENT_START|PCT","flags":0,"inputs":["CC","V ind pres 3 s","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":309,"op":"regex","args":{"pattern":"CC|DT|W.*","flags":0,"inputs":["CC","SENT_START","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":310,"op":"regex","args":{"pattern":"CC|DT|WDT|RB|RP|JJ|IN|CD|JJR|RBS|VB[DN]|MD|NN[SP]|PRP","flags":0,"inputs":["CC","NNP","-"],"ops":["matches","lookingAt","find"]}}
+{"id":311,"op":"regex","args":{"pattern":"CC|DT|WDT|RP|JJ.*|IN|CD|RBS|VB[DN]|MD|NNP|NNS|NNPS","flags":0,"inputs":["CC","JJ"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":312,"op":"regex","args":{"pattern":"CC|DT|WDT|RP|JJ|IN|CD|JJR|RBS|VB[DN]|MD|NNP|NNS","flags":0,"inputs":["CC","_PUNCT","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":313,"op":"regex","args":{"pattern":"CC|IN","flags":0,"inputs":["CC","VER:1:SIN:PRÄ:NON","a"],"ops":["matches","lookingAt","find"]}}
+{"id":314,"op":"regex","args":{"pattern":"CC|IN|EX","flags":0,"inputs":["CC","PCT","."],"ops":["matches","lookingAt","find"]}}
+{"id":315,"op":"regex","args":{"pattern":"CC|IN|RB.*|MD|JJR|PRP.*|W.*|DT","flags":0,"inputs":["CC","NN","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":316,"op":"regex","args":{"pattern":"CC|IN|TO|PCT|JJ","flags":0,"inputs":["CC","_PUNCT","é"],"ops":["matches","lookingAt","find"]}}
+{"id":317,"op":"regex","args":{"pattern":"CC|IN|VBP?|RB.*|MD|JJR|PRP.*","flags":0,"inputs":["CC","VB","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":318,"op":"regex","args":{"pattern":"CC|JJR|IN","flags":0,"inputs":["CC","V ind pres 3 s","é"],"ops":["matches","lookingAt","find"]}}
+{"id":319,"op":"regex","args":{"pattern":"CC|JJ|VB.","flags":0,"inputs":["CC","NN",""],"ops":["matches","lookingAt","find"]}}
+{"id":320,"op":"regex","args":{"pattern":"CC|JJ|VBN","flags":0,"inputs":["CC","UNKNOWN","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":321,"op":"regex","args":{"pattern":"CC|MD|IN|RB.*","flags":0,"inputs":["CC","SENT_START","."],"ops":["matches","lookingAt","find"]}}
+{"id":322,"op":"regex","args":{"pattern":"CC|P?DT","flags":0,"inputs":["CC","PCT","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":323,"op":"regex","args":{"pattern":"CC|PCT","flags":0,"inputs":["CC","_PUNCT","K"],"ops":["matches","lookingAt","find"]}}
+{"id":324,"op":"regex","args":{"pattern":"CC|PCT|DT","flags":0,"inputs":["CC","SUB:NOM:SIN:MAS","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":325,"op":"regex","args":{"pattern":"CC|PCT|IN","flags":0,"inputs":["CC","SENT_START","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":326,"op":"regex","args":{"pattern":"CC|PCT|IN|PRP.*|P?DT","flags":0,"inputs":["CC","VB","-"],"ops":["matches","lookingAt","find"]}}
+{"id":327,"op":"regex","args":{"pattern":"CC|PCT|IN|RB","flags":0,"inputs":["CC","NNP","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":328,"op":"regex","args":{"pattern":"CC|PCT|IN|SENT_END","flags":0,"inputs":["CC","UNKNOWN","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":329,"op":"regex","args":{"pattern":"CC|PCT|MD|VB(G|N)","flags":0,"inputs":["CC","NN","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":330,"op":"regex","args":{"pattern":"CC|PCT|SENT_END","flags":0,"inputs":["CC","VB","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":331,"op":"regex","args":{"pattern":"CC|PCT|SENT_START","flags":0,"inputs":["CC","N f s","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":332,"op":"regex","args":{"pattern":"CC|PCT|SENT_START|DT","flags":0,"inputs":["CC","VB","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":333,"op":"regex","args":{"pattern":"CC|PCT|SENT_START|RB","flags":0,"inputs":["CC","ADJ:PRD:GRU","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":334,"op":"regex","args":{"pattern":"CC|PCT|SENT_START|UH","flags":0,"inputs":["CC","V ind pres 3 s","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":335,"op":"regex","args":{"pattern":"CC|PCT|SENT_START|W.*","flags":0,"inputs":["CC","JJ","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":336,"op":"regex","args":{"pattern":"CC|PCT|TO","flags":0,"inputs":["CC","VER:1:SIN:PRÄ:NON","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":337,"op":"regex","args":{"pattern":"CC|PCT|UNKNOWN","flags":0,"inputs":["CC","SENT_START","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":338,"op":"regex","args":{"pattern":"CC|PCT|UNKNOWN|SENT_START","flags":0,"inputs":["CC","V ind pres 3 s","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":339,"op":"regex","args":{"pattern":"CC|PCT|VB[ZD]|MD","flags":0,"inputs":["CC","JJ","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":340,"op":"regex","args":{"pattern":"CC|PRP","flags":0,"inputs":["CC","VER:1:SIN:PRÄ:NON","K"],"ops":["matches","lookingAt","find"]}}
+{"id":341,"op":"regex","args":{"pattern":"CC|PRP.*|IN|MD|VBZ|RB","flags":0,"inputs":["CC","PCT","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":342,"op":"regex","args":{"pattern":"CC|RB","flags":0,"inputs":["CC","VER:1:SIN:PRÄ:NON","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":343,"op":"regex","args":{"pattern":"CC|SENT_END","flags":0,"inputs":["CC","UNKNOWN","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":344,"op":"regex","args":{"pattern":"CC|SENT_END|PCT","flags":0,"inputs":["CC","JJ","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":345,"op":"regex","args":{"pattern":"CC|SENT_START","flags":0,"inputs":["CC","V ind pres 3 s"," "],"ops":["matches","lookingAt","find"]}}
+{"id":346,"op":"regex","args":{"pattern":"CC|SENT_START|DT|PCT","flags":0,"inputs":["CC","VB","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":347,"op":"regex","args":{"pattern":"CC|SENT_START|PCT","flags":0,"inputs":["CC","UNKNOWN","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":348,"op":"regex","args":{"pattern":"CC|SENT_START|PCT|DT","flags":0,"inputs":["CC","NN","é"],"ops":["matches","lookingAt","find"]}}
+{"id":349,"op":"regex","args":{"pattern":"CC|SENT_START|PCT|UH","flags":0,"inputs":["CC","V ind pres 3 s","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":350,"op":"regex","args":{"pattern":"CC|SENT_START|PCT|W.*","flags":0,"inputs":["CC","VB","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":351,"op":"regex","args":{"pattern":"CC|SENT_START|PCT|WRB|WDT|WP","flags":0,"inputs":["CC","PCT","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":352,"op":"regex","args":{"pattern":"CC|SENT_START|PCT|WRB|WDT|WP|UNKNOWN","flags":0,"inputs":["CC","SENT_START","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":353,"op":"regex","args":{"pattern":"CC|SENT_START|PCT|WRB|WDT|WP|``|UNKNOWN","flags":0,"inputs":["CC","SUB:NOM:SIN:MAS",""],"ops":["matches","lookingAt","find"]}}
+{"id":354,"op":"regex","args":{"pattern":"CC|SENT_START|PCT|WRB|WP","flags":0,"inputs":["CC","_PUNCT","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":355,"op":"regex","args":{"pattern":"CC|SENT_START|RB|PCT","flags":0,"inputs":["CC","VB","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":356,"op":"regex","args":{"pattern":"CC|TO","flags":0,"inputs":["CC","SENT_START","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":357,"op":"regex","args":{"pattern":"CC|UH|DT|WDT|RB|RP|JJ|IN|CD|JJS|JJR|RBS|VB[DN]|MD|NNP|NNS|VBG","flags":0,"inputs":["CC","UNKNOWN","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":358,"op":"regex","args":{"pattern":"CC|UH|DT|WDT|RP|JJ.*|IN|CD|RB.*|VBD|VBZ|VBN|MD|NNP|NNP?S|PRP.*|WRB","flags":0,"inputs":["CC","NNP","über"],"ops":["matches","lookingAt","find"]}}
+{"id":359,"op":"regex","args":{"pattern":"CC|UH|DT|WDT|RP|JJ.*|IN|CD|RB.*|VB[DN]|MD|NN[PS]|NNPS|PRP.*|WRB","flags":0,"inputs":["CC","VB","-"],"ops":["matches","lookingAt","find"]}}
+{"id":360,"op":"regex","args":{"pattern":"CC|UH|DT|WDT|RP|JJ|IN|CD|JJS|JJR|RB.*|VB[DN]|MD|NNP|NNS|WRB","flags":0,"inputs":["CC","NN","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":361,"op":"regex","args":{"pattern":"CC|UH|DT|WDT|RP|JJ|IN|CD|JJS|JJR|RBS|VB[DN]|MD|NNP|NNS","flags":0,"inputs":["CC","V ind pres 3 s","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":362,"op":"regex","args":{"pattern":"CC|VB.*|MD|PCT","flags":0,"inputs":["CC","ADJ:PRD:GRU",""],"ops":["matches","lookingAt","find"]}}
+{"id":363,"op":"regex","args":{"pattern":"CC|W.*","flags":0,"inputs":["CC","JJ","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":364,"op":"regex","args":{"pattern":"CC|W.*|NN.*|IN","flags":0,"inputs":["CC","N f s","é"],"ops":["matches","lookingAt","find"]}}
+{"id":365,"op":"regex","args":{"pattern":"CC|W.*|SENT_START|PCT","flags":0,"inputs":["CC","V ind pres 3 s"," "],"ops":["matches","lookingAt","find"]}}
+{"id":366,"op":"regex","args":{"pattern":"CDROM|CDRom|Cdrom","flags":0,"inputs":["CDROM","CD-ROM","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":367,"op":"regex","args":{"pattern":"CD|DT|JJ.*","flags":0,"inputs":["CD","VER:1:SIN:PRÄ:NON","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":368,"op":"regex","args":{"pattern":"CD|DT|PRP.*|JJ.*","flags":0,"inputs":["CD","JJ","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":369,"op":"regex","args":{"pattern":"CD|DVD","flags":0,"inputs":["CD","This","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":370,"op":"regex","args":{"pattern":"CD|IN|NN:U|RP|VBN","flags":0,"inputs":["CD","_PUNCT","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":371,"op":"regex","args":{"pattern":"CD|J.*|P?DT","flags":0,"inputs":["CD","V ind pres 3 s","a"],"ops":["matches","lookingAt","find"]}}
+{"id":372,"op":"regex","args":{"pattern":"CD|J.*|PRP\\$.*|UNKNOWN|\\.|,","flags":0,"inputs":["CD","UNKNOWN","."],"ops":["matches","lookingAt","find"]}}
+{"id":373,"op":"regex","args":{"pattern":"CD|JJ.*|UNKNOWN","flags":0,"inputs":["CD","N f s","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":374,"op":"regex","args":{"pattern":"CD|NN(PS|:UN?)","flags":0,"inputs":["CD","ADJ:PRD:GRU","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":375,"op":"regex","args":{"pattern":"CD|NN(S|:U)","flags":0,"inputs":["CD","PCT"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":376,"op":"regex","args":{"pattern":"CD|NN.*","flags":0,"inputs":["CD","SUB:NOM:SIN:MAS","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":377,"op":"regex","args":{"pattern":"CD|NN.*|JJ.*","flags":0,"inputs":["CD","VER:1:SIN:PRÄ:NON","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":378,"op":"regex","args":{"pattern":"CD|NNP?S","flags":0,"inputs":["CD","ADJ:PRD:GRU"," "],"ops":["matches","lookingAt","find"]}}
+{"id":379,"op":"regex","args":{"pattern":"CD|ORD|JJS|VBN","flags":0,"inputs":["CD","PCT","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":380,"op":"regex","args":{"pattern":"CD|TO|UNKNOWN","flags":0,"inputs":["CD","SUB:NOM:SIN:MAS","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":381,"op":"regex","args":{"pattern":"CD|UNKNOWN","flags":0,"inputs":["CD","NNP","."],"ops":["matches","lookingAt","find"]}}
+{"id":382,"op":"regex","args":{"pattern":"CD|VBZ|W.*","flags":0,"inputs":["CD","UNKNOWN","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":383,"op":"regex","args":{"pattern":"CES|SES","flags":0,"inputs":["CES","des","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":384,"op":"regex","args":{"pattern":"CE|Ce","flags":0,"inputs":["CE","ce","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":385,"op":"regex","args":{"pattern":"CHF|Franken","flags":66,"inputs":["CHF","Weltrekord"," "],"ops":["matches","lookingAt","find"]}}
+{"id":386,"op":"regex","args":{"pattern":"CHF|s?Fr\\.?|Franken?|Schweizerfranken?|Schwiizerfranken?|Rappen?|Rp\\.?|JPY|Yen|¥","flags":66,"inputs":["CHF","Aufpreis","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":387,"op":"regex","args":{"pattern":"CI|SI","flags":0,"inputs":["CI","celui","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":388,"op":"regex","args":{"pattern":"CO2-.+","flags":0,"inputs":["CO2-x","CO2-neutral","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":389,"op":"regex","args":{"pattern":"COVID-?19|[Cc]orona(virus)?","flags":0,"inputs":["COVID19","The","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":390,"op":"regex","args":{"pattern":"CO₂-(Emission(en)?|Ausstoß(es)?|Steuern?|Rechnern?|Preis|Zylinder|Fußabdrucks?|Bepreisung)","flags":66,"inputs":["CO₂-Emission","saying","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":391,"op":"regex","args":{"pattern":"CO₂-([Ff]ree|[Bb]ased|[Nn]eutral|[Cc]ompensat(ing|ed)|[Dd]ependent|[Ii]ndependent)","flags":0,"inputs":["CO₂-Free","amazes","é"],"ops":["matches","lookingAt","find"]}}
+{"id":392,"op":"regex","args":{"pattern":"CST|CDT|MST|MDT|PST|PDT|EST|EDT","flags":66,"inputs":["CST","selected","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":393,"op":"regex","args":{"pattern":"CTAs?|files?|rates?|form|API|rules?|status|cards?|sequences?|teams?|commands?|requests?|queues?|buttons?|events?|macros?|links?|teasers?|attributes?|icons?|keys?|functions?|functionalit(y|ies)|methods?|features?|page|parameters?|options?|steps?|columns?|plans?|sections?|signals?|actions?|process(es)?|modes?|screens?|errors?|tools?|operations?|statements?|states?","flags":66,"inputs":["CTA","4.a","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":394,"op":"regex","args":{"pattern":"C[CD]|IN|DT|MD|NNP|\\.","flags":0,"inputs":["CC","JJ","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":395,"op":"regex","args":{"pattern":"C[CD]|IN|DT|UNKNOWN|MD|NNP|\\.","flags":0,"inputs":["CC","_PUNCT"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":396,"op":"regex","args":{"pattern":"C[CD]|MD|PCT|SENT_END|V.*","flags":0,"inputs":["CC","VER:1:SIN:PRÄ:NON","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":397,"op":"regex","args":{"pattern":"C[iy]nd[yi]e?","flags":66,"inputs":["Cindy","Lauper","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":398,"op":"regex","args":{"pattern":"C[oôóò]t[éèêe]?","flags":66,"inputs":["Cot","der","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":399,"op":"regex","args":{"pattern":"Caesars|Coles|Colliers|Humanites|Staples|media|earnings|savings","flags":66,"inputs":["Caesars","dogs","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":400,"op":"regex","args":{"pattern":"Caf[èéêe]","flags":66,"inputs":["Cafè","Wasser","über"],"ops":["matches","lookingAt","find"]}}
+{"id":401,"op":"regex","args":{"pattern":"Caff?[èéêe]","flags":66,"inputs":["Cafè","Zucker","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":402,"op":"regex","args":{"pattern":"Call|CALL","flags":0,"inputs":["Call","was","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":403,"op":"regex","args":{"pattern":"Can","flags":0,"inputs":["Can","Sue","é"],"ops":["matches","lookingAt","find"]}}
+{"id":404,"op":"regex","args":{"pattern":"Canyons?|Jury|Slams?|Hyatt|Prix|Cru|Marnier|Fleet|Lit","flags":0,"inputs":["Canyon","till","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":405,"op":"regex","args":{"pattern":"Can|(Wi|Sha)ll|Should|Do|Be|Have","flags":66,"inputs":["Can","I","é"],"ops":["matches","lookingAt","find"]}}
+{"id":406,"op":"regex","args":{"pattern":"Can|Will","flags":0,"inputs":["Can","Book","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":407,"op":"regex","args":{"pattern":"Cape|CAPE","flags":0,"inputs":["Cape","Since","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":408,"op":"regex","args":{"pattern":"Capones?|Gores?|Jazeeras?|Kaidas?","flags":0,"inputs":["Capone","cart","über"],"ops":["matches","lookingAt","find"]}}
+{"id":409,"op":"regex","args":{"pattern":"Capp?rio","flags":66,"inputs":["Caprio","Di","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":410,"op":"regex","args":{"pattern":"Carn[ie]g(y|ie)","flags":66,"inputs":["Carnigy","Melon","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":411,"op":"regex","args":{"pattern":"Carnegie|CARNEGIE","flags":0,"inputs":["Carnegie","at","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":412,"op":"regex","args":{"pattern":"Carne|CARNE","flags":0,"inputs":["Carne","Chilly","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":413,"op":"regex","args":{"pattern":"Carr?ell?","flags":66,"inputs":["Carel","est","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":414,"op":"regex","args":{"pattern":"Carr?ey","flags":66,"inputs":["Carey","a"],"ops":["matches","lookingAt","find"]}}
+{"id":415,"op":"regex","args":{"pattern":"Carré|Temps","flags":66,"inputs":["Carré","en","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":416,"op":"regex","args":{"pattern":"Castros?","flags":0,"inputs":["Castro","watching","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":417,"op":"regex","args":{"pattern":"Catherine|Charlotte|Christine|Claire|Cécile|Flore|Ga[ëe]lle|France|Laure|L[iy][ns]e|Marie|Sophie","flags":0,"inputs":["Catherine","Anne-Sophie","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":418,"op":"regex","args":{"pattern":"Catherine|Charlotte|Christine|Claire|Cécile|Flore|Ga[ëe]lle|France|Laure|L[iy][ns]e|Marie|Sophie","flags":66,"inputs":["Catherine","Cécile","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":419,"op":"regex","args":{"pattern":"Ca|Wo|Do|Should|[CW]ould|Must|Did|Does|Need","flags":0,"inputs":["Ca","looked","_"],"ops":["matches","lookingAt","find"]}}
+{"id":420,"op":"regex","args":{"pattern":"Celles?|Celui|Ceux","flags":66,"inputs":["Celle","point","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":421,"op":"regex","args":{"pattern":"Celsius|Fahrenheit","flags":66,"inputs":["Celsius","Gruppe","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":422,"op":"regex","args":{"pattern":"Cent(er|re)|Supreme","flags":0,"inputs":["Center","seaside","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":423,"op":"regex","args":{"pattern":"Centers?","flags":0,"inputs":["Center","streak","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":424,"op":"regex","args":{"pattern":"Center|Bank|Institute","flags":0,"inputs":["Center","son’s","über"],"ops":["matches","lookingAt","find"]}}
+{"id":425,"op":"regex","args":{"pattern":"Ces|Ses","flags":0,"inputs":["Ces","é"],"ops":["matches","lookingAt","find"]}}
+{"id":426,"op":"regex","args":{"pattern":"Chai|Fior","flags":0,"inputs":["Chai","needle","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":427,"op":"regex","args":{"pattern":"Champions?","flags":0,"inputs":["Champion","Dose","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":428,"op":"regex","args":{"pattern":"Champions?","flags":66,"inputs":["Champion","frischen","K"],"ops":["matches","lookingAt","find"]}}
+{"id":429,"op":"regex","args":{"pattern":"Chanel","flags":0,"inputs":["Chanel","Video","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":430,"op":"regex","args":{"pattern":"Charles|Général|Président","flags":66,"inputs":["Charles","essentiellement","_"],"ops":["matches","lookingAt","find"]}}
+{"id":431,"op":"regex","args":{"pattern":"Charles|William","flags":66,"inputs":["Charles","master","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":432,"op":"regex","args":{"pattern":"Charta|Union|Parlament|Gerichtshof|Patentamt|Wirtschaftsgemeinschaft|Wirtschaftsraum|Kommission|Rat|Zentralbank|Volkspartei|Währungsunion|Währungsfonds|Rechnungshof|Datenschutzgrundverordnung|Investitionsbank","flags":0,"inputs":["Charta","Europäische","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":433,"op":"regex","args":{"pattern":"Charts?","flags":66,"inputs":["Chart","malte","über"],"ops":["matches","lookingAt","find"]}}
+{"id":434,"op":"regex","args":{"pattern":"Check-?Ins?","flags":0,"inputs":["CheckIn","schief","-"],"ops":["matches","lookingAt","find"]}}
+{"id":435,"op":"regex","args":{"pattern":"Check-?Outs?","flags":0,"inputs":["CheckOut","Während","_"],"ops":["matches","lookingAt","find"]}}
+{"id":436,"op":"regex","args":{"pattern":"Checkin","flags":0,"inputs":["Checkin","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":437,"op":"regex","args":{"pattern":"Checkins?","flags":0,"inputs":["Checkin","zum","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":438,"op":"regex","args":{"pattern":"Checkout","flags":0,"inputs":["Checkout","Bitte","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":439,"op":"regex","args":{"pattern":"Checkouts?","flags":0,"inputs":["Checkout","Sie","K"],"ops":["matches","lookingAt","find"]}}
+{"id":440,"op":"regex","args":{"pattern":"Chelsea|ID|AI|Ajax|Lemon|LCD|Ill","flags":66,"inputs":["Chelsea","in","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":441,"op":"regex","args":{"pattern":"Chercheur|C'","flags":66,"inputs":["Chercheur","et","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":442,"op":"regex","args":{"pattern":"Chiefs?","flags":0,"inputs":["Chief","others","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":443,"op":"regex","args":{"pattern":"Chili|CHILI","flags":0,"inputs":["Chili","Con","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":444,"op":"regex","args":{"pattern":"Chili|Citation","flags":0,"inputs":["Chili","His","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":445,"op":"regex","args":{"pattern":"China","flags":0,"inputs":["China","placed","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":446,"op":"regex","args":{"pattern":"Chirr?a([cq]|que)s?","flags":66,"inputs":["Chirac","Jacque","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":447,"op":"regex","args":{"pattern":"Choice|Chevrolet|Chevy|GM","flags":0,"inputs":["Choice","mat","-"],"ops":["matches","lookingAt","find"]}}
+{"id":448,"op":"regex","args":{"pattern":"Chomsk[iy]","flags":66,"inputs":["Chomski","Noham","über"],"ops":["matches","lookingAt","find"]}}
+{"id":449,"op":"regex","args":{"pattern":"Christmas|CHRISTMAS","flags":0,"inputs":["Christmas","on","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":450,"op":"regex","args":{"pattern":"Chris|Criest","flags":0,"inputs":["Chris","Jesus","_"],"ops":["matches","lookingAt","find"]}}
+{"id":451,"op":"regex","args":{"pattern":"Chronicle","flags":0,"inputs":["Chronicle","connected","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":452,"op":"regex","args":{"pattern":"City|Records|Airways|College","flags":66,"inputs":["City","Today","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":453,"op":"regex","args":{"pattern":"City|Trade|Shopping|Apps?|Boards?|Soundbars?|Classics?|Airports?","flags":66,"inputs":["City","halb","é"],"ops":["matches","lookingAt","find"]}}
+{"id":454,"op":"regex","args":{"pattern":"Ciudad|Playa|Casa|Puerto|Avenida|Santiago|Municipio|Paseo|Calle|Días|Di?os|Nacional|Villas|Cinco|Rancho|Cerro|Universidad|Banquo|Instituto|Copa|Academia|Plaza|Facultad|Torre|Camino|Club|Tapas|Palma|Águas|Costa|Isla|Ministerio|Grupo","flags":0,"inputs":["Ciudad","even","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":455,"op":"regex","args":{"pattern":"Claire|Ambre|Jade","flags":0,"inputs":["Claire","malaises","."],"ops":["matches","lookingAt","find"]}}
+{"id":456,"op":"regex","args":{"pattern":"Claus|CLAUS","flags":0,"inputs":["Claus","religion",""],"ops":["matches","lookingAt","find"]}}
+{"id":457,"op":"regex","args":{"pattern":"Clients?|Mans?|Joes?","flags":66,"inputs":["Client","something","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":458,"op":"regex","args":{"pattern":"Clintons?","flags":0,"inputs":["Clinton","bosom","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":459,"op":"regex","args":{"pattern":"Close-?Ups?","flags":0,"inputs":["CloseUp","Er","K"],"ops":["matches","lookingAt","find"]}}
+{"id":460,"op":"regex","args":{"pattern":"Closeup","flags":0,"inputs":["Closeup","war","-"],"ops":["matches","lookingAt","find"]}}
+{"id":461,"op":"regex","args":{"pattern":"Closeups?","flags":0,"inputs":["Closeup","a"],"ops":["matches","lookingAt","find"]}}
+{"id":462,"op":"regex","args":{"pattern":"Co-?Workings?","flags":0,"inputs":["CoWorking","Art","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":463,"op":"regex","args":{"pattern":"Co?u?rte?ney","flags":66,"inputs":["Crtney","Cox","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":464,"op":"regex","args":{"pattern":"Coachs?|Trainers?|Brand(ing)?s?|Firewalls?","flags":66,"inputs":["Coach","das","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":465,"op":"regex","args":{"pattern":"Cod|Town","flags":66,"inputs":["Cod","been",""],"ops":["matches","lookingAt","find"]}}
+{"id":466,"op":"regex","args":{"pattern":"Cod|Town|COD|TOWN","flags":0,"inputs":["Cod","separated","_"],"ops":["matches","lookingAt","find"]}}
+{"id":467,"op":"regex","args":{"pattern":"Coll?[ae]ge","flags":66,"inputs":["Colage","is","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":468,"op":"regex","args":{"pattern":"Collaboration|Engineerings?|Learnings?|Networks?|Software|Sponsorings?|Bots?|Media|Costs?|Freezing|Responsibility|Entrepreneurships?|Taggings?|Business|Gamings?|Payments?|Security|Web|Distancings?|Marketings?|Franchisings?|Investments?","flags":0,"inputs":["Collaboration","are","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":469,"op":"regex","args":{"pattern":"Collect|Meet","flags":0,"inputs":["Collect","Do","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":470,"op":"regex","args":{"pattern":"College|FC","flags":66,"inputs":["College","Dade","K"],"ops":["matches","lookingAt","find"]}}
+{"id":471,"op":"regex","args":{"pattern":"Comm?ing","flags":0,"inputs":["Coming","sein","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":472,"op":"regex","args":{"pattern":"Comm?ing-?Outs?","flags":0,"inputs":["ComingOut","sah","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":473,"op":"regex","args":{"pattern":"Comm?itt?ee?s?","flags":66,"inputs":["Comite","A","K"],"ops":["matches","lookingAt","find"]}}
+{"id":474,"op":"regex","args":{"pattern":"Committees?","flags":0,"inputs":["Committee","body","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":475,"op":"regex","args":{"pattern":"Comp?tée?","flags":0,"inputs":["Comté","en","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":476,"op":"regex","args":{"pattern":"Conf.*|Fed.*|Nations.*|World.*|Champion.*|Europa.*|Youth.*","flags":66,"inputs":["Conf","happened","é"],"ops":["matches","lookingAt","find"]}}
+{"id":477,"op":"regex","args":{"pattern":"Connects?","flags":0,"inputs":["Connect","renewed","_"],"ops":["matches","lookingAt","find"]}}
+{"id":478,"op":"regex","args":{"pattern":"Conor|Connor|Neill?|Brien|Brian|[DC]onnell|Casey|Carroll|Doherty|Donovan|Keeff?e|Kelly|Leary|Reilly|Shea|Kennedy|Rourke|Toole|Flaherty|Hanlon","flags":66,"inputs":["Conor","is","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":479,"op":"regex","args":{"pattern":"Content|Crowdsourcing|Services?","flags":0,"inputs":["Content","across","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":480,"op":"regex","args":{"pattern":"Conveyances?","flags":66,"inputs":["Conveyance","Ports"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":481,"op":"regex","args":{"pattern":"Conways?","flags":0,"inputs":["Conway","name","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":482,"op":"regex","args":{"pattern":"Coo?le","flags":66,"inputs":["Cole","est"," "],"ops":["matches","lookingAt","find"]}}
+{"id":483,"op":"regex","args":{"pattern":"Copy\\-?Paste","flags":66,"inputs":["CopyPaste","die"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":484,"op":"regex","args":{"pattern":"Cordon|CORDON","flags":0,"inputs":["Cordon","Ich","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":485,"op":"regex","args":{"pattern":"Corp(oration)?|Company","flags":66,"inputs":["Corp","needle"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":486,"op":"regex","args":{"pattern":"Correct|Incorrect|Proper|Wrong|Right","flags":66,"inputs":["Correct","new","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":487,"op":"regex","args":{"pattern":"Countys?|White|Smith","flags":66,"inputs":["County","war","a"],"ops":["matches","lookingAt","find"]}}
+{"id":488,"op":"regex","args":{"pattern":"Courts?","flags":0,"inputs":["Court","each","."],"ops":["matches","lookingAt","find"]}}
+{"id":489,"op":"regex","args":{"pattern":"Covid-19s?","flags":66,"inputs":["Covid-19","Ilsabill","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":490,"op":"regex","args":{"pattern":"Co|Ko","flags":66,"inputs":["Co","und","K"],"ops":["matches","lookingAt","find"]}}
+{"id":491,"op":"regex","args":{"pattern":"Co|Partner","flags":66,"inputs":["Co","Alle","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":492,"op":"regex","args":{"pattern":"Creator.*|Delivery.*|Farm|Collaboration.*|Security.*|Wiki","flags":66,"inputs":["Creator","four",""],"ops":["matches","lookingAt","find"]}}
+{"id":493,"op":"regex","args":{"pattern":"Creed|CREED","flags":0,"inputs":["Creed","was","é"],"ops":["matches","lookingAt","find"]}}
+{"id":494,"op":"regex","args":{"pattern":"Cuisine|Vague","flags":66,"inputs":["Cuisine","serve"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":495,"op":"regex","args":{"pattern":"Cups?|Conference|Super|League|World","flags":0,"inputs":["Cup","fun","é"],"ops":["matches","lookingAt","find"]}}
+{"id":496,"op":"regex","args":{"pattern":"Cup|War","flags":66,"inputs":["Cup","the","é"],"ops":["matches","lookingAt","find"]}}
+{"id":497,"op":"regex","args":{"pattern":"Customer|User","flags":66,"inputs":["Customer","bedeutet","é"],"ops":["matches","lookingAt","find"]}}
+{"id":498,"op":"regex","args":{"pattern":"D (e|m) p","flags":0,"inputs":["D e p","UNKNOWN","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":499,"op":"regex","args":{"pattern":"D (m|e) .*","flags":0,"inputs":["D m ","ADJ:PRD:GRU","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":500,"op":"regex","args":{"pattern":"D . p","flags":0,"inputs":["D x p","SENT_START"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":501,"op":"regex","args":{"pattern":"D . p|D m s","flags":0,"inputs":["D x p","SUB:NOM:SIN:MAS","_"],"ops":["matches","lookingAt","find"]}}
+{"id":502,"op":"regex","args":{"pattern":"D . p|D m s|(P\\+)?D m s","flags":0,"inputs":["D x p","SENT_START","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":503,"op":"regex","args":{"pattern":"D . p|J . p","flags":0,"inputs":["D x p","VER:1:SIN:PRÄ:NON","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":504,"op":"regex","args":{"pattern":"D . p|J e p","flags":0,"inputs":["D x p","JJ","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":505,"op":"regex","args":{"pattern":"D . p|P.*","flags":0,"inputs":["D x p","SUB:NOM:SIN:MAS","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":506,"op":"regex","args":{"pattern":"D . p|Y","flags":0,"inputs":["D x p","ADJ:PRD:GRU","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":507,"op":"regex","args":{"pattern":"D . p|[JNZ] . (p|sp)|V ppa . p","flags":0,"inputs":["D x p","VB","über"],"ops":["matches","lookingAt","find"]}}
+{"id":508,"op":"regex","args":{"pattern":"D . p|[JNZ] . (p|sp)|V ppa . p|R dem . p|Y","flags":0,"inputs":["D x p","N f s","-"],"ops":["matches","lookingAt","find"]}}
+{"id":509,"op":"regex","args":{"pattern":"D . p|[JN] . (p|sp)|V ppa . p","flags":0,"inputs":["D x p","V ind pres 3 s","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":510,"op":"regex","args":{"pattern":"D . p|[JN] . (p|sp)|V ppa . p|R .* (p|sp)","flags":0,"inputs":["D x p","ADJ:PRD:GRU","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":511,"op":"regex","args":{"pattern":"D . p|[JN] . (p|sp)|V ppa . p|R dem . p|Y","flags":0,"inputs":["D x p","UNKNOWN","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":512,"op":"regex","args":{"pattern":"D . p|[JN] . (p|sp)|V ppa . p|Y","flags":0,"inputs":["D x p","NNP","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":513,"op":"regex","args":{"pattern":"D . p|[JN] . p|V ppa . p|Y","flags":0,"inputs":["D x p","V ind pres 3 s","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":514,"op":"regex","args":{"pattern":"D . p|[JN] . p|V ppa . p|Y|R m p","flags":0,"inputs":["D x p","NN","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":515,"op":"regex","args":{"pattern":"D . p|[ZJN] . (p|sp)|V ppa . p|Y","flags":0,"inputs":["D x p","_PUNCT","-"],"ops":["matches","lookingAt","find"]}}
+{"id":516,"op":"regex","args":{"pattern":"D . p|[ZJN] . (p|sp)|V ppa . p|Y|Z.*","flags":0,"inputs":["D x p","ADJ:PRD:GRU","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":517,"op":"regex","args":{"pattern":"D . p|[ZJN] . p|V ppa . p","flags":0,"inputs":["D x p","PCT","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":518,"op":"regex","args":{"pattern":"D . s","flags":0,"inputs":["D x s","NN","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":519,"op":"regex","args":{"pattern":"D . s?p","flags":0,"inputs":["D x p","_PUNCT","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":520,"op":"regex","args":{"pattern":"D . s|A","flags":0,"inputs":["D x s","ADJ:PRD:GRU","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":521,"op":"regex","args":{"pattern":"D . s|K|Y","flags":0,"inputs":["D x s","_PUNCT","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":522,"op":"regex","args":{"pattern":"D . s|N.*","flags":0,"inputs":["D x s","SUB:NOM:SIN:MAS","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":523,"op":"regex","args":{"pattern":"D . s|P","flags":0,"inputs":["D x s","SENT_START","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":524,"op":"regex","args":{"pattern":"D . s|P|R pers suj [12] s|J f s","flags":0,"inputs":["D x s","VER:1:SIN:PRÄ:NON"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":525,"op":"regex","args":{"pattern":"D . s|SENT_START","flags":0,"inputs":["D x s","UNKNOWN","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":526,"op":"regex","args":{"pattern":"D . s|Z .*","flags":0,"inputs":["D x s","V ind pres 3 s","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":527,"op":"regex","args":{"pattern":"D . s|[JNZ] . (s|sp)|V ppa . s","flags":0,"inputs":["D x s","SENT_START","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":528,"op":"regex","args":{"pattern":"D . s|[JN] . (s)|V ppa . s","flags":0,"inputs":["D x s","VB","é"],"ops":["matches","lookingAt","find"]}}
+{"id":529,"op":"regex","args":{"pattern":"D . s|[JN] . (s)|V ppa . s|R . s","flags":0,"inputs":["D x s","UNKNOWN","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":530,"op":"regex","args":{"pattern":"D . s|[JN] . (s)|V ppa . s|Y","flags":0,"inputs":["D x s","V ind pres 3 s","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":531,"op":"regex","args":{"pattern":"D . s|[JN] . (s)|V ppa . s|Y|R . s","flags":0,"inputs":["D x s","SUB:NOM:SIN:MAS","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":532,"op":"regex","args":{"pattern":"D . s|[JN] . (s|sp)|V ppa . s","flags":0,"inputs":["D x s","VER:1:SIN:PRÄ:NON","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":533,"op":"regex","args":{"pattern":"D . s|[ZJN] . (s|sp)|V ppa . s","flags":0,"inputs":["D x s","ADJ:PRD:GRU",""],"ops":["matches","lookingAt","find"]}}
+{"id":534,"op":"regex","args":{"pattern":"D .*","flags":0,"inputs":["D ","NN","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":535,"op":"regex","args":{"pattern":"D .* p","flags":0,"inputs":["D  p","UNKNOWN","a"],"ops":["matches","lookingAt","find"]}}
+{"id":536,"op":"regex","args":{"pattern":"D [ef] .","flags":0,"inputs":["D e x","VER:1:SIN:PRÄ:NON","."],"ops":["matches","lookingAt","find"]}}
+{"id":537,"op":"regex","args":{"pattern":"D [ef] .*","flags":0,"inputs":["D e ","NNP","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":538,"op":"regex","args":{"pattern":"D [ef] p","flags":0,"inputs":["D e p","SENT_START","é"],"ops":["matches","lookingAt","find"]}}
+{"id":539,"op":"regex","args":{"pattern":"D [ef] s","flags":0,"inputs":["D e s","UNKNOWN","-"],"ops":["matches","lookingAt","find"]}}
+{"id":540,"op":"regex","args":{"pattern":"D [ef] s|N.*","flags":0,"inputs":["D e s","N f s","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":541,"op":"regex","args":{"pattern":"D [ef] s|P","flags":0,"inputs":["D e s","VER:1:SIN:PRÄ:NON","."],"ops":["matches","lookingAt","find"]}}
+{"id":542,"op":"regex","args":{"pattern":"D [ef] s|P|R pers obj 3 f s","flags":0,"inputs":["D e s","SUB:NOM:SIN:MAS","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":543,"op":"regex","args":{"pattern":"D [ef] s|R pers obj 3 e s","flags":0,"inputs":["D e s","NN","K"],"ops":["matches","lookingAt","find"]}}
+{"id":544,"op":"regex","args":{"pattern":"D [ef] s|R pers obj 3 f s","flags":0,"inputs":["D e s","ADJ:PRD:GRU","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":545,"op":"regex","args":{"pattern":"D [em] .","flags":0,"inputs":["D e x","VER:1:SIN:PRÄ:NON","über"],"ops":["matches","lookingAt","find"]}}
+{"id":546,"op":"regex","args":{"pattern":"D [em] .*","flags":0,"inputs":["D e ","UNKNOWN","-"],"ops":["matches","lookingAt","find"]}}
+{"id":547,"op":"regex","args":{"pattern":"D [em] p","flags":0,"inputs":["D e p","SENT_START","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":548,"op":"regex","args":{"pattern":"D [em] s","flags":0,"inputs":["D e s","NNP","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":549,"op":"regex","args":{"pattern":"D [em] s|P.*","flags":0,"inputs":["D e s","N f s","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":550,"op":"regex","args":{"pattern":"D [em] s|V.*","flags":0,"inputs":["D e s","UNKNOWN","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":551,"op":"regex","args":{"pattern":"D [em].*","flags":0,"inputs":["D e","VB","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":552,"op":"regex","args":{"pattern":"D [emf] s","flags":0,"inputs":["D e s","V ind pres 3 s","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":553,"op":"regex","args":{"pattern":"D [fe] (s|sp)","flags":0,"inputs":["D f s","N f s","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":554,"op":"regex","args":{"pattern":"D [fe] p","flags":0,"inputs":["D f p","NNP","K"],"ops":["matches","lookingAt","find"]}}
+{"id":555,"op":"regex","args":{"pattern":"D [fe] s","flags":0,"inputs":["D f s","PCT","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":556,"op":"regex","args":{"pattern":"D [fe] s|V ppa f s","flags":0,"inputs":["D f s","SUB:NOM:SIN:MAS","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":557,"op":"regex","args":{"pattern":"D [me] (s|sp)","flags":0,"inputs":["D m s","JJ","-"],"ops":["matches","lookingAt","find"]}}
+{"id":558,"op":"regex","args":{"pattern":"D [me] p","flags":0,"inputs":["D m p","NNP","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":559,"op":"regex","args":{"pattern":"D [me] s","flags":0,"inputs":["D m s","PCT","-"],"ops":["matches","lookingAt","find"]}}
+{"id":560,"op":"regex","args":{"pattern":"D [mf] .","flags":0,"inputs":["D m x","SUB:NOM:SIN:MAS","K"],"ops":["matches","lookingAt","find"]}}
+{"id":561,"op":"regex","args":{"pattern":"D [mfe] (p|sp)","flags":0,"inputs":["D m p","N f s","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":562,"op":"regex","args":{"pattern":"D e p|D m s","flags":0,"inputs":["D e p","NN","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":563,"op":"regex","args":{"pattern":"D e p|N m p","flags":0,"inputs":["D e p","VB","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":564,"op":"regex","args":{"pattern":"D e p|N.*|SENT_END","flags":0,"inputs":["D e p","_PUNCT","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":565,"op":"regex","args":{"pattern":"D e p|R dem . p|N.*","flags":0,"inputs":["D e p","JJ","_"],"ops":["matches","lookingAt","find"]}}
+{"id":566,"op":"regex","args":{"pattern":"D e.*","flags":0,"inputs":["D e","SENT_START","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":567,"op":"regex","args":{"pattern":"D f .","flags":0,"inputs":["D f x","VB","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":568,"op":"regex","args":{"pattern":"D f .*","flags":0,"inputs":["D f ","NNP","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":569,"op":"regex","args":{"pattern":"D f .*|P","flags":0,"inputs":["D f ","JJ","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":570,"op":"regex","args":{"pattern":"D f [sp]","flags":0,"inputs":["D f s","SENT_START","-"],"ops":["matches","lookingAt","find"]}}
+{"id":571,"op":"regex","args":{"pattern":"D f s|D e p","flags":0,"inputs":["D f s","VER:1:SIN:PRÄ:NON","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":572,"op":"regex","args":{"pattern":"D f s|P","flags":0,"inputs":["D f s","ADJ:PRD:GRU","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":573,"op":"regex","args":{"pattern":"D f.*","flags":0,"inputs":["D f","SUB:NOM:SIN:MAS","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":574,"op":"regex","args":{"pattern":"D m s|D . p","flags":0,"inputs":["D m s","_PUNCT","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":575,"op":"regex","args":{"pattern":"D m s|D e p","flags":0,"inputs":["D m s","VB","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":576,"op":"regex","args":{"pattern":"D m s|D e s","flags":0,"inputs":["D m s","ADJ:PRD:GRU","K"],"ops":["matches","lookingAt","find"]}}
+{"id":577,"op":"regex","args":{"pattern":"D m s|SENT_START|P","flags":0,"inputs":["D m s","V ind pres 3 s","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":578,"op":"regex","args":{"pattern":"D m s|V etre.*","flags":0,"inputs":["D m s","UNKNOWN","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":579,"op":"regex","args":{"pattern":"D m s|V.* inf|R pers obj.*","flags":0,"inputs":["D m s","VB",""],"ops":["matches","lookingAt","find"]}}
+{"id":580,"op":"regex","args":{"pattern":"D m s|[YK]|UNKNOWN","flags":0,"inputs":["D m s","SENT_START","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":581,"op":"regex","args":{"pattern":"D m.*","flags":0,"inputs":["D m","ADJ:PRD:GRU","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":582,"op":"regex","args":{"pattern":"D(a|ie)s","flags":0,"inputs":["Das","sage"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":583,"op":"regex","args":{"pattern":"D(a|ie)s","flags":66,"inputs":["Das","ourselves","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":584,"op":"regex","args":{"pattern":"D(a|ie)s|E[rs]|Sie","flags":0,"inputs":["Das","aus","a"],"ops":["matches","lookingAt","find"]}}
+{"id":585,"op":"regex","args":{"pattern":"D(ies)?er","flags":0,"inputs":["Der","gerade","é"],"ops":["matches","lookingAt","find"]}}
+{"id":586,"op":"regex","args":{"pattern":"D(ies)?er|Ihr|[DMS]ein|Euer|Unser","flags":0,"inputs":["Der","unverschämte","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":587,"op":"regex","args":{"pattern":"D.*","flags":0,"inputs":["D","UNKNOWN","é"],"ops":["matches","lookingAt","find"]}}
+{"id":588,"op":"regex","args":{"pattern":"D.* (sp|p)","flags":0,"inputs":["D sp","V ind pres 3 s","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":589,"op":"regex","args":{"pattern":"D.* (s|sp)","flags":0,"inputs":["D s","SENT_START","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":590,"op":"regex","args":{"pattern":"D.* e p","flags":0,"inputs":["D e p","VB","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":591,"op":"regex","args":{"pattern":"D.* p","flags":0,"inputs":["D p","ADJ:PRD:GRU","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":592,"op":"regex","args":{"pattern":"D.* p|N m.*","flags":0,"inputs":["D p","NN","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":593,"op":"regex","args":{"pattern":"D.* s","flags":0,"inputs":["D s","SUB:NOM:SIN:MAS","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":594,"op":"regex","args":{"pattern":"D.* s?p","flags":0,"inputs":["D p","VER:1:SIN:PRÄ:NON","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":595,"op":"regex","args":{"pattern":"D.* s|Z.*","flags":0,"inputs":["D s","NNP","a"],"ops":["matches","lookingAt","find"]}}
+{"id":596,"op":"regex","args":{"pattern":"D.* s|[NJ].* s|V ppa.* s","flags":0,"inputs":["D s","SENT_START","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":597,"op":"regex","args":{"pattern":"D.*|(P\\+)?D.*","flags":0,"inputs":["D","UNKNOWN","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":598,"op":"regex","args":{"pattern":"D.*|A","flags":0,"inputs":["D","VER:1:SIN:PRÄ:NON","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":599,"op":"regex","args":{"pattern":"D.*|A|M nonfin","flags":0,"inputs":["D","NNP","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":600,"op":"regex","args":{"pattern":"D.*|A|R pers obj.*","flags":0,"inputs":["D","SENT_START","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":601,"op":"regex","args":{"pattern":"D.*|C sub","flags":0,"inputs":["D","VB","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":602,"op":"regex","args":{"pattern":"D.*|C sub.*|R.* [123] [sp]|R pers obj.*","flags":0,"inputs":["D","V ind pres 3 s","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":603,"op":"regex","args":{"pattern":"D.*|J .*","flags":0,"inputs":["D","NN","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":604,"op":"regex","args":{"pattern":"D.*|J [em] sp?","flags":0,"inputs":["D","_PUNCT","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":605,"op":"regex","args":{"pattern":"D.*|J [fe] s","flags":0,"inputs":["D","VER:1:SIN:PRÄ:NON","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":606,"op":"regex","args":{"pattern":"D.*|K.*","flags":0,"inputs":["D","PCT","über"],"ops":["matches","lookingAt","find"]}}
+{"id":607,"op":"regex","args":{"pattern":"D.*|N.*|Z.*|R.*","flags":0,"inputs":["D","JJ","a"],"ops":["matches","lookingAt","find"]}}
+{"id":608,"op":"regex","args":{"pattern":"D.*|P","flags":0,"inputs":["D","_PUNCT","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":609,"op":"regex","args":{"pattern":"D.*|P.*","flags":0,"inputs":["D","VER:1:SIN:PRÄ:NON"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":610,"op":"regex","args":{"pattern":"D.*|P.*D.*","flags":0,"inputs":["D","PCT","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":611,"op":"regex","args":{"pattern":"D.*|P\\+D m s","flags":0,"inputs":["D","VB","."],"ops":["matches","lookingAt","find"]}}
+{"id":612,"op":"regex","args":{"pattern":"D.*|P|J.*|N.*|Y","flags":0,"inputs":["D","_PUNCT","a"],"ops":["matches","lookingAt","find"]}}
+{"id":613,"op":"regex","args":{"pattern":"D.*|R dem.*","flags":0,"inputs":["D","N f s","über"],"ops":["matches","lookingAt","find"]}}
+{"id":614,"op":"regex","args":{"pattern":"D.*|R m s","flags":0,"inputs":["D","NN","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":615,"op":"regex","args":{"pattern":"D.*|R pers obj 3 e p","flags":0,"inputs":["D","VB","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":616,"op":"regex","args":{"pattern":"D.*|R pers suj.*","flags":0,"inputs":["D","NNP","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":617,"op":"regex","args":{"pattern":"D.*|SENT_START|M nonfin","flags":0,"inputs":["D","JJ","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":618,"op":"regex","args":{"pattern":"D.*|UNKNONW","flags":0,"inputs":["D","SENT_START",""],"ops":["matches","lookingAt","find"]}}
+{"id":619,"op":"regex","args":{"pattern":"D.*|UNKNOWN","flags":0,"inputs":["D","PCT","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":620,"op":"regex","args":{"pattern":"D.*|V.* inf","flags":0,"inputs":["D","NNP","é"],"ops":["matches","lookingAt","find"]}}
+{"id":621,"op":"regex","args":{"pattern":"D.*|V.* ppa.*","flags":0,"inputs":["D","VER:1:SIN:PRÄ:NON","é"],"ops":["matches","lookingAt","find"]}}
+{"id":622,"op":"regex","args":{"pattern":"D.*|Y","flags":0,"inputs":["D","NNP","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":623,"op":"regex","args":{"pattern":"D.*|[YK]","flags":0,"inputs":["D","PCT","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":624,"op":"regex","args":{"pattern":"D.*|[ZJNA].*|V ppa.*","flags":0,"inputs":["D","SUB:NOM:SIN:MAS"," "],"ops":["matches","lookingAt","find"]}}
+{"id":625,"op":"regex","args":{"pattern":"D.+","flags":0,"inputs":["Dx","Thank","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":626,"op":"regex","args":{"pattern":"DANKE(SCHÖN|SEHR)","flags":0,"inputs":["DANKESCHÖN","dankeschön","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":627,"op":"regex","args":{"pattern":"DA|Cosmos|Sparkassen?|Admiral|pbb|Allianz","flags":66,"inputs":["DA","muss","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":628,"op":"regex","args":{"pattern":"DES|LA|SA|TA","flags":0,"inputs":["DES","leurs","K"],"ops":["matches","lookingAt","find"]}}
+{"id":629,"op":"regex","args":{"pattern":"DE|AT|CH","flags":66,"inputs":["DE","here","a"],"ops":["matches","lookingAt","find"]}}
+{"id":630,"op":"regex","args":{"pattern":"DILIGENCE|Diligence","flags":0,"inputs":["DILIGENCE","Das","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":631,"op":"regex","args":{"pattern":"DOCKER.*|ACCEPT|DROP|RETURN|REJECT","flags":0,"inputs":["DOCKER","client","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":632,"op":"regex","args":{"pattern":"DP.*","flags":0,"inputs":["DP","JJ","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":633,"op":"regex","args":{"pattern":"DT","flags":0,"inputs":["DT","and","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":634,"op":"regex","args":{"pattern":"DTV-Verlage?s?","flags":322,"inputs":["DTV-Verlag","Das Buch ist im DTV-Verlag erschienen.","-"],"ops":["matches","lookingAt","find"]}}
+{"id":635,"op":"regex","args":{"pattern":"DT|CC","flags":0,"inputs":["DT","VB","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":636,"op":"regex","args":{"pattern":"DT|CC|IN|TO|NN.*|JJ.*|PRP.*|W.*|PCT","flags":0,"inputs":["DT","N f s","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":637,"op":"regex","args":{"pattern":"DT|CC|PCT|SENT_START","flags":0,"inputs":["DT","V ind pres 3 s","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":638,"op":"regex","args":{"pattern":"DT|CC|SENT_START|PCT","flags":0,"inputs":["DT","ADJ:PRD:GRU","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":639,"op":"regex","args":{"pattern":"DT|CD","flags":0,"inputs":["DT","VB","_"],"ops":["matches","lookingAt","find"]}}
+{"id":640,"op":"regex","args":{"pattern":"DT|CD|JJ.*|NN.*|PRP\\$","flags":0,"inputs":["DT","N f s","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":641,"op":"regex","args":{"pattern":"DT|CD|PRP\\$","flags":0,"inputs":["DT","NN","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":642,"op":"regex","args":{"pattern":"DT|IN","flags":0,"inputs":["DT","N f s","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":643,"op":"regex","args":{"pattern":"DT|IN|CD","flags":0,"inputs":["DT","_PUNCT"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":644,"op":"regex","args":{"pattern":"DT|IN|PRP.*","flags":0,"inputs":["DT","VB","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":645,"op":"regex","args":{"pattern":"DT|IN|PRP_O.*","flags":0,"inputs":["DT","SENT_START","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":646,"op":"regex","args":{"pattern":"DT|IN|TO|CC|NN.*|JJ.*|PRP.*|W.+|PCT","flags":0,"inputs":["DT","JJ","é"],"ops":["matches","lookingAt","find"]}}
+{"id":647,"op":"regex","args":{"pattern":"DT|IN|UNKNOWN","flags":0,"inputs":["DT","NNP","a"],"ops":["matches","lookingAt","find"]}}
+{"id":648,"op":"regex","args":{"pattern":"DT|JJ","flags":0,"inputs":["DT","VB","über"],"ops":["matches","lookingAt","find"]}}
+{"id":649,"op":"regex","args":{"pattern":"DT|JJ.*|CD","flags":0,"inputs":["DT","SENT_START","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":650,"op":"regex","args":{"pattern":"DT|JJ.*|NN.*","flags":0,"inputs":["DT","JJ","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":651,"op":"regex","args":{"pattern":"DT|JJ.*|NN.*|PRP\\$","flags":0,"inputs":["DT","NN"," "],"ops":["matches","lookingAt","find"]}}
+{"id":652,"op":"regex","args":{"pattern":"DT|JJ.*|PRP\\$","flags":0,"inputs":["DT","VER:1:SIN:PRÄ:NON","é"],"ops":["matches","lookingAt","find"]}}
+{"id":653,"op":"regex","args":{"pattern":"DT|JJ.*|PRP\\$.*","flags":0,"inputs":["DT","NNP","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":654,"op":"regex","args":{"pattern":"DT|JJ.*|RB|NN.*|PRP.*","flags":0,"inputs":["DT","UNKNOWN",""],"ops":["matches","lookingAt","find"]}}
+{"id":655,"op":"regex","args":{"pattern":"DT|JJ.*|VB[ZD]","flags":0,"inputs":["DT","NN","."],"ops":["matches","lookingAt","find"]}}
+{"id":656,"op":"regex","args":{"pattern":"DT|JJ|IN","flags":0,"inputs":["DT","PCT",""],"ops":["matches","lookingAt","find"]}}
+{"id":657,"op":"regex","args":{"pattern":"DT|JJ|PRP\\$","flags":0,"inputs":["DT","UNKNOWN","é"],"ops":["matches","lookingAt","find"]}}
+{"id":658,"op":"regex","args":{"pattern":"DT|NN.*","flags":0,"inputs":["DT","V ind pres 3 s","é"],"ops":["matches","lookingAt","find"]}}
+{"id":659,"op":"regex","args":{"pattern":"DT|NN.*|JJ","flags":0,"inputs":["DT","ADJ:PRD:GRU","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":660,"op":"regex","args":{"pattern":"DT|NN.*|JJ.*","flags":0,"inputs":["DT","PCT","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":661,"op":"regex","args":{"pattern":"DT|NN.*|JJ.*|PRP.*","flags":0,"inputs":["DT","SENT_START","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":662,"op":"regex","args":{"pattern":"DT|NN.*|JJ.*|RB|CC|UNKNOWN","flags":0,"inputs":["DT","SUB:NOM:SIN:MAS","über"],"ops":["matches","lookingAt","find"]}}
+{"id":663,"op":"regex","args":{"pattern":"DT|NN.*|JJ.*|UNKNOWN","flags":0,"inputs":["DT","JJ","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":664,"op":"regex","args":{"pattern":"DT|NN:UN?|NNS|NNPS?","flags":0,"inputs":["DT","VER:1:SIN:PRÄ:NON","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":665,"op":"regex","args":{"pattern":"DT|NNP|PRP.*","flags":0,"inputs":["DT","ADJ:PRD:GRU",""],"ops":["matches","lookingAt","find"]}}
+{"id":666,"op":"regex","args":{"pattern":"DT|NNP|PRP\\$?","flags":0,"inputs":["DT","SUB:NOM:SIN:MAS","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":667,"op":"regex","args":{"pattern":"DT|NNS?|NN:UN?","flags":0,"inputs":["DT","N f s","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":668,"op":"regex","args":{"pattern":"DT|PCT|PRP.*","flags":0,"inputs":["DT","VB","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":669,"op":"regex","args":{"pattern":"DT|PDT","flags":0,"inputs":["DT","ADJ:PRD:GRU","é"],"ops":["matches","lookingAt","find"]}}
+{"id":670,"op":"regex","args":{"pattern":"DT|PDT|NN:U","flags":0,"inputs":["DT","V ind pres 3 s","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":671,"op":"regex","args":{"pattern":"DT|PDT|PRP\\$","flags":0,"inputs":["DT","SENT_START","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":672,"op":"regex","args":{"pattern":"DT|PDT|PRP\\$|NN:U","flags":0,"inputs":["DT","NNP","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":673,"op":"regex","args":{"pattern":"DT|POS","flags":0,"inputs":["DT","VER:1:SIN:PRÄ:NON","_"],"ops":["matches","lookingAt","find"]}}
+{"id":674,"op":"regex","args":{"pattern":"DT|PRP","flags":0,"inputs":["DT","UNKNOWN","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":675,"op":"regex","args":{"pattern":"DT|PRP$","flags":0,"inputs":["DT","NN","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":676,"op":"regex","args":{"pattern":"DT|PRP.*","flags":0,"inputs":["DT","any","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":677,"op":"regex","args":{"pattern":"DT|PRP.*|CD|NN.*|JJ.*","flags":0,"inputs":["DT","VER:1:SIN:PRÄ:NON","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":678,"op":"regex","args":{"pattern":"DT|PRP.*|EX","flags":0,"inputs":["DT","SUB:NOM:SIN:MAS","a"],"ops":["matches","lookingAt","find"]}}
+{"id":679,"op":"regex","args":{"pattern":"DT|PRP.*|IN","flags":0,"inputs":["DT","NN","."],"ops":["matches","lookingAt","find"]}}
+{"id":680,"op":"regex","args":{"pattern":"DT|PRP.*|NNPS?|EX|W.*","flags":0,"inputs":["DT","ADJ:PRD:GRU","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":681,"op":"regex","args":{"pattern":"DT|PRP.*|NNP|EX|PCT","flags":0,"inputs":["DT","JJ","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":682,"op":"regex","args":{"pattern":"DT|PRP.*|PCT","flags":0,"inputs":["DT","VER:1:SIN:PRÄ:NON","K"],"ops":["matches","lookingAt","find"]}}
+{"id":683,"op":"regex","args":{"pattern":"DT|PRP\\$","flags":0,"inputs":["DT","the","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":684,"op":"regex","args":{"pattern":"DT|PRP\\$.*","flags":0,"inputs":["DT","V ind pres 3 s","."],"ops":["matches","lookingAt","find"]}}
+{"id":685,"op":"regex","args":{"pattern":"DT|PRP\\$?|IN","flags":0,"inputs":["DT","N f s","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":686,"op":"regex","args":{"pattern":"DT|PRP\\$|CD|RB","flags":0,"inputs":["DT","VB","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":687,"op":"regex","args":{"pattern":"DT|PRP\\$|EX","flags":0,"inputs":["DT","ADJ:PRD:GRU","-"],"ops":["matches","lookingAt","find"]}}
+{"id":688,"op":"regex","args":{"pattern":"DT|PRP\\$|IN","flags":0,"inputs":["DT","V ind pres 3 s","über"],"ops":["matches","lookingAt","find"]}}
+{"id":689,"op":"regex","args":{"pattern":"DT|PRP\\$|IN|PCT|CC","flags":0,"inputs":["DT","N f s","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":690,"op":"regex","args":{"pattern":"DT|PRP\\$|IN|PRP_O.*","flags":0,"inputs":["DT","VB","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":691,"op":"regex","args":{"pattern":"DT|PRP\\$|JJ.*","flags":0,"inputs":["DT","NN","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":692,"op":"regex","args":{"pattern":"DT|PRP\\$|JJ.*|CD","flags":0,"inputs":["DT","PCT","é"],"ops":["matches","lookingAt","find"]}}
+{"id":693,"op":"regex","args":{"pattern":"DT|PRP\\$|JJ.*|NN.*|VB[NG]","flags":0,"inputs":["DT","_PUNCT","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":694,"op":"regex","args":{"pattern":"DT|PRP\\$|JJ.*|NNP|NN|NN:UN?","flags":0,"inputs":["DT","SUB:NOM:SIN:MAS","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":695,"op":"regex","args":{"pattern":"DT|PRP\\$|JJR?|NN.*","flags":0,"inputs":["DT","NN","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":696,"op":"regex","args":{"pattern":"DT|PRP\\$|JJ|CD|VB","flags":0,"inputs":["DT","VB","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":697,"op":"regex","args":{"pattern":"DT|PRP\\$|JJ|VBG","flags":0,"inputs":["DT","NNP","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":698,"op":"regex","args":{"pattern":"DT|PRP\\$|NN.*|JJ.*","flags":0,"inputs":["DT","UNKNOWN","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":699,"op":"regex","args":{"pattern":"DT|PRP\\$|NNP","flags":0,"inputs":["DT","SENT_START","."],"ops":["matches","lookingAt","find"]}}
+{"id":700,"op":"regex","args":{"pattern":"DT|PRP\\$|PCT|IN","flags":0,"inputs":["DT","VB",""],"ops":["matches","lookingAt","find"]}}

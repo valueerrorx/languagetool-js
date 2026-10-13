@@ -11,7 +11,8 @@ export async function runHarness(cs) {
   mkdirSync(path.join(workDir, 'tmp'));
   const ops = cs.ops.map((o, i) => ({ id: o.id ?? i + 1, ...o }));
   const requests = ops.map((o) => JSON.stringify(o)).join('\n') + '\n';
-  const cp = `${path.join(LT, 'languagetool-server.jar')}:${path.join(ROOT, 'oracle/harness/build')}`;
+  const shim = cs.shim ? `${path.join(ROOT, 'oracle/harness/build-shim')}:` : '';
+  const cp = `${shim}${path.join(LT, 'languagetool-server.jar')}:${path.join(ROOT, 'oracle/harness/build')}`;
   const args = [...pinnedJvmFlags(workDir, cs.javaOpts ?? []), '-cp', cp, 'ltjs.oracle.Harness'];
   const child = spawn(`${JDK}/bin/java`, args, {
     cwd: workDir, env: pinnedEnv(workDir, cs.env ?? {}), stdio: ['pipe', 'pipe', 'pipe'],

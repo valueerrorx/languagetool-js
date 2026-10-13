@@ -1,0 +1,700 @@
+{"id":1,"op":"regex","args":{"pattern":"V.* 3 .*","flags":0,"inputs":["V 3 ","JJ","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":2,"op":"regex","args":{"pattern":"V.* 3 [sp]","flags":0,"inputs":["V 3 s","SUB:NOM:SIN:MAS","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":3,"op":"regex","args":{"pattern":"V.* 3 [sp]?","flags":0,"inputs":["V 3 ","ADJ:PRD:GRU","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":4,"op":"regex","args":{"pattern":"V.* 3 p","flags":0,"inputs":["V 3 p","_PUNCT","é"],"ops":["matches","lookingAt","find"]}}
+{"id":5,"op":"regex","args":{"pattern":"V.* 3 p|V.* 1 p","flags":0,"inputs":["V 3 p","JJ","é"],"ops":["matches","lookingAt","find"]}}
+{"id":6,"op":"regex","args":{"pattern":"V.* 3 s","flags":0,"inputs":["V 3 s","V ind pres 3 s","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":7,"op":"regex","args":{"pattern":"V.* 3 s|P","flags":0,"inputs":["V 3 s","SENT_START","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":8,"op":"regex","args":{"pattern":"V.* 3 s|V ppa m s","flags":0,"inputs":["V 3 s","NNP","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":9,"op":"regex","args":{"pattern":"V.* 3 s|V.* 1 p","flags":0,"inputs":["V 3 s","N f s","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":10,"op":"regex","args":{"pattern":"V.* 3 s|V.* p","flags":0,"inputs":["V 3 s","V ind pres 3 s","a"],"ops":["matches","lookingAt","find"]}}
+{"id":11,"op":"regex","args":{"pattern":"V.* 3 s|V.* ppa.*|[NJ].*|V.* imp pres [12] p","flags":0,"inputs":["V 3 s","VB","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":12,"op":"regex","args":{"pattern":"V.* 3 s|[NJ].*","flags":0,"inputs":["V 3 s","V ind pres 3 s","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":13,"op":"regex","args":{"pattern":"V.* 3.*","flags":0,"inputs":["V 3","NN","a"],"ops":["matches","lookingAt","find"]}}
+{"id":14,"op":"regex","args":{"pattern":"V.* 3.*|V.* 2 s","flags":0,"inputs":["V 3","UNKNOWN","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":15,"op":"regex","args":{"pattern":"V.* [123] .","flags":0,"inputs":["V 1 x","VER:1:SIN:PRÄ:NON","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":16,"op":"regex","args":{"pattern":"V.* [123] .*","flags":0,"inputs":["V 1 ","PCT","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":17,"op":"regex","args":{"pattern":"V.* [123] p","flags":0,"inputs":["V 1 p","JJ","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":18,"op":"regex","args":{"pattern":"V.* [123].*","flags":0,"inputs":["V 1","UNKNOWN","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":19,"op":"regex","args":{"pattern":"V.* [123].*|V.* (inf|ppr)|M nonfin","flags":0,"inputs":["V 1","VER:1:SIN:PRÄ:NON","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":20,"op":"regex","args":{"pattern":"V.* [12] .*","flags":0,"inputs":["V 1 ","PCT","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":21,"op":"regex","args":{"pattern":"V.* [12] p","flags":0,"inputs":["V 1 p","NN","_"],"ops":["matches","lookingAt","find"]}}
+{"id":22,"op":"regex","args":{"pattern":"V.* [12] p|C.*","flags":0,"inputs":["V 1 p","ADJ:PRD:GRU","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":23,"op":"regex","args":{"pattern":"V.* [12] s","flags":0,"inputs":["V 1 s","VB","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":24,"op":"regex","args":{"pattern":"V.* [21] p","flags":0,"inputs":["V 2 p","_PUNCT","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":25,"op":"regex","args":{"pattern":"V.* [21] p|V.* inf|V.* 3 s","flags":0,"inputs":["V 2 p","JJ","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":26,"op":"regex","args":{"pattern":"V.* [23] . s","flags":0,"inputs":["V 2 x s","SENT_START","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":27,"op":"regex","args":{"pattern":"V.* [23] s","flags":0,"inputs":["V 2 s","VB","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":28,"op":"regex","args":{"pattern":"V.* [32] s","flags":0,"inputs":["V 3 s","UNKNOWN","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":29,"op":"regex","args":{"pattern":"V.* con pres .*","flags":0,"inputs":["V con pres ","JJ","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":30,"op":"regex","args":{"pattern":"V.* con pres 1 s","flags":0,"inputs":["V con pres 1 s","SENT_START","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":31,"op":"regex","args":{"pattern":"V.* con pres 2 p","flags":0,"inputs":["V con pres 2 p","VER:1:SIN:PRÄ:NON","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":32,"op":"regex","args":{"pattern":"V.* con pres 3 s","flags":0,"inputs":["V con pres 3 s","ADJ:PRD:GRU","."],"ops":["matches","lookingAt","find"]}}
+{"id":33,"op":"regex","args":{"pattern":"V.* con pres [12] s","flags":0,"inputs":["V con pres 1 s","PCT","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":34,"op":"regex","args":{"pattern":"V.* con pres.*","flags":0,"inputs":["V con pres","SUB:NOM:SIN:MAS","é"],"ops":["matches","lookingAt","find"]}}
+{"id":35,"op":"regex","args":{"pattern":"V.* con.*","flags":0,"inputs":["V con","N f s","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":36,"op":"regex","args":{"pattern":"V.* futu 3 .","flags":0,"inputs":["V futu 3 x","ADJ:PRD:GRU","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":37,"op":"regex","args":{"pattern":"V.* futu.*","flags":0,"inputs":["V futu","V ind pres 3 s","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":38,"op":"regex","args":{"pattern":"V.* imp . p","flags":0,"inputs":["V imp x p","UNKNOWN","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":39,"op":"regex","args":{"pattern":"V.* imp .*","flags":0,"inputs":["V imp ","N f s","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":40,"op":"regex","args":{"pattern":"V.* imp pres .*","flags":0,"inputs":["V imp pres ","NNP","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":41,"op":"regex","args":{"pattern":"V.* imp pres 1 p","flags":0,"inputs":["V imp pres 1 p","PCT","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":42,"op":"regex","args":{"pattern":"V.* imp pres 2 p","flags":0,"inputs":["V imp pres 2 p","NNP","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":43,"op":"regex","args":{"pattern":"V.* imp pres 2 s","flags":0,"inputs":["V imp pres 2 s","VER:1:SIN:PRÄ:NON","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":44,"op":"regex","args":{"pattern":"V.* imp pres [12] .","flags":0,"inputs":["V imp pres 1 x","JJ","-"],"ops":["matches","lookingAt","find"]}}
+{"id":45,"op":"regex","args":{"pattern":"V.* imp pres [12] p","flags":0,"inputs":["V imp pres 1 p","PCT","é"],"ops":["matches","lookingAt","find"]}}
+{"id":46,"op":"regex","args":{"pattern":"V.* imp pres.*","flags":0,"inputs":["V imp pres","ADJ:PRD:GRU","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":47,"op":"regex","args":{"pattern":"V.* imp.*","flags":0,"inputs":["V imp","N f s","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":48,"op":"regex","args":{"pattern":"V.* imp.* 2 p","flags":0,"inputs":["V imp 2 p","NN","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":49,"op":"regex","args":{"pattern":"V.* imp.* 2 p|UNKNOWN","flags":0,"inputs":["V imp 2 p","V ind pres 3 s","K"],"ops":["matches","lookingAt","find"]}}
+{"id":50,"op":"regex","args":{"pattern":"V.* imp.* 2 s","flags":0,"inputs":["V imp 2 s","ADJ:PRD:GRU","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":51,"op":"regex","args":{"pattern":"V.* imp.*|UNKNOWN","flags":0,"inputs":["V imp","UNKNOWN","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":52,"op":"regex","args":{"pattern":"V.* imp.*|V.* ind pres 2 s","flags":0,"inputs":["V imp","NNP","é"],"ops":["matches","lookingAt","find"]}}
+{"id":53,"op":"regex","args":{"pattern":"V.* impa.*","flags":0,"inputs":["V impa","VB","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":54,"op":"regex","args":{"pattern":"V.* ind (impa|psim).*","flags":0,"inputs":["V ind impa","NN","é"],"ops":["matches","lookingAt","find"]}}
+{"id":55,"op":"regex","args":{"pattern":"V.* ind (pres|futu)|V.* con.*","flags":0,"inputs":["V ind pres","SUB:NOM:SIN:MAS","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":56,"op":"regex","args":{"pattern":"V.* ind (pres|impa).*|V sub impa.*|V etre.*|V.* imp pres.*|N.*","flags":0,"inputs":["V ind pres","_PUNCT","."],"ops":["matches","lookingAt","find"]}}
+{"id":57,"op":"regex","args":{"pattern":"V.* ind (psim|impa).*","flags":0,"inputs":["V ind psim","PCT"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":58,"op":"regex","args":{"pattern":"V.* ind .* 3 s|J.*","flags":0,"inputs":["V ind  3 s","NN","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":59,"op":"regex","args":{"pattern":"V.* ind futu .*","flags":0,"inputs":["V ind futu ","SUB:NOM:SIN:MAS","-"],"ops":["matches","lookingAt","find"]}}
+{"id":60,"op":"regex","args":{"pattern":"V.* ind futu 1 s","flags":0,"inputs":["V ind futu 1 s","_PUNCT","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":61,"op":"regex","args":{"pattern":"V.* ind futu 2 p","flags":0,"inputs":["V ind futu 2 p","SUB:NOM:SIN:MAS","K"],"ops":["matches","lookingAt","find"]}}
+{"id":62,"op":"regex","args":{"pattern":"V.* ind futu.*","flags":0,"inputs":["V ind futu","PCT","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":63,"op":"regex","args":{"pattern":"V.* ind impa.*","flags":0,"inputs":["V ind impa","NNP","."],"ops":["matches","lookingAt","find"]}}
+{"id":64,"op":"regex","args":{"pattern":"V.* ind impa.*|V.* con.*","flags":0,"inputs":["V ind impa","VER:1:SIN:PRÄ:NON","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":65,"op":"regex","args":{"pattern":"V.* ind impa.*|V.* ind futu.*","flags":0,"inputs":["V ind impa","UNKNOWN","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":66,"op":"regex","args":{"pattern":"V.* ind pes .*","flags":0,"inputs":["V ind pes ","V ind pres 3 s","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":67,"op":"regex","args":{"pattern":"V.* ind pres 2 p","flags":0,"inputs":["V ind pres 2 p","NNP","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":68,"op":"regex","args":{"pattern":"V.* ind pres 2 s","flags":0,"inputs":["V ind pres 2 s","N f s","-"],"ops":["matches","lookingAt","find"]}}
+{"id":69,"op":"regex","args":{"pattern":"V.* ind pres 3 p","flags":0,"inputs":["V ind pres 3 p","UNKNOWN","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":70,"op":"regex","args":{"pattern":"V.* ind pres 3 s","flags":0,"inputs":["V ind pres 3 s","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":71,"op":"regex","args":{"pattern":"V.* ind pres [32] s","flags":0,"inputs":["V ind pres 3 s","SUB:NOM:SIN:MAS",""],"ops":["matches","lookingAt","find"]}}
+{"id":72,"op":"regex","args":{"pattern":"V.* ind pres.*","flags":0,"inputs":["V ind pres","JJ","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":73,"op":"regex","args":{"pattern":"V.* ind pres.*|V .* impa.*|V etre.*|V.* imp pres.*","flags":0,"inputs":["V ind pres","_PUNCT","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":74,"op":"regex","args":{"pattern":"V.* ind pres.*|V sub impa.*|V etre.*|V.* imp pres.*|N.*","flags":0,"inputs":["V ind pres","ADJ:PRD:GRU","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":75,"op":"regex","args":{"pattern":"V.* ind pres.*|V.* ind futu.*","flags":0,"inputs":["V ind pres","V ind pres 3 s","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":76,"op":"regex","args":{"pattern":"V.* ind psim 1 s","flags":0,"inputs":["V ind psim 1 s","JJ","K"],"ops":["matches","lookingAt","find"]}}
+{"id":77,"op":"regex","args":{"pattern":"V.* ind psim.*","flags":0,"inputs":["V ind psim","NNP","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":78,"op":"regex","args":{"pattern":"V.* ind psim.*|V.* ind futu.*","flags":0,"inputs":["V ind psim","SENT_START","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":79,"op":"regex","args":{"pattern":"V.* ind.*","flags":0,"inputs":["V ind","V ind pres 3 s","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":80,"op":"regex","args":{"pattern":"V.* ind.* 3 .","flags":0,"inputs":["V ind 3 x","N f s","."],"ops":["matches","lookingAt","find"]}}
+{"id":81,"op":"regex","args":{"pattern":"V.* ind.*|V ppr","flags":0,"inputs":["V ind","NN","K"],"ops":["matches","lookingAt","find"]}}
+{"id":82,"op":"regex","args":{"pattern":"V.* inf","flags":0,"inputs":["V inf","Boys",""],"ops":["matches","lookingAt","find"]}}
+{"id":83,"op":"regex","args":{"pattern":"V.* inf.*","flags":0,"inputs":["V inf","NNP","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":84,"op":"regex","args":{"pattern":"V.* inf.*|D.*","flags":0,"inputs":["V inf","UNKNOWN","é"],"ops":["matches","lookingAt","find"]}}
+{"id":85,"op":"regex","args":{"pattern":"V.* inf|C sub","flags":0,"inputs":["V inf","NN","über"],"ops":["matches","lookingAt","find"]}}
+{"id":86,"op":"regex","args":{"pattern":"V.* inf|N.*","flags":0,"inputs":["V inf","PCT","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":87,"op":"regex","args":{"pattern":"V.* inf|R pers obj.*|D.*","flags":0,"inputs":["V inf","_PUNCT","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":88,"op":"regex","args":{"pattern":"V.* inf|R rel.*","flags":0,"inputs":["V inf","SUB:NOM:SIN:MAS","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":89,"op":"regex","args":{"pattern":"V.* inf|UNKNOWN","flags":0,"inputs":["V inf","SENT_START","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":90,"op":"regex","args":{"pattern":"V.* inf|UNKNOWN|R pers obj .*","flags":0,"inputs":["V inf","PCT"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":91,"op":"regex","args":{"pattern":"V.* inf|UNKNOWN|R pers obj .*|M fin.*","flags":0,"inputs":["V inf","ADJ:PRD:GRU","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":92,"op":"regex","args":{"pattern":"V.* inf|UNKNOWN|R pers obj.*","flags":0,"inputs":["V inf","NN","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":93,"op":"regex","args":{"pattern":"V.* inf|UNKNOWN|V.* ppr","flags":0,"inputs":["V inf","_PUNCT","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":94,"op":"regex","args":{"pattern":"V.* inf|UNKNOWN|Z.*","flags":0,"inputs":["V inf","VB","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":95,"op":"regex","args":{"pattern":"V.* inf|V .* 2 p","flags":0,"inputs":["V inf","SENT_START"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":96,"op":"regex","args":{"pattern":"V.* inf|V ppa.*","flags":0,"inputs":["V inf","JJ","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":97,"op":"regex","args":{"pattern":"V.* inf|V.* 2 p","flags":0,"inputs":["V inf","UNKNOWN","-"],"ops":["matches","lookingAt","find"]}}
+{"id":98,"op":"regex","args":{"pattern":"V.* inf|V.* 3 [sp]","flags":0,"inputs":["V inf","VB","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":99,"op":"regex","args":{"pattern":"V.* inf|V.* 3 [sp]?","flags":0,"inputs":["V inf","SENT_START","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":100,"op":"regex","args":{"pattern":"V.* inf|V.* imp pres 2 p","flags":0,"inputs":["V inf","JJ","K"],"ops":["matches","lookingAt","find"]}}
+{"id":101,"op":"regex","args":{"pattern":"V.* inf|V.* imp pres.*","flags":0,"inputs":["V inf","N f s","-"],"ops":["matches","lookingAt","find"]}}
+{"id":102,"op":"regex","args":{"pattern":"V.* inf|V.* ppa.*","flags":0,"inputs":["V inf","ADJ:PRD:GRU","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":103,"op":"regex","args":{"pattern":"V.* inf|V.* ppa.*|UNKNOWN","flags":0,"inputs":["V inf","V ind pres 3 s","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":104,"op":"regex","args":{"pattern":"V.* inf|V.* ppr","flags":0,"inputs":["V inf","UNKNOWN","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":105,"op":"regex","args":{"pattern":"V.* inf|V.* ppr|UNKNOWN|[DR].*|[NJ] . p","flags":0,"inputs":["V inf","VER:1:SIN:PRÄ:NON","é"],"ops":["matches","lookingAt","find"]}}
+{"id":106,"op":"regex","args":{"pattern":"V.* inf|Z.*","flags":0,"inputs":["V inf","ADJ:PRD:GRU","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":107,"op":"regex","args":{"pattern":"V.* inf|[NJ].*","flags":0,"inputs":["V inf","PCT","-"],"ops":["matches","lookingAt","find"]}}
+{"id":108,"op":"regex","args":{"pattern":"V.* inf|[NZJ].*|V.* ppr|Y","flags":0,"inputs":["V inf","SUB:NOM:SIN:MAS","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":109,"op":"regex","args":{"pattern":"V.* p","flags":0,"inputs":["V p","VER:1:SIN:PRÄ:NON","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":110,"op":"regex","args":{"pattern":"V.* pp.*","flags":0,"inputs":["V pp","NNP","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":111,"op":"regex","args":{"pattern":"V.* pp.*|J.*","flags":0,"inputs":["V pp","VB","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":112,"op":"regex","args":{"pattern":"V.* pp.*|V.* inf","flags":0,"inputs":["V pp","N f s","é"],"ops":["matches","lookingAt","find"]}}
+{"id":113,"op":"regex","args":{"pattern":"V.* pp.*|V.* inf|J.*","flags":0,"inputs":["V pp","SUB:NOM:SIN:MAS","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":114,"op":"regex","args":{"pattern":"V.* pp.*|[NJ].*","flags":0,"inputs":["V pp","ADJ:PRD:GRU",""],"ops":["matches","lookingAt","find"]}}
+{"id":115,"op":"regex","args":{"pattern":"V.* pp.*|[NJ].*|V.* inf","flags":0,"inputs":["V pp","VER:1:SIN:PRÄ:NON","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":116,"op":"regex","args":{"pattern":"V.* ppa","flags":0,"inputs":["V ppa","JJ","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":117,"op":"regex","args":{"pattern":"V.* ppa ([em]) (sp)|J ([em]) (sp)|J e s","flags":0,"inputs":["V ppa e sp","SUB:NOM:SIN:MAS","über"],"ops":["matches","lookingAt","find"]}}
+{"id":118,"op":"regex","args":{"pattern":"V.* ppa (m|e) (p|sp)","flags":0,"inputs":["V ppa m p","SENT_START","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":119,"op":"regex","args":{"pattern":"V.* ppa (m|e) (s|sp)","flags":0,"inputs":["V ppa m s","VER:1:SIN:PRÄ:NON","."],"ops":["matches","lookingAt","find"]}}
+{"id":120,"op":"regex","args":{"pattern":"V.* ppa . p","flags":0,"inputs":["V ppa x p","JJ","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":121,"op":"regex","args":{"pattern":"V.* ppa . p|J . p","flags":0,"inputs":["V ppa x p","VER:1:SIN:PRÄ:NON","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":122,"op":"regex","args":{"pattern":"V.* ppa . p|N . p","flags":0,"inputs":["V ppa x p","PCT","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":123,"op":"regex","args":{"pattern":"V.* ppa . p|V.* ppa f s","flags":0,"inputs":["V ppa x p","JJ","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":124,"op":"regex","args":{"pattern":"V.* ppa . p|[NJ] . p","flags":0,"inputs":["V ppa x p","UNKNOWN","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":125,"op":"regex","args":{"pattern":"V.* ppa . s","flags":0,"inputs":["V ppa x s","VB","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":126,"op":"regex","args":{"pattern":"V.* ppa . s?p","flags":0,"inputs":["V ppa x p","V ind pres 3 s","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":127,"op":"regex","args":{"pattern":"V.* ppa . sp?","flags":0,"inputs":["V ppa x s","NN","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":128,"op":"regex","args":{"pattern":"V.* ppa . s|J . s","flags":0,"inputs":["V ppa x s","UNKNOWN","K"],"ops":["matches","lookingAt","find"]}}
+{"id":129,"op":"regex","args":{"pattern":"V.* ppa . s|[NJ] . s","flags":0,"inputs":["V ppa x s","VB","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":130,"op":"regex","args":{"pattern":"V.* ppa .*","flags":0,"inputs":["V ppa ","V ind pres 3 s","."],"ops":["matches","lookingAt","find"]}}
+{"id":131,"op":"regex","args":{"pattern":"V.* ppa .* p","flags":0,"inputs":["V ppa  p","N f s","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":132,"op":"regex","args":{"pattern":"V.* ppa .* p|J . p","flags":0,"inputs":["V ppa  p","SUB:NOM:SIN:MAS","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":133,"op":"regex","args":{"pattern":"V.* ppa .* s","flags":0,"inputs":["V ppa  s","JJ","_"],"ops":["matches","lookingAt","find"]}}
+{"id":134,"op":"regex","args":{"pattern":"V.* ppa .* s?p|J . s?p","flags":0,"inputs":["V ppa  p","SENT_START","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":135,"op":"regex","args":{"pattern":"V.* ppa .* s?p|J . s?p|V.* ppa m p|J [em] p","flags":0,"inputs":["V ppa  p","N f s","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":136,"op":"regex","args":{"pattern":"V.* ppa .* sp?","flags":0,"inputs":["V ppa  s","_PUNCT","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":137,"op":"regex","args":{"pattern":"V.* ppa .* sp?|J . sp?","flags":0,"inputs":["V ppa  s","SENT_START","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":138,"op":"regex","args":{"pattern":"V.* ppa .* sp|J . sp|V ppa m p|J m p","flags":0,"inputs":["V ppa  sp","NN","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":139,"op":"regex","args":{"pattern":"V.* ppa .* sp|J . sp|V.* ppa m p|J [em] p","flags":0,"inputs":["V ppa  sp","VB","über"],"ops":["matches","lookingAt","find"]}}
+{"id":140,"op":"regex","args":{"pattern":"V.* ppa .* sp|J . sp|V.* ppa m p|J m p","flags":0,"inputs":["V ppa  sp","_PUNCT","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":141,"op":"regex","args":{"pattern":"V.* ppa .* s|J . s","flags":0,"inputs":["V ppa  s","ADJ:PRD:GRU","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":142,"op":"regex","args":{"pattern":"V.* ppa .* s|J . s|J f p|V.* ppa f p","flags":0,"inputs":["V ppa  s","V ind pres 3 s","_"],"ops":["matches","lookingAt","find"]}}
+{"id":143,"op":"regex","args":{"pattern":"V.* ppa .*|J .*","flags":0,"inputs":["V ppa ","N f s","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":144,"op":"regex","args":{"pattern":"V.* ppa .*|J.*","flags":0,"inputs":["V ppa ","VB","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":145,"op":"regex","args":{"pattern":"V.* ppa .*|V.* inf","flags":0,"inputs":["V ppa ","SENT_START","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":146,"op":"regex","args":{"pattern":"V.* ppa [ef] sp?|J [ef] sp?","flags":0,"inputs":["V ppa e s","V ind pres 3 s","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":147,"op":"regex","args":{"pattern":"V.* ppa [ef] s|J [ef] s","flags":0,"inputs":["V ppa e s","JJ","-"],"ops":["matches","lookingAt","find"]}}
+{"id":148,"op":"regex","args":{"pattern":"V.* ppa [em] p|J [em] p|V ppa .* sp|J [em] sp","flags":0,"inputs":["V ppa e p","VER:1:SIN:PRÄ:NON","über"],"ops":["matches","lookingAt","find"]}}
+{"id":149,"op":"regex","args":{"pattern":"V.* ppa [em] s?p|J [em] s?p","flags":0,"inputs":["V ppa e p","SENT_START","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":150,"op":"regex","args":{"pattern":"V.* ppa [em] sp?","flags":0,"inputs":["V ppa e s","SUB:NOM:SIN:MAS","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":151,"op":"regex","args":{"pattern":"V.* ppa [em] sp?|J [em] sp?","flags":0,"inputs":["V ppa e s","NNP","über"],"ops":["matches","lookingAt","find"]}}
+{"id":152,"op":"regex","args":{"pattern":"V.* ppa [em] s|J [em] s|V ppa .* sp|J [em] sp","flags":0,"inputs":["V ppa e s","UNKNOWN","-"],"ops":["matches","lookingAt","find"]}}
+{"id":153,"op":"regex","args":{"pattern":"V.* ppa [fe] .*|J [fe] .*","flags":0,"inputs":["V ppa f ","SENT_START","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":154,"op":"regex","args":{"pattern":"V.* ppa [fe] .*|J [fe] .*|V ppa m sp","flags":0,"inputs":["V ppa f ","VB","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":155,"op":"regex","args":{"pattern":"V.* ppa [fe] .*|J [fe] .*|V.* ppa m sp|J m sp","flags":0,"inputs":["V ppa f ","_PUNCT","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":156,"op":"regex","args":{"pattern":"V.* ppa [fe] p|J [fe] p","flags":0,"inputs":["V ppa f p","SUB:NOM:SIN:MAS","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":157,"op":"regex","args":{"pattern":"V.* ppa [fe] p|J [fe] p|V ppa m sp|V ppr","flags":0,"inputs":["V ppa f p","SENT_START","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":158,"op":"regex","args":{"pattern":"V.* ppa [fe] s|J [fe] s","flags":0,"inputs":["V ppa f s","PCT","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":159,"op":"regex","args":{"pattern":"V.* ppa [fe] s|J [fe] s|V ppa m sp|V ppr","flags":0,"inputs":["V ppa f s","_PUNCT","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":160,"op":"regex","args":{"pattern":"V.* ppa [me] .*|J [me] .*","flags":0,"inputs":["V ppa m ","SUB:NOM:SIN:MAS","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":161,"op":"regex","args":{"pattern":"V.* ppa [me] s?p","flags":0,"inputs":["V ppa m p","SENT_START","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":162,"op":"regex","args":{"pattern":"V.* ppa [me] s?p|J [me] p|J m sp","flags":0,"inputs":["V ppa m p","JJ","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":163,"op":"regex","args":{"pattern":"V.* ppa [me] sp","flags":0,"inputs":["V ppa m sp","NNP","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":164,"op":"regex","args":{"pattern":"V.* ppa [me] sp?","flags":0,"inputs":["V ppa m s","PCT","."],"ops":["matches","lookingAt","find"]}}
+{"id":165,"op":"regex","args":{"pattern":"V.* ppa [me] sp|V ppa . p","flags":0,"inputs":["V ppa m sp","NN","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":166,"op":"regex","args":{"pattern":"V.* ppa [me] sp|V.* ppa . s","flags":0,"inputs":["V ppa m sp","N f s","_"],"ops":["matches","lookingAt","find"]}}
+{"id":167,"op":"regex","args":{"pattern":"V.* ppa [me] sp|V.* ppa [mef] p|[JNZ] [mef] s?p|J f p|V.* inf|A|V.* (ind|con|sub).*","flags":0,"inputs":["V ppa m sp","_PUNCT","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":168,"op":"regex","args":{"pattern":"V.* ppa [me] s|J [me] s|V ppa .* sp|J [em] sp","flags":0,"inputs":["V ppa m s","PCT","_"],"ops":["matches","lookingAt","find"]}}
+{"id":169,"op":"regex","args":{"pattern":"V.* ppa e sp|V ppa f p","flags":0,"inputs":["V ppa e sp","NN","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":170,"op":"regex","args":{"pattern":"V.* ppa e sp|V.* ppa m sp|N.*","flags":0,"inputs":["V ppa e sp","N f s","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":171,"op":"regex","args":{"pattern":"V.* ppa e sp|V.* ppa m sp|N.*|V ind pres 3 s","flags":0,"inputs":["V ppa e sp","ADJ:PRD:GRU","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":172,"op":"regex","args":{"pattern":"V.* ppa f .*|J f .*","flags":0,"inputs":["V ppa f ","N f s"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":173,"op":"regex","args":{"pattern":"V.* ppa f p","flags":0,"inputs":["V ppa f p","UNKNOWN","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":174,"op":"regex","args":{"pattern":"V.* ppa f p|J [ef] p","flags":0,"inputs":["V ppa f p","V ind pres 3 s","a"],"ops":["matches","lookingAt","find"]}}
+{"id":175,"op":"regex","args":{"pattern":"V.* ppa f p|J [ef] p|V ppa .* sp|J [ef] sp","flags":0,"inputs":["V ppa f p","ADJ:PRD:GRU"," "],"ops":["matches","lookingAt","find"]}}
+{"id":176,"op":"regex","args":{"pattern":"V.* ppa f p|J [ef] p|V ppa e sp|J f sp","flags":0,"inputs":["V ppa f p","VER:1:SIN:PRÄ:NON","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":177,"op":"regex","args":{"pattern":"V.* ppa f p|J f p","flags":0,"inputs":["V ppa f p","SUB:NOM:SIN:MAS","_"],"ops":["matches","lookingAt","find"]}}
+{"id":178,"op":"regex","args":{"pattern":"V.* ppa f s","flags":0,"inputs":["V ppa f s","PCT","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":179,"op":"regex","args":{"pattern":"V.* ppa f sp?|J [ef] s?p","flags":0,"inputs":["V ppa f s","NNP","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":180,"op":"regex","args":{"pattern":"V.* ppa f s|J [ef] s|V ppa .* sp|J [ef] sp","flags":0,"inputs":["V ppa f s","VER:1:SIN:PRÄ:NON","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":181,"op":"regex","args":{"pattern":"V.* ppa f s|J f s","flags":0,"inputs":["V ppa f s","PCT"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":182,"op":"regex","args":{"pattern":"V.* ppa f s|V.* ppa . p","flags":0,"inputs":["V ppa f s","N f s","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":183,"op":"regex","args":{"pattern":"V.* ppa f.*","flags":0,"inputs":["V ppa f","NNP",""],"ops":["matches","lookingAt","find"]}}
+{"id":184,"op":"regex","args":{"pattern":"V.* ppa m .*|J m .*","flags":0,"inputs":["V ppa m ","SENT_START","."],"ops":["matches","lookingAt","find"]}}
+{"id":185,"op":"regex","args":{"pattern":"V.* ppa m .*|V.* ppa f s","flags":0,"inputs":["V ppa m ","SUB:NOM:SIN:MAS","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":186,"op":"regex","args":{"pattern":"V.* ppa m [sp]","flags":0,"inputs":["V ppa m s","N f s","."],"ops":["matches","lookingAt","find"]}}
+{"id":187,"op":"regex","args":{"pattern":"V.* ppa m p","flags":0,"inputs":["V ppa m p","UNKNOWN"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":188,"op":"regex","args":{"pattern":"V.* ppa m p|J [em] s?p|V ppa m sp|V ppr","flags":0,"inputs":["V ppa m p","NNP","über"],"ops":["matches","lookingAt","find"]}}
+{"id":189,"op":"regex","args":{"pattern":"V.* ppa m p|V ppa m sp","flags":0,"inputs":["V ppa m p","SUB:NOM:SIN:MAS",""],"ops":["matches","lookingAt","find"]}}
+{"id":190,"op":"regex","args":{"pattern":"V.* ppa m p|V.* f .*","flags":0,"inputs":["V ppa m p","NN","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":191,"op":"regex","args":{"pattern":"V.* ppa m p|V.* ppa [me] sp","flags":0,"inputs":["V ppa m p","PCT"," "],"ops":["matches","lookingAt","find"]}}
+{"id":192,"op":"regex","args":{"pattern":"V.* ppa m p|V.* ppa f .","flags":0,"inputs":["V ppa m p","VER:1:SIN:PRÄ:NON","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":193,"op":"regex","args":{"pattern":"V.* ppa m p|V.* ppa f.*","flags":0,"inputs":["V ppa m p","UNKNOWN","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":194,"op":"regex","args":{"pattern":"V.* ppa m p|V.* ppa m sp","flags":0,"inputs":["V ppa m p","JJ","é"],"ops":["matches","lookingAt","find"]}}
+{"id":195,"op":"regex","args":{"pattern":"V.* ppa m s","flags":0,"inputs":["V ppa m s","V ind pres 3 s","K"],"ops":["matches","lookingAt","find"]}}
+{"id":196,"op":"regex","args":{"pattern":"V.* ppa m s?p|V.* ppa f.*","flags":0,"inputs":["V ppa m p","VB","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":197,"op":"regex","args":{"pattern":"V.* ppa m sp?|V.* ppa f .*","flags":0,"inputs":["V ppa m s","UNKNOWN","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":198,"op":"regex","args":{"pattern":"V.* ppa m sp|J m sp","flags":0,"inputs":["V ppa m sp","NN","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":199,"op":"regex","args":{"pattern":"V.* ppa m sp|V ppa m p|J [em] s?p","flags":0,"inputs":["V ppa m sp","V ind pres 3 s","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":200,"op":"regex","args":{"pattern":"V.* ppa m s|J [em] sp?|V ppa m sp|V ppr","flags":0,"inputs":["V ppa m s","VB","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":201,"op":"regex","args":{"pattern":"V.* ppa m s|J m s","flags":0,"inputs":["V ppa m s","NN","."],"ops":["matches","lookingAt","find"]}}
+{"id":202,"op":"regex","args":{"pattern":"V.* ppa m s|J m sp?","flags":0,"inputs":["V ppa m s","ADJ:PRD:GRU","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":203,"op":"regex","args":{"pattern":"V.* ppa m s|J.*","flags":0,"inputs":["V ppa m s","VB","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":204,"op":"regex","args":{"pattern":"V.* ppa m s|V ppa [em] sp","flags":0,"inputs":["V ppa m s","_PUNCT"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":205,"op":"regex","args":{"pattern":"V.* ppa m s|V ppa m sp","flags":0,"inputs":["V ppa m s","JJ","é"],"ops":["matches","lookingAt","find"]}}
+{"id":206,"op":"regex","args":{"pattern":"V.* ppa m s|V.* ppa . p","flags":0,"inputs":["V ppa m s","SENT_START","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":207,"op":"regex","args":{"pattern":"V.* ppa m.*|V.* ppa f p","flags":0,"inputs":["V ppa m","VB","é"],"ops":["matches","lookingAt","find"]}}
+{"id":208,"op":"regex","args":{"pattern":"V.* ppa.*","flags":0,"inputs":["V ppa","UNKNOWN","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":209,"op":"regex","args":{"pattern":"V.* ppa.* f s","flags":0,"inputs":["V ppa f s","JJ","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":210,"op":"regex","args":{"pattern":"V.* ppa.* m s","flags":0,"inputs":["V ppa m s","SENT_START","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":211,"op":"regex","args":{"pattern":"V.* ppa.* m sp","flags":0,"inputs":["V ppa m sp","NN","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":212,"op":"regex","args":{"pattern":"V.* ppa.* m sp?","flags":0,"inputs":["V ppa m s","UNKNOWN","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":213,"op":"regex","args":{"pattern":"V.* ppa.* m sp|P.*","flags":0,"inputs":["V ppa m sp","N f s","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":214,"op":"regex","args":{"pattern":"V.* ppa.* p|J . p","flags":0,"inputs":["V ppa p","VB","_"],"ops":["matches","lookingAt","find"]}}
+{"id":215,"op":"regex","args":{"pattern":"V.* ppa.* p|J.* p","flags":0,"inputs":["V ppa p","SENT_START","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":216,"op":"regex","args":{"pattern":"V.* ppa.* s","flags":0,"inputs":["V ppa s","UNKNOWN","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":217,"op":"regex","args":{"pattern":"V.* ppa.* s?p","flags":0,"inputs":["V ppa p","VER:1:SIN:PRÄ:NON","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":218,"op":"regex","args":{"pattern":"V.* ppa.* s?p|V.* ppa f sp?","flags":0,"inputs":["V ppa p","PCT","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":219,"op":"regex","args":{"pattern":"V.* ppa.* s?p|V.* ppa.* f sp?","flags":0,"inputs":["V ppa p","SENT_START","-"],"ops":["matches","lookingAt","find"]}}
+{"id":220,"op":"regex","args":{"pattern":"V.* ppa.* s?p|V.* ppa.* m sp?","flags":0,"inputs":["V ppa p","SUB:NOM:SIN:MAS","über"],"ops":["matches","lookingAt","find"]}}
+{"id":221,"op":"regex","args":{"pattern":"V.* ppa.* sp?|V.* ppa m s?p","flags":0,"inputs":["V ppa s","JJ","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":222,"op":"regex","args":{"pattern":"V.* ppa.* sp?|V.* ppa.* f s?p","flags":0,"inputs":["V ppa s","SUB:NOM:SIN:MAS","-"],"ops":["matches","lookingAt","find"]}}
+{"id":223,"op":"regex","args":{"pattern":"V.* ppa.* s|V.* ppa f p","flags":0,"inputs":["V ppa s","ADJ:PRD:GRU","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":224,"op":"regex","args":{"pattern":"V.* ppa.* s|V.* ppa m p","flags":0,"inputs":["V ppa s","_PUNCT","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":225,"op":"regex","args":{"pattern":"V.* ppa.* s|V.* ppa.* f p","flags":0,"inputs":["V ppa s","JJ","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":226,"op":"regex","args":{"pattern":"V.* ppa.*|A","flags":0,"inputs":["V ppa","V ind pres 3 s","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":227,"op":"regex","args":{"pattern":"V.* ppa.*|D.*","flags":0,"inputs":["V ppa","SENT_START"," "],"ops":["matches","lookingAt","find"]}}
+{"id":228,"op":"regex","args":{"pattern":"V.* ppa.*|J . s","flags":0,"inputs":["V ppa","NNP","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":229,"op":"regex","args":{"pattern":"V.* ppa.*|J m .*","flags":0,"inputs":["V ppa","N f s","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":230,"op":"regex","args":{"pattern":"V.* ppa.*|J m s","flags":0,"inputs":["V ppa","V ind pres 3 s","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":231,"op":"regex","args":{"pattern":"V.* ppa.*|J.*","flags":0,"inputs":["V ppa","JJ","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":232,"op":"regex","args":{"pattern":"V.* ppa.*|M fin.*","flags":0,"inputs":["V ppa","VER:1:SIN:PRÄ:NON","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":233,"op":"regex","args":{"pattern":"V.* ppa.*|M nonfin","flags":0,"inputs":["V ppa","NNP","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":234,"op":"regex","args":{"pattern":"V.* ppa.*|P.*","flags":0,"inputs":["V ppa","PCT","é"],"ops":["matches","lookingAt","find"]}}
+{"id":235,"op":"regex","args":{"pattern":"V.* ppa.*|SENT_END","flags":0,"inputs":["V ppa","NN","é"],"ops":["matches","lookingAt","find"]}}
+{"id":236,"op":"regex","args":{"pattern":"V.* ppa.*|UNKNOWN","flags":0,"inputs":["V ppa","N f s","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":237,"op":"regex","args":{"pattern":"V.* ppa.*|UNKNOWN|J.*","flags":0,"inputs":["V ppa","ADJ:PRD:GRU","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":238,"op":"regex","args":{"pattern":"V.* ppa.*|UNKNOWN|M fin.*|M nonfin|A","flags":0,"inputs":["V ppa","PCT","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":239,"op":"regex","args":{"pattern":"V.* ppa.*|V ind pres 2 s","flags":0,"inputs":["V ppa","NN","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":240,"op":"regex","args":{"pattern":"V.* ppa.*|V ind pres.*","flags":0,"inputs":["V ppa","N f s","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":241,"op":"regex","args":{"pattern":"V.* ppa.*|V ind psim 2 s","flags":0,"inputs":["V ppa","VB","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":242,"op":"regex","args":{"pattern":"V.* ppa.*|V ind psim 3 s","flags":0,"inputs":["V ppa","N f s","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":243,"op":"regex","args":{"pattern":"V.* ppa.*|V.* (ind|con|sub).*","flags":0,"inputs":["V ppa","SUB:NOM:SIN:MAS","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":244,"op":"regex","args":{"pattern":"V.* ppa.*|V.* [23] s","flags":0,"inputs":["V ppa","NN","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":245,"op":"regex","args":{"pattern":"V.* ppa.*|V.* con.*","flags":0,"inputs":["V ppa","PCT","K"],"ops":["matches","lookingAt","find"]}}
+{"id":246,"op":"regex","args":{"pattern":"V.* ppa.*|V.* ind psim 3 s|UNKNOWN|V ind pres 3 s|V.* inf","flags":0,"inputs":["V ppa","VER:1:SIN:PRÄ:NON","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":247,"op":"regex","args":{"pattern":"V.* ppa.*|V.* inf","flags":0,"inputs":["V ppa","SUB:NOM:SIN:MAS","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":248,"op":"regex","args":{"pattern":"V.* ppa.*|V.* inf|N.*","flags":0,"inputs":["V ppa","SENT_START","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":249,"op":"regex","args":{"pattern":"V.* ppa.*|V.* ppr","flags":0,"inputs":["V ppa","PCT","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":250,"op":"regex","args":{"pattern":"V.* ppa.*|[AJ].*|C sub","flags":0,"inputs":["V ppa","VER:1:SIN:PRÄ:NON"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":251,"op":"regex","args":{"pattern":"V.* ppa.*|[DN].*|A","flags":0,"inputs":["V ppa","SUB:NOM:SIN:MAS","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":252,"op":"regex","args":{"pattern":"V.* ppa.*|[DN].*|V.* inf","flags":0,"inputs":["V ppa","JJ","."],"ops":["matches","lookingAt","find"]}}
+{"id":253,"op":"regex","args":{"pattern":"V.* ppa.*|[JN].*","flags":0,"inputs":["V ppa","_PUNCT","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":254,"op":"regex","args":{"pattern":"V.* ppa.*|[JP].*","flags":0,"inputs":["V ppa","ADJ:PRD:GRU","K"],"ops":["matches","lookingAt","find"]}}
+{"id":255,"op":"regex","args":{"pattern":"V.* ppa.*|[ND].*|[YK]","flags":0,"inputs":["V ppa","V ind pres 3 s","-"],"ops":["matches","lookingAt","find"]}}
+{"id":256,"op":"regex","args":{"pattern":"V.* ppa.*|[NJ].*","flags":0,"inputs":["V ppa","JJ","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":257,"op":"regex","args":{"pattern":"V.* ppa|[NJP].*","flags":0,"inputs":["V ppa","NNP","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":258,"op":"regex","args":{"pattern":"V.* ppr","flags":0,"inputs":["V ppr","SENT_START","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":259,"op":"regex","args":{"pattern":"V.* ppr.*","flags":0,"inputs":["V ppr","V ind pres 3 s","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":260,"op":"regex","args":{"pattern":"V.* ppr|N.*","flags":0,"inputs":["V ppr","N f s","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":261,"op":"regex","args":{"pattern":"V.* ppr|SENT_START","flags":0,"inputs":["V ppr","PCT","K"],"ops":["matches","lookingAt","find"]}}
+{"id":262,"op":"regex","args":{"pattern":"V.* ppr|V ppa [ef] p|J [ef] .","flags":0,"inputs":["V ppr","NNP","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":263,"op":"regex","args":{"pattern":"V.* ppr|V ppa [em] sp?|J [em] s|J [em] sp|V.* ppa [em] sp","flags":0,"inputs":["V ppr","VER:1:SIN:PRÄ:NON","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":264,"op":"regex","args":{"pattern":"V.* ppr|V ppa f s|V ppa e sp|J e s|J f s","flags":0,"inputs":["V ppr","JJ","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":265,"op":"regex","args":{"pattern":"V.* ppr|V ppa m p|J [em] p|J [em] sp|V ppa [em] sp","flags":0,"inputs":["V ppr","PCT","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":266,"op":"regex","args":{"pattern":"V.* ppr|V.* inf|N.*","flags":0,"inputs":["V ppr","ADJ:PRD:GRU",""],"ops":["matches","lookingAt","find"]}}
+{"id":267,"op":"regex","args":{"pattern":"V.* ppr|V.* inf|V.* ppa.*","flags":0,"inputs":["V ppr","N f s","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":268,"op":"regex","args":{"pattern":"V.* p|V.* inf","flags":0,"inputs":["V p","NN","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":269,"op":"regex","args":{"pattern":"V.* p|[NJ] . p","flags":0,"inputs":["V p","V ind pres 3 s"," "],"ops":["matches","lookingAt","find"]}}
+{"id":270,"op":"regex","args":{"pattern":"V.* s","flags":0,"inputs":["V s","ADJ:PRD:GRU","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":271,"op":"regex","args":{"pattern":"V.* sub .* 3 [sp]","flags":0,"inputs":["V sub  3 s","PCT","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":272,"op":"regex","args":{"pattern":"V.* sub .* 3 s","flags":0,"inputs":["V sub  3 s","SUB:NOM:SIN:MAS","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":273,"op":"regex","args":{"pattern":"V.* sub impa.*","flags":0,"inputs":["V sub impa","JJ","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":274,"op":"regex","args":{"pattern":"V.* sub pres 3 s","flags":0,"inputs":["V sub pres 3 s","NNP","_"],"ops":["matches","lookingAt","find"]}}
+{"id":275,"op":"regex","args":{"pattern":"V.* sub pres.*","flags":0,"inputs":["V sub pres","SUB:NOM:SIN:MAS","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":276,"op":"regex","args":{"pattern":"V.* sub pres.*|V etre.*","flags":0,"inputs":["V sub pres","V ind pres 3 s","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":277,"op":"regex","args":{"pattern":"V.* sub.*","flags":0,"inputs":["V sub","N f s","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":278,"op":"regex","args":{"pattern":"V.* sub.* 3 .|N.*","flags":0,"inputs":["V sub 3 x","NNP","K"],"ops":["matches","lookingAt","find"]}}
+{"id":279,"op":"regex","args":{"pattern":"V.* sub.*|V.* ind impa.*|V.* ind futu.*","flags":0,"inputs":["V sub","SUB:NOM:SIN:MAS","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":280,"op":"regex","args":{"pattern":"V.* sub.*|V.* ppa.*","flags":0,"inputs":["V sub","V ind pres 3 s","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":281,"op":"regex","args":{"pattern":"V.*(ind|con|sub).*","flags":0,"inputs":["Vind","_PUNCT","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":282,"op":"regex","args":{"pattern":"V.*(ind|con|sub|imp).*","flags":0,"inputs":["Vind","SUB:NOM:SIN:MAS","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":283,"op":"regex","args":{"pattern":"V.*(ind|sub).*","flags":0,"inputs":["Vind","JJ"," "],"ops":["matches","lookingAt","find"]}}
+{"id":284,"op":"regex","args":{"pattern":"V.*(ind|sub).*1.p","flags":0,"inputs":["Vind1xp","V ind pres 3 s","a"],"ops":["matches","lookingAt","find"]}}
+{"id":285,"op":"regex","args":{"pattern":"V.*(ind|sub).*1.s","flags":0,"inputs":["Vind1xs","ADJ:PRD:GRU","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":286,"op":"regex","args":{"pattern":"V.*(ind|sub).*2.p","flags":0,"inputs":["Vind2xp","_PUNCT","a"],"ops":["matches","lookingAt","find"]}}
+{"id":287,"op":"regex","args":{"pattern":"V.*(ind|sub).*2.s","flags":0,"inputs":["Vind2xs","JJ","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":288,"op":"regex","args":{"pattern":"V.*(ind|sub).*2.s|R.pers.obj.*","flags":0,"inputs":["Vind2xs","VB","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":289,"op":"regex","args":{"pattern":"V.*(ind|sub).*3.*","flags":0,"inputs":["Vind3","ADJ:PRD:GRU","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":290,"op":"regex","args":{"pattern":"V.*(ind|sub).*3.p","flags":0,"inputs":["Vind3xp","_PUNCT","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":291,"op":"regex","args":{"pattern":"V.*(ind|sub).*3.s","flags":0,"inputs":["Vind3xs","NNP",""],"ops":["matches","lookingAt","find"]}}
+{"id":292,"op":"regex","args":{"pattern":"V.*(ind|sub|con) .* 2 s","flags":0,"inputs":["Vind  2 s","PCT","_"],"ops":["matches","lookingAt","find"]}}
+{"id":293,"op":"regex","args":{"pattern":"V.*(inf|ppr|3).*","flags":0,"inputs":["Vinf","JJ","é"],"ops":["matches","lookingAt","find"]}}
+{"id":294,"op":"regex","args":{"pattern":"V.*1 s","flags":0,"inputs":["V1 s","VER:1:SIN:PRÄ:NON","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":295,"op":"regex","args":{"pattern":"V.*1.p|V.*3.s","flags":0,"inputs":["V1xp","ADJ:PRD:GRU","é"],"ops":["matches","lookingAt","find"]}}
+{"id":296,"op":"regex","args":{"pattern":"V.*1.s.","flags":0,"inputs":["V1xsx","PCT"," "],"ops":["matches","lookingAt","find"]}}
+{"id":297,"op":"regex","args":{"pattern":"V.*1.s|R.*","flags":0,"inputs":["V1xs","NN","-"],"ops":["matches","lookingAt","find"]}}
+{"id":298,"op":"regex","args":{"pattern":"V.*1.s|R.pers.obj.*","flags":0,"inputs":["V1xs","N f s","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":299,"op":"regex","args":{"pattern":"V.*1s","flags":0,"inputs":["V1s","ADJ:PRD:GRU","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":300,"op":"regex","args":{"pattern":"V.*2.p*","flags":0,"inputs":["V2x","V ind pres 3 s","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":301,"op":"regex","args":{"pattern":"V.*2.s","flags":0,"inputs":["V2xs","UNKNOWN","a"],"ops":["matches","lookingAt","find"]}}
+{"id":302,"op":"regex","args":{"pattern":"V.*2.s.","flags":0,"inputs":["V2xsx","NNP","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":303,"op":"regex","args":{"pattern":"V.*2s","flags":0,"inputs":["V2s","VB"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":304,"op":"regex","args":{"pattern":"V.*3 p","flags":0,"inputs":["V3 p","SENT_START","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":305,"op":"regex","args":{"pattern":"V.*3 s","flags":0,"inputs":["V3 s","SUB:NOM:SIN:MAS","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":306,"op":"regex","args":{"pattern":"V.*3 s|C.*|R rel.*|R pers suj.*","flags":0,"inputs":["V3 s","_PUNCT","é"],"ops":["matches","lookingAt","find"]}}
+{"id":307,"op":"regex","args":{"pattern":"V.*3 s|V.* inf","flags":0,"inputs":["V3 s","PCT","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":308,"op":"regex","args":{"pattern":"V.*3.*","flags":0,"inputs":["V3","SENT_START","é"],"ops":["matches","lookingAt","find"]}}
+{"id":309,"op":"regex","args":{"pattern":"V.*3.p","flags":0,"inputs":["V3xp","SUB:NOM:SIN:MAS","é"],"ops":["matches","lookingAt","find"]}}
+{"id":310,"op":"regex","args":{"pattern":"V.*3.p|R.pers.obj.*","flags":0,"inputs":["V3xp","_PUNCT","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":311,"op":"regex","args":{"pattern":"V.*3.s","flags":0,"inputs":["V3xs","UNKNOWN","_"],"ops":["matches","lookingAt","find"]}}
+{"id":312,"op":"regex","args":{"pattern":"V.*3.s.","flags":0,"inputs":["V3xsx","JJ","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":313,"op":"regex","args":{"pattern":"V.*3.s|R.pers.obj.*","flags":0,"inputs":["V3xs","PCT","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":314,"op":"regex","args":{"pattern":"V.*3.s|V.*1.p","flags":0,"inputs":["V3xs","VER:1:SIN:PRÄ:NON"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":315,"op":"regex","args":{"pattern":"V.*3p","flags":0,"inputs":["V3p","UNKNOWN","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":316,"op":"regex","args":{"pattern":"V.*:[123]:.*","flags":0,"inputs":["V:1:","NN","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":317,"op":"regex","args":{"pattern":"V.*[123] .","flags":0,"inputs":["V1 x","V ind pres 3 s","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":318,"op":"regex","args":{"pattern":"V.*[123] .|V.* inf","flags":0,"inputs":["V1 x","VB","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":319,"op":"regex","args":{"pattern":"V.*[123] .|V.* inf|V.* pp.*","flags":0,"inputs":["V1 x","_PUNCT","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":320,"op":"regex","args":{"pattern":"V.*[123] .|V.* ppa.*","flags":0,"inputs":["V1 x","NN","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":321,"op":"regex","args":{"pattern":"V.*[123] .|V.* ppr","flags":0,"inputs":["V1 x","SUB:NOM:SIN:MAS","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":322,"op":"regex","args":{"pattern":"V.*[123].*","flags":0,"inputs":["V1","N f s","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":323,"op":"regex","args":{"pattern":"V.*[123].* 3 .*","flags":0,"inputs":["V1 3 ","_PUNCT","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":324,"op":"regex","args":{"pattern":"V.*[123].* s","flags":0,"inputs":["V1 s","ADJ:PRD:GRU","K"],"ops":["matches","lookingAt","find"]}}
+{"id":325,"op":"regex","args":{"pattern":"V.*[123].*|R pers obj.*","flags":0,"inputs":["V1","V ind pres 3 s","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":326,"op":"regex","args":{"pattern":"V.*[123].*|R pers obj.*|V inf","flags":0,"inputs":["V1","N f s","é"],"ops":["matches","lookingAt","find"]}}
+{"id":327,"op":"regex","args":{"pattern":"V.*[123].*|R pers obj.*|V.* inf","flags":0,"inputs":["V1","NNP","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":328,"op":"regex","args":{"pattern":"V.*[123].*|R pers obj.*|V.* pp.*|J.*|R rel.*","flags":0,"inputs":["V1","SENT_START","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":329,"op":"regex","args":{"pattern":"V.*[123].*|R pers obj.*|V.* pp.*|V inf","flags":0,"inputs":["V1","V ind pres 3 s","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":330,"op":"regex","args":{"pattern":"V.*[123].*|V inf","flags":0,"inputs":["V1","JJ","_"],"ops":["matches","lookingAt","find"]}}
+{"id":331,"op":"regex","args":{"pattern":"V.*[123].*|V inf|R pers obj.*","flags":0,"inputs":["V1","SUB:NOM:SIN:MAS","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":332,"op":"regex","args":{"pattern":"V.*[123].*|V inf|V ppa.*","flags":0,"inputs":["V1","PCT","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":333,"op":"regex","args":{"pattern":"V.*[123].*|V.* inf","flags":0,"inputs":["V1","ADJ:PRD:GRU","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":334,"op":"regex","args":{"pattern":"V.*[123].*|V.* inf|R pers obj.*","flags":0,"inputs":["V1","VER:1:SIN:PRÄ:NON","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":335,"op":"regex","args":{"pattern":"V.*[12] s","flags":0,"inputs":["V1 s","UNKNOWN","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":336,"op":"regex","args":{"pattern":"V.*[13] s","flags":0,"inputs":["V1 s","V ind pres 3 s","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":337,"op":"regex","args":{"pattern":"V.*[23] s","flags":0,"inputs":["V2 s","ADJ:PRD:GRU","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":338,"op":"regex","args":{"pattern":"V.*[23].","flags":0,"inputs":["V2x","N f s","-"],"ops":["matches","lookingAt","find"]}}
+{"id":339,"op":"regex","args":{"pattern":"V.*[32].p|V.inf|V.*3.s","flags":0,"inputs":["V3xp","UNKNOWN","K"],"ops":["matches","lookingAt","find"]}}
+{"id":340,"op":"regex","args":{"pattern":"V.*futu.*","flags":0,"inputs":["Vfutu","V ind pres 3 s","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":341,"op":"regex","args":{"pattern":"V.*ind (futu|impa|psim).*","flags":0,"inputs":["Vind futu","SENT_START","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":342,"op":"regex","args":{"pattern":"V.*ind .*","flags":0,"inputs":["Vind ","JJ","K"],"ops":["matches","lookingAt","find"]}}
+{"id":343,"op":"regex","args":{"pattern":"V.*ind pres.*","flags":0,"inputs":["Vind pres","UNKNOWN","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":344,"op":"regex","args":{"pattern":"V.*ind.*","flags":0,"inputs":["Vind","VB","."],"ops":["matches","lookingAt","find"]}}
+{"id":345,"op":"regex","args":{"pattern":"V.*inf","flags":0,"inputs":["Vinf","ADJ:PRD:GRU","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":346,"op":"regex","args":{"pattern":"V.*ppa .*","flags":0,"inputs":["Vppa ","NN","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":347,"op":"regex","args":{"pattern":"V.*ppa.*","flags":0,"inputs":["Vppa","_PUNCT","-"],"ops":["matches","lookingAt","find"]}}
+{"id":348,"op":"regex","args":{"pattern":"V.*ppa.*p","flags":0,"inputs":["Vppap","VB","über"],"ops":["matches","lookingAt","find"]}}
+{"id":349,"op":"regex","args":{"pattern":"V.*sub.*|V.* inf|V.* pp.*","flags":0,"inputs":["Vsub","ADJ:PRD:GRU","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":350,"op":"regex","args":{"pattern":"V.*|A","flags":0,"inputs":["V","NN","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":351,"op":"regex","args":{"pattern":"V.*|A|C coor","flags":0,"inputs":["V","SENT_START","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":352,"op":"regex","args":{"pattern":"V.*|A|P","flags":0,"inputs":["V","VB","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":353,"op":"regex","args":{"pattern":"V.*|C coor","flags":0,"inputs":["V","NNP","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":354,"op":"regex","args":{"pattern":"V.*|C sub","flags":0,"inputs":["V","UNKNOWN","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":355,"op":"regex","args":{"pattern":"V.*|C sub|R pers suj.*","flags":0,"inputs":["V","SENT_START","K"],"ops":["matches","lookingAt","find"]}}
+{"id":356,"op":"regex","args":{"pattern":"V.*|C.*|SENT_START|M nonfin","flags":0,"inputs":["V","PCT","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":357,"op":"regex","args":{"pattern":"V.*|D.*","flags":0,"inputs":["V","_PUNCT","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":358,"op":"regex","args":{"pattern":"V.*|IN","flags":0,"inputs":["V","SUB:NOM:SIN:MAS","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":359,"op":"regex","args":{"pattern":"V.*|J . p","flags":0,"inputs":["V","NN","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":360,"op":"regex","args":{"pattern":"V.*|J e .*|N m .*","flags":0,"inputs":["V","PCT",""],"ops":["matches","lookingAt","find"]}}
+{"id":361,"op":"regex","args":{"pattern":"V.*|J.*","flags":0,"inputs":["V","ADJ:PRD:GRU","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":362,"op":"regex","args":{"pattern":"V.*|JJ","flags":0,"inputs":["V","PCT","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":363,"op":"regex","args":{"pattern":"V.*|P","flags":0,"inputs":["V","NN","-"],"ops":["matches","lookingAt","find"]}}
+{"id":364,"op":"regex","args":{"pattern":"V.*|P|C coor","flags":0,"inputs":["V","N f s","_"],"ops":["matches","lookingAt","find"]}}
+{"id":365,"op":"regex","args":{"pattern":"V.*|R pers obj.*","flags":0,"inputs":["V","NNP","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":366,"op":"regex","args":{"pattern":"V.*|R pers obj.*|N f s","flags":0,"inputs":["V","PCT","_"],"ops":["matches","lookingAt","find"]}}
+{"id":367,"op":"regex","args":{"pattern":"V.*|R pers obj.*|R rel.*","flags":0,"inputs":["V","JJ","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":368,"op":"regex","args":{"pattern":"V.*|R pers obj.*|UNKNOWN","flags":0,"inputs":["V","VER:1:SIN:PRÄ:NON","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":369,"op":"regex","args":{"pattern":"V.*|R pers suj 3 . s","flags":0,"inputs":["V","NNP","-"],"ops":["matches","lookingAt","find"]}}
+{"id":370,"op":"regex","args":{"pattern":"V.*|R pers suj 3 .*","flags":0,"inputs":["V","V ind pres 3 s","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":371,"op":"regex","args":{"pattern":"V.*|R pers suj 3 p|R rel.*","flags":0,"inputs":["V","ADJ:PRD:GRU","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":372,"op":"regex","args":{"pattern":"V.*|R pers.*|M nonfin|UNKNOWN|M fin","flags":0,"inputs":["V","_PUNCT","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":373,"op":"regex","args":{"pattern":"V.*|SENT_END","flags":0,"inputs":["V","JJ","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":374,"op":"regex","args":{"pattern":"V.*|SENT_END|PCT","flags":0,"inputs":["V","SUB:NOM:SIN:MAS","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":375,"op":"regex","args":{"pattern":"V.*|SENT_START","flags":0,"inputs":["V","SENT_START","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":376,"op":"regex","args":{"pattern":"V.*|UNKNOWN","flags":0,"inputs":["V","NNP","-"],"ops":["matches","lookingAt","find"]}}
+{"id":377,"op":"regex","args":{"pattern":"V.*|UNKNOWN|N [ef] s","flags":0,"inputs":["V","JJ","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":378,"op":"regex","args":{"pattern":"V.*|UNKNOWN|P","flags":0,"inputs":["V","V ind pres 3 s","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":379,"op":"regex","args":{"pattern":"V.*|UNKNOWN|R pers suj.*|R pers obj.*","flags":0,"inputs":["V","SENT_START","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":380,"op":"regex","args":{"pattern":"V.*|V etre .*","flags":0,"inputs":["V","NNP","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":381,"op":"regex","args":{"pattern":"V.*|V.* ind pres 2 s","flags":0,"inputs":["V","PCT"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":382,"op":"regex","args":{"pattern":"V.*|[DR] m s","flags":0,"inputs":["V","SUB:NOM:SIN:MAS","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":383,"op":"regex","args":{"pattern":"V.*|[NJ] [me].*","flags":0,"inputs":["V","VER:1:SIN:PRÄ:NON","-"],"ops":["matches","lookingAt","find"]}}
+{"id":384,"op":"regex","args":{"pattern":"V.+","flags":0,"inputs":["Vx","ADJ:PRD:GRU","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":385,"op":"regex","args":{"pattern":"V.+|RBR?|IN|UH","flags":0,"inputs":["Vx","V ind pres 3 s","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":386,"op":"regex","args":{"pattern":"V.P.*","flags":0,"inputs":["VxP","UNKNOWN","K"],"ops":["matches","lookingAt","find"]}}
+{"id":387,"op":"regex","args":{"pattern":"V.[^G]*","flags":0,"inputs":["Vx","N f s","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":388,"op":"regex","args":{"pattern":"V.ind.pres.(.*)","flags":0,"inputs":["Vxindxpresx","ADJ:PRD:GRU","."],"ops":["matches","lookingAt","find"]}}
+{"id":389,"op":"regex","args":{"pattern":"V.inf","flags":0,"inputs":["Vxinf","V ind pres 3 s",""],"ops":["matches","lookingAt","find"]}}
+{"id":390,"op":"regex","args":{"pattern":"VB","flags":0,"inputs":["VB","first","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":391,"op":"regex","args":{"pattern":"VB(D|G|N|P|Z)?","flags":0,"inputs":["VB","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":392,"op":"regex","args":{"pattern":"VB(D|G|P|Z)?","flags":0,"inputs":["VB","UNKNOWN","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":393,"op":"regex","args":{"pattern":"VB(G|N)","flags":0,"inputs":["VBG","JJ","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":394,"op":"regex","args":{"pattern":"VB(G|N)?","flags":0,"inputs":["VB","SENT_START",""],"ops":["matches","lookingAt","find"]}}
+{"id":395,"op":"regex","args":{"pattern":"VB(P|D)?","flags":0,"inputs":["VB","."],"ops":["matches","lookingAt","find"]}}
+{"id":396,"op":"regex","args":{"pattern":"VB(P|D)?|RB","flags":0,"inputs":["VB","_PUNCT","a"],"ops":["matches","lookingAt","find"]}}
+{"id":397,"op":"regex","args":{"pattern":"VB(P|Z)?","flags":0,"inputs":["VB","NN","é"],"ops":["matches","lookingAt","find"]}}
+{"id":398,"op":"regex","args":{"pattern":"VB(Z|D)?","flags":0,"inputs":["VB","ADJ:PRD:GRU","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":399,"op":"regex","args":{"pattern":"VB.","flags":0,"inputs":["VBx","VER:1:SIN:PRÄ:NON","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":400,"op":"regex","args":{"pattern":"VB.*","flags":0,"inputs":["VB","won","-"],"ops":["matches","lookingAt","find"]}}
+{"id":401,"op":"regex","args":{"pattern":"VB.*|,|\\.|CC|IN|TO|JJ.*|WP|MD|RB","flags":0,"inputs":["VB","_PUNCT","K"],"ops":["matches","lookingAt","find"]}}
+{"id":402,"op":"regex","args":{"pattern":"VB.*|DT","flags":0,"inputs":["VB","JJ","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":403,"op":"regex","args":{"pattern":"VB.*|DT|PRP\\$|IN","flags":0,"inputs":["VB","PCT"," "],"ops":["matches","lookingAt","find"]}}
+{"id":404,"op":"regex","args":{"pattern":"VB.*|IN","flags":0,"inputs":["VB","VER:1:SIN:PRÄ:NON","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":405,"op":"regex","args":{"pattern":"VB.*|IN|CD","flags":0,"inputs":["VB","_PUNCT","_"],"ops":["matches","lookingAt","find"]}}
+{"id":406,"op":"regex","args":{"pattern":"VB.*|IN|EX","flags":0,"inputs":["VB","NN","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":407,"op":"regex","args":{"pattern":"VB.*|IN|PCT|CC|RB|UH","flags":0,"inputs":["VB","V ind pres 3 s","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":408,"op":"regex","args":{"pattern":"VB.*|IN|RB","flags":0,"inputs":["VB","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":409,"op":"regex","args":{"pattern":"VB.*|IN|SENT_END","flags":0,"inputs":["VB","UNKNOWN","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":410,"op":"regex","args":{"pattern":"VB.*|IN|SENT_START|PCT|CC","flags":0,"inputs":["VB","NN","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":411,"op":"regex","args":{"pattern":"VB.*|IN|TO|PCT|CC","flags":0,"inputs":["VB","SUB:NOM:SIN:MAS","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":412,"op":"regex","args":{"pattern":"VB.*|IN|UNKNOWN","flags":0,"inputs":["VB","_PUNCT","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":413,"op":"regex","args":{"pattern":"VB.*|IN|UNKNOWN|MD","flags":0,"inputs":["VB","PCT","é"],"ops":["matches","lookingAt","find"]}}
+{"id":414,"op":"regex","args":{"pattern":"VB.*|JJ.*","flags":0,"inputs":["VB","SENT_START"," "],"ops":["matches","lookingAt","find"]}}
+{"id":415,"op":"regex","args":{"pattern":"VB.*|JJ.*|DT","flags":0,"inputs":["VB","UNKNOWN","é"],"ops":["matches","lookingAt","find"]}}
+{"id":416,"op":"regex","args":{"pattern":"VB.*|JJ|IN|PCT|CC","flags":0,"inputs":["VB","NNP","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":417,"op":"regex","args":{"pattern":"VB.*|JJ|RB","flags":0,"inputs":["VB",""],"ops":["matches","lookingAt","find"]}}
+{"id":418,"op":"regex","args":{"pattern":"VB.*|JJ|RB|CC|SENT_END","flags":0,"inputs":["VB","SENT_START","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":419,"op":"regex","args":{"pattern":"VB.*|MD","flags":0,"inputs":["VB","Donald","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":420,"op":"regex","args":{"pattern":"VB.*|MD.*","flags":0,"inputs":["VB","NNP","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":421,"op":"regex","args":{"pattern":"VB.*|MD|PCT","flags":0,"inputs":["VB","UNKNOWN","_"],"ops":["matches","lookingAt","find"]}}
+{"id":422,"op":"regex","args":{"pattern":"VB.*|MD|UNKNOWN","flags":0,"inputs":["VB","V ind pres 3 s",""],"ops":["matches","lookingAt","find"]}}
+{"id":423,"op":"regex","args":{"pattern":"VB.*|NN.*","flags":0,"inputs":["VB","ADJ:PRD:GRU","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":424,"op":"regex","args":{"pattern":"VB.*|NN.*|RB","flags":0,"inputs":["VB","N f s","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":425,"op":"regex","args":{"pattern":"VB.*|NN.*|RB|IN|CC|DT","flags":0,"inputs":["VB","SUB:NOM:SIN:MAS","K"],"ops":["matches","lookingAt","find"]}}
+{"id":426,"op":"regex","args":{"pattern":"VB.*|NNP","flags":0,"inputs":["VB","PCT","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":427,"op":"regex","args":{"pattern":"VB.*|NNP?|NN:UN?","flags":0,"inputs":["VB","ADJ:PRD:GRU","."],"ops":["matches","lookingAt","find"]}}
+{"id":428,"op":"regex","args":{"pattern":"VB.*|NNP|CC","flags":0,"inputs":["VB","VER:1:SIN:PRÄ:NON","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":429,"op":"regex","args":{"pattern":"VB.*|P?DT|PRP.*|EX|IN","flags":0,"inputs":["VB","SUB:NOM:SIN:MAS","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":430,"op":"regex","args":{"pattern":"VB.*|PCT","flags":0,"inputs":["VB","PCT","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":431,"op":"regex","args":{"pattern":"VB.*|PRP|DT","flags":0,"inputs":["VB","_PUNCT","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":432,"op":"regex","args":{"pattern":"VB.*|RB","flags":0,"inputs":["VB","PCT","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":433,"op":"regex","args":{"pattern":"VB.*|RB.*|JJR?|NNP|MD","flags":0,"inputs":["VB","NN","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":434,"op":"regex","args":{"pattern":"VB.*|RB.*|MD|IN|JJ.*|CC|RP|DT","flags":0,"inputs":["VB","SENT_START","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":435,"op":"regex","args":{"pattern":"VB.*|RB|UNKNOWN","flags":0,"inputs":["VB","SUB:NOM:SIN:MAS","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":436,"op":"regex","args":{"pattern":"VB.*|RB|W.*|MD|CC","flags":0,"inputs":["VB","PCT","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":437,"op":"regex","args":{"pattern":"VB.*|SENT_END","flags":0,"inputs":["VB","SENT_START","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":438,"op":"regex","args":{"pattern":"VB.*|SENT_END|IN","flags":0,"inputs":["VB","JJ","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":439,"op":"regex","args":{"pattern":"VB.*|SENT_START","flags":0,"inputs":["VB","SUB:NOM:SIN:MAS","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":440,"op":"regex","args":{"pattern":"VB.*|SENT_START|CC|PCT","flags":0,"inputs":["VB","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":441,"op":"regex","args":{"pattern":"VB.*|SENT_START|PCT|CC|RB|UH","flags":0,"inputs":["VB","PCT","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":442,"op":"regex","args":{"pattern":"VB.*|TO","flags":0,"inputs":["VB","_PUNCT","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":443,"op":"regex","args":{"pattern":"VB.*|UNKNOWN","flags":0,"inputs":["VB","N f s","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":444,"op":"regex","args":{"pattern":"VB.*|UNKNOWN|IN","flags":0,"inputs":["VB","NN","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":445,"op":"regex","args":{"pattern":"VB.*|UNKNOWN|MD","flags":0,"inputs":["VB","PCT","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":446,"op":"regex","args":{"pattern":"VB.*|UNKNOWN|MD|JJ.*|RB|CC","flags":0,"inputs":["VB","NNP","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":447,"op":"regex","args":{"pattern":"VB.+","flags":0,"inputs":["VBx","JJ","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":448,"op":"regex","args":{"pattern":"VB.+|SENT_END","flags":0,"inputs":["VBx","SENT_START","a"],"ops":["matches","lookingAt","find"]}}
+{"id":449,"op":"regex","args":{"pattern":"VB.?","flags":0,"inputs":["VB"," "],"ops":["matches","lookingAt","find"]}}
+{"id":450,"op":"regex","args":{"pattern":"VB.?|MD","flags":0,"inputs":["VB","NNP","é"],"ops":["matches","lookingAt","find"]}}
+{"id":451,"op":"regex","args":{"pattern":"VB.|MD","flags":0,"inputs":["VBx","VER:1:SIN:PRÄ:NON","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":452,"op":"regex","args":{"pattern":"VB.|NN(:UN?|PS?)?|PRP\\$","flags":0,"inputs":["VBx","PCT","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":453,"op":"regex","args":{"pattern":"VBD?","flags":0,"inputs":["VB","JJ","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":454,"op":"regex","args":{"pattern":"VBD|IN","flags":0,"inputs":["VBD","_PUNCT","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":455,"op":"regex","args":{"pattern":"VBD|JJ|UNKNOWN","flags":0,"inputs":["VBD","VB","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":456,"op":"regex","args":{"pattern":"VBD|MD","flags":0,"inputs":["VBD","V ind pres 3 s"," "],"ops":["matches","lookingAt","find"]}}
+{"id":457,"op":"regex","args":{"pattern":"VBD|MD|IN","flags":0,"inputs":["VBD","NN","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":458,"op":"regex","args":{"pattern":"VBD|RB","flags":0,"inputs":["VBD","_PUNCT","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":459,"op":"regex","args":{"pattern":"VBD|R[BP]|IN|JJR?","flags":0,"inputs":["VBD","VB","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":460,"op":"regex","args":{"pattern":"VBG","flags":0,"inputs":["VBG","V ind pres 3 s","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":461,"op":"regex","args":{"pattern":"VBG?","flags":0,"inputs":["VB","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":462,"op":"regex","args":{"pattern":"VBG|CC|DT|PRP.*|W.*|RB.*","flags":0,"inputs":["VBG","N f s","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":463,"op":"regex","args":{"pattern":"VBG|DT","flags":0,"inputs":["VBG","V ind pres 3 s","über"],"ops":["matches","lookingAt","find"]}}
+{"id":464,"op":"regex","args":{"pattern":"VBG|DT|WDT|RP|JJ|IN|CD|JJS|JJR|RBS|VB[DN]|MD|NN[PS]|PRP\\$","flags":0,"inputs":["VBG","ADJ:PRD:GRU","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":465,"op":"regex","args":{"pattern":"VBG|IN","flags":0,"inputs":["VBG","VER:1:SIN:PRÄ:NON","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":466,"op":"regex","args":{"pattern":"VBG|JJ","flags":0,"inputs":["VBG","JJ","é"],"ops":["matches","lookingAt","find"]}}
+{"id":467,"op":"regex","args":{"pattern":"VBG|JJ.*","flags":0,"inputs":["VBG","V ind pres 3 s","K"],"ops":["matches","lookingAt","find"]}}
+{"id":468,"op":"regex","args":{"pattern":"VBG|JJ.*|DT|PRP\\$?|RB.*|W.*","flags":0,"inputs":["VBG","SENT_START","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":469,"op":"regex","args":{"pattern":"VBG|JJ.*|DT|RB.*","flags":0,"inputs":["VBG","VER:1:SIN:PRÄ:NON","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":470,"op":"regex","args":{"pattern":"VBG|JJ.*|DT|RB.*|W.*|PRP\\$","flags":0,"inputs":["VBG","JJ","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":471,"op":"regex","args":{"pattern":"VBG|NN.*","flags":0,"inputs":["VBG","N f s","é"],"ops":["matches","lookingAt","find"]}}
+{"id":472,"op":"regex","args":{"pattern":"VBG|NN:UN?","flags":0,"inputs":["VBG","NNP","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":473,"op":"regex","args":{"pattern":"VBG|NN:UN?|NNS","flags":0,"inputs":["VBG","V ind pres 3 s","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":474,"op":"regex","args":{"pattern":"VBG|TO|IN|CC","flags":0,"inputs":["VBG","UNKNOWN","_"],"ops":["matches","lookingAt","find"]}}
+{"id":475,"op":"regex","args":{"pattern":"VBG|VBN|JJ","flags":0,"inputs":["VBG","VER:1:SIN:PRÄ:NON"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":476,"op":"regex","args":{"pattern":"VBG|VB|VBP|VB[DN]","flags":0,"inputs":["VBG","NNP","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":477,"op":"regex","args":{"pattern":"VBG|VB|WRB|RB.*|CD|IN|DT|WDT","flags":0,"inputs":["VBG","PCT","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":478,"op":"regex","args":{"pattern":"VBG|VB|WRB|RB.*|CD|IN|DT|WDT|NNP","flags":0,"inputs":["VBG","SUB:NOM:SIN:MAS","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":479,"op":"regex","args":{"pattern":"VBN?","flags":0,"inputs":["VB","VER:1:SIN:PRÄ:NON","-"],"ops":["matches","lookingAt","find"]}}
+{"id":480,"op":"regex","args":{"pattern":"VBN?|SENT_END","flags":0,"inputs":["VB","ADJ:PRD:GRU","über"],"ops":["matches","lookingAt","find"]}}
+{"id":481,"op":"regex","args":{"pattern":"VBN|CC|DT|IN|MD|POS|PP|RB|WDT|WP|WRB","flags":0,"inputs":["VBN","NNP","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":482,"op":"regex","args":{"pattern":"VBN|DT|W.*","flags":0,"inputs":["VBN","N f s","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":483,"op":"regex","args":{"pattern":"VBN|JJ","flags":0,"inputs":["VBN","UNKNOWN","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":484,"op":"regex","args":{"pattern":"VBN|JJ.*","flags":0,"inputs":["VBN","V ind pres 3 s","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":485,"op":"regex","args":{"pattern":"VBN|JJ.*|CC","flags":0,"inputs":["VBN","NNP","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":486,"op":"regex","args":{"pattern":"VBN|JJ.*|IN|RB","flags":0,"inputs":["VBN","VER:1:SIN:PRÄ:NON","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":487,"op":"regex","args":{"pattern":"VBN|MD|IN|DT|PRP.*|RB","flags":0,"inputs":["VBN","SUB:NOM:SIN:MAS","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":488,"op":"regex","args":{"pattern":"VBN|NN:UN?|NNP|JJ.*|RB|IN","flags":0,"inputs":["VBN","PCT","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":489,"op":"regex","args":{"pattern":"VBN|RB|IN","flags":0,"inputs":["VBN","ADJ:PRD:GRU","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":490,"op":"regex","args":{"pattern":"VBN|RB|JJ","flags":0,"inputs":["VBN","VER:1:SIN:PRÄ:NON"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":491,"op":"regex","args":{"pattern":"VBN|RP","flags":0,"inputs":["VBN","NN","a"],"ops":["matches","lookingAt","find"]}}
+{"id":492,"op":"regex","args":{"pattern":"VBN|TO|IN","flags":0,"inputs":["VBN","N f s","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":493,"op":"regex","args":{"pattern":"VBN|UNKNOWN","flags":0,"inputs":["VBN","_PUNCT"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":494,"op":"regex","args":{"pattern":"VBN|VBD","flags":0,"inputs":["VBN","PCT","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":495,"op":"regex","args":{"pattern":"VBN|VBG","flags":0,"inputs":["VBN","SENT_START"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":496,"op":"regex","args":{"pattern":"VBN|VBG|MD|JJR?","flags":0,"inputs":["VBN","JJ","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":497,"op":"regex","args":{"pattern":"VBP","flags":0,"inputs":["VBP","NNP","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":498,"op":"regex","args":{"pattern":"VBP?","flags":0,"inputs":["VB","PCT"," "],"ops":["matches","lookingAt","find"]}}
+{"id":499,"op":"regex","args":{"pattern":"VBP?|(SENT|PARA)_END","flags":0,"inputs":["VB","SENT_START","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":500,"op":"regex","args":{"pattern":"VBP?|DT|W.*","flags":0,"inputs":["VB","JJ","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":501,"op":"regex","args":{"pattern":"VBP?|NN(:UN?)?","flags":0,"inputs":["VB","_PUNCT","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":502,"op":"regex","args":{"pattern":"VBP?|NN.*","flags":0,"inputs":["VB","K"],"ops":["matches","lookingAt","find"]}}
+{"id":503,"op":"regex","args":{"pattern":"VBP?|NN|NN:UN|NN:U","flags":0,"inputs":["VB","NN","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":504,"op":"regex","args":{"pattern":"VBP?|PCT","flags":0,"inputs":["VB","N f s","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":505,"op":"regex","args":{"pattern":"VBP?|PRP_S.*","flags":0,"inputs":["VB","NNP",""],"ops":["matches","lookingAt","find"]}}
+{"id":506,"op":"regex","args":{"pattern":"VBP?|RB","flags":0,"inputs":["VB","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":507,"op":"regex","args":{"pattern":"VBP?|RB.*","flags":0,"inputs":["VB","SENT_START","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":508,"op":"regex","args":{"pattern":"VBP?|UNKNOWN","flags":0,"inputs":["VB","JJ","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":509,"op":"regex","args":{"pattern":"VBP|IN|JJ|NNP?S","flags":0,"inputs":["VBP","NNP","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":510,"op":"regex","args":{"pattern":"VBP|NNP","flags":0,"inputs":["VBP","PCT"," "],"ops":["matches","lookingAt","find"]}}
+{"id":511,"op":"regex","args":{"pattern":"VBP|VBZ","flags":0,"inputs":["VBP","ADJ:PRD:GRU","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":512,"op":"regex","args":{"pattern":"VBZ","flags":0,"inputs":["VBZ","_PUNCT","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":513,"op":"regex","args":{"pattern":"VBZ?","flags":0,"inputs":["VB","NN","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":514,"op":"regex","args":{"pattern":"VBZ?|MD","flags":0,"inputs":["VB","PCT"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":515,"op":"regex","args":{"pattern":"VBZ|MD","flags":0,"inputs":["VBZ","NNP","é"],"ops":["matches","lookingAt","find"]}}
+{"id":516,"op":"regex","args":{"pattern":"VBZ|NN.*","flags":0,"inputs":["VBZ","UNKNOWN","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":517,"op":"regex","args":{"pattern":"VBZ|NN:U|NN:UN","flags":0,"inputs":["VBZ","NN","über"],"ops":["matches","lookingAt","find"]}}
+{"id":518,"op":"regex","args":{"pattern":"VBZ|NN|NN:UN?|JJ.?|RB","flags":0,"inputs":["VBZ","V ind pres 3 s","a"],"ops":["matches","lookingAt","find"]}}
+{"id":519,"op":"regex","args":{"pattern":"VBZ|PKT|IN|CC|W.*","flags":0,"inputs":["VBZ","NNP","K"],"ops":["matches","lookingAt","find"]}}
+{"id":520,"op":"regex","args":{"pattern":"VBZ|POS","flags":0,"inputs":["VBZ","UNKNOWN","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":521,"op":"regex","args":{"pattern":"VBZ|RB|IN|JJ|NN:.*|NNP?","flags":0,"inputs":["VBZ","NNP","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":522,"op":"regex","args":{"pattern":"VB[BZ]?","flags":0,"inputs":["VB","SENT_START","über"],"ops":["matches","lookingAt","find"]}}
+{"id":523,"op":"regex","args":{"pattern":"VB[DGNPZ]?","flags":0,"inputs":["VB","UNKNOWN","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":524,"op":"regex","args":{"pattern":"VB[DGNZ]","flags":0,"inputs":["VBD","VER:1:SIN:PRÄ:NON","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":525,"op":"regex","args":{"pattern":"VB[DGN]","flags":0,"inputs":["VBD","ADJ:PRD:GRU","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":526,"op":"regex","args":{"pattern":"VB[DGPNZ]?","flags":0,"inputs":["VB","NN","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":527,"op":"regex","args":{"pattern":"VB[DGZN]","flags":0,"inputs":["VBD","SUB:NOM:SIN:MAS","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":528,"op":"regex","args":{"pattern":"VB[DGZ]","flags":0,"inputs":["VBD","VER:1:SIN:PRÄ:NON","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":529,"op":"regex","args":{"pattern":"VB[DG]","flags":0,"inputs":["VBD","ADJ:PRD:GRU","é"],"ops":["matches","lookingAt","find"]}}
+{"id":530,"op":"regex","args":{"pattern":"VB[DNGZ]","flags":0,"inputs":["VBD","NN","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":531,"op":"regex","args":{"pattern":"VB[DNG]","flags":0,"inputs":["VBD","_PUNCT","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":532,"op":"regex","args":{"pattern":"VB[DNPZ]?","flags":0,"inputs":["VB","VER:1:SIN:PRÄ:NON",""],"ops":["matches","lookingAt","find"]}}
+{"id":533,"op":"regex","args":{"pattern":"VB[DNZG]","flags":0,"inputs":["VBD","V ind pres 3 s","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":534,"op":"regex","args":{"pattern":"VB[DNZ]","flags":0,"inputs":["VBD","VB","é"],"ops":["matches","lookingAt","find"]}}
+{"id":535,"op":"regex","args":{"pattern":"VB[DN]","flags":0,"inputs":["VBD","_PUNCT","über"],"ops":["matches","lookingAt","find"]}}
+{"id":536,"op":"regex","args":{"pattern":"VB[DN]?","flags":0,"inputs":["VB","JJ","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":537,"op":"regex","args":{"pattern":"VB[DN]|JJR?","flags":0,"inputs":["VBD","UNKNOWN"," "],"ops":["matches","lookingAt","find"]}}
+{"id":538,"op":"regex","args":{"pattern":"VB[DN]|UNKNOWN","flags":0,"inputs":["VBD","V ind pres 3 s","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":539,"op":"regex","args":{"pattern":"VB[DPN]?","flags":0,"inputs":["VB","ADJ:PRD:GRU","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":540,"op":"regex","args":{"pattern":"VB[DPZ]","flags":0,"inputs":["VBD","JJ"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":541,"op":"regex","args":{"pattern":"VB[DPZ]?","flags":0,"inputs":["VB","NN","é"],"ops":["matches","lookingAt","find"]}}
+{"id":542,"op":"regex","args":{"pattern":"VB[DP]","flags":0,"inputs":["VBD","_PUNCT"," "],"ops":["matches","lookingAt","find"]}}
+{"id":543,"op":"regex","args":{"pattern":"VB[DP]?","flags":0,"inputs":["VB","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":544,"op":"regex","args":{"pattern":"VB[DP]?|MD","flags":0,"inputs":["VB","V ind pres 3 s","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":545,"op":"regex","args":{"pattern":"VB[DP]|MD","flags":0,"inputs":["VBD","JJ",""],"ops":["matches","lookingAt","find"]}}
+{"id":546,"op":"regex","args":{"pattern":"VB[DZG]","flags":0,"inputs":["VBD","_PUNCT","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":547,"op":"regex","args":{"pattern":"VB[DZNG]","flags":0,"inputs":["VBD","VER:1:SIN:PRÄ:NON","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":548,"op":"regex","args":{"pattern":"VB[DZN]","flags":0,"inputs":["VBD","PCT","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":549,"op":"regex","args":{"pattern":"VB[DZN]?","flags":0,"inputs":["VB","JJ","a"],"ops":["matches","lookingAt","find"]}}
+{"id":550,"op":"regex","args":{"pattern":"VB[DZP]","flags":0,"inputs":["VBD","UNKNOWN","über"],"ops":["matches","lookingAt","find"]}}
+{"id":551,"op":"regex","args":{"pattern":"VB[DZP]?","flags":0,"inputs":["VB","N f s","."],"ops":["matches","lookingAt","find"]}}
+{"id":552,"op":"regex","args":{"pattern":"VB[DZ]","flags":0,"inputs":["VBD","NN","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":553,"op":"regex","args":{"pattern":"VB[DZ]?","flags":0,"inputs":["VB","PCT","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":554,"op":"regex","args":{"pattern":"VB[DZ]|IN","flags":0,"inputs":["VBD","_PUNCT","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":555,"op":"regex","args":{"pattern":"VB[DZ]|JJ.*|RB|MD|IN","flags":0,"inputs":["VBD","JJ","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":556,"op":"regex","args":{"pattern":"VB[DZ]|MD","flags":0,"inputs":["VBD","SENT_START","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":557,"op":"regex","args":{"pattern":"VB[DZ]|R[BP]|IN","flags":0,"inputs":["VBD","PCT","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":558,"op":"regex","args":{"pattern":"VB[GDNZ]","flags":0,"inputs":["VBG","NNP","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":559,"op":"regex","args":{"pattern":"VB[GDP]?|MD","flags":0,"inputs":["VB","JJ","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":560,"op":"regex","args":{"pattern":"VB[GDZP]?|MD","flags":0,"inputs":["VB","SENT_START","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":561,"op":"regex","args":{"pattern":"VB[GD]","flags":0,"inputs":["VBG","JJ",""],"ops":["matches","lookingAt","find"]}}
+{"id":562,"op":"regex","args":{"pattern":"VB[GN]","flags":0,"inputs":["VBG","VER:1:SIN:PRÄ:NON","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":563,"op":"regex","args":{"pattern":"VB[GN]?","flags":0,"inputs":["VB","SENT_START","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":564,"op":"regex","args":{"pattern":"VB[GN]|IN|JJ.*","flags":0,"inputs":["VBG","V ind pres 3 s","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":565,"op":"regex","args":{"pattern":"VB[GN]|JJ.*|DT|PRP\\$","flags":0,"inputs":["VBG","N f s","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":566,"op":"regex","args":{"pattern":"VB[GN]|JJ[RS]?|UH|IN|RP|NN.*","flags":0,"inputs":["VBG","VB","é"],"ops":["matches","lookingAt","find"]}}
+{"id":567,"op":"regex","args":{"pattern":"VB[GN]|MD","flags":0,"inputs":["VBG","ADJ:PRD:GRU","a"],"ops":["matches","lookingAt","find"]}}
+{"id":568,"op":"regex","args":{"pattern":"VB[GPN]?","flags":0,"inputs":["VB","V ind pres 3 s","."],"ops":["matches","lookingAt","find"]}}
+{"id":569,"op":"regex","args":{"pattern":"VB[GP]?","flags":0,"inputs":["VB","N f s","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":570,"op":"regex","args":{"pattern":"VB[GP]|NNS|CD|JJ.?|MD","flags":0,"inputs":["VBG","VB","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":571,"op":"regex","args":{"pattern":"VB[GZND]","flags":0,"inputs":["VBG","VER:1:SIN:PRÄ:NON","über"],"ops":["matches","lookingAt","find"]}}
+{"id":572,"op":"regex","args":{"pattern":"VB[GZ]","flags":0,"inputs":["VBG","UNKNOWN","-"],"ops":["matches","lookingAt","find"]}}
+{"id":573,"op":"regex","args":{"pattern":"VB[NDG]","flags":0,"inputs":["VBN","SENT_START","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":574,"op":"regex","args":{"pattern":"VB[NDZ]|JJ.*|RB|MD","flags":0,"inputs":["VBN","NNP","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":575,"op":"regex","args":{"pattern":"VB[NDZ]|JJ|IN|MD","flags":0,"inputs":["VBN","VER:1:SIN:PRÄ:NON","K"],"ops":["matches","lookingAt","find"]}}
+{"id":576,"op":"regex","args":{"pattern":"VB[ND]","flags":0,"inputs":["VBN","SUB:NOM:SIN:MAS",""],"ops":["matches","lookingAt","find"]}}
+{"id":577,"op":"regex","args":{"pattern":"VB[ND]|IN|MD","flags":0,"inputs":["VBN","NN","K"],"ops":["matches","lookingAt","find"]}}
+{"id":578,"op":"regex","args":{"pattern":"VB[ND]|NN.*","flags":0,"inputs":["VBN","ADJ:PRD:GRU","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":579,"op":"regex","args":{"pattern":"VB[NG]","flags":0,"inputs":["VBN","N f s","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":580,"op":"regex","args":{"pattern":"VB[NG]|CD","flags":0,"inputs":["VBN","SUB:NOM:SIN:MAS","é"],"ops":["matches","lookingAt","find"]}}
+{"id":581,"op":"regex","args":{"pattern":"VB[NG]|DT|JJ|W.*","flags":0,"inputs":["VBN","SENT_START",""],"ops":["matches","lookingAt","find"]}}
+{"id":582,"op":"regex","args":{"pattern":"VB[NG]|JJ","flags":0,"inputs":["VBN","SUB:NOM:SIN:MAS","."],"ops":["matches","lookingAt","find"]}}
+{"id":583,"op":"regex","args":{"pattern":"VB[NP]?","flags":0,"inputs":["VB","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":584,"op":"regex","args":{"pattern":"VB[NP]|CC|UH|IN","flags":0,"inputs":["VBN","VER:1:SIN:PRÄ:NON","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":585,"op":"regex","args":{"pattern":"VB[PDZ]","flags":0,"inputs":["VBP","ADJ:PRD:GRU","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":586,"op":"regex","args":{"pattern":"VB[PDZ]?","flags":0,"inputs":["VB","SUB:NOM:SIN:MAS","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":587,"op":"regex","args":{"pattern":"VB[PD]","flags":0,"inputs":["VBP","N f s","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":588,"op":"regex","args":{"pattern":"VB[PD]?","flags":0,"inputs":["VB","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":589,"op":"regex","args":{"pattern":"VB[PD]?|MD","flags":0,"inputs":["VB","JJ","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":590,"op":"regex","args":{"pattern":"VB[PD]?|RB","flags":0,"inputs":["VB","_PUNCT","İstanbul"],"ops":["matches","lookingAt","find"]}}
+{"id":591,"op":"regex","args":{"pattern":"VB[PD]|MD","flags":0,"inputs":["VBP","SENT_START","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":592,"op":"regex","args":{"pattern":"VB[PGD]?","flags":0,"inputs":["VB","NNP","-"],"ops":["matches","lookingAt","find"]}}
+{"id":593,"op":"regex","args":{"pattern":"VB[PGZ]?","flags":0,"inputs":["VB","VER:1:SIN:PRÄ:NON","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":594,"op":"regex","args":{"pattern":"VB[PG]?|WP|CC","flags":0,"inputs":["VB","UNKNOWN","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":595,"op":"regex","args":{"pattern":"VB[PNG]?","flags":0,"inputs":["VB","NN","."],"ops":["matches","lookingAt","find"]}}
+{"id":596,"op":"regex","args":{"pattern":"VB[PN]","flags":0,"inputs":["VBP","ADJ:PRD:GRU","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":597,"op":"regex","args":{"pattern":"VB[PN]?","flags":0,"inputs":["VB","VER:1:SIN:PRÄ:NON","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":598,"op":"regex","args":{"pattern":"VB[PS]?","flags":0,"inputs":["VB","SUB:NOM:SIN:MAS","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":599,"op":"regex","args":{"pattern":"VB[PS]?|JJ|NN:UN","flags":0,"inputs":["VB","NN","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":600,"op":"regex","args":{"pattern":"VB[PZDNG]|MD","flags":0,"inputs":["VBP","ADJ:PRD:GRU","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":601,"op":"regex","args":{"pattern":"VB[PZDN]?|MD","flags":0,"inputs":["VB","VER:1:SIN:PRÄ:NON","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":602,"op":"regex","args":{"pattern":"VB[PZD]","flags":0,"inputs":["VBP","JJ","ΑΣ"],"ops":["matches","lookingAt","find"]}}
+{"id":603,"op":"regex","args":{"pattern":"VB[PZD]?","flags":0,"inputs":["VB","V ind pres 3 s","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":604,"op":"regex","args":{"pattern":"VB[PZD]?|MD|RB.*|CC","flags":0,"inputs":["VB","NNP","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":605,"op":"regex","args":{"pattern":"VB[PZD]?|MD|RB.*|CC|CD","flags":0,"inputs":["VB","N f s","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":606,"op":"regex","args":{"pattern":"VB[PZD]?|RB","flags":0,"inputs":["VB","NN","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":607,"op":"regex","args":{"pattern":"VB[PZD]|R[BP]","flags":0,"inputs":["VBP","V ind pres 3 s","K"],"ops":["matches","lookingAt","find"]}}
+{"id":608,"op":"regex","args":{"pattern":"VB[PZ]","flags":0,"inputs":["VBP","ADJ:PRD:GRU","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":609,"op":"regex","args":{"pattern":"VB[PZ]?","flags":0,"inputs":["VB","N f s","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":610,"op":"regex","args":{"pattern":"VB[PZ]?|MD","flags":0,"inputs":["VB","NN","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":611,"op":"regex","args":{"pattern":"VB[ZDN]","flags":0,"inputs":["VBZ","JJ","a"],"ops":["matches","lookingAt","find"]}}
+{"id":612,"op":"regex","args":{"pattern":"VB[ZDP]|MD","flags":0,"inputs":["VBZ","NNP","über"],"ops":["matches","lookingAt","find"]}}
+{"id":613,"op":"regex","args":{"pattern":"VB[ZD]","flags":0,"inputs":["VBZ","PCT","ſ"],"ops":["matches","lookingAt","find"]}}
+{"id":614,"op":"regex","args":{"pattern":"VB[ZD]?","flags":0,"inputs":["VB","SUB:NOM:SIN:MAS","é"],"ops":["matches","lookingAt","find"]}}
+{"id":615,"op":"regex","args":{"pattern":"VB[ZD]|MD","flags":0,"inputs":["VBZ","N f s"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":616,"op":"regex","args":{"pattern":"VB[ZD]|RB","flags":0,"inputs":["VBZ","NNP","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":617,"op":"regex","args":{"pattern":"VB[ZD]|UNKNOWN","flags":0,"inputs":["VBZ","VB","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":618,"op":"regex","args":{"pattern":"VB[ZGNP]|NNP?S|JJ.*|MD|CD|RP|DT","flags":0,"inputs":["VBZ","V ind pres 3 s","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":619,"op":"regex","args":{"pattern":"VB[ZNDG]|IN|RB","flags":0,"inputs":["VBZ","N f s","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":620,"op":"regex","args":{"pattern":"VB[ZNDG]|IN|RB|MD","flags":0,"inputs":["VBZ","_PUNCT","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":621,"op":"regex","args":{"pattern":"VB[ZNDG]|JJ|MD","flags":0,"inputs":["VBZ","VB","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":622,"op":"regex","args":{"pattern":"VB[ZNDG]|JJ|MD|NN","flags":0,"inputs":["VBZ","_PUNCT","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":623,"op":"regex","args":{"pattern":"VB[ZNGD]","flags":0,"inputs":["VBZ","NN","_"],"ops":["matches","lookingAt","find"]}}
+{"id":624,"op":"regex","args":{"pattern":"VB[ZN]","flags":0,"inputs":["VBZ","ADJ:PRD:GRU","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":625,"op":"regex","args":{"pattern":"VB[ZPDN]?|NNS?|NN:UN|NN:U|MD","flags":0,"inputs":["VB","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":626,"op":"regex","args":{"pattern":"VB[ZPD]","flags":0,"inputs":["VBZ","UNKNOWN"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":627,"op":"regex","args":{"pattern":"VB[ZPD]?","flags":0,"inputs":["VB","JJ","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":628,"op":"regex","args":{"pattern":"VB[ZPD]?|RB.*|IN","flags":0,"inputs":["VB","SENT_START","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":629,"op":"regex","args":{"pattern":"VB[ZPG]?","flags":0,"inputs":["VB","VER:1:SIN:PRÄ:NON","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":630,"op":"regex","args":{"pattern":"VB[ZP]?","flags":0,"inputs":["VB","UNKNOWN","a"],"ops":["matches","lookingAt","find"]}}
+{"id":631,"op":"regex","args":{"pattern":"VB[ZP]?|NNS?|NN:UN|NN:U|MD","flags":0,"inputs":["VB","N f s"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":632,"op":"regex","args":{"pattern":"VB[^G]*","flags":0,"inputs":["VB","ǅ"],"ops":["matches","lookingAt","find"]}}
+{"id":633,"op":"regex","args":{"pattern":"VB[^NG]?","flags":0,"inputs":["VB","NN","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":634,"op":"regex","args":{"pattern":"VB|EX|IN","flags":0,"inputs":["VB","SUB:NOM:SIN:MAS","_"],"ops":["matches","lookingAt","find"]}}
+{"id":635,"op":"regex","args":{"pattern":"VB|IN","flags":0,"inputs":["VB","VER:1:SIN:PRÄ:NON","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":636,"op":"regex","args":{"pattern":"VB|JJ","flags":0,"inputs":["VB","PCT"," "],"ops":["matches","lookingAt","find"]}}
+{"id":637,"op":"regex","args":{"pattern":"VB|MD|NNP","flags":0,"inputs":["VB","SENT_START","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":638,"op":"regex","args":{"pattern":"VB|NN.*","flags":0,"inputs":["VB","SUB:NOM:SIN:MAS","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":639,"op":"regex","args":{"pattern":"VB|NN:UN","flags":0,"inputs":["VB","VER:1:SIN:PRÄ:NON","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":640,"op":"regex","args":{"pattern":"VB|NNP","flags":0,"inputs":["VB","PCT","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":641,"op":"regex","args":{"pattern":"VB|RB","flags":0,"inputs":["VB","SENT_START","."],"ops":["matches","lookingAt","find"]}}
+{"id":642,"op":"regex","args":{"pattern":"VB|RB.*|CD|UNKNOWN","flags":0,"inputs":["VB","NNP","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":643,"op":"regex","args":{"pattern":"VB|RB?|UNKNOWN","flags":0,"inputs":["VB","JJ","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":644,"op":"regex","args":{"pattern":"VB|RB|MD|IN|JJR|CC|PRP.*","flags":0,"inputs":["VB","V ind pres 3 s","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":645,"op":"regex","args":{"pattern":"VB|RP.*|RB|CD|IN|CC|MD|DT|WDT","flags":0,"inputs":["VB","ADJ:PRD:GRU"," "],"ops":["matches","lookingAt","find"]}}
+{"id":646,"op":"regex","args":{"pattern":"VB|RP|CD|IN|CC|MD","flags":0,"inputs":["VB","_PUNCT","ß"],"ops":["matches","lookingAt","find"]}}
+{"id":647,"op":"regex","args":{"pattern":"VB|RP|RB|CD|IN|CC|MD|VB[DN]|VBG|DT|WRB","flags":0,"inputs":["VB","JJ","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":648,"op":"regex","args":{"pattern":"VB|RP|WRB|RB|CD|IN|CC|MD","flags":0,"inputs":["VB","SUB:NOM:SIN:MAS","x́y"],"ops":["matches","lookingAt","find"]}}
+{"id":649,"op":"regex","args":{"pattern":"VB|RP|WRB|RB|CD|IN|CC|MD|DT|WDT","flags":0,"inputs":["VB","ADJ:PRD:GRU","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":650,"op":"regex","args":{"pattern":"VB|RP|WRB|RB|CD|IN|CC|MD|NNP|DT","flags":0,"inputs":["VB","_PUNCT","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":651,"op":"regex","args":{"pattern":"VB|UNKNOWN","flags":0,"inputs":["VB","NNP","é"],"ops":["matches","lookingAt","find"]}}
+{"id":652,"op":"regex","args":{"pattern":"VB|VBD|VBG|VBN|VBP|VBZ","flags":0,"inputs":["VB","PCT","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":653,"op":"regex","args":{"pattern":"VB|VBN","flags":0,"inputs":["VB","JJ","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":654,"op":"regex","args":{"pattern":"VB|VBP","flags":0,"inputs":["VB","VER:1:SIN:PRÄ:NON","ς"],"ops":["matches","lookingAt","find"]}}
+{"id":655,"op":"regex","args":{"pattern":"VB|WRB|RB.*|CD|IN|DT|WDT","flags":0,"inputs":["VB","ADJ:PRD:GRU"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":656,"op":"regex","args":{"pattern":"VER(:AUX|:MOD):3:PLU.*","flags":0,"inputs":["VER:AUX:3:PLU","PCT","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":657,"op":"regex","args":{"pattern":"VER(:MOD)?:.+","flags":0,"inputs":["VER:x","NN","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":658,"op":"regex","args":{"pattern":"VER(:MOD)?:3:PLU:.*","flags":0,"inputs":["VER:3:PLU:","N f s","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":659,"op":"regex","args":{"pattern":"VER(:MOD|:AUX)?:3:PLU.*","flags":0,"inputs":["VER:3:PLU","ADJ:PRD:GRU","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":660,"op":"regex","args":{"pattern":"VER(MOD:|AUX:)?:3:SIN.*","flags":0,"inputs":["VER:3:SIN","V ind pres 3 s","über"],"ops":["matches","lookingAt","find"]}}
+{"id":661,"op":"regex","args":{"pattern":"VER.*","flags":0,"inputs":["VER","besser","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":662,"op":"regex","args":{"pattern":"VER.*(KJ2|PRÄ)","flags":0,"inputs":["VERKJ2","VB"," a "],"ops":["matches","lookingAt","find"]}}
+{"id":663,"op":"regex","args":{"pattern":"VER.*(MOD|AUX).*","flags":0,"inputs":["VERMOD","Erinnerung","Ab"],"ops":["matches","lookingAt","find"]}}
+{"id":664,"op":"regex","args":{"pattern":"VER.*2.*PLU","flags":0,"inputs":["VER2PLU","UNKNOWN","a"],"ops":["matches","lookingAt","find"]}}
+{"id":665,"op":"regex","args":{"pattern":"VER.*2:SIN.*","flags":0,"inputs":["VER2:SIN","NN","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":666,"op":"regex","args":{"pattern":"VER.*:([123]|IMP):.*","flags":0,"inputs":["VER:1:","N f s","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":667,"op":"regex","args":{"pattern":"VER.*:1:.+","flags":0,"inputs":["VER:1:x","_PUNCT","über"],"ops":["matches","lookingAt","find"]}}
+{"id":668,"op":"regex","args":{"pattern":"VER.*:1:PLU.*|UNKNOWN","flags":0,"inputs":["VER:1:PLU","SUB:NOM:SIN:MAS","-"],"ops":["matches","lookingAt","find"]}}
+{"id":669,"op":"regex","args":{"pattern":"VER.*:2:SIN.*","flags":0,"inputs":["VER:2:SIN","SENT_START","_"],"ops":["matches","lookingAt","find"]}}
+{"id":670,"op":"regex","args":{"pattern":"VER.*:3:SIN.*","flags":0,"inputs":["VER:3:SIN","N f s","1,5"],"ops":["matches","lookingAt","find"]}}
+{"id":671,"op":"regex","args":{"pattern":"VER.*:PLU.*","flags":0,"inputs":["VER:PLU","ADJ:PRD:GRU","é"],"ops":["matches","lookingAt","find"]}}
+{"id":672,"op":"regex","args":{"pattern":"VER.*:SIN.*","flags":0,"inputs":["VER:SIN","NN","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":673,"op":"regex","args":{"pattern":"VER.*:[1-3]:.*","flags":0,"inputs":["VER:1:","_PUNCT","a\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":674,"op":"regex","args":{"pattern":"VER.*:[1-3]:.*|VER:.*:[1-3]:.*","flags":0,"inputs":["VER:1:","VB","x😀y"],"ops":["matches","lookingAt","find"]}}
+{"id":675,"op":"regex","args":{"pattern":"VER.*:[1-3]:.*|VER:.*:[1-3]:.*|VER:IMP:.*","flags":0,"inputs":["VER:1:","SENT_START","\ud800"],"ops":["matches","lookingAt","find"]}}
+{"id":676,"op":"regex","args":{"pattern":"VER.*:[123]:SIN:(PRT|PRÄ)","flags":0,"inputs":["VER:1:SIN:PRT","JJ","_"],"ops":["matches","lookingAt","find"]}}
+{"id":677,"op":"regex","args":{"pattern":"VER.*:[123]:SIN:.*","flags":0,"inputs":["VER:1:SIN:","son’s","é"],"ops":["matches","lookingAt","find"]}}
+{"id":678,"op":"regex","args":{"pattern":"VER.*EIZ.*","flags":0,"inputs":["VEREIZ","VB","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":679,"op":"regex","args":{"pattern":"VER.*INF.*","flags":0,"inputs":["VERINF","verwende","a"],"ops":["matches","lookingAt","find"]}}
+{"id":680,"op":"regex","args":{"pattern":"VER.*INF:.*","flags":0,"inputs":["VERINF:","trumpets","a b"],"ops":["matches","lookingAt","find"]}}
+{"id":681,"op":"regex","args":{"pattern":"VER.*MOD.*","flags":0,"inputs":["VERMOD","VB","İ"],"ops":["matches","lookingAt","find"]}}
+{"id":682,"op":"regex","args":{"pattern":"VER.*PLU.*","flags":0,"inputs":["VERPLU","großen","Straße"],"ops":["matches","lookingAt","find"]}}
+{"id":683,"op":"regex","args":{"pattern":"VER.*[1-3].*","flags":0,"inputs":["VER1","SUB:NOM:SIN:MAS","ab"],"ops":["matches","lookingAt","find"]}}
+{"id":684,"op":"regex","args":{"pattern":"VER.*[1-3].*|VER:EIZ.*","flags":0,"inputs":["VER1","NN",""],"ops":["matches","lookingAt","find"]}}
+{"id":685,"op":"regex","args":{"pattern":"VER.*[1-3]:.+","flags":0,"inputs":["VER1:x","PCT","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":686,"op":"regex","args":{"pattern":"VER.*[123].*","flags":0,"inputs":["VER1","Land",""],"ops":["matches","lookingAt","find"]}}
+{"id":687,"op":"regex","args":{"pattern":"VER.*|ADV.*|PRP.*","flags":0,"inputs":["VER","SUB:NOM:SIN:MAS","ÄÖÜäöüß"],"ops":["matches","lookingAt","find"]}}
+{"id":688,"op":"regex","args":{"pattern":"VER.*|PA.*","flags":0,"inputs":["VER","SENT_START","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":689,"op":"regex","args":{"pattern":"VER.*|PKT","flags":0,"inputs":["VER","PCT","K"],"ops":["matches","lookingAt","find"]}}
+{"id":690,"op":"regex","args":{"pattern":"VER.*|PKT|ART.*|PRO:POS.*|PRP.*","flags":0,"inputs":["VER","VER:1:SIN:PRÄ:NON","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":691,"op":"regex","args":{"pattern":"VER.*|PRP.*","flags":0,"inputs":["VER","SUB:NOM:SIN:MAS","STRASSE"],"ops":["matches","lookingAt","find"]}}
+{"id":692,"op":"regex","args":{"pattern":"VER.*|SUB.*(NEU|FEM).*|UNKNOWN","flags":0,"inputs":["VER","JJ","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":693,"op":"regex","args":{"pattern":"VER.*|SUB.*|PRO:PER.*","flags":0,"inputs":["VER","_PUNCT",""],"ops":["matches","lookingAt","find"]}}
+{"id":694,"op":"regex","args":{"pattern":"VER.*|UNKNOWN","flags":0,"inputs":["VER","ADJ:PRD:GRU","a\r\nb"],"ops":["matches","lookingAt","find"]}}
+{"id":695,"op":"regex","args":{"pattern":"VER.+","flags":0,"inputs":["VERx","V ind pres 3 s","ı"],"ops":["matches","lookingAt","find"]}}
+{"id":696,"op":"regex","args":{"pattern":"VER.+|ADJ:PRD:GRU","flags":0,"inputs":["VERx","JJ","Zürich"],"ops":["matches","lookingAt","find"]}}
+{"id":697,"op":"regex","args":{"pattern":"VER.+|UNKNOWN","flags":0,"inputs":["VERx","NNP","😀"],"ops":["matches","lookingAt","find"]}}
+{"id":698,"op":"regex","args":{"pattern":"VER.INF.*","flags":0,"inputs":["VERxINF","SENT_START","über"],"ops":["matches","lookingAt","find"]}}
+{"id":699,"op":"regex","args":{"pattern":"VER:(.*2:PLU.*|IMP:PLU.*|.*3:.*)","flags":0,"inputs":["VER:2:PLU","V ind pres 3 s","-"],"ops":["matches","lookingAt","find"]}}
+{"id":700,"op":"regex","args":{"pattern":"VER:(.*INF|PA[12]).*","flags":0,"inputs":["VER:INF","bosom","ǅ"],"ops":["matches","lookingAt","find"]}}

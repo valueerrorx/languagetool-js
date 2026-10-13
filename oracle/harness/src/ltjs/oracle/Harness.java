@@ -29,7 +29,7 @@ public class Harness {
         JsonNode req = MAPPER.readTree(line);
         if (req.has("id")) resp.put("id", MAPPER.treeToValue(req.get("id"), Object.class));
         String op = req.get("op").asText();
-        if (op.startsWith("probe-") || op.equals("unicode-dump") || op.equals("locale-dump")) writer = PROBE_MAPPER;
+        if (op.startsWith("probe-") || op.equals("unicode-dump") || op.equals("locale-dump") || op.startsWith("regex")) writer = PROBE_MAPPER;
         JsonNode a = req.has("args") ? req.get("args") : MAPPER.createObjectNode();
         Object result = dispatch(op, a);
         resp.put("ok", true);
@@ -55,6 +55,8 @@ public class Harness {
       case "unicode-dump": return UnicodeDump.run(a);
       case "locale-dump": return LocaleDump.run(a);
       case "probe-collections": return ProbeCollections.run(a);
+      case "regex": return RegexOps.regex(a);
+      case "regex-harvest": return RegexOps.harvest(a);
       case "check": return ContentOps.check(a);
       case "analyze": return ContentOps.analyze(a);
       case "rules-list": return ContentOps.rulesList(a);
