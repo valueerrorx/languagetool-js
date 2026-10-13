@@ -143,4 +143,4 @@ Row format: `| ID | behaviour (one line) | Java source (path#member) | Java test
 
 ## Totals
 
-RU: 66 IDs (todo 63, spec 0, ported 0, verified 0, later 3: RU-0003, RU-0023, RU-0096).
+RU: 66 IDs (todo 63, spec 0, ported 0, verified 0, later 3: RU-0003, RU-0023, RU-0096; n/a 1 excluded: RU-0098).

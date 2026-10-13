@@ -87,4 +87,4 @@ Row format: `| ID | behaviour (one line) | Java source (path#member) | Java test
 
 ## Totals
 
-SK: 29 IDs (todo 29, spec 0, ported 0, verified 0, later 0).
+SK: 28 IDs (todo 28, spec 0, ported 0, verified 0, later 0; n/a 2 excluded: SK-0032, SK-0049).

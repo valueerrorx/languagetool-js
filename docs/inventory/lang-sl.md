@@ -72,4 +72,4 @@ Row format: `| ID | behaviour (one line) | Java source (path#member) | Java test
 
 ## Totals
 
-SL: 21 IDs (todo 21, spec 0, ported 0, verified 0, later 0).
+SL: 21 IDs (todo 21, spec 0, ported 0, verified 0, later 0; n/a 1 excluded: SL-0035).

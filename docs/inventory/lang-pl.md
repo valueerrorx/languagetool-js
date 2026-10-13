@@ -125,4 +125,4 @@ Row format: `| ID | behaviour (one line) | Java source (path#member) | Java test
 
 ## Totals
 
-PL: 47 IDs (todo 47, spec 0, ported 0, verified 0, later 0).
+PL: 47 IDs (todo 47, spec 0, ported 0, verified 0, later 0; n/a 1 excluded: PL-0063).
