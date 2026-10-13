@@ -7,7 +7,7 @@ import { valueOf } from './Objects.js';
 import { doubleToString, floatToString } from './toString.js';
 import {
   isHighSurrogate, isLowSurrogate, isSurrogate, isBmpCodePoint, isValidCodePoint, isSupplementaryCodePoint, charCount, toCodePoint,
-  toChars, isWhitespace, toUpperCase as charToUpperCase, toLowerCase as charToLowerCase,
+  toChars, isWhitespace, toUpperCaseFull, toUpperCase as charToUpperCase, toLowerCase as charToLowerCase,
 } from './Character.js';
 import { toLowerCaseAt, toUpperCaseAt } from './specialCasing.js';
 
@@ -97,6 +97,64 @@ export function javaIsBlank(s) {
 export function isEmpty(s) {
   if (s === null || s === undefined) throw npe('Cannot invoke "String.isEmpty()" because "s" is null');
   return s.length === 0;
+}
+
+// ---- case mapping ----
+
+// language of a Locale argument: a Locale-like object (getLanguage()) or a language code string; null -> NPE as in StringLatin1/UTF16#toLowerCase
+function localeLanguage(locale) {
+  if (locale === null) throw new NullPointerException();
+  return typeof locale === 'string' ? locale.toLowerCase() : locale.getLanguage();
+}
+
+// default Locale (D-018: en_US); language only is needed for case mapping
+const DEFAULT_LANGUAGE = 'en';
+
+// all chars below U+0080
+function isAscii(s) {
+  for (let i = 0; i < s.length; i++) if (s.charCodeAt(i) > 0x7f) return false;
+  return true;
+}
+
+// Java: String#toLowerCase(Locale) / toLowerCase() (default Locale en_US, D-018)
+export function toLowerCase(s, locale = DEFAULT_LANGUAGE) {
+  const lang = localeLanguage(locale);
+  const localeDependent = lang === 'tr' || lang === 'az' || lang === 'lt';
+  if (!localeDependent && isAscii(s)) return s.toLowerCase(); // identical for ASCII in every non-tr/az/lt locale
+  let out = '';
+  const len = s.length;
+  for (let i = 0; i < len;) {
+    let srcChar = s.charCodeAt(i);
+    let srcCount = 1;
+    if (isSurrogate(srcChar)) {
+      srcChar = s.codePointAt(i);
+      srcCount = charCount(srcChar);
+    }
+    if (localeDependent || srcChar === 0x03a3 || srcChar === 0x0130) out += toLowerCaseAt(s, i, lang);
+    else out += toChars(charToLowerCase(srcChar));
+    i += srcCount;
+  }
+  return out;
+}
+
+// Java: String#toUpperCase(Locale) / toUpperCase() (default Locale en_US, D-018)
+export function toUpperCase(s, locale = DEFAULT_LANGUAGE) {
+  const lang = localeLanguage(locale);
+  const localeDependent = lang === 'tr' || lang === 'az' || lang === 'lt';
+  if (!localeDependent && isAscii(s)) return s.toUpperCase(); // identical for ASCII in every non-tr/az/lt locale
+  let out = '';
+  const len = s.length;
+  for (let i = 0; i < len;) {
+    let srcChar = s.charCodeAt(i);
+    let srcCount = 1;
+    if (isSurrogate(srcChar)) {
+      srcChar = s.codePointAt(i);
+      srcCount = charCount(srcChar);
+    }
+    out += localeDependent ? toUpperCaseAt(s, i, lang) : toUpperCaseFull(srcChar);
+    i += srcCount;
+  }
+  return out;
 }
 
 // ---- replace ----

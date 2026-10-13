@@ -70,7 +70,7 @@ function isCased(ch) {
 // Java: ConditionalSpecialCasing#isSoftDotted(int)
 function isSoftDotted(ch) {
   switch (ch) {
-    case 0x0069: case 0x006a: case 0x012f: case 0x0268: case 0x0456: case 0x0458: case 0x1d62: case 0x1e2d: case 0x1ecb: case 0x2071:
+    case 0x0069: case 0x006a: case 0x012f: case 0x0268: case 0x0456: case 0x0458: case 0x1e2d: case 0x1ecb:
       return true;
     default:
       return false;

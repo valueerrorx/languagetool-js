@@ -1,198 +1,112 @@
-# Java -> JavaScript semantics rules
+# Java -> JavaScript semantics rules (D-044)
 
-Binding for porter, parity-tester and parity-reviewer. The port-architect extends this file with project-specific traps.
-D-042: idiomatic JS implementations are welcome where the observable result is identical and verified by fixtures; reviewers judge observable parity, not structural similarity.
-Rule format: trap -> rule -> helper in src/lib/java/.
+Binding for porters and reviewers. Only rules that can change API/CLI results (matches, offsets, ids, messages, suggestions and their order, error texts, status/exit codes) are kept. Format: trap -> rule -> helper (paths relative to `src/lib/java/` unless stated). Rules made obsolete by D-044 are listed at the end, one line each, with their former number (P1..P15).
+D-042/D-043: any JS implementation is fine if the result is identical and verified; helper edge cases that cannot reach output are logged in docs/review/unreachable.md, not fixed.
 
-## Numbers
-- `int` is 32-bit and wraps on overflow; JS Number does not. -> Use `x | 0` after arithmetic that can overflow, `Math.imul(a, b)` for int multiplication. Helper: `int.js`.
-- `long` is 64-bit; JS Number is exact only up to 2^53-1. -> Use BigInt (`BigInt.asIntN(64, x)` for wrap) wherever values can exceed 2^53 (ids, hashes, timestamps in ns, bit masks). Helper: `long.js`.
-- Integer division truncates toward zero; int division by zero throws ArithmeticException. -> `Math.trunc(a / b)` plus explicit zero check that throws the same message ("/ by zero").
-- `%` sign follows the dividend in both languages (same), but only for integers; check float cases.
-- `float` is 32-bit. -> `Math.fround` after every float operation.
-- `>>` vs `>>>`: same operators, but JS works on 32-bit; long shifts need BigInt.
-- `Double.toString` differs from JS `String(n)`: Java prints `1.0` (JS `1`), uses scientific notation below 1e-3 and from 1e7 with Java's own format `1.0E7` (JS below 1e-6 and from 1e21 as `1e+21`), and prints `-0.0` (JS `0`). -> Never use template literals or `String()` on Java doubles. Helper: `javaDoubleToString()`, `javaFloatToString()`.
-- `String.format` / `printf` / `DecimalFormat` / `NumberFormat`: locale-dependent (de_AT uses `,` as decimal separator). -> Helper: `javaFormat(locale, fmt, ...args)`; locale from DECISIONS.md, never the JS default.
-- `Integer.parseInt` / `Double.parseDouble` throw on invalid input; JS `parseInt` silently parses prefixes. -> Helper with identical acceptance rules and exception messages.
-- `Math.round` behaves the same for doubles (floor(x + 0.5)), but returns long; `BigDecimal` needs a decimal library with identical RoundingMode.
+## S1 Unicode version and character data (was P1)
+- JDK 17 = Unicode 13, Node 24 = Unicode 16: `\p{..}`, `toLowerCase/toUpperCase`, `normalize`, `Intl` differ for later-assigned/changed code points. -> All predicates and case mappings from JDK 17 tables: `Character.js`, `unicode/*.json` (from X-UNICODE).
+- Never call JS `toLowerCase/toUpperCase/toLocaleLowerCase` in ported code. -> `strings.js` `toLowerCase(s, locale)`, `toUpperCase(s, locale)`; default locale en_US; tr/az/lt special casing; Greek final sigma context (`wordBreak.js`).
+- `Character.toUpperCase(cp)` is simple 1:1 (`ß` stays), `String.toUpperCase` is full (`ß` -> `SS`). -> use exactly what the Java line uses.
+- `new Locale("en-US")` (EN-0050..0052 rule locales) is a malformed language `en-us`, not en_US: no special casing, no en_US number data. -> `Locale.js` constructor semantics, never `forLanguageTag`.
+- `Normalizer` (removeDiacritics, NFKC/NFC): `String.prototype.normalize` except code points unassigned in Unicode 13 pass unchanged. -> `Normalizer.js`.
 
-## Strings and characters
-- `char` is a UTF-16 code unit; JS strings are UTF-16 too, `length` and `charAt` match. Surrogate pairs behave identically. Do not use `for...of` or `[...str]` where Java iterates chars (they iterate code points).
-- Char arithmetic: `'a' + 1` is int 98 in Java, string "a1" in JS. -> `charCodeAt` / `String.fromCharCode`.
-- `String.compareTo` compares code units and returns the difference. -> Never `localeCompare`; helper `javaCompare(a, b)`.
-- `toUpperCase()` / `toLowerCase()` without argument use the Java default Locale. -> Use the locale from DECISIONS.md; check Turkish-i and ß (`"ß".toUpperCase()` is `SS` in both).
-- `String.trim()` removes chars <= U+0020 only; JS `trim()` removes all Unicode whitespace (NBSP etc.). -> Helper `javaTrim()`. `strip()` is Unicode-aware like JS trim.
-- `String.split(regex)` takes a regex, removes trailing empty strings and has its own `limit` semantics. -> Helper `javaSplit(str, regex, limit)`.
-- `String.replace(CharSequence, ...)` replaces all occurrences; JS `replace` with string replaces the first only. -> `replaceAll` with escaped literal.
-- `replaceAll` / `replaceFirst` use a regex and `$1`/`\` in the replacement. -> Helper converting Java replacement syntax.
-- `Character.isLetter/isDigit/isWhitespace` -> Unicode regex with the `u` flag matching Java's definition, helper `character.js`.
-- `String.hashCode` is part of observable behaviour when it influences ordering or output. -> Helper `javaStringHash()` (32-bit wrap).
+## S2 Regex dialect (was P2; CORE-0360..0367)
+All Java patterns (XML `regexp`, `postag_regexp`, `<regexp>`, SRX, disambiguation, Java rule code, config keys) go through `regex/Pattern.js`; no JS regex literal for a Java pattern.
+- Possessive quantifiers and atomic groups -> `(?=(X))\k<n>` with hidden groups.
+- Class set operations and nested classes -> `v`-flag `&&`/`--`.
+- `\p{L}`, `\p{Lu}`, `\p{IsAlphabetic}`, `\p{InBlock}`, `\p{javaLowerCase}` from Unicode 13 data; POSIX `\p{Punct}`, `\p{Alpha}`, ... ASCII-only unless UNICODE_CHARACTER_CLASS (DE-0102).
+- `\w \d \s \h \R` ASCII/Java definitions without UNICODE_CHARACTER_CLASS; Unicode-aware with it (RegexPatternRule, SRX: CORE-0366). JS `\s`/`\w` never emitted directly.
+- `\b`/`\B` in JDK 17 use `isLetterOrDigit || '_'` (+ attached non-spacing marks) even without UNICODE_CHARACTER_CLASS.
+- Line terminators: `.` excludes `\n \r \u0085    `; `$`/`\Z` match before a final terminator; `^` only at 0 without MULTILINE; UNIX_LINES only `\n`.
+- Inline flags anywhere (`(?i)`, `(?u)`, `(?iu)`, `(?-i)`, scoped `(?i:..)`) apply to the end of the enclosing group (DE-0090). No JS `i/m/s` flags; case-insensitivity expanded into explicit sets: CASE_INSENSITIVE = ASCII only; with UNICODE_CASE per-char `toUpperCase`/`toLowerCase` equality (JDK simple mappings). Token regexps are CASE_INSENSITIVE|UNICODE_CASE unless `case_sensitive="yes"`.
+- `matches()` = whole input (token regexps, `String.matches`), `lookingAt()` prefix, `find()` search. -> `Matcher.js`.
+- Escapes `\uXXXX`, `\x{..}`, `\0ooo`, `\cX`, `\Q..\E`; `\11` = group 11 only if it exists.
+- Replacement syntax `$n`, `${name}`, `\$`; `$&`, `` $` `` have no meaning; illegal references throw (`regexp_replace`, Java code). -> `Matcher.js` `javaReplacement`.
+- Case-insensitive back-references compare with the active case rules; translator rejects them at compile time; any harvested occurrence gets a pattern-specific rewrite (X-REGEX report).
+- Empty matches in `find`/`replaceAll`/`split`: Java advances by one UTF-16 unit (also inside a surrogate pair). -> scan loop in `Matcher.js`, never `matchAll`/global `replace`.
+- StringMatcher fast paths (CORE-0390) must equal full regex matching, incl. `CASE_INSENSITIVE_ORDER` (per char upper then lower) and `Character.getType`.
+- Syntax errors visible in output (config `abTestClients`, `trustedSources`, user rule files): `PatternSyntaxException` message `<desc> near index <n>\n<pattern>\n<caret>`.
 
-## Regex
-- Java `Pattern` vs JS RegExp: `matches()` requires a full match (anchor it), possessive quantifiers and atomic groups, `\p{...}` classes (need `u` flag), `(?i)` inline flags, `\Z`/`\z`, character class intersections `[a-z&&[^e]]`, `Pattern.quote`. -> Translate each pattern explicitly and test it with oracle fixtures.
+## S3 Strings and tokenizing (was P3)
+- Offsets everywhere (API `offset`/`length`, context, sentence ranges, text limits) are UTF-16 code units, as in Java. -> keep `length`/`charAt` indexing; never code points, `for..of`, spread or `Array.from(str)` where Java loops over chars.
+- `String.trim()` removes `<= U+0020` only; JS `trim()` also NBSP/BOM/U+2028 and keeps C0 controls. -> `javaTrim`; `isBlank`/`strip` use `Character.isWhitespace` (`javaIsBlank`, `javaStrip`).
+- `String.split(regex[, limit])` (trailing empties removed, `"".split(",")` = `[""]`, `",".split(",")` = `[]`, zero-width match at 0 gives no leading empty, limit rules). -> `javaSplit`. Sites: `-e ""`, `enabledRules=` -> one empty id (CLI-0018/0019, SRV-0127), data loaders.
+- `String.replace(CharSequence, ..)` is literal, all occurrences; `replaceAll/replaceFirst` are regex. Decide by the Java method name, never by the pattern text (DE-0031 no-op replace kept). -> `javaReplace` vs `javaReplaceAll`/`javaReplaceFirst`.
+- `StringTokenizer` delimiter test per UTF-16 unit (code points only when delimiters contain surrogates) (WordTokenizer, AnnotatedTextBuilder, EN/FR tokenizers). -> `StringTokenizer.js`.
+- Three different whitespace predicates: `Character.isWhitespace` (no NBSP/U+2007/U+202F), `Character.isSpaceChar` (with them, without `\t\n`), `StringTools.isWhitespace` (CORE-0444). -> `Character.js`, ported StringTools.
+- `equalsIgnoreCase`/`regionMatches(true, ..)` per char upper-then-lower, surrogate-aware. -> `strings.js`.
+- `compareTo`, `Collections.sort(List<String>)`, `TreeSet<String>`: UTF-16 code-unit order (`--list`, unknown words, language lists). -> `javaCompare`; never `localeCompare`/default `sort()`.
+- String concatenation of non-strings in messages/suggestions: `"" + 1.5f`, `"" + 2.0` (`2.0`), `"" + null` (`null`), lists `[a, b]`, maps `{k=v}`, enums by `name()`/override. -> `toString.js` with the Java static type.
 
-## Collections and ordering
-- `HashMap` / `HashSet` iteration order depends on hash codes; JS `Map`/`Set` keep insertion order. -> If Java output depends on that order, reproduce it (helper `JavaHashMap` with identical bucket order) or prove via fixtures that order is irrelevant.
-- `TreeMap` / `TreeSet` / `Comparator` -> sorted structures with the exact comparator.
-- JS `Array.sort()` without comparator sorts as strings. -> Always pass a comparator. Java `List.sort` is stable, JS sort is stable (ES2019) as well.
-- Object keys: Java `equals`/`hashCode` vs JS reference identity in Map/Set. -> Key by a canonical string or a helper map.
-- `Collections.unmodifiableList` etc. throw on mutation. -> `Object.freeze` where the throw is observable.
+## S4 Numbers and formatting (was P4)
+- `Double.toString`/`Float.toString` (JDK 17 FloatingDecimal, not always shortest) where a number is concatenated into a message or printed by the CLI. -> `toString.js`.
+- JSON float fields (confidence values, `Float` in Java) are emitted as the number whose shortest text equals `Float.toString` (`Number(javaFloatToString(f))`), so `0.9999955` stays `0.9999955`; comparator compares float fields after `Math.fround`.
+- `String.format("%.Nf")` rounds HALF_UP on the FloatingDecimal digit string (`%.1f` of 0.15 -> `0.2`); locale argument mandatory. Only sites reaching output (CLI time/profile lines are normalised; check messages using it are ported exactly). -> `Formatter.js` subset when the first such site is ported.
+- `DecimalFormat`/`NumberFormat.getNumberInstance(Locale)` with HALF_UP on the exact binary value (unit conversion suggestions DE-0091, EN-0075..0077, `Locale.GERMANY/ENGLISH/UK/US`): CLDR 39 symbols. -> `DecimalFormat.js` (may wrap `Intl.NumberFormat` with `roundingMode: 'halfExpand'` only where X-LOCALE + unit fixtures prove equality, e.g. fr narrow NBSP).
+- `MessageFormat` (Tools.i18n, rule messages from bundles): `''`, quoted text, `{0}`, number/choice sub-formats with en_US/bundle locale rules. -> `MessageFormat.js`.
+- Integer parsing accepts `+`/`-` and Unicode decimal digits, no whitespace; `parseDouble` trims `<= U+0020` and accepts `NaN`, `Infinity`, hex, `d`/`f` suffix; messages `For input string: "<s>"` reach CLI/API errors (config values, `ruleValues`, `--level`). -> `numbers.js`.
+- int arithmetic wraps (`maxTextHardLength * 10`, SRV-0073); `int += float` truncates; `(int)(d + 0.5)`; `Math.round(double)` = `floor(x + 0.5)`. -> `int.js`, `float.js`.
+- `long` beyond 2^53 (textSessionId from SHA-256, SRV-0118, used for A/B buckets). -> `long.js` BigInt.
+- `StrictMath.exp/log` (OpenNLP GIS eval, BeamSearch, `Random.nextGaussian`) -> `StrictMath.js` (fdlibm, D-029). `Math.log/log10/pow` at result sites (readability formulas, text-to-number `Math.pow(10, n)`) -> `libm.js` (D-041).
+- Keep Java evaluation order and types in double arithmetic (Flesch DE-0059/EN readability, optimaize probabilities, priority arithmetic with `Integer.MIN_VALUE + 10000`). No algebraic simplification.
+- Unit conversion (indriya) uses exact rational converters then `doubleValue()`. -> `src/lib/units/` with BigInt rationals.
 
-## Null and exceptions
-- NullPointerException where Java dereferences null; JS may silently produce `undefined` or `"null"`/`"undefined"` strings. -> Where the throw is observable, throw the same way; string concatenation of null prints `null` in Java.
-- Exception class names and messages that reach the user, logs or exit codes must match exactly. -> Error classes in `errors.js` mirroring Java names.
-- `System.exit(n)` -> `process.exitCode = n` with identical flush order of stdout/stderr.
+## S5 Collections and ordering (was P5)
+- `Languages.get()` order: Java order of the full distribution filtered to registered languages (X-LANGUAGES); never sort. `/v2/languages` array order and "Supported language codes" lists follow it (DEV-006 filter).
+- `HashMap`/`HashSet` iteration that feeds output must be reproduced with `collections/JavaHashMap.js`/`JavaHashSet.js` (same bucket order): `Languages.getLongCodeToLangMapping()` extra entries (/v2/languages), CLI "No rules are active" category list (CLI-0039, `CategoryId.hashCode` = String hash), Unifier `equivalencesToBeKept`/`equivalencesMatched` (reading order after UNIFY, CORE-0383/0400; verify with fixtures), `HashMap<Language,Integer>` known-word counts in language detection (tie-breaking). Every other HashMap/HashSet: porter checks that no output order depends on it and notes "order-free" in the step review; otherwise use the helper.
+- `fastutil` open-hash maps: lookup-only in wave 1 -> `Map`/`Set`.
+- `TreeSet<String>(String.CASE_INSENSITIVE_ORDER)` collapses case variants, first inserted wins (GermanChunker). -> sorted array/`Map` keyed by the Java comparator.
+- `LinkedHashMap/Set` = JS insertion order (re-put keeps position) (suggestion dedup CORE-0110, ADDITIONAL_SUGGESTIONS DE-0101).
+- `PriorityQueue` heap order (OpenNLP BeamSearch). -> `collections/PriorityQueue.js` (JDK siftUp/siftDown, iteration = array order).
+- Sorts are stable in both; comparators return `Integer.compare`-style ints, never booleans (SameRuleGroupFilter, CleanOverlappingFilter, suggestion ordering).
+- `Set.of`/`Map.of` iteration is random per JVM run: fixtures must not depend on it.
+- Shared static caches (`MultiWordChunker.getInstance(file, ..)` shared by de and fr for `/spelling_global.txt`; setters mutate the shared instance). -> same cache keys and setter order in the port (per worker in the server).
+- Morfologik runtime FSAs (MorfologikMultiSpeller over `spelling.txt`, user words): arc order = byte order of the words encoded in the dictionary charset; speller ties are broken by traversal order. -> `src/lib/fsa/` builds from the sorted encoded byte sequences, never from JS string order.
 
-## I/O and environment
-- Default charset (UTF-8 since JDK 18, platform charset before) and `System.lineSeparator()`. -> Explicit encoding and line endings per DECISIONS.md.
-- `.properties` files: ISO-8859-1 with `\uXXXX` escapes (Java 8) vs UTF-8 (`ResourceBundle` since Java 9). -> Helper `properties.js`.
-- `System.out.println` = text + line separator; buffered vs unbuffered ordering of stdout/stderr.
-- File listing order (`File.listFiles`) is unspecified; if output depends on it, match the OS behaviour or sort as Java effectively does.
+## S6 I/O, charsets, data loading (was P6)
+- `Scanner.nextLine()` separators `\r\n`, `\n`, `\r`, ` `, ` `, `\u0085` (ManualSynthesizer, SimpleReplaceDataLoader, WrongWordInContextRule, AbstractRepeatedWordsRule, CommonWordsDetector, MultiKeyProperties, Hunspell ignore files, AvsAnData, CompoundCheckFilter); `BufferedReader.readLine()` only `\n`, `\r`, `\r\n` (CLI line-by-line, other loaders). -> `io.js` `scannerLines`, `readerLines`.
+- UTF-8 decoding: malformed bytes -> U+FFFD with Java's granularity for readers/Scanner; `Files.readAllLines` throws `MalformedInputException` instead (ConfidenceMapLoader, BeoLingus). -> `charset.js`.
+- `Properties.load(InputStream)` is ISO-8859-1 + escapes (server config, morfologik `.info`); `ResourceBundle` .properties UTF-8 with ISO-8859-1 fallback; candidate chain and en_US default fallback. -> `Properties.js` (dot-properties), `ResourceBundle.js`.
+- Hunspell dictionaries: words are passed in the dictionary `SET` encoding exactly as dumonts' wrapper does (byte conversion before the WASM call). -> `src/lib/hunspell/`.
+- `File.listFiles()` = readdir order (CLI `-r` output order). Node `readdirSync` sorts. -> `io/File.js` via `fs.opendirSync`. `getAbsolutePath()` = `user.dir + "/" + path` without normalising (CLI "Working on ..." text).
+- CLI input: BOM detection (UTF-8/16/32) when `-c` is not given (CLI-0043); unknown charset name error text.
+- `URLDecoder.decode`: `+` -> space, invalid `%` escapes throw `IllegalArgumentException` with the JDK text (-> HTTP error body), malformed UTF-8 -> U+FFFD. `URLSearchParams` is lenient and must not be used. -> `net.js`.
+- `Base64` decoder is strict (BasicAuthentication error path). -> `Base64.js`.
+- Jackson `readTree` (`data` parameter, SRV-0098) accepts trailing content after the first JSON value and keeps last duplicate key; `JSON.parse` rejects trailing content. -> parse the first value (scan its end, then `JSON.parse` of that slice) to keep 200 vs 400 decisions equal.
 
-## Dates and time
-- `java.time` / `SimpleDateFormat` / `Calendar` vs JS `Date`: time zone, DST, pattern letters (`yyyy` vs `YYYY`, `SSS`), month 0/1-based, locale month names. -> Helper `datetime.js` using a library with IANA zones; patterns translated explicitly and covered by fixtures.
-- Default `TimeZone` and `Locale` are pinned in the oracle environment and in the port.
+## S7 Dates and clock (was P7)
+- Current time only from `clock.js` (D-018; date filters DE-0113/0115, EN-0102/0103, FR-0061/0062, CORE-0181/0182). "Today" is computed in TZ Europe/Vienna.
+- `Calendar` with `setLenient(false)`: invalid dates throw at `getTime()`; week data per locale (first day/minimal days: de Monday/4, en_US Sunday/1, fr Monday/4). -> `datetime.js` (minimal GregorianCalendar for the date filters).
+- Day/month names in date filters come from LT's own DateFilterHelper tables, not from the JDK; no `Intl` names.
 
-## Randomness and time
-- Seeded `java.util.Random` produces a defined sequence. -> Helper `JavaRandom` with the identical LCG (48-bit, BigInt) if seeds are used.
-- Unseeded randomness and current time: not reproducible, verify structure only and document in INVENTORY.
+## S8 Exceptions and messages that reach output (was P8)
+- `Throwable.toString()` = FQCN or `FQCN: message`; `new RuntimeException(cause)` message = `cause.toString()`; `ExecutionException(cause)` likewise. These texts appear in server 500 bodies (`Error: Internal Error: ...`, SRV-0075/0076/0139) and CLI errors. -> `errors.js` constructors; never build such messages by hand.
+- `ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1` (CLI `--level` without value, `ruleValues` without `:`), `Enum.valueOf` text `No enum constant <fqcn>.<name>`, `Objects.requireNonNull` messages. -> explicit throws with JDK text where reachable.
+- Uncaught CLI exception: first line `Exception in thread "main" <toString>` and `Caused by:` lines are compared; frames are free.
+- NPE: where Java output shows an NPE text (fixture), throw `NullPointerException` with that text; elsewhere free.
 
-## Concurrency
-- Threads, `ExecutorService`, `synchronized`, timers -> async/await or worker_threads. Observable ordering (output, file writes) must stay identical; document the mapping in ARCHITECTURE.md.
+## S9 Concurrency-derived ordering (was P11/P13 parts)
+- MultiThreadedJLanguageTool: match order = rule index, then sentence order, then stable `fromPos` sort in filters; sequential port preserves it. Optional parallelism must re-merge in this order.
+- Server: per-request results never depend on other requests; caches only return results equal to a fresh check.
+- `allowIncompleteResults` partial results are timing dependent in Java: fixtures compare structure only.
+- Language detection for out-of-scope languages: `InternalLanguage` (short code only, never registered) for CommonWordsDetector es/ca/pt; full optimaize profile set loaded as in the Java distribution so confidences are equal (DEV-006 filter on the winner).
 
-## Project-specific rules
-LanguageTool traps found in the wave-1 inventories and sources (core, cli, server, de, en, fr). Format: trap -> rule -> helper (paths relative to `src/lib/java/` unless stated). "oracle-verified" = probed against JDK 17.0.20.1 on 2026-10-13. Every helper is covered by `probe` fixtures (ORACLE.md).
+## S10 Environment (was P12)
+- Default locale en_US, `file.encoding` UTF-8, `line.separator` `\n`; extra system properties (`monitorActiveRules`, `lt.default.port`, `enableMLSuggestionsOrdering`) from env `LTJS_JAVA_OPTS` (`-Dk=v`). -> `System.js` (small).
+- `LT_TEST_ONLY_*` env read once at TextChecker init (SRV-0144).
 
-### P1 Unicode version and character data
-- JDK 17 implements Unicode 13.0; Node 24 (ICU) implements Unicode 16. `\p{...}` in JS regexes, `String.prototype.toLowerCase/toUpperCase`, `normalize` and `Intl` therefore differ for code points assigned or changed after 13.0. -> All character predicates and case mappings come from tables dumped from JDK 17 by the oracle (`Character.getType`, `isLetter`, `isLetterOrDigit`, `isAlphabetic`, `isWhitespace`, `isSpaceChar`, `isUpperCase`, `isLowerCase`, `isTitleCase`, `toUpperCase/toLowerCase/toTitleCase(int)`, `String.toUpperCase/toLowerCase` special casing, `Character.UnicodeScript.of`). -> `Character.js`, `unicode/*.json` (generated by `scripts/gen-unicode-tables.mjs`).
-- Never call `str.toLowerCase()/toUpperCase()` on JS strings in ported code. -> `strings.js` `toLowerCase(s, locale = Locale.getDefault())`, `toUpperCase(...)` (en_US default, D-018; `tr`/`az`/`lt` rules implemented for completeness). Typical sites: EN-0043..0048 variant maps, AbstractSimpleReplaceRule2, SpellingCheckRule#isIgnoredNoCase (language Locale), MorfologikSpeller convert-case (CORE-0376), MultitokenSpellerFilter (CORE-0415), OldSpellingRule (DE-0078).
-- `Character.toUpperCase(char)` is the simple 1:1 mapping (`'ß'` stays `'ß'`), `String.toUpperCase()` uses full mapping (`"ß"` -> `"SS"`, `"ŉ"` -> `"ʼN"`). -> port exactly which one the Java line uses; `Character.toUpperCase(cp)` vs `toUpperCase(str)`.
-- `Language#getLocale()` of `AmericanReplaceRule`, `BritishReplaceRule`, `NewZealandReplaceRule` (EN-0050..0052) returns `new Locale("en-US")` / `"en-GB"` / `"en-NZ"`: a Locale with the malformed single language `"en-us"` (country empty, `toString()` = `en-us`, `getLanguage()` = `en-us`, `getCountry()` = `""`), NOT `Locale.US`/`en_US`. The port must construct it through `new Locale("en-US")` (constructor semantics of `Locale.js`: lowercase language, no splitting at `-`) and must not parse it with `Locale.forLanguageTag`, `localeFromString` or any helper that would split it into en + US; any `toLowerCase(s, locale)`/`toUpperCase`/formatting that receives it uses the language rules of `"en-us"` (no special casing, so same as en) and must not look up en_US data (number formats, `DateFormat`, `Locale.equals(Locale.US)` is false). -> `Locale.js`.
-- `Locale` objects: `new Locale("en-US")` keeps the malformed language `"en-us"` (EN-0050..0052); `Locale.toString()` is `language_COUNTRY_variant`. -> `Locale.js` with JDK constructor normalisation (language lowercased, country uppercased, old ISO codes `iw/ji/in` kept as JDK 17 does).
-- `java.text.Normalizer` (StringTools.removeDiacritics/normalizeNFKC/NFC, CORE-0446). -> `Normalizer.js`: `String.prototype.normalize`, except that code points unassigned in Unicode 13 are passed through unchanged (JDK behaviour).
+## S11 Typed values (was P14/P15 parts)
+- A JS number is ambiguous between Java int/long/float/double: wherever the Java type decides output text (`StringBuilder.append`, concatenation, `String.valueOf`), call the typed variant (`appendDouble`, `appendFloat`, `javaFloatToString`, ...). Hashes that feed ordering use `typedHash` for non-int boxed numbers.
 
-### P2 Regex dialect (CORE-0360..0367)
-All `Pattern.compile`, `String.matches/split/replaceAll/replaceFirst`, XML `regexp="yes"`, `postag_regexp`, `<regexp>`, SRX rules, disambiguation, Java rules. -> `regex/Pattern.js` translator (ARCHITECTURE.md 13). Never write a JS regex literal for a Java pattern in ported code.
-- Possessive `*+ ++ ?+ {n,m}+` (>1000 in scope) and atomic `(?>...)`. -> emitted as `(?=(X))\k<_aN>`; synthetic groups invisible to `group(n)`/`groupCount()`.
-- Class set operations `[a-z&&[^aeiou]]`, nested classes `[a[bc]]`, union semantics; `&&` with empty operand. -> `v`-flag `--`/`&&` set syntax.
-- Unicode classes `\p{L}`, `\p{Lu}`, `\p{IsAlphabetic}`, `\p{IsPunctuation}`, `\p{InGreek}` (blocks), `\p{javaLowerCase}`, `\p{L}` etc. use Unicode 13 data (P1). POSIX classes `\p{Punct}`, `\p{Alpha}`, `\p{Lower}`, `\p{Upper}`, `\p{Alnum}`, `\p{Digit}`, `\p{Space}` are ASCII-only unless UNICODE_CHARACTER_CLASS (DE-0102: `\p{Punct}` = ``!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~``). -> explicit sets.
-- Predefined classes without UNICODE_CHARACTER_CLASS: `\w` = `[a-zA-Z_0-9]`, `\d` = `[0-9]`, `\s` = `[ \t\n\x0B\f\r]`, `\h` = `[ \t\xA0 ᠎ -   　]`, `\R` = `\r\n|[\n\x0B\f\r\x85  ]`; with UNICODE_CHARACTER_CLASS (RegexPatternRule, SRX: CORE-0366) they are Unicode-aware per `java.util.regex.CharPredicates`. JS `\s` (includes NBSP, U+FEFF) and `\w` are never emitted directly.
-- `\b`/`\B` in JDK 17 decide "word char" with `Character.isLetterOrDigit(ch) || ch == '_'` (plus non-spacing marks attached to a word char) even without UNICODE_CHARACTER_CLASS, i.e. it is NOT consistent with ASCII `\w` (fixed only in JDK 19). -> lookaround construction with the JDK 17 predicate; confirmed by the regex corpus fixture.
-- Line terminators: `.` excludes `\n \r \u0085    ` (without DOTALL); `$` (no MULTILINE) matches at end and before a final terminator (`\r\n` counts as one); `\Z` likewise; `\z` only at end; `^` without MULTILINE only at 0. With UNIX_LINES only `\n`. -> explicit sets/lookarounds. (Used e.g. by RuleMatchesAsJsonSerializer `.*/` sourceFile, CORE-0323.)
-- Inline flags anywhere in the pattern (`(?i)`, `(?u)`, `(?iu)`, `(?s)`, `(?m)`, `(?x)`, `(?-i)`, scoped `(?i:...)`) apply from that point to the end of the enclosing group (DE-0090: `wer|(?i)alle[nr]?|...` keeps `wer` case-sensitive). -> translator flag state; no JS `i/m/s` flags are ever used.
-- Case-insensitivity: CASE_INSENSITIVE alone folds ASCII only; with UNICODE_CASE each char matches if `toUpperCase` or `toLowerCase` (JDK 17 simple mappings) are equal. JS `i`/`iu` (simple case folding) differs for e.g. `İ`/`ı`/`i`/`I`, `ſ`, U+212A Kelvin, `ẞ`/`ß`, Cherokee, Greek final sigma. Token regexps: CASE_INSENSITIVE|UNICODE_CASE unless `case_sensitive="yes"` (CORE-0366); RegexPatternRule adds UNICODE_CHARACTER_CLASS. -> case expansion into explicit sets from JDK tables.
-- `matches()` = whole input, `lookingAt()` = anchored prefix, `find()` = search; `String.matches` is `matches()`; `Pattern.matches(re, s)` likewise. Token regex matching in StringMatcher uses `matches()` (CORE-0365). -> `Matcher.matches/lookingAt/find`.
-- Escapes inside Java pattern text: `\uXXXX`, `\x{h...}`, `\xhh`, `\0ooo`, `\cX`, `\e`, `\a`, `\Q...\E`, `Pattern.quote`; numeric back-reference `\11` means group 11 only if it exists, else `\1` followed by `1`. -> translator.
-- Replacement strings (`replaceAll`, `replaceFirst`, `Matcher.appendReplacement`, `regexp_replace` in `<match>`): `$n`, `${name}`, `\$`, `\\`; `$` followed by a non-digit -> `IllegalArgumentException("Illegal group reference")`, missing group -> `IndexOutOfBoundsException("No group n")`; JS `$&`, `$'`, `` $` `` have no special meaning in Java. -> `regex/Matcher.js` `javaReplacement`.
-- Java's StackOverflowError on deep backtracking (CORE-0086) does not occur at the same inputs in V8 (open question 2 in ARCHITECTURE.md).
-- StringMatcher fast paths (CORE-0390): set membership with `String.CASE_INSENSITIVE_ORDER` (`Arrays.sort`/`binarySearch`) and `Character.getType` predicates must stay result-identical to full Java matching. -> `strings.js` `CASE_INSENSITIVE_ORDER` (per-char `toUpperCase` then `toLowerCase`, surrogate-aware as JDK 17 `StringUTF16.compareToCI`), `Character.getType`.
-- Case-insensitive back-references: `(?i)(a)\1` matches `"aA"` in Java (back-reference compared with the active case rules: ASCII fold, or `toUpperCase`/`toLowerCase` equality with UNICODE_CASE). The translator never uses the JS `i` flag, so a plain `\k<n>` would not match. -> A back-reference inside a case-insensitive scope is a compile-time `UnsupportedRegexError` (loud, never approximated). The `regex-harvest` report (X-REGEX) lists every in-scope pattern with such a back-reference; if the list is non-empty, the architect adds a pattern-specific rewrite or a dedicated matcher here before the pattern's step is ported.
-- Empty matches in `find()`/`replaceAll`/`split`/`results`: Java's `Matcher.find` continues after an empty match at `end + 1` UTF-16 unit (also inside a surrogate pair), while JS `matchAll`/`replaceAll` with the `v` flag advance by one code point and V8 steps `lastIndex` back to the pair start in unicode mode. -> `regex/Matcher.js` owns the scan loop (never `matchAll`/`replace` with a global RegExp): `from = end + (empty ? 1 : 0)` in code units; if V8 returns a match starting before `from` (step-back) the attempt is repeated with `from + 1` bookkeeping so that the lone low surrogate is seen as in Java; covered by X-REGEX edge strings with surrogates. `String.split`/`replaceAll` build on the same loop.
-- Syntax errors that are observable (startup config regexes: `abTestClients`, `trustedSources`, SRV-0191/0047) -> `PatternSyntaxException` with JDK text `<description> near index <n>\n<pattern>\n<spaces>^`.
-
-### P3 Strings, splitting, tokenizing
-- `String.trim()` removes every leading/trailing char with code `<= U+0020` (all C0 controls and space; NOT U+00A0, U+2028, U+FEFF); JS `trim()` removes Unicode whitespace incl. NBSP/BOM/U+2028 and keeps C0 controls such as U+0001. -> `strings.js` `javaTrim(s)` at every `.trim()` site. Sites: JSON "sentence" CORE-0323, CORE-0084, CachingWordListLoader, many loaders. `isBlank()`/`strip()` use `Character.isWhitespace` (NBSP is not whitespace there). -> `strings.js` `javaTrim`, `javaIsBlank`, `javaStrip`. Never JS `trim()`, `trimStart()`, `\s`.
-- `String.split(regex)` edge cases (all through `javaSplit(str, regex, limit)`, never JS `split`): `"".split(",")` = `[""]` (one element, not empty; the "no match" rule returns the input); `"a,,b".split(",")` = `["a","","b"]`; `"a,b,,".split(",")` = `["a","b"]` (all trailing empties removed, limit 0); `",".split(",")` = `[]` (every element empty -> length 0, unlike `"".split`); `",a".split(",")` = `["","a"]` (leading empty kept for a positive-width match at 0); `"abc".split("")` = `["a","b","c"]` (zero-width match at 0 never yields a leading empty string; JS `"".split("")` = `[]` vs Java `[""]`); limit > 0 keeps trailing empties and caps the count, limit < 0 keeps trailing empties. Fast path for a single non-regex-meta char (`split(",")`, `split(" ")`) has the same results. Also: `String.split(regex)` drops trailing empty strings, keeps a leading empty string only for a positive-width match at 0; `"".split(",")` = `[""]` (CLI-0018/0019, SRV-0127: `enabledRules=` -> one empty id); `"a,,b"` keeps the inner empty; limit semantics (0, negative, positive). -> `javaSplit(str, regex, limit)`.
-- `String.replace(CharSequence, CharSequence)` is literal and replaces all; `replaceAll`/`replaceFirst`/`matches`/`split` take a regex. The trap runs both ways: a ported `s.replace("#.*", "")` must stay a literal replacement (no-op unless the text contains the characters `#.*`), and `s.replaceAll(".", "x")` must never become a literal replacement. DE-0031 `line.replace("#.*", "")` is a no-op in Java because `CachingWordListLoader` already strips comments (lang-de.md R2 correction); the port reproduces the no-op, it does not 'fix' it. Porters decide per call by the Java method name, never by looking at the pattern text. -> `javaReplace(s, target, replacement)` (literal, all occurrences, `''` target inserts between all chars as Java does) vs `javaReplaceAll(s, regex, repl)` / `javaReplaceFirst` (regex translator + Java replacement syntax); JS `String.prototype.replace/replaceAll` forbidden in ported code (lint rule).
-- `java.util.StringTokenizer(text, delims, returnDelims=true)` (WordTokenizer CORE-0202, AnnotatedTextBuilder CORE-0100, EnglishWordTokenizer, FrenchWordTokenizer): delimiter test per UTF-16 char, switching to code points only when the delimiter string contains surrogates. -> `StringTokenizer.js`.
-- Iteration: Java loops over `charAt(i)` (UTF-16 units) in tokenizers, StringTools, spellers; `codePoints()` only where Java uses it. -> port the exact loop form; never `for...of`, spread or `Array.from(str)`.
-- `Character.isWhitespace` (excludes NBSP U+00A0, U+2007, U+202F), `Character.isSpaceChar` (includes them, excludes `\t\n`), `StringTools.isWhitespace` (CORE-0444: U+FEFF true, U+0001/U+0002 false, single U+200B/U+00A0/U+202F true) are three different predicates. -> `Character.js`, ported `StringTools`.
-- `String.equalsIgnoreCase` / `regionMatches(true, ...)` (OldSpellingRule exceptions DE-0078, many rules): per char, `toUpperCase` then `toLowerCase` comparison, surrogate-aware. -> `strings.js`.
-- `String.compareTo`, `Collections.sort(List<String>)`, `TreeSet<String>`, `--list` sorting (CLI-0006), unknown words (CLI-0050), language code lists (CORE-0022): UTF-16 code-unit order. -> `javaCompare`; never `localeCompare` or default `sort()`.
-- String concatenation with non-strings: `"" + 1.5f`, `"" + 2.0`, `"" + 'c'`, `"" + null` (prints `null`), `"" + list` (`[a, b]`), `"" + map` (`{k=v}`), `"" + enum` (`name()` unless overridden, e.g. ITSIssueType). -> `toString.js` `javaToString(value, javaType)`; porters pass the Java static type for numbers (float vs double vs int matters).
-- `StringBuilder`/`substring`/`charAt` with out-of-range indexes throw `StringIndexOutOfBoundsException` ("begin 0, end 5, length 3", "index 3, length 3" in JDK 17); JS clamps or returns `""`. -> checked helpers at sites where invalid indexes are reachable (filters with `getPosition`, CORE-0158).
-
-### P4 Numbers and formatting
-- `Double.toString`/`Float.toString` in JDK 17 use the old FloatingDecimal algorithm, which is not always the shortest representation (oracle-verified: `Double.toString(1.0E23)` = `9.999999999999999E22`, `Double.toString(5.684341886080802E-14)` = `5.6843418860808015E-14`, `Float.toString(1.0E-5f)` = `1.0E-5`). Sites: JSON floats via Jackson (confidence, detectedLanguage confidence `0.9999955`, rule confidence), SRV-0075 timeout seconds (`ms / 1000.0f`), SRV-0154 prewarming seconds (`/1000.0` double), CORE-0336 #4/#6 error-rate logs, CORE-0413 `String.format("%s", float)`, DefaultLanguageIdentifier rates. -> `toString.js` `javaDoubleToString`, `javaFloatToString` (port of JDK 17 `jdk.internal.math.FloatingDecimal`).
-- `String.format("%.Nf")` rounds HALF_UP on the FloatingDecimal digit string, not on the exact binary value (oracle-verified: `%.1f` of 0.05 -> `0.1`, of 0.25 -> `0.3`; JS `(0.15).toFixed(1)` = `0.1` but Java gives `0.2`). A float argument is widened to double first (CLI-0048 `sentences/sec`, `%.1f` with `Locale.ENGLISH`). `%f` default 6 digits; `%d` with grouping flags; `%s` on float uses `Float.toString`; NaN -> `NaN`, infinities -> `Infinity`. Locale decides separators (`Locale.GERMANY` `1234,50`). -> `Formatter.js` `javaFormat(locale, fmt, ...args)`; locale argument mandatory (default-locale calls pass `Locale.getDefault()` = en_US).
-- `DecimalFormat`/`NumberFormat.getNumberInstance(Locale)` with `setMaximumFractionDigits(2)` and `RoundingMode.HALF_UP` (DE-0091 `Locale.GERMANY`, EN-0075 `Locale.ENGLISH`, EN-0076 `Locale.UK`, EN-0077 `Locale.US`) round on the exact binary value of the double (JDK 8+), unlike `Formatter`; grouping/decimal symbols from JDK 17 CLDR 39 data. -> `DecimalFormat.js` with `locale-data/{en,de,fr}.json` (dumped from JDK 17).
-- `MessageFormat` (Tools.i18n CORE-0043, MessagesBundle texts): `''` = literal quote, `'...'` quoted text, `{0}` with a Number -> `NumberFormat.getInstance(en_US)` (`#,##0.###`, HALF_EVEN, grouping), with a Date -> default-locale short date/time; `{0,number,integer}` etc. -> `MessageFormat.js`.
-- Integer parsing: `Integer.parseInt`/`Long.parseLong` accept a leading `+`/`-` and any Unicode decimal digits (`Character.digit`, e.g. Arabic-Indic), no whitespace (config values with trailing space throw, SRV-0030); messages `For input string: "<s>"` (JDK 17, radix 10), `Cannot parse null string: null`. `Integer.valueOf` same. `Double.parseDouble`/`Float.parseFloat` trim whitespace `<= U+0020`, accept `NaN`, `Infinity`, hex floats, `d`/`f` suffixes. `Boolean.parseBoolean` = equalsIgnoreCase "true"; `Boolean.valueOf(String)` same. -> `numbers.js`.
-- int vs float compound assignment: `int x += float` computes in float then truncates toward zero (RequestLimiter textLevelOnly weight 0.1, SRV-0085); `long / float` is float (SRV-0075); `(int)(d + 0.5)` truncation (DE-0049); `Math.round(double)` returns long = `floor(x + 0.5)` with Java's exact handling; `int` overflow wraps (SRV-0073 `maxTextHardLength * 10`). -> `int.js`, `float.js` (`Math.fround` after each float op).
-- Long values beyond 2^53: textSessionId = first 8 bytes of SHA-256 as signed big-endian long (SRV-0118). -> `long.js` (BigInt), printed via `Long.toString`.
-- `StrictMath.exp/log` (OpenNLP GIS eval EN-0030, BeamSearch EN-0034, `java.util.Random.nextGaussian`) -> `fdlibm.js` (D-029). `Math.log/exp/pow/log10` (HotSpot intrinsics, not guaranteed fdlibm) at observable sites (AbstractTextToNumberFilter `Math.pow(10, n)` CORE-0413, ReadabilityRule/GermanReadabilityRule formulas) -> `JavaMath.js`; each site has a probe fixture with its real argument range.
-- Double arithmetic must keep Java evaluation order and types (Flesch formulas DE-0059, EN ReadabilityRule; optimaize probabilities; CleanOverlappingFilter priorities `Integer.MIN_VALUE + 10000` int math). -> no algebraic simplification; `int.js` for int expressions.
-- Indriya unit conversion (CORE-0278, DE-0091, EN-0075..0077): converters compute with exact rational arithmetic, then `doubleValue()`. -> `src/lib/indriya/` with BigInt rationals, not plain double multiplication.
-
-### P5 Collections and iteration order
-Observable Java hash-order sites (use the order helper; elsewhere JS `Map`/`Set` is allowed after confirming order is unobservable):
-- `Languages.getLongCodeToLangMapping()` HashMap<String, Language> -> `/v2/languages` extra entries, language-code lists (CORE-0023, SRV-0092). -> `collections/JavaHashMap.js`.
-- CLI "No rules are active..." message: enabled categories from `HashSet<CategoryId>` (`CategoryId.hashCode` = `String.hashCode`) (CLI-0039). -> `JavaHashSet.js`.
-- `java.util.Properties` is a `Hashtable`: `keySet()` order = Hashtable bucket order (iterates from the highest bucket index down; different from HashMap) (SRV-0030 unknown-key warnings SRV-0058, dynamic languages SRV-0059). -> `JavaHashtable.js` inside `Properties.js`.
-- Request parameters `HashMap<String,String>` printed in log lines (`requestParams: {...}`, SRV-0072/0100/0174). -> `JavaHashMap.js` + `AbstractMap.toString` format.
-- Unifier `HashMap<String, Set<String>>` equivalence maps (CORE-0383); `JLanguageTool#getCategories()` HashMap; `MultiThreadedJLanguageTool` `HashMap<Rule, BitSet>` (lookup only, order irrelevant). -> per site.
-- `ConcurrentHashMap` iteration (PatternRuleMatcher monitorActiveRules SRV-0175; only via JMX, later) -> plain Map.
-- `Set.of`/`Map.of` iteration order is randomized per JVM run (SALT): nondeterministic in Java itself; port uses insertion order; fixtures must not depend on such order.
-- fastutil `Object2ObjectOpenHashMap`/`ObjectOpenHashSet` (GermanTagger DE-0031, spellers): iteration order differs from HashMap; all wave-1 sites are lookup-only -> JS Map/Set; any new iteration site needs `collections/FastutilOpenHashMap.js`.
-- `TreeSet<String>(String.CASE_INSENSITIVE_ORDER)` (GermanChunker) collapses case variants (first inserted wins). -> `JavaTreeSet.js` with comparator.
-- `LinkedHashMap`/`LinkedHashSet` = JS insertion order (ADDITIONAL_SUGGESTIONS DE-0101, extendedSentenceRanges CORE-0326, antipattern report CLI-0047, RuleMatch suggestion dedup CORE-0110): plain `Map`/`Set`, but re-`put` of an existing key keeps its position in both (same).
-- `java.util.PriorityQueue` order (OpenNLP BeamSearch EN-0034: heap order, not stable) -> `collections/PriorityQueue.js` (port of the JDK binary heap: siftUp/siftDown, `poll`, iteration = array order).
-- Stable sorts: `Collections.sort`/`List.sort`/`Arrays.sort(Object[])` are stable (TimSort); SameRuleGroupFilter / CleanOverlappingFilter rely on stability for equal `fromPos`. -> JS `Array.prototype.sort` with explicit comparator (stable); comparator must return `Integer.compare`-style values, never booleans.
-- `toString` of collections: `[a, b]` (`AbstractCollection`), `{k=v, k2=v2}` (`AbstractMap`), `Arrays.toString`, `List.of(...).toString()` (CheckPostagsInSuggestionFilter CORE-0404, CLI-0039, CLI-0050, log catalogues). -> `toString.js`.
-- Shared static caches with mutable state: `MultiWordChunker.getInstance(...)` caches per (file, flags, defaultTag) JVM-wide; setters mutate the shared instance (DE-0028/EN-0025/FR-0024 `/spelling_global.txt` instance shared by de and fr). -> static cache in the ported class, same keys; in the server each worker has its own copy (equivalent: same setter calls in same order).
-
-### P6 I/O, charsets, files
-- `java.util.Scanner.nextLine()` treats `\r\n`, `\n`, `\r`, ` `, ` `, `\u0085` as line separators (ManualSynthesizer, SynthesizerTools, SimpleReplaceDataLoader, WrongWordInContextRule, AbstractRepeatedWordsRule, CommonWordsDetector, MultiKeyProperties, HunspellRule ignore file, AvsAnData, CompoundCheckFilter). `BufferedReader.readLine()` only `\n`, `\r`, `\r\n` (CLI-0057, loaders using readers). -> `Scanner.js`, `io.js` `BufferedReader`.
-- `Scanner(stream)` and `new InputStreamReader(stream)` without charset use the default charset (UTF-8, D-018); malformed bytes become U+FFFD (Java decoder granularity). `Files.readAllLines` throws `MalformedInputException` instead (ConfidenceMapLoader SRV-0037, BeoLingusTranslator EN-0120). -> `charset.js` (`decodeUtf8Java`), `io.js` `Files.readAllLines`.
-- `java.util.Properties.load(InputStream)` = ISO-8859-1 with `\uXXXX`, `\` continuation, `#`/`!` comments, `=`/`:`/whitespace separators, leading whitespace of values stripped, trailing kept (server config SRV-0030, morfologik `.info` CORE-0372). `ResourceBundle` (MessagesBundle*.properties) reads UTF-8 and falls back to ISO-8859-1 on malformed input (JDK 9+ PropertyResourceBundle); MessagesBundle_de/fr are ASCII with `\uXXXX` escapes (DE-0015, FR-0014). -> `Properties.js`, `ResourceBundle.js`.
-- `ResourceBundle.getBundle` candidate list and default-locale fallback (en_US) (CORE-0042). -> `ResourceBundle.js`.
-- `File.listFiles()` returns readdir order (unsorted) (CLI-0060). Node `fs.readdirSync` returns names sorted (libuv scandir with strcmp). -> `io/File.js` uses `fs.opendirSync` iteration.
-- `File.getAbsolutePath()` of a relative path = `user.dir + "/" + path` without normalising `.`/`..` (CLI "Working on <file>", recursive mode); Node `path.resolve` normalises. -> `io/File.js`.
-- `System.out.println` writes `\n` (Linux); `print` of the JSON document adds nothing (CLI-0051); `printf` uses `Formatter`. -> `System.js`.
-- CLI input charset/BOM handling (CLI-0043: BOMInputStream for UTF-8/16/32 when `-c` not given). -> `src/lib/commons/io/BOMInputStream.js`.
-- `java.util.Base64.getDecoder()` is strict (illegal char -> `IllegalArgumentException("Illegal base64 character 2d")`), Node `Buffer.from(s, 'base64')` is lenient (BasicAuthentication SRV-0106). -> `Base64.js`.
-- `URLDecoder.decode(s, UTF_8)`: `+` -> space, invalid escapes -> `IllegalArgumentException("URLDecoder: Illegal hex characters in escape (%) pattern - Error at index 0 in: \"ZZ\"")` or `"URLDecoder: Incomplete trailing escape (%) pattern"`; malformed UTF-8 -> U+FFFD (SRV-0072). `java.net.URI` raw vs decoded path/query (`getRawPath`, `getPath`, `getRawQuery`; serverURL relativize SRV-0071). -> `net.js`.
-- JDK `Headers`: request and response header names normalised to first char upper-case, rest lower-case; lookups normalise the key (SRV-0070 `X-Request-ID`, SRV-0082 `Referer`/`Origin`). -> `src/lib/jdkhttp/Headers.js`.
-
-### P7 Dates, time, clock
-- Current time (FutureDateFilter, NewYearDateFilter, RecentYearFilter, YMD*/DMY* filters, AbstractDateCheckFilter; DE-0113/0115, EN-0102/0103, FR-0061/0062; log timestamps; HTTP Date; request durations). -> `clock.js` only (D-018 fixed clock in fixtures).
-- `Calendar.getInstance(locale)`: default time zone Europe/Vienna, locale-specific first day of week / minimal days (de: Monday/4, en_US: Sunday/1, fr: Monday/4); date filters call `setLenient(false)`, so invalid dates throw `IllegalArgumentException` (field name as message, e.g. `"MONTH"`, `"DAY_OF_MONTH"`) at `getTime()`/`get()` (AbstractDateCheckFilter catches IllegalArgumentException, CORE-0336 #23). -> `datetime.js` `GregorianCalendar` (lenient and non-lenient computeTime ported).
-- Month/day names and `SimpleDateFormat` symbols from JDK 17 CLDR 39, never `Intl` (CLDR 46 differs in abbreviations). -> `locale-data/*.json` dumped by the oracle.
-- `SimpleDateFormat` patterns in use: `yyyy-MM-dd HH:mm:ss ZZ` in UTC (ServerTools.print SRV-0088: `+0000`), `yyyy-MM-dd HH:mm:ss Z` (build date CORE-0010), logback `yyyy-MM-dd HH:mm:ss.SSS ZZZZ` (`GMT+02:00`, SRV-0089), HTTP `Date` (RFC 1123, `EEE, dd MMM yyyy HH:mm:ss zzz` with Locale.US, GMT). -> `datetime.js` `SimpleDateFormat`.
-
-### P8 Exceptions and messages
-- JDK 17 helpful NullPointerException messages (JEP 358, on by default), e.g. `Cannot invoke "String.split(String)" because ... is null`, surface in server 500 bodies (`Error: Internal Error: <msg>`, SRV-0075/0195 batch mode without `words`). -> at every reachable NPE site the porter throws `new NullPointerException(<exact JDK text from the oracle fixture>)` explicitly before the dereference.
-- `ArrayIndexOutOfBoundsException` texts `Index 1 out of bounds for length 1` (CLI-0004 `--level` without value, SRV-0135 `ruleValues` without `:`, SRV-0181) and uncaught stack traces. -> explicit throw with JDK text.
-- `Enum.valueOf` unknown name -> `IllegalArgumentException("No enum constant <fqcn>.<name>")` (CORE-0142 tags/tone tags, CORE-0191 disambiguation actions upper-cased with Locale.ENGLISH). -> `JavaEnum.valueOf`.
-- `new RuntimeException(cause)` message = `cause.toString()` (`java.lang.IllegalArgumentException: ...` prefix in server 500 texts, SRV-0076); `Throwable.toString()` = FQCN + `: ` + message, or FQCN only when message is null; LT exceptions use their FQCN (`org.languagetool.server.AuthException: ...`). -> `errors.js`.
-- Uncaught exception output `Exception in thread "main" <toString>` + frames + `Caused by:` (CLI-0004, CLI-0042, CLI-0058, SRV-0010, SRV-0181...). -> launcher handler (ARCHITECTURE.md 11).
-- `Objects.requireNonNull(x, "language cannot be null")` -> NPE with that message (CORE-0050). -> `Objects.js`.
-
-### P9 JSON (Jackson 2.18)
-- Generator: compact; escapes `"` and `\` with backslash, `\b \f \n \r \t` short forms, other control chars `< 0x20` as `\u00XX` with UPPERCASE hex (oracle-verified `\u001F`, `\u000B`; inventory CORE-0007 "lowercase" is wrong), `/`, DEL, U+2028/U+2029 and all non-ASCII unescaped; `writeNumber(float)` -> `Float.toString`, `writeNumber(double)` -> `Double.toString` (JDK 17 FloatingDecimal); `writeStringField(k, null)` -> `null`; duplicate keys written as given (SRV-0096 `defaultValue` x3). -> `src/lib/jackson/JsonGenerator.js`.
-- Parser (`ObjectMapper.readTree`, SRV-0098/0099): trailing content after the root value ignored, duplicate keys last wins, numbers keep int/long/BigInteger/double node types, `asText()` of numbers uses Java toString (`1.0E10`, `1.5`), node `toString()` is compact JSON with Jackson escaping. -> `src/lib/jackson/ObjectMapper.js`, `JsonNode.js`.
-
-### P10 Logging
-- SLF4J `{}` placeholders: extra args ignored, missing args leave `{}`, `\\{}` escape, a trailing Throwable beyond the placeholders is printed as stack trace; a Throwable consumed by a placeholder is rendered with `toString()` (CORE-0336 "oracle-verify" lines). -> `src/lib/slf4j/MessageFormatter.js`.
-- logback `%logger{36}` abbreviation (CLI-0072, e.g. `o.l.l.i.DefaultLanguageIdentifier`), `%-5level`, server `%d{yyyy-MM-dd HH:mm:ss.SSS ZZZZ}` in the JVM default zone. -> `src/lib/logback/`.
-
-### P11 Concurrency-derived ordering
-- `MultiThreadedJLanguageTool` (CLI): match order = rule index (TreeMap) then sentence order inside a rule, then stable `fromPos` sorting in filters; sequential port preserves it (ARCHITECTURE.md 6.1). Never reorder rule loops.
-- Once-per-JVM side effects (static init logs, `noLmWarningPrinted`, fastText WARN once per identifier creation, `getInstance` singletons): must happen exactly once per process; in server workers the effect is gated by `jvmOnce` (SharedArrayBuffer + `Atomics.compareExchange`, ARCHITECTURE.md 6.2).
-- Listener-driven partial results (`allowIncompleteResults`) are timing dependent in Java; fixtures only assert structure for those cases.
-
-### P12 System properties and environment
-- `System.getProperty`: values fixed per D-018 (`user.language=en`, `user.country=US`, `file.encoding=UTF-8`, `line.separator=\n`, `user.dir=process.cwd()`, `user.name`, `java.io.tmpdir=os.tmpdir()`); extra properties (`monitorActiveRules` SRV-0175, `lt.default.port` SRV-0168, `enableMLSuggestionsOrdering` CORE-0233) are read from env `LTJS_JAVA_OPTS` (`-Dkey=value` tokens), the port's equivalent of JVM `-D` flags. -> `System.js`.
-- `System.getenv("LT_TEST_ONLY_*")` (SRV-0144) read once at TextChecker class init. -> lazy static.
-- `Runtime.getRuntime().availableProcessors()` -> `os.availableParallelism()` (MultiThreadedJLanguageTool default size; not observable in output).
-
-### P13 Language set, concurrency and output traps found in the architecture review
-- Out-of-scope languages (D-035, DEV-006): Java-side lookups of languages that the port does not contain must not throw at class init. `Languages.getLanguageForShortCode` throws `IllegalArgumentException` for unknown codes; `CommonWordsDetector` calls it in static fields for `es`, `ca`, `pt` (lines 38-40). -> `InternalLanguage` (short-code-only descriptor, `equals`/`hashCode` = `Language`'s, by `getShortCodeWithCountryAndVariant()`), never registered. Results are consumed only as `getShortCode()` keys (DefaultLanguageIdentifier.java:272-285, SimpleLanguageIdentifier.java:129-142). `HashMap<Language,Integer>` (result of `getKnownWordsPerLanguage`) and the `scores` string map use `JavaHashMap`; their iteration order matches Java for in-scope-only content (tie-breaking in `getHighestScoringResult`); entries of out-of-scope languages are absent, which is the DEV-006 difference.
-- `Languages.get()` order and `/v2/languages`: Java order of the full distribution, filtered to the registered set (order table from fixture X-LANGUAGES). Never sort.
-- `Thread.interrupted()` is read-and-clear: the cancel flag is read with `Atomics.exchange(flag, 0, 0)`, cleared at task start. `InterruptibleCharSequence` throws `new RuntimeException(new InterruptedException())` (message `java.lang.InterruptedException`). Helper: `src/core/tools/InterruptibleCharSequence.js`.
-- `ExecutionException`: message is `cause.toString()` (`new ExecutionException(cause)` -> `Throwable(Throwable cause)` constructor semantics), `RuntimeException(ExecutionException)` message is `java.util.concurrent.ExecutionException: <cause.toString()>`. -> `errors.js` constructors `(cause)` only; never build messages by hand.
-- `invokeAll` semantics (MultiThreadedJLanguageTool): all callables run to completion before any `Future.get()`; side effects of the loop body (`printSentenceInfo`) happen in future order. -> run-all-then-iterate (ARCHITECTURE.md 6.1).
-- `ThreadPoolExecutor` queue kinds: size 0 = unbounded `LinkedBlockingQueue`, <0 = `SynchronousQueue`, >0 = fair bounded `ArrayBlockingQueue`; cancelled queued tasks still count in `getQueue().size()`. `maxWorkQueueSize` only gates in `LanguageToolHttpHandler` (`workQueue.size() > max`). -> `LtThreadPoolExecutor.js`.
-- Multi-thread stdout/stderr: single `fs.writeSync` per line from any thread, never `process.stdout.write` (asynchronous for pipes in worker threads, which are piped through the main thread). -> `System.js`.
-- Process signals: JVM exits 143 on SIGTERM and 130 on SIGINT after shutdown hooks; Node dies by signal unless handlers are installed (bin launchers).
-- Wall clock vs monotonic across workers: `currentTimeMillis`/`nanoTime` share one origin passed at worker start (`clock.js`); `performance.now()`/`performance.timeOrigin` are per-thread and must not be used.
-
-### P14 Boxed number equality (from S02/S03 review)
-- Trap: JS number is ambiguous between Java Integer/Long/Double. -> Rule: Objects.equals/hash/toString on numbers use Object.is semantics and print -0 as "-0.0" (Java ints never produce -0, so this matches both). Where a Java Double holds an integral value and is printed, the caller uses doubleToString explicitly. -> Helper: Objects.js (single shared valueOf/equals/hashCode).
-- P14b: Java `new X((Throwable) null)` is ported as `new X(null, null)`; `new X(null)` means `(String) null`. (S02 review)
-
-### P15 Typed overloads and NPE texts (from S06 review)
-- StringBuilder.append: choose the variant by the Java static type, never by value: `append` (String/Object/int), `appendLong` (BigInt), `appendDouble`, `appendFloat`, `appendChar`. `append(number)` accepts only safe integers (Java int); anything else throws TypeError. Same rule for any other JDK overload set (insert, valueOf, ...).
-- Hashing boxed numbers: Objects.hash/Arrays.hashCode on Java Double/Float/Long/Short values require typed wrappers (`typedHash`) — a plain JS number hashes as Integer.
-- JDK helpful NullPointerException texts depend on the JDK entry point (e.g. indexOf(String) -> `"String.coder()" because "str"`, indexOf(String,int) -> `field "value" because "tgtStr"`). Reproduce them per entry point in src/lib/java helpers; texts naming caller locals (e.g. `"s"`) are not reproducible and are only produced where they reach observable output (HTTP 500 bodies, CLI traces) — such sites get oracle fixtures.
-- Null receivers: helpers taking the receiver as first arg may throw TypeError for null; ported code where Java can call a method on null and the NPE is observable must check explicitly and throw the Java NPE.
+## Obsolete under D-044 (no longer binding)
+- P4 part: Jackson number text in JSON (`1.0E10`, FloatingDecimal in JSON) -> JSON content compared by value.
+- P5 part: Properties/Hashtable key order (only log warnings), `requestParams` map order in logs, `ConcurrentHashMap` order, `MultiThreadedJLanguageTool` `HashMap<Rule,BitSet>`.
+- P6 part: JDK `Headers` name casing -> Express is case-insensitive; response header casing not compared.
+- P7 part: `SimpleDateFormat` patterns for logs/HTTP `Date`/ServerTools timestamps, CLDR month names for logs.
+- P8 part: JDK helpful NPE texts at internal sites, stack frame format (DEV-003 moot), StackOverflow/OOM thresholds (DEV-004 moot).
+- P9: Jackson generator escapes/compact layout and parser node types (except S6 trailing-content rule).
+- P10: SLF4J/logback message formatting and layouts.
+- P11 part: `jvmOnce` once-per-JVM print gating.
+- P13 part: `Thread.interrupted()` read-and-clear details, ThreadPoolExecutor queue kinds and cancelled-task counting, `fs.writeSync` cross-thread line ordering, JVM signal exit codes 143/130, shared clock origin across workers.
+- P14/P15 part: boxed-number `Objects.equals` -0 printing, helpful NPE texts per JDK entry point.
+- General rules "System.exit flush order", "stdout/stderr buffering order": streams are compared separately by content.

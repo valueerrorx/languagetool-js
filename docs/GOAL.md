@@ -9,14 +9,11 @@ LanguageTool ist eine Grammatik-, Stil- und Rechtschreibprüfung. Sie arbeitet m
 ## Ziel-Plattform
 Express-Server auf Node.js (ESM), dazu die CLI. Keine GUI (D-002, D-004).
 
-## Parität bedeutet
-- Alle Funktionen, Optionen, Einstellungen und Dateiformate des Originals sind vorhanden.
-- Gleiche Eingabe ergibt gleiche Ausgabe: Text byte-genau (inkl. Whitespace, Zeilenenden, Zahlenformat), gleiche Dateien, gleiche Exit-Codes, gleiche Fehlermeldungen.
-- Dateien, die das Java-Tool erzeugt, kann der Port lesen, und umgekehrt.
-- Bugs und Eigenheiten des Originals werden mitportiert. Offensichtliche Bugs dürfen gefixt werden, aber nur nach Einzelfreigabe in docs/DEVIATIONS.md (D-007).
-- HTTP-API byte-genau, inklusive JSON-Key-Reihenfolge (D-006).
-- Keine neuen Features, keine "Verbesserungen", nichts weggelassen.
-- Alle bestehenden JUnit-Tests werden 1:1 portiert und sind grün.
+## Parität bedeutet (D-042..D-044)
+- Funktionaler Port, kein 1:1-Klassenport. Interne Umsetzung frei, npm-Libraries erwünscht, wenn die Ergebnisse gleich sind.
+- API- und CLI-Ergebnisse inhaltlich gleich wie Java: gleiche Matches, Offsets, Regel-IDs, Meldungen, Vorschläge in gleicher Reihenfolge, gleiche Felder. JSON-Formatierung, Zahlendarstellung, HTTP-Header, Logzeilen und Stacktraces sind egal.
+- Nicht schlechter: Qualität (Regel-Testsätze, Korpora) und Performance (Benchmark gegen Java).
+- Bugs des Originals bleiben, außer ich genehmige eine Abweichung (docs/DEVIATIONS.md).
 
 ## Bekannte Besonderheiten
 Referenz-JDK 17 (D-008). Binäre Wörterbücher (morfologik .dict, hunspell) werden als Daten übernommen. ngram/Lucene, fastText, ONNX/neuronale Modelle und Remote-Rules sind zurückgestellt (D-005).
@@ -28,7 +25,7 @@ Referenz-JDK 17 (D-008). Binäre Wörterbücher (morfologik .dict, hunspell) wer
 ## Abnahme
 - Jede ID in docs/INVENTORY.md hat Status `verified`.
 - `npm test`, `npm run lint` und `npm run parity` grün.
-- End-to-End-Differenzlauf Java vs. JS mit realen Szenarien ohne Unterschied.
+- End-to-End-Vergleich Java vs. JS (Regel-Beispielsätze, JUnit-Texte, Korpora) ohne inhaltlichen Unterschied, Benchmark erfüllt.
 - docs/DEVIATIONS.md enthält nur von mir genehmigte Einträge.
 - Unabhängiger Abschluss-Scan des Java-Codes findet kein fehlendes Feature.
 - nicht das code repository ist das ziel sondern die finale app  auch zu finden unter ../LanguageTool-6.9-SNAPSHOT/

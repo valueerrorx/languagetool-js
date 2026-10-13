@@ -1,19 +1,44 @@
 #!/usr/bin/env python3
-"""Checks docs/PLAN.md steps: every wave-1 todo ID in exactly one step. Usage (repo root): python3 docs/tools/plan_check.py"""
-import re,sys,collections
-pm=open('docs/PORT-MAP.md',encoding='utf8').read()
-sec=pm.split('## ID to class to step index')[1].split('\n## Class tables')[0]
-want=set(re.findall(r'^\| ([A-Z]+-\d{4}) \|',sec,flags=re.M))
-plan=open('docs/PLAN.md',encoding='utf8').read()
-cnt=collections.Counter(); sizes=[]
-for l in plan.split('\n'):
-    m=re.match(r'- \[[ x]\] (S\d+) (.*?) \| java: .*? \| js: .*? \| ids: (.*?) \| owner: (porter|oracle) \| est: (\d+) \| status: (\w+)$',l)
-    if l.startswith('- [') and re.match(r'- \[[ x]\] S\d+ ',l):
-        if not m: print('BAD LINE',l[:100]); continue
-        for i in re.findall(r'[A-Z]+-\d{4}',m.group(3)): cnt[i]+=1
-        sizes.append((int(m.group(5)),m.group(1),m.group(2)[:70],m.group(4)))
-got=set(cnt)
-print('steps',len(sizes),'covered %d/%d'%(len(got&want),len(want)))
-print('missing',sorted(want-got)); print('extra',sorted(got-want)); print('dups',[i for i,n in cnt.items() if n>1])
-if '-v' in sys.argv:
-    for s in sorted(sizes,reverse=True)[:15]: print(s)
+"""Checks docs/PLAN.md functional steps (D-044): every wave-1 todo inventory ID in exactly one step.
+Range syntax `CORE-0360..0367` expands to existing inventory IDs of that prefix in the range.
+Usage (repo root): python3 docs/tools/plan_check.py [-v]"""
+import re, sys, collections
+INV = ['core', 'cli', 'server', 'lang-de', 'lang-en', 'lang-fr']
+status = {}
+for f in INV:
+    for l in open(f'docs/inventory/{f}.md', encoding='utf8'):
+        m = re.match(r'^\| ([A-Z]+-\d{4}) \|', l)
+        if m:
+            status[m.group(1)] = l.rstrip().rstrip('|').split('|')[-1].strip()
+want = {i for i, s in status.items() if s == 'todo'}
+by_prefix = collections.defaultdict(list)
+for i in status:
+    p, n = i.split('-'); by_prefix[p].append(int(n))
+LINE = re.compile(r'^- \[[ x]\] (F\d+) (.*?) \| ids: (.*?) \| verify: (.*?) \| status: (\w+)$')
+cnt = collections.Counter(); steps = 0; bad = []; explicit_nontodo = []
+for l in open('docs/PLAN.md', encoding='utf8').read().split('\n'):
+    if not re.match(r'- \[[ x]\] F\d+ ', l): continue
+    m = LINE.match(l)
+    if not m: bad.append(l[:100]); continue
+    steps += 1
+    for tok in [t.strip() for t in m.group(3).split(',')]:
+        r = re.fullmatch(r'([A-Z]+)-(\d{4})\.\.(\d{4})', tok)
+        if r:
+            p, a, b = r.group(1), int(r.group(2)), int(r.group(3))
+            for n in sorted(by_prefix[p]):
+                if a <= n <= b:
+                    i = f'{p}-{n:04d}'
+                    if status[i] == 'todo': cnt[i] += 1
+            continue
+        if re.fullmatch(r'[A-Z]+-\d{4}', tok):
+            if tok not in status: bad.append('unknown id ' + tok)
+            elif status[tok] != 'todo': explicit_nontodo.append(tok)
+            else: cnt[tok] += 1
+        elif not re.fullmatch(r'X-[A-Z0-9-]+', tok): bad.append('bad token ' + tok)
+got = set(cnt)
+print('steps', steps, 'covered %d/%d' % (len(got & want), len(want)))
+print('missing', sorted(want - got))
+print('dups', sorted(i for i, n in cnt.items() if n > 1))
+print('non-todo listed', sorted(explicit_nontodo))
+print('bad', bad)
+sys.exit(0 if not (want - got) and not [i for i, n in cnt.items() if n > 1] and not bad else 1)
