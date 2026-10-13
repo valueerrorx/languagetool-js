@@ -6,3 +6,4 @@
 - "Verify via oracle" items need a fixture before merge; never ship from memory.
 - Comments: one line only, also file headers.
 - Oracle adapters must reproduce Harness.java error paths for malformed input.
+- int helpers must never return -0 (use `| 0`); adapters/tests compare with Object.is so -0 is not hidden by printing.

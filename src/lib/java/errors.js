@@ -6,6 +6,7 @@ export class Throwable extends Error {
   static FQCN = 'java.lang.Throwable';
 
   // Java: Throwable#Throwable() / (String) / (String,Throwable) / (Throwable)
+  // SEMANTICS P14b: Java new X((Throwable) null) is ported as new X(null, null); new X(null) means (String) null.
   constructor(...args) {
     super();
     let message = null;
