@@ -1,7 +1,7 @@
 # Port map (wave 1)
 
-Java class/package -> JS module. Generated from the pinned sources (`oracle/java-src`, 9b0be9d) and the inventory files; inventory IDs = rows whose Java-source/behaviour column names the class (first 8 shown, `...` = more). Path rules: ARCHITECTURE.md 2-3. Classes marked `later` are deferred (D-005/DEV-001/DEV-002): no functional JS module is written; where ported code needs the type (signatures, `instanceof`, constants such as `LanguageModel`, `RemoteRule`, `GoogleToken`), a stub module with the class/interface shell and `// later (D-005)` is created at the listed path; callers keep the no-config behaviour of the owning inventory row.
-Regenerate the class tables after inventory changes; hand edits only in the sections above "Class tables".
+Java class/package -> JS module. Generated from the pinned sources (`oracle/java-src`, 9b0be9d) and the inventory files; inventory IDs = rows whose Java-source/behaviour column names the class (complete lists; the authoritative one-owner index is the section "ID to class to step index"). Path rules: ARCHITECTURE.md 2-3. Classes marked `later` are deferred (D-005/DEV-001/DEV-002): no functional JS module is written; where ported code needs the type (signatures, `instanceof`, constants such as `LanguageModel`, `RemoteRule`, `GoogleToken`), a stub module with the class/interface shell and `// later (D-005)` is created at the listed path; callers keep the no-config behaviour of the owning inventory row.
+Regenerate the index and class-table ID lists after inventory changes with `python3 docs/tools/portmap_index.py` (it also asserts 808/808 wave-1 todo IDs covered); hand edits only in the sections above the index.
 
 ## Porting order (steps)
 | step | content | prerequisite |
@@ -14,7 +14,7 @@ Regenerate the class tables after inventory changes; hand edits only in the sect
 | S6 | core pattern engine: `rules/patterns`, `tagging/disambiguation/rules` | S5 |
 | S7 | core rules: generic and abstract rules, rule filters, `rules/spelling/**`, `rules/bitext`, `bitext`, `language/identifier` (+ lib `langdetect`) | S6 |
 | S8 | core engine: JLanguageTool, MultiThreadedJLanguageTool, ResultCache, CheckResults, ranges, LanguageAnnotator; core test-jar helpers (CORE-0350) | S7 |
-| S9 | en module (+ lib `opennlp`); first because de/fr disambiguation uses the en-US tagger (DE-0155, FR-0153) | S8 |
+| S9 | en module (+ lib `opennlp`); first because de/fr disambiguation uses the en-US tagger (DE-0155, FR-0153). Note: EN BeoLingus rows (EN-0081, EN-0120) are ported here but verified after S10 (German tagger) | S8 |
 | S10 | de module (+ libs `jwordsplitter`, `openregex`) | S9 |
 | S11 | fr module | S9 |
 | S12 | cli | S8 (fixtures need S9-S11) |
@@ -22,6 +22,8 @@ Regenerate the class tables after inventory changes; hand edits only in the sect
 
 Step notes (cross-step dependencies):
 - S3 `Languages`: registers only in-scope modules in the relative order of Java's `Languages.get()` (DEV-006, ARCHITECTURE.md 3). During S3 grep all `Languages.getLanguageForShortCode(` / `getLanguage(` sites in core/cli/server and classify each (internal descriptor vs same exception); result is recorded here. Known: `CommonWordsDetector` es/ca/pt (CommonWordsDetector.java:38-40) -> `InternalLanguage` when not registered (S7).
+- Cyclic-import policy (ARCHITECTURE.md 3, decision: keep the Java structure): S3 classes (`NoopLanguage`, `LanguageBuilder`, `DynamicLanguage`, `DynamicHunspellLanguage`, `DynamicMorfologikLanguage`, `Tools`, `Language`, `Languages`) stay in S3 and reference classes of later steps only lazily inside method/getter bodies (no top-level instantiation, no `extends`/`static` initialisers that need a later-step class). Later-step classes are imported with static `import` (ES module cycles are legal when only used inside functions); where a cycle would be evaluated at module load, use the lazy static getter pattern of ARCHITECTURE.md 3. Verified by the S3 gate: `import` of every S3 module in isolation must succeed with no later-step module evaluated first (`tests/support/importCycles.test.js`).
+- Owner overrides in the index: CORE-0360..0364 and 0367 (regex syntax/flags translation) -> S1 regex translator; CORE-0371 (morfologik sequence encoders) -> S4; DE-0015 and FR-0014 (`MessagesBundle_*.properties`) -> S3 ResourceBundle (`ResourceBundleTools`); CORE-0336 (log text catalogue) -> S2 slf4j/logback; CORE-0449 -> S4 ahocorasick lib.
 - EN-0081 and EN-0120 (BeoLingusTranslator) are ported in S9 but verified only after S10: `BeoLingusTranslator.java:82` uses `Languages.getLanguageForShortCode("de").getTagger()` (German tagger).
 - IDs ported in S6/S7 that need the en-US language (`HunspellRule.java:124` `getEnglishSpellingRules`, `FalseFriendRuleHandler.java:59` `Languages.getLanguageForShortCode("en-US")`: CORE-0300, CORE-0236, CORE-0440..0443 and their false-friend / multi-lingual spelling fixtures) are verified after S9; before that their parity cases are SKIP, and unit tests use `tests/support` fake languages.
 
@@ -35,7 +37,7 @@ Step notes (cross-step dependencies):
 | morfologik-fsa, -fsa-builders, -stemming, -speller 2.2.0 | taggers, synthesizers, spellers, MorfologikMultiSpeller | own `src/lib/morfologik/` | no JS port with CFSA2/FSA5 + identical speller candidate order; fixtures per dict |
 | com.gitlab.dumonts:hunspell 2.1.2 (JNA, libhunspell 1.7.x) | HunspellRule, CompoundAwareHunspellRule (de) | original C hunspell -> WASM (`vendor/hunspell`, D-013) | same C code; spell/suggest fixtures |
 | net.loomchild:segment 2.0.4 | SRXSentenceTokenizer, SrxTools | own `src/lib/segment/` (SrxParser, SrxDocument, SrxTextIterator subset) | algorithm port; sentence fixtures |
-| com.hankcs:aho-corasick-double-array-trie 1.2.2 | AbstractDashRule, DictionarySpellMatchFilter, EnglishDashRule, OldSpellingRule/SpellingData | own `src/lib/ahocorasick/` | same double-array build and hit order (CORE-0449) |
+| com.hankcs:aho-corasick-double-array-trie 1.2.2 | AbstractDashRule, DictionarySpellMatchFilter, EnglishDashRule, OldSpellingRule/SpellingData | own `src/lib/ahocorasick/` | same double-array build; `parseText` hit order is oracle-verified (CORE-0449, fixture compares hit lists on the dash/spelling data and on overlapping-key probes) |
 | de.danielnaber:jwordsplitter 4.7 (+ wordsGerman.txt, exceptionsGerman.txt) | GermanCompoundTokenizer, GermanSpellerRule | own `src/lib/jwordsplitter/` + resources | algorithm port (DE-0208) |
 | edu.washington.cs.knowitall:openregex 1.1.1 | GermanChunker, core chunking TokenExpressionFactory | own `src/lib/openregex/` subset (D-012) | chunk fixtures |
 | com.optimaize.languagedetector:language-detector 0.6 (+ profiles) | DefaultLanguageIdentifier | own `src/lib/langdetect/` + `resources/languages/*` (profiles of in-scope languages only; candidates come from `Languages.get()`, DEV-006) | port incl. seeded java.util.Random(41) and double arithmetic order; probability fixtures |
@@ -109,6 +111,829 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 - Column "depends on" lists `org.languagetool` packages imported by the class (same-package references are implicit). Core cycles (e.g. root <-> rules <-> rules/patterns <-> language) are allowed under ESM; never touch an imported binding during module evaluation (ARCHITECTURE.md 3).
 - Third-party dependencies per class follow the library table above.
 
+
+## ID to class to step index (generated by `docs/tools/portmap_index.py`)
+
+Every wave-1 `todo` ID of core, cli, server, de, en, fr (808) has exactly one owning step. Owning class = first class named in the row's Java-source column (own module first, core classes only if the row names no own class); owning step = latest step among the classes it names (the ID is complete when that step is done). Rows without a class are `non-class` (resource, config, regex, logging, library, test-support) and owned by the step stated. Regenerate with `python3 docs/tools/portmap_index.py`; do not hand-edit.
+
+Counts per step: S1 6, S2 1, S3 79, S4 2, S5 20, S6 62, S7 98, S8 44, S9 116, S10 127, S11 52, S12 67, S13 134. Total 808.
+
+### Non-class IDs
+| ID | kind / owner | step |
+|---|---|---|
+| CLI-0072 | resources | S12 |
+| CORE-0044 | runtime resources (resource loading via broker) | S3 |
+| CORE-0195 | chunking package (Chunker, ChunkTag, TokenExpressionFactory) | S5 |
+| CORE-0203 | tokenizers interfaces | S5 |
+| CORE-0233 | suggestion ranking helpers (suggestions_ordering, suggestions) | S7 |
+| CORE-0290 | bitext readers (bitext package) | S7 |
+| CORE-0291 | bitext rules (rules/bitext) | S7 |
+| CORE-0332 | tools misc utilities (src/core/tools) | S3 |
+| CORE-0336 | logging (src/lib/slf4j, src/lib/logback) | S2 |
+| CORE-0345 | translation lookup interfaces (rules/translation) | S7 |
+| CORE-0350 | test-support | S8 |
+| CORE-0351 | test-support | S8 |
+| CORE-0360 | regex translator (src/lib/java/regex) | S1 |
+| CORE-0361 | regex translator (src/lib/java/regex) | S1 |
+| CORE-0362 | regex translator (src/lib/java/regex) | S1 |
+| CORE-0363 | regex translator (src/lib/java/regex) | S1 |
+| CORE-0364 | regex translator (src/lib/java/regex) | S1 |
+| CORE-0367 | regex translator (src/lib/java/regex) | S1 |
+| CORE-0371 | morfologik sequence encoders (src/lib/morfologik) | S4 |
+| CORE-0449 | library ahocorasick (src/lib/ahocorasick) | S4 |
+| DE-0014 | resource bundle / messages | S10 |
+| DE-0015 | MessagesBundle_de.properties (ResourceBundle) | S3 |
+| DE-0090 | regex | S10 |
+| DE-0151 | resources | S10 |
+| DE-0153 | resources | S10 |
+| DE-0155 | resources | S10 |
+| DE-0171 | resources | S10 |
+| DE-0173 | resources | S10 |
+| DE-0175 | resources | S10 |
+| DE-0177 | resources | S10 |
+| DE-0179 | resources | S10 |
+| DE-0180 | resources | S10 |
+| DE-0182 | resources | S10 |
+| DE-0183 | resources | S10 |
+| DE-0185 | resources | S10 |
+| DE-0186 | resources | S10 |
+| DE-0187 | resources | S10 |
+| DE-0188 | resources | S10 |
+| DE-0189 | resources | S10 |
+| DE-0190 | resources | S10 |
+| DE-0202 | resources | S10 |
+| DE-0203 | resources | S10 |
+| DE-0204 | resources | S10 |
+| DE-0208 | other | S10 |
+| DE-0220 | config / registration | S10 |
+| EN-0015 | resource bundle / messages | S9 |
+| EN-0029 | library | S9 |
+| EN-0030 | library | S9 |
+| EN-0031 | library | S9 |
+| EN-0032 | library | S9 |
+| EN-0033 | library | S9 |
+| EN-0034 | library | S9 |
+| EN-0150 | resources | S9 |
+| EN-0151 | resources | S9 |
+| EN-0152 | resources | S9 |
+| EN-0153 | resources | S9 |
+| EN-0154 | resources | S9 |
+| EN-0155 | resources | S9 |
+| EN-0156 | resources | S9 |
+| EN-0157 | resources | S9 |
+| EN-0158 | resources | S9 |
+| EN-0160 | resources | S9 |
+| EN-0170 | resources | S9 |
+| EN-0171 | resources | S9 |
+| EN-0172 | resources | S9 |
+| EN-0173 | resources | S9 |
+| EN-0174 | resources | S9 |
+| EN-0175 | resources | S9 |
+| EN-0176 | resources | S9 |
+| EN-0177 | resources | S9 |
+| EN-0178 | resources | S9 |
+| EN-0180 | resources | S9 |
+| EN-0181 | resources | S9 |
+| EN-0182 | resources | S9 |
+| EN-0183 | resources | S9 |
+| EN-0184 | resources | S9 |
+| EN-0185 | resources | S9 |
+| EN-0186 | resources | S9 |
+| EN-0187 | resources | S9 |
+| EN-0188 | resources | S9 |
+| EN-0189 | resources | S9 |
+| EN-0190 | resources | S9 |
+| EN-0191 | resources | S9 |
+| EN-0192 | resources | S9 |
+| EN-0193 | resources | S9 |
+| EN-0194 | resources | S9 |
+| EN-0202 | library | S9 |
+| EN-0203 | other | S9 |
+| FR-0013 | resource bundle / messages | S11 |
+| FR-0014 | MessagesBundle_fr.properties (ResourceBundle) | S3 |
+| FR-0150 | resources | S11 |
+| FR-0151 | resources | S11 |
+| FR-0153 | resources | S11 |
+| FR-0170 | resources | S11 |
+| FR-0171 | resources | S11 |
+| FR-0172 | resources | S11 |
+| FR-0173 | resources | S11 |
+| FR-0174 | resources | S11 |
+| FR-0176 | resources | S11 |
+| FR-0177 | resources | S11 |
+| FR-0178 | resources | S11 |
+| FR-0179 | resources | S11 |
+| FR-0180 | resources | S11 |
+| FR-0181 | resources | S11 |
+| FR-0221 | config / registration | S11 |
+| SRV-0169 | test-support | S13 |
+| SRV-0174 | other | S13 |
+
+### Class IDs
+| ID | class | step |
+|---|---|---|
+| CLI-0001 | CommandLineParser (+Main) | S12 |
+| CLI-0002 | CommandLineParser (+Main) | S12 |
+| CLI-0003 | CommandLineParser | S12 |
+| CLI-0004 | CommandLineParser | S12 |
+| CLI-0005 | Main | S12 |
+| CLI-0006 | Main | S12 |
+| CLI-0007 | CommandLineParser (+Main) | S12 |
+| CLI-0008 | CommandLineParser | S12 |
+| CLI-0009 | CommandLineParser | S12 |
+| CLI-0010 | CommandLineParser | S12 |
+| CLI-0011 | CommandLineParser | S12 |
+| CLI-0012 | CommandLineParser | S12 |
+| CLI-0013 | Main | S12 |
+| CLI-0014 | CommandLineParser | S12 |
+| CLI-0015 | CommandLineParser | S12 |
+| CLI-0016 | CommandLineParser | S12 |
+| CLI-0017 | CommandLineParser | S12 |
+| CLI-0018 | CommandLineParser | S12 |
+| CLI-0019 | CommandLineParser | S12 |
+| CLI-0020 | CommandLineParser (+CommandLineOptions) | S12 |
+| CLI-0021 | CommandLineParser | S12 |
+| CLI-0022 | CommandLineParser (+Main) | S12 |
+| CLI-0025 | Main | S12 |
+| CLI-0027 | Main | S12 |
+| CLI-0028 | Main | S12 |
+| CLI-0029 | Main | S12 |
+| CLI-0030 | CommandLineParser | S12 |
+| CLI-0031 | CommandLineParser (+Main) | S12 |
+| CLI-0032 | CommandLineParser | S12 |
+| CLI-0033 | CommandLineParser | S12 |
+| CLI-0034 | CommandLineParser | S12 |
+| CLI-0035 | Main | S12 |
+| CLI-0036 | Main | S12 |
+| CLI-0037 | Main | S12 |
+| CLI-0038 | Main | S12 |
+| CLI-0039 | Main | S12 |
+| CLI-0040 | Main | S12 |
+| CLI-0041 | Main (+CommandLineTools) | S12 |
+| CLI-0042 | Main | S12 |
+| CLI-0043 | Main | S12 |
+| CLI-0044 | Main | S12 |
+| CLI-0045 | Main | S12 |
+| CLI-0046 | CommandLineTools | S12 |
+| CLI-0047 | CommandLineTools | S12 |
+| CLI-0048 | CommandLineTools | S12 |
+| CLI-0049 | CommandLineTools | S12 |
+| CLI-0050 | Main | S12 |
+| CLI-0051 | CommandLineTools | S12 |
+| CLI-0052 | Main | S12 |
+| CLI-0053 | Main | S12 |
+| CLI-0054 | CommandLineTools | S12 |
+| CLI-0055 | CommandLineTools | S12 |
+| CLI-0056 | Main | S12 |
+| CLI-0057 | Main | S12 |
+| CLI-0058 | Main | S12 |
+| CLI-0059 | Main | S12 |
+| CLI-0060 | Main | S12 |
+| CLI-0061 | Main | S12 |
+| CLI-0062 | Main | S12 |
+| CLI-0063 | TabBitextReader | S7 |
+| CLI-0064 | CommandLineTools | S12 |
+| CLI-0065 | CommandLineTools | S12 |
+| CLI-0066 | Main | S12 |
+| CLI-0067 | JnaTools | S3 |
+| CLI-0068 | Main | S12 |
+| CLI-0069 | CommandLineTools | S12 |
+| CLI-0070 | CommandLineOptions | S12 |
+| CLI-0071 | Main | S12 |
+| CORE-0003 | DumontsHunspellDictionary (+Hunspell) | S7 |
+| CORE-0004 | SrxTools (+SRXSentenceTokenizer) | S5 |
+| CORE-0006 | DefaultLanguageIdentifier | S7 |
+| CORE-0007 | RuleMatchesAsJsonSerializer | S3 |
+| CORE-0008 | RuleEntityResolver (+XMLValidator, IgnoreWhitespaceFilter) | S6 |
+| CORE-0009 | StringTools | S3 |
+| CORE-0010 | LtBuildInfo (+JLanguageTool) | S8 |
+| CORE-0020 | Languages (+MultiKeyProperties) | S3 |
+| CORE-0021 | Languages | S3 |
+| CORE-0022 | Languages | S3 |
+| CORE-0023 | Languages | S3 |
+| CORE-0024 | Languages | S3 |
+| CORE-0025 | Languages (+DynamicLanguage, DynamicHunspellLanguage, DynamicMorfologikLanguage) | S3 |
+| CORE-0026 | Language | S3 |
+| CORE-0027 | Language | S3 |
+| CORE-0028 | Language | S3 |
+| CORE-0029 | Language (+JLanguageTool) | S8 |
+| CORE-0030 | Language | S3 |
+| CORE-0031 | Language | S3 |
+| CORE-0032 | Language | S3 |
+| CORE-0033 | Language | S3 |
+| CORE-0034 | NoopLanguage (+NoopChunker, NoopDisambiguator) | S3 |
+| CORE-0035 | LanguageBuilder (+RuleFilenameException) | S3 |
+| CORE-0036 | Contributor (+Contributors) | S3 |
+| CORE-0040 | ResourceDataBroker (+DefaultResourceDataBroker) | S3 |
+| CORE-0041 | ClassBroker (+DefaultClassBroker) | S3 |
+| CORE-0042 | ResourceBundleTools (+ResourceBundleWithFallback) | S3 |
+| CORE-0043 | Tools | S3 |
+| CORE-0050 | JLanguageTool | S8 |
+| CORE-0051 | JLanguageTool | S8 |
+| CORE-0052 | JLanguageTool | S8 |
+| CORE-0053 | JLanguageTool | S8 |
+| CORE-0054 | JLanguageTool | S8 |
+| CORE-0055 | JLanguageTool | S8 |
+| CORE-0056 | Tools | S3 |
+| CORE-0057 | JLanguageTool | S8 |
+| CORE-0058 | JLanguageTool | S8 |
+| CORE-0059 | JLanguageTool | S8 |
+| CORE-0060 | JLanguageTool (+UserConfig) | S8 |
+| CORE-0061 | JLanguageTool | S8 |
+| CORE-0062 | JLanguageTool (+Tools, PasswordAuthenticator) | S8 |
+| CORE-0070 | JLanguageTool | S8 |
+| CORE-0071 | JLanguageTool (+CheckResults) | S8 |
+| CORE-0072 | JLanguageTool | S8 |
+| CORE-0073 | JLanguageTool | S8 |
+| CORE-0074 | JLanguageTool | S8 |
+| CORE-0075 | JLanguageTool | S8 |
+| CORE-0076 | JLanguageTool | S8 |
+| CORE-0077 | JLanguageTool (+LevelToneTagCacheKey) | S8 |
+| CORE-0078 | JLanguageTool | S8 |
+| CORE-0079 | JLanguageTool (+ToneTag) | S8 |
+| CORE-0080 | JLanguageTool | S8 |
+| CORE-0081 | JLanguageTool | S8 |
+| CORE-0082 | JLanguageTool | S8 |
+| CORE-0083 | JLanguageTool | S8 |
+| CORE-0084 | JLanguageTool (+ExtendedSentenceRange, Range) | S8 |
+| CORE-0085 | JLanguageTool (+ErrorRateTooHighException) | S8 |
+| CORE-0086 | JLanguageTool | S8 |
+| CORE-0087 | JLanguageTool | S8 |
+| CORE-0088 | RuleMatchListener (+JLanguageTool) | S8 |
+| CORE-0091 | MultiThreadedJLanguageTool | S8 |
+| CORE-0092 | JLanguageTool | S8 |
+| CORE-0095 | ResultCache (+InputSentence, SimpleInputSentence) | S8 |
+| CORE-0100 | AnnotatedTextBuilder | S3 |
+| CORE-0101 | AnnotatedTextBuilder | S3 |
+| CORE-0102 | AnnotatedTextBuilder (+MappingValue) | S3 |
+| CORE-0103 | AnnotatedText | S3 |
+| CORE-0104 | AnnotatedText | S3 |
+| CORE-0110 | RuleMatch | S3 |
+| CORE-0111 | RuleMatch | S3 |
+| CORE-0112 | RuleMatch | S3 |
+| CORE-0113 | SuggestedReplacement | S3 |
+| CORE-0114 | SentenceRange | S8 |
+| CORE-0115 | CheckResults | S8 |
+| CORE-0116 | DetectedLanguage | S3 |
+| CORE-0120 | Rule | S3 |
+| CORE-0121 | Category (+CategoryId, CategoryIds, Categories) | S3 |
+| CORE-0122 | ITSIssueType | S3 |
+| CORE-0123 | Tag (+ToneTag) | S3 |
+| CORE-0124 | RuleOption | S3 |
+| CORE-0125 | Example | S3 |
+| CORE-0126 | TextLevelRule | S3 |
+| CORE-0127 | UserConfig | S3 |
+| CORE-0128 | GlobalConfig | S3 |
+| CORE-0129 | Premium (+PremiumOff) | S3 |
+| CORE-0140 | PatternRuleLoader | S6 |
+| CORE-0141 | PatternRuleHandler | S6 |
+| CORE-0142 | PatternRuleHandler | S6 |
+| CORE-0143 | PatternRuleHandler | S6 |
+| CORE-0144 | PatternRuleHandler | S6 |
+| CORE-0145 | RepeatedPatternRuleTransformer (+JLanguageTool) | S8 |
+| CORE-0146 | ConsistencyPatternRuleTransformer | S6 |
+| CORE-0147 | XMLRuleHandler (+PatternRuleHandler) | S6 |
+| CORE-0148 | RegexPatternRule (+PatternRuleHandler) | S6 |
+| CORE-0149 | PatternRuleHandler | S6 |
+| CORE-0150 | XMLRuleHandler (+PatternToken) | S6 |
+| CORE-0151 | XMLRuleHandler (+PatternToken) | S6 |
+| CORE-0152 | PatternRuleHandler (+PatternToken) | S6 |
+| CORE-0153 | PatternRuleHandler (+AbstractPatternRule) | S6 |
+| CORE-0154 | PatternRuleHandler | S6 |
+| CORE-0155 | PatternRuleHandler | S6 |
+| CORE-0156 | RuleFilterCreator (+RegexRuleFilterCreator) | S6 |
+| CORE-0157 | RuleFilterEvaluator | S6 |
+| CORE-0158 | RuleFilter | S6 |
+| CORE-0160 | XMLRuleHandler (+PatternRuleHandler) | S6 |
+| CORE-0161 | XMLRuleHandler (+Match) | S6 |
+| CORE-0162 | Match (+MatchState) | S6 |
+| CORE-0163 | Match (+MatchState) | S6 |
+| CORE-0164 | MatchState (+PatternRuleMatcher) | S6 |
+| CORE-0172 | PatternRuleMatcher (+RuleWithMaxFilter) | S6 |
+| CORE-0173 | PatternRuleMatcher | S6 |
+| CORE-0174 | PatternRule (+PatternRuleXmlCreator, PatternRuleId) | S6 |
+| CORE-0175 | RuleSet (+Substrings, StringMatcher) | S6 |
+| CORE-0176 | AbstractTokenBasedRule (+CaseConversionHelper) | S6 |
+| CORE-0177 | RegexRuleFilter (+RegexRuleFilterEvaluator, RegexAntiPatternFilter) | S6 |
+| CORE-0178 | PatternRuleBuilderHelper (+PatternTokenBuilder) | S6 |
+| CORE-0180 | PartialPosTagFilter | S7 |
+| CORE-0181 | AbstractDateCheckFilter (+AbstractDateCheckWithSuggestionsFilter) | S7 |
+| CORE-0182 | AbstractFutureDateFilter (+AbstractNewYearDateFilter, YMDDateHelper, DateRangeChecker, ...) | S7 |
+| CORE-0183 | AbstractFindSuggestionsFilter | S7 |
+| CORE-0184 | AbstractAdvancedSynthesizerFilter | S7 |
+| CORE-0186 | SameRuleGroupFilter (+RuleWithMaxFilter, DictionaryMatchFilter, DictionarySpellMatchFilter, ...) | S7 |
+| CORE-0187 | CleanOverlappingFilter | S3 |
+| CORE-0190 | XmlRuleDisambiguator (+Disambiguator, AbstractDisambiguator) | S6 |
+| CORE-0191 | DisambiguationRuleHandler (+DisambiguationRuleLoader, DisambiguationPatternRuleReplacer) | S6 |
+| CORE-0193 | MultiWordChunker | S5 |
+| CORE-0194 | MultiWordChunker2 | S5 |
+| CORE-0200 | SRXSentenceTokenizer (+SrxTools) | S5 |
+| CORE-0201 | SimpleSentenceTokenizer | S5 |
+| CORE-0202 | WordTokenizer | S5 |
+| CORE-0210 | BaseTagger | S5 |
+| CORE-0211 | ManualTagger | S5 |
+| CORE-0212 | CombiningTagger | S5 |
+| CORE-0213 | MorfologikTagger (+DemoTagger, TaggedWord, WordTagger) | S5 |
+| CORE-0214 | AnalyzedToken | S3 |
+| CORE-0215 | AnalyzedTokenReadings | S3 |
+| CORE-0216 | AnalyzedSentence | S3 |
+| CORE-0220 | BaseSynthesizer (+SynthesizerTools) | S5 |
+| CORE-0221 | BaseSynthesizer (+Soros) | S5 |
+| CORE-0222 | ManualSynthesizer | S5 |
+| CORE-0232 | MorfologikMultiSpeller | S7 |
+| CORE-0236 | CompoundAwareHunspellRule | S7 |
+| CORE-0237 | MultitokenSpeller (+MultitokenSpellerFilter) | S7 |
+| CORE-0238 | SymSpellRule (+SymSpell, SuggestItem, SuggestionStage, ...) | S7 |
+| CORE-0239 | VagueSpellChecker (+ForeignLanguageChecker) | S7 |
+| CORE-0240 | CommonFileTypes (+RuleWithLanguage) | S7 |
+| CORE-0250 | CommaWhitespaceRule | S7 |
+| CORE-0251 | DoublePunctuationRule | S7 |
+| CORE-0252 | GenericUnpairedBracketsRule (+SymbolLocator, UnsyncStack) | S7 |
+| CORE-0253 | GenericUnpairedQuotesRule | S7 |
+| CORE-0254 | UppercaseSentenceStartRule | S7 |
+| CORE-0255 | WordRepeatRule | S7 |
+| CORE-0256 | MultipleWhitespaceRule | S7 |
+| CORE-0257 | SentenceWhitespaceRule | S7 |
+| CORE-0258 | WhitespaceBeforePunctuationRule | S7 |
+| CORE-0259 | LongSentenceRule | S7 |
+| CORE-0260 | LongParagraphRule | S7 |
+| CORE-0262 | WordRepeatBeginningRule | S7 |
+| CORE-0263 | PhraseRepeatRule (+AdvancedWordRepeatRule) | S7 |
+| CORE-0264 | ReadabilityRule | S7 |
+| CORE-0265 | WrongWordInContextRule | S7 |
+| CORE-0266 | DemoRule (+FakeRule, SpecificIdRule, TestRemoteRule, ...) | S7 |
+| CORE-0270 | AbstractSimpleReplaceRule (+SimpleReplaceDataLoader) | S7 |
+| CORE-0271 | AbstractSimpleReplaceRule2 | S7 |
+| CORE-0272 | AbstractCompoundRule (+CompoundRuleData) | S7 |
+| CORE-0273 | AbstractDashRule | S7 |
+| CORE-0274 | ConfusionSet (+ConfusionPair, ConfusionString, ScoredConfusionSet, ...) | S7 |
+| CORE-0275 | AbstractWordCoherencyRule (+WordCoherencyDataLoader) | S7 |
+| CORE-0278 | AbstractUnitConversionRule | S7 |
+| CORE-0279 | ShortDescriptionProvider | S3 |
+| CORE-0292 | BitextPatternRule (+BitextPatternRuleHandler, BitextPatternRuleLoader, FalseFriendsAsBitextLoader) | S6 |
+| CORE-0293 | Tools | S3 |
+| CORE-0300 | FalseFriendRuleLoader (+FalseFriendRuleHandler, FalseFriendPatternRule) | S6 |
+| CORE-0310 | LanguageIdentifierService | S7 |
+| CORE-0311 | LanguageIdentifier | S7 |
+| CORE-0312 | DefaultLanguageIdentifier | S7 |
+| CORE-0313 | CommonWordsDetector | S7 |
+| CORE-0314 | UnicodeBasedDetector | S7 |
+| CORE-0315 | SimpleLanguageIdentifier | S7 |
+| CORE-0317 | LanguageAnnotator (+FragmentWithLanguage) | S8 |
+| CORE-0320 | ContextTools | S3 |
+| CORE-0321 | ContextTools | S3 |
+| CORE-0322 | RuleMatchesAsJsonSerializer | S3 |
+| CORE-0323 | RuleMatchesAsJsonSerializer | S3 |
+| CORE-0324 | RuleMatchesAsJsonSerializer | S3 |
+| CORE-0325 | RuleMatchesAsJsonSerializer | S3 |
+| CORE-0326 | RuleMatchesAsJsonSerializer | S3 |
+| CORE-0327 | Tools | S3 |
+| CORE-0328 | Tools | S3 |
+| CORE-0329 | StringTools | S3 |
+| CORE-0331 | DiffsAsMatches (+PseudoMatch) | S3 |
+| CORE-0333 | LtThreadPoolFactory (+LtThreadPoolExecutor, CircuitBreakers) | S3 |
+| CORE-0335 | XMLValidator | S3 |
+| CORE-0352 | LineExpander (+SuggestionWithMessage, MatchPosition, EquivalenceTypeLocator, ...) | S7 |
+| CORE-0365 | StringMatcher | S6 |
+| CORE-0366 | PatternToken (+StringMatcher, RegexPatternRule, SrxTools) | S6 |
+| CORE-0370 | MorfologikTagger | S5 |
+| CORE-0372 | MorfologikSpeller | S7 |
+| CORE-0373 | MorfologikTagger (+BaseSynthesizer) | S5 |
+| CORE-0374 | MorfologikSpeller | S7 |
+| CORE-0375 | MorfologikSpeller | S7 |
+| CORE-0376 | MorfologikSpeller | S7 |
+| CORE-0378 | UnifierConfiguration (+XMLRuleHandler, Language) | S6 |
+| CORE-0379 | Unifier | S6 |
+| CORE-0380 | Unifier | S6 |
+| CORE-0381 | XMLRuleHandler (+AbstractPatternRulePerformer) | S6 |
+| CORE-0382 | Unifier (+XMLRuleHandler) | S6 |
+| CORE-0383 | Unifier | S6 |
+| CORE-0384 | PatternToken (+PatternTokenMatcher, AbstractPatternRulePerformer) | S6 |
+| CORE-0385 | PatternToken | S6 |
+| CORE-0386 | AbstractPatternRulePerformer | S6 |
+| CORE-0387 | AbstractPatternRulePerformer | S6 |
+| CORE-0388 | AbstractPatternRulePerformer (+PatternToken) | S6 |
+| CORE-0389 | AbstractPatternRulePerformer | S6 |
+| CORE-0390 | StringMatcher | S6 |
+| CORE-0391 | AbstractPatternRulePerformer (+PatternRuleMatcher) | S6 |
+| CORE-0392 | DisambiguationPatternRuleReplacer | S6 |
+| CORE-0393 | DisambiguationPatternRuleReplacer | S6 |
+| CORE-0394 | DisambiguationPatternRuleReplacer | S6 |
+| CORE-0395 | DisambiguationPatternRuleReplacer | S6 |
+| CORE-0396 | DisambiguationPatternRuleReplacer | S6 |
+| CORE-0397 | DisambiguationPatternRuleReplacer | S6 |
+| CORE-0398 | DisambiguationPatternRuleReplacer (+AnalyzedTokenReadings) | S6 |
+| CORE-0399 | DisambiguationPatternRuleReplacer | S6 |
+| CORE-0400 | DisambiguationPatternRuleReplacer (+Unifier) | S6 |
+| CORE-0401 | DisambiguationPatternRuleReplacer | S6 |
+| CORE-0402 | AbstractSuppressMisspelledSuggestionsFilter | S7 |
+| CORE-0403 | AdaptSuggestionsFilter | S7 |
+| CORE-0404 | CheckPostagsInSuggestionFilter | S7 |
+| CORE-0405 | ConvertToSentenceCaseFilter | S7 |
+| CORE-0406 | UnderlineSpacesFilter | S7 |
+| CORE-0407 | WhitespaceCheckFilter | S7 |
+| CORE-0408 | AddCommasFilter | S7 |
+| CORE-0409 | SuppressIfAnyRuleMatchesFilter | S7 |
+| CORE-0410 | IsEnglishWordFilter | S7 |
+| CORE-0411 | AbstractMakeContractionsFilter | S7 |
+| CORE-0412 | AbstractNumberInWordFilter | S7 |
+| CORE-0413 | AbstractTextToNumberFilter | S7 |
+| CORE-0414 | ApostropheTypeFilter | S6 |
+| CORE-0415 | MultitokenSpellerFilter | S7 |
+| CORE-0416 | NewLineMatchFilter | S7 |
+| CORE-0417 | EmptyLineRule | S7 |
+| CORE-0418 | PunctuationMarkAtParagraphEnd | S7 |
+| CORE-0419 | PunctuationMarkAtParagraphEnd2 | S7 |
+| CORE-0420 | WhiteSpaceAtBeginOfParagraph | S7 |
+| CORE-0421 | WhiteSpaceBeforeParagraphEnd | S7 |
+| CORE-0422 | ParagraphRepeatBeginningRule | S7 |
+| CORE-0423 | AbstractPunctuationCheckRule | S7 |
+| CORE-0424 | AbstractSpaceBeforeRule | S7 |
+| CORE-0425 | AbstractSpecificCaseRule | S7 |
+| CORE-0426 | AbstractCheckCaseRule | S7 |
+| CORE-0427 | AbstractStyleRepeatedWordRule | S7 |
+| CORE-0428 | AbstractStyleTooOftenUsedWordRule | S7 |
+| CORE-0429 | AbstractStatisticStyleRule | S7 |
+| CORE-0430 | AbstractStatisticSentenceStyleRule | S7 |
+| CORE-0431 | AbstractFillerWordsRule | S7 |
+| CORE-0432 | AbstractRepeatedWordsRule (+SynonymsData) | S7 |
+| CORE-0433 | SpellingCheckRule (+CachingWordListLoader) | S7 |
+| CORE-0434 | SpellingCheckRule | S7 |
+| CORE-0435 | SpellingCheckRule | S7 |
+| CORE-0436 | MorfologikSpellerRule | S7 |
+| CORE-0437 | MorfologikSpellerRule (+SpellingCheckRule) | S7 |
+| CORE-0438 | MorfologikSpellerRule | S7 |
+| CORE-0439 | MorfologikSpellerRule (+MorfologikMultiSpeller) | S7 |
+| CORE-0440 | HunspellRule | S7 |
+| CORE-0441 | HunspellRule | S7 |
+| CORE-0442 | HunspellRule (+HunspellNoSuggestionRule) | S7 |
+| CORE-0443 | HunspellRule (+Hunspell, DumontsHunspellDictionary) | S7 |
+| CORE-0444 | StringTools | S3 |
+| CORE-0445 | StringTools | S3 |
+| CORE-0446 | StringTools | S3 |
+| CORE-0447 | UserConfig (+Tools, AbstractCompoundRule, ReadabilityRule, ...) | S7 |
+| CORE-0450 | LanguageWithModel | S3 |
+| DE-0001 | German | S10 |
+| DE-0002 | German | S10 |
+| DE-0004 | German | S10 |
+| DE-0005 | German | S10 |
+| DE-0006 | German | S10 |
+| DE-0007 | German | S10 |
+| DE-0008 | German | S10 |
+| DE-0009 | GermanyGerman | S10 |
+| DE-0010 | AustrianGerman | S10 |
+| DE-0011 | SwissGerman | S10 |
+| DE-0012 | SwissGerman | S10 |
+| DE-0013 | NonSwissGerman | S10 |
+| DE-0020 | GermanWordTokenizer | S10 |
+| DE-0021 | GermanCompoundTokenizer | S10 |
+| DE-0022 | German | S10 |
+| DE-0024 | SwissGermanTagger | S10 |
+| DE-0025 | AnalyzedGermanToken (+GermanToken) | S10 |
+| DE-0026 | AdjectiveTags (+VerbPrefixes) | S10 |
+| DE-0027 | GermanSynthesizer | S10 |
+| DE-0028 | GermanRuleDisambiguator | S10 |
+| DE-0029 | GermanChunker | S10 |
+| DE-0030 | GermanMultitokenSpeller | S10 |
+| DE-0031 | GermanTagger | S10 |
+| DE-0032 | GermanTagger | S10 |
+| DE-0040 | AgreementRule | S10 |
+| DE-0041 | AgreementRuleAntiPatterns1 | S10 |
+| DE-0042 | AgreementRule2 | S10 |
+| DE-0043 | AgreementSuggestor2 | S10 |
+| DE-0044 | AgreementTools (+PrepositionToCases) | S10 |
+| DE-0045 | CaseRule | S10 |
+| DE-0046 | CaseRuleAntiPatterns (+CaseRuleExceptions) | S10 |
+| DE-0047 | CompoundCoherencyRule | S10 |
+| DE-0048 | CompoundInfinitivRule | S10 |
+| DE-0049 | ConjunctionAtBeginOfSentenceRule | S10 |
+| DE-0050 | DashRule | S10 |
+| DE-0051 | DuUpperLowerCaseRule | S10 |
+| DE-0052 | GermanCommaWhitespaceRule | S10 |
+| DE-0053 | GermanCompoundRule | S10 |
+| DE-0054 | SwissCompoundRule | S10 |
+| DE-0056 | GermanDoublePunctuationRule | S10 |
+| DE-0057 | GermanFillerWordsRule | S10 |
+| DE-0058 | GermanParagraphRepeatBeginningRule | S10 |
+| DE-0059 | GermanReadabilityRule | S10 |
+| DE-0060 | GermanRepeatedWordsRule | S10 |
+| DE-0063 | GermanSpellerRule | S10 |
+| DE-0064 | GermanSpellerRule | S10 |
+| DE-0065 | AustrianGermanSpellerRule | S10 |
+| DE-0066 | SwissGermanSpellerRule | S10 |
+| DE-0067 | MorfologikGermanyGermanSpellerRule | S10 |
+| DE-0068 | GermanStyleRepeatedWordRule | S10 |
+| DE-0069 | GermanUnpairedBracketsRule | S10 |
+| DE-0070 | GermanUnpairedQuotesRule | S10 |
+| DE-0071 | GermanWordRepeatBeginningRule | S10 |
+| DE-0072 | GermanWordRepeatRule | S10 |
+| DE-0073 | GermanWrongWordInContextRule | S10 |
+| DE-0074 | LongSentenceRule | S10 |
+| DE-0075 | MissingCommaRelativeClauseRule | S10 |
+| DE-0076 | MissingVerbRule | S10 |
+| DE-0077 | NonSignificantVerbsRule | S10 |
+| DE-0078 | OldSpellingRule (+SpellingData) | S10 |
+| DE-0079 | PassiveSentenceRule | S10 |
+| DE-0081 | RedundantModalOrAuxiliaryVerb | S10 |
+| DE-0082 | SentenceWhitespaceRule | S10 |
+| DE-0083 | SentenceWithManRule | S10 |
+| DE-0084 | SentenceWithModalVerbRule | S10 |
+| DE-0085 | SimilarNameRule | S10 |
+| DE-0086 | SimpleReplaceRule | S10 |
+| DE-0087 | StyleRepeatedSentenceBeginning | S10 |
+| DE-0088 | StyleRepeatedVeryShortSentences | S10 |
+| DE-0089 | Rule | S3 |
+| DE-0091 | UnitConversionRule | S10 |
+| DE-0092 | UnnecessaryPhraseRule | S10 |
+| DE-0094 | VerbAgreementRule | S10 |
+| DE-0095 | WiederVsWiderRule | S10 |
+| DE-0096 | WordCoherencyRule | S10 |
+| DE-0097 | GermanSpellerRule | S10 |
+| DE-0098 | GermanSpellerRule | S10 |
+| DE-0099 | GermanSpellerRule | S10 |
+| DE-0100 | GermanSpellerRule | S10 |
+| DE-0101 | GermanSpellerRule | S10 |
+| DE-0102 | GermanSpellerRule (+LineExpander, GermanCompoundTokenizer) | S10 |
+| DE-0110 | AdaptSuggestionFilter | S10 |
+| DE-0111 | AdvancedSynthesizerFilter | S10 |
+| DE-0112 | CompoundCheckFilter | S10 |
+| DE-0113 | DateCheckFilter (+DateFilterHelper) | S10 |
+| DE-0114 | YMDDateCheckFilter | S10 |
+| DE-0115 | FutureDateFilter (+NewYearDateFilter, YMDNewYearDateFilter, RecentYearFilter) | S10 |
+| DE-0116 | GermanNumberInWordFilter | S10 |
+| DE-0117 | GermanSuppressMisspelledSuggestionsFilter | S10 |
+| DE-0118 | InsertCommaFilter | S10 |
+| DE-0119 | PotentialCompoundFilter | S10 |
+| DE-0120 | RemoveUnknownCompoundsFilter | S10 |
+| DE-0121 | UppercaseNounReadingFilter | S10 |
+| DE-0122 | ValidWordFilter | S10 |
+| DE-0130 | GermanHelper | S10 |
+| DE-0131 | GermanTools | S10 |
+| DE-0132 | LanguageNames | S10 |
+| DE-0133 | LineExpander | S10 |
+| DE-0150 | Language | S3 |
+| DE-0152 | GermanyGerman (+AustrianGerman) | S10 |
+| DE-0170 | BaseTagger (+BaseSynthesizer) | S5 |
+| DE-0172 | BaseSynthesizer | S5 |
+| DE-0176 | Language | S3 |
+| DE-0181 | ShortDescriptionProvider | S3 |
+| DE-0184 | SpellingCheckRule | S7 |
+| DE-0191 | BaseSynthesizer | S5 |
+| DE-0200 | GermanTagger | S10 |
+| DE-0201 | GermanSynthesizer | S10 |
+| DE-0205 | HunspellRule (+Hunspell) | S7 |
+| DE-0206 | GermanCompoundTokenizer | S10 |
+| DE-0207 | GermanChunker | S10 |
+| DE-0225 | German | S10 |
+| DE-0226 | JLanguageTool (+CleanOverlappingFilter) | S8 |
+| EN-0001 | English | S9 |
+| EN-0002 | English | S9 |
+| EN-0004 | English | S9 |
+| EN-0005 | English | S9 |
+| EN-0006 | English | S9 |
+| EN-0007 | English | S9 |
+| EN-0009 | AmericanEnglish | S9 |
+| EN-0010 | BritishEnglish | S9 |
+| EN-0011 | AustralianEnglish | S9 |
+| EN-0012 | CanadianEnglish | S9 |
+| EN-0013 | NewZealandEnglish | S9 |
+| EN-0014 | SouthAfricanEnglish | S9 |
+| EN-0020 | EnglishWordTokenizer | S9 |
+| EN-0022 | English | S9 |
+| EN-0023 | EnglishTagger | S9 |
+| EN-0024 | EnglishSynthesizer | S9 |
+| EN-0025 | EnglishHybridDisambiguator | S9 |
+| EN-0026 | EnglishChunker | S9 |
+| EN-0027 | EnglishChunkFilter | S9 |
+| EN-0028 | EnglishMultitokenSpeller | S9 |
+| EN-0040 | AbstractEnglishSpellerRule | S9 |
+| EN-0041 | AbstractEnglishSpellerRule | S9 |
+| EN-0043 | MorfologikAmericanSpellerRule | S9 |
+| EN-0044 | MorfologikBritishSpellerRule | S9 |
+| EN-0045 | MorfologikAustralianSpellerRule | S9 |
+| EN-0046 | MorfologikCanadianSpellerRule | S9 |
+| EN-0047 | MorfologikNewZealandSpellerRule | S9 |
+| EN-0048 | MorfologikSouthAfricanSpellerRule | S9 |
+| EN-0049 | VariantInfo | S9 |
+| EN-0050 | AmericanReplaceRule | S9 |
+| EN-0051 | BritishReplaceRule | S9 |
+| EN-0052 | NewZealandReplaceRule | S9 |
+| EN-0053 | AvsAnRule (+AvsAnData) | S9 |
+| EN-0054 | CompoundRule | S9 |
+| EN-0055 | ConsistentApostrophesRule | S9 |
+| EN-0056 | ContractionSpellingRule | S9 |
+| EN-0058 | EnglishDashRule | S9 |
+| EN-0059 | EnglishDiacriticsRule | S9 |
+| EN-0062 | EnglishPlainEnglishRule | S9 |
+| EN-0063 | EnglishRedundancyRule | S9 |
+| EN-0064 | EnglishRepeatedWordsRule | S9 |
+| EN-0065 | EnglishSpecificCaseRule | S9 |
+| EN-0066 | EnglishUnpairedBracketsRule | S9 |
+| EN-0067 | EnglishUnpairedQuotesRule | S9 |
+| EN-0068 | EnglishWordRepeatBeginningRule | S9 |
+| EN-0069 | EnglishWordRepeatRule | S9 |
+| EN-0070 | EnglishWrongWordInContextRule | S9 |
+| EN-0071 | LongSentenceRule | S9 |
+| EN-0072 | SimpleReplaceRule | S9 |
+| EN-0073 | SimpleReplaceProfanityRule | S9 |
+| EN-0074 | Rule | S3 |
+| EN-0075 | UnitConversionRule | S9 |
+| EN-0076 | UnitConversionRuleImperial | S9 |
+| EN-0077 | UnitConversionRuleUS | S9 |
+| EN-0079 | WordCoherencyRule | S9 |
+| EN-0081 | AbstractEnglishSpellerRule | S9 |
+| EN-0100 | AdverbFilter | S9 |
+| EN-0101 | AdvancedSynthesizerFilter | S9 |
+| EN-0102 | DateCheckFilter (+DateFilterHelper) | S9 |
+| EN-0103 | YMDDateCheckFilter (+FutureDateFilter, NewYearDateFilter, YMDNewYearDateFilter) | S9 |
+| EN-0104 | EnglishConvertToSentenceCaseFilter | S9 |
+| EN-0105 | EnglishNumberInWordFilter | S9 |
+| EN-0106 | EnglishPartialPosTagFilter (+NoDisambiguationEnglishPartialPosTagFilter) | S9 |
+| EN-0107 | EnglishSuppressMisspelledSuggestionsFilter | S9 |
+| EN-0108 | FindSuggestionsFilter | S9 |
+| EN-0109 | OrdinalSuffixFilter | S9 |
+| EN-0120 | BeoLingusTranslator | S9 |
+| EN-0121 | Inflector | S9 |
+| EN-0200 | EnglishTagger | S9 |
+| EN-0201 | EnglishSynthesizer | S9 |
+| EN-0204 | EnglishChunker | S9 |
+| EN-0205 | EnglishChunker | S9 |
+| EN-0206 | EnglishChunker | S9 |
+| EN-0220 | AnnotatedTextBuilder (+Tools) | S3 |
+| EN-0221 | DynamicMorfologikLanguage | S3 |
+| EN-0222 | JLanguageTool | S8 |
+| EN-0223 | English | S9 |
+| FR-0001 | French | S11 |
+| FR-0002 | French | S11 |
+| FR-0005 | French | S11 |
+| FR-0006 | French | S11 |
+| FR-0007 | French | S11 |
+| FR-0008 | French | S11 |
+| FR-0009 | French | S11 |
+| FR-0010 | BelgianFrench | S11 |
+| FR-0011 | CanadianFrench | S11 |
+| FR-0012 | SwissFrench | S11 |
+| FR-0020 | FrenchWordTokenizer | S11 |
+| FR-0021 | French | S11 |
+| FR-0022 | FrenchTagger | S11 |
+| FR-0023 | FrenchSynthesizer | S11 |
+| FR-0024 | FrenchHybridDisambiguator | S11 |
+| FR-0025 | FrenchMultitokenSpeller | S11 |
+| FR-0040 | MorfologikFrenchSpellerRule | S11 |
+| FR-0041 | CompoundRule | S11 |
+| FR-0042 | QuestionWhitespaceRule | S11 |
+| FR-0043 | QuestionWhitespaceStrictRule | S11 |
+| FR-0044 | SimpleReplaceRule | S11 |
+| FR-0045 | FrenchRepeatedWordsRule | S11 |
+| FR-0060 | AdvancedSynthesizerFilter | S11 |
+| FR-0061 | DateCheckFilter (+DateFilterHelper, DMYDateCheckFilter) | S11 |
+| FR-0062 | NewYearDateFilter | S11 |
+| FR-0063 | FindSuggestionsFilter | S11 |
+| FR-0064 | FrenchNumberInWordFilter | S11 |
+| FR-0065 | FrenchPartialPosTagFilter | S11 |
+| FR-0066 | FrenchSuppressMisspelledSuggestionsFilter | S11 |
+| FR-0067 | InterrogativeVerbFilter | S11 |
+| FR-0068 | MakeContractionsFilter | S11 |
+| FR-0069 | PostponedAdjectiveConcordanceFilter | S11 |
+| FR-0070 | SuggestionsFilter | S11 |
+| FR-0071 | WordWithDeterminerFilter | S11 |
+| FR-0200 | FrenchTagger (+MorfologikFrenchSpellerRule) | S11 |
+| FR-0201 | FrenchSynthesizer | S11 |
+| FR-0220 | AnnotatedTextBuilder | S3 |
+| SRV-0001 | HTTPServer (+Server) | S13 |
+| SRV-0002 | Server | S13 |
+| SRV-0003 | Server | S13 |
+| SRV-0004 | HTTPServerConfig | S13 |
+| SRV-0005 | HTTPServerConfig | S13 |
+| SRV-0006 | HTTPServerConfig | S13 |
+| SRV-0007 | HTTPServerConfig (+LanguageToolHttpHandler) | S13 |
+| SRV-0008 | HTTPServer | S13 |
+| SRV-0009 | Server (+HTTPServer) | S13 |
+| SRV-0010 | HTTPServerConfig (+HTTPServer) | S13 |
+| SRV-0011 | HTTPServerConfig | S13 |
+| SRV-0013 | HTTPServerConfig | S13 |
+| SRV-0014 | HTTPServerConfig | S13 |
+| SRV-0015 | HTTPServer (+Server, DatabaseAccess) | S13 |
+| SRV-0016 | Server | S13 |
+| SRV-0017 | HTTPServer | S13 |
+| SRV-0018 | HTTPServer | S13 |
+| SRV-0020 | Server (+HTTPServer) | S13 |
+| SRV-0030 | HTTPServerConfig | S13 |
+| SRV-0031 | HTTPServerConfig | S13 |
+| SRV-0032 | HTTPServerConfig | S13 |
+| SRV-0033 | HTTPServerConfig | S13 |
+| SRV-0034 | HTTPServerConfig | S13 |
+| SRV-0035 | HTTPServerConfig | S13 |
+| SRV-0036 | HTTPServerConfig | S13 |
+| SRV-0037 | ConfidenceMapLoader (+V2TextChecker) | S13 |
+| SRV-0039 | HTTPServerConfig | S13 |
+| SRV-0040 | HTTPServerConfig | S13 |
+| SRV-0041 | HTTPServerConfig (+PipelinePool) | S13 |
+| SRV-0043 | HTTPServerConfig | S13 |
+| SRV-0044 | HTTPServerConfig (+PipelinePool) | S13 |
+| SRV-0045 | HTTPServerConfig (+TextChecker) | S13 |
+| SRV-0046 | HTTPServerConfig | S13 |
+| SRV-0047 | HTTPServerConfig (+TextChecker) | S13 |
+| SRV-0048 | HTTPServerConfig (+UserLimits, TextChecker) | S13 |
+| SRV-0049 | HTTPServerConfig (+TextChecker) | S13 |
+| SRV-0051 | HTTPServerConfig | S13 |
+| SRV-0053 | HTTPServerConfig | S13 |
+| SRV-0054 | HTTPServerConfig (+PipelinePool) | S13 |
+| SRV-0055 | HTTPServerConfig (+TextChecker) | S13 |
+| SRV-0057 | HTTPServerConfig | S13 |
+| SRV-0058 | HTTPServerConfig | S13 |
+| SRV-0059 | HTTPServerConfig | S13 |
+| SRV-0061 | HTTPServerConfig | S13 |
+| SRV-0070 | LanguageToolHttpHandler | S13 |
+| SRV-0071 | LanguageToolHttpHandler | S13 |
+| SRV-0072 | LanguageToolHttpHandler | S13 |
+| SRV-0073 | LanguageToolHttpHandler | S13 |
+| SRV-0074 | LanguageToolHttpHandler | S13 |
+| SRV-0075 | LanguageToolHttpHandler | S13 |
+| SRV-0076 | LanguageToolHttpHandler (+TextChecker) | S13 |
+| SRV-0077 | ServerTools (+LanguageToolHttpHandler) | S13 |
+| SRV-0078 | LanguageToolHttpHandler | S13 |
+| SRV-0079 | LanguageToolHttpHandler | S13 |
+| SRV-0080 | LanguageToolHttpHandler | S13 |
+| SRV-0081 | LanguageToolHttpHandler (+TextChecker) | S13 |
+| SRV-0082 | LanguageToolHttpHandler (+ServerTools) | S13 |
+| SRV-0083 | LanguageToolHttpHandler | S13 |
+| SRV-0084 | LanguageToolHttpHandler (+Server) | S13 |
+| SRV-0085 | RequestLimiter | S13 |
+| SRV-0086 | ErrorRequestLimiter (+LanguageToolHttpHandler) | S13 |
+| SRV-0087 | LanguageToolHttpHandler | S13 |
+| SRV-0088 | ServerTools | S13 |
+| SRV-0089 | InstrumentedAppender | S13 |
+| SRV-0090 | ApiV2 | S13 |
+| SRV-0091 | ApiV2 (+ServerTools) | S13 |
+| SRV-0092 | ApiV2 | S13 |
+| SRV-0093 | ApiV2 | S13 |
+| SRV-0094 | ApiV2 | S13 |
+| SRV-0095 | ApiV2 | S13 |
+| SRV-0096 | ApiV2 | S13 |
+| SRV-0097 | ApiV2 (+TextChecker) | S13 |
+| SRV-0098 | ApiV2 | S13 |
+| SRV-0099 | ApiV2 | S13 |
+| SRV-0100 | ApiV2 | S13 |
+| SRV-0104 | ApiV2 (+DatabaseAccessOpenSource) | S13 |
+| SRV-0105 | ApiV2 (+DatabaseAccessOpenSource) | S13 |
+| SRV-0106 | BasicAuthentication | S13 |
+| SRV-0110 | V2TextChecker | S13 |
+| SRV-0111 | ServerTools (+UserLimits) | S13 |
+| SRV-0112 | DatabaseAccessOpenSource | S13 |
+| SRV-0113 | TextChecker | S13 |
+| SRV-0114 | TextChecker | S13 |
+| SRV-0116 | TextChecker | S13 |
+| SRV-0117 | PipelinePool | S13 |
+| SRV-0118 | TextChecker | S13 |
+| SRV-0120 | V2TextChecker (+TextChecker) | S13 |
+| SRV-0121 | TextChecker (+V2TextChecker) | S13 |
+| SRV-0122 | TextChecker (+V2TextChecker) | S13 |
+| SRV-0123 | DefaultLanguageIdentifier | S7 |
+| SRV-0125 | TextChecker | S13 |
+| SRV-0126 | TextChecker | S13 |
+| SRV-0127 | TextChecker (+V2TextChecker) | S13 |
+| SRV-0128 | TextChecker (+PipelinePool) | S13 |
+| SRV-0129 | TextChecker | S13 |
+| SRV-0130 | ServerTools | S13 |
+| SRV-0131 | ServerTools | S13 |
+| SRV-0132 | TextChecker | S13 |
+| SRV-0133 | TextChecker | S13 |
+| SRV-0134 | TextChecker (+ServerTools) | S13 |
+| SRV-0135 | TextChecker | S13 |
+| SRV-0136 | TextChecker | S13 |
+| SRV-0137 | TextChecker | S13 |
+| SRV-0138 | TextChecker | S13 |
+| SRV-0139 | TextChecker | S13 |
+| SRV-0140 | V2TextChecker | S13 |
+| SRV-0142 | TextChecker | S13 |
+| SRV-0143 | TextChecker (+DatabaseLogger) | S13 |
+| SRV-0144 | LocalAbTestService (+AbTestService, TextChecker) | S13 |
+| SRV-0150 | PipelineSettings (+PipelinePool) | S13 |
+| SRV-0151 | PipelinePool | S13 |
+| SRV-0152 | PipelinePool | S13 |
+| SRV-0153 | Pipeline | S13 |
+| SRV-0154 | TextChecker | S13 |
+| SRV-0155 | TextChecker | S13 |
+| SRV-0160 | UserLimits | S13 |
+| SRV-0161 | LimitEnforcementMode | S13 |
+| SRV-0168 | HTTPTestTools | S13 |
+| SRV-0170 | RequestCounter | S13 |
+| SRV-0173 | AbTestService (+ActiveRulesMBean) | S13 |
+| SRV-0175 | ActiveRules | S13 |
+| SRV-0177 | HTTPSServer (+HTTPSServerConfig, HTTPServerConfig, IllegalConfigurationException) | S13 |
+| SRV-0181 | HTTPServerConfig | S13 |
+| SRV-0183 | HTTPServerConfig | S13 |
+| SRV-0185 | HTTPServerConfig | S13 |
+| SRV-0187 | HTTPServerConfig (+HTTPServer) | S13 |
+| SRV-0189 | HTTPServerConfig | S13 |
+| SRV-0191 | HTTPServerConfig | S13 |
+| SRV-0193 | ApiV2 (+DatabaseAccessOpenSource) | S13 |
+| SRV-0195 | ApiV2 (+DatabaseAccessOpenSource) | S13 |
+| SRV-0197 | ApiV2 (+DatabaseAccessOpenSource) | S13 |
+| SRV-0199 | DatabaseAccess (+DatabaseAccessOpenSource) | S13 |
+| SRV-0201 | DatabaseLogger | S13 |
+
 ## Class tables
 
 ### core (`languagetool-core/org/languagetool` -> `src/core`), 346 classes
@@ -126,34 +951,34 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 | DetectedLanguage | `src/core/DetectedLanguage.js` | CORE-0116, CORE-0322 | - | S3 core foundation |
 | DynamicHunspellLanguage | `src/core/DynamicHunspellLanguage.js` | CORE-0025 | rules, rules/spelling/hunspell | S3 core foundation |
 | DynamicLanguage | `src/core/DynamicLanguage.js` | CORE-0025 | language, rules/patterns | S3 core foundation |
-| DynamicMorfologikLanguage | `src/core/DynamicMorfologikLanguage.js` | CORE-0025 | rules, rules/spelling/morfologik | S3 core foundation |
+| DynamicMorfologikLanguage | `src/core/DynamicMorfologikLanguage.js` | CORE-0025, EN-0221 | rules, rules/spelling/morfologik | S3 core foundation |
 | ErrorRateTooHighException | `src/core/ErrorRateTooHighException.js` | CORE-0085 | - | S8 core engine |
 | Experimental | `src/core/Experimental.js` | CORE-0352 | - | S3 core foundation |
 | ExtendedSentenceRange | `src/core/ExtendedSentenceRange.js` | CORE-0084 | - | S8 core engine |
 | FragmentWithLanguage | `src/core/FragmentWithLanguage.js` | CORE-0317 | - | S8 core engine |
-| GlobalConfig | `src/core/GlobalConfig.js` | CORE-0058, CORE-0128 | - | S3 core foundation |
+| GlobalConfig | `src/core/GlobalConfig.js` | CORE-0058, CORE-0128, EN-0081 | - | S3 core foundation |
 | InputSentence | `src/core/InputSentence.js` | CORE-0095 | rules | S8 core engine |
-| JLanguageTool | `src/core/JLanguageTool.js` | CORE-0010, CORE-0029, CORE-0050, CORE-0051, CORE-0052, CORE-0053, CORE-0054, CORE-0055, ... | broker, languagemodel, markup, rules, rules/patterns, rules/spelling, tools | S8 core engine |
-| Language | `src/core/Language.js` | CORE-0020, CORE-0026, CORE-0027, CORE-0028, CORE-0029, CORE-0030, CORE-0031, CORE-0032, ... | broker, chunking, language, languagemodel, markup, rules, rules/patterns, rules/spelling, rules/spelling/multitoken, synthesis, tagging, tagging/disambiguation, tagging/disambiguation/xx, tagging/xx, tokenizers | S3 core foundation |
+| JLanguageTool | `src/core/JLanguageTool.js` | CORE-0010, CORE-0029, CORE-0050, CORE-0051, CORE-0052, CORE-0053, CORE-0054, CORE-0055, CLI-0050, CORE-0057, CORE-0058, CORE-0059, CORE-0060, CORE-0061, CORE-0062, CORE-0070, CORE-0071, CORE-0072, CORE-0073, CORE-0074, CORE-0075, CORE-0076, CORE-0077, CORE-0078, CORE-0079, CORE-0080, CORE-0081, CORE-0082, CORE-0083, CORE-0084, CORE-0085, CORE-0086, CORE-0087, CORE-0088, CORE-0092, CORE-0145, DE-0226, EN-0222 | broker, languagemodel, markup, rules, rules/patterns, rules/spelling, tools | S8 core engine |
+| Language | `src/core/Language.js` | CORE-0020, CORE-0026, CORE-0027, CORE-0028, CORE-0029, CORE-0030, CORE-0031, CORE-0032, CORE-0033, CORE-0378, DE-0150, DE-0176 | broker, chunking, language, languagemodel, markup, rules, rules/patterns, rules/spelling, rules/spelling/multitoken, synthesis, tagging, tagging/disambiguation, tagging/disambiguation/xx, tagging/xx, tokenizers | S3 core foundation |
 | LanguageAnnotator | `src/core/LanguageAnnotator.js` | CORE-0317 | rules/spelling | S8 core engine |
 | LanguageMaintainedState | `src/core/LanguageMaintainedState.js` | CORE-0352 | - | S3 core foundation |
 | LanguageWithModel | `src/core/LanguageWithModel.js` | CORE-0450, CORE-0352 | languagemodel | S3 core foundation |
-| Languages | `src/core/Languages.js` | CORE-0020, CORE-0021, CORE-0022, CORE-0023, CORE-0024, CORE-0025, CORE-0130, CORE-0410 | noop, tools | S3 core foundation |
+| Languages | `src/core/Languages.js` | CORE-0020, CORE-0021, CORE-0022, CORE-0023, CORE-0024, CORE-0025, CORE-0130, CORE-0410, SRV-0059, SRV-0092, SRV-0142 | noop, tools | S3 core foundation |
 | LevelToneTagCacheKey | `src/core/LevelToneTagCacheKey.js` | CORE-0077 | - | S8 core engine |
 | LinguServices | `src/core/LinguServices.js` | CORE-0439, CORE-0427, CORE-0447 | rules | S3 core foundation |
-| LtBuildInfo | `src/core/LtBuildInfo.js` | CORE-0010 | - | S3 core foundation |
-| MultiThreadedJLanguageTool | `src/core/MultiThreadedJLanguageTool.js` | CORE-0091 | markup, rules, rules/patterns | S8 core engine |
-| Premium | `src/core/Premium.js` | CORE-0041, CORE-0129, CORE-0130, CORE-0322 | markup, rules | S3 core foundation |
+| LtBuildInfo | `src/core/LtBuildInfo.js` | CORE-0010, CLI-0005 | - | S3 core foundation |
+| MultiThreadedJLanguageTool | `src/core/MultiThreadedJLanguageTool.js` | CORE-0091, CLI-0071 | markup, rules, rules/patterns | S8 core engine |
+| Premium | `src/core/Premium.js` | CORE-0041, CORE-0129, CORE-0130, CORE-0322, SRV-0113 | markup, rules | S3 core foundation |
 | PremiumOff | `src/core/PremiumOff.js` | CORE-0129 | rules | S3 core foundation |
 | Range | `src/core/Range.js` | CORE-0084 | - | S8 core engine |
 | RemoteRuleFallbackManager | `src/core/RemoteRuleFallbackManager.js` | CORE-0343 (later) | rules | later |
 | ResourceBundleTools | `src/core/ResourceBundleTools.js` | CORE-0042 | - | S3 core foundation |
 | ResourceBundleWithFallback | `src/core/ResourceBundleWithFallback.js` | CORE-0042 | - | S3 core foundation |
-| ResultCache | `src/core/ResultCache.js` | CORE-0095 | rules, tools | S8 core engine |
+| ResultCache | `src/core/ResultCache.js` | CORE-0095, SRV-0155 | rules, tools | S8 core engine |
 | RuleEntityResolver | `src/core/RuleEntityResolver.js` | CORE-0008 | - | S3 core foundation |
 | RuleMatchListener | `src/core/RuleMatchListener.js` | CORE-0088 | rules | S8 core engine |
 | SentenceRange | `src/core/SentenceRange.js` | CORE-0114 | markup | S8 core engine |
-| ShortDescriptionProvider | `src/core/ShortDescriptionProvider.js` | CORE-0082, CORE-0279 | broker | S3 core foundation |
+| ShortDescriptionProvider | `src/core/ShortDescriptionProvider.js` | CORE-0082, CORE-0279, DE-0181 | broker | S3 core foundation |
 | SimpleInputSentence | `src/core/SimpleInputSentence.js` | CORE-0073, CORE-0095 | - | S8 core engine |
 | Tag | `src/core/Tag.js` | CORE-0123, CORE-0142 | - | S3 core foundation |
 | ToneTag | `src/core/ToneTag.js` | CORE-0079, CORE-0123, CORE-0142 | - | S3 core foundation |
@@ -166,7 +991,7 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 |---|---|---|---|---|
 | BitextReader | `src/core/bitext/BitextReader.js` | CORE-0352 | - | S7 core rules/spelling/identification |
 | StringPair | `src/core/bitext/StringPair.js` | CORE-0290 | - | S7 core rules/spelling/identification |
-| TabBitextReader | `src/core/bitext/TabBitextReader.js` | CORE-0290 | - | S7 core rules/spelling/identification |
+| TabBitextReader | `src/core/bitext/TabBitextReader.js` | CORE-0290, CLI-0063 | - | S7 core rules/spelling/identification |
 | WordFastTMReader | `src/core/bitext/WordFastTMReader.js` | CORE-0290 | - | S7 core rules/spelling/identification |
 
 #### core: broker
@@ -208,9 +1033,9 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 
 | Java class | JS module | inventory IDs | depends on (org.languagetool packages) | step |
 |---|---|---|---|---|
-| DefaultLanguageIdentifier | `src/core/language/identifier/DefaultLanguageIdentifier.js` | CORE-0006, CORE-0311, CORE-0312 | language/identifier/detector, noop | S7 core rules/spelling/identification |
+| DefaultLanguageIdentifier | `src/core/language/identifier/DefaultLanguageIdentifier.js` | CORE-0006, CORE-0311, CORE-0312, SRV-0123 | language/identifier/detector, noop | S7 core rules/spelling/identification |
 | LanguageIdentifier | `src/core/language/identifier/LanguageIdentifier.js` | CORE-0311 | language/identifier/detector | S7 core rules/spelling/identification |
-| LanguageIdentifierService | `src/core/language/identifier/LanguageIdentifierService.js` | CORE-0310, CORE-0311 | - | S7 core rules/spelling/identification |
+| LanguageIdentifierService | `src/core/language/identifier/LanguageIdentifierService.js` | CORE-0310, CORE-0311, CLI-0044 | - | S7 core rules/spelling/identification |
 | SimpleLanguageIdentifier | `src/core/language/identifier/SimpleLanguageIdentifier.js` | CORE-0315 | (root), noop, rules/spelling | S7 core rules/spelling/identification |
 
 #### core: language/identifier/detector
@@ -251,7 +1076,7 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 | Java class | JS module | inventory IDs | depends on (org.languagetool packages) | step |
 |---|---|---|---|---|
 | AnnotatedText | `src/core/markup/AnnotatedText.js` | CORE-0070, CORE-0082, CORE-0103, CORE-0104, CORE-0126 | - | S3 core foundation |
-| AnnotatedTextBuilder | `src/core/markup/AnnotatedTextBuilder.js` | CORE-0100, CORE-0101, CORE-0102 | - | S3 core foundation |
+| AnnotatedTextBuilder | `src/core/markup/AnnotatedTextBuilder.js` | CORE-0100, CORE-0101, CORE-0102, EN-0220, FR-0220 | - | S3 core foundation |
 | MappingValue | `src/core/markup/MappingValue.js` | CORE-0102 | - | S3 core foundation |
 | TextPart | `src/core/markup/TextPart.js` | CORE-0101 | - | S3 core foundation |
 
@@ -302,7 +1127,7 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 | CategoryId | `src/core/rules/CategoryId.js` | CORE-0121 | - | S3 core foundation |
 | CategoryIds | `src/core/rules/CategoryIds.js` | CORE-0121 | - | S3 core foundation |
 | CheckPostagsInSuggestionFilter | `src/core/rules/CheckPostagsInSuggestionFilter.js` | CORE-0404 | rules/patterns, tagging | S7 core rules/spelling/identification |
-| CleanOverlappingFilter | `src/core/rules/CleanOverlappingFilter.js` | CORE-0087, CORE-0186, CORE-0187 | - | S3 core foundation |
+| CleanOverlappingFilter | `src/core/rules/CleanOverlappingFilter.js` | CORE-0087, CORE-0186, CORE-0187, DE-0226 | - | S3 core foundation |
 | CommaWhitespaceRule | `src/core/rules/CommaWhitespaceRule.js` | CORE-0250 | tools | S7 core rules/spelling/identification |
 | CompoundRuleData | `src/core/rules/CompoundRuleData.js` | CORE-0272 | - | S7 core rules/spelling/identification |
 | ConfusionPair | `src/core/rules/ConfusionPair.js` | CORE-0274 | tools | S7 core rules/spelling/identification |
@@ -313,8 +1138,8 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 | CorrectExample | `src/core/rules/CorrectExample.js` | CORE-0125 | - | S3 core foundation |
 | DateRangeChecker | `src/core/rules/DateRangeChecker.js` | CORE-0182 | rules/patterns | S7 core rules/spelling/identification |
 | DemoRule | `src/core/rules/DemoRule.js` | CORE-0266 | - | S7 core rules/spelling/identification |
-| DictionaryMatchFilter | `src/core/rules/DictionaryMatchFilter.js` | CORE-0186 | markup | S3 core foundation |
-| DictionarySpellMatchFilter | `src/core/rules/DictionarySpellMatchFilter.js` | CORE-0186, CORE-0449 | markup | S7 core rules/spelling/identification |
+| DictionaryMatchFilter | `src/core/rules/DictionaryMatchFilter.js` | CORE-0186, SRV-0117 | markup | S3 core foundation |
+| DictionarySpellMatchFilter | `src/core/rules/DictionarySpellMatchFilter.js` | CORE-0186, CORE-0449, SRV-0117 | markup | S7 core rules/spelling/identification |
 | DoublePunctuationRule | `src/core/rules/DoublePunctuationRule.js` | CORE-0251 | - | S7 core rules/spelling/identification |
 | EmptyLineRule | `src/core/rules/EmptyLineRule.js` | CORE-0417 | tools | S7 core rules/spelling/identification |
 | ErrorTriggeringExample | `src/core/rules/ErrorTriggeringExample.js` | CORE-0125 | - | S3 core foundation |
@@ -330,9 +1155,9 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 | IncorrectExample | `src/core/rules/IncorrectExample.js` | CORE-0125 | - | S3 core foundation |
 | IsEnglishWordFilter | `src/core/rules/IsEnglishWordFilter.js` | CORE-0410 | rules/patterns, tagging | S7 core rules/spelling/identification |
 | LanguageDependentRuleMatchFilter | `src/core/rules/LanguageDependentRuleMatchFilter.js` | CORE-0087, CORE-0186 | markup, rules/patterns | S3 core foundation |
-| LineExpander | `src/core/rules/LineExpander.js` | CORE-0433, CORE-0352 | - | S3 core foundation |
+| LineExpander | `src/core/rules/LineExpander.js` | CORE-0433, CORE-0352, DE-0102, DE-0133 | - | S3 core foundation |
 | LongParagraphRule | `src/core/rules/LongParagraphRule.js` | CORE-0260 | tools | S7 core rules/spelling/identification |
-| LongSentenceRule | `src/core/rules/LongSentenceRule.js` | CORE-0259 | tools | S7 core rules/spelling/identification |
+| LongSentenceRule | `src/core/rules/LongSentenceRule.js` | CORE-0259, DE-0074, EN-0071 | tools | S7 core rules/spelling/identification |
 | MatchPosition | `src/core/rules/MatchPosition.js` | CORE-0352 | - | S3 core foundation |
 | MultipleWhitespaceRule | `src/core/rules/MultipleWhitespaceRule.js` | CORE-0256 | tools | S7 core rules/spelling/identification |
 | NewLineMatchFilter | `src/core/rules/NewLineMatchFilter.js` | CORE-0416 | markup | S7 core rules/spelling/identification |
@@ -347,14 +1172,14 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 | RemoteRuleFilters | `src/core/rules/RemoteRuleFilters.js` | CORE-0343 (later) | broker, rules/patterns | later |
 | RemoteRuleMetrics | `src/core/rules/RemoteRuleMetrics.js` | CORE-0343 (later) | - | later |
 | RemoteRuleResult | `src/core/rules/RemoteRuleResult.js` | CORE-0343 (later) | - | later |
-| Rule | `src/core/rules/Rule.js` | CORE-0028, CORE-0031, CORE-0035, CORE-0055, CORE-0120, CORE-0142, CORE-0143, CORE-0148, ... | rules/patterns, tagging/disambiguation/rules | S3 core foundation |
+| Rule | `src/core/rules/Rule.js` | CORE-0028, CORE-0031, CORE-0035, CORE-0055, CORE-0120, CORE-0142, CORE-0143, CORE-0148, DE-0089, EN-0074 | rules/patterns, tagging/disambiguation/rules | S3 core foundation |
 | RuleMatch | `src/core/rules/RuleMatch.js` | CORE-0070, CORE-0110, CORE-0111, CORE-0112 | rules/patterns, tools | S3 core foundation |
 | RuleMatchFilter | `src/core/rules/RuleMatchFilter.js` | CORE-0416, CORE-0186 | markup | S3 core foundation |
-| RuleOption | `src/core/rules/RuleOption.js` | CORE-0124, CORE-0259, CORE-0428, CORE-0429, CORE-0430 | - | S3 core foundation |
+| RuleOption | `src/core/rules/RuleOption.js` | CORE-0124, CORE-0259, CORE-0428, CORE-0429, CORE-0430, SRV-0096, SRV-0135 | - | S3 core foundation |
 | RuleWithMaxFilter | `src/core/rules/RuleWithMaxFilter.js` | CORE-0391, CORE-0172, CORE-0186 | rules/patterns | S3 core foundation |
 | SameRuleGroupFilter | `src/core/rules/SameRuleGroupFilter.js` | CORE-0081, CORE-0087, CORE-0186 | - | S3 core foundation |
 | ScoredConfusionSet | `src/core/rules/ScoredConfusionSet.js` | CORE-0274 | - | S7 core rules/spelling/identification |
-| SentenceWhitespaceRule | `src/core/rules/SentenceWhitespaceRule.js` | CORE-0257 | tools | S7 core rules/spelling/identification |
+| SentenceWhitespaceRule | `src/core/rules/SentenceWhitespaceRule.js` | CORE-0257, DE-0082 | tools | S7 core rules/spelling/identification |
 | ShortenedYearRangeChecker | `src/core/rules/ShortenedYearRangeChecker.js` | CORE-0182 | rules/patterns | S7 core rules/spelling/identification |
 | SimpleReplaceDataLoader | `src/core/rules/SimpleReplaceDataLoader.js` | CORE-0270 | - | S7 core rules/spelling/identification |
 | SpecificIdRule | `src/core/rules/SpecificIdRule.js` | CORE-0266 | - | S7 core rules/spelling/identification |
@@ -369,7 +1194,7 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 | TextLevelRule | `src/core/rules/TextLevelRule.js` | CORE-0126 | markup | S3 core foundation |
 | UnderlineSpacesFilter | `src/core/rules/UnderlineSpacesFilter.js` | CORE-0406 | rules/patterns, tools | S7 core rules/spelling/identification |
 | UnsyncStack | `src/core/rules/UnsyncStack.js` | CORE-0252, CORE-0332 | - | S7 core rules/spelling/identification |
-| UppercaseSentenceStartRule | `src/core/rules/UppercaseSentenceStartRule.js` | CORE-0254 | tokenizers, tools | S7 core rules/spelling/identification |
+| UppercaseSentenceStartRule | `src/core/rules/UppercaseSentenceStartRule.js` | CORE-0254, DE-0225, EN-0223 | tokenizers, tools | S7 core rules/spelling/identification |
 | WhiteSpaceAtBeginOfParagraph | `src/core/rules/WhiteSpaceAtBeginOfParagraph.js` | CORE-0420 | - | S7 core rules/spelling/identification |
 | WhiteSpaceBeforeParagraphEnd | `src/core/rules/WhiteSpaceBeforeParagraphEnd.js` | CORE-0421 | tools | S7 core rules/spelling/identification |
 | WhitespaceBeforePunctuationRule | `src/core/rules/WhitespaceBeforePunctuationRule.js` | CORE-0258 | tools | S7 core rules/spelling/identification |
@@ -415,7 +1240,7 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 | Java class | JS module | inventory IDs | depends on (org.languagetool packages) | step |
 |---|---|---|---|---|
 | AbstractPatternRule | `src/core/rules/patterns/AbstractPatternRule.js` | CORE-0153, CORE-0403 | rules, tagging/disambiguation/rules | S6 core patterns/disambiguation |
-| AbstractPatternRulePerformer | `src/core/rules/patterns/AbstractPatternRulePerformer.js` | CORE-0380, CORE-0381, CORE-0384, CORE-0385, CORE-0386, CORE-0387, CORE-0388, CORE-0389, ... | chunking | S6 core patterns/disambiguation |
+| AbstractPatternRulePerformer | `src/core/rules/patterns/AbstractPatternRulePerformer.js` | CORE-0380, CORE-0381, CORE-0384, CORE-0385, CORE-0386, CORE-0387, CORE-0388, CORE-0389, CORE-0391 | chunking | S6 core patterns/disambiguation |
 | AbstractTokenBasedRule | `src/core/rules/patterns/AbstractTokenBasedRule.js` | CORE-0176 | tools | S6 core patterns/disambiguation |
 | ApostropheTypeFilter | `src/core/rules/patterns/ApostropheTypeFilter.js` | CORE-0414 | rules | S6 core patterns/disambiguation |
 | CaseConversionHelper | `src/core/rules/patterns/CaseConversionHelper.js` | CORE-0176 | tools | S6 core patterns/disambiguation |
@@ -430,10 +1255,10 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 | PasswordAuthenticator | `src/core/rules/patterns/PasswordAuthenticator.js` | CORE-0062 | tools | S6 core patterns/disambiguation |
 | PatternRule | `src/core/rules/patterns/PatternRule.js` | CORE-0152, CORE-0174, CORE-0292 | rules, tagging/disambiguation/rules, tools | S6 core patterns/disambiguation |
 | PatternRuleBuilderHelper | `src/core/rules/patterns/PatternRuleBuilderHelper.js` | CORE-0178 | - | S6 core patterns/disambiguation |
-| PatternRuleHandler | `src/core/rules/patterns/PatternRuleHandler.js` | CORE-0141, CORE-0142, CORE-0143, CORE-0144, CORE-0147, CORE-0148, CORE-0149, CORE-0152, ... | rules, tagging/disambiguation/rules, tools | S6 core patterns/disambiguation |
+| PatternRuleHandler | `src/core/rules/patterns/PatternRuleHandler.js` | CORE-0141, CORE-0142, CORE-0143, CORE-0144, CORE-0147, CORE-0148, CORE-0149, CORE-0152, CORE-0153, CORE-0154, CORE-0155, CORE-0160 | rules, tagging/disambiguation/rules, tools | S6 core patterns/disambiguation |
 | PatternRuleId | `src/core/rules/patterns/PatternRuleId.js` | CORE-0174 | - | S6 core patterns/disambiguation |
 | PatternRuleLoader | `src/core/rules/patterns/PatternRuleLoader.js` | CORE-0140, CORE-0142 | tools | S6 core patterns/disambiguation |
-| PatternRuleMatcher | `src/core/rules/patterns/PatternRuleMatcher.js` | CORE-0164, CORE-0391, CORE-0172, CORE-0173 | rules, tools | S6 core patterns/disambiguation |
+| PatternRuleMatcher | `src/core/rules/patterns/PatternRuleMatcher.js` | CORE-0164, CORE-0391, CORE-0172, CORE-0173, SRV-0175 | rules, tools | S6 core patterns/disambiguation |
 | PatternRuleTransformer | `src/core/rules/patterns/PatternRuleTransformer.js` | CORE-0352 | rules | S6 core patterns/disambiguation |
 | PatternRuleXmlCreator | `src/core/rules/patterns/PatternRuleXmlCreator.js` | CORE-0174 | - | S6 core patterns/disambiguation |
 | PatternToken | `src/core/rules/patterns/PatternToken.js` | CORE-0366, CORE-0150, CORE-0151, CORE-0152, CORE-0378, CORE-0384, CORE-0385, CORE-0388 | chunking, synthesis, tools | S6 core patterns/disambiguation |
@@ -473,7 +1298,7 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 | CommonFileTypes | `src/core/rules/spelling/CommonFileTypes.js` | CORE-0240 | - | S7 core rules/spelling/identification |
 | ForeignLanguageChecker | `src/core/rules/spelling/ForeignLanguageChecker.js` | CORE-0436, CORE-0442, CORE-0239 | language/identifier | S7 core rules/spelling/identification |
 | RuleWithLanguage | `src/core/rules/spelling/RuleWithLanguage.js` | CORE-0240 | rules | S7 core rules/spelling/identification |
-| SpellingCheckRule | `src/core/rules/spelling/SpellingCheckRule.js` | CORE-0433, CORE-0434, CORE-0435, CORE-0437 | languagemodel, rules, rules/patterns, rules/spelling/suggestions, tagging/disambiguation/rules, tokenizers, tools | S7 core rules/spelling/identification |
+| SpellingCheckRule | `src/core/rules/spelling/SpellingCheckRule.js` | CORE-0433, CORE-0434, CORE-0435, CORE-0437, DE-0184 | languagemodel, rules, rules/patterns, rules/spelling/suggestions, tagging/disambiguation/rules, tokenizers, tools | S7 core rules/spelling/identification |
 | SymSpellRule | `src/core/rules/spelling/SymSpellRule.js` | CORE-0238 | broker, languagemodel, rules, rules/spelling/suggestions, rules/spelling/symspell/implementation | S7 core rules/spelling/identification |
 | VagueSpellChecker | `src/core/rules/spelling/VagueSpellChecker.js` | CORE-0239 | rules, rules/spelling/hunspell, rules/spelling/morfologik | S7 core rules/spelling/identification |
 
@@ -483,18 +1308,18 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 |---|---|---|---|---|
 | CompoundAwareHunspellRule | `src/core/rules/spelling/hunspell/CompoundAwareHunspellRule.js` | CORE-0236 | languagemodel, rules/spelling/morfologik, tokenizers, tools | S7 core rules/spelling/identification |
 | DumontsHunspellDictionary | `src/core/rules/spelling/hunspell/DumontsHunspellDictionary.js` | CORE-0003, CORE-0443 | - | S7 core rules/spelling/identification |
-| Hunspell | `src/core/rules/spelling/hunspell/Hunspell.js` | CORE-0003, CORE-0025, CORE-0443 | broker | S7 core rules/spelling/identification |
+| Hunspell | `src/core/rules/spelling/hunspell/Hunspell.js` | CORE-0003, CORE-0025, CORE-0443, DE-0205 | broker | S7 core rules/spelling/identification |
 | HunspellDictionary | `src/core/rules/spelling/hunspell/HunspellDictionary.js` | CORE-0235 | - | S7 core rules/spelling/identification |
 | HunspellNoSuggestionRule | `src/core/rules/spelling/hunspell/HunspellNoSuggestionRule.js` | CORE-0442 | rules | S7 core rules/spelling/identification |
-| HunspellRule | `src/core/rules/spelling/hunspell/HunspellRule.js` | CORE-0440, CORE-0441, CORE-0442, CORE-0443 | languagemodel, rules, rules/spelling, tools | S7 core rules/spelling/identification |
+| HunspellRule | `src/core/rules/spelling/hunspell/HunspellRule.js` | CORE-0440, CORE-0441, CORE-0442, CORE-0443, DE-0205, SRV-0175 | languagemodel, rules, rules/spelling, tools | S7 core rules/spelling/identification |
 
 #### core: rules/spelling/morfologik
 
 | Java class | JS module | inventory IDs | depends on (org.languagetool packages) | step |
 |---|---|---|---|---|
-| MorfologikMultiSpeller | `src/core/rules/spelling/morfologik/MorfologikMultiSpeller.js` | CORE-0439, CORE-0232 | (root), rules/spelling | S7 core rules/spelling/identification |
+| MorfologikMultiSpeller | `src/core/rules/spelling/morfologik/MorfologikMultiSpeller.js` | CORE-0439, CORE-0232, DE-0102 | (root), rules/spelling | S7 core rules/spelling/identification |
 | MorfologikSpeller | `src/core/rules/spelling/morfologik/MorfologikSpeller.js` | CORE-0372, CORE-0374, CORE-0375, CORE-0376 | broker, rules/patterns, rules/spelling, tools | S7 core rules/spelling/identification |
-| MorfologikSpellerRule | `src/core/rules/spelling/morfologik/MorfologikSpellerRule.js` | CORE-0436, CORE-0437, CORE-0438, CORE-0439, CORE-0345, CORE-0447 | (root), languagemodel, rules, rules/spelling, rules/spelling/suggestions, rules/translation, tools | S7 core rules/spelling/identification |
+| MorfologikSpellerRule | `src/core/rules/spelling/morfologik/MorfologikSpellerRule.js` | CORE-0436, CORE-0437, CORE-0438, CORE-0439, CORE-0345, CORE-0447, EN-0081 | (root), languagemodel, rules, rules/spelling, rules/spelling/suggestions, rules/translation, tools | S7 core rules/spelling/identification |
 | WeightedSuggestion | `src/core/rules/spelling/morfologik/WeightedSuggestion.js` | CORE-0233 | - | S7 core rules/spelling/identification |
 
 #### core: rules/spelling/morfologik/suggestions_ordering
@@ -544,7 +1369,7 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 
 | Java class | JS module | inventory IDs | depends on (org.languagetool packages) | step |
 |---|---|---|---|---|
-| BaseSynthesizer | `src/core/synthesis/BaseSynthesizer.js` | CORE-0373, CORE-0220, CORE-0221 | rules/spelling/morfologik, tools | S5 core analysis |
+| BaseSynthesizer | `src/core/synthesis/BaseSynthesizer.js` | CORE-0373, CORE-0220, CORE-0221, DE-0170, DE-0172, DE-0191 | rules/spelling/morfologik, tools | S5 core analysis |
 | ManualSynthesizer | `src/core/synthesis/ManualSynthesizer.js` | CORE-0222 | tagging, tools | S5 core analysis |
 | Soros | `src/core/synthesis/Soros.js` | CORE-0044, CORE-0221 | - | S5 core analysis |
 | Synthesizer | `src/core/synthesis/Synthesizer.js` | CORE-0220, CORE-0346 | - | S5 core analysis |
@@ -554,7 +1379,7 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 
 | Java class | JS module | inventory IDs | depends on (org.languagetool packages) | step |
 |---|---|---|---|---|
-| BaseTagger | `src/core/tagging/BaseTagger.js` | CORE-0210 | rules/spelling/morfologik, tools | S5 core analysis |
+| BaseTagger | `src/core/tagging/BaseTagger.js` | CORE-0210, DE-0170 | rules/spelling/morfologik, tools | S5 core analysis |
 | CombiningTagger | `src/core/tagging/CombiningTagger.js` | CORE-0210, CORE-0212 | - | S5 core analysis |
 | ManualTagger | `src/core/tagging/ManualTagger.js` | CORE-0211 | synthesis, tools | S5 core analysis |
 | MorfologikTagger | `src/core/tagging/MorfologikTagger.js` | CORE-0370, CORE-0373, CORE-0213 | - | S5 core analysis |
@@ -577,7 +1402,7 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 |---|---|---|---|---|
 | DisambiguatedExample | `src/core/tagging/disambiguation/rules/DisambiguatedExample.js` | CORE-0352 | - | S6 core patterns/disambiguation |
 | DisambiguationPatternRule | `src/core/tagging/disambiguation/rules/DisambiguationPatternRule.js` | CORE-0149 | rules/patterns | S6 core patterns/disambiguation |
-| DisambiguationPatternRuleReplacer | `src/core/tagging/disambiguation/rules/DisambiguationPatternRuleReplacer.js` | CORE-0191, CORE-0392, CORE-0393, CORE-0394, CORE-0395, CORE-0396, CORE-0397, CORE-0398, ... | chunking, rules, rules/patterns, tools | S6 core patterns/disambiguation |
+| DisambiguationPatternRuleReplacer | `src/core/tagging/disambiguation/rules/DisambiguationPatternRuleReplacer.js` | CORE-0191, CORE-0392, CORE-0393, CORE-0394, CORE-0395, CORE-0396, CORE-0397, CORE-0398, CORE-0399, CORE-0400, CORE-0401 | chunking, rules, rules/patterns, tools | S6 core patterns/disambiguation |
 | DisambiguationRuleHandler | `src/core/tagging/disambiguation/rules/DisambiguationRuleHandler.js` | CORE-0191 | rules/patterns, tools | S6 core patterns/disambiguation |
 | DisambiguationRuleLoader | `src/core/tagging/disambiguation/rules/DisambiguationRuleLoader.js` | CORE-0191 | tools | S6 core patterns/disambiguation |
 | XmlRuleDisambiguator | `src/core/tagging/disambiguation/rules/XmlRuleDisambiguator.js` | CORE-0044, CORE-0190 | rules, rules/patterns, tagging/disambiguation | S6 core patterns/disambiguation |
@@ -621,18 +1446,18 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 | ContextTools | `src/core/tools/ContextTools.js` | CORE-0320, CORE-0321, CORE-0323 | - | S3 core foundation |
 | DiffsAsMatches | `src/core/tools/DiffsAsMatches.js` | CORE-0331 | - | S3 core foundation |
 | InterruptibleCharSequence | `src/core/tools/InterruptibleCharSequence.js` | CORE-0332 | - | S3 core foundation |
-| JnaTools | `src/core/tools/JnaTools.js` | CORE-0332 | - | S3 core foundation |
+| JnaTools | `src/core/tools/JnaTools.js` | CORE-0332, CLI-0067 | - | S3 core foundation |
 | LoggingTools | `src/core/tools/LoggingTools.js` | CORE-0332 | - | S3 core foundation |
 | LtThreadPoolExecutor | `src/core/tools/LtThreadPoolExecutor.js` | CORE-0333 | - | S3 core foundation |
 | LtThreadPoolFactory | `src/core/tools/LtThreadPoolFactory.js` | CORE-0333 | - | S3 core foundation |
 | MostlySingularMultiMap | `src/core/tools/MostlySingularMultiMap.js` | CORE-0332 | - | S3 core foundation |
 | MultiKeyProperties | `src/core/tools/MultiKeyProperties.js` | CORE-0020, CORE-0332 | - | S3 core foundation |
 | PseudoMatch | `src/core/tools/PseudoMatch.js` | CORE-0331 | - | S3 core foundation |
-| RuleMatchesAsJsonSerializer | `src/core/tools/RuleMatchesAsJsonSerializer.js` | CORE-0007, CORE-0322, CORE-0323, CORE-0324, CORE-0325, CORE-0326 | markup, rules | S3 core foundation |
+| RuleMatchesAsJsonSerializer | `src/core/tools/RuleMatchesAsJsonSerializer.js` | CORE-0007, CORE-0322, CORE-0323, CORE-0324, CORE-0325, CORE-0326, CLI-0051 | markup, rules | S3 core foundation |
 | StringInterner | `src/core/tools/StringInterner.js` | CORE-0150, CORE-0332 | - | S3 core foundation |
 | StringTools | `src/core/tools/StringTools.js` | CORE-0009, CORE-0406, CORE-0329, CORE-0444, CORE-0445, CORE-0446 | - | S3 core foundation |
 | TelemetryProvider | `src/core/tools/TelemetryProvider.js` | CORE-0334 (later) | - | later |
-| Tools | `src/core/tools/Tools.js` | CORE-0043, CORE-0056, CORE-0062, CORE-0439, CORE-0418, CORE-0293, CORE-0327, CORE-0328, ... | rules, rules/bitext, rules/patterns, rules/patterns/bitext | S3 core foundation |
+| Tools | `src/core/tools/Tools.js` | CORE-0043, CORE-0056, CORE-0062, CORE-0439, CORE-0418, CORE-0293, CORE-0327, CORE-0328, CLI-0012, CLI-0028, CLI-0040, CLI-0053, CORE-0447, EN-0220 | rules, rules/bitext, rules/patterns, rules/patterns/bitext | S3 core foundation |
 | TracedFunction | `src/core/tools/TracedFunction.js` | CORE-0334 (later) | - | later |
 | WrappedValue | `src/core/tools/WrappedValue.js` | CORE-0334 (later) | - | later |
 | WrappedVoid | `src/core/tools/WrappedVoid.js` | CORE-0334 (later) | - | later |
@@ -659,9 +1484,9 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 | Java class | JS module | inventory IDs | depends on (org.languagetool packages) | step |
 |---|---|---|---|---|
 | CommandLineOptions | `src/cli/CommandLineOptions.js` | CLI-0020, CLI-0070 | rules | S12 cli |
-| CommandLineParser | `src/cli/CommandLineParser.js` | CLI-0001, CLI-0002, CLI-0003, CLI-0004, CLI-0007, CLI-0008, CLI-0009, CLI-0010, ... | - | S12 cli |
-| CommandLineTools | `src/cli/CommandLineTools.js` | CLI-0041, CLI-0046, CLI-0047, CLI-0048, CLI-0049, CLI-0051, CLI-0054, CLI-0055, ... | bitext, markup, rules, rules/bitext, rules/patterns, tagging/disambiguation/rules, tokenizers, tools | S12 cli |
-| Main | `src/cli/Main.js` | CLI-0001, CLI-0002, CLI-0005, CLI-0006, CLI-0007, CLI-0013, CLI-0022, CLI-0023, ... | bitext, language, language/identifier, rules, rules/bitext, rules/patterns, tools | S12 cli |
+| CommandLineParser | `src/cli/CommandLineParser.js` | CLI-0001, CLI-0002, CLI-0003, CLI-0004, CLI-0007, CLI-0008, CLI-0009, CLI-0010, CLI-0011, CLI-0012, CLI-0014, CLI-0015, CLI-0016, CLI-0017, CLI-0018, CLI-0019, CLI-0020, CLI-0021, CLI-0022, CLI-0030, CLI-0031, CLI-0032, CLI-0033, CLI-0034 | - | S12 cli |
+| CommandLineTools | `src/cli/CommandLineTools.js` | CLI-0041, CLI-0046, CLI-0047, CLI-0048, CLI-0049, CLI-0051, CLI-0054, CLI-0055, CLI-0064, CLI-0065, CLI-0069 | bitext, markup, rules, rules/bitext, rules/patterns, tagging/disambiguation/rules, tokenizers, tools | S12 cli |
+| Main | `src/cli/Main.js` | CLI-0001, CLI-0002, CLI-0005, CLI-0006, CLI-0007, CLI-0013, CLI-0022, CLI-0023, CLI-0025, CLI-0027, CLI-0028, CLI-0029, CLI-0031, CLI-0035, CLI-0036, CLI-0037, CLI-0038, CLI-0039, CLI-0040, CLI-0041, CLI-0042, CLI-0043, CLI-0044, CLI-0045, CLI-0050, CLI-0052, CLI-0053, CLI-0056, CLI-0057, CLI-0058, CLI-0059, CLI-0060, CLI-0061, CLI-0062, CLI-0066, CLI-0068, CLI-0071 | bitext, language, language/identifier, rules, rules/bitext, rules/patterns, tools | S12 cli |
 | UnknownParameterException | `src/cli/UnknownParameterException.js` | CLI-0002 | - | S12 cli |
 | WrongParameterNumberException | `src/cli/WrongParameterNumberException.js` | CLI-0001 | - | S12 cli |
 
@@ -676,8 +1501,8 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 | AbTestService | `src/server/AbTestService.js` | SRV-0144, SRV-0173 | - | S13 server |
 | ActiveRules | `src/server/ActiveRules.js` | SRV-0175, SRV-0176 | rules/patterns, rules/spelling/hunspell | S13 server |
 | ActiveRulesMBean | `src/server/ActiveRulesMBean.js` | SRV-0176, SRV-0173 | - | S13 server |
-| ApiV2 | `src/server/ApiV2.js` | SRV-0074, SRV-0090, SRV-0091, SRV-0092, SRV-0093, SRV-0094, SRV-0095, SRV-0096, ... | markup, rules, server, tools | S13 server |
-| AuthException | `src/server/AuthException.js` | SRV-0049, SRV-0075, SRV-0193, SRV-0195, SRV-0197, SRV-0104, SRV-0105, SRV-0106, ... | - | S13 server |
+| ApiV2 | `src/server/ApiV2.js` | SRV-0074, SRV-0090, SRV-0091, SRV-0092, SRV-0093, SRV-0094, SRV-0095, SRV-0096, SRV-0097, SRV-0098, SRV-0099, SRV-0100, SRV-0104, SRV-0105, SRV-0193, SRV-0195, SRV-0197 | markup, rules, server, tools | S13 server |
+| AuthException | `src/server/AuthException.js` | SRV-0049, SRV-0075, SRV-0193, SRV-0195, SRV-0197, SRV-0104, SRV-0105, SRV-0106 | - | S13 server |
 | BadRequestException | `src/server/BadRequestException.js` | SRV-0072, SRV-0075, SRV-0076, SRV-0193 | - | S13 server |
 | BasicAuthentication | `src/server/BasicAuthentication.js` | SRV-0106 | - | S13 server |
 | ConfidenceMapLoader | `src/server/ConfidenceMapLoader.js` | SRV-0037 | tools | S13 server |
@@ -685,7 +1510,7 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 | DBGroupMember | `src/server/DBGroupMember.js` | SRV-0172 (later) | - | later |
 | DBInvite | `src/server/DBInvite.js` | SRV-0172 (later) | - | later |
 | DatabaseAccess | `src/server/DatabaseAccess.js` | SRV-0015, SRV-0048, SRV-0199 | rules | S13 server |
-| DatabaseAccessOpenSource | `src/server/DatabaseAccessOpenSource.js` | SRV-0089, SRV-0193, SRV-0194, SRV-0195, SRV-0196, SRV-0197, SRV-0198, SRV-0104, ... | rules | S13 server |
+| DatabaseAccessOpenSource | `src/server/DatabaseAccessOpenSource.js` | SRV-0089, SRV-0193, SRV-0194, SRV-0195, SRV-0196, SRV-0197, SRV-0198, SRV-0104, SRV-0105, SRV-0112, SRV-0199 | rules | S13 server |
 | DatabaseCheckLogEntry | `src/server/DatabaseCheckLogEntry.js` | SRV-0171 (later) | - | later |
 | DatabaseLogEntry | `src/server/DatabaseLogEntry.js` | SRV-0171 (later) | - | later |
 | DatabaseLogger | `src/server/DatabaseLogger.js` | SRV-0143, SRV-0200, SRV-0201, SRV-0202 | - | S13 server |
@@ -697,19 +1522,19 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 | GroupRoles | `src/server/GroupRoles.js` | SRV-0172 (later) | - | later |
 | HTTPSServer | `src/server/HTTPSServer.js` | SRV-0177, SRV-0178 | server, tools | S13 server |
 | HTTPSServerConfig | `src/server/HTTPSServerConfig.js` | SRV-0177 | - | S13 server |
-| HTTPServer | `src/server/HTTPServer.js` | SRV-0001, SRV-0008, SRV-0009, SRV-0010, SRV-0015, SRV-0017, SRV-0018, SRV-0020, ... | server, tools | S13 server |
-| HTTPServerConfig | `src/server/HTTPServerConfig.js` | SRV-0004, SRV-0005, SRV-0006, SRV-0007, SRV-0010, SRV-0011, SRV-0013, SRV-0014, ... | rules/spelling/morfologik/suggestions_ordering | S13 server |
+| HTTPServer | `src/server/HTTPServer.js` | SRV-0001, SRV-0008, SRV-0009, SRV-0010, SRV-0015, SRV-0017, SRV-0018, SRV-0020, SRV-0187 | server, tools | S13 server |
+| HTTPServerConfig | `src/server/HTTPServerConfig.js` | SRV-0004, SRV-0005, SRV-0006, SRV-0007, SRV-0010, SRV-0011, SRV-0013, SRV-0014, SRV-0030, SRV-0031, SRV-0032, SRV-0033, SRV-0034, SRV-0035, SRV-0036, SRV-0039, SRV-0040, SRV-0041, SRV-0043, SRV-0044, SRV-0045, SRV-0046, SRV-0047, SRV-0048, SRV-0049, SRV-0051, SRV-0053, SRV-0054, SRV-0055, SRV-0057, SRV-0058, SRV-0059, SRV-0061, SRV-0177, SRV-0181, SRV-0183, SRV-0185, SRV-0187, SRV-0189, SRV-0191 | rules/spelling/morfologik/suggestions_ordering | S13 server |
 | HTTPTestTools | `src/server/HTTPTestTools.js` | SRV-0168 | tools | S13 server |
 | IllegalConfigurationException | `src/server/IllegalConfigurationException.js` | SRV-0177 | - | S13 server |
 | InstrumentedAppender | `src/server/InstrumentedAppender.js` | SRV-0188, SRV-0089 | - | S13 server |
 | JwtContent | `src/server/JwtContent.js` | SRV-0166 (later) | - | later |
-| LanguageToolHttpHandler | `src/server/LanguageToolHttpHandler.js` | SRV-0007, SRV-0070, SRV-0071, SRV-0072, SRV-0073, SRV-0074, SRV-0075, SRV-0076, ... | server, tools | S13 server |
+| LanguageToolHttpHandler | `src/server/LanguageToolHttpHandler.js` | SRV-0007, SRV-0070, SRV-0071, SRV-0072, SRV-0073, SRV-0074, SRV-0075, SRV-0076, SRV-0077, SRV-0078, SRV-0079, SRV-0080, SRV-0081, SRV-0082, SRV-0083, SRV-0084, SRV-0086, SRV-0087 | server, tools | S13 server |
 | LimitEnforcementMode | `src/server/LimitEnforcementMode.js` | SRV-0161 | - | S13 server |
 | LocalAbTestService | `src/server/LocalAbTestService.js` | SRV-0144 | - | S13 server |
 | LoggingInterceptor | `src/server/LoggingInterceptor.js` | SRV-0171 (later) | - | later |
 | PathNotFoundException | `src/server/PathNotFoundException.js` | SRV-0075 | - | S13 server |
 | Pipeline | `src/server/Pipeline.js` | SRV-0150, SRV-0151, SRV-0152, SRV-0153 | markup, rules, rules/patterns | S13 server |
-| PipelinePool | `src/server/PipelinePool.js` | SRV-0182, SRV-0041, SRV-0044, SRV-0054, SRV-0117, SRV-0128, SRV-0137, SRV-0150, ... | gui, rules, tools | S13 server |
+| PipelinePool | `src/server/PipelinePool.js` | SRV-0182, SRV-0041, SRV-0044, SRV-0054, SRV-0117, SRV-0128, SRV-0137, SRV-0150, SRV-0151, SRV-0152 | gui, rules, tools | S13 server |
 | PipelineSettings | `src/server/PipelineSettings.js` | SRV-0150 | - | S13 server |
 | PortBindingException | `src/server/PortBindingException.js` | SRV-0017 | - | S13 server |
 | RemoteRuleMatch | `src/server/RemoteRuleMatch.js` | SRV-0165 (later) | rules | later |
@@ -717,10 +1542,10 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 | RequestCounter | `src/server/RequestCounter.js` | SRV-0170 | - | S13 server |
 | RequestLimiter | `src/server/RequestLimiter.js` | SRV-0085, SRV-0115 | - | S13 server |
 | ResultExtender | `src/server/ResultExtender.js` | SRV-0141 (later) | rules | later |
-| Server | `src/server/Server.js` | SRV-0001, SRV-0002, SRV-0003, SRV-0009, SRV-0015, SRV-0016, SRV-0020, SRV-0084, ... | server, tools | S13 server |
+| Server | `src/server/Server.js` | SRV-0001, SRV-0002, SRV-0003, SRV-0009, SRV-0015, SRV-0016, SRV-0020, SRV-0084 | server, tools | S13 server |
 | ServerMetricsCollector | `src/server/ServerMetricsCollector.js` | SRV-0188 (later) | - | later |
-| ServerTools | `src/server/ServerTools.js` | SRV-0077, SRV-0082, SRV-0088, SRV-0089, SRV-0174, SRV-0091, SRV-0193, SRV-0111, ... | - | S13 server |
-| TextChecker | `src/server/TextChecker.js` | SRV-0045, SRV-0047, SRV-0048, SRV-0049, SRV-0055, SRV-0191, SRV-0076, SRV-0081, ... | language/identifier, markup, rules, rules/bitext, rules/spelling/morfologik/suggestions_ordering, server, tools | S13 server |
+| ServerTools | `src/server/ServerTools.js` | SRV-0077, SRV-0082, SRV-0088, SRV-0089, SRV-0174, SRV-0091, SRV-0193, SRV-0111, SRV-0130, SRV-0131, SRV-0134 | - | S13 server |
+| TextChecker | `src/server/TextChecker.js` | SRV-0045, SRV-0047, SRV-0048, SRV-0049, SRV-0055, SRV-0191, SRV-0076, SRV-0081, SRV-0097, SRV-0113, SRV-0114, SRV-0116, SRV-0118, SRV-0120, SRV-0121, SRV-0122, SRV-0125, SRV-0126, SRV-0127, SRV-0128, SRV-0129, SRV-0132, SRV-0133, SRV-0134, SRV-0135, SRV-0136, SRV-0137, SRV-0138, SRV-0139, SRV-0142, SRV-0143, SRV-0144, SRV-0154, SRV-0155 | language/identifier, markup, rules, rules/bitext, rules/spelling/morfologik/suggestions_ordering, server, tools | S13 server |
 | TextTooLongException | `src/server/TextTooLongException.js` | SRV-0073, SRV-0075, SRV-0114 | - | S13 server |
 | TooManyRequestsException | `src/server/TooManyRequestsException.js` | SRV-0084 | - | S13 server |
 | UUIDTypeHandler | `src/server/UUIDTypeHandler.js` | SRV-0167 (later) | - | later |
@@ -747,7 +1572,7 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 | AustralianEnglish | `src/lang/en/language/AustralianEnglish.js` | EN-0011, EN-0015 | languagemodel, rules, rules/en, rules/spelling | S9 en |
 | BritishEnglish | `src/lang/en/language/BritishEnglish.js` | EN-0010, EN-0015 | languagemodel, rules, rules/en, rules/spelling | S9 en |
 | CanadianEnglish | `src/lang/en/language/CanadianEnglish.js` | EN-0012, EN-0015 | languagemodel, rules, rules/en, rules/spelling | S9 en |
-| English | `src/lang/en/language/English.js` | EN-0001, EN-0002, EN-0003, EN-0004, EN-0005, EN-0006, EN-0007, EN-0008, ... | chunking, languagemodel, markup, rules, rules/en, rules/patterns, rules/spelling, rules/spelling/multitoken, synthesis, synthesis/en, tagging, tagging/disambiguation, tagging/en, tokenizers, tokenizers/en, tools | S9 en |
+| English | `src/lang/en/language/English.js` | EN-0001, EN-0002, EN-0003, EN-0004, EN-0005, EN-0006, EN-0007, EN-0008, EN-0022, EN-0223 | chunking, languagemodel, markup, rules, rules/en, rules/patterns, rules/spelling, rules/spelling/multitoken, synthesis, synthesis/en, tagging, tagging/disambiguation, tagging/en, tokenizers, tokenizers/en, tools | S9 en |
 | NewZealandEnglish | `src/lang/en/language/NewZealandEnglish.js` | EN-0013, EN-0015 | languagemodel, rules, rules/en, rules/spelling | S9 en |
 | SouthAfricanEnglish | `src/lang/en/language/SouthAfricanEnglish.js` | EN-0014, EN-0015 | languagemodel, rules, rules/en, rules/spelling | S9 en |
 
@@ -858,8 +1683,8 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 | Java class | JS module | inventory IDs | depends on (org.languagetool packages) | step |
 |---|---|---|---|---|
 | AustrianGerman | `src/lang/de/language/AustrianGerman.js` | DE-0010, DE-0014, DE-0152, DE-0203 | (root), languagemodel, rules, rules/de, rules/spelling | S10 de |
-| German | `src/lang/de/language/German.js` | DE-0001, DE-0002, DE-0003, DE-0004, DE-0005, DE-0006, DE-0007, DE-0008, ... | chunking, languagemodel, markup, rules, rules/de, rules/spelling, rules/spelling/multitoken, synthesis, tagging, tagging/de, tagging/disambiguation, tagging/disambiguation/rules/de, tokenizers, tokenizers/de, tools | S10 de |
-| GermanyGerman | `src/lang/de/language/GermanyGerman.js` | DE-0009, DE-0014, DE-0053, DE-0060, DE-0116, DE-0119, DE-0122, DE-0152, ... | (root), languagemodel, rules, rules/de | S10 de |
+| German | `src/lang/de/language/German.js` | DE-0001, DE-0002, DE-0003, DE-0004, DE-0005, DE-0006, DE-0007, DE-0008, DE-0022, DE-0225 | chunking, languagemodel, markup, rules, rules/de, rules/spelling, rules/spelling/multitoken, synthesis, tagging, tagging/de, tagging/disambiguation, tagging/disambiguation/rules/de, tokenizers, tokenizers/de, tools | S10 de |
+| GermanyGerman | `src/lang/de/language/GermanyGerman.js` | DE-0009, DE-0014, DE-0053, DE-0060, DE-0116, DE-0119, DE-0122, DE-0152 | (root), languagemodel, rules, rules/de | S10 de |
 | NonSwissGerman | `src/lang/de/language/NonSwissGerman.js` | DE-0013 | (root), rules, rules/de | S10 de |
 | SwissGerman | `src/lang/de/language/SwissGerman.js` | DE-0011, DE-0012, DE-0014, DE-0016, DE-0066, DE-0204 | languagemodel, markup, rules, rules/de, rules/spelling, tagging, tagging/de | S10 de |
 
@@ -900,7 +1725,7 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 | GermanParagraphRepeatBeginningRule | `src/lang/de/rules/de/GermanParagraphRepeatBeginningRule.js` | DE-0002, DE-0058 | rules | S10 de |
 | GermanReadabilityRule | `src/lang/de/rules/de/GermanReadabilityRule.js` | DE-0002, DE-0059 | rules | S10 de |
 | GermanRepeatedWordsRule | `src/lang/de/rules/de/GermanRepeatedWordsRule.js` | DE-0002, DE-0060, DE-0188 | language, rules, synthesis | S10 de |
-| GermanSpellerRule | `src/lang/de/rules/de/GermanSpellerRule.js` | DE-0001, DE-0009, DE-0097, DE-0098, DE-0099, DE-0100, DE-0101, DE-0102, ... | language, languagemodel, rules, rules/ngrams, rules/patterns, rules/spelling, rules/spelling/hunspell, rules/spelling/morfologik, synthesis, tagging, tokenizers/de, tools | S10 de |
+| GermanSpellerRule | `src/lang/de/rules/de/GermanSpellerRule.js` | DE-0001, DE-0009, DE-0097, DE-0098, DE-0099, DE-0100, DE-0101, DE-0102, DE-0063, DE-0064 | language, languagemodel, rules, rules/ngrams, rules/patterns, rules/spelling, rules/spelling/hunspell, rules/spelling/morfologik, synthesis, tagging, tokenizers/de, tools | S10 de |
 | GermanStyleRepeatedWordRule | `src/lang/de/rules/de/GermanStyleRepeatedWordRule.js` | DE-0002, DE-0068, DE-0202 | rules, rules/spelling/morfologik, tools | S10 de |
 | GermanSuppressMisspelledSuggestionsFilter | `src/lang/de/rules/de/GermanSuppressMisspelledSuggestionsFilter.js` | DE-0117 | rules | S10 de |
 | GermanTools | `src/lang/de/rules/de/GermanTools.js` | DE-0131 | - | S10 de |
@@ -990,7 +1815,7 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 |---|---|---|---|---|
 | BelgianFrench | `src/lang/fr/language/BelgianFrench.js` | FR-0010, FR-0013 | - | S11 fr |
 | CanadianFrench | `src/lang/fr/language/CanadianFrench.js` | FR-0011, FR-0013 | - | S11 fr |
-| French | `src/lang/fr/language/French.js` | FR-0001, FR-0002, FR-0003, FR-0004, FR-0005, FR-0006, FR-0007, FR-0008, ... | languagemodel, markup, rules, rules/fr, rules/spelling, rules/spelling/multitoken, synthesis, tagging, tagging/disambiguation, tagging/disambiguation/fr, tagging/fr, tokenizers, tokenizers/fr | S11 fr |
+| French | `src/lang/fr/language/French.js` | FR-0001, FR-0002, FR-0003, FR-0004, FR-0005, FR-0006, FR-0007, FR-0008, FR-0009, FR-0021 | languagemodel, markup, rules, rules/fr, rules/spelling, rules/spelling/multitoken, synthesis, tagging, tagging/disambiguation, tagging/disambiguation/fr, tagging/fr, tokenizers, tokenizers/fr | S11 fr |
 | SwissFrench | `src/lang/fr/language/SwissFrench.js` | FR-0012, FR-0013 | - | S11 fr |
 
 #### fr: rules/fr
