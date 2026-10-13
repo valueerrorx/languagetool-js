@@ -31,3 +31,4 @@ Format: D-nnn | date | decision
 - D-027 | 2026-10-13 | SRV-0164 RemoteSynthesizer/GRPCServer -> `later` (D-005 remote). SRV-0144 LocalAbTestService + LT_TEST_ONLY_* env restricted-rules mode -> ported (todo), local and observable.
 - D-028 | 2026-10-13 | D-026 applies per behaviour: input parsing/validation, error texts, warnings and no-config paths of deferred features are always `todo`; only the configured functionality is `later`.
 - D-029 | 2026-10-13 | Java StrictMath (fdlibm) usage (OpenNLP GIS exp/log) -> JS helper with a faithful fdlibm port in src/lib/java/, never Math.exp/Math.log; verified bit-exact via oracle fixtures.
+- D-030 | 2026-10-13 | User approved DEV-001 and DEV-002 (formerly P-001/P-002).
