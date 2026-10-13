@@ -102,4 +102,6 @@ Logging: core/CLI SLF4J output goes to STDOUT via the commandline logback.xml (C
 - String literal lines: 168 (user-visible texts: usage 0008, parse errors 0003/0004/0014/0017/0030/0032-0034, startup messages 0037-0039, 0042, 0044, 0045, 0056, 0060, 0061, output formats 0046-0048, 0050, 0055, 0058).
 - Exit codes: 0005, 0006, 0007, 0068. System.exit is called via SystemExitHandler (no direct System.exit calls).
 - Files read: input FILE/STDIN (0043), --rulefile (0025), --falsefriends (0027), --bitextrules (0028), bitext input (0063), recursive dirs (0060). Files written: none.
-- JUnit: MainTest (42 tests), CommandLineParserTest (3), CommandLineToolsTest (1); AbstractSecurityTestCase is a helper.
+- JUnit: MainTest (42 tests; 38 in scope, 4 n/a per D-025 -> CLI-0073), CommandLineParserTest (3), CommandLineToolsTest (1); AbstractSecurityTestCase is a helper. Every in-scope MainTest method is named in at least one Java-tests cell (checked by script).
+- Resources: languagetool-commandline/src/main/resources/logback.xml -> CLI-0072.
+- Totals (n/a excluded): 72 IDs (69 todo, 3 later); 1 n/a (CLI-0073).

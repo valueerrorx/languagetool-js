@@ -32,3 +32,5 @@ Format: D-nnn | date | decision
 - D-028 | 2026-10-13 | D-026 applies per behaviour: input parsing/validation, error texts, warnings and no-config paths of deferred features are always `todo`; only the configured functionality is `later`.
 - D-029 | 2026-10-13 | Java StrictMath (fdlibm) usage (OpenNLP GIS exp/log) -> JS helper with a faithful fdlibm port in src/lib/java/, never Math.exp/Math.log; verified bit-exact via oracle fixtures.
 - D-030 | 2026-10-13 | User approved DEV-001 and DEV-002 (formerly P-001/P-002).
+- D-031 | 2026-10-13 | Waves: wave 1 = core + cli + server + de, en, fr (port until verified, server working). Wave 2 = it, es, sl, ru, sk, pl (inventory already approved, port after wave 1).
+- D-032 | 2026-10-13 | Token economy / working mode: strictly one subagent at a time; small modules per task; sonnet for mechanical tasks (narrow critic re-checks, fixtures, test porting, inventory fixes), opus only for architecture, porting of complex steps and reviews; max one critic round, small follow-up fixes applied by lead directly in docs; every agent writes results incrementally to files and resumes from them after an abort (no restart from zero).
