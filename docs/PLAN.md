@@ -11,9 +11,10 @@
 - [x] Inventory de/en/fr approved
 - [x] Inventory core/cli/server approved (2026-10-13)
 ## Phase 1 - Architecture (wave 1 scope)
-- [ ] port-architect: ARCHITECTURE.md, PORT-MAP.md, SEMANTICS.md, oracle harness design (modular: one file per area)
-- [ ] critic (one round), user approval
+- [x] port-architect: ARCHITECTURE, PORT-MAP (808/808 IDs indexed), SEMANTICS P1-P13, ORACLE
+- [x] critic (2 parts) + user approval (D-037)
 ## Phase 2 - Oracle harness
+- [ ] oracle: harness (Java JSON-lines driver, build script, normalisers, npm run oracle/parity), prove with one ID end to end
 ## Phase 3 - Step plan (wave 1)
 ## Phase 4 - Port loop
 
