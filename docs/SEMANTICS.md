@@ -1,6 +1,7 @@
 # Java -> JavaScript semantics rules
 
 Binding for porter, parity-tester and parity-reviewer. The port-architect extends this file with project-specific traps.
+D-042: idiomatic JS implementations are welcome where the observable result is identical and verified by fixtures; reviewers judge observable parity, not structural similarity.
 Rule format: trap -> rule -> helper in src/lib/java/.
 
 ## Numbers
