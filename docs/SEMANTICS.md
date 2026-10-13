@@ -185,3 +185,7 @@ Observable Java hash-order sites (use the order helper; elsewhere JS `Map`/`Set`
 - Multi-thread stdout/stderr: single `fs.writeSync` per line from any thread, never `process.stdout.write` (asynchronous for pipes in worker threads, which are piped through the main thread). -> `System.js`.
 - Process signals: JVM exits 143 on SIGTERM and 130 on SIGINT after shutdown hooks; Node dies by signal unless handlers are installed (bin launchers).
 - Wall clock vs monotonic across workers: `currentTimeMillis`/`nanoTime` share one origin passed at worker start (`clock.js`); `performance.now()`/`performance.timeOrigin` are per-thread and must not be used.
+
+### P14 Boxed number equality (from S02/S03 review)
+- Trap: JS number is ambiguous between Java Integer/Long/Double. -> Rule: Objects.equals/hash/toString on numbers use Object.is semantics and print -0 as "-0.0" (Java ints never produce -0, so this matches both). Where a Java Double holds an integral value and is printed, the caller uses doubleToString explicitly. -> Helper: Objects.js (single shared valueOf/equals/hashCode).
+- P14b: Java `new X((Throwable) null)` is ported as `new X(null, null)`; `new X(null)` means `(String) null`. (S02 review)
