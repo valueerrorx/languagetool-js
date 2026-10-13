@@ -1,0 +1,4077 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "String.format %t conversions with explicit epoch ms (TZ Europe/Vienna)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tY-%<tm-%<td %<tH:%<tM:%<tS",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tY-%<tm-%<td %<tH:%<tM:%<tS",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tY-%<tm-%<td %<tH:%<tM:%<tS",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tB %<te, %<tY",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tB %<te, %<tY",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tB %<te, %<tY",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tA %<ta",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tA %<ta",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tA %<ta",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tb %<th",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tb %<th",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tb %<th",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tp %<tI",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tp %<tI",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tp %<tI",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tZ %<tz",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tZ %<tz",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tZ %<tz",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tD",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tD",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tD",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tF",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tF",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tF",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tT",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tT",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tT",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tr",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tr",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tr",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tR",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tR",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tR",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tc",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tc",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tc",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tj",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tj",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tj",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tL %<tN",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tL %<tN",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tL %<tN",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%ts %<tQ",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%ts %<tQ",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%ts %<tQ",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tk %<tl",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tk %<tl",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tk %<tl",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%ty %<tC",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%ty %<tC",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%ty %<tC",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tm",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tm",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tm",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tY-%<tm-%<td %<tH:%<tM:%<tS",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tY-%<tm-%<td %<tH:%<tM:%<tS",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tY-%<tm-%<td %<tH:%<tM:%<tS",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tB %<te, %<tY",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tB %<te, %<tY",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tB %<te, %<tY",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tA %<ta",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tA %<ta",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tA %<ta",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tb %<th",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tb %<th",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tb %<th",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tp %<tI",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tp %<tI",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tp %<tI",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tZ %<tz",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tZ %<tz",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tZ %<tz",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tD",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tD",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tD",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tF",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tF",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tF",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tT",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tT",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tT",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tr",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tr",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tr",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tR",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tR",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tR",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tc",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tc",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tc",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tj",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tj",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tj",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tL %<tN",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tL %<tN",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tL %<tN",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%ts %<tQ",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%ts %<tQ",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%ts %<tQ",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tk %<tl",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tk %<tl",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tk %<tl",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%ty %<tC",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%ty %<tC",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%ty %<tC",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tm",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tm",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-DE",
+    "fmt": "%tm",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tY-%<tm-%<td %<tH:%<tM:%<tS",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tY-%<tm-%<td %<tH:%<tM:%<tS",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tY-%<tm-%<td %<tH:%<tM:%<tS",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tB %<te, %<tY",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tB %<te, %<tY",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tB %<te, %<tY",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tA %<ta",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tA %<ta",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tA %<ta",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tb %<th",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tb %<th",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tb %<th",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tp %<tI",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tp %<tI",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tp %<tI",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tZ %<tz",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tZ %<tz",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tZ %<tz",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tD",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tD",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tD",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tF",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tF",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tF",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tT",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tT",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tT",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tr",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tr",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tr",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tR",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tR",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tR",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tc",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tc",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tc",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tj",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tj",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tj",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tL %<tN",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tL %<tN",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tL %<tN",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%ts %<tQ",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%ts %<tQ",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%ts %<tQ",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tk %<tl",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tk %<tl",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tk %<tl",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%ty %<tC",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%ty %<tC",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%ty %<tC",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tm",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tm",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "de-AT",
+    "fmt": "%tm",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tY-%<tm-%<td %<tH:%<tM:%<tS",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tY-%<tm-%<td %<tH:%<tM:%<tS",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tY-%<tm-%<td %<tH:%<tM:%<tS",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tB %<te, %<tY",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tB %<te, %<tY",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tB %<te, %<tY",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tA %<ta",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tA %<ta",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tA %<ta",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tb %<th",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tb %<th",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tb %<th",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tp %<tI",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tp %<tI",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tp %<tI",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tZ %<tz",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tZ %<tz",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tZ %<tz",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tD",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tD",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tD",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tF",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tF",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tF",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tT",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tT",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tT",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tr",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tr",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tr",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tR",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tR",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tR",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tc",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tc",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tc",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tj",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tj",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tj",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tL %<tN",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tL %<tN",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tL %<tN",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%ts %<tQ",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%ts %<tQ",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%ts %<tQ",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tk %<tl",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tk %<tl",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tk %<tl",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%ty %<tC",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%ty %<tC",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%ty %<tC",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tm",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tm",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "fr-FR",
+    "fmt": "%tm",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tY-%<tm-%<td %<tH:%<tM:%<tS",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tY-%<tm-%<td %<tH:%<tM:%<tS",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tY-%<tm-%<td %<tH:%<tM:%<tS",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tB %<te, %<tY",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tB %<te, %<tY",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tB %<te, %<tY",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tA %<ta",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tA %<ta",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tA %<ta",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tb %<th",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tb %<th",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tb %<th",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tp %<tI",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tp %<tI",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tp %<tI",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tZ %<tz",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tZ %<tz",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tZ %<tz",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tD",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tD",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tD",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tF",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tF",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tF",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tT",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tT",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tT",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tr",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tr",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tr",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tR",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tR",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tR",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tc",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tc",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tc",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tj",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tj",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tj",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tL %<tN",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tL %<tN",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tL %<tN",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%ts %<tQ",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%ts %<tQ",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%ts %<tQ",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tk %<tl",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tk %<tl",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tk %<tl",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%ty %<tC",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%ty %<tC",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%ty %<tC",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tm",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tm",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "tr-TR",
+    "fmt": "%tm",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tc",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tc",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tc",
+    "args": [
+     {
+      "t": "date",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tc",
+    "args": [
+     {
+      "t": "date",
+      "v": "951782400000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tc",
+    "args": [
+     {
+      "t": "date",
+      "v": "1709164800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tc",
+    "args": [
+     {
+      "t": "date",
+      "v": "4102444800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tc",
+    "args": [
+     {
+      "t": "date",
+      "v": "1700000000123"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tc",
+    "args": [
+     {
+      "t": "date",
+      "v": "253402300799000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%1$tY-%1$tm-%1$td",
+    "args": [
+     {
+      "t": "long",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%1$tY-%1$tm-%1$td",
+    "args": [
+     {
+      "t": "long",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%1$tY-%1$tm-%1$td",
+    "args": [
+     {
+      "t": "long",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%1$tY-%1$tm-%1$td",
+    "args": [
+     {
+      "t": "long",
+      "v": "951782400000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%1$tY-%1$tm-%1$td",
+    "args": [
+     {
+      "t": "long",
+      "v": "1709164800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%1$tY-%1$tm-%1$td",
+    "args": [
+     {
+      "t": "long",
+      "v": "4102444800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%1$tY-%1$tm-%1$td",
+    "args": [
+     {
+      "t": "long",
+      "v": "1700000000123"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%1$tY-%1$tm-%1$td",
+    "args": [
+     {
+      "t": "long",
+      "v": "253402300799000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tY",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tY",
+    "args": [
+     null
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tq",
+    "args": [
+     {
+      "t": "long",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%t",
+    "args": [
+     {
+      "t": "long",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "format",
+    "locale": "en-US",
+    "fmt": "%tY",
+    "args": [
+     {
+      "t": "int",
+      "v": "5"
+     }
+    ]
+   }
+  }
+ ]
+}

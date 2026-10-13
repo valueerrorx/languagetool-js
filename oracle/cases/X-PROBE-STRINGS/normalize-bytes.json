@@ -1,0 +1,1149 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "Normalizer forms, getBytes/new String charsets incl. malformed input and lone surrogates",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "ä",
+    "t": "NFC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "ä",
+    "t": "NFC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "ﬁ",
+    "t": "NFC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "Å",
+    "t": "NFC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "Å",
+    "t": "NFC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "ẛ̣",
+    "t": "NFC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "abc",
+    "t": "NFC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "",
+    "t": "NFC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "Ạ̈",
+    "t": "NFC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "Å",
+    "t": "NFC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "Ω",
+    "t": "NFC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "ϓ",
+    "t": "NFC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "ä",
+    "t": "NFD"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "ä",
+    "t": "NFD"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "ﬁ",
+    "t": "NFD"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "Å",
+    "t": "NFD"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "Å",
+    "t": "NFD"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "ẛ̣",
+    "t": "NFD"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "abc",
+    "t": "NFD"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "",
+    "t": "NFD"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "Ạ̈",
+    "t": "NFD"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "Å",
+    "t": "NFD"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "Ω",
+    "t": "NFD"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "ϓ",
+    "t": "NFD"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "ä",
+    "t": "NFKC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "ä",
+    "t": "NFKC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "ﬁ",
+    "t": "NFKC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "Å",
+    "t": "NFKC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "Å",
+    "t": "NFKC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "ẛ̣",
+    "t": "NFKC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "abc",
+    "t": "NFKC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "",
+    "t": "NFKC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "Ạ̈",
+    "t": "NFKC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "Å",
+    "t": "NFKC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "Ω",
+    "t": "NFKC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "ϓ",
+    "t": "NFKC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "ä",
+    "t": "NFKD"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "ä",
+    "t": "NFKD"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "ﬁ",
+    "t": "NFKD"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "Å",
+    "t": "NFKD"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "Å",
+    "t": "NFKD"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "ẛ̣",
+    "t": "NFKD"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "abc",
+    "t": "NFKD"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "",
+    "t": "NFKD"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "Ạ̈",
+    "t": "NFKD"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "Å",
+    "t": "NFKD"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "Ω",
+    "t": "NFKD"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "ϓ",
+    "t": "NFKD"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "normalize",
+    "s": "a",
+    "t": "BAD"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "abc",
+    "t": "UTF-8"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "äöüß",
+    "t": "UTF-8"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "€",
+    "t": "UTF-8"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "😀",
+    "t": "UTF-8"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "\ud800",
+    "t": "UTF-8"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "\ud800a",
+    "t": "UTF-8"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "\udc00",
+    "t": "UTF-8"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "﻿",
+    "t": "UTF-8"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "",
+    "t": "UTF-8"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "abc",
+    "t": "ISO-8859-1"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "äöüß",
+    "t": "ISO-8859-1"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "€",
+    "t": "ISO-8859-1"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "😀",
+    "t": "ISO-8859-1"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "\ud800",
+    "t": "ISO-8859-1"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "\ud800a",
+    "t": "ISO-8859-1"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "\udc00",
+    "t": "ISO-8859-1"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "﻿",
+    "t": "ISO-8859-1"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "",
+    "t": "ISO-8859-1"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "abc",
+    "t": "US-ASCII"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "äöüß",
+    "t": "US-ASCII"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "€",
+    "t": "US-ASCII"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "😀",
+    "t": "US-ASCII"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "\ud800",
+    "t": "US-ASCII"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "\ud800a",
+    "t": "US-ASCII"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "\udc00",
+    "t": "US-ASCII"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "﻿",
+    "t": "US-ASCII"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "",
+    "t": "US-ASCII"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "abc",
+    "t": "UTF-16"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "äöüß",
+    "t": "UTF-16"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "€",
+    "t": "UTF-16"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "😀",
+    "t": "UTF-16"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "\ud800",
+    "t": "UTF-16"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "\ud800a",
+    "t": "UTF-16"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "\udc00",
+    "t": "UTF-16"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "﻿",
+    "t": "UTF-16"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "",
+    "t": "UTF-16"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "abc",
+    "t": "UTF-16BE"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "äöüß",
+    "t": "UTF-16BE"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "€",
+    "t": "UTF-16BE"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "😀",
+    "t": "UTF-16BE"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "\ud800",
+    "t": "UTF-16BE"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "\ud800a",
+    "t": "UTF-16BE"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "\udc00",
+    "t": "UTF-16BE"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "﻿",
+    "t": "UTF-16BE"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "",
+    "t": "UTF-16BE"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "abc",
+    "t": "UTF-16LE"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "äöüß",
+    "t": "UTF-16LE"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "€",
+    "t": "UTF-16LE"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "😀",
+    "t": "UTF-16LE"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "\ud800",
+    "t": "UTF-16LE"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "\ud800a",
+    "t": "UTF-16LE"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "\udc00",
+    "t": "UTF-16LE"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "﻿",
+    "t": "UTF-16LE"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "",
+    "t": "UTF-16LE"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "abc",
+    "t": "windows-1252"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "äöüß",
+    "t": "windows-1252"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "€",
+    "t": "windows-1252"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "😀",
+    "t": "windows-1252"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "\ud800",
+    "t": "windows-1252"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "\ud800a",
+    "t": "windows-1252"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "\udc00",
+    "t": "windows-1252"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "﻿",
+    "t": "windows-1252"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "",
+    "t": "windows-1252"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "bytes",
+    "s": "a",
+    "t": "NOPE-CS"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "fromBytes",
+    "t": "UTF-8",
+    "bytes": [
+     97,
+     195,
+     164
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "fromBytes",
+    "t": "UTF-8",
+    "bytes": [
+     195
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "fromBytes",
+    "t": "UTF-8",
+    "bytes": [
+     195,
+     40
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "fromBytes",
+    "t": "UTF-8",
+    "bytes": [
+     255,
+     254
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "fromBytes",
+    "t": "UTF-8",
+    "bytes": [
+     237,
+     160,
+     128
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "fromBytes",
+    "t": "UTF-8",
+    "bytes": [
+     240,
+     159,
+     152
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "fromBytes",
+    "t": "UTF-8",
+    "bytes": [
+     240,
+     159,
+     152,
+     128
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "fromBytes",
+    "t": "UTF-8",
+    "bytes": [
+     192,
+     128
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "fromBytes",
+    "t": "UTF-8",
+    "bytes": [
+     239,
+     187,
+     191,
+     97
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "fromBytes",
+    "t": "UTF-8",
+    "bytes": [
+     244,
+     144,
+     128,
+     128
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "fromBytes",
+    "t": "UTF-8",
+    "bytes": [
+     226,
+     130
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "fromBytes",
+    "t": "UTF-8",
+    "bytes": [
+     226,
+     130,
+     97
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "fromBytes",
+    "t": "ISO-8859-1",
+    "bytes": [
+     228,
+     246,
+     252
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "fromBytes",
+    "t": "US-ASCII",
+    "bytes": [
+     97,
+     228
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "fromBytes",
+    "t": "UTF-16",
+    "bytes": [
+     254,
+     255,
+     0,
+     97
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "fromBytes",
+    "t": "UTF-16",
+    "bytes": [
+     255,
+     254,
+     97,
+     0
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "fromBytes",
+    "t": "UTF-16",
+    "bytes": [
+     0,
+     97
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "fromBytes",
+    "t": "UTF-16BE",
+    "bytes": [
+     216,
+     0,
+     0,
+     97
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "fromBytes",
+    "t": "UTF-16LE",
+    "bytes": [
+     97
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "fromBytes",
+    "t": "windows-1252",
+    "bytes": [
+     128,
+     129,
+     150
+    ]
+   }
+  }
+ ]
+}

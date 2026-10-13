@@ -1,0 +1,329 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "Scanner.nextLine vs BufferedReader.readLine vs String.lines: line terminators incl. U+2028/2029/0085, trailing/empty lines",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a\nb",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a\r\nb",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a\rb",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a b",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a b",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "ab",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a\u000bb",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a\fb",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a\u001cb",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a\n",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a\r\n",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a\r",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a ",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "\n",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "\r\n",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "\r",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": " ",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "\n\n",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "\r\n\r\n",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "\n\r",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "\r\r",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "\r\n\n",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "  ",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a\n\nb",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a\n\n",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a\r\n\r\nb\r",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "one\ntwo\r\nthree\rfour five sixseven",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "﻿a\nb",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a\u0000b\nc",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "ä\nö\r\nü",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "😀\n😀",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a b\nc d\n",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": " \n \n",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a\u000b\fb",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "# c\nk=v\n  \n\tx\ty",
+    "mode": "lines"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a\\\nb",
+    "mode": "lines"
+   }
+  }
+ ]
+}

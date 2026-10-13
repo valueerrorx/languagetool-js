@@ -1,0 +1,34 @@
+{"id":1,"ok":true,"result":{"tokens":[{"s":"a","units":[97]},{"s":"b","units":[98]},{"s":"c","units":[99]},{"s":"d","units":[100]}]}}
+{"id":2,"ok":true,"result":{"tokens":[{"s":"a\u00A0b","units":[97,160,98]}]}}
+{"id":3,"ok":true,"result":{"tokens":[{"s":"a","units":[97]},{"s":"b","units":[98]},{"s":"c\u0085d","units":[99,133,100]}]}}
+{"id":4,"ok":true,"result":{"tokens":[{"s":"a\u200Bb","units":[97,8203,98]}]}}
+{"id":5,"ok":true,"result":{"tokens":[{"s":"a\u202Fb","units":[97,8239,98]}]}}
+{"id":6,"ok":true,"result":{"tokens":[{"s":"a","units":[97]},{"s":"b","units":[98]}]}}
+{"id":7,"ok":true,"result":{"tokens":[{"s":"a","units":[97]},{"s":"b","units":[98]}]}}
+{"id":8,"ok":true,"result":{"tokens":[{"s":"a","units":[97]},{"s":"b","units":[98]}]}}
+{"id":9,"ok":true,"result":{"tokens":[{"s":"a","units":[97]},{"s":"b","units":[98]}]}}
+{"id":10,"ok":true,"result":{"tokens":[]}}
+{"id":11,"ok":true,"result":{"tokens":[]}}
+{"id":12,"ok":true,"result":{"tokens":[]}}
+{"id":13,"ok":true,"result":{"tokens":[{"s":"\u00E4","units":[228]},{"s":"\u00F6","units":[246]},{"s":"\u00FC","units":[252]}]}}
+{"id":14,"ok":true,"result":{"tokens":[{"s":"a","units":[97]},{"s":"b","units":[98]},{"s":"c","units":[99]}]}}
+{"id":15,"ok":true,"result":{"tokens":[{"s":"a\uFEFFb","units":[97,65279,98]}]}}
+{"id":16,"ok":true,"result":{"tokens":[{"s":"a\u2007b","units":[97,8199,98]}]}}
+{"id":17,"ok":true,"result":{"tokens":[{"s":"a\u180Eb","units":[97,6158,98]}]}}
+{"id":18,"ok":true,"result":{"int":12,"restOfLine":{"s":" rest","units":[32,114,101,115,116]},"hasNextLine":true,"nextLine":{"s":"next","units":[110,101,120,116]}}}
+{"id":19,"ok":true,"result":{"int":12,"restOfLine":{"s":"","units":[]},"hasNextLine":true,"nextLine":{"s":"next","units":[110,101,120,116]}}}
+{"id":20,"ok":false,"error":{"class":"java.util.NoSuchElementException","message":"No line found","causes":[]}}
+{"id":21,"ok":true,"result":{"int":12,"restOfLine":{"s":"","units":[]},"hasNextLine":false,"nextLine":null}}
+{"id":22,"ok":true,"result":{"int":12,"restOfLine":{"s":" ","units":[32]},"hasNextLine":true,"nextLine":{"s":"x","units":[120]}}}
+{"id":23,"ok":false,"error":{"class":"java.util.NoSuchElementException","message":"No line found","causes":[]}}
+{"id":24,"ok":true,"result":{"int":-12,"restOfLine":{"s":"","units":[]},"hasNextLine":true,"nextLine":{"s":"q","units":[113]}}}
+{"id":25,"ok":true,"result":{"int":12,"restOfLine":{"s":" x","units":[32,120]},"hasNextLine":false,"nextLine":null}}
+{"id":26,"ok":true,"result":{"int":3,"restOfLine":{"s":" x","units":[32,120]},"hasNextLine":false,"nextLine":null}}
+{"id":27,"ok":true,"result":{"int":1234,"restOfLine":{"s":" x","units":[32,120]},"hasNextLine":false,"nextLine":null}}
+{"id":28,"ok":false,"error":{"class":"java.util.InputMismatchException","message":null,"causes":[]}}
+{"id":29,"ok":false,"error":{"class":"java.util.InputMismatchException","message":"For input string: \"2147483648\"","causes":[]}}
+{"id":30,"ok":false,"error":{"class":"java.util.InputMismatchException","message":null,"causes":[]}}
+{"id":31,"ok":false,"error":{"class":"java.util.NoSuchElementException","message":null,"causes":[]}}
+{"id":32,"ok":false,"error":{"class":"java.util.InputMismatchException","message":null,"causes":[]}}
+{"id":33,"ok":true,"result":{"int":7,"restOfLine":{"s":"","units":[]},"hasNextLine":true,"nextLine":{"s":"y","units":[121]}}}
+{"id":34,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"unknown mode: nope","causes":[]}}

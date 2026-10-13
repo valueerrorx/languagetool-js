@@ -1,0 +1,122 @@
+{"id":1,"ok":true,"result":{"s":"line ","units":[108,105,110,101,32]}}
+{"id":2,"ok":true,"result":{"s":"xxxxx","units":[120,120,120,120,120]}}
+{"id":3,"ok":true,"result":{"s":"-a-b-c-","units":[45,97,45,98,45,99,45]}}
+{"id":4,"ok":true,"result":{"s":"-","units":[45]}}
+{"id":5,"ok":true,"result":{"s":"XX","units":[88,88]}}
+{"id":6,"ok":true,"result":{"s":"XaXXcX","units":[88,97,88,88,99,88]}}
+{"id":7,"ok":true,"result":{"s":"a[b]c","units":[97,91,98,93,99]}}
+{"id":8,"ok":true,"result":{"s":"a[b]c","units":[97,91,98,93,99]}}
+{"id":9,"ok":false,"error":{"class":"java.lang.IndexOutOfBoundsException","message":"No group 2","causes":[]}}
+{"id":10,"ok":true,"result":{"s":"a[b1]c","units":[97,91,98,49,93,99]}}
+{"id":11,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Illegal group reference: group index is missing","causes":[]}}
+{"id":12,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"character to be escaped is missing","causes":[]}}
+{"id":13,"ok":true,"result":{"s":"a$1c","units":[97,36,49,99]}}
+{"id":14,"ok":true,"result":{"s":"a\\c","units":[97,92,99]}}
+{"id":15,"ok":true,"result":{"s":"anc","units":[97,110,99]}}
+{"id":16,"ok":true,"result":{"s":"a[b]c","units":[97,91,98,93,99]}}
+{"id":17,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"No group with name {x}","causes":[]}}
+{"id":18,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"named capturing group is missing trailing '}'","causes":[]}}
+{"id":19,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Illegal group reference","causes":[]}}
+{"id":20,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"capturing group name {1} starts with digit character","causes":[]}}
+{"id":21,"ok":true,"result":{"s":"a<1>b<22>","units":[97,60,49,62,98,60,50,50,62]}}
+{"id":22,"ok":false,"error":{"class":"java.util.regex.PatternSyntaxException","message":"Unclosed group near index 1\n(","causes":[]}}
+{"id":23,"ok":false,"error":{"class":"java.util.regex.PatternSyntaxException","message":"Illegal character range near index 3\n[a-","causes":[]}}
+{"id":24,"ok":false,"error":{"class":"java.util.regex.PatternSyntaxException","message":"Dangling meta character '*' near index 0\n*\n^","causes":[]}}
+{"id":25,"ok":true,"result":{"s":"axc","units":[97,120,99]}}
+{"id":26,"ok":true,"result":{"s":"a b c","units":[97,32,98,32,99]}}
+{"id":27,"ok":true,"result":{"s":"uuu","units":[117,117,117]}}
+{"id":28,"ok":true,"result":{"s":"\u00E4\u00F6\u00FC","units":[228,246,252]}}
+{"id":29,"ok":true,"result":{"s":"www","units":[119,119,119]}}
+{"id":30,"ok":true,"result":{"s":"xx\nx","units":[120,120,10,120]}}
+{"id":31,"ok":true,"result":{"s":"xxxx","units":[120,120,120,120]}}
+{"id":32,"ok":true,"result":{"s":"x\u2028x","units":[120,8232,120]}}
+{"id":33,"ok":true,"result":{"s":"x\u0085x","units":[120,133,120]}}
+{"id":34,"ok":true,"result":{"s":"x","units":[120]}}
+{"id":35,"ok":true,"result":{"s":"a\\,b","units":[97,92,44,98]}}
+{"id":36,"ok":true,"result":{"s":"XXbX","units":[88,88,98,88]}}
+{"id":37,"ok":true,"result":{"s":"x.y","units":[120,46,121]}}
+{"id":38,"ok":true,"result":{"s":"abbc","units":[97,98,98,99]}}
+{"id":39,"ok":true,"result":{"s":"tab    here","units":[116,97,98,32,32,32,32,104,101,114,101]}}
+{"id":40,"ok":true,"result":{"s":"ab","units":[97,98]}}
+{"id":41,"ok":true,"result":{"s":"cba","units":[99,98,97]}}
+{"id":42,"ok":true,"result":{"s":">abc","units":[62,97,98,99]}}
+{"id":43,"ok":true,"result":{"s":"abc<","units":[97,98,99,60]}}
+{"id":44,"ok":true,"result":{"s":"a\nb<","units":[97,10,98,60]}}
+{"id":45,"ok":true,"result":{"s":"a<\n<","units":[97,60,10,60]}}
+{"id":46,"ok":true,"result":{"s":"|abc|","units":[124,97,98,99,124]}}
+{"id":47,"ok":true,"result":{"s":"|\u00FCber|","units":[124,252,98,101,114,124]}}
+{"id":48,"ok":true,"result":{"s":"|\u00FCber|","units":[124,252,98,101,114,124]}}
+{"id":49,"ok":true,"result":{"s":"line ","units":[108,105,110,101,32]}}
+{"id":50,"ok":true,"result":{"s":"x.b.c","units":[120,46,98,46,99]}}
+{"id":51,"ok":true,"result":{"s":"-abc","units":[45,97,98,99]}}
+{"id":52,"ok":true,"result":{"s":"-","units":[45]}}
+{"id":53,"ok":true,"result":{"s":"X","units":[88]}}
+{"id":54,"ok":true,"result":{"s":"Xabc","units":[88,97,98,99]}}
+{"id":55,"ok":true,"result":{"s":"a[b]c","units":[97,91,98,93,99]}}
+{"id":56,"ok":true,"result":{"s":"a[b]c","units":[97,91,98,93,99]}}
+{"id":57,"ok":false,"error":{"class":"java.lang.IndexOutOfBoundsException","message":"No group 2","causes":[]}}
+{"id":58,"ok":true,"result":{"s":"a[b1]c","units":[97,91,98,49,93,99]}}
+{"id":59,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Illegal group reference: group index is missing","causes":[]}}
+{"id":60,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"character to be escaped is missing","causes":[]}}
+{"id":61,"ok":true,"result":{"s":"a$1c","units":[97,36,49,99]}}
+{"id":62,"ok":true,"result":{"s":"a\\c","units":[97,92,99]}}
+{"id":63,"ok":true,"result":{"s":"anc","units":[97,110,99]}}
+{"id":64,"ok":true,"result":{"s":"a[b]c","units":[97,91,98,93,99]}}
+{"id":65,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"No group with name {x}","causes":[]}}
+{"id":66,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"named capturing group is missing trailing '}'","causes":[]}}
+{"id":67,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Illegal group reference","causes":[]}}
+{"id":68,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"capturing group name {1} starts with digit character","causes":[]}}
+{"id":69,"ok":true,"result":{"s":"a<1>b22","units":[97,60,49,62,98,50,50]}}
+{"id":70,"ok":false,"error":{"class":"java.util.regex.PatternSyntaxException","message":"Unclosed group near index 1\n(","causes":[]}}
+{"id":71,"ok":false,"error":{"class":"java.util.regex.PatternSyntaxException","message":"Illegal character range near index 3\n[a-","causes":[]}}
+{"id":72,"ok":false,"error":{"class":"java.util.regex.PatternSyntaxException","message":"Dangling meta character '*' near index 0\n*\n^","causes":[]}}
+{"id":73,"ok":true,"result":{"s":"axc","units":[97,120,99]}}
+{"id":74,"ok":true,"result":{"s":"a b  c","units":[97,32,98,32,32,99]}}
+{"id":75,"ok":true,"result":{"s":"u\u00D6\u00DC","units":[117,214,220]}}
+{"id":76,"ok":true,"result":{"s":"\u00E4\u00F6\u00FC","units":[228,246,252]}}
+{"id":77,"ok":true,"result":{"s":"w\u00F6\u00FC","units":[119,246,252]}}
+{"id":78,"ok":true,"result":{"s":"xb\nc","units":[120,98,10,99]}}
+{"id":79,"ok":true,"result":{"s":"xb\nc","units":[120,98,10,99]}}
+{"id":80,"ok":true,"result":{"s":"x\u2028b","units":[120,8232,98]}}
+{"id":81,"ok":true,"result":{"s":"x\u0085b","units":[120,133,98]}}
+{"id":82,"ok":true,"result":{"s":"x","units":[120]}}
+{"id":83,"ok":true,"result":{"s":"a\\,b","units":[97,92,44,98]}}
+{"id":84,"ok":true,"result":{"s":"Xb","units":[88,98]}}
+{"id":85,"ok":true,"result":{"s":"x.y","units":[120,46,121]}}
+{"id":86,"ok":true,"result":{"s":"abbc","units":[97,98,98,99]}}
+{"id":87,"ok":true,"result":{"s":"tab    here","units":[116,97,98,32,32,32,32,104,101,114,101]}}
+{"id":88,"ok":true,"result":{"s":"ab","units":[97,98]}}
+{"id":89,"ok":true,"result":{"s":"cba","units":[99,98,97]}}
+{"id":90,"ok":true,"result":{"s":">abc","units":[62,97,98,99]}}
+{"id":91,"ok":true,"result":{"s":"abc<","units":[97,98,99,60]}}
+{"id":92,"ok":true,"result":{"s":"a\nb<","units":[97,10,98,60]}}
+{"id":93,"ok":true,"result":{"s":"a<\n","units":[97,60,10]}}
+{"id":94,"ok":true,"result":{"s":"|abc","units":[124,97,98,99]}}
+{"id":95,"ok":true,"result":{"s":"|\u00FCber","units":[124,252,98,101,114]}}
+{"id":96,"ok":true,"result":{"s":"|\u00FCber","units":[124,252,98,101,114]}}
+{"id":97,"ok":true,"result":true}
+{"id":98,"ok":true,"result":false}
+{"id":99,"ok":true,"result":false}
+{"id":100,"ok":true,"result":true}
+{"id":101,"ok":true,"result":true}
+{"id":102,"ok":true,"result":false}
+{"id":103,"ok":true,"result":true}
+{"id":104,"ok":true,"result":false}
+{"id":105,"ok":true,"result":true}
+{"id":106,"ok":true,"result":true}
+{"id":107,"ok":true,"result":true}
+{"id":108,"ok":true,"result":false}
+{"id":109,"ok":true,"result":true}
+{"id":110,"ok":true,"result":true}
+{"id":111,"ok":false,"error":{"class":"java.util.regex.PatternSyntaxException","message":"Unclosed character class near index 0\n[\n^","causes":[]}}
+{"id":112,"ok":false,"error":{"class":"java.lang.NullPointerException","message":"Cannot invoke \"String.isEmpty()\" because \"this.pattern\" is null","causes":[]}}
+{"id":113,"ok":true,"result":{"s":"\\Qa.b\\E","units":[92,81,97,46,98,92,69]}}
+{"id":114,"ok":true,"result":{"s":"\\Q\\E","units":[92,81,92,69]}}
+{"id":115,"ok":true,"result":{"s":"\\Q\\E\\\\E\\Q\\E","units":[92,81,92,69,92,92,69,92,81,92,69]}}
+{"id":116,"ok":true,"result":{"s":"\\Q\\Q\\E","units":[92,81,92,81,92,69]}}
+{"id":117,"ok":true,"result":{"s":"\\Qa\\E\\\\E\\Qb\\E","units":[92,81,97,92,69,92,92,69,92,81,98,92,69]}}
+{"id":118,"ok":true,"result":{"s":"\\Q$1\\E","units":[92,81,36,49,92,69]}}
+{"id":119,"ok":true,"result":{"s":"a\\$b","units":[97,92,36,98]}}
+{"id":120,"ok":true,"result":{"s":"\\\\","units":[92,92]}}
+{"id":121,"ok":true,"result":{"s":"\\$1\\\\1","units":[92,36,49,92,92,49]}}
+{"id":122,"ok":true,"result":{"s":"","units":[]}}

@@ -8,3 +8,4 @@ Spec: docs/ORACLE.md. Commands: `npm run oracle -- <ID> [<case>] | --all | --sel
 - Cases: oracle/cases/<ID>/<case>.json (harness kind only so far). Fixtures: tests/golden/<ID>/<case>/.
 - JS twins: oracle/adapters/<op>.mjs exporting `run(args)`; `export const notPorted = true` marks a stub (reported "NOT PORTED", not a failure).
 - Pseudo-IDs: X-SELFTEST (probe), X-LANGUAGES, X-NUMFMT (Double/Float.toString; no inventory ID owns it, it is a lib helper in toString.js).
+- Probe topics (S01/S05/S11/S19): ops probe-numbers/-strings/-format/-collections (Probe*.java), case generators oracle/scripts/gen-probe-cases-*.mjs write oracle/cases/X-PROBE-*/ (inputs only). Numbers travel as {t,v} strings; probe responses are ASCII-escaped JSON so lone surrogates survive; strings are returned with their UTF-16 `units`.

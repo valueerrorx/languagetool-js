@@ -1,0 +1,17 @@
+{"id":1,"op":"probe-strings","args":{"fn":"sb","s":"hello","ops":[["append"," world"],["appendNull"],["appendChar",65],["appendInt",-5],["appendDouble","1.0E10"],["appendDouble","100.0"],["appendFloat","0.1"],["appendFloat","1.0E-4"],["appendCodePoint",128512],["appendCodePoint",1114112],["appendCodePoint",55296],["length"]]}}
+{"id":2,"op":"probe-strings","args":{"fn":"sb","s":"hello","ops":[["insert",0,"X"],["insert",6,"Y"],["insert",8,"Z"],["insert",-1,"Z"],["insert",3,""]]}}
+{"id":3,"op":"probe-strings","args":{"fn":"sb","s":"hello","ops":[["delete",1,3],["delete",0,100],["delete",5,3],["delete",-1,2],["delete",10,11],["delete",1,1]]}}
+{"id":4,"op":"probe-strings","args":{"fn":"sb","s":"hello","ops":[["deleteCharAt",0],["deleteCharAt",4],["deleteCharAt",-1],["deleteCharAt",3],["deleteCharAt",0],["deleteCharAt",0],["deleteCharAt",0]]}}
+{"id":5,"op":"probe-strings","args":{"fn":"sb","s":"hello","ops":[["replace",1,3,"XYZ"],["replace",0,100,"q"],["replace",2,1,"q"],["replace",5,5,"e"],["replace",-1,0,"x"]]}}
+{"id":6,"op":"probe-strings","args":{"fn":"sb","s":"abc","ops":[["reverse"]]}}
+{"id":7,"op":"probe-strings","args":{"fn":"sb","s":"😀ab","ops":[["reverse"]]}}
+{"id":8,"op":"probe-strings","args":{"fn":"sb","s":"a😀","ops":[["reverse"]]}}
+{"id":9,"op":"probe-strings","args":{"fn":"sb","s":"\ud800a","ops":[["reverse"]]}}
+{"id":10,"op":"probe-strings","args":{"fn":"sb","s":"a\udc00","ops":[["reverse"]]}}
+{"id":11,"op":"probe-strings","args":{"fn":"sb","s":"\udc00\ud800","ops":[["reverse"]]}}
+{"id":12,"op":"probe-strings","args":{"fn":"sb","s":"😀😁","ops":[["reverse"]]}}
+{"id":13,"op":"probe-strings","args":{"fn":"sb","s":"a𐀀𐀀b","ops":[["reverse"]]}}
+{"id":14,"op":"probe-strings","args":{"fn":"sb","s":"","ops":[["reverse"]]}}
+{"id":15,"op":"probe-strings","args":{"fn":"sb","s":"hello","ops":[["setLength",3],["setLength",6],["setLength",0],["setLength",-1],["length"]]}}
+{"id":16,"op":"probe-strings","args":{"fn":"sb","s":"hello","ops":[["setCharAt",0,72],["setCharAt",5,72],["setCharAt",-1,72],["charAt",1],["charAt",5],["charAt",-1],["substring",1],["substring",1,3],["substring",3,1],["substring",0,6],["substring",6],["indexOf","l"],["indexOf","zz"]]}}
+{"id":17,"op":"probe-strings","args":{"fn":"sb","s":"","ops":[["nope"]]}}

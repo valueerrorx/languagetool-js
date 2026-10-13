@@ -1,0 +1,1875 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "String.split(regex[, limit]) edge cases: trailing empties, leading empty, zero-width, fast path chars",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "",
+    "t": ","
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a,,b",
+    "t": ","
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a,b,,",
+    "t": ","
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": ",",
+    "t": ","
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": ",a",
+    "t": ","
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "abc",
+    "t": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "",
+    "t": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a b  c",
+    "t": " "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a b  c",
+    "t": " +"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": " a",
+    "t": " "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "  a",
+    "t": " "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "  a",
+    "t": " +"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a1b2c3",
+    "t": "\\d"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a1b2c3",
+    "t": "(?<=\\d)"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "abc",
+    "t": "(?=b)"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "abc",
+    "t": "b"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a.b",
+    "t": "."
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a.b",
+    "t": "\\."
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a|b",
+    "t": "|"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a|b",
+    "t": "\\|"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a\nb\r\nc",
+    "t": "\\R"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a\nb\r\nc\n\n",
+    "t": "\n"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "😀😀",
+    "t": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a😀b",
+    "t": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "ab",
+    "t": "(?<=a)"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "aXXb",
+    "t": "X"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "aXXb",
+    "t": "XX"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a,b;c",
+    "t": "[,;]"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a:b",
+    "t": ":"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a::b",
+    "t": "::"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": ":",
+    "t": ":"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "::",
+    "t": ":"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "aa",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "abc",
+    "t": "abc"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "ä,ö",
+    "t": ","
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a b",
+    "t": " "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "ab",
+    "t": "^"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "ab",
+    "t": "$"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a b",
+    "t": "\\s*"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "abc",
+    "t": "$|b"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "x",
+    "t": "("
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "",
+    "t": ",",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "",
+    "t": ",",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "",
+    "t": ",",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "",
+    "t": ",",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a,,b",
+    "t": ",",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a,,b",
+    "t": ",",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a,,b",
+    "t": ",",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a,,b",
+    "t": ",",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a,b,,",
+    "t": ",",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a,b,,",
+    "t": ",",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a,b,,",
+    "t": ",",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a,b,,",
+    "t": ",",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": ",",
+    "t": ",",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": ",",
+    "t": ",",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": ",",
+    "t": ",",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": ",",
+    "t": ",",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": ",a",
+    "t": ",",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": ",a",
+    "t": ",",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": ",a",
+    "t": ",",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": ",a",
+    "t": ",",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "abc",
+    "t": "",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "abc",
+    "t": "",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "abc",
+    "t": "",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "abc",
+    "t": "",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "",
+    "t": "",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "",
+    "t": "",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "",
+    "t": "",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "",
+    "t": "",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a b  c",
+    "t": " ",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a b  c",
+    "t": " ",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a b  c",
+    "t": " ",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a b  c",
+    "t": " ",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a b  c",
+    "t": " +",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a b  c",
+    "t": " +",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a b  c",
+    "t": " +",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a b  c",
+    "t": " +",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": " a",
+    "t": " ",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": " a",
+    "t": " ",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": " a",
+    "t": " ",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": " a",
+    "t": " ",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "  a",
+    "t": " ",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "  a",
+    "t": " ",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "  a",
+    "t": " ",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "  a",
+    "t": " ",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "  a",
+    "t": " +",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "  a",
+    "t": " +",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "  a",
+    "t": " +",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "  a",
+    "t": " +",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a1b2c3",
+    "t": "\\d",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a1b2c3",
+    "t": "\\d",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a1b2c3",
+    "t": "\\d",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a1b2c3",
+    "t": "\\d",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a1b2c3",
+    "t": "(?<=\\d)",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a1b2c3",
+    "t": "(?<=\\d)",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a1b2c3",
+    "t": "(?<=\\d)",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a1b2c3",
+    "t": "(?<=\\d)",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "abc",
+    "t": "(?=b)",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "abc",
+    "t": "(?=b)",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "abc",
+    "t": "(?=b)",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "abc",
+    "t": "(?=b)",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "abc",
+    "t": "b",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "abc",
+    "t": "b",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "abc",
+    "t": "b",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "abc",
+    "t": "b",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a.b",
+    "t": ".",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a.b",
+    "t": ".",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a.b",
+    "t": ".",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a.b",
+    "t": ".",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a.b",
+    "t": "\\.",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a.b",
+    "t": "\\.",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a.b",
+    "t": "\\.",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a.b",
+    "t": "\\.",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a|b",
+    "t": "|",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a|b",
+    "t": "|",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a|b",
+    "t": "|",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a|b",
+    "t": "|",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a|b",
+    "t": "\\|",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a|b",
+    "t": "\\|",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a|b",
+    "t": "\\|",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a|b",
+    "t": "\\|",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a\nb\r\nc",
+    "t": "\\R",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a\nb\r\nc",
+    "t": "\\R",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a\nb\r\nc",
+    "t": "\\R",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a\nb\r\nc",
+    "t": "\\R",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a\nb\r\nc\n\n",
+    "t": "\n",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a\nb\r\nc\n\n",
+    "t": "\n",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a\nb\r\nc\n\n",
+    "t": "\n",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a\nb\r\nc\n\n",
+    "t": "\n",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "😀😀",
+    "t": "",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "😀😀",
+    "t": "",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "😀😀",
+    "t": "",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "😀😀",
+    "t": "",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a😀b",
+    "t": "",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a😀b",
+    "t": "",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a😀b",
+    "t": "",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a😀b",
+    "t": "",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "ab",
+    "t": "(?<=a)",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "ab",
+    "t": "(?<=a)",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "ab",
+    "t": "(?<=a)",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "ab",
+    "t": "(?<=a)",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "aXXb",
+    "t": "X",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "aXXb",
+    "t": "X",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "aXXb",
+    "t": "X",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "aXXb",
+    "t": "X",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "aXXb",
+    "t": "XX",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "aXXb",
+    "t": "XX",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "aXXb",
+    "t": "XX",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "aXXb",
+    "t": "XX",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a,b;c",
+    "t": "[,;]",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a,b;c",
+    "t": "[,;]",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a,b;c",
+    "t": "[,;]",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a,b;c",
+    "t": "[,;]",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a:b",
+    "t": ":",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a:b",
+    "t": ":",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a:b",
+    "t": ":",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a:b",
+    "t": ":",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a::b",
+    "t": "::",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a::b",
+    "t": "::",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a::b",
+    "t": "::",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a::b",
+    "t": "::",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": ":",
+    "t": ":",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": ":",
+    "t": ":",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": ":",
+    "t": ":",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": ":",
+    "t": ":",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "::",
+    "t": ":",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "::",
+    "t": ":",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "::",
+    "t": ":",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "::",
+    "t": ":",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a",
+    "t": "a",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a",
+    "t": "a",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a",
+    "t": "a",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a",
+    "t": "a",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "aa",
+    "t": "a",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "aa",
+    "t": "a",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "aa",
+    "t": "a",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "aa",
+    "t": "a",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "abc",
+    "t": "abc",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "abc",
+    "t": "abc",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "abc",
+    "t": "abc",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "abc",
+    "t": "abc",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "ä,ö",
+    "t": ",",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "ä,ö",
+    "t": ",",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "ä,ö",
+    "t": ",",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "ä,ö",
+    "t": ",",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a b",
+    "t": " ",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a b",
+    "t": " ",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a b",
+    "t": " ",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a b",
+    "t": " ",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "ab",
+    "t": "^",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "ab",
+    "t": "^",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "ab",
+    "t": "^",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "ab",
+    "t": "^",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "ab",
+    "t": "$",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "ab",
+    "t": "$",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "ab",
+    "t": "$",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "ab",
+    "t": "$",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a b",
+    "t": "\\s*",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a b",
+    "t": "\\s*",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a b",
+    "t": "\\s*",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a b",
+    "t": "\\s*",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "abc",
+    "t": "$|b",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "abc",
+    "t": "$|b",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "abc",
+    "t": "$|b",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "abc",
+    "t": "$|b",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "x",
+    "t": "(",
+    "limit": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "x",
+    "t": "(",
+    "limit": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "x",
+    "t": "(",
+    "limit": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "x",
+    "t": "(",
+    "limit": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a,b",
+    "t": ",",
+    "limit": 0
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "split",
+    "s": "a,b,,",
+    "t": ",",
+    "limit": 0
+   }
+  }
+ ]
+}

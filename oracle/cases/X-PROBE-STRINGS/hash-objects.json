@@ -1,0 +1,422 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "Objects.hash / Arrays.hashCode / List/Set/Map hashCode with mixed types and null",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "objectsHash",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "objectsHash",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "objectsHash",
+    "args": [
+     "a",
+     "b"
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "objectsHash",
+    "args": [
+     "a",
+     null
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "objectsHash",
+    "args": [
+     null
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "objectsHash",
+    "args": [
+     null,
+     null
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "objectsHash",
+    "args": [
+     "b",
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "objectsHash",
+    "args": [
+     {
+      "t": "int",
+      "v": "1"
+     },
+     {
+      "t": "int",
+      "v": "2"
+     },
+     {
+      "t": "int",
+      "v": "3"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "objectsHash",
+    "args": [
+     {
+      "t": "int",
+      "v": "1"
+     },
+     "x",
+     {
+      "t": "long",
+      "v": "4294967296"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "bool",
+      "v": "true"
+     },
+     {
+      "t": "char",
+      "v": "c"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "objectsHash",
+    "args": [
+     {
+      "t": "long",
+      "v": "9223372036854775807"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "objectsHash",
+    "args": [
+     {
+      "t": "double",
+      "v": "-0.0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "objectsHash",
+    "args": [
+     {
+      "t": "double",
+      "v": "NaN"
+     },
+     {
+      "t": "float",
+      "v": "1.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "objectsHash",
+    "args": [
+     "äöü",
+     "😀"
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "objectsHash",
+    "args": [
+     {
+      "t": "bool",
+      "v": "false"
+     },
+     {
+      "t": "bool",
+      "v": "true"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "objectsHash",
+    "args": [
+     {
+      "t": "short",
+      "v": "5"
+     },
+     {
+      "t": "byte",
+      "v": "-1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "arraysHashCode",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "arraysHashCode",
+    "args": [
+     "a",
+     "b"
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "arraysHashCode",
+    "args": [
+     {
+      "t": "int",
+      "v": "1"
+     },
+     {
+      "t": "int",
+      "v": "2"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "arraysHashCode",
+    "args": [
+     null,
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "listHashCode",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "listHashCode",
+    "args": [
+     "a",
+     "b",
+     "c"
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "listHashCode",
+    "args": [
+     "a",
+     null
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "listHashCode",
+    "args": [
+     {
+      "t": "int",
+      "v": "1"
+     },
+     {
+      "t": "int",
+      "v": "2"
+     },
+     {
+      "t": "int",
+      "v": "3"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "setHashCode",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "setHashCode",
+    "args": [
+     "a",
+     "b",
+     "c"
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "setHashCode",
+    "args": [
+     "c",
+     "b",
+     "a",
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "setHashCode",
+    "args": [
+     "a",
+     null
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "mapHashCode",
+    "pairs": []
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "mapHashCode",
+    "pairs": [
+     "a",
+     "b"
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "mapHashCode",
+    "pairs": [
+     "a",
+     null
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "mapHashCode",
+    "pairs": [
+     "k1",
+     "v1",
+     "k2",
+     "v2"
+    ]
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "boxedHash",
+    "v": {
+     "t": "int",
+     "v": "42"
+    }
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "boxedHash",
+    "v": "abc"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "boxedHash",
+    "v": {
+     "t": "char",
+     "v": "a"
+    }
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "boxedHash",
+    "v": {
+     "t": "bool",
+     "v": "true"
+    }
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "boxedHash",
+    "v": {
+     "t": "bool",
+     "v": "false"
+    }
+   }
+  }
+ ]
+}

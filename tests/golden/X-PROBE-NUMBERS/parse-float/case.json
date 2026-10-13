@@ -1,0 +1,225 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "Float.parseFloat incl. round-to-nearest-even boundaries",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "float",
+    "s": "0"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "float",
+    "s": "1.5"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "float",
+    "s": "3.4028235e38"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "float",
+    "s": "3.4028236e38"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "float",
+    "s": "3.4028235677973366e38"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "float",
+    "s": "3.4028235677973367e38"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "float",
+    "s": "1e-45"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "float",
+    "s": "7e-46"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "float",
+    "s": "7.006492321624086e-46"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "float",
+    "s": "7.006492321624087e-46"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "float",
+    "s": "1.00000017881393432617187499"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "float",
+    "s": "1.00000017881393432617187500"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "float",
+    "s": "16777217"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "float",
+    "s": "0.1"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "float",
+    "s": "1.1"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "float",
+    "s": "NaN"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "float",
+    "s": "Infinity"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "float",
+    "s": "-Infinity"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "float",
+    "s": " 2.5f "
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "float",
+    "s": "1e39"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "float",
+    "s": "0x1p-149"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "float",
+    "s": ""
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "float",
+    "s": "x"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "float",
+    "s": null
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "float",
+    "s": "9.999999e-5"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "float",
+    "s": "1.17549435E-38"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "float",
+    "s": "8388608.5"
+   }
+  }
+ ]
+}

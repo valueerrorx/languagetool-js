@@ -1,0 +1,1439 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "Math.round/rint/floor/ceil on doubles and floats",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "double",
+     "v": "0.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "double",
+     "v": "1.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "double",
+     "v": "2.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "double",
+     "v": "3.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "double",
+     "v": "-0.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "double",
+     "v": "-1.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "double",
+     "v": "-2.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "double",
+     "v": "-3.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "double",
+     "v": "0.49999999999999994"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "double",
+     "v": "-0.49999999999999994"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "double",
+     "v": "4503599627370497.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "double",
+     "v": "4503599627370496.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "double",
+     "v": "0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "double",
+     "v": "-0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "double",
+     "v": "1e15"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "double",
+     "v": "2.4999999999999996"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "double",
+     "v": "9007199254740991.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "double",
+     "v": "9223372036854775807.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "double",
+     "v": "9.3e18"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "double",
+     "v": "-9.3e18"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "double",
+     "v": "1e19"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "double",
+     "v": "NaN"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "double",
+     "v": "Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "double",
+     "v": "-Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "double",
+     "v": "4.9e-324"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "double",
+     "v": "123456.4999"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "double",
+     "v": "0.4999999999999999"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "double",
+     "v": "1.4999999999999998"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "rint",
+    "a": {
+     "t": "double",
+     "v": "0.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "rint",
+    "a": {
+     "t": "double",
+     "v": "1.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "rint",
+    "a": {
+     "t": "double",
+     "v": "2.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "rint",
+    "a": {
+     "t": "double",
+     "v": "3.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "rint",
+    "a": {
+     "t": "double",
+     "v": "-0.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "rint",
+    "a": {
+     "t": "double",
+     "v": "-1.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "rint",
+    "a": {
+     "t": "double",
+     "v": "-2.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "rint",
+    "a": {
+     "t": "double",
+     "v": "-3.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "rint",
+    "a": {
+     "t": "double",
+     "v": "0.49999999999999994"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "rint",
+    "a": {
+     "t": "double",
+     "v": "-0.49999999999999994"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "rint",
+    "a": {
+     "t": "double",
+     "v": "4503599627370497.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "rint",
+    "a": {
+     "t": "double",
+     "v": "4503599627370496.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "rint",
+    "a": {
+     "t": "double",
+     "v": "0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "rint",
+    "a": {
+     "t": "double",
+     "v": "-0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "rint",
+    "a": {
+     "t": "double",
+     "v": "1e15"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "rint",
+    "a": {
+     "t": "double",
+     "v": "2.4999999999999996"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "rint",
+    "a": {
+     "t": "double",
+     "v": "9007199254740991.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "rint",
+    "a": {
+     "t": "double",
+     "v": "9223372036854775807.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "rint",
+    "a": {
+     "t": "double",
+     "v": "9.3e18"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "rint",
+    "a": {
+     "t": "double",
+     "v": "-9.3e18"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "rint",
+    "a": {
+     "t": "double",
+     "v": "1e19"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "rint",
+    "a": {
+     "t": "double",
+     "v": "NaN"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "rint",
+    "a": {
+     "t": "double",
+     "v": "Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "rint",
+    "a": {
+     "t": "double",
+     "v": "-Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "rint",
+    "a": {
+     "t": "double",
+     "v": "4.9e-324"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "rint",
+    "a": {
+     "t": "double",
+     "v": "123456.4999"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "rint",
+    "a": {
+     "t": "double",
+     "v": "0.4999999999999999"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "rint",
+    "a": {
+     "t": "double",
+     "v": "1.4999999999999998"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "floor",
+    "a": {
+     "t": "double",
+     "v": "0.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "floor",
+    "a": {
+     "t": "double",
+     "v": "1.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "floor",
+    "a": {
+     "t": "double",
+     "v": "2.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "floor",
+    "a": {
+     "t": "double",
+     "v": "3.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "floor",
+    "a": {
+     "t": "double",
+     "v": "-0.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "floor",
+    "a": {
+     "t": "double",
+     "v": "-1.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "floor",
+    "a": {
+     "t": "double",
+     "v": "-2.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "floor",
+    "a": {
+     "t": "double",
+     "v": "-3.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "floor",
+    "a": {
+     "t": "double",
+     "v": "0.49999999999999994"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "floor",
+    "a": {
+     "t": "double",
+     "v": "-0.49999999999999994"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "floor",
+    "a": {
+     "t": "double",
+     "v": "4503599627370497.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "floor",
+    "a": {
+     "t": "double",
+     "v": "4503599627370496.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "floor",
+    "a": {
+     "t": "double",
+     "v": "0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "floor",
+    "a": {
+     "t": "double",
+     "v": "-0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "floor",
+    "a": {
+     "t": "double",
+     "v": "1e15"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "floor",
+    "a": {
+     "t": "double",
+     "v": "2.4999999999999996"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "floor",
+    "a": {
+     "t": "double",
+     "v": "9007199254740991.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "floor",
+    "a": {
+     "t": "double",
+     "v": "9223372036854775807.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "floor",
+    "a": {
+     "t": "double",
+     "v": "9.3e18"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "floor",
+    "a": {
+     "t": "double",
+     "v": "-9.3e18"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "floor",
+    "a": {
+     "t": "double",
+     "v": "1e19"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "floor",
+    "a": {
+     "t": "double",
+     "v": "NaN"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "floor",
+    "a": {
+     "t": "double",
+     "v": "Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "floor",
+    "a": {
+     "t": "double",
+     "v": "-Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "floor",
+    "a": {
+     "t": "double",
+     "v": "4.9e-324"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "floor",
+    "a": {
+     "t": "double",
+     "v": "123456.4999"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "floor",
+    "a": {
+     "t": "double",
+     "v": "0.4999999999999999"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "floor",
+    "a": {
+     "t": "double",
+     "v": "1.4999999999999998"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "ceil",
+    "a": {
+     "t": "double",
+     "v": "0.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "ceil",
+    "a": {
+     "t": "double",
+     "v": "1.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "ceil",
+    "a": {
+     "t": "double",
+     "v": "2.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "ceil",
+    "a": {
+     "t": "double",
+     "v": "3.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "ceil",
+    "a": {
+     "t": "double",
+     "v": "-0.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "ceil",
+    "a": {
+     "t": "double",
+     "v": "-1.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "ceil",
+    "a": {
+     "t": "double",
+     "v": "-2.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "ceil",
+    "a": {
+     "t": "double",
+     "v": "-3.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "ceil",
+    "a": {
+     "t": "double",
+     "v": "0.49999999999999994"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "ceil",
+    "a": {
+     "t": "double",
+     "v": "-0.49999999999999994"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "ceil",
+    "a": {
+     "t": "double",
+     "v": "4503599627370497.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "ceil",
+    "a": {
+     "t": "double",
+     "v": "4503599627370496.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "ceil",
+    "a": {
+     "t": "double",
+     "v": "0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "ceil",
+    "a": {
+     "t": "double",
+     "v": "-0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "ceil",
+    "a": {
+     "t": "double",
+     "v": "1e15"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "ceil",
+    "a": {
+     "t": "double",
+     "v": "2.4999999999999996"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "ceil",
+    "a": {
+     "t": "double",
+     "v": "9007199254740991.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "ceil",
+    "a": {
+     "t": "double",
+     "v": "9223372036854775807.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "ceil",
+    "a": {
+     "t": "double",
+     "v": "9.3e18"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "ceil",
+    "a": {
+     "t": "double",
+     "v": "-9.3e18"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "ceil",
+    "a": {
+     "t": "double",
+     "v": "1e19"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "ceil",
+    "a": {
+     "t": "double",
+     "v": "NaN"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "ceil",
+    "a": {
+     "t": "double",
+     "v": "Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "ceil",
+    "a": {
+     "t": "double",
+     "v": "-Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "ceil",
+    "a": {
+     "t": "double",
+     "v": "4.9e-324"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "ceil",
+    "a": {
+     "t": "double",
+     "v": "123456.4999"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "ceil",
+    "a": {
+     "t": "double",
+     "v": "0.4999999999999999"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "ceil",
+    "a": {
+     "t": "double",
+     "v": "1.4999999999999998"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "float",
+     "v": "0.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "float",
+     "v": "1.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "float",
+     "v": "2.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "float",
+     "v": "-0.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "float",
+     "v": "-1.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "float",
+     "v": "-2.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "float",
+     "v": "1.4999999"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "float",
+     "v": "0.49999997"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "float",
+     "v": "16777215.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "float",
+     "v": "8388609.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "float",
+     "v": "3e9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "float",
+     "v": "3e10"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "float",
+     "v": "-3e10"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "float",
+     "v": "NaN"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "float",
+     "v": "Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "float",
+     "v": "-Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "float",
+     "v": "0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "math",
+    "op": "round",
+    "a": {
+     "t": "float",
+     "v": "-0.0"
+    }
+   }
+  }
+ ]
+}

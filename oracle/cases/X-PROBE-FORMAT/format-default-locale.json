@@ -1,0 +1,235 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "String.format(fmt, args) without Locale uses default (en_US); nulls and mixed args",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "formatNoLocale",
+    "fmt": "%.2f",
+    "args": [
+     {
+      "t": "double",
+      "v": "3.14159"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "formatNoLocale",
+    "fmt": "%,d",
+    "args": [
+     {
+      "t": "int",
+      "v": "1234567"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "formatNoLocale",
+    "fmt": "%s",
+    "args": [
+     null
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "formatNoLocale",
+    "fmt": "%s %s",
+    "args": [
+     null,
+     null
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "formatNoLocale",
+    "fmt": "%s",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "formatNoLocale",
+    "fmt": "%10.3f|",
+    "args": [
+     {
+      "t": "double",
+      "v": "2.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "formatNoLocale",
+    "fmt": "%S",
+    "args": [
+     "ß"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "formatNoLocale",
+    "fmt": "%s",
+    "args": [
+     {
+      "t": "float",
+      "v": "0.1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "formatNoLocale",
+    "fmt": "%d%%",
+    "args": [
+     {
+      "t": "int",
+      "v": "5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "formatNoLocale",
+    "fmt": "%s: %d",
+    "args": [
+     "a",
+     {
+      "t": "int",
+      "v": "1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "formatNoLocale",
+    "fmt": "%.1f sentences/sec",
+    "args": [
+     {
+      "t": "float",
+      "v": "12.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "formatNoLocale",
+    "fmt": "%.1f",
+    "args": [
+     {
+      "t": "double",
+      "v": "0.25"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "formatNoLocale",
+    "fmt": "%.1f",
+    "args": [
+     {
+      "t": "double",
+      "v": "0.05"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "formatNoLocale",
+    "fmt": "%-8s|%8s|",
+    "args": [
+     "ab",
+     "cd"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "formatNoLocale",
+    "fmt": "Rule %s (%d)",
+    "args": [
+     "R1",
+     {
+      "t": "int",
+      "v": "2"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "formatNoLocale",
+    "fmt": "%s",
+    "args": [
+     {
+      "t": "char",
+      "v": "x"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "formatNoLocale",
+    "fmt": "%s",
+    "args": [
+     {
+      "t": "bigdecimal",
+      "v": "0.10"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "formatNoLocale",
+    "fmt": null,
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "formatNoLocale",
+    "fmt": "%s",
+    "args": []
+   }
+  }
+ ]
+}

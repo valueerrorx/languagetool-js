@@ -1,0 +1,336 @@
+{"id":1,"ok":true,"result":{"result":{"s":"It's x","units":[73,116,39,115,32,120]},"toPattern":"It''s {0}"}}
+{"id":2,"ok":true,"result":{"result":{"s":"Its {0}","units":[73,116,115,32,123,48,125]},"toPattern":"Its '{'0}"}}
+{"id":3,"ok":true,"result":{"result":{"s":"{0}","units":[123,48,125]},"toPattern":"'{'0}"}}
+{"id":4,"ok":true,"result":{"result":{"s":"{0}","units":[123,48,125]},"toPattern":"'{'0}"}}
+{"id":5,"ok":true,"result":{"result":{"s":"a''b","units":[97,39,39,98]},"toPattern":"a''''b"}}
+{"id":6,"ok":true,"result":{"result":{"s":"","units":[]},"toPattern":""}}
+{"id":7,"ok":true,"result":{"result":{"s":"'","units":[39]},"toPattern":"''"}}
+{"id":8,"ok":true,"result":{"result":{"s":"'","units":[39]},"toPattern":"''"}}
+{"id":9,"ok":true,"result":{"result":{"s":"xs","units":[120,115]},"toPattern":"{0}s"}}
+{"id":10,"ok":true,"result":{"result":{"s":"{0} x","units":[123,48,125,32,120]},"toPattern":"'{'0} {0}"}}
+{"id":11,"ok":true,"result":{"result":{"s":"ab","units":[97,98]},"toPattern":"{0}{1}"}}
+{"id":12,"ok":true,"result":{"result":{"s":"ba","units":[98,97]},"toPattern":"{1}{0}"}}
+{"id":13,"ok":true,"result":{"result":{"s":"{1}","units":[123,49,125]},"toPattern":"{1}"}}
+{"id":14,"ok":true,"result":{"result":{"s":"{2} a","units":[123,50,125,32,97]},"toPattern":"{2} {0}"}}
+{"id":15,"ok":true,"result":{"result":{"s":"{0}","units":[123,48,125]},"toPattern":"{0}"}}
+{"id":16,"ok":true,"result":{"result":{"s":"null","units":[110,117,108,108]},"toPattern":"{0}"}}
+{"id":17,"ok":true,"result":{"result":{"s":"null x","units":[110,117,108,108,32,120]},"toPattern":"{0} {1}"}}
+{"id":18,"ok":true,"result":{"result":{"s":"true","units":[116,114,117,101]},"toPattern":"{0}"}}
+{"id":19,"ok":true,"result":{"result":{"s":"c","units":[99]},"toPattern":"{0}"}}
+{"id":20,"ok":true,"result":{"result":{"s":"1","units":[49]},"toPattern":"{0}"}}
+{"id":21,"ok":true,"result":{"result":{"s":"{1}","units":[123,49,125]},"toPattern":"{0}"}}
+{"id":22,"ok":true,"result":{"result":{"s":"no args","units":[110,111,32,97,114,103,115]},"toPattern":"no args"}}
+{"id":23,"ok":true,"result":{"result":{"s":"no args","units":[110,111,32,97,114,103,115]},"toPattern":"no args"}}
+{"id":24,"ok":true,"result":{"result":{"s":"100%","units":[49,48,48,37]},"toPattern":"100%"}}
+{"id":25,"ok":true,"result":{"result":{"s":"5%","units":[53,37]},"toPattern":"{0}%"}}
+{"id":26,"ok":true,"result":{"result":{"s":"2.5 2","units":[50,46,53,32,50]},"toPattern":"{0} {0,number,integer}"}}
+{"id":27,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Unmatched braces in the pattern.","causes":[]}}
+{"id":28,"ok":true,"result":{"result":{"s":"}","units":[125]},"toPattern":"}"}}
+{"id":29,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"can't parse argument number: ","causes":[{"class":"java.lang.NumberFormatException","message":"For input string: \"\""}]}}
+{"id":30,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Unmatched braces in the pattern.","causes":[]}}
+{"id":31,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"can't parse argument number: x","causes":[{"class":"java.lang.NumberFormatException","message":"For input string: \"x\""}]}}
+{"id":32,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"negative argument number: -1","causes":[]}}
+{"id":33,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"unknown format type: foo","causes":[]}}
+{"id":34,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Multiple decimal separators in pattern \"#.#.#\"","causes":[]}}
+{"id":35,"ok":true,"result":{"result":{"s":"a","units":[97]},"toPattern":"{0}"}}
+{"id":36,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"can't parse argument number:  0 ","causes":[{"class":"java.lang.NumberFormatException","message":"For input string: \" 0 \""}]}}
+{"id":37,"ok":true,"result":{"result":{"s":"2","units":[50]},"toPattern":"{0,number,integer}"}}
+{"id":38,"ok":false,"error":{"class":"java.lang.ArrayIndexOutOfBoundsException","message":"Index 0 out of bounds for length 0","causes":[]}}
+{"id":39,"ok":false,"error":{"class":"java.lang.ArrayIndexOutOfBoundsException","message":"Index 0 out of bounds for length 0","causes":[]}}
+{"id":40,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Cannot format given Object as a Date","causes":[]}}
+{"id":41,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Cannot format given Object as a Number","causes":[]}}
+{"id":42,"ok":true,"result":{"result":{"s":"null","units":[110,117,108,108]},"toPattern":"{0,number}"}}
+{"id":43,"ok":true,"result":{"result":{"s":"1,234","units":[49,44,50,51,52]},"toPattern":"{0,number,integer}"}}
+{"id":44,"ok":true,"result":{"result":{"s":"1,234","units":[49,44,50,51,52]},"toPattern":"{0,number,integer}"}}
+{"id":45,"ok":true,"result":{"result":{"s":"{10}","units":[123,49,48,125]},"toPattern":"{10}"}}
+{"id":46,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"can't parse argument number: 2147483648","causes":[{"class":"java.lang.NumberFormatException","message":"For input string: \"2147483648\""}]}}
+{"id":47,"ok":true,"result":{"result":{"s":"a","units":[97]},"toPattern":"{0}"}}
+{"id":48,"ok":true,"result":{"result":{"s":"a}","units":[97,125]},"toPattern":"{0}}"}}
+{"id":49,"ok":true,"result":{"result":{"s":"}a","units":[125,97]},"toPattern":"}{0}"}}
+{"id":50,"ok":true,"result":{"result":{"s":"3/15/26","units":[51,47,49,53,47,50,54]},"toPattern":"{0,date,short}"}}
+{"id":51,"ok":true,"result":{"result":{"s":"Mar 15, 2026","units":[77,97,114,32,49,53,44,32,50,48,50,54]},"toPattern":"{0,date}"}}
+{"id":52,"ok":true,"result":{"result":{"s":"March 15, 2026","units":[77,97,114,99,104,32,49,53,44,32,50,48,50,54]},"toPattern":"{0,date,long}"}}
+{"id":53,"ok":true,"result":{"result":{"s":"Sunday, March 15, 2026","units":[83,117,110,100,97,121,44,32,77,97,114,99,104,32,49,53,44,32,50,48,50,54]},"toPattern":"{0,date,full}"}}
+{"id":54,"ok":true,"result":{"result":{"s":"11:00 AM","units":[49,49,58,48,48,32,65,77]},"toPattern":"{0,time,short}"}}
+{"id":55,"ok":true,"result":{"result":{"s":"11:00:00 AM","units":[49,49,58,48,48,58,48,48,32,65,77]},"toPattern":"{0,time}"}}
+{"id":56,"ok":true,"result":{"result":{"s":"11:00:00 AM CET","units":[49,49,58,48,48,58,48,48,32,65,77,32,67,69,84]},"toPattern":"{0,time,long}"}}
+{"id":57,"ok":true,"result":{"result":{"s":"11:00:00 AM Central European Standard Time","units":[49,49,58,48,48,58,48,48,32,65,77,32,67,101,110,116,114,97,108,32,69,117,114,111,112,101,97,110,32,83,116,97,110,100,97,114,100,32,84,105,109,101]},"toPattern":"{0,time,full}"}}
+{"id":58,"ok":true,"result":{"result":{"s":"Mar 15, 2026","units":[77,97,114,32,49,53,44,32,50,48,50,54]},"toPattern":"{0,date}"}}
+{"id":59,"ok":true,"result":{"result":{"s":"11:00:00 AM","units":[49,49,58,48,48,58,48,48,32,65,77]},"toPattern":"{0,time}"}}
+{"id":60,"ok":true,"result":{"result":{"s":"3/15/26, 11:00 AM","units":[51,47,49,53,47,50,54,44,32,49,49,58,48,48,32,65,77]},"toPattern":"{0}"}}
+{"id":61,"ok":true,"result":{"result":{"s":"2026-03-15 11:00","units":[50,48,50,54,45,48,51,45,49,53,32,49,49,58,48,48]},"toPattern":"{0,date,yyyy-MM-dd HH:mm}"}}
+{"id":62,"ok":true,"result":{"result":{"s":"Sunday, 15. March 2026","units":[83,117,110,100,97,121,44,32,49,53,46,32,77,97,114,99,104,32,50,48,50,54]},"toPattern":"{0,date,EEEE, d. MMMM yyyy}"}}
+{"id":63,"ok":true,"result":{"result":{"s":"2025-01","units":[50,48,50,53,45,48,49]},"toPattern":"{0,date,YYYY-ww}"}}
+{"id":64,"ok":true,"result":{"result":{"s":"1/1/70","units":[49,47,49,47,55,48]},"toPattern":"{0,date,short}"}}
+{"id":65,"ok":true,"result":{"result":{"s":"3/15/26","units":[51,47,49,53,47,50,54]},"toPattern":"{0,date,short}"}}
+{"id":66,"ok":true,"result":{"result":{"s":"3/15/26","units":[51,47,49,53,47,50,54]},"toPattern":"{0,date,short}"}}
+{"id":67,"ok":true,"result":{"result":{"s":"1970","units":[49,57,55,48]},"toPattern":"{0,date,yyyy}"}}
+{"id":68,"ok":true,"result":{"result":{"s":"It's x","units":[73,116,39,115,32,120]},"toPattern":"It''s {0}"}}
+{"id":69,"ok":true,"result":{"result":{"s":"Its {0}","units":[73,116,115,32,123,48,125]},"toPattern":"Its '{'0}"}}
+{"id":70,"ok":true,"result":{"result":{"s":"{0}","units":[123,48,125]},"toPattern":"'{'0}"}}
+{"id":71,"ok":true,"result":{"result":{"s":"{0}","units":[123,48,125]},"toPattern":"'{'0}"}}
+{"id":72,"ok":true,"result":{"result":{"s":"a''b","units":[97,39,39,98]},"toPattern":"a''''b"}}
+{"id":73,"ok":true,"result":{"result":{"s":"","units":[]},"toPattern":""}}
+{"id":74,"ok":true,"result":{"result":{"s":"'","units":[39]},"toPattern":"''"}}
+{"id":75,"ok":true,"result":{"result":{"s":"'","units":[39]},"toPattern":"''"}}
+{"id":76,"ok":true,"result":{"result":{"s":"xs","units":[120,115]},"toPattern":"{0}s"}}
+{"id":77,"ok":true,"result":{"result":{"s":"{0} x","units":[123,48,125,32,120]},"toPattern":"'{'0} {0}"}}
+{"id":78,"ok":true,"result":{"result":{"s":"ab","units":[97,98]},"toPattern":"{0}{1}"}}
+{"id":79,"ok":true,"result":{"result":{"s":"ba","units":[98,97]},"toPattern":"{1}{0}"}}
+{"id":80,"ok":true,"result":{"result":{"s":"{1}","units":[123,49,125]},"toPattern":"{1}"}}
+{"id":81,"ok":true,"result":{"result":{"s":"{2} a","units":[123,50,125,32,97]},"toPattern":"{2} {0}"}}
+{"id":82,"ok":true,"result":{"result":{"s":"{0}","units":[123,48,125]},"toPattern":"{0}"}}
+{"id":83,"ok":true,"result":{"result":{"s":"null","units":[110,117,108,108]},"toPattern":"{0}"}}
+{"id":84,"ok":true,"result":{"result":{"s":"null x","units":[110,117,108,108,32,120]},"toPattern":"{0} {1}"}}
+{"id":85,"ok":true,"result":{"result":{"s":"true","units":[116,114,117,101]},"toPattern":"{0}"}}
+{"id":86,"ok":true,"result":{"result":{"s":"c","units":[99]},"toPattern":"{0}"}}
+{"id":87,"ok":true,"result":{"result":{"s":"1","units":[49]},"toPattern":"{0}"}}
+{"id":88,"ok":true,"result":{"result":{"s":"{1}","units":[123,49,125]},"toPattern":"{0}"}}
+{"id":89,"ok":true,"result":{"result":{"s":"no args","units":[110,111,32,97,114,103,115]},"toPattern":"no args"}}
+{"id":90,"ok":true,"result":{"result":{"s":"no args","units":[110,111,32,97,114,103,115]},"toPattern":"no args"}}
+{"id":91,"ok":true,"result":{"result":{"s":"100%","units":[49,48,48,37]},"toPattern":"100%"}}
+{"id":92,"ok":true,"result":{"result":{"s":"5%","units":[53,37]},"toPattern":"{0}%"}}
+{"id":93,"ok":true,"result":{"result":{"s":"2,5 2","units":[50,44,53,32,50]},"toPattern":"{0} {0,number,integer}"}}
+{"id":94,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Unmatched braces in the pattern.","causes":[]}}
+{"id":95,"ok":true,"result":{"result":{"s":"}","units":[125]},"toPattern":"}"}}
+{"id":96,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"can't parse argument number: ","causes":[{"class":"java.lang.NumberFormatException","message":"For input string: \"\""}]}}
+{"id":97,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Unmatched braces in the pattern.","causes":[]}}
+{"id":98,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"can't parse argument number: x","causes":[{"class":"java.lang.NumberFormatException","message":"For input string: \"x\""}]}}
+{"id":99,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"negative argument number: -1","causes":[]}}
+{"id":100,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"unknown format type: foo","causes":[]}}
+{"id":101,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Multiple decimal separators in pattern \"#.#.#\"","causes":[]}}
+{"id":102,"ok":true,"result":{"result":{"s":"a","units":[97]},"toPattern":"{0}"}}
+{"id":103,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"can't parse argument number:  0 ","causes":[{"class":"java.lang.NumberFormatException","message":"For input string: \" 0 \""}]}}
+{"id":104,"ok":true,"result":{"result":{"s":"2","units":[50]},"toPattern":"{0,number,integer}"}}
+{"id":105,"ok":false,"error":{"class":"java.lang.ArrayIndexOutOfBoundsException","message":"Index 0 out of bounds for length 0","causes":[]}}
+{"id":106,"ok":false,"error":{"class":"java.lang.ArrayIndexOutOfBoundsException","message":"Index 0 out of bounds for length 0","causes":[]}}
+{"id":107,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Cannot format given Object as a Date","causes":[]}}
+{"id":108,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Cannot format given Object as a Number","causes":[]}}
+{"id":109,"ok":true,"result":{"result":{"s":"null","units":[110,117,108,108]},"toPattern":"{0,number}"}}
+{"id":110,"ok":true,"result":{"result":{"s":"1.234","units":[49,46,50,51,52]},"toPattern":"{0,number,integer}"}}
+{"id":111,"ok":true,"result":{"result":{"s":"1.234","units":[49,46,50,51,52]},"toPattern":"{0,number,integer}"}}
+{"id":112,"ok":true,"result":{"result":{"s":"{10}","units":[123,49,48,125]},"toPattern":"{10}"}}
+{"id":113,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"can't parse argument number: 2147483648","causes":[{"class":"java.lang.NumberFormatException","message":"For input string: \"2147483648\""}]}}
+{"id":114,"ok":true,"result":{"result":{"s":"a","units":[97]},"toPattern":"{0}"}}
+{"id":115,"ok":true,"result":{"result":{"s":"a}","units":[97,125]},"toPattern":"{0}}"}}
+{"id":116,"ok":true,"result":{"result":{"s":"}a","units":[125,97]},"toPattern":"}{0}"}}
+{"id":117,"ok":true,"result":{"result":{"s":"15.03.26","units":[49,53,46,48,51,46,50,54]},"toPattern":"{0,date,short}"}}
+{"id":118,"ok":true,"result":{"result":{"s":"15.03.2026","units":[49,53,46,48,51,46,50,48,50,54]},"toPattern":"{0,date}"}}
+{"id":119,"ok":true,"result":{"result":{"s":"15. M\u00E4rz 2026","units":[49,53,46,32,77,228,114,122,32,50,48,50,54]},"toPattern":"{0,date,long}"}}
+{"id":120,"ok":true,"result":{"result":{"s":"Sonntag, 15. M\u00E4rz 2026","units":[83,111,110,110,116,97,103,44,32,49,53,46,32,77,228,114,122,32,50,48,50,54]},"toPattern":"{0,date,full}"}}
+{"id":121,"ok":true,"result":{"result":{"s":"11:00","units":[49,49,58,48,48]},"toPattern":"{0,time,short}"}}
+{"id":122,"ok":true,"result":{"result":{"s":"11:00:00","units":[49,49,58,48,48,58,48,48]},"toPattern":"{0,time}"}}
+{"id":123,"ok":true,"result":{"result":{"s":"11:00:00 MEZ","units":[49,49,58,48,48,58,48,48,32,77,69,90]},"toPattern":"{0,time,long}"}}
+{"id":124,"ok":true,"result":{"result":{"s":"11:00:00 Mitteleurop\u00E4ische Normalzeit","units":[49,49,58,48,48,58,48,48,32,77,105,116,116,101,108,101,117,114,111,112,228,105,115,99,104,101,32,78,111,114,109,97,108,122,101,105,116]},"toPattern":"{0,time,full}"}}
+{"id":125,"ok":true,"result":{"result":{"s":"15.03.2026","units":[49,53,46,48,51,46,50,48,50,54]},"toPattern":"{0,date}"}}
+{"id":126,"ok":true,"result":{"result":{"s":"11:00:00","units":[49,49,58,48,48,58,48,48]},"toPattern":"{0,time}"}}
+{"id":127,"ok":true,"result":{"result":{"s":"15.03.26, 11:00","units":[49,53,46,48,51,46,50,54,44,32,49,49,58,48,48]},"toPattern":"{0}"}}
+{"id":128,"ok":true,"result":{"result":{"s":"2026-03-15 11:00","units":[50,48,50,54,45,48,51,45,49,53,32,49,49,58,48,48]},"toPattern":"{0,date,yyyy-MM-dd HH:mm}"}}
+{"id":129,"ok":true,"result":{"result":{"s":"Sonntag, 15. M\u00E4rz 2026","units":[83,111,110,110,116,97,103,44,32,49,53,46,32,77,228,114,122,32,50,48,50,54]},"toPattern":"{0,date,EEEE, d. MMMM yyyy}"}}
+{"id":130,"ok":true,"result":{"result":{"s":"2025-01","units":[50,48,50,53,45,48,49]},"toPattern":"{0,date,YYYY-ww}"}}
+{"id":131,"ok":true,"result":{"result":{"s":"01.01.70","units":[48,49,46,48,49,46,55,48]},"toPattern":"{0,date,short}"}}
+{"id":132,"ok":true,"result":{"result":{"s":"15.03.26","units":[49,53,46,48,51,46,50,54]},"toPattern":"{0,date,short}"}}
+{"id":133,"ok":true,"result":{"result":{"s":"15.03.26","units":[49,53,46,48,51,46,50,54]},"toPattern":"{0,date,short}"}}
+{"id":134,"ok":true,"result":{"result":{"s":"1970","units":[49,57,55,48]},"toPattern":"{0,date,yyyy}"}}
+{"id":135,"ok":true,"result":{"result":{"s":"It's x","units":[73,116,39,115,32,120]},"toPattern":"It''s {0}"}}
+{"id":136,"ok":true,"result":{"result":{"s":"Its {0}","units":[73,116,115,32,123,48,125]},"toPattern":"Its '{'0}"}}
+{"id":137,"ok":true,"result":{"result":{"s":"{0}","units":[123,48,125]},"toPattern":"'{'0}"}}
+{"id":138,"ok":true,"result":{"result":{"s":"{0}","units":[123,48,125]},"toPattern":"'{'0}"}}
+{"id":139,"ok":true,"result":{"result":{"s":"a''b","units":[97,39,39,98]},"toPattern":"a''''b"}}
+{"id":140,"ok":true,"result":{"result":{"s":"","units":[]},"toPattern":""}}
+{"id":141,"ok":true,"result":{"result":{"s":"'","units":[39]},"toPattern":"''"}}
+{"id":142,"ok":true,"result":{"result":{"s":"'","units":[39]},"toPattern":"''"}}
+{"id":143,"ok":true,"result":{"result":{"s":"xs","units":[120,115]},"toPattern":"{0}s"}}
+{"id":144,"ok":true,"result":{"result":{"s":"{0} x","units":[123,48,125,32,120]},"toPattern":"'{'0} {0}"}}
+{"id":145,"ok":true,"result":{"result":{"s":"ab","units":[97,98]},"toPattern":"{0}{1}"}}
+{"id":146,"ok":true,"result":{"result":{"s":"ba","units":[98,97]},"toPattern":"{1}{0}"}}
+{"id":147,"ok":true,"result":{"result":{"s":"{1}","units":[123,49,125]},"toPattern":"{1}"}}
+{"id":148,"ok":true,"result":{"result":{"s":"{2} a","units":[123,50,125,32,97]},"toPattern":"{2} {0}"}}
+{"id":149,"ok":true,"result":{"result":{"s":"{0}","units":[123,48,125]},"toPattern":"{0}"}}
+{"id":150,"ok":true,"result":{"result":{"s":"null","units":[110,117,108,108]},"toPattern":"{0}"}}
+{"id":151,"ok":true,"result":{"result":{"s":"null x","units":[110,117,108,108,32,120]},"toPattern":"{0} {1}"}}
+{"id":152,"ok":true,"result":{"result":{"s":"true","units":[116,114,117,101]},"toPattern":"{0}"}}
+{"id":153,"ok":true,"result":{"result":{"s":"c","units":[99]},"toPattern":"{0}"}}
+{"id":154,"ok":true,"result":{"result":{"s":"1","units":[49]},"toPattern":"{0}"}}
+{"id":155,"ok":true,"result":{"result":{"s":"{1}","units":[123,49,125]},"toPattern":"{0}"}}
+{"id":156,"ok":true,"result":{"result":{"s":"no args","units":[110,111,32,97,114,103,115]},"toPattern":"no args"}}
+{"id":157,"ok":true,"result":{"result":{"s":"no args","units":[110,111,32,97,114,103,115]},"toPattern":"no args"}}
+{"id":158,"ok":true,"result":{"result":{"s":"100%","units":[49,48,48,37]},"toPattern":"100%"}}
+{"id":159,"ok":true,"result":{"result":{"s":"5%","units":[53,37]},"toPattern":"{0}%"}}
+{"id":160,"ok":true,"result":{"result":{"s":"2,5 2","units":[50,44,53,32,50]},"toPattern":"{0} {0,number,integer}"}}
+{"id":161,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Unmatched braces in the pattern.","causes":[]}}
+{"id":162,"ok":true,"result":{"result":{"s":"}","units":[125]},"toPattern":"}"}}
+{"id":163,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"can't parse argument number: ","causes":[{"class":"java.lang.NumberFormatException","message":"For input string: \"\""}]}}
+{"id":164,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Unmatched braces in the pattern.","causes":[]}}
+{"id":165,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"can't parse argument number: x","causes":[{"class":"java.lang.NumberFormatException","message":"For input string: \"x\""}]}}
+{"id":166,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"negative argument number: -1","causes":[]}}
+{"id":167,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"unknown format type: foo","causes":[]}}
+{"id":168,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Multiple decimal separators in pattern \"#.#.#\"","causes":[]}}
+{"id":169,"ok":true,"result":{"result":{"s":"a","units":[97]},"toPattern":"{0}"}}
+{"id":170,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"can't parse argument number:  0 ","causes":[{"class":"java.lang.NumberFormatException","message":"For input string: \" 0 \""}]}}
+{"id":171,"ok":true,"result":{"result":{"s":"2","units":[50]},"toPattern":"{0,number,integer}"}}
+{"id":172,"ok":false,"error":{"class":"java.lang.ArrayIndexOutOfBoundsException","message":"Index 0 out of bounds for length 0","causes":[]}}
+{"id":173,"ok":false,"error":{"class":"java.lang.ArrayIndexOutOfBoundsException","message":"Index 0 out of bounds for length 0","causes":[]}}
+{"id":174,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Cannot format given Object as a Date","causes":[]}}
+{"id":175,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Cannot format given Object as a Number","causes":[]}}
+{"id":176,"ok":true,"result":{"result":{"s":"null","units":[110,117,108,108]},"toPattern":"{0,number}"}}
+{"id":177,"ok":true,"result":{"result":{"s":"1\u202F234","units":[49,8239,50,51,52]},"toPattern":"{0,number,integer}"}}
+{"id":178,"ok":true,"result":{"result":{"s":"1\u202F234","units":[49,8239,50,51,52]},"toPattern":"{0,number,integer}"}}
+{"id":179,"ok":true,"result":{"result":{"s":"{10}","units":[123,49,48,125]},"toPattern":"{10}"}}
+{"id":180,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"can't parse argument number: 2147483648","causes":[{"class":"java.lang.NumberFormatException","message":"For input string: \"2147483648\""}]}}
+{"id":181,"ok":true,"result":{"result":{"s":"a","units":[97]},"toPattern":"{0}"}}
+{"id":182,"ok":true,"result":{"result":{"s":"a}","units":[97,125]},"toPattern":"{0}}"}}
+{"id":183,"ok":true,"result":{"result":{"s":"}a","units":[125,97]},"toPattern":"}{0}"}}
+{"id":184,"ok":true,"result":{"result":{"s":"15/03/2026","units":[49,53,47,48,51,47,50,48,50,54]},"toPattern":"{0,date,short}"}}
+{"id":185,"ok":true,"result":{"result":{"s":"15 mars 2026","units":[49,53,32,109,97,114,115,32,50,48,50,54]},"toPattern":"{0,date}"}}
+{"id":186,"ok":true,"result":{"result":{"s":"15 mars 2026","units":[49,53,32,109,97,114,115,32,50,48,50,54]},"toPattern":"{0,date,long}"}}
+{"id":187,"ok":true,"result":{"result":{"s":"dimanche 15 mars 2026","units":[100,105,109,97,110,99,104,101,32,49,53,32,109,97,114,115,32,50,48,50,54]},"toPattern":"{0,date,full}"}}
+{"id":188,"ok":true,"result":{"result":{"s":"11:00","units":[49,49,58,48,48]},"toPattern":"{0,time,short}"}}
+{"id":189,"ok":true,"result":{"result":{"s":"11:00:00","units":[49,49,58,48,48,58,48,48]},"toPattern":"{0,time}"}}
+{"id":190,"ok":true,"result":{"result":{"s":"11:00:00 CET","units":[49,49,58,48,48,58,48,48,32,67,69,84]},"toPattern":"{0,time,long}"}}
+{"id":191,"ok":true,"result":{"result":{"s":"11:00:00 heure normale d\u2019Europe centrale","units":[49,49,58,48,48,58,48,48,32,104,101,117,114,101,32,110,111,114,109,97,108,101,32,100,8217,69,117,114,111,112,101,32,99,101,110,116,114,97,108,101]},"toPattern":"{0,time,full}"}}
+{"id":192,"ok":true,"result":{"result":{"s":"15 mars 2026","units":[49,53,32,109,97,114,115,32,50,48,50,54]},"toPattern":"{0,date}"}}
+{"id":193,"ok":true,"result":{"result":{"s":"11:00:00","units":[49,49,58,48,48,58,48,48]},"toPattern":"{0,time}"}}
+{"id":194,"ok":true,"result":{"result":{"s":"15/03/2026 11:00","units":[49,53,47,48,51,47,50,48,50,54,32,49,49,58,48,48]},"toPattern":"{0}"}}
+{"id":195,"ok":true,"result":{"result":{"s":"2026-03-15 11:00","units":[50,48,50,54,45,48,51,45,49,53,32,49,49,58,48,48]},"toPattern":"{0,date,yyyy-MM-dd HH:mm}"}}
+{"id":196,"ok":true,"result":{"result":{"s":"dimanche, 15. mars 2026","units":[100,105,109,97,110,99,104,101,44,32,49,53,46,32,109,97,114,115,32,50,48,50,54]},"toPattern":"{0,date,EEEE, d. MMMM yyyy}"}}
+{"id":197,"ok":true,"result":{"result":{"s":"2025-01","units":[50,48,50,53,45,48,49]},"toPattern":"{0,date,YYYY-ww}"}}
+{"id":198,"ok":true,"result":{"result":{"s":"01/01/1970","units":[48,49,47,48,49,47,49,57,55,48]},"toPattern":"{0,date,short}"}}
+{"id":199,"ok":true,"result":{"result":{"s":"15/03/2026","units":[49,53,47,48,51,47,50,48,50,54]},"toPattern":"{0,date,short}"}}
+{"id":200,"ok":true,"result":{"result":{"s":"15/03/2026","units":[49,53,47,48,51,47,50,48,50,54]},"toPattern":"{0,date,short}"}}
+{"id":201,"ok":true,"result":{"result":{"s":"1970","units":[49,57,55,48]},"toPattern":"{0,date,yyyy}"}}
+{"id":202,"ok":true,"result":{"result":{"s":"It's x","units":[73,116,39,115,32,120]},"toPattern":"It''s {0}"}}
+{"id":203,"ok":true,"result":{"result":{"s":"Its {0}","units":[73,116,115,32,123,48,125]},"toPattern":"Its '{'0}"}}
+{"id":204,"ok":true,"result":{"result":{"s":"{0}","units":[123,48,125]},"toPattern":"'{'0}"}}
+{"id":205,"ok":true,"result":{"result":{"s":"{0}","units":[123,48,125]},"toPattern":"'{'0}"}}
+{"id":206,"ok":true,"result":{"result":{"s":"a''b","units":[97,39,39,98]},"toPattern":"a''''b"}}
+{"id":207,"ok":true,"result":{"result":{"s":"","units":[]},"toPattern":""}}
+{"id":208,"ok":true,"result":{"result":{"s":"'","units":[39]},"toPattern":"''"}}
+{"id":209,"ok":true,"result":{"result":{"s":"'","units":[39]},"toPattern":"''"}}
+{"id":210,"ok":true,"result":{"result":{"s":"xs","units":[120,115]},"toPattern":"{0}s"}}
+{"id":211,"ok":true,"result":{"result":{"s":"{0} x","units":[123,48,125,32,120]},"toPattern":"'{'0} {0}"}}
+{"id":212,"ok":true,"result":{"result":{"s":"ab","units":[97,98]},"toPattern":"{0}{1}"}}
+{"id":213,"ok":true,"result":{"result":{"s":"ba","units":[98,97]},"toPattern":"{1}{0}"}}
+{"id":214,"ok":true,"result":{"result":{"s":"{1}","units":[123,49,125]},"toPattern":"{1}"}}
+{"id":215,"ok":true,"result":{"result":{"s":"{2} a","units":[123,50,125,32,97]},"toPattern":"{2} {0}"}}
+{"id":216,"ok":true,"result":{"result":{"s":"{0}","units":[123,48,125]},"toPattern":"{0}"}}
+{"id":217,"ok":true,"result":{"result":{"s":"null","units":[110,117,108,108]},"toPattern":"{0}"}}
+{"id":218,"ok":true,"result":{"result":{"s":"null x","units":[110,117,108,108,32,120]},"toPattern":"{0} {1}"}}
+{"id":219,"ok":true,"result":{"result":{"s":"true","units":[116,114,117,101]},"toPattern":"{0}"}}
+{"id":220,"ok":true,"result":{"result":{"s":"c","units":[99]},"toPattern":"{0}"}}
+{"id":221,"ok":true,"result":{"result":{"s":"1","units":[49]},"toPattern":"{0}"}}
+{"id":222,"ok":true,"result":{"result":{"s":"{1}","units":[123,49,125]},"toPattern":"{0}"}}
+{"id":223,"ok":true,"result":{"result":{"s":"no args","units":[110,111,32,97,114,103,115]},"toPattern":"no args"}}
+{"id":224,"ok":true,"result":{"result":{"s":"no args","units":[110,111,32,97,114,103,115]},"toPattern":"no args"}}
+{"id":225,"ok":true,"result":{"result":{"s":"100%","units":[49,48,48,37]},"toPattern":"100%"}}
+{"id":226,"ok":true,"result":{"result":{"s":"5%","units":[53,37]},"toPattern":"{0}%"}}
+{"id":227,"ok":true,"result":{"result":{"s":"2.5 2","units":[50,46,53,32,50]},"toPattern":"{0} {0,number,integer}"}}
+{"id":228,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Unmatched braces in the pattern.","causes":[]}}
+{"id":229,"ok":true,"result":{"result":{"s":"}","units":[125]},"toPattern":"}"}}
+{"id":230,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"can't parse argument number: ","causes":[{"class":"java.lang.NumberFormatException","message":"For input string: \"\""}]}}
+{"id":231,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Unmatched braces in the pattern.","causes":[]}}
+{"id":232,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"can't parse argument number: x","causes":[{"class":"java.lang.NumberFormatException","message":"For input string: \"x\""}]}}
+{"id":233,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"negative argument number: -1","causes":[]}}
+{"id":234,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"unknown format type: foo","causes":[]}}
+{"id":235,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Multiple decimal separators in pattern \"#.#.#\"","causes":[]}}
+{"id":236,"ok":true,"result":{"result":{"s":"a","units":[97]},"toPattern":"{0}"}}
+{"id":237,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"can't parse argument number:  0 ","causes":[{"class":"java.lang.NumberFormatException","message":"For input string: \" 0 \""}]}}
+{"id":238,"ok":true,"result":{"result":{"s":"2","units":[50]},"toPattern":"{0,number,integer}"}}
+{"id":239,"ok":false,"error":{"class":"java.lang.ArrayIndexOutOfBoundsException","message":"Index 0 out of bounds for length 0","causes":[]}}
+{"id":240,"ok":false,"error":{"class":"java.lang.ArrayIndexOutOfBoundsException","message":"Index 0 out of bounds for length 0","causes":[]}}
+{"id":241,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Cannot format given Object as a Date","causes":[]}}
+{"id":242,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Cannot format given Object as a Number","causes":[]}}
+{"id":243,"ok":true,"result":{"result":{"s":"null","units":[110,117,108,108]},"toPattern":"{0,number}"}}
+{"id":244,"ok":true,"result":{"result":{"s":"1,234","units":[49,44,50,51,52]},"toPattern":"{0,number,integer}"}}
+{"id":245,"ok":true,"result":{"result":{"s":"1,234","units":[49,44,50,51,52]},"toPattern":"{0,number,integer}"}}
+{"id":246,"ok":true,"result":{"result":{"s":"{10}","units":[123,49,48,125]},"toPattern":"{10}"}}
+{"id":247,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"can't parse argument number: 2147483648","causes":[{"class":"java.lang.NumberFormatException","message":"For input string: \"2147483648\""}]}}
+{"id":248,"ok":true,"result":{"result":{"s":"a","units":[97]},"toPattern":"{0}"}}
+{"id":249,"ok":true,"result":{"result":{"s":"a}","units":[97,125]},"toPattern":"{0}}"}}
+{"id":250,"ok":true,"result":{"result":{"s":"}a","units":[125,97]},"toPattern":"}{0}"}}
+{"id":251,"ok":true,"result":{"result":{"s":"3/15/26","units":[51,47,49,53,47,50,54]},"toPattern":"{0,date,short}"}}
+{"id":252,"ok":true,"result":{"result":{"s":"Mar 15, 2026","units":[77,97,114,32,49,53,44,32,50,48,50,54]},"toPattern":"{0,date}"}}
+{"id":253,"ok":true,"result":{"result":{"s":"March 15, 2026","units":[77,97,114,99,104,32,49,53,44,32,50,48,50,54]},"toPattern":"{0,date,long}"}}
+{"id":254,"ok":true,"result":{"result":{"s":"Sunday, March 15, 2026","units":[83,117,110,100,97,121,44,32,77,97,114,99,104,32,49,53,44,32,50,48,50,54]},"toPattern":"{0,date,full}"}}
+{"id":255,"ok":true,"result":{"result":{"s":"11:00 AM","units":[49,49,58,48,48,32,65,77]},"toPattern":"{0,time,short}"}}
+{"id":256,"ok":true,"result":{"result":{"s":"11:00:00 AM","units":[49,49,58,48,48,58,48,48,32,65,77]},"toPattern":"{0,time}"}}
+{"id":257,"ok":true,"result":{"result":{"s":"11:00:00 AM CET","units":[49,49,58,48,48,58,48,48,32,65,77,32,67,69,84]},"toPattern":"{0,time,long}"}}
+{"id":258,"ok":true,"result":{"result":{"s":"11:00:00 AM Central European Standard Time","units":[49,49,58,48,48,58,48,48,32,65,77,32,67,101,110,116,114,97,108,32,69,117,114,111,112,101,97,110,32,83,116,97,110,100,97,114,100,32,84,105,109,101]},"toPattern":"{0,time,full}"}}
+{"id":259,"ok":true,"result":{"result":{"s":"Mar 15, 2026","units":[77,97,114,32,49,53,44,32,50,48,50,54]},"toPattern":"{0,date}"}}
+{"id":260,"ok":true,"result":{"result":{"s":"11:00:00 AM","units":[49,49,58,48,48,58,48,48,32,65,77]},"toPattern":"{0,time}"}}
+{"id":261,"ok":true,"result":{"result":{"s":"3/15/26, 11:00 AM","units":[51,47,49,53,47,50,54,44,32,49,49,58,48,48,32,65,77]},"toPattern":"{0}"}}
+{"id":262,"ok":true,"result":{"result":{"s":"2026-03-15 11:00","units":[50,48,50,54,45,48,51,45,49,53,32,49,49,58,48,48]},"toPattern":"{0,date,yyyy-MM-dd HH:mm}"}}
+{"id":263,"ok":true,"result":{"result":{"s":"Sunday, 15. March 2026","units":[83,117,110,100,97,121,44,32,49,53,46,32,77,97,114,99,104,32,50,48,50,54]},"toPattern":"{0,date,EEEE, d. MMMM yyyy}"}}
+{"id":264,"ok":true,"result":{"result":{"s":"2025-01","units":[50,48,50,53,45,48,49]},"toPattern":"{0,date,YYYY-ww}"}}
+{"id":265,"ok":true,"result":{"result":{"s":"1/1/70","units":[49,47,49,47,55,48]},"toPattern":"{0,date,short}"}}
+{"id":266,"ok":true,"result":{"result":{"s":"3/15/26","units":[51,47,49,53,47,50,54]},"toPattern":"{0,date,short}"}}
+{"id":267,"ok":true,"result":{"result":{"s":"3/15/26","units":[51,47,49,53,47,50,54]},"toPattern":"{0,date,short}"}}
+{"id":268,"ok":true,"result":{"result":{"s":"1970","units":[49,57,55,48]},"toPattern":"{0,date,yyyy}"}}
+{"id":269,"ok":true,"result":{"s":"It's x","units":[73,116,39,115,32,120]}}
+{"id":270,"ok":true,"result":{"s":"Its {0}","units":[73,116,115,32,123,48,125]}}
+{"id":271,"ok":true,"result":{"s":"{0}","units":[123,48,125]}}
+{"id":272,"ok":true,"result":{"s":"{0}","units":[123,48,125]}}
+{"id":273,"ok":true,"result":{"s":"a''b","units":[97,39,39,98]}}
+{"id":274,"ok":true,"result":{"s":"","units":[]}}
+{"id":275,"ok":true,"result":{"s":"'","units":[39]}}
+{"id":276,"ok":true,"result":{"s":"'","units":[39]}}
+{"id":277,"ok":true,"result":{"s":"xs","units":[120,115]}}
+{"id":278,"ok":true,"result":{"s":"{0} x","units":[123,48,125,32,120]}}
+{"id":279,"ok":true,"result":{"s":"ab","units":[97,98]}}
+{"id":280,"ok":true,"result":{"s":"ba","units":[98,97]}}
+{"id":281,"ok":true,"result":{"s":"{1}","units":[123,49,125]}}
+{"id":282,"ok":true,"result":{"s":"{2} a","units":[123,50,125,32,97]}}
+{"id":283,"ok":true,"result":{"s":"{0}","units":[123,48,125]}}
+{"id":284,"ok":true,"result":{"s":"null","units":[110,117,108,108]}}
+{"id":285,"ok":true,"result":{"s":"null x","units":[110,117,108,108,32,120]}}
+{"id":286,"ok":true,"result":{"s":"true","units":[116,114,117,101]}}
+{"id":287,"ok":true,"result":{"s":"c","units":[99]}}
+{"id":288,"ok":true,"result":{"s":"1","units":[49]}}
+{"id":289,"ok":true,"result":{"s":"{1}","units":[123,49,125]}}
+{"id":290,"ok":true,"result":{"s":"no args","units":[110,111,32,97,114,103,115]}}
+{"id":291,"ok":true,"result":{"s":"no args","units":[110,111,32,97,114,103,115]}}
+{"id":292,"ok":true,"result":{"s":"100%","units":[49,48,48,37]}}
+{"id":293,"ok":true,"result":{"s":"5%","units":[53,37]}}
+{"id":294,"ok":true,"result":{"s":"2.5 2","units":[50,46,53,32,50]}}
+{"id":295,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Unmatched braces in the pattern.","causes":[]}}
+{"id":296,"ok":true,"result":{"s":"}","units":[125]}}
+{"id":297,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"can't parse argument number: ","causes":[{"class":"java.lang.NumberFormatException","message":"For input string: \"\""}]}}
+{"id":298,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Unmatched braces in the pattern.","causes":[]}}
+{"id":299,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"can't parse argument number: x","causes":[{"class":"java.lang.NumberFormatException","message":"For input string: \"x\""}]}}
+{"id":300,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"negative argument number: -1","causes":[]}}
+{"id":301,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"unknown format type: foo","causes":[]}}
+{"id":302,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Multiple decimal separators in pattern \"#.#.#\"","causes":[]}}
+{"id":303,"ok":true,"result":{"s":"a","units":[97]}}
+{"id":304,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"can't parse argument number:  0 ","causes":[{"class":"java.lang.NumberFormatException","message":"For input string: \" 0 \""}]}}
+{"id":305,"ok":true,"result":{"s":"2","units":[50]}}
+{"id":306,"ok":false,"error":{"class":"java.lang.ArrayIndexOutOfBoundsException","message":"Index 0 out of bounds for length 0","causes":[]}}
+{"id":307,"ok":false,"error":{"class":"java.lang.ArrayIndexOutOfBoundsException","message":"Index 0 out of bounds for length 0","causes":[]}}
+{"id":308,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Cannot format given Object as a Date","causes":[]}}
+{"id":309,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Cannot format given Object as a Number","causes":[]}}
+{"id":310,"ok":true,"result":{"s":"null","units":[110,117,108,108]}}
+{"id":311,"ok":true,"result":{"s":"1,234","units":[49,44,50,51,52]}}
+{"id":312,"ok":true,"result":{"s":"1,234","units":[49,44,50,51,52]}}
+{"id":313,"ok":true,"result":{"s":"{10}","units":[123,49,48,125]}}
+{"id":314,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"can't parse argument number: 2147483648","causes":[{"class":"java.lang.NumberFormatException","message":"For input string: \"2147483648\""}]}}
+{"id":315,"ok":true,"result":{"s":"a","units":[97]}}
+{"id":316,"ok":true,"result":{"s":"a}","units":[97,125]}}
+{"id":317,"ok":true,"result":{"s":"}a","units":[125,97]}}
+{"id":318,"ok":true,"result":{"s":"3/15/26","units":[51,47,49,53,47,50,54]}}
+{"id":319,"ok":true,"result":{"s":"Mar 15, 2026","units":[77,97,114,32,49,53,44,32,50,48,50,54]}}
+{"id":320,"ok":true,"result":{"s":"March 15, 2026","units":[77,97,114,99,104,32,49,53,44,32,50,48,50,54]}}
+{"id":321,"ok":true,"result":{"s":"Sunday, March 15, 2026","units":[83,117,110,100,97,121,44,32,77,97,114,99,104,32,49,53,44,32,50,48,50,54]}}
+{"id":322,"ok":true,"result":{"s":"11:00 AM","units":[49,49,58,48,48,32,65,77]}}
+{"id":323,"ok":true,"result":{"s":"11:00:00 AM","units":[49,49,58,48,48,58,48,48,32,65,77]}}
+{"id":324,"ok":true,"result":{"s":"11:00:00 AM CET","units":[49,49,58,48,48,58,48,48,32,65,77,32,67,69,84]}}
+{"id":325,"ok":true,"result":{"s":"11:00:00 AM Central European Standard Time","units":[49,49,58,48,48,58,48,48,32,65,77,32,67,101,110,116,114,97,108,32,69,117,114,111,112,101,97,110,32,83,116,97,110,100,97,114,100,32,84,105,109,101]}}
+{"id":326,"ok":true,"result":{"s":"Mar 15, 2026","units":[77,97,114,32,49,53,44,32,50,48,50,54]}}
+{"id":327,"ok":true,"result":{"s":"11:00:00 AM","units":[49,49,58,48,48,58,48,48,32,65,77]}}
+{"id":328,"ok":true,"result":{"s":"3/15/26, 11:00 AM","units":[51,47,49,53,47,50,54,44,32,49,49,58,48,48,32,65,77]}}
+{"id":329,"ok":true,"result":{"s":"2026-03-15 11:00","units":[50,48,50,54,45,48,51,45,49,53,32,49,49,58,48,48]}}
+{"id":330,"ok":true,"result":{"s":"Sunday, 15. March 2026","units":[83,117,110,100,97,121,44,32,49,53,46,32,77,97,114,99,104,32,50,48,50,54]}}
+{"id":331,"ok":true,"result":{"s":"2025-01","units":[50,48,50,53,45,48,49]}}
+{"id":332,"ok":true,"result":{"s":"1/1/70","units":[49,47,49,47,55,48]}}
+{"id":333,"ok":true,"result":{"s":"3/15/26","units":[51,47,49,53,47,50,54]}}
+{"id":334,"ok":true,"result":{"s":"3/15/26","units":[51,47,49,53,47,50,54]}}
+{"id":335,"ok":true,"result":{"s":"1970","units":[49,57,55,48]}}
+{"id":336,"ok":false,"error":{"class":"java.lang.NullPointerException","message":"Cannot invoke \"String.length()\" because \"pattern\" is null","causes":[]}}

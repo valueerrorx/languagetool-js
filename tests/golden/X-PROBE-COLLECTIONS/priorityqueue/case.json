@@ -1,0 +1,893 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "PriorityQueue heap/iteration order, poll order, remove(Object), comparators",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "pq",
+    "type": "int",
+    "ops": [
+     [
+      "offer",
+      "5"
+     ],
+     [
+      "offer",
+      "3"
+     ],
+     [
+      "offer",
+      "8"
+     ],
+     [
+      "offer",
+      "1"
+     ],
+     [
+      "offer",
+      "9"
+     ],
+     [
+      "offer",
+      "2"
+     ],
+     [
+      "offer",
+      "7"
+     ],
+     [
+      "peek"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "peek"
+     ]
+    ]
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "pq",
+    "type": "int",
+    "ops": [
+     [
+      "offer",
+      "1"
+     ],
+     [
+      "offer",
+      "2"
+     ],
+     [
+      "offer",
+      "3"
+     ],
+     [
+      "offer",
+      "4"
+     ],
+     [
+      "offer",
+      "5"
+     ],
+     [
+      "offer",
+      "6"
+     ],
+     [
+      "offer",
+      "7"
+     ],
+     [
+      "offer",
+      "8"
+     ],
+     [
+      "peek"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "peek"
+     ]
+    ]
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "pq",
+    "type": "int",
+    "ops": [
+     [
+      "offer",
+      "8"
+     ],
+     [
+      "offer",
+      "7"
+     ],
+     [
+      "offer",
+      "6"
+     ],
+     [
+      "offer",
+      "5"
+     ],
+     [
+      "offer",
+      "4"
+     ],
+     [
+      "offer",
+      "3"
+     ],
+     [
+      "offer",
+      "2"
+     ],
+     [
+      "offer",
+      "1"
+     ],
+     [
+      "peek"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "peek"
+     ]
+    ]
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "pq",
+    "type": "int",
+    "ops": [
+     [
+      "offer",
+      "3"
+     ],
+     [
+      "offer",
+      "3"
+     ],
+     [
+      "offer",
+      "1"
+     ],
+     [
+      "offer",
+      "1"
+     ],
+     [
+      "offer",
+      "2"
+     ],
+     [
+      "offer",
+      "2"
+     ],
+     [
+      "peek"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "peek"
+     ]
+    ]
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "pq",
+    "type": "int",
+    "ops": [
+     [
+      "offer",
+      "5"
+     ],
+     [
+      "peek"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "peek"
+     ]
+    ]
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "pq",
+    "type": "int",
+    "ops": [
+     [
+      "peek"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "peek"
+     ]
+    ]
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "pq",
+    "type": "int",
+    "ops": [
+     [
+      "offer",
+      "10"
+     ],
+     [
+      "offer",
+      "-5"
+     ],
+     [
+      "offer",
+      "0"
+     ],
+     [
+      "offer",
+      "2147483647"
+     ],
+     [
+      "offer",
+      "-2147483648"
+     ],
+     [
+      "offer",
+      "7"
+     ],
+     [
+      "offer",
+      "7"
+     ],
+     [
+      "peek"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "peek"
+     ]
+    ]
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "pq",
+    "type": "int",
+    "cmp": null,
+    "ops": [
+     [
+      "offer",
+      "5"
+     ],
+     [
+      "offer",
+      "3"
+     ],
+     [
+      "offer",
+      "8"
+     ],
+     [
+      "offer",
+      "1"
+     ],
+     [
+      "offer",
+      "9"
+     ],
+     [
+      "offer",
+      "2"
+     ],
+     [
+      "offer",
+      "7"
+     ],
+     [
+      "offer",
+      "4"
+     ],
+     [
+      "offer",
+      "6"
+     ],
+     [
+      "remove",
+      "8"
+     ],
+     [
+      "remove",
+      "1"
+     ],
+     [
+      "remove",
+      "99"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "remove",
+      "5"
+     ],
+     [
+      "poll"
+     ]
+    ]
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "pq",
+    "type": "int",
+    "cmp": "reverse",
+    "ops": [
+     [
+      "offer",
+      "5"
+     ],
+     [
+      "offer",
+      "3"
+     ],
+     [
+      "offer",
+      "8"
+     ],
+     [
+      "offer",
+      "1"
+     ],
+     [
+      "offer",
+      "9"
+     ],
+     [
+      "offer",
+      "2"
+     ],
+     [
+      "offer",
+      "7"
+     ],
+     [
+      "offer",
+      "4"
+     ],
+     [
+      "offer",
+      "6"
+     ],
+     [
+      "remove",
+      "8"
+     ],
+     [
+      "remove",
+      "1"
+     ],
+     [
+      "remove",
+      "99"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "remove",
+      "5"
+     ],
+     [
+      "poll"
+     ]
+    ]
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "pq",
+    "type": "string",
+    "cmp": null,
+    "ops": [
+     [
+      "offer",
+      "pear"
+     ],
+     [
+      "offer",
+      "Apple"
+     ],
+     [
+      "offer",
+      "fig"
+     ],
+     [
+      "offer",
+      "apple"
+     ],
+     [
+      "offer",
+      "Äpfel"
+     ],
+     [
+      "offer",
+      "kiwi"
+     ],
+     [
+      "offer",
+      "FIG"
+     ],
+     [
+      "offer",
+      "date"
+     ],
+     [
+      "offer",
+      "x"
+     ],
+     [
+      "offer",
+      "yy"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ]
+    ]
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "pq",
+    "type": "string",
+    "cmp": "reverse",
+    "ops": [
+     [
+      "offer",
+      "pear"
+     ],
+     [
+      "offer",
+      "Apple"
+     ],
+     [
+      "offer",
+      "fig"
+     ],
+     [
+      "offer",
+      "apple"
+     ],
+     [
+      "offer",
+      "Äpfel"
+     ],
+     [
+      "offer",
+      "kiwi"
+     ],
+     [
+      "offer",
+      "FIG"
+     ],
+     [
+      "offer",
+      "date"
+     ],
+     [
+      "offer",
+      "x"
+     ],
+     [
+      "offer",
+      "yy"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ]
+    ]
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "pq",
+    "type": "string",
+    "cmp": "ci",
+    "ops": [
+     [
+      "offer",
+      "pear"
+     ],
+     [
+      "offer",
+      "Apple"
+     ],
+     [
+      "offer",
+      "fig"
+     ],
+     [
+      "offer",
+      "apple"
+     ],
+     [
+      "offer",
+      "Äpfel"
+     ],
+     [
+      "offer",
+      "kiwi"
+     ],
+     [
+      "offer",
+      "FIG"
+     ],
+     [
+      "offer",
+      "date"
+     ],
+     [
+      "offer",
+      "x"
+     ],
+     [
+      "offer",
+      "yy"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ]
+    ]
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "pq",
+    "type": "string",
+    "cmp": "len",
+    "ops": [
+     [
+      "offer",
+      "pear"
+     ],
+     [
+      "offer",
+      "Apple"
+     ],
+     [
+      "offer",
+      "fig"
+     ],
+     [
+      "offer",
+      "apple"
+     ],
+     [
+      "offer",
+      "Äpfel"
+     ],
+     [
+      "offer",
+      "kiwi"
+     ],
+     [
+      "offer",
+      "FIG"
+     ],
+     [
+      "offer",
+      "date"
+     ],
+     [
+      "offer",
+      "x"
+     ],
+     [
+      "offer",
+      "yy"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ],
+     [
+      "poll"
+     ]
+    ]
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "pq",
+    "type": "string",
+    "ops": [
+     [
+      "offer",
+      null
+     ]
+    ]
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "pq",
+    "type": "int",
+    "ops": [
+     [
+      "nope"
+     ]
+    ]
+   }
+  }
+ ]
+}

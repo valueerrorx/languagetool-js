@@ -1,0 +1,566 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "Long/Short/Byte parse, radix, decode, unsigned",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "long",
+    "s": "0"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "long",
+    "s": "9223372036854775807"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "long",
+    "s": "9223372036854775808"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "long",
+    "s": "-9223372036854775808"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "long",
+    "s": "-9223372036854775809"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "long",
+    "s": "2147483648"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "long",
+    "s": "4294967296"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "long",
+    "s": "9007199254740993"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "long",
+    "s": "12345678901234567890"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "long",
+    "s": "1L"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "long",
+    "s": " 1"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "long",
+    "s": "+9223372036854775807"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "long",
+    "s": ""
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "long",
+    "s": null
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "long",
+    "s": "x"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "long",
+    "s": "1e3"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "long",
+    "s": "٩٢٢٣"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "valueOfLong",
+    "s": "0"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "valueOfLong",
+    "s": "9223372036854775807"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "valueOfLong",
+    "s": "9223372036854775808"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "valueOfLong",
+    "s": "-9223372036854775808"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "valueOfLong",
+    "s": "-9223372036854775809"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "valueOfLong",
+    "s": "2147483648"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "valueOfLong",
+    "s": "4294967296"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "valueOfLong",
+    "s": "9007199254740993"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "valueOfLong",
+    "s": "12345678901234567890"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "valueOfLong",
+    "s": "1L"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "valueOfLong",
+    "s": " 1"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "valueOfLong",
+    "s": "+9223372036854775807"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "valueOfLong",
+    "s": ""
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "valueOfLong",
+    "s": null
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "valueOfLong",
+    "s": "x"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "valueOfLong",
+    "s": "1e3"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "valueOfLong",
+    "s": "٩٢٢٣"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "longRadix",
+    "s": "ff",
+    "radix": 16
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "longRadix",
+    "s": "-8000000000000000",
+    "radix": 16
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "longRadix",
+    "s": "7fffffffffffffff",
+    "radix": 16
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "longRadix",
+    "s": "8000000000000000",
+    "radix": 16
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "longRadix",
+    "s": "g",
+    "radix": 16
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "decodeLong",
+    "s": "0x7fffffffffffffff"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "decodeLong",
+    "s": "0x8000000000000000"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "decodeLong",
+    "s": "-0x8000000000000000"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "decodeLong",
+    "s": "#1"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "decodeLong",
+    "s": "0777"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "decodeLong",
+    "s": "99999999999999999999"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "decodeLong",
+    "s": null
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "parseUnsignedLong",
+    "s": "0"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "parseUnsignedLong",
+    "s": "18446744073709551615"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "parseUnsignedLong",
+    "s": "18446744073709551616"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "parseUnsignedLong",
+    "s": "-1"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "parseUnsignedLong",
+    "s": ""
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "short",
+    "s": "0"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "short",
+    "s": "32767"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "short",
+    "s": "32768"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "short",
+    "s": "-32768"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "short",
+    "s": "-32769"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "short",
+    "s": "+1"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "short",
+    "s": ""
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "short",
+    "s": "a"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "short",
+    "s": null
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "byte",
+    "s": "0"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "byte",
+    "s": "127"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "byte",
+    "s": "128"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "byte",
+    "s": "-128"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "byte",
+    "s": "-129"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "byte",
+    "s": "+1"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "byte",
+    "s": ""
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "byte",
+    "s": "a"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "parse",
+    "t": "byte",
+    "s": null
+   }
+  }
+ ]
+}

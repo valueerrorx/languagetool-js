@@ -1,0 +1,673 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "hashCode of boxed types, compareTo/equals incl. NaN and -0.0",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "double",
+     "v": "0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "double",
+     "v": "-0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "double",
+     "v": "1.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "double",
+     "v": "1.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "double",
+     "v": "NaN"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "double",
+     "v": "Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "double",
+     "v": "-Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "double",
+     "v": "0.1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "double",
+     "v": "4.9e-324"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "double",
+     "v": "1.7976931348623157e308"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "double",
+     "v": "1e23"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "float",
+     "v": "0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "float",
+     "v": "-0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "float",
+     "v": "1.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "float",
+     "v": "1.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "float",
+     "v": "NaN"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "float",
+     "v": "Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "float",
+     "v": "0.1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "long",
+     "v": "0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "long",
+     "v": "1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "long",
+     "v": "-1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "long",
+     "v": "9223372036854775807"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "long",
+     "v": "-9223372036854775808"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "long",
+     "v": "4294967296"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "long",
+     "v": "4294967295"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "long",
+     "v": "9007199254740993"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "int",
+     "v": "0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "int",
+     "v": "1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "int",
+     "v": "-1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "int",
+     "v": "2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "int",
+     "v": "-2147483648"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "short",
+     "v": "0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "short",
+     "v": "-1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "short",
+     "v": "32767"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "byte",
+     "v": "0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "byte",
+     "v": "-1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "byte",
+     "v": "127"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "char",
+     "v": "a"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "char",
+     "v": "#0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "char",
+     "v": "#65535"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "char",
+     "v": "ß"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "bool",
+     "v": "true"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "bool",
+     "v": "false"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "hash",
+    "a": {
+     "t": "null",
+     "v": "null"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "compare",
+    "a": {
+     "t": "double",
+     "v": "NaN"
+    },
+    "b": {
+     "t": "double",
+     "v": "NaN"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "compare",
+    "a": {
+     "t": "double",
+     "v": "NaN"
+    },
+    "b": {
+     "t": "double",
+     "v": "1.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "compare",
+    "a": {
+     "t": "double",
+     "v": "1.0"
+    },
+    "b": {
+     "t": "double",
+     "v": "NaN"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "compare",
+    "a": {
+     "t": "double",
+     "v": "0.0"
+    },
+    "b": {
+     "t": "double",
+     "v": "-0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "compare",
+    "a": {
+     "t": "double",
+     "v": "-0.0"
+    },
+    "b": {
+     "t": "double",
+     "v": "0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "compare",
+    "a": {
+     "t": "double",
+     "v": "Infinity"
+    },
+    "b": {
+     "t": "double",
+     "v": "NaN"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "compare",
+    "a": {
+     "t": "double",
+     "v": "1.0"
+    },
+    "b": {
+     "t": "double",
+     "v": "1.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "compare",
+    "a": {
+     "t": "float",
+     "v": "NaN"
+    },
+    "b": {
+     "t": "float",
+     "v": "NaN"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "compare",
+    "a": {
+     "t": "float",
+     "v": "0.0"
+    },
+    "b": {
+     "t": "float",
+     "v": "-0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "compare",
+    "a": {
+     "t": "long",
+     "v": "-9223372036854775808"
+    },
+    "b": {
+     "t": "long",
+     "v": "9223372036854775807"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "compare",
+    "a": {
+     "t": "int",
+     "v": "-2147483648"
+    },
+    "b": {
+     "t": "int",
+     "v": "2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "compare",
+    "a": {
+     "t": "char",
+     "v": "a"
+    },
+    "b": {
+     "t": "char",
+     "v": "B"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "compare",
+    "a": {
+     "t": "bool",
+     "v": "true"
+    },
+    "b": {
+     "t": "bool",
+     "v": "false"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "compare",
+    "a": {
+     "t": "byte",
+     "v": "-1"
+    },
+    "b": {
+     "t": "byte",
+     "v": "1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "compare",
+    "a": {
+     "t": "int",
+     "v": "1"
+    },
+    "b": {
+     "t": "long",
+     "v": "1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "compare",
+    "a": {
+     "t": "bool",
+     "v": "true"
+    },
+    "b": {
+     "t": "null",
+     "v": "null"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,4533 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "int unary ops incl. abs(MIN_VALUE), exact overflow",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "-1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "2"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "-2"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "-3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "7"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "10"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "16"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "31"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "32"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "33"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "63"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "64"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "65535"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "65536"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "46340"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "46341"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "1073741824"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "-1073741824"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "1073741823"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "-2147483648"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "2147483646"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "-2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "100000"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "1000000"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "neg",
+    "a": {
+     "t": "int",
+     "v": "123456789"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "-1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "2"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "-2"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "-3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "7"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "10"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "16"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "31"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "32"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "33"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "63"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "64"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "65535"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "65536"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "46340"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "46341"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "1073741824"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "-1073741824"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "1073741823"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "-2147483648"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "2147483646"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "-2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "100000"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "1000000"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "abs",
+    "a": {
+     "t": "int",
+     "v": "123456789"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "-1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "2"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "-2"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "-3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "7"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "10"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "16"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "31"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "32"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "33"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "63"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "64"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "65535"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "65536"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "46340"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "46341"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "1073741824"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "-1073741824"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "1073741823"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "-2147483648"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "2147483646"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "-2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "100000"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "1000000"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "not",
+    "a": {
+     "t": "int",
+     "v": "123456789"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "-1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "2"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "-2"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "-3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "7"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "10"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "16"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "31"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "32"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "33"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "63"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "64"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "65535"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "65536"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "46340"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "46341"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "1073741824"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "-1073741824"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "1073741823"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "-2147483648"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "2147483646"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "-2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "100000"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "1000000"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "negateExact",
+    "a": {
+     "t": "int",
+     "v": "123456789"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "-1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "2"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "-2"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "-3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "7"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "10"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "16"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "31"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "32"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "33"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "63"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "64"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "65535"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "65536"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "46340"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "46341"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "1073741824"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "-1073741824"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "1073741823"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "-2147483648"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "2147483646"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "-2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "100000"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "1000000"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "incrementExact",
+    "a": {
+     "t": "int",
+     "v": "123456789"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "-1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "2"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "-2"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "-3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "7"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "10"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "16"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "31"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "32"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "33"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "63"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "64"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "65535"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "65536"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "46340"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "46341"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "1073741824"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "-1073741824"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "1073741823"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "-2147483648"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "2147483646"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "-2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "100000"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "1000000"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "absExact",
+    "a": {
+     "t": "int",
+     "v": "123456789"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "-1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "2"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "-2"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "-3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "7"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "10"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "16"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "31"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "32"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "33"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "63"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "64"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "65535"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "65536"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "46340"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "46341"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "1073741824"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "-1073741824"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "1073741823"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "-2147483648"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "2147483646"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "-2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "100000"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "1000000"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "signum",
+    "a": {
+     "t": "int",
+     "v": "123456789"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "-1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "2"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "-2"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "-3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "7"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "10"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "16"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "31"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "32"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "33"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "63"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "64"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "65535"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "65536"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "46340"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "46341"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "1073741824"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "-1073741824"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "1073741823"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "-2147483648"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "2147483646"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "-2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "100000"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "1000000"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "bitCount",
+    "a": {
+     "t": "int",
+     "v": "123456789"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "-1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "2"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "-2"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "-3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "7"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "10"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "16"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "31"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "32"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "33"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "63"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "64"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "65535"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "65536"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "46340"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "46341"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "1073741824"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "-1073741824"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "1073741823"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "-2147483648"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "2147483646"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "-2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "100000"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "1000000"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "reverse",
+    "a": {
+     "t": "int",
+     "v": "123456789"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "-1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "2"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "-2"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "-3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "7"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "10"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "16"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "31"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "32"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "33"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "63"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "64"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "65535"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "65536"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "46340"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "46341"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "1073741824"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "-1073741824"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "1073741823"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "-2147483648"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "2147483646"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "-2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "100000"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "1000000"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "highestOneBit",
+    "a": {
+     "t": "int",
+     "v": "123456789"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "-1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "2"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "-2"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "-3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "7"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "10"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "16"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "31"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "32"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "33"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "63"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "64"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "65535"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "65536"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "46340"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "46341"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "1073741824"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "-1073741824"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "1073741823"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "-2147483648"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "2147483646"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "-2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "100000"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "1000000"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfLeadingZeros",
+    "a": {
+     "t": "int",
+     "v": "123456789"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "-1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "2"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "-2"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "-3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "7"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "10"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "16"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "31"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "32"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "33"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "63"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "64"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "65535"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "65536"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "46340"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "46341"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "1073741824"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "-1073741824"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "1073741823"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "-2147483648"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "2147483646"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "-2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "100000"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "1000000"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "numberOfTrailingZeros",
+    "a": {
+     "t": "int",
+     "v": "123456789"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "-1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "2"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "-2"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "-3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "7"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "10"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "16"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "31"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "32"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "33"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "63"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "64"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "65535"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "65536"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "46340"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "46341"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "1073741824"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "-1073741824"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "1073741823"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "-2147483648"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "2147483646"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "-2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "100000"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "1000000"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "arith",
+    "t": "int",
+    "op": "toUnsignedLong",
+    "a": {
+     "t": "int",
+     "v": "123456789"
+    }
+   }
+  }
+ ]
+}

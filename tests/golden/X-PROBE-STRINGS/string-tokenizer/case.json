@@ -1,0 +1,331 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "java.util.StringTokenizer with/without returnDelims, surrogate delimiters",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "a b  c",
+    "t": " "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "a b  c",
+    "t": " ",
+    "returnDelims": true
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": " a b ",
+    "t": " "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": " a b ",
+    "t": " ",
+    "returnDelims": true
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "",
+    "t": " "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "",
+    "t": " ",
+    "returnDelims": true
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "   ",
+    "t": " "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "   ",
+    "t": " ",
+    "returnDelims": true
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "a,b;c",
+    "t": ",;"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "a,b;c",
+    "t": ",;",
+    "returnDelims": true
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "abc",
+    "t": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "abc",
+    "t": "",
+    "returnDelims": true
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "a\tb\nc",
+    "t": " \t\n"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "a\tb\nc",
+    "t": " \t\n",
+    "returnDelims": true
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "hello, world!",
+    "t": " ,!"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "hello, world!",
+    "t": " ,!",
+    "returnDelims": true
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "a b",
+    "t": "  "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "a b",
+    "t": "  ",
+    "returnDelims": true
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "a b",
+    "t": " "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "a b",
+    "t": " ",
+    "returnDelims": true
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "😀a😀",
+    "t": "😀"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "😀a😀",
+    "t": "😀",
+    "returnDelims": true
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "x\ud83dy",
+    "t": "\ud83d"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "x\ud83dy",
+    "t": "\ud83d",
+    "returnDelims": true
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "x😀y",
+    "t": "\ud83d"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "x😀y",
+    "t": "\ud83d",
+    "returnDelims": true
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "x😀y",
+    "t": "\ude00"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "x😀y",
+    "t": "\ude00",
+    "returnDelims": true
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "x😀y",
+    "t": "😀"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "x😀y",
+    "t": "😀",
+    "returnDelims": true
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "a",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "a",
+    "t": "a",
+    "returnDelims": true
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "aa",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "aa",
+    "t": "a",
+    "returnDelims": true
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "äöü",
+    "t": "ö"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "äöü",
+    "t": "ö",
+    "returnDelims": true
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": null,
+    "t": " "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "tokenizer",
+    "s": "a",
+    "t": null
+   }
+  }
+ ]
+}

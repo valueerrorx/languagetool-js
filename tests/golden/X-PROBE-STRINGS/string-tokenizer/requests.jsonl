@@ -1,0 +1,38 @@
+{"id":1,"op":"probe-strings","args":{"fn":"tokenizer","s":"a b  c","t":" "}}
+{"id":2,"op":"probe-strings","args":{"fn":"tokenizer","s":"a b  c","t":" ","returnDelims":true}}
+{"id":3,"op":"probe-strings","args":{"fn":"tokenizer","s":" a b ","t":" "}}
+{"id":4,"op":"probe-strings","args":{"fn":"tokenizer","s":" a b ","t":" ","returnDelims":true}}
+{"id":5,"op":"probe-strings","args":{"fn":"tokenizer","s":"","t":" "}}
+{"id":6,"op":"probe-strings","args":{"fn":"tokenizer","s":"","t":" ","returnDelims":true}}
+{"id":7,"op":"probe-strings","args":{"fn":"tokenizer","s":"   ","t":" "}}
+{"id":8,"op":"probe-strings","args":{"fn":"tokenizer","s":"   ","t":" ","returnDelims":true}}
+{"id":9,"op":"probe-strings","args":{"fn":"tokenizer","s":"a,b;c","t":",;"}}
+{"id":10,"op":"probe-strings","args":{"fn":"tokenizer","s":"a,b;c","t":",;","returnDelims":true}}
+{"id":11,"op":"probe-strings","args":{"fn":"tokenizer","s":"abc","t":""}}
+{"id":12,"op":"probe-strings","args":{"fn":"tokenizer","s":"abc","t":"","returnDelims":true}}
+{"id":13,"op":"probe-strings","args":{"fn":"tokenizer","s":"a\tb\nc","t":" \t\n"}}
+{"id":14,"op":"probe-strings","args":{"fn":"tokenizer","s":"a\tb\nc","t":" \t\n","returnDelims":true}}
+{"id":15,"op":"probe-strings","args":{"fn":"tokenizer","s":"hello, world!","t":" ,!"}}
+{"id":16,"op":"probe-strings","args":{"fn":"tokenizer","s":"hello, world!","t":" ,!","returnDelims":true}}
+{"id":17,"op":"probe-strings","args":{"fn":"tokenizer","s":"a b","t":"  "}}
+{"id":18,"op":"probe-strings","args":{"fn":"tokenizer","s":"a b","t":"  ","returnDelims":true}}
+{"id":19,"op":"probe-strings","args":{"fn":"tokenizer","s":"a b","t":" "}}
+{"id":20,"op":"probe-strings","args":{"fn":"tokenizer","s":"a b","t":" ","returnDelims":true}}
+{"id":21,"op":"probe-strings","args":{"fn":"tokenizer","s":"😀a😀","t":"😀"}}
+{"id":22,"op":"probe-strings","args":{"fn":"tokenizer","s":"😀a😀","t":"😀","returnDelims":true}}
+{"id":23,"op":"probe-strings","args":{"fn":"tokenizer","s":"x\ud83dy","t":"\ud83d"}}
+{"id":24,"op":"probe-strings","args":{"fn":"tokenizer","s":"x\ud83dy","t":"\ud83d","returnDelims":true}}
+{"id":25,"op":"probe-strings","args":{"fn":"tokenizer","s":"x😀y","t":"\ud83d"}}
+{"id":26,"op":"probe-strings","args":{"fn":"tokenizer","s":"x😀y","t":"\ud83d","returnDelims":true}}
+{"id":27,"op":"probe-strings","args":{"fn":"tokenizer","s":"x😀y","t":"\ude00"}}
+{"id":28,"op":"probe-strings","args":{"fn":"tokenizer","s":"x😀y","t":"\ude00","returnDelims":true}}
+{"id":29,"op":"probe-strings","args":{"fn":"tokenizer","s":"x😀y","t":"😀"}}
+{"id":30,"op":"probe-strings","args":{"fn":"tokenizer","s":"x😀y","t":"😀","returnDelims":true}}
+{"id":31,"op":"probe-strings","args":{"fn":"tokenizer","s":"a","t":"a"}}
+{"id":32,"op":"probe-strings","args":{"fn":"tokenizer","s":"a","t":"a","returnDelims":true}}
+{"id":33,"op":"probe-strings","args":{"fn":"tokenizer","s":"aa","t":"a"}}
+{"id":34,"op":"probe-strings","args":{"fn":"tokenizer","s":"aa","t":"a","returnDelims":true}}
+{"id":35,"op":"probe-strings","args":{"fn":"tokenizer","s":"äöü","t":"ö"}}
+{"id":36,"op":"probe-strings","args":{"fn":"tokenizer","s":"äöü","t":"ö","returnDelims":true}}
+{"id":37,"op":"probe-strings","args":{"fn":"tokenizer","s":null,"t":" "}}
+{"id":38,"op":"probe-strings","args":{"fn":"tokenizer","s":"a","t":null}}

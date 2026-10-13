@@ -1,0 +1,2961 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "(int)(long)(short)(byte)(char)(float) of double: saturation, NaN, truncation",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "-0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "0.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "-0.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "0.9999999"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "1.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "-1.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "2147483646.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "2147483647.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "2147483647.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "2147483648.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "-2147483648.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "-2147483649.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "-2147483648.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "4294967296.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "1e10"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "-1e10"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "1e19"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "-1e19"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "9223372036854775807.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "9.223372036854775807E18"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "-9.223372036854775808E18"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "65535.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "65536.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "32768.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "-32769.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "255.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "256.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "128.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "-129.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "-1.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "70000.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "NaN"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "-Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "3.4028235e38"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "3.5e38"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "1e-50"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "1e-46"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "16777217.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "int",
+    "a": {
+     "t": "double",
+     "v": "9007199254740993.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "-0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "0.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "-0.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "0.9999999"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "1.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "-1.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "2147483646.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "2147483647.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "2147483647.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "2147483648.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "-2147483648.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "-2147483649.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "-2147483648.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "4294967296.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "1e10"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "-1e10"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "1e19"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "-1e19"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "9223372036854775807.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "9.223372036854775807E18"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "-9.223372036854775808E18"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "65535.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "65536.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "32768.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "-32769.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "255.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "256.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "128.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "-129.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "-1.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "70000.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "NaN"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "-Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "3.4028235e38"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "3.5e38"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "1e-50"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "1e-46"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "16777217.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "long",
+    "a": {
+     "t": "double",
+     "v": "9007199254740993.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "-0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "0.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "-0.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "0.9999999"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "1.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "-1.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "2147483646.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "2147483647.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "2147483647.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "2147483648.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "-2147483648.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "-2147483649.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "-2147483648.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "4294967296.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "1e10"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "-1e10"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "1e19"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "-1e19"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "9223372036854775807.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "9.223372036854775807E18"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "-9.223372036854775808E18"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "65535.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "65536.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "32768.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "-32769.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "255.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "256.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "128.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "-129.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "-1.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "70000.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "NaN"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "-Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "3.4028235e38"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "3.5e38"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "1e-50"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "1e-46"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "16777217.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "short",
+    "a": {
+     "t": "double",
+     "v": "9007199254740993.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "-0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "0.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "-0.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "0.9999999"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "1.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "-1.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "2147483646.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "2147483647.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "2147483647.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "2147483648.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "-2147483648.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "-2147483649.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "-2147483648.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "4294967296.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "1e10"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "-1e10"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "1e19"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "-1e19"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "9223372036854775807.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "9.223372036854775807E18"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "-9.223372036854775808E18"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "65535.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "65536.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "32768.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "-32769.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "255.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "256.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "128.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "-129.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "-1.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "70000.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "NaN"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "-Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "3.4028235e38"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "3.5e38"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "1e-50"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "1e-46"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "16777217.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "byte",
+    "a": {
+     "t": "double",
+     "v": "9007199254740993.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "-0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "0.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "-0.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "0.9999999"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "1.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "-1.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "2147483646.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "2147483647.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "2147483647.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "2147483648.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "-2147483648.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "-2147483649.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "-2147483648.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "4294967296.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "1e10"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "-1e10"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "1e19"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "-1e19"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "9223372036854775807.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "9.223372036854775807E18"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "-9.223372036854775808E18"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "65535.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "65536.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "32768.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "-32769.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "255.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "256.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "128.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "-129.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "-1.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "70000.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "NaN"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "-Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "3.4028235e38"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "3.5e38"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "1e-50"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "1e-46"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "16777217.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "char",
+    "a": {
+     "t": "double",
+     "v": "9007199254740993.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "-0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "0.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "-0.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "0.9999999"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "1.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "-1.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "2147483646.5"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "2147483647.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "2147483647.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "2147483648.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "-2147483648.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "-2147483649.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "-2147483648.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "4294967296.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "1e10"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "-1e10"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "1e19"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "-1e19"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "9223372036854775807.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "9.223372036854775807E18"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "-9.223372036854775808E18"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "65535.9"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "65536.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "32768.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "-32769.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "255.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "256.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "128.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "-129.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "-1.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "70000.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "NaN"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "-Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "3.4028235e38"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "3.5e38"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "1e-50"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "1e-46"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "16777217.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "cast",
+    "from": "double",
+    "to": "float",
+    "a": {
+     "t": "double",
+     "v": "9007199254740993.0"
+    }
+   }
+  }
+ ]
+}

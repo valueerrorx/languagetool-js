@@ -1,0 +1,2633 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "compareTo (code units), compareToIgnoreCase, equalsIgnoreCase, equals, CASE_INSENSITIVE_ORDER",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "a",
+    "t": "b"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "b",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "a",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "a",
+    "t": "A"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "A",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "",
+    "t": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "a",
+    "t": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "abc",
+    "t": "abd"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "abc",
+    "t": "ab"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "ab",
+    "t": "abc"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "ä",
+    "t": "z"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "ä",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "ß",
+    "t": "ss"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "ß",
+    "t": "SS"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "Ä",
+    "t": "ä"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "～",
+    "t": "😀"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "😀",
+    "t": "￿"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "𐀀",
+    "t": "\ud800"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "\ud800",
+    "t": "\ud800"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "\ud800",
+    "t": "\udc00"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "Z",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "a",
+    "t": "_"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "10",
+    "t": "9"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "abc",
+    "t": "ABC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "i",
+    "t": "İ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "ı",
+    "t": "I"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "i",
+    "t": "I"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "K",
+    "t": "k"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "K",
+    "t": "K"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "ſ",
+    "t": "s"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "ſ",
+    "t": "S"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "σ",
+    "t": "ς"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "σ",
+    "t": "Σ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "ς",
+    "t": "Σ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "ǅ",
+    "t": "Ǆ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "ǅ",
+    "t": "ǆ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "𐐨",
+    "t": "𐐀"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "𐐨",
+    "t": "𐐀A"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "SS",
+    "t": "ß"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "ǆ",
+    "t": "Ǆ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "é",
+    "t": "é"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "é",
+    "t": "é"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "ẞ",
+    "t": "ß"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "ẞ",
+    "t": "SS"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "straße",
+    "t": "STRASSE"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "ΣΣ",
+    "t": "σς"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "ǅ",
+    "t": "ǆ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "µ",
+    "t": "μ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "µ",
+    "t": "Μ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "ι",
+    "t": "ι"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "ι",
+    "t": "Ι"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "Ä",
+    "t": "ä"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "Ä",
+    "t": "Ae"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "a",
+    "t": "b"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "b",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "a",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "a",
+    "t": "A"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "A",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "",
+    "t": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "a",
+    "t": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "abc",
+    "t": "abd"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "abc",
+    "t": "ab"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "ab",
+    "t": "abc"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "ä",
+    "t": "z"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "ä",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "ß",
+    "t": "ss"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "ß",
+    "t": "SS"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "Ä",
+    "t": "ä"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "～",
+    "t": "😀"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "😀",
+    "t": "￿"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "𐀀",
+    "t": "\ud800"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "\ud800",
+    "t": "\ud800"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "\ud800",
+    "t": "\udc00"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "Z",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "a",
+    "t": "_"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "10",
+    "t": "9"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "abc",
+    "t": "ABC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "i",
+    "t": "İ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "ı",
+    "t": "I"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "i",
+    "t": "I"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "K",
+    "t": "k"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "K",
+    "t": "K"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "ſ",
+    "t": "s"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "ſ",
+    "t": "S"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "σ",
+    "t": "ς"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "σ",
+    "t": "Σ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "ς",
+    "t": "Σ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "ǅ",
+    "t": "Ǆ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "ǅ",
+    "t": "ǆ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "𐐨",
+    "t": "𐐀"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "𐐨",
+    "t": "𐐀A"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "SS",
+    "t": "ß"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "ǆ",
+    "t": "Ǆ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "é",
+    "t": "é"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "é",
+    "t": "é"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "ẞ",
+    "t": "ß"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "ẞ",
+    "t": "SS"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "straße",
+    "t": "STRASSE"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "ΣΣ",
+    "t": "σς"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "ǅ",
+    "t": "ǆ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "µ",
+    "t": "μ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "µ",
+    "t": "Μ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "ι",
+    "t": "ι"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "ι",
+    "t": "Ι"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "Ä",
+    "t": "ä"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "Ä",
+    "t": "Ae"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "a",
+    "t": "b"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "b",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "a",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "a",
+    "t": "A"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "A",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "",
+    "t": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "a",
+    "t": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "abc",
+    "t": "abd"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "abc",
+    "t": "ab"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "ab",
+    "t": "abc"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "ä",
+    "t": "z"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "ä",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "ß",
+    "t": "ss"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "ß",
+    "t": "SS"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "Ä",
+    "t": "ä"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "～",
+    "t": "😀"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "😀",
+    "t": "￿"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "𐀀",
+    "t": "\ud800"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "\ud800",
+    "t": "\ud800"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "\ud800",
+    "t": "\udc00"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "Z",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "a",
+    "t": "_"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "10",
+    "t": "9"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "abc",
+    "t": "ABC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "i",
+    "t": "İ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "ı",
+    "t": "I"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "i",
+    "t": "I"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "K",
+    "t": "k"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "K",
+    "t": "K"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "ſ",
+    "t": "s"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "ſ",
+    "t": "S"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "σ",
+    "t": "ς"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "σ",
+    "t": "Σ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "ς",
+    "t": "Σ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "ǅ",
+    "t": "Ǆ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "ǅ",
+    "t": "ǆ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "𐐨",
+    "t": "𐐀"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "𐐨",
+    "t": "𐐀A"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "SS",
+    "t": "ß"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "ǆ",
+    "t": "Ǆ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "é",
+    "t": "é"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "é",
+    "t": "é"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "ẞ",
+    "t": "ß"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "ẞ",
+    "t": "SS"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "straße",
+    "t": "STRASSE"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "ΣΣ",
+    "t": "σς"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "ǅ",
+    "t": "ǆ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "µ",
+    "t": "μ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "µ",
+    "t": "Μ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "ι",
+    "t": "ι"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "ι",
+    "t": "Ι"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "Ä",
+    "t": "ä"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "Ä",
+    "t": "Ae"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "a",
+    "t": "b"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "b",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "a",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "a",
+    "t": "A"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "A",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "",
+    "t": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "a",
+    "t": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "abc",
+    "t": "abd"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "abc",
+    "t": "ab"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "ab",
+    "t": "abc"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "ä",
+    "t": "z"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "ä",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "ß",
+    "t": "ss"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "ß",
+    "t": "SS"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "Ä",
+    "t": "ä"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "～",
+    "t": "😀"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "😀",
+    "t": "￿"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "𐀀",
+    "t": "\ud800"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "\ud800",
+    "t": "\ud800"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "\ud800",
+    "t": "\udc00"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "Z",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "a",
+    "t": "_"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "10",
+    "t": "9"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "abc",
+    "t": "ABC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "i",
+    "t": "İ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "ı",
+    "t": "I"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "i",
+    "t": "I"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "K",
+    "t": "k"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "K",
+    "t": "K"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "ſ",
+    "t": "s"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "ſ",
+    "t": "S"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "σ",
+    "t": "ς"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "σ",
+    "t": "Σ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "ς",
+    "t": "Σ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "ǅ",
+    "t": "Ǆ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "ǅ",
+    "t": "ǆ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "𐐨",
+    "t": "𐐀"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "𐐨",
+    "t": "𐐀A"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "SS",
+    "t": "ß"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "ǆ",
+    "t": "Ǆ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "é",
+    "t": "é"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "é",
+    "t": "é"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "ẞ",
+    "t": "ß"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "ẞ",
+    "t": "SS"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "straße",
+    "t": "STRASSE"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "ΣΣ",
+    "t": "σς"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "ǅ",
+    "t": "ǆ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "µ",
+    "t": "μ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "µ",
+    "t": "Μ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "ι",
+    "t": "ι"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "ι",
+    "t": "Ι"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "Ä",
+    "t": "ä"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "Ä",
+    "t": "Ae"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "a",
+    "t": "b"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "b",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "a",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "a",
+    "t": "A"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "A",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "",
+    "t": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "a",
+    "t": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "abc",
+    "t": "abd"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "abc",
+    "t": "ab"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "ab",
+    "t": "abc"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "ä",
+    "t": "z"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "ä",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "ß",
+    "t": "ss"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "ß",
+    "t": "SS"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "Ä",
+    "t": "ä"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "～",
+    "t": "😀"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "😀",
+    "t": "￿"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "𐀀",
+    "t": "\ud800"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "\ud800",
+    "t": "\ud800"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "\ud800",
+    "t": "\udc00"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "Z",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "a",
+    "t": "_"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "10",
+    "t": "9"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "abc",
+    "t": "ABC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "i",
+    "t": "İ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "ı",
+    "t": "I"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "i",
+    "t": "I"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "K",
+    "t": "k"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "K",
+    "t": "K"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "ſ",
+    "t": "s"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "ſ",
+    "t": "S"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "σ",
+    "t": "ς"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "σ",
+    "t": "Σ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "ς",
+    "t": "Σ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "ǅ",
+    "t": "Ǆ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "ǅ",
+    "t": "ǆ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "𐐨",
+    "t": "𐐀"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "𐐨",
+    "t": "𐐀A"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "SS",
+    "t": "ß"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "ǆ",
+    "t": "Ǆ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "é",
+    "t": "é"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "é",
+    "t": "é"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "ẞ",
+    "t": "ß"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "ẞ",
+    "t": "SS"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "straße",
+    "t": "STRASSE"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "ΣΣ",
+    "t": "σς"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "ǅ",
+    "t": "ǆ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "µ",
+    "t": "μ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "µ",
+    "t": "Μ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "ι",
+    "t": "ι"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "ι",
+    "t": "Ι"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "Ä",
+    "t": "ä"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "caseInsensitiveOrder",
+    "s": "Ä",
+    "t": "Ae"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "a",
+    "t": "b"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "b",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "a",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "a",
+    "t": "A"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "A",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "",
+    "t": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "a",
+    "t": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "abc",
+    "t": "abd"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "abc",
+    "t": "ab"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "ab",
+    "t": "abc"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "ä",
+    "t": "z"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "ä",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "ß",
+    "t": "ss"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "ß",
+    "t": "SS"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "Ä",
+    "t": "ä"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "～",
+    "t": "😀"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "😀",
+    "t": "￿"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "𐀀",
+    "t": "\ud800"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "\ud800",
+    "t": "\ud800"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "\ud800",
+    "t": "\udc00"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "Z",
+    "t": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "a",
+    "t": "_"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "10",
+    "t": "9"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "abc",
+    "t": "ABC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "i",
+    "t": "İ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "ı",
+    "t": "I"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "i",
+    "t": "I"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "K",
+    "t": "k"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "K",
+    "t": "K"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "ſ",
+    "t": "s"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "ſ",
+    "t": "S"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "σ",
+    "t": "ς"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "σ",
+    "t": "Σ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "ς",
+    "t": "Σ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "ǅ",
+    "t": "Ǆ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "ǅ",
+    "t": "ǆ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "𐐨",
+    "t": "𐐀"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "𐐨",
+    "t": "𐐀A"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "SS",
+    "t": "ß"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "ǆ",
+    "t": "Ǆ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "é",
+    "t": "é"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "é",
+    "t": "é"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "ẞ",
+    "t": "ß"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "ẞ",
+    "t": "SS"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "straße",
+    "t": "STRASSE"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "ΣΣ",
+    "t": "σς"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "ǅ",
+    "t": "ǆ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "µ",
+    "t": "μ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "µ",
+    "t": "Μ"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "ι",
+    "t": "ι"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "ι",
+    "t": "Ι"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "Ä",
+    "t": "ä"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "contentEquals",
+    "s": "Ä",
+    "t": "Ae"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareTo",
+    "s": "a",
+    "t": null
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equalsIgnoreCase",
+    "s": "a",
+    "t": null
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "equals",
+    "s": "a",
+    "t": null
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "compareToIgnoreCase",
+    "s": "a",
+    "t": null
+   }
+  }
+ ]
+}

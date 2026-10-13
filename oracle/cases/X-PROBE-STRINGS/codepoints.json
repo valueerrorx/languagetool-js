@@ -1,0 +1,453 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "length / codePointCount / codePoints / chars / offsetByCodePoints on surrogates",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "length",
+    "s": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePoints",
+    "s": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "chars",
+    "s": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "length",
+    "s": "abc"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePoints",
+    "s": "abc"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "chars",
+    "s": "abc"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "length",
+    "s": "😀"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePoints",
+    "s": "😀"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "chars",
+    "s": "😀"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "length",
+    "s": "😀a😁"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePoints",
+    "s": "😀a😁"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "chars",
+    "s": "😀a😁"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "length",
+    "s": "\ud800"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePoints",
+    "s": "\ud800"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "chars",
+    "s": "\ud800"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "length",
+    "s": "\udc00"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePoints",
+    "s": "\udc00"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "chars",
+    "s": "\udc00"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "length",
+    "s": "\ud800a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePoints",
+    "s": "\ud800a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "chars",
+    "s": "\ud800a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "length",
+    "s": "a\udc00"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePoints",
+    "s": "a\udc00"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "chars",
+    "s": "a\udc00"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "length",
+    "s": "\udc00\ud800"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePoints",
+    "s": "\udc00\ud800"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "chars",
+    "s": "\udc00\ud800"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "length",
+    "s": "äöü"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePoints",
+    "s": "äöü"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "chars",
+    "s": "äöü"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "length",
+    "s": "é"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePoints",
+    "s": "é"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "chars",
+    "s": "é"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "length",
+    "s": "𐐀𐐨"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePoints",
+    "s": "𐐀𐐨"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "chars",
+    "s": "𐐀𐐨"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "length",
+    "s": "😀\ud83d"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePoints",
+    "s": "😀\ud83d"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "chars",
+    "s": "😀\ud83d"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "length",
+    "s": "👨‍👩‍👧"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePoints",
+    "s": "👨‍👩‍👧"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "chars",
+    "s": "👨‍👩‍👧"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "length",
+    "s": "🇦🇹"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePoints",
+    "s": "🇦🇹"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "chars",
+    "s": "🇦🇹"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "length",
+    "s": "\u0000"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePoints",
+    "s": "\u0000"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "chars",
+    "s": "\u0000"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "offsetByCodePoints",
+    "s": "😀ab",
+    "i": 0,
+    "n": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "offsetByCodePoints",
+    "s": "😀ab",
+    "i": 0,
+    "n": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "offsetByCodePoints",
+    "s": "😀ab",
+    "i": 0,
+    "n": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "offsetByCodePoints",
+    "s": "😀ab",
+    "i": 0,
+    "n": 4
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "offsetByCodePoints",
+    "s": "😀ab",
+    "i": 1,
+    "n": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "offsetByCodePoints",
+    "s": "😀ab",
+    "i": 4,
+    "n": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "offsetByCodePoints",
+    "s": "😀ab",
+    "i": 4,
+    "n": -3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "offsetByCodePoints",
+    "s": "😀ab",
+    "i": 4,
+    "n": -4
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "offsetByCodePoints",
+    "s": "\ud800\ud800",
+    "i": 0,
+    "n": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "offsetByCodePoints",
+    "s": "abc",
+    "i": 0,
+    "n": 0
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "offsetByCodePoints",
+    "s": "abc",
+    "i": 3,
+    "n": 0
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "offsetByCodePoints",
+    "s": "abc",
+    "i": 4,
+    "n": 0
+   }
+  }
+ ]
+}

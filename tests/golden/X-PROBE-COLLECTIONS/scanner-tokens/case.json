@@ -1,0 +1,281 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "Scanner.next() whitespace delimiter (\\p{javaWhitespace}+) and nextInt/nextLine interplay",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a b\tc\nd",
+    "mode": "tokens"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a b",
+    "mode": "tokens"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a b cd",
+    "mode": "tokens"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a​b",
+    "mode": "tokens"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a b",
+    "mode": "tokens"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a\u001fb",
+    "mode": "tokens"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a\u001cb",
+    "mode": "tokens"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a　b",
+    "mode": "tokens"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "  a  b  ",
+    "mode": "tokens"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "",
+    "mode": "tokens"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": " ",
+    "mode": "tokens"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "\n",
+    "mode": "tokens"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "ä ö ü",
+    "mode": "tokens"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a\u000bb\fc",
+    "mode": "tokens"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a﻿b",
+    "mode": "tokens"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a b",
+    "mode": "tokens"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a᠎b",
+    "mode": "tokens"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "12 rest\nnext",
+    "mode": "intThenLine"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "12\nnext",
+    "mode": "intThenLine"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "12",
+    "mode": "intThenLine"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "12\n",
+    "mode": "intThenLine"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "12 \nx",
+    "mode": "intThenLine"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "+12",
+    "mode": "intThenLine"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "-12\r\nq",
+    "mode": "intThenLine"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "１２ x",
+    "mode": "intThenLine"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "٣ x",
+    "mode": "intThenLine"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "1,234 x",
+    "mode": "intThenLine"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "1_000",
+    "mode": "intThenLine"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "2147483648",
+    "mode": "intThenLine"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "x",
+    "mode": "intThenLine"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "",
+    "mode": "intThenLine"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "12.5",
+    "mode": "intThenLine"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": " 7 y",
+    "mode": "intThenLine"
+   }
+  },
+  {
+   "op": "probe-collections",
+   "args": {
+    "fn": "scanner",
+    "text": "a",
+    "mode": "nope"
+   }
+  }
+ ]
+}

@@ -1,0 +1,1185 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "trim (<= U+0020) vs strip/isBlank (Character.isWhitespace) vs isEmpty",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "trim",
+    "s": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "trim",
+    "s": " "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "trim",
+    "s": "   "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "trim",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "trim",
+    "s": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "trim",
+    "s": "\u0000a\u0001"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "trim",
+    "s": "\u0001"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "trim",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "trim",
+    "s": " "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "trim",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "trim",
+    "s": "﻿a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "trim",
+    "s": " \t\n\r\u000b\f a \u001f"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "trim",
+    "s": "\u001fa "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "trim",
+    "s": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "trim",
+    "s": "​a​"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "trim",
+    "s": "a　"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "trim",
+    "s": "　a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "trim",
+    "s": " a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "trim",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "trim",
+    "s": " a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "trim",
+    "s": " a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "trim",
+    "s": "\u001c\u001d\u001e\u001fa"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "trim",
+    "s": "a b"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "trim",
+    "s": " ä "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "trim",
+    "s": "x\u0000"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "trim",
+    "s": "\u0000"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "trim",
+    "s": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "trim",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "strip",
+    "s": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "strip",
+    "s": " "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "strip",
+    "s": "   "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "strip",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "strip",
+    "s": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "strip",
+    "s": "\u0000a\u0001"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "strip",
+    "s": "\u0001"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "strip",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "strip",
+    "s": " "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "strip",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "strip",
+    "s": "﻿a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "strip",
+    "s": " \t\n\r\u000b\f a \u001f"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "strip",
+    "s": "\u001fa "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "strip",
+    "s": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "strip",
+    "s": "​a​"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "strip",
+    "s": "a　"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "strip",
+    "s": "　a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "strip",
+    "s": " a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "strip",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "strip",
+    "s": " a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "strip",
+    "s": " a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "strip",
+    "s": "\u001c\u001d\u001e\u001fa"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "strip",
+    "s": "a b"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "strip",
+    "s": " ä "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "strip",
+    "s": "x\u0000"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "strip",
+    "s": "\u0000"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "strip",
+    "s": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "strip",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripLeading",
+    "s": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripLeading",
+    "s": " "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripLeading",
+    "s": "   "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripLeading",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripLeading",
+    "s": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripLeading",
+    "s": "\u0000a\u0001"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripLeading",
+    "s": "\u0001"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripLeading",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripLeading",
+    "s": " "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripLeading",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripLeading",
+    "s": "﻿a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripLeading",
+    "s": " \t\n\r\u000b\f a \u001f"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripLeading",
+    "s": "\u001fa "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripLeading",
+    "s": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripLeading",
+    "s": "​a​"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripLeading",
+    "s": "a　"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripLeading",
+    "s": "　a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripLeading",
+    "s": " a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripLeading",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripLeading",
+    "s": " a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripLeading",
+    "s": " a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripLeading",
+    "s": "\u001c\u001d\u001e\u001fa"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripLeading",
+    "s": "a b"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripLeading",
+    "s": " ä "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripLeading",
+    "s": "x\u0000"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripLeading",
+    "s": "\u0000"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripLeading",
+    "s": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripLeading",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripTrailing",
+    "s": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripTrailing",
+    "s": " "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripTrailing",
+    "s": "   "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripTrailing",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripTrailing",
+    "s": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripTrailing",
+    "s": "\u0000a\u0001"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripTrailing",
+    "s": "\u0001"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripTrailing",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripTrailing",
+    "s": " "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripTrailing",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripTrailing",
+    "s": "﻿a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripTrailing",
+    "s": " \t\n\r\u000b\f a \u001f"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripTrailing",
+    "s": "\u001fa "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripTrailing",
+    "s": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripTrailing",
+    "s": "​a​"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripTrailing",
+    "s": "a　"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripTrailing",
+    "s": "　a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripTrailing",
+    "s": " a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripTrailing",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripTrailing",
+    "s": " a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripTrailing",
+    "s": " a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripTrailing",
+    "s": "\u001c\u001d\u001e\u001fa"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripTrailing",
+    "s": "a b"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripTrailing",
+    "s": " ä "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripTrailing",
+    "s": "x\u0000"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripTrailing",
+    "s": "\u0000"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripTrailing",
+    "s": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "stripTrailing",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isBlank",
+    "s": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isBlank",
+    "s": " "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isBlank",
+    "s": "   "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isBlank",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isBlank",
+    "s": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isBlank",
+    "s": "\u0000a\u0001"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isBlank",
+    "s": "\u0001"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isBlank",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isBlank",
+    "s": " "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isBlank",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isBlank",
+    "s": "﻿a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isBlank",
+    "s": " \t\n\r\u000b\f a \u001f"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isBlank",
+    "s": "\u001fa "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isBlank",
+    "s": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isBlank",
+    "s": "​a​"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isBlank",
+    "s": "a　"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isBlank",
+    "s": "　a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isBlank",
+    "s": " a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isBlank",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isBlank",
+    "s": " a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isBlank",
+    "s": " a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isBlank",
+    "s": "\u001c\u001d\u001e\u001fa"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isBlank",
+    "s": "a b"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isBlank",
+    "s": " ä "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isBlank",
+    "s": "x\u0000"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isBlank",
+    "s": "\u0000"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isBlank",
+    "s": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isBlank",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isEmpty",
+    "s": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isEmpty",
+    "s": " "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isEmpty",
+    "s": "   "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isEmpty",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isEmpty",
+    "s": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isEmpty",
+    "s": "\u0000a\u0001"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isEmpty",
+    "s": "\u0001"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isEmpty",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isEmpty",
+    "s": " "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isEmpty",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isEmpty",
+    "s": "﻿a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isEmpty",
+    "s": " \t\n\r\u000b\f a \u001f"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isEmpty",
+    "s": "\u001fa "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isEmpty",
+    "s": "a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isEmpty",
+    "s": "​a​"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isEmpty",
+    "s": "a　"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isEmpty",
+    "s": "　a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isEmpty",
+    "s": " a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isEmpty",
+    "s": " a "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isEmpty",
+    "s": " a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isEmpty",
+    "s": " a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isEmpty",
+    "s": "\u001c\u001d\u001e\u001fa"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isEmpty",
+    "s": "a b"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isEmpty",
+    "s": " ä "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isEmpty",
+    "s": "x\u0000"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isEmpty",
+    "s": "\u0000"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isEmpty",
+    "s": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "isEmpty",
+    "s": " a "
+   }
+  }
+ ]
+}

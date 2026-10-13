@@ -1,0 +1,1071 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "replaceAll/replaceFirst/matches: regex + replacement syntax ($n, \\, named groups), PatternSyntaxException",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "line # comment",
+    "t": "#.*",
+    "u": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "a.b.c",
+    "t": ".",
+    "u": "x"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "abc",
+    "t": "",
+    "u": "-"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "",
+    "t": "",
+    "u": "-"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "aaa",
+    "t": "a*",
+    "u": "X"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "abc",
+    "t": "b*",
+    "u": "X"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "abc",
+    "t": "(b)",
+    "u": "[$1]"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "abc",
+    "t": "(b)",
+    "u": "[$0]"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "abc",
+    "t": "(b)",
+    "u": "[$2]"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "abc",
+    "t": "(b)",
+    "u": "[$11]"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "abc",
+    "t": "(b)",
+    "u": "$"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "abc",
+    "t": "(b)",
+    "u": "\\"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "abc",
+    "t": "(b)",
+    "u": "\\$1"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "abc",
+    "t": "(b)",
+    "u": "\\\\"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "abc",
+    "t": "(b)",
+    "u": "\\n"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "abc",
+    "t": "(?<n>b)",
+    "u": "[${n}]"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "abc",
+    "t": "(?<n>b)",
+    "u": "[${x}]"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "abc",
+    "t": "(?<n>b)",
+    "u": "[${n"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "abc",
+    "t": "(b)",
+    "u": "$a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "abc",
+    "t": "(b)",
+    "u": "${1}"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "a1b22",
+    "t": "(\\d+)",
+    "u": "<$1>"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "abc",
+    "t": "(",
+    "u": "x"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "abc",
+    "t": "[a-",
+    "u": "x"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "abc",
+    "t": "*",
+    "u": "x"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "aBc",
+    "t": "(?i)b",
+    "u": "x"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "a b  c",
+    "t": "\\s+",
+    "u": " "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "ÄÖÜ",
+    "t": "\\p{Lu}",
+    "u": "u"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "äöü",
+    "t": "\\w",
+    "u": "w"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "äöü",
+    "t": "(?U)\\w",
+    "u": "w"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "ab\nc",
+    "t": ".",
+    "u": "x"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "ab\nc",
+    "t": "(?s).",
+    "u": "x"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "a b",
+    "t": ".",
+    "u": "x"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "ab",
+    "t": ".",
+    "u": "x"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "😀",
+    "t": ".",
+    "u": "x"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "a,b",
+    "t": "[,;]",
+    "u": "\\\\$0"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "ab",
+    "t": "a|",
+    "u": "X"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "x.y",
+    "t": "\\.",
+    "u": "\\."
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "abc",
+    "t": "b",
+    "u": "$0$0"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "tab\there",
+    "t": "\\t",
+    "u": "    "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "abab",
+    "t": "(ab)+",
+    "u": "$1"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "abc",
+    "t": "(a)(b)(c)",
+    "u": "$3$2$1"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "abc",
+    "t": "^",
+    "u": ">"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "abc",
+    "t": "$",
+    "u": "<"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "a\nb",
+    "t": "$",
+    "u": "<"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "a\n",
+    "t": "$",
+    "u": "<"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "abc",
+    "t": "\\b",
+    "u": "|"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "über",
+    "t": "\\b",
+    "u": "|"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceAll",
+    "s": "über",
+    "t": "(?U)\\b",
+    "u": "|"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "line # comment",
+    "t": "#.*",
+    "u": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "a.b.c",
+    "t": ".",
+    "u": "x"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "abc",
+    "t": "",
+    "u": "-"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "",
+    "t": "",
+    "u": "-"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "aaa",
+    "t": "a*",
+    "u": "X"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "abc",
+    "t": "b*",
+    "u": "X"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "abc",
+    "t": "(b)",
+    "u": "[$1]"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "abc",
+    "t": "(b)",
+    "u": "[$0]"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "abc",
+    "t": "(b)",
+    "u": "[$2]"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "abc",
+    "t": "(b)",
+    "u": "[$11]"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "abc",
+    "t": "(b)",
+    "u": "$"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "abc",
+    "t": "(b)",
+    "u": "\\"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "abc",
+    "t": "(b)",
+    "u": "\\$1"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "abc",
+    "t": "(b)",
+    "u": "\\\\"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "abc",
+    "t": "(b)",
+    "u": "\\n"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "abc",
+    "t": "(?<n>b)",
+    "u": "[${n}]"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "abc",
+    "t": "(?<n>b)",
+    "u": "[${x}]"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "abc",
+    "t": "(?<n>b)",
+    "u": "[${n"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "abc",
+    "t": "(b)",
+    "u": "$a"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "abc",
+    "t": "(b)",
+    "u": "${1}"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "a1b22",
+    "t": "(\\d+)",
+    "u": "<$1>"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "abc",
+    "t": "(",
+    "u": "x"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "abc",
+    "t": "[a-",
+    "u": "x"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "abc",
+    "t": "*",
+    "u": "x"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "aBc",
+    "t": "(?i)b",
+    "u": "x"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "a b  c",
+    "t": "\\s+",
+    "u": " "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "ÄÖÜ",
+    "t": "\\p{Lu}",
+    "u": "u"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "äöü",
+    "t": "\\w",
+    "u": "w"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "äöü",
+    "t": "(?U)\\w",
+    "u": "w"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "ab\nc",
+    "t": ".",
+    "u": "x"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "ab\nc",
+    "t": "(?s).",
+    "u": "x"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "a b",
+    "t": ".",
+    "u": "x"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "ab",
+    "t": ".",
+    "u": "x"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "😀",
+    "t": ".",
+    "u": "x"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "a,b",
+    "t": "[,;]",
+    "u": "\\\\$0"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "ab",
+    "t": "a|",
+    "u": "X"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "x.y",
+    "t": "\\.",
+    "u": "\\."
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "abc",
+    "t": "b",
+    "u": "$0$0"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "tab\there",
+    "t": "\\t",
+    "u": "    "
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "abab",
+    "t": "(ab)+",
+    "u": "$1"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "abc",
+    "t": "(a)(b)(c)",
+    "u": "$3$2$1"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "abc",
+    "t": "^",
+    "u": ">"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "abc",
+    "t": "$",
+    "u": "<"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "a\nb",
+    "t": "$",
+    "u": "<"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "a\n",
+    "t": "$",
+    "u": "<"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "abc",
+    "t": "\\b",
+    "u": "|"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "über",
+    "t": "\\b",
+    "u": "|"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceFirst",
+    "s": "über",
+    "t": "(?U)\\b",
+    "u": "|"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "matches",
+    "s": "abc",
+    "t": "abc"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "matches",
+    "s": "abc",
+    "t": "ab"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "matches",
+    "s": "abc",
+    "t": "b"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "matches",
+    "s": "abc",
+    "t": ".*"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "matches",
+    "s": "",
+    "t": ".*"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "matches",
+    "s": "a\nb",
+    "t": ".*"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "matches",
+    "s": "a\nb",
+    "t": "(?s).*"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "matches",
+    "s": "abc",
+    "t": "ABC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "matches",
+    "s": "abc",
+    "t": "(?i)ABC"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "matches",
+    "s": "abc",
+    "t": "a.c"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "matches",
+    "s": "äöü",
+    "t": "\\p{L}+"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "matches",
+    "s": "äöü",
+    "t": "[a-z]+"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "matches",
+    "s": "ab",
+    "t": "a|ab"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "matches",
+    "s": "ab",
+    "t": "(a|ab)"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "matches",
+    "s": "a",
+    "t": "["
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "matches",
+    "s": "x",
+    "t": null
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "quote",
+    "s": "a.b"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "quote",
+    "s": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "quote",
+    "s": "\\E"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "quote",
+    "s": "\\Q"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "quote",
+    "s": "a\\Eb"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "quote",
+    "s": "$1"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "quoteReplacement",
+    "s": "a$b"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "quoteReplacement",
+    "s": "\\"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "quoteReplacement",
+    "s": "$1\\1"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "quoteReplacement",
+    "s": ""
+   }
+  }
+ ]
+}

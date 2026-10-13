@@ -1,0 +1,513 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "regionMatches(ignoreCase,...) incl. bounds, surrogates, special case folding",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "Hello",
+    "t": "hELLO",
+    "ic": true,
+    "off": 0,
+    "ooff": 0,
+    "len": 5
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "Hello",
+    "t": "hELLO",
+    "ic": true,
+    "off": 1,
+    "ooff": 1,
+    "len": 4
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "Hello",
+    "t": "LL",
+    "ic": true,
+    "off": 2,
+    "ooff": 0,
+    "len": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "Hello",
+    "t": "LL",
+    "ic": true,
+    "off": -1,
+    "ooff": 0,
+    "len": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "Hello",
+    "t": "LL",
+    "ic": true,
+    "off": 0,
+    "ooff": -1,
+    "len": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "Hello",
+    "t": "LL",
+    "ic": true,
+    "off": 4,
+    "ooff": 0,
+    "len": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "Hello",
+    "t": "LL",
+    "ic": true,
+    "off": 2,
+    "ooff": 0,
+    "len": 0
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "Hello",
+    "t": "LL",
+    "ic": true,
+    "off": 2,
+    "ooff": 0,
+    "len": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "Hello",
+    "t": "LL",
+    "ic": true,
+    "off": 5,
+    "ooff": 0,
+    "len": 0
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "Hello",
+    "t": "LL",
+    "ic": true,
+    "off": 6,
+    "ooff": 0,
+    "len": 0
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "Straße",
+    "t": "STRASSE",
+    "ic": true,
+    "off": 0,
+    "ooff": 0,
+    "len": 6
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "İ",
+    "t": "i",
+    "ic": true,
+    "off": 0,
+    "ooff": 0,
+    "len": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "K",
+    "t": "k",
+    "ic": true,
+    "off": 0,
+    "ooff": 0,
+    "len": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "𐐨",
+    "t": "𐐀",
+    "ic": true,
+    "off": 0,
+    "ooff": 0,
+    "len": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "𐐨x",
+    "t": "𐐀X",
+    "ic": true,
+    "off": 0,
+    "ooff": 0,
+    "len": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "𐐨",
+    "t": "𐐀",
+    "ic": true,
+    "off": 0,
+    "ooff": 0,
+    "len": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "äöü",
+    "t": "ÄÖÜ",
+    "ic": true,
+    "off": 0,
+    "ooff": 0,
+    "len": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "σ",
+    "t": "ς",
+    "ic": true,
+    "off": 0,
+    "ooff": 0,
+    "len": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "ı",
+    "t": "I",
+    "ic": true,
+    "off": 0,
+    "ooff": 0,
+    "len": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "ſ",
+    "t": "S",
+    "ic": true,
+    "off": 0,
+    "ooff": 0,
+    "len": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "ǅ",
+    "t": "Ǆ",
+    "ic": true,
+    "off": 0,
+    "ooff": 0,
+    "len": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "Hello",
+    "t": "hELLO",
+    "ic": false,
+    "off": 0,
+    "ooff": 0,
+    "len": 5
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "Hello",
+    "t": "hELLO",
+    "ic": false,
+    "off": 1,
+    "ooff": 1,
+    "len": 4
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "Hello",
+    "t": "LL",
+    "ic": false,
+    "off": 2,
+    "ooff": 0,
+    "len": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "Hello",
+    "t": "LL",
+    "ic": false,
+    "off": -1,
+    "ooff": 0,
+    "len": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "Hello",
+    "t": "LL",
+    "ic": false,
+    "off": 0,
+    "ooff": -1,
+    "len": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "Hello",
+    "t": "LL",
+    "ic": false,
+    "off": 4,
+    "ooff": 0,
+    "len": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "Hello",
+    "t": "LL",
+    "ic": false,
+    "off": 2,
+    "ooff": 0,
+    "len": 0
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "Hello",
+    "t": "LL",
+    "ic": false,
+    "off": 2,
+    "ooff": 0,
+    "len": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "Hello",
+    "t": "LL",
+    "ic": false,
+    "off": 5,
+    "ooff": 0,
+    "len": 0
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "Hello",
+    "t": "LL",
+    "ic": false,
+    "off": 6,
+    "ooff": 0,
+    "len": 0
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "Straße",
+    "t": "STRASSE",
+    "ic": false,
+    "off": 0,
+    "ooff": 0,
+    "len": 6
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "İ",
+    "t": "i",
+    "ic": false,
+    "off": 0,
+    "ooff": 0,
+    "len": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "K",
+    "t": "k",
+    "ic": false,
+    "off": 0,
+    "ooff": 0,
+    "len": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "𐐨",
+    "t": "𐐀",
+    "ic": false,
+    "off": 0,
+    "ooff": 0,
+    "len": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "𐐨x",
+    "t": "𐐀X",
+    "ic": false,
+    "off": 0,
+    "ooff": 0,
+    "len": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "𐐨",
+    "t": "𐐀",
+    "ic": false,
+    "off": 0,
+    "ooff": 0,
+    "len": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "äöü",
+    "t": "ÄÖÜ",
+    "ic": false,
+    "off": 0,
+    "ooff": 0,
+    "len": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "σ",
+    "t": "ς",
+    "ic": false,
+    "off": 0,
+    "ooff": 0,
+    "len": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "ı",
+    "t": "I",
+    "ic": false,
+    "off": 0,
+    "ooff": 0,
+    "len": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "ſ",
+    "t": "S",
+    "ic": false,
+    "off": 0,
+    "ooff": 0,
+    "len": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "regionMatches",
+    "s": "ǅ",
+    "t": "Ǆ",
+    "ic": false,
+    "off": 0,
+    "ooff": 0,
+    "len": 1
+   }
+  }
+ ]
+}

@@ -1,0 +1,180 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "String.replace(CharSequence): literal, all occurrences, empty target, null replacement",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replace",
+    "s": "line # comment",
+    "t": "#.*",
+    "u": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replace",
+    "s": "a.b.c",
+    "t": ".",
+    "u": "-"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replace",
+    "s": "abc",
+    "t": "",
+    "u": "-"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replace",
+    "s": "",
+    "t": "",
+    "u": "-"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replace",
+    "s": "aaa",
+    "t": "a",
+    "u": "aa"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replace",
+    "s": "aaa",
+    "t": "aa",
+    "u": "b"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replace",
+    "s": "a$b",
+    "t": "$",
+    "u": "€"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replace",
+    "s": "a\\b",
+    "t": "\\",
+    "u": "/"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replace",
+    "s": "x.*y",
+    "t": ".*",
+    "u": "?"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replace",
+    "s": "ä ö ü",
+    "t": "ö",
+    "u": "oe"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replace",
+    "s": "😀a😀",
+    "t": "😀",
+    "u": "x"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replace",
+    "s": "abc",
+    "t": "abc",
+    "u": ""
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replace",
+    "s": "abc",
+    "t": "x",
+    "u": "y"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replace",
+    "s": "abc",
+    "t": "b",
+    "u": null
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceChar",
+    "s": "banana",
+    "t": "a",
+    "u": "o"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceChar",
+    "s": "a.b",
+    "t": ".",
+    "u": "-"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceChar",
+    "s": "",
+    "t": "a",
+    "u": "b"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceChar",
+    "s": "ß",
+    "t": "ß",
+    "u": "S"
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "replaceChar",
+    "s": "ab",
+    "t": "a",
+    "u": "\ud800"
+   }
+  }
+ ]
+}

@@ -1,0 +1,2889 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "Integer/Long toString radix, hex, binary, unsigned, string concat, Character.digit",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToString",
+    "a": {
+     "t": "int",
+     "v": "0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intHex",
+    "a": {
+     "t": "int",
+     "v": "0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intOctal",
+    "a": {
+     "t": "int",
+     "v": "0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intBinary",
+    "a": {
+     "t": "int",
+     "v": "0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "unsignedInt",
+    "a": {
+     "t": "int",
+     "v": "0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToString",
+    "a": {
+     "t": "int",
+     "v": "1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intHex",
+    "a": {
+     "t": "int",
+     "v": "1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intOctal",
+    "a": {
+     "t": "int",
+     "v": "1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intBinary",
+    "a": {
+     "t": "int",
+     "v": "1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "unsignedInt",
+    "a": {
+     "t": "int",
+     "v": "1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToString",
+    "a": {
+     "t": "int",
+     "v": "-1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intHex",
+    "a": {
+     "t": "int",
+     "v": "-1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intOctal",
+    "a": {
+     "t": "int",
+     "v": "-1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intBinary",
+    "a": {
+     "t": "int",
+     "v": "-1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "unsignedInt",
+    "a": {
+     "t": "int",
+     "v": "-1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToString",
+    "a": {
+     "t": "int",
+     "v": "255"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intHex",
+    "a": {
+     "t": "int",
+     "v": "255"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intOctal",
+    "a": {
+     "t": "int",
+     "v": "255"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intBinary",
+    "a": {
+     "t": "int",
+     "v": "255"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "unsignedInt",
+    "a": {
+     "t": "int",
+     "v": "255"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToString",
+    "a": {
+     "t": "int",
+     "v": "-255"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intHex",
+    "a": {
+     "t": "int",
+     "v": "-255"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intOctal",
+    "a": {
+     "t": "int",
+     "v": "-255"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intBinary",
+    "a": {
+     "t": "int",
+     "v": "-255"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "unsignedInt",
+    "a": {
+     "t": "int",
+     "v": "-255"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToString",
+    "a": {
+     "t": "int",
+     "v": "2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intHex",
+    "a": {
+     "t": "int",
+     "v": "2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intOctal",
+    "a": {
+     "t": "int",
+     "v": "2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intBinary",
+    "a": {
+     "t": "int",
+     "v": "2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "unsignedInt",
+    "a": {
+     "t": "int",
+     "v": "2147483647"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToString",
+    "a": {
+     "t": "int",
+     "v": "-2147483648"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intHex",
+    "a": {
+     "t": "int",
+     "v": "-2147483648"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intOctal",
+    "a": {
+     "t": "int",
+     "v": "-2147483648"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intBinary",
+    "a": {
+     "t": "int",
+     "v": "-2147483648"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "unsignedInt",
+    "a": {
+     "t": "int",
+     "v": "-2147483648"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToString",
+    "a": {
+     "t": "int",
+     "v": "65536"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intHex",
+    "a": {
+     "t": "int",
+     "v": "65536"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intOctal",
+    "a": {
+     "t": "int",
+     "v": "65536"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intBinary",
+    "a": {
+     "t": "int",
+     "v": "65536"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "unsignedInt",
+    "a": {
+     "t": "int",
+     "v": "65536"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToString",
+    "a": {
+     "t": "int",
+     "v": "123456789"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intHex",
+    "a": {
+     "t": "int",
+     "v": "123456789"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intOctal",
+    "a": {
+     "t": "int",
+     "v": "123456789"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intBinary",
+    "a": {
+     "t": "int",
+     "v": "123456789"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "unsignedInt",
+    "a": {
+     "t": "int",
+     "v": "123456789"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "0"
+    },
+    "radix": "2"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "-255"
+    },
+    "radix": "2"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "2147483647"
+    },
+    "radix": "2"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "-2147483648"
+    },
+    "radix": "2"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "35"
+    },
+    "radix": "2"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "36"
+    },
+    "radix": "2"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "0"
+    },
+    "radix": "8"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "-255"
+    },
+    "radix": "8"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "2147483647"
+    },
+    "radix": "8"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "-2147483648"
+    },
+    "radix": "8"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "35"
+    },
+    "radix": "8"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "36"
+    },
+    "radix": "8"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "0"
+    },
+    "radix": "10"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "-255"
+    },
+    "radix": "10"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "2147483647"
+    },
+    "radix": "10"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "-2147483648"
+    },
+    "radix": "10"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "35"
+    },
+    "radix": "10"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "36"
+    },
+    "radix": "10"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "0"
+    },
+    "radix": "16"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "-255"
+    },
+    "radix": "16"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "2147483647"
+    },
+    "radix": "16"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "-2147483648"
+    },
+    "radix": "16"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "35"
+    },
+    "radix": "16"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "36"
+    },
+    "radix": "16"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "0"
+    },
+    "radix": "36"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "-255"
+    },
+    "radix": "36"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "2147483647"
+    },
+    "radix": "36"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "-2147483648"
+    },
+    "radix": "36"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "35"
+    },
+    "radix": "36"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "36"
+    },
+    "radix": "36"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "0"
+    },
+    "radix": "37"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "-255"
+    },
+    "radix": "37"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "2147483647"
+    },
+    "radix": "37"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "-2147483648"
+    },
+    "radix": "37"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "35"
+    },
+    "radix": "37"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "36"
+    },
+    "radix": "37"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "0"
+    },
+    "radix": "1"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "-255"
+    },
+    "radix": "1"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "2147483647"
+    },
+    "radix": "1"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "-2147483648"
+    },
+    "radix": "1"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "35"
+    },
+    "radix": "1"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "intToStringRadix",
+    "a": {
+     "t": "int",
+     "v": "36"
+    },
+    "radix": "1"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "longToStringRadix",
+    "a": {
+     "t": "long",
+     "v": "0"
+    },
+    "radix": "2"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "longToStringRadix",
+    "a": {
+     "t": "long",
+     "v": "-1"
+    },
+    "radix": "2"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "longToStringRadix",
+    "a": {
+     "t": "long",
+     "v": "9223372036854775807"
+    },
+    "radix": "2"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "longToStringRadix",
+    "a": {
+     "t": "long",
+     "v": "-9223372036854775808"
+    },
+    "radix": "2"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "longToStringRadix",
+    "a": {
+     "t": "long",
+     "v": "0"
+    },
+    "radix": "16"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "longToStringRadix",
+    "a": {
+     "t": "long",
+     "v": "-1"
+    },
+    "radix": "16"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "longToStringRadix",
+    "a": {
+     "t": "long",
+     "v": "9223372036854775807"
+    },
+    "radix": "16"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "longToStringRadix",
+    "a": {
+     "t": "long",
+     "v": "-9223372036854775808"
+    },
+    "radix": "16"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "longToStringRadix",
+    "a": {
+     "t": "long",
+     "v": "0"
+    },
+    "radix": "36"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "longToStringRadix",
+    "a": {
+     "t": "long",
+     "v": "-1"
+    },
+    "radix": "36"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "longToStringRadix",
+    "a": {
+     "t": "long",
+     "v": "9223372036854775807"
+    },
+    "radix": "36"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "longToStringRadix",
+    "a": {
+     "t": "long",
+     "v": "-9223372036854775808"
+    },
+    "radix": "36"
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "longHex",
+    "a": {
+     "t": "long",
+     "v": "0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "longBinary",
+    "a": {
+     "t": "long",
+     "v": "0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "unsignedLong",
+    "a": {
+     "t": "long",
+     "v": "0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "longHex",
+    "a": {
+     "t": "long",
+     "v": "-1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "longBinary",
+    "a": {
+     "t": "long",
+     "v": "-1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "unsignedLong",
+    "a": {
+     "t": "long",
+     "v": "-1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "longHex",
+    "a": {
+     "t": "long",
+     "v": "9223372036854775807"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "longBinary",
+    "a": {
+     "t": "long",
+     "v": "9223372036854775807"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "unsignedLong",
+    "a": {
+     "t": "long",
+     "v": "9223372036854775807"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "longHex",
+    "a": {
+     "t": "long",
+     "v": "-9223372036854775808"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "longBinary",
+    "a": {
+     "t": "long",
+     "v": "-9223372036854775808"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "unsignedLong",
+    "a": {
+     "t": "long",
+     "v": "-9223372036854775808"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "longHex",
+    "a": {
+     "t": "long",
+     "v": "255"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "longBinary",
+    "a": {
+     "t": "long",
+     "v": "255"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "unsignedLong",
+    "a": {
+     "t": "long",
+     "v": "255"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleToString",
+    "a": {
+     "t": "double",
+     "v": "1.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleHex",
+    "a": {
+     "t": "double",
+     "v": "1.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "double",
+     "v": "1.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "valueOf",
+    "a": {
+     "t": "double",
+     "v": "1.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleToString",
+    "a": {
+     "t": "double",
+     "v": "100.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleHex",
+    "a": {
+     "t": "double",
+     "v": "100.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "double",
+     "v": "100.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "valueOf",
+    "a": {
+     "t": "double",
+     "v": "100.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleToString",
+    "a": {
+     "t": "double",
+     "v": "1e7"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleHex",
+    "a": {
+     "t": "double",
+     "v": "1e7"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "double",
+     "v": "1e7"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "valueOf",
+    "a": {
+     "t": "double",
+     "v": "1e7"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleToString",
+    "a": {
+     "t": "double",
+     "v": "9999999.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleHex",
+    "a": {
+     "t": "double",
+     "v": "9999999.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "double",
+     "v": "9999999.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "valueOf",
+    "a": {
+     "t": "double",
+     "v": "9999999.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleToString",
+    "a": {
+     "t": "double",
+     "v": "1.0E-3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleHex",
+    "a": {
+     "t": "double",
+     "v": "1.0E-3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "double",
+     "v": "1.0E-3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "valueOf",
+    "a": {
+     "t": "double",
+     "v": "1.0E-3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleToString",
+    "a": {
+     "t": "double",
+     "v": "0.001"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleHex",
+    "a": {
+     "t": "double",
+     "v": "0.001"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "double",
+     "v": "0.001"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "valueOf",
+    "a": {
+     "t": "double",
+     "v": "0.001"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleToString",
+    "a": {
+     "t": "double",
+     "v": "0.0001"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleHex",
+    "a": {
+     "t": "double",
+     "v": "0.0001"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "double",
+     "v": "0.0001"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "valueOf",
+    "a": {
+     "t": "double",
+     "v": "0.0001"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleToString",
+    "a": {
+     "t": "double",
+     "v": "123456789.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleHex",
+    "a": {
+     "t": "double",
+     "v": "123456789.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "double",
+     "v": "123456789.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "valueOf",
+    "a": {
+     "t": "double",
+     "v": "123456789.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleToString",
+    "a": {
+     "t": "double",
+     "v": "-0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleHex",
+    "a": {
+     "t": "double",
+     "v": "-0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "double",
+     "v": "-0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "valueOf",
+    "a": {
+     "t": "double",
+     "v": "-0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleToString",
+    "a": {
+     "t": "double",
+     "v": "NaN"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleHex",
+    "a": {
+     "t": "double",
+     "v": "NaN"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "double",
+     "v": "NaN"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "valueOf",
+    "a": {
+     "t": "double",
+     "v": "NaN"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleToString",
+    "a": {
+     "t": "double",
+     "v": "Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleHex",
+    "a": {
+     "t": "double",
+     "v": "Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "double",
+     "v": "Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "valueOf",
+    "a": {
+     "t": "double",
+     "v": "Infinity"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleToString",
+    "a": {
+     "t": "double",
+     "v": "1e23"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleHex",
+    "a": {
+     "t": "double",
+     "v": "1e23"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "double",
+     "v": "1e23"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "valueOf",
+    "a": {
+     "t": "double",
+     "v": "1e23"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleToString",
+    "a": {
+     "t": "double",
+     "v": "0.1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleHex",
+    "a": {
+     "t": "double",
+     "v": "0.1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "double",
+     "v": "0.1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "valueOf",
+    "a": {
+     "t": "double",
+     "v": "0.1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleToString",
+    "a": {
+     "t": "double",
+     "v": "2.0E-3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleHex",
+    "a": {
+     "t": "double",
+     "v": "2.0E-3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "double",
+     "v": "2.0E-3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "valueOf",
+    "a": {
+     "t": "double",
+     "v": "2.0E-3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleToString",
+    "a": {
+     "t": "double",
+     "v": "4.9e-324"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleHex",
+    "a": {
+     "t": "double",
+     "v": "4.9e-324"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "double",
+     "v": "4.9e-324"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "valueOf",
+    "a": {
+     "t": "double",
+     "v": "4.9e-324"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleToString",
+    "a": {
+     "t": "double",
+     "v": "1.7976931348623157e308"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "doubleHex",
+    "a": {
+     "t": "double",
+     "v": "1.7976931348623157e308"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "double",
+     "v": "1.7976931348623157e308"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "valueOf",
+    "a": {
+     "t": "double",
+     "v": "1.7976931348623157e308"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "floatToString",
+    "a": {
+     "t": "float",
+     "v": "1.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "float",
+     "v": "1.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "floatToString",
+    "a": {
+     "t": "float",
+     "v": "0.1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "float",
+     "v": "0.1"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "floatToString",
+    "a": {
+     "t": "float",
+     "v": "1e7"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "float",
+     "v": "1e7"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "floatToString",
+    "a": {
+     "t": "float",
+     "v": "1e-3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "float",
+     "v": "1e-3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "floatToString",
+    "a": {
+     "t": "float",
+     "v": "16777216"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "float",
+     "v": "16777216"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "floatToString",
+    "a": {
+     "t": "float",
+     "v": "3.4028235e38"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "float",
+     "v": "3.4028235e38"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "floatToString",
+    "a": {
+     "t": "float",
+     "v": "1.4e-45"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "float",
+     "v": "1.4e-45"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "floatToString",
+    "a": {
+     "t": "float",
+     "v": "-0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "float",
+     "v": "-0.0"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "floatToString",
+    "a": {
+     "t": "float",
+     "v": "NaN"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "float",
+     "v": "NaN"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "floatToString",
+    "a": {
+     "t": "float",
+     "v": "0.3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "float",
+     "v": "0.3"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "floatToString",
+    "a": {
+     "t": "float",
+     "v": "33.333332"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "float",
+     "v": "33.333332"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#97"
+    },
+    "radix": 10
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#97"
+    },
+    "radix": 16
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#97"
+    },
+    "radix": 2
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#97"
+    },
+    "radix": 36
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#65"
+    },
+    "radix": 10
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#65"
+    },
+    "radix": 16
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#65"
+    },
+    "radix": 2
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#65"
+    },
+    "radix": 36
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#48"
+    },
+    "radix": 10
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#48"
+    },
+    "radix": 16
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#48"
+    },
+    "radix": 2
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#48"
+    },
+    "radix": 36
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#57"
+    },
+    "radix": 10
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#57"
+    },
+    "radix": 16
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#57"
+    },
+    "radix": 2
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#57"
+    },
+    "radix": 36
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#1633"
+    },
+    "radix": 10
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#1633"
+    },
+    "radix": 16
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#1633"
+    },
+    "radix": 2
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#1633"
+    },
+    "radix": 36
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#65301"
+    },
+    "radix": 10
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#65301"
+    },
+    "radix": 16
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#65301"
+    },
+    "radix": 2
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#65301"
+    },
+    "radix": 36
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#945"
+    },
+    "radix": 10
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#945"
+    },
+    "radix": 16
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#945"
+    },
+    "radix": 2
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#945"
+    },
+    "radix": 36
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#8232"
+    },
+    "radix": 10
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#8232"
+    },
+    "radix": 16
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#8232"
+    },
+    "radix": 2
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#8232"
+    },
+    "radix": 36
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#0"
+    },
+    "radix": 10
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#0"
+    },
+    "radix": 16
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#0"
+    },
+    "radix": 2
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charDigit",
+    "a": {
+     "t": "char",
+     "v": "#0"
+    },
+    "radix": 36
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charNumeric",
+    "a": {
+     "t": "char",
+     "v": "#97"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charNumeric",
+    "a": {
+     "t": "char",
+     "v": "#65"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charNumeric",
+    "a": {
+     "t": "char",
+     "v": "#48"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charNumeric",
+    "a": {
+     "t": "char",
+     "v": "#189"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charNumeric",
+    "a": {
+     "t": "char",
+     "v": "#8544"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "charNumeric",
+    "a": {
+     "t": "char",
+     "v": "#1633"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "forDigit",
+    "a": {
+     "t": "int",
+     "v": "0"
+    },
+    "radix": 36
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "forDigit",
+    "a": {
+     "t": "int",
+     "v": "9"
+    },
+    "radix": 36
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "forDigit",
+    "a": {
+     "t": "int",
+     "v": "10"
+    },
+    "radix": 36
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "forDigit",
+    "a": {
+     "t": "int",
+     "v": "15"
+    },
+    "radix": 36
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "forDigit",
+    "a": {
+     "t": "int",
+     "v": "35"
+    },
+    "radix": 36
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "forDigit",
+    "a": {
+     "t": "int",
+     "v": "36"
+    },
+    "radix": 36
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "forDigit",
+    "a": {
+     "t": "int",
+     "v": "-1"
+    },
+    "radix": 36
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "char",
+     "v": "#97"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "long",
+     "v": "-9223372036854775808"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "bool",
+     "v": "true"
+    }
+   }
+  },
+  {
+   "op": "probe-numbers",
+   "args": {
+    "fn": "tostr",
+    "op": "concat",
+    "a": {
+     "t": "null",
+     "v": "null"
+    }
+   }
+  }
+ ]
+}

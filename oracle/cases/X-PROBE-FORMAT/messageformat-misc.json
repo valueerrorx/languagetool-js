@@ -1,0 +1,3971 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "MessageFormat quoting rules, missing/extra arguments, malformed patterns, date/time styles",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "It''s {0}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "It's {0}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "'{0}'",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "'{'0}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "a''''b",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "'",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "''",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "'''",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0}'s",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "'{0}' {0}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0}{1}",
+    "args": [
+     "a",
+     "b"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{1}{0}",
+    "args": [
+     "a",
+     "b"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{1}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{2} {0}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0}",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0}",
+    "args": [
+     null
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0} {1}",
+    "args": [
+     null,
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0}",
+    "args": [
+     true
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0}",
+    "args": [
+     {
+      "t": "char",
+      "v": "c"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0}",
+    "args": [
+     {
+      "t": "int",
+      "v": "1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0}",
+    "args": [
+     "{1}"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "no args",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "no args",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "100%",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0}%",
+    "args": [
+     {
+      "t": "int",
+      "v": "5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0} {0,number,integer}",
+    "args": [
+     {
+      "t": "double",
+      "v": "2.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "}",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{}",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{x}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{-1}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0,foo}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0,number,#.#.#}",
+    "args": [
+     {
+      "t": "double",
+      "v": "1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0,}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{ 0 }",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0,number , integer}",
+    "args": [
+     {
+      "t": "double",
+      "v": "1.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0,choice}",
+    "args": [
+     {
+      "t": "int",
+      "v": "1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0,choice,x}",
+    "args": [
+     {
+      "t": "int",
+      "v": "1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0,date}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0,number}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0,number}",
+    "args": [
+     null
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0, number, integer}",
+    "args": [
+     {
+      "t": "double",
+      "v": "1234.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0,Number,integer}",
+    "args": [
+     {
+      "t": "double",
+      "v": "1234.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{10}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{2147483648}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{00}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0}}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "}{0}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0,date,short}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0,date,medium}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0,date,long}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0,date,full}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0,time,short}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0,time,medium}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0,time,long}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0,time,full}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0,date}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0,time}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0,date,yyyy-MM-dd HH:mm}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0,date,EEEE, d. MMMM yyyy}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0,date,YYYY-ww}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1735689600000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0,date,short}",
+    "args": [
+     {
+      "t": "int",
+      "v": "5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0,date,short}",
+    "args": [
+     {
+      "t": "long",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0,date,short}",
+    "args": [
+     {
+      "t": "double",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": "{0,date,yyyy}",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "It''s {0}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "It's {0}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "'{0}'",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "'{'0}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "a''''b",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "'",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "''",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "'''",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0}'s",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "'{0}' {0}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0}{1}",
+    "args": [
+     "a",
+     "b"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{1}{0}",
+    "args": [
+     "a",
+     "b"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{1}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{2} {0}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0}",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0}",
+    "args": [
+     null
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0} {1}",
+    "args": [
+     null,
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0}",
+    "args": [
+     true
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0}",
+    "args": [
+     {
+      "t": "char",
+      "v": "c"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0}",
+    "args": [
+     {
+      "t": "int",
+      "v": "1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0}",
+    "args": [
+     "{1}"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "no args",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "no args",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "100%",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0}%",
+    "args": [
+     {
+      "t": "int",
+      "v": "5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0} {0,number,integer}",
+    "args": [
+     {
+      "t": "double",
+      "v": "2.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "}",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{}",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{x}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{-1}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0,foo}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0,number,#.#.#}",
+    "args": [
+     {
+      "t": "double",
+      "v": "1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0,}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{ 0 }",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0,number , integer}",
+    "args": [
+     {
+      "t": "double",
+      "v": "1.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0,choice}",
+    "args": [
+     {
+      "t": "int",
+      "v": "1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0,choice,x}",
+    "args": [
+     {
+      "t": "int",
+      "v": "1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0,date}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0,number}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0,number}",
+    "args": [
+     null
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0, number, integer}",
+    "args": [
+     {
+      "t": "double",
+      "v": "1234.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0,Number,integer}",
+    "args": [
+     {
+      "t": "double",
+      "v": "1234.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{10}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{2147483648}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{00}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0}}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "}{0}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0,date,short}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0,date,medium}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0,date,long}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0,date,full}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0,time,short}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0,time,medium}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0,time,long}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0,time,full}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0,date}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0,time}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0,date,yyyy-MM-dd HH:mm}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0,date,EEEE, d. MMMM yyyy}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0,date,YYYY-ww}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1735689600000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0,date,short}",
+    "args": [
+     {
+      "t": "int",
+      "v": "5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0,date,short}",
+    "args": [
+     {
+      "t": "long",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0,date,short}",
+    "args": [
+     {
+      "t": "double",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "de-DE",
+    "pattern": "{0,date,yyyy}",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "It''s {0}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "It's {0}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "'{0}'",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "'{'0}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "a''''b",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "'",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "''",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "'''",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0}'s",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "'{0}' {0}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0}{1}",
+    "args": [
+     "a",
+     "b"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{1}{0}",
+    "args": [
+     "a",
+     "b"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{1}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{2} {0}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0}",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0}",
+    "args": [
+     null
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0} {1}",
+    "args": [
+     null,
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0}",
+    "args": [
+     true
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0}",
+    "args": [
+     {
+      "t": "char",
+      "v": "c"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0}",
+    "args": [
+     {
+      "t": "int",
+      "v": "1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0}",
+    "args": [
+     "{1}"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "no args",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "no args",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "100%",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0}%",
+    "args": [
+     {
+      "t": "int",
+      "v": "5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0} {0,number,integer}",
+    "args": [
+     {
+      "t": "double",
+      "v": "2.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "}",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{}",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{x}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{-1}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0,foo}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0,number,#.#.#}",
+    "args": [
+     {
+      "t": "double",
+      "v": "1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0,}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{ 0 }",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0,number , integer}",
+    "args": [
+     {
+      "t": "double",
+      "v": "1.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0,choice}",
+    "args": [
+     {
+      "t": "int",
+      "v": "1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0,choice,x}",
+    "args": [
+     {
+      "t": "int",
+      "v": "1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0,date}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0,number}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0,number}",
+    "args": [
+     null
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0, number, integer}",
+    "args": [
+     {
+      "t": "double",
+      "v": "1234.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0,Number,integer}",
+    "args": [
+     {
+      "t": "double",
+      "v": "1234.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{10}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{2147483648}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{00}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0}}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "}{0}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0,date,short}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0,date,medium}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0,date,long}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0,date,full}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0,time,short}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0,time,medium}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0,time,long}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0,time,full}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0,date}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0,time}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0,date,yyyy-MM-dd HH:mm}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0,date,EEEE, d. MMMM yyyy}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0,date,YYYY-ww}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1735689600000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0,date,short}",
+    "args": [
+     {
+      "t": "int",
+      "v": "5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0,date,short}",
+    "args": [
+     {
+      "t": "long",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0,date,short}",
+    "args": [
+     {
+      "t": "double",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "fr-FR",
+    "pattern": "{0,date,yyyy}",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "It''s {0}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "It's {0}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "'{0}'",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "'{'0}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "a''''b",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "'",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "''",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "'''",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0}'s",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "'{0}' {0}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0}{1}",
+    "args": [
+     "a",
+     "b"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{1}{0}",
+    "args": [
+     "a",
+     "b"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{1}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{2} {0}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0}",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0}",
+    "args": [
+     null
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0} {1}",
+    "args": [
+     null,
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0}",
+    "args": [
+     true
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0}",
+    "args": [
+     {
+      "t": "char",
+      "v": "c"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0}",
+    "args": [
+     {
+      "t": "int",
+      "v": "1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0}",
+    "args": [
+     "{1}"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "no args",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "no args",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "100%",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0}%",
+    "args": [
+     {
+      "t": "int",
+      "v": "5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0} {0,number,integer}",
+    "args": [
+     {
+      "t": "double",
+      "v": "2.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "}",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{}",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{x}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{-1}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0,foo}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0,number,#.#.#}",
+    "args": [
+     {
+      "t": "double",
+      "v": "1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0,}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{ 0 }",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0,number , integer}",
+    "args": [
+     {
+      "t": "double",
+      "v": "1.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0,choice}",
+    "args": [
+     {
+      "t": "int",
+      "v": "1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0,choice,x}",
+    "args": [
+     {
+      "t": "int",
+      "v": "1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0,date}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0,number}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0,number}",
+    "args": [
+     null
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0, number, integer}",
+    "args": [
+     {
+      "t": "double",
+      "v": "1234.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0,Number,integer}",
+    "args": [
+     {
+      "t": "double",
+      "v": "1234.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{10}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{2147483648}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{00}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0}}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "}{0}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0,date,short}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0,date,medium}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0,date,long}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0,date,full}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0,time,short}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0,time,medium}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0,time,long}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0,time,full}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0,date}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0,time}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0,date,yyyy-MM-dd HH:mm}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0,date,EEEE, d. MMMM yyyy}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0,date,YYYY-ww}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1735689600000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0,date,short}",
+    "args": [
+     {
+      "t": "int",
+      "v": "5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0,date,short}",
+    "args": [
+     {
+      "t": "long",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0,date,short}",
+    "args": [
+     {
+      "t": "double",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "default",
+    "pattern": "{0,date,yyyy}",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "It''s {0}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "It's {0}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "'{0}'",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "'{'0}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "a''''b",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "'",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "''",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "'''",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0}'s",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "'{0}' {0}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0}{1}",
+    "args": [
+     "a",
+     "b"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{1}{0}",
+    "args": [
+     "a",
+     "b"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{1}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{2} {0}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0}",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0}",
+    "args": [
+     null
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0} {1}",
+    "args": [
+     null,
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0}",
+    "args": [
+     true
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0}",
+    "args": [
+     {
+      "t": "char",
+      "v": "c"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0}",
+    "args": [
+     {
+      "t": "int",
+      "v": "1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0}",
+    "args": [
+     "{1}"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "no args",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "no args",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "100%",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0}%",
+    "args": [
+     {
+      "t": "int",
+      "v": "5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0} {0,number,integer}",
+    "args": [
+     {
+      "t": "double",
+      "v": "2.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "}",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{}",
+    "args": []
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{x}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{-1}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0,foo}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0,number,#.#.#}",
+    "args": [
+     {
+      "t": "double",
+      "v": "1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0,}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{ 0 }",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0,number , integer}",
+    "args": [
+     {
+      "t": "double",
+      "v": "1.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0,choice}",
+    "args": [
+     {
+      "t": "int",
+      "v": "1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0,choice,x}",
+    "args": [
+     {
+      "t": "int",
+      "v": "1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0,date}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0,number}",
+    "args": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0,number}",
+    "args": [
+     null
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0, number, integer}",
+    "args": [
+     {
+      "t": "double",
+      "v": "1234.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0,Number,integer}",
+    "args": [
+     {
+      "t": "double",
+      "v": "1234.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{10}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{2147483648}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{00}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0}}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "}{0}",
+    "args": [
+     "a"
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0,date,short}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0,date,medium}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0,date,long}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0,date,full}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0,time,short}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0,time,medium}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0,time,long}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0,time,full}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0,date}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0,time}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0,date,yyyy-MM-dd HH:mm}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0,date,EEEE, d. MMMM yyyy}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0,date,YYYY-ww}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1735689600000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0,date,short}",
+    "args": [
+     {
+      "t": "int",
+      "v": "5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0,date,short}",
+    "args": [
+     {
+      "t": "long",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0,date,short}",
+    "args": [
+     {
+      "t": "double",
+      "v": "1773568800000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormatStatic",
+    "pattern": "{0,date,yyyy}",
+    "args": [
+     {
+      "t": "date",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "messageFormat",
+    "locale": "en-US",
+    "pattern": null,
+    "args": []
+   }
+  }
+ ]
+}

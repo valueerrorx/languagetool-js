@@ -1,0 +1,5668 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "DecimalFormat/NumberFormat setMaximumFractionDigits + all RoundingModes (HALF_UP on exact binary value vs Formatter)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 0,
+    "rounding": "HALF_UP",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 1,
+    "rounding": "HALF_UP",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 2,
+    "rounding": "HALF_UP",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 3,
+    "rounding": "HALF_UP",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 0,
+    "rounding": "HALF_EVEN",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 1,
+    "rounding": "HALF_EVEN",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 2,
+    "rounding": "HALF_EVEN",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 3,
+    "rounding": "HALF_EVEN",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 0,
+    "rounding": "HALF_DOWN",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 1,
+    "rounding": "HALF_DOWN",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 2,
+    "rounding": "HALF_DOWN",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 3,
+    "rounding": "HALF_DOWN",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 0,
+    "rounding": "UP",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 1,
+    "rounding": "UP",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 2,
+    "rounding": "UP",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 3,
+    "rounding": "UP",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 0,
+    "rounding": "DOWN",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 1,
+    "rounding": "DOWN",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 2,
+    "rounding": "DOWN",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 3,
+    "rounding": "DOWN",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 0,
+    "rounding": "CEILING",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 1,
+    "rounding": "CEILING",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 2,
+    "rounding": "CEILING",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 3,
+    "rounding": "CEILING",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 0,
+    "rounding": "FLOOR",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 1,
+    "rounding": "FLOOR",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 2,
+    "rounding": "FLOOR",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 3,
+    "rounding": "FLOOR",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 0,
+    "rounding": "UNNECESSARY",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 1,
+    "rounding": "UNNECESSARY",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 2,
+    "rounding": "UNNECESSARY",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 3,
+    "rounding": "UNNECESSARY",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "de-DE",
+    "kind": "number",
+    "maxFrac": 2,
+    "rounding": "HALF_UP",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     },
+     {
+      "t": "double",
+      "v": "1234567.891"
+     },
+     {
+      "t": "double",
+      "v": "1000"
+     },
+     {
+      "t": "double",
+      "v": "999.995"
+     },
+     {
+      "t": "double",
+      "v": "12345678.905"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-GB",
+    "kind": "number",
+    "maxFrac": 2,
+    "rounding": "HALF_UP",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     },
+     {
+      "t": "double",
+      "v": "1234567.891"
+     },
+     {
+      "t": "double",
+      "v": "1000"
+     },
+     {
+      "t": "double",
+      "v": "999.995"
+     },
+     {
+      "t": "double",
+      "v": "12345678.905"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en",
+    "kind": "number",
+    "maxFrac": 2,
+    "rounding": "HALF_UP",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     },
+     {
+      "t": "double",
+      "v": "1234567.891"
+     },
+     {
+      "t": "double",
+      "v": "1000"
+     },
+     {
+      "t": "double",
+      "v": "999.995"
+     },
+     {
+      "t": "double",
+      "v": "12345678.905"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "fr-FR",
+    "kind": "number",
+    "maxFrac": 2,
+    "rounding": "HALF_UP",
+    "values": [
+     {
+      "t": "double",
+      "v": "0.5"
+     },
+     {
+      "t": "double",
+      "v": "1.5"
+     },
+     {
+      "t": "double",
+      "v": "2.5"
+     },
+     {
+      "t": "double",
+      "v": "-0.5"
+     },
+     {
+      "t": "double",
+      "v": "-1.5"
+     },
+     {
+      "t": "double",
+      "v": "-2.5"
+     },
+     {
+      "t": "double",
+      "v": "0.125"
+     },
+     {
+      "t": "double",
+      "v": "0.135"
+     },
+     {
+      "t": "double",
+      "v": "0.145"
+     },
+     {
+      "t": "double",
+      "v": "0.155"
+     },
+     {
+      "t": "double",
+      "v": "1.005"
+     },
+     {
+      "t": "double",
+      "v": "1.015"
+     },
+     {
+      "t": "double",
+      "v": "2.675"
+     },
+     {
+      "t": "double",
+      "v": "0.045"
+     },
+     {
+      "t": "double",
+      "v": "0.0049999999"
+     },
+     {
+      "t": "double",
+      "v": "0.005"
+     },
+     {
+      "t": "double",
+      "v": "0.015"
+     },
+     {
+      "t": "double",
+      "v": "0.025"
+     },
+     {
+      "t": "double",
+      "v": "0.035"
+     },
+     {
+      "t": "double",
+      "v": "1.45"
+     },
+     {
+      "t": "double",
+      "v": "1.55"
+     },
+     {
+      "t": "double",
+      "v": "8.345"
+     },
+     {
+      "t": "double",
+      "v": "10.5"
+     },
+     {
+      "t": "double",
+      "v": "100.125"
+     },
+     {
+      "t": "double",
+      "v": "0.1"
+     },
+     {
+      "t": "double",
+      "v": "0.3"
+     },
+     {
+      "t": "double",
+      "v": "1e-7"
+     },
+     {
+      "t": "double",
+      "v": "123456.785"
+     },
+     {
+      "t": "double",
+      "v": "0.0"
+     },
+     {
+      "t": "double",
+      "v": "-0.0"
+     },
+     {
+      "t": "double",
+      "v": "2.0"
+     },
+     {
+      "t": "double",
+      "v": "1.25"
+     },
+     {
+      "t": "double",
+      "v": "1.35"
+     },
+     {
+      "t": "double",
+      "v": "1.75"
+     },
+     {
+      "t": "double",
+      "v": "1234567.891"
+     },
+     {
+      "t": "double",
+      "v": "1000"
+     },
+     {
+      "t": "double",
+      "v": "999.995"
+     },
+     {
+      "t": "double",
+      "v": "12345678.905"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 2,
+    "rounding": "HALF_UP",
+    "values": [
+     {
+      "t": "bigdecimal",
+      "v": "0.125"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "0.135"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "1.005"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "2.675"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "10.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 2,
+    "rounding": "HALF_EVEN",
+    "values": [
+     {
+      "t": "bigdecimal",
+      "v": "0.125"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "0.135"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "1.005"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "2.675"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "10.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 2,
+    "rounding": "HALF_DOWN",
+    "values": [
+     {
+      "t": "bigdecimal",
+      "v": "0.125"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "0.135"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "1.005"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "2.675"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "10.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 2,
+    "rounding": "UP",
+    "values": [
+     {
+      "t": "bigdecimal",
+      "v": "0.125"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "0.135"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "1.005"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "2.675"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "10.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 2,
+    "rounding": "DOWN",
+    "values": [
+     {
+      "t": "bigdecimal",
+      "v": "0.125"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "0.135"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "1.005"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "2.675"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "10.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 2,
+    "rounding": "CEILING",
+    "values": [
+     {
+      "t": "bigdecimal",
+      "v": "0.125"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "0.135"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "1.005"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "2.675"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "10.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 2,
+    "rounding": "FLOOR",
+    "values": [
+     {
+      "t": "bigdecimal",
+      "v": "0.125"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "0.135"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "1.005"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "2.675"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "10.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 2,
+    "rounding": "UNNECESSARY",
+    "values": [
+     {
+      "t": "bigdecimal",
+      "v": "0.125"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "0.135"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "1.005"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "2.675"
+     },
+     {
+      "t": "bigdecimal",
+      "v": "10.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "probe-format",
+   "args": {
+    "fn": "decimalFormat",
+    "locale": "en-US",
+    "kind": "number",
+    "maxFrac": 2,
+    "rounding": "BAD",
+    "values": []
+   }
+  }
+ ]
+}

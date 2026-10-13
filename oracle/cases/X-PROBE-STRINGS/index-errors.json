@@ -1,0 +1,501 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "charAt/substring/codePointAt bounds and StringIndexOutOfBoundsException messages (JDK 17)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "substring",
+    "s": "hello",
+    "b": 0,
+    "e": 5
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "subSequence",
+    "s": "hello",
+    "b": 0,
+    "e": 5
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "substring",
+    "s": "hello",
+    "b": 1,
+    "e": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "subSequence",
+    "s": "hello",
+    "b": 1,
+    "e": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "substring",
+    "s": "hello",
+    "b": 5,
+    "e": 5
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "subSequence",
+    "s": "hello",
+    "b": 5,
+    "e": 5
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "substring",
+    "s": "hello",
+    "b": 2,
+    "e": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "subSequence",
+    "s": "hello",
+    "b": 2,
+    "e": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "substring",
+    "s": "hello",
+    "b": -1,
+    "e": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "subSequence",
+    "s": "hello",
+    "b": -1,
+    "e": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "substring",
+    "s": "hello",
+    "b": 0,
+    "e": 6
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "subSequence",
+    "s": "hello",
+    "b": 0,
+    "e": 6
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "substring",
+    "s": "hello",
+    "b": 6,
+    "e": 6
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "subSequence",
+    "s": "hello",
+    "b": 6,
+    "e": 6
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "substring",
+    "s": "hello",
+    "b": 3,
+    "e": 100
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "subSequence",
+    "s": "hello",
+    "b": 3,
+    "e": 100
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "substring",
+    "s": "",
+    "b": 0,
+    "e": 0
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "subSequence",
+    "s": "",
+    "b": 0,
+    "e": 0
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "substring",
+    "s": "",
+    "b": 0,
+    "e": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "subSequence",
+    "s": "",
+    "b": 0,
+    "e": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "substring",
+    "s": "",
+    "b": 1,
+    "e": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "subSequence",
+    "s": "",
+    "b": 1,
+    "e": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "substring",
+    "s": "😀a",
+    "b": 0,
+    "e": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "subSequence",
+    "s": "😀a",
+    "b": 0,
+    "e": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "substring",
+    "s": "😀a",
+    "b": 1,
+    "e": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "subSequence",
+    "s": "😀a",
+    "b": 1,
+    "e": 3
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "substring",
+    "s": "😀a",
+    "b": 1,
+    "e": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "subSequence",
+    "s": "😀a",
+    "b": 1,
+    "e": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "substring",
+    "s": "hello",
+    "b": 0
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "substring",
+    "s": "hello",
+    "b": 5
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "substring",
+    "s": "hello",
+    "b": 6
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "substring",
+    "s": "hello",
+    "b": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "substring",
+    "s": "",
+    "b": 0
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "substring",
+    "s": "",
+    "b": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "charAt",
+    "s": "hello",
+    "i": 0
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePointAt",
+    "s": "hello",
+    "i": 0
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePointBefore",
+    "s": "hello",
+    "i": 0
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "charAt",
+    "s": "hello",
+    "i": 4
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePointAt",
+    "s": "hello",
+    "i": 4
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePointBefore",
+    "s": "hello",
+    "i": 4
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "charAt",
+    "s": "hello",
+    "i": 5
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePointAt",
+    "s": "hello",
+    "i": 5
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePointBefore",
+    "s": "hello",
+    "i": 5
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "charAt",
+    "s": "hello",
+    "i": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePointAt",
+    "s": "hello",
+    "i": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePointBefore",
+    "s": "hello",
+    "i": -1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "charAt",
+    "s": "",
+    "i": 0
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePointAt",
+    "s": "",
+    "i": 0
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePointBefore",
+    "s": "",
+    "i": 0
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "charAt",
+    "s": "😀",
+    "i": 0
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePointAt",
+    "s": "😀",
+    "i": 0
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePointBefore",
+    "s": "😀",
+    "i": 0
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "charAt",
+    "s": "😀",
+    "i": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePointAt",
+    "s": "😀",
+    "i": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePointBefore",
+    "s": "😀",
+    "i": 1
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "charAt",
+    "s": "😀",
+    "i": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePointAt",
+    "s": "😀",
+    "i": 2
+   }
+  },
+  {
+   "op": "probe-strings",
+   "args": {
+    "fn": "codePointBefore",
+    "s": "😀",
+    "i": 2
+   }
+  }
+ ]
+}

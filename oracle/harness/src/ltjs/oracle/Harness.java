@@ -12,6 +12,9 @@ import java.util.*;
 /** Long-lived oracle driver: one JSON request per stdin line, one JSON response per stdout line. */
 public class Harness {
   private static final ObjectMapper MAPPER = new ObjectMapper();
+  // probe ops: ASCII-only output so lone surrogates and odd separators survive the UTF-8 pipe
+  private static final ObjectMapper PROBE_MAPPER = new ObjectMapper()
+      .configure(com.fasterxml.jackson.core.JsonGenerator.Feature.ESCAPE_NON_ASCII, true);
 
   public static void main(String[] args) throws Exception {
     PrintStream out = new PrintStream(new FileOutputStream(FileDescriptor.out), false, "UTF-8");
@@ -21,10 +24,12 @@ public class Harness {
     while ((line = in.readLine()) != null) {
       if (line.isEmpty()) continue;
       Map<String, Object> resp = new LinkedHashMap<>();
+      ObjectMapper writer = MAPPER;
       try {
         JsonNode req = MAPPER.readTree(line);
         if (req.has("id")) resp.put("id", MAPPER.treeToValue(req.get("id"), Object.class));
         String op = req.get("op").asText();
+        if (op.startsWith("probe-")) writer = PROBE_MAPPER;
         JsonNode a = req.has("args") ? req.get("args") : MAPPER.createObjectNode();
         Object result = dispatch(op, a);
         resp.put("ok", true);
@@ -33,17 +38,21 @@ public class Harness {
         resp.put("ok", false);
         resp.put("error", error(t));
       }
-      out.print(MAPPER.writeValueAsString(resp));
+      out.print(writer.writeValueAsString(resp));
       out.print('\n');
       out.flush();
     }
   }
 
-  private static Object dispatch(String op, JsonNode a) {
+  private static Object dispatch(String op, JsonNode a) throws Exception {
     switch (op) {
       case "probe": return probe();
       case "X-LANGUAGES": return languages();
       case "num-tostring": return numToString(a);
+      case "probe-numbers": return ProbeNumbers.run(a);
+      case "probe-strings": return ProbeStrings.run(a);
+      case "probe-format": return ProbeFormat.run(a);
+      case "probe-collections": return ProbeCollections.run(a);
       default: throw new IllegalArgumentException("unknown op: " + op);
     }
   }

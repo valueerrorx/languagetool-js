@@ -1,0 +1,19 @@
+{"id":1,"op":"probe-strings","args":{"fn":"replace","s":"line # comment","t":"#.*","u":""}}
+{"id":2,"op":"probe-strings","args":{"fn":"replace","s":"a.b.c","t":".","u":"-"}}
+{"id":3,"op":"probe-strings","args":{"fn":"replace","s":"abc","t":"","u":"-"}}
+{"id":4,"op":"probe-strings","args":{"fn":"replace","s":"","t":"","u":"-"}}
+{"id":5,"op":"probe-strings","args":{"fn":"replace","s":"aaa","t":"a","u":"aa"}}
+{"id":6,"op":"probe-strings","args":{"fn":"replace","s":"aaa","t":"aa","u":"b"}}
+{"id":7,"op":"probe-strings","args":{"fn":"replace","s":"a$b","t":"$","u":"€"}}
+{"id":8,"op":"probe-strings","args":{"fn":"replace","s":"a\\b","t":"\\","u":"/"}}
+{"id":9,"op":"probe-strings","args":{"fn":"replace","s":"x.*y","t":".*","u":"?"}}
+{"id":10,"op":"probe-strings","args":{"fn":"replace","s":"ä ö ü","t":"ö","u":"oe"}}
+{"id":11,"op":"probe-strings","args":{"fn":"replace","s":"😀a😀","t":"😀","u":"x"}}
+{"id":12,"op":"probe-strings","args":{"fn":"replace","s":"abc","t":"abc","u":""}}
+{"id":13,"op":"probe-strings","args":{"fn":"replace","s":"abc","t":"x","u":"y"}}
+{"id":14,"op":"probe-strings","args":{"fn":"replace","s":"abc","t":"b","u":null}}
+{"id":15,"op":"probe-strings","args":{"fn":"replaceChar","s":"banana","t":"a","u":"o"}}
+{"id":16,"op":"probe-strings","args":{"fn":"replaceChar","s":"a.b","t":".","u":"-"}}
+{"id":17,"op":"probe-strings","args":{"fn":"replaceChar","s":"","t":"a","u":"b"}}
+{"id":18,"op":"probe-strings","args":{"fn":"replaceChar","s":"ß","t":"ß","u":"S"}}
+{"id":19,"op":"probe-strings","args":{"fn":"replaceChar","s":"ab","t":"a","u":"\ud800"}}
