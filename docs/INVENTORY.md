@@ -20,8 +20,22 @@ Index. Details per area in docs/inventory/*.md. Status: todo | spec | ported | v
 
 | file | IDs | todo | spec | ported | verified | later | n/a |
 |---|---|---|---|---|---|---|---|
-| core.md | 233 | 218 | 0 | 0 | 0 | 15 | 0 |
-| cli.md | 71 | 68 | 0 | 0 | 0 | 3 | 0 |
-| server.md | 146 | 126 | 0 | 0 | 0 | 20 | 0 |
+| core.md | 305 | 292 | 0 | 0 | 0 | 13 | 18 |
+| cli.md | 72 | 69 | 0 | 0 | 0 | 3 | 1 |
+| server.md | 160 | 135 | 0 | 0 | 0 | 25 | 13 |
 
 Oracle build/run/test commands and the JUnit baseline: docs/inventory/BUILD.md.
+
+| lang file | IDs | todo | later | wave |
+|---|---|---|---|---|
+| lang-de.md | 146 | 138 | 8 | 1 |
+| lang-en.md | 130 | 120 | 10 | 1 |
+| lang-fr.md | 60 | 54 | 6 | 1 |
+| lang-it.md | 37 | 34 | 3 | 2 |
+| lang-es.md | 78 | 74 | 4 | 2 |
+| lang-sl.md | 21 | 21 | 0 | 2 |
+| lang-ru.md | 66 | 63 | 3 | 2 |
+| lang-sk.md | 28 | 28 | 0 | 2 |
+| lang-pl.md | 47 | 47 | 0 | 2 |
+
+Wave 1 (D-031): core+cli+server+de+en+fr = 873 IDs (808 todo, 65 later). Verified: 0.
