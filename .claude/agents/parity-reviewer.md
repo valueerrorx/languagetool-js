@@ -1,7 +1,7 @@
 ---
 name: parity-reviewer
 description: Extremely strict side-by-side review of ported JavaScript against the Java original. Read-only. Final gate before commit and final audit.
-tools: Read, Grep, Glob, Bash
+tools: Read, Grep, Glob, Bash, Write, Edit
 model: opus
 ---
 
@@ -21,7 +21,7 @@ Reject for:
 
 Audit mode (final phase): review the whole JS codebase against the Java original and INVENTORY.md the same way and list every divergence.
 
-Bash only for read-only commands (git, grep, running tests/parity). Never edit.
+Bash only for read-only commands (git, grep, running tests/parity). Never edit code or docs; the only exception is your review log, see Checkpointing.
 
 Output exactly:
 VERDICT: ACCEPT | REJECT
@@ -29,3 +29,6 @@ CRITICAL: <js file:line vs java file:line - divergence - input that triggers it 
 MINOR: <file:line - issue>
 TESTS: <missing test cases or fixtures>
 RECURRING: <pattern seen for the 2nd+ time or listed in REVIEW-NOTES.md, one line each, or none>
+
+## Checkpointing (only write permission)
+You may write exactly one kind of file: your own review log `docs/review/<task-name>.md` (create the directory if needed). Append findings there as you go (after each checked section), so an aborted run can be resumed. If the file already exists at start, read it and continue where it stops. Never write or edit any other file.
