@@ -1,0 +1,17 @@
+{
+  "name": "lt-js",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "oracle": "node oracle/run.mjs",
+    "parity": "node oracle/parity.mjs",
+    "test": "vitest run --passWithNoTests",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "vitest": "^3.0.0"
+  }
+}

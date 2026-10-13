@@ -1,0 +1,36 @@
+{
+  "kind": "harness",
+  "clock": "fixed",
+  "description": "error paths: malformed bits, missing args, unknown op",
+  "normalize": [],
+  "compare": "jsonl",
+  "ops": [
+    {
+      "op": "num-tostring",
+      "args": {
+        "kind": "double",
+        "bits": [
+          "0xzz"
+        ]
+      }
+    },
+    {
+      "op": "num-tostring",
+      "args": {
+        "kind": "double"
+      }
+    },
+    {
+      "op": "num-tostring",
+      "args": {
+        "kind": "float",
+        "bits": [
+          "0x"
+        ]
+      }
+    },
+    {
+      "op": "no-such-op"
+    }
+  ]
+}

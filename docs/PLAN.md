@@ -14,7 +14,7 @@
 - [x] port-architect: ARCHITECTURE, PORT-MAP (808/808 IDs indexed), SEMANTICS P1-P13, ORACLE
 - [x] critic (2 parts) + user approval (D-037)
 ## Phase 2 - Oracle harness
-- [ ] oracle: harness (Java JSON-lines driver, build script, normalisers, npm run oracle/parity), prove with one ID end to end
+- [x] oracle harness: faketime, Java JSON-lines driver, npm run oracle/parity; proven with X-NUMFMT (fixtures from real Java). Pending in harness: normalisers beyond paths, cli/http kinds, structure comparators, X-DETECT
 ## Phase 3 - Step plan (wave 1)
 ## Phase 4 - Port loop
 

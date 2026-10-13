@@ -1,0 +1,50 @@
+{
+  "kind": "harness",
+  "clock": "fixed",
+  "description": "Float.toString for edge and ordinary values (input = IEEE bits)",
+  "normalize": [],
+  "compare": "jsonl",
+  "ops": [
+    {
+      "op": "num-tostring",
+      "args": {
+        "kind": "float",
+        "bits": [
+          "0x00000000",
+          "0x80000000",
+          "0x3f800000",
+          "0x3dcccccd",
+          "0x3f7fffb5",
+          "0x4b189680",
+          "0x4b800000",
+          "0x4c000000",
+          "0x3a83126f",
+          "0x3b03126f",
+          "0x3a830f14",
+          "0x00000001",
+          "0x7f7fffff",
+          "0x00800000",
+          "0x3e99999a",
+          "0x3eaaaaab",
+          "0x42c80000",
+          "0x4ceb79a3",
+          "0x7f7fc99e",
+          "0x501502f9",
+          "0x4ffd51da",
+          "0x35800000",
+          "0x7fc00000",
+          "0x7f800000",
+          "0xff800000",
+          "0x3727c5ac",
+          "0x3e4ccccd",
+          "0x40b00000",
+          "0x3f000000",
+          "0x3f8ccccd",
+          "0x3f333333",
+          "0x7f800001",
+          "0xffc00000"
+        ]
+      }
+    }
+  ]
+}

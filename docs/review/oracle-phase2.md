@@ -1,0 +1,4 @@
+- libfaketime built; Harness.java (probe, X-LANGUAGES, num-tostring) compiled
+- node side run.mjs, cases authored
+- oracle generated X-SELFTEST, X-LANGUAGES, X-NUMFMT; selftest ok. TODO parity.mjs, README
+- parity.mjs, adapters stubs, README, eslint done; FAIL path verified with temp adapter (restored). Phase 2 infra complete.
