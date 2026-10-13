@@ -20,6 +20,11 @@ Regenerate the class tables after inventory changes; hand edits only in the sect
 | S12 | cli | S8 (fixtures need S9-S11) |
 | S13 | server (+ lib `jdkhttp`, worker pool) | S12 |
 
+Step notes (cross-step dependencies):
+- S3 `Languages`: registers only in-scope modules in the relative order of Java's `Languages.get()` (DEV-006, ARCHITECTURE.md 3). During S3 grep all `Languages.getLanguageForShortCode(` / `getLanguage(` sites in core/cli/server and classify each (internal descriptor vs same exception); result is recorded here. Known: `CommonWordsDetector` es/ca/pt (CommonWordsDetector.java:38-40) -> `InternalLanguage` when not registered (S7).
+- EN-0081 and EN-0120 (BeoLingusTranslator) are ported in S9 but verified only after S10: `BeoLingusTranslator.java:82` uses `Languages.getLanguageForShortCode("de").getTagger()` (German tagger).
+- IDs ported in S6/S7 that need the en-US language (`HunspellRule.java:124` `getEnglishSpellingRules`, `FalseFriendRuleHandler.java:59` `Languages.getLanguageForShortCode("en-US")`: CORE-0300, CORE-0236, CORE-0440..0443 and their false-friend / multi-lingual spelling fixtures) are verified after S9; before that their parity cases are SKIP, and unit tests use `tests/support` fake languages.
+
 ## Library equivalents
 | Java dependency (version on the distribution classpath) | used by | JS solution | why behaviour-equivalent |
 |---|---|---|---|
@@ -33,7 +38,7 @@ Regenerate the class tables after inventory changes; hand edits only in the sect
 | com.hankcs:aho-corasick-double-array-trie 1.2.2 | AbstractDashRule, DictionarySpellMatchFilter, EnglishDashRule, OldSpellingRule/SpellingData | own `src/lib/ahocorasick/` | same double-array build and hit order (CORE-0449) |
 | de.danielnaber:jwordsplitter 4.7 (+ wordsGerman.txt, exceptionsGerman.txt) | GermanCompoundTokenizer, GermanSpellerRule | own `src/lib/jwordsplitter/` + resources | algorithm port (DE-0208) |
 | edu.washington.cs.knowitall:openregex 1.1.1 | GermanChunker, core chunking TokenExpressionFactory | own `src/lib/openregex/` subset (D-012) | chunk fixtures |
-| com.optimaize.languagedetector:language-detector 0.6 (+ profiles) | DefaultLanguageIdentifier | own `src/lib/langdetect/` + `resources/languages/*` | port incl. seeded java.util.Random(41) and double arithmetic order; probability fixtures |
+| com.optimaize.languagedetector:language-detector 0.6 (+ profiles) | DefaultLanguageIdentifier | own `src/lib/langdetect/` + `resources/languages/*` (profiles of in-scope languages only; candidates come from `Languages.get()`, DEV-006) | port incl. seeded java.util.Random(41) and double arithmetic order; probability fixtures |
 | org.apache.opennlp:opennlp-tools 1.9.5 (+ knowitall models 1.5) | EnglishChunker | own `src/lib/opennlp/` inference subset (D-014), fdlibm exp/log (D-029) | bit-exact fixtures |
 | com.fasterxml.jackson core/databind 2.18.x | RuleMatchesAsJsonSerializer, ApiV2, server JSON input | own `src/lib/jackson/` (JsonGenerator, ObjectMapper.readTree -> JsonNode) | JSON.stringify/parse differ (escapes `\u001F` uppercase, Float.toString numbers, int/double node types, trailing tokens accepted) |
 | org.slf4j:slf4j-api 2.0.16, ch.qos.logback 1.5.21 | all logging | own `src/lib/slf4j/`, `src/lib/logback/` | message formatting and layouts ported (ARCHITECTURE.md 8) |
@@ -96,6 +101,8 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 | `java.util.concurrent` executors/futures (server) | `src/core/tools/LtThreadPoolExecutor.js`, `src/server/worker/*` (ARCHITECTURE.md 6) |
 | `BitSet` | `BitSet.js` |
 | `Optional`, `Objects.requireNonNull(x[, msg])`, `Objects.equals`, `Objects.toString` | `Objects.js` |
+| `Thread.interrupted()` in `InterruptibleCharSequence`, `Future.cancel(true)` | `src/core/tools/InterruptibleCharSequence.js` `checkInterrupted()` over the worker cancel flag (ARCHITECTURE.md 6.2) |
+| JVM-wide once-only static side effects, `System.out/err` from any thread | `jvmOnce.js` (SharedArrayBuffer gate), `System.js` (`fs.writeSync`) |
 | `ClassLoader.getResource(s)/getResourceAsStream`, `Class.forName` | `classpath.js`, `src/core/broker/DefaultClassBroker.js` |
 
 ## Package dependency notes
@@ -210,7 +217,8 @@ Every row is binding; rules and traps in SEMANTICS.md. Module paths relative to 
 
 | Java class | JS module | inventory IDs | depends on (org.languagetool packages) | step |
 |---|---|---|---|---|
-| CommonWordsDetector | `src/core/language/identifier/detector/CommonWordsDetector.js` | CORE-0313 | broker | S7 core rules/spelling/identification |
+| CommonWordsDetector | `src/core/language/identifier/detector/CommonWordsDetector.js` | CORE-0313 | broker, InternalLanguage | S7 core rules/spelling/identification |
+| InternalLanguage (port-only, D-035) | `src/core/language/identifier/detector/InternalLanguage.js` | CORE-0313 | - | S7 core rules/spelling/identification |
 | FastTextDetector | `src/core/language/identifier/detector/FastTextDetector.js` | CORE-0316 (later) | language/identifier | later |
 | NGramDetector | `src/core/language/identifier/detector/NGramDetector.js` | CORE-0316 (later) | language/identifier, noop | later |
 | UnicodeBasedDetector | `src/core/language/identifier/detector/UnicodeBasedDetector.js` | CORE-0314 | - | S7 core rules/spelling/identification |
