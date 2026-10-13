@@ -9,7 +9,7 @@
 - [x] Build/run Java (docs/inventory/BUILD.md)
 - [x] Inventory it/es/sl/ru/sk/pl approved (wave 2)
 - [x] Inventory de/en/fr approved
-- [ ] Inventory core/cli/server: revision running (R1 fixes) -> then add 2 pending rows from review/R2-de-en-fr.md -> narrow critic (sonnet) -> approved
+- [x] Inventory core/cli/server approved (2026-10-13)
 ## Phase 1 - Architecture (wave 1 scope)
 - [ ] port-architect: ARCHITECTURE.md, PORT-MAP.md, SEMANTICS.md, oracle harness design (modular: one file per area)
 - [ ] critic (one round), user approval
