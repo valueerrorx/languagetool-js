@@ -86,7 +86,7 @@ const CCC_VALUES = [1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 2
 
 // Java: n/a (generator): ccc pairs [start,value,...] over 0..10FFFF
 function deriveCcc(type, nfdMap) {
-  const swaps = (a, x) => chr(a).concat(chr(x)).normalize('NFD') === chr(x) + chr(a); // true iff 0 < ccc(x) < ccc(a)
+  const swaps = (a, x) => a !== x && chr(a).concat(chr(x)).normalize('NFD') === chr(x) + chr(a); // true iff 0 < ccc(x) < ccc(a)
   const ccc = new Map();
   const classes = []; // representatives, ascending ccc
   const marks = [];
@@ -117,7 +117,7 @@ function deriveCcc(type, nfdMap) {
   for (const x of marks) {
     let idx = 0;
     while (idx < classes.length && (swaps(classes[idx], x) || swaps(x, classes[idx]))) idx++;
-    if (idx === classes.length) throw new Error(`no ccc class for ${x.toString(16)}`);
+    if (idx === classes.length) throw new Error(`no ccc class for ${x.toString(16)} in ${classes.map((c) => c.toString(16))}`);
     ccc.set(x, CCC_VALUES[idx]);
   }
   const out = [];

@@ -5,42 +5,20 @@ import {
 } from './errors.js';
 import { valueOf } from './Objects.js';
 import { doubleToString, floatToString } from './toString.js';
-import { charToUpperCase, charToLowerCase } from './charCase.js';
+import {
+  isHighSurrogate, isLowSurrogate, isSurrogate, isBmpCodePoint, isValidCodePoint, isSupplementaryCodePoint, charCount, toCodePoint,
+  toChars, isWhitespace, toUpperCase as charToUpperCase, toLowerCase as charToLowerCase,
+} from './Character.js';
+import { toLowerCaseAt, toUpperCaseAt } from './specialCasing.js';
 
 export { stringHashCode } from './Objects.js';
 
-// ---- code point helpers (java.lang.Character, chars are numbers) ----
+// ---- code point helpers (java.lang.Character, chars are numbers; defined in Character.js) ----
 
-// Java: Character#isHighSurrogate(char)
-export const isHighSurrogate = (c) => c >= 0xd800 && c <= 0xdbff;
-// Java: Character#isLowSurrogate(char)
-export const isLowSurrogate = (c) => c >= 0xdc00 && c <= 0xdfff;
-// Java: Character#isSurrogate(char)
-export const isSurrogate = (c) => c >= 0xd800 && c <= 0xdfff;
-// Java: Character#isBmpCodePoint(int)
-export const isBmpCodePoint = (cp) => cp >>> 16 === 0;
-// Java: Character#isValidCodePoint(int)
-export const isValidCodePoint = (cp) => cp >= 0 && cp <= 0x10ffff;
-// Java: Character#isSupplementaryCodePoint(int)
-export const isSupplementaryCodePoint = (cp) => cp >= 0x10000 && cp <= 0x10ffff;
-// Java: Character#charCount(int)
-export const charCount = (cp) => (cp >= 0x10000 ? 2 : 1);
-// Java: Character#toCodePoint(char,char)
-export const toCodePoint = (high, low) => ((high << 10) + low + (0x10000 - (0xd800 << 10) - 0xdc00)) | 0;
-
-// Java: Character#toChars(int)
-export function toChars(cp) {
-  if (isBmpCodePoint(cp)) return String.fromCharCode(cp);
-  if (isValidCodePoint(cp)) return String.fromCharCode(0xd800 + ((cp - 0x10000) >> 10), 0xdc00 + (cp & 0x3ff));
-  throw new IllegalArgumentException(`Not a valid Unicode code point: 0x${(cp >>> 0).toString(16).toUpperCase()}`);
-}
-
-// Java: Character#isWhitespace(int), stable across Unicode versions
-export function isWhitespace(cp) {
-  if (cp < 0x80) return cp === 0x20 || (cp >= 0x09 && cp <= 0x0d) || (cp >= 0x1c && cp <= 0x1f);
-  if (cp === 0xa0 || cp === 0x2007 || cp === 0x202f) return false;
-  return cp === 0x1680 || (cp >= 0x2000 && cp <= 0x200a) || cp === 0x2028 || cp === 0x2029 || cp === 0x205f || cp === 0x3000;
-}
+export {
+  isHighSurrogate, isLowSurrogate, isSurrogate, isBmpCodePoint, isValidCodePoint, isSupplementaryCodePoint, charCount, toCodePoint,
+  toChars, isWhitespace,
+};
 
 // ---- bounds checks ----
 
