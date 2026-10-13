@@ -26,8 +26,13 @@ const jsonl = (t) => t.split('\n').filter(Boolean).map((l) => JSON.parse(l));
 
 function errorEnvelope(e) {
   const causes = [];
-  for (let c = e.cause; c && causes.length < 20; c = c.cause) causes.push({ class: c.constructor?.name, message: c.message ?? null });
+  for (let c = e.cause; c && causes.length < 20; c = c.cause) causes.push({ class: c.javaClass ?? c.constructor?.name, message: c.message ?? null });
   return { class: e.javaClass ?? e.constructor.name, message: e.message ?? null, causes };
+}
+
+function harnessOps() {
+  const src = readFileSync(path.join(ROOT, 'oracle/harness/src/ltjs/oracle/Harness.java'), 'utf8');
+  return new Set([...src.matchAll(/case "([^"]+)":/g)].map((m) => m[1]));
 }
 
 async function runCase(id, name) {
@@ -36,27 +41,38 @@ async function runCase(id, name) {
   const meta = JSON.parse(readFileSync(path.join(dir, 'meta.json'), 'utf8'));
   if (cs.kind !== 'harness') return { status: 'SKIP', note: `kind ${cs.kind}` };
   const reqs = jsonl(readFileSync(path.join(dir, 'requests.jsonl'), 'utf8'));
+  // ops handled by Harness.java's switch; anything else yields its "unknown op" error
+  const javaOps = harnessOps();
   const adapters = new Map();
   for (const r of reqs) {
     if (adapters.has(r.op)) continue;
     const f = path.join(ADAPTERS, `${r.op}.mjs`);
-    adapters.set(r.op, existsSync(f) ? await import(f) : { notPorted: true });
+    if (existsSync(f)) adapters.set(r.op, await import(f));
+    else if (!javaOps.has(r.op)) adapters.set(r.op, { run: () => { throw Object.assign(new Error(`unknown op: ${r.op}`), { javaClass: 'java.lang.IllegalArgumentException' }); } });
+    else adapters.set(r.op, { notPorted: true });
   }
-  if ([...adapters.values()].some((a) => a.notPorted)) return { status: 'NOT PORTED' };
   const actual = [];
+  const nonPorted = new Set();
   for (const r of reqs) {
+    const ad = adapters.get(r.op);
+    if (ad.notPorted) { actual.push(null); nonPorted.add(r.id); continue; }
     try {
-      actual.push({ id: r.id, ok: true, result: await adapters.get(r.op).run(r.args ?? {}) });
+      actual.push({ id: r.id, ok: true, result: await ad.run(r.args ?? {}) });
     } catch (e) {
+      if (e && e.notPorted === true) { actual.push(null); nonPorted.add(r.id); continue; }
       actual.push({ id: r.id, ok: false, error: errorEnvelope(e) });
     }
   }
+  if (nonPorted.size === reqs.length) return { status: 'NOT PORTED', note: `${nonPorted.size}/${reqs.length} requests not ported` };
   const norm = (t) => normalize(cs.normalize ?? [], t, { workDir: meta.workDir, tmpDir: meta.tmpDir });
   const expectedText = norm(readFileSync(path.join(dir, 'responses.jsonl'), 'utf8'));
-  const actualText = norm(actual.map((x) => JSON.stringify(x)).join('\n'));
+  // per-request notPorted: drop those requests from both sides, then compare the rest
+  const expectedLines = jsonl(expectedText).filter((x) => !nonPorted.has(x.id));
+  const actualText = norm(actual.filter(Boolean).map((x) => JSON.stringify(x)).join('\n'));
   const cmp = await getComparator(cs.compare ?? 'jsonl');
-  const diffs = cmp(jsonl(expectedText), jsonl(actualText));
-  return diffs.length ? { status: 'FAIL', diffs } : { status: 'PASS' };
+  const diffs = cmp(expectedLines, jsonl(actualText));
+  if (diffs.length) return { status: 'FAIL', diffs };
+  return nonPorted.size ? { status: 'NOT PORTED', note: `${nonPorted.size}/${reqs.length} requests not ported` } : { status: 'PASS' };
 }
 
 const ids = process.argv.slice(2).filter((a) => !a.startsWith('--'));
