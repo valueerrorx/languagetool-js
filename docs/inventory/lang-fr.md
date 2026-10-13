@@ -14,6 +14,8 @@ Notes valid for the whole file:
 - XML rule files are accepted through their `<example>` sentences (`FrenchPatternRuleTest`, core `DisambiguationRuleTest`).
 - The French POS/synthesis dictionaries come from Maven artifact `org.languagetool:french-pos-dict:0.7` (FR-0200..0201); the French speller uses the POS dictionary `french.dict` itself (no hunspell). Not present in `~/.m2/repository` at inventory time; inspected in `LanguageTool-6.9-SNAPSHOT/libs/french-pos-dict.jar`.
 - No variant-specific XML files exist for French. Rule default "on" unless stated. `later` = deferred per D-005.
+- D-021 (reduced oracle classpath = de en fr it es sl ru sk pl): behaviour that depends on "all languages on the classpath" (LanguageSpecificTest rule examples, SpellcheckerTest, `Languages.getLanguageForShortCode("en-US")` in IsEnglishWordFilter, FR-0153) is specified for that classpath. The Maven test classpath of `fr` contains only core + fr, so in the JUnit baseline IsEnglishWordFilter finds no en-US and returns null (its 11 disambiguation rules are inert); with the D-021 oracle classpath they are active.
+- D-025: no fr test uses an out-of-scope language; nothing dropped.
 
 ## Language classes and variants
 
@@ -32,7 +34,7 @@ Notes valid for the whole file:
 | FR-0011 | `CanadianFrench` "fr-CA": name "French (Canada)", [CA], default disabled [DOUBLER_UNE_CLASSE] | JF:language/CanadianFrench.java | - | - | todo |
 | FR-0012 | `SwissFrench` "fr-CH": name "French (Switzerland)", [CH], default disabled [DOUBLER_UNE_CLASSE] | JF:language/SwissFrench.java | - | - | todo |
 | FR-0013 | Language registration `language-module.properties`: French, CanadianFrench, SwissFrench, BelgianFrench | RF:../../META-INF/org/languagetool/language-module.properties | - | - | todo |
-| FR-0014 | `MessagesBundle_fr.properties`: French UI/rule message bundle | RF:MessagesBundle_fr.properties | FrenchTest (message checks) | - | todo |
+| FR-0014 | `MessagesBundle_fr.properties`: French UI/rule message bundle; semantics: file is pure ASCII with 164 `\uXXXX` escapes (Java properties unescaping, MessageFormat quoting where used) -> port must decode identically | RF:MessagesBundle_fr.properties | FrenchTest (message checks) | - | todo |
 
 ## Tokenizers, tagger, synthesizer, disambiguator
 
@@ -42,7 +44,7 @@ Notes valid for the whole file:
 | FR-0021 | Sentence tokenizer: core SRXSentenceTokenizer with French rules from core segment.srx | JF:language/French.java#createDefaultSentenceTokenizer | FrenchSentenceTokenizerTest, language/FrenchTest#testSentenceTokenizer | - | todo |
 | FR-0022 | `FrenchTagger.INSTANCE` (BaseTagger `/fr/french.dict`, Locale.FRENCH, tagLowercaseWithUppercase=false; overwriteWithManualTagger=false): ’->' normalisation, lowercase/uppercase variants, ambiguous "-Le/-Les/-Il/..." tokens, additionalTags for prefixed verbs (auto, auto-, re-, sur-) and nouns/adjectives (post-, sur-, mini-, méga-, anti-, ...; mini/méga without hyphen) copying tags with prefixed lemma | JF:tagging/fr/FrenchTagger.java | FrenchTaggerTest | - | todo |
 | FR-0023 | `FrenchSynthesizer.INSTANCE` (soros `fr/fr.sor`, `/fr/french_synth.dict`, `/fr/french_tags.txt`, "fr") | JF:synthesis/FrenchSynthesizer.java | FrenchSynthesizerTest | - | todo |
-| FR-0024 | `FrenchHybridDisambiguator`: XmlRuleDisambiguator(French.getInstance(), true) over MultiWordChunker(`/fr/multiwords.txt`, removePreviousTags) over MultiWordChunker(`/spelling_global.txt`, ignoreSpelling, tagForNotAddingTags) | JF:tagging/disambiguation/fr/FrenchHybridDisambiguator.java | FrenchRuleDisambiguatorTest, TestFrenchDisambiguator | - | todo |
+| FR-0024 | `FrenchHybridDisambiguator()`: field initializers `MultiWordChunker.getInstance("/fr/multiwords.txt", true, true, false)` (no default tag; ctor `setRemovePreviousTags(true)`, NOT ignoreSpelling), `new XmlRuleDisambiguator(French.getInstance(), true)` (always the base French rules, also for fr-BE/CA/CH), `getInstance("/spelling_global.txt", false, true, false, tagForNotAddingTags)` with `setIgnoreSpelling(true)`; `disambiguate(input[, cb])` execution order: spelling_global -> multiwords -> XML (FrenchHybridDisambiguator.java:41-64); single-arg delegates with cb=null; semantics: getInstance instances are cached per (file, flags, defaultTag) and shared JVM-wide: the spelling_global instance is the same object as DE's (DE-0028) | JF:tagging/disambiguation/fr/FrenchHybridDisambiguator.java | FrenchRuleDisambiguatorTest, TestFrenchDisambiguator | - | todo |
 | FR-0025 | `FrenchMultitokenSpeller.INSTANCE`: `/fr/multiwords.txt`, `/spelling_global.txt`, `/fr/hyphenated_words.txt` | JF:rules/fr/FrenchMultitokenSpeller.java | JLanguageToolTest#testMultitokenSpeller | - | todo |
 
 ## Java rules
@@ -82,7 +84,7 @@ Notes valid for the whole file:
 | FR-0150 | `rules/fr/grammar.xml` (9.1 MB): 5340 `<rule>`s, 507 rulegroups, 13 categories (AGREEMENT, CASING, CAT_ELISION, CAT_GRAMMAIRE, CAT_HOMONYMES_PARONYMES, CAT_MAJUSCULES, CAT_MARQUES_DE_COMMERCE, CAT_TOURS_CRITIQUES, CAT_TYPOGRAPHIE, MULTITOKEN_SPELLING, PONCTUATION_POINT, PONCTUATION_VIRGULE, SEMANTICS), 65 entities, 16792 examples, 65 off, 78 temp_off | RF:rules/fr/grammar.xml | FrenchPatternRuleTest | - | todo |
 | FR-0151 | `rules/fr/style.xml` (1.4 MB): 1680 rules, 211 rulegroups (CAT_ANGLICISMES_FOREIGN_TERMS, CAT_ARCHAISMES, CAT_CALQUES, CAT_PLEONASMES, CAT_REGIONALISMES, CAT_REGLES_DE_BASE, PONCTUATION_STYLE_OS, REPETITIONS_STYLE, STYLE), 58 entities, 2623 examples, 38 off, 9 temp_off | RF:rules/fr/style.xml | FrenchPatternRuleTest | - | todo |
 | FR-0152 | `rules/fr/remote-rule-filters.xml`: 77 rules / 17 rulegroups (AI_RULES) | RF:rules/fr/remote-rule-filters.xml | FrenchRemoteRuleFilterTest | - | later |
-| FR-0153 | `resource/fr/disambiguation.xml`: 1030 rules, 141 rulegroups, 11 entities, 17 examples | RF:resource/fr/disambiguation.xml | FrenchTest (DisambiguationRuleTest), FrenchRuleDisambiguatorTest | - | todo |
+| FR-0153 | `resource/fr/disambiguation.xml`: 1030 rules, 141 rulegroups, 11 entities, 17 examples; 11 `<filter>`s, all core `IsEnglishWordFilter` (ctor `Languages.getLanguageForShortCode("en-US")`, exception swallowed; tagger = en-US EnglishTagger (EN-0023); args formPositions[, postags]: keep only if every form is tagged (matching postag regex); count mismatch -> RuntimeException "The number of forms and postags has to be the same in disambiguation rule with filter IsEnglishWordFilter."; no en-US -> null): runtime dependency FR -> EN (see header note on D-021) | RF:resource/fr/disambiguation.xml | FrenchTest (DisambiguationRuleTest), FrenchRuleDisambiguatorTest | - | todo |
 
 ## Plain-text data resources
 
@@ -96,7 +98,7 @@ Notes valid for the whole file:
 | FR-0175 | `resource/fr/confusion_sets.txt`: ngram confusion sets (also loaded by FrenchTest check) | RF:resource/fr/confusion_sets.txt | FrenchTest | - | later |
 | FR-0176 | `resource/fr/common_words.txt`: language identifier | RF:resource/fr/common_words.txt | - | - | todo |
 | FR-0177 | `resource/fr/hunspell/spelling.txt` (454 KB), `spelling_custom.txt`: words added to speller | RF:resource/fr/hunspell/spelling*.txt | MorfologikFrenchSpellerRuleTest | - | todo |
-| FR-0178 | `resource/fr/hunspell/ignore.txt`, `prohibit.txt` | RF:resource/fr/hunspell/ignore.txt, prohibit.txt | MorfologikFrenchSpellerRuleTest | - | todo |
+| FR-0178 | `resource/fr/hunspell/ignore.txt`, `prohibit.txt` | RF:resource/fr/hunspell/ignore.txt, prohibit.txt | MorfologikFrenchSpellerRuleTest, LanguageSpecificSpellcheckerTest (core SpellcheckerTest: no word in both prohibit.txt and spelling.txt for any language on the classpath, else RuntimeException "Word(s) appear in both spelling.txt and prohibit.txt - this doesn't make sense: ...") | - | todo |
 | FR-0179 | `rules/fr/replace.txt`, `replace_custom.txt`: FR_SIMPLE_REPLACE_SIMPLE data | RF:rules/fr/replace*.txt | SimpleReplaceRuleTest | - | todo |
 | FR-0180 | `rules/fr/synonyms.txt`: FrenchRepeatedWordsRule | RF:rules/fr/synonyms.txt | FrenchRepeatedWordsRuleTest | - | todo |
 | FR-0181 | `resource/fr/fr.sor`: Soros number-to-words for FrenchSynthesizer | RF:resource/fr/fr.sor | FrenchSynthesizerTest | - | todo |
@@ -123,6 +125,8 @@ Counts for `languagetool-language-modules/fr`:
 - XML rule files: 3 + disambiguation.xml (FR-0150..0153); `<rule>` elements in grammar/style: 7020; disambiguation rules: 1030.
 - Resource files (main): 26 (incl. META-INF properties and MessagesBundle_fr). Runtime-relevant: FR-0013, FR-0014, FR-0150..0153, FR-0170..0181. Files without runtime behaviour (no ID): `README_lexique.txt`, `hunspell/README_fr.txt`, `tagset.txt` (documentation).
 - External artifacts: french-pos-dict 0.7 (FR-0200..0201).
-- Test classes: 23 in fr/src/test/java, all mapped (FrenchConcurrencyTest -> FR-0001; GrammalecteRuleTest, FrenchConfusionProbabilityRuleTest, FrenchRemoteRuleFilterTest -> `later` IDs).
+- Test classes: 23 in fr/src/test/java, all mapped (round-1 fix: LanguageSpecificSpellcheckerTest -> FR-0178 was previously unmapped; no test uses an out-of-scope language, D-025; FrenchConcurrencyTest -> FR-0001; GrammalecteRuleTest, FrenchConfusionProbabilityRuleTest, FrenchRemoteRuleFilterTest -> `later` IDs).
 
-Totals: 60 IDs; todo 54, later 6 (FR-0003, FR-0004, FR-0046, FR-0047, FR-0152, FR-0175), spec 0, ported 0, verified 0.
+- Runtime dependency on other in-scope modules: FR-0153 (IsEnglishWordFilter -> en-US tagger, D-021).
+
+Totals: 60 IDs (n/a excluded); todo 54, later 6 (FR-0003, FR-0004, FR-0046, FR-0047, FR-0152, FR-0175), spec 0, ported 0, verified 0; n/a 0.
