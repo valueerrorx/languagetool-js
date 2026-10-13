@@ -3,8 +3,10 @@ import {
   javaTrim, javaStrip, stripLeading, stripTrailing, javaIsBlank, isEmpty, javaReplace, replaceChar, javaCompare,
   compareToIgnoreCase, equalsIgnoreCase, regionMatches, contentEquals, charAt, substring, subSequence, codePointAt,
   codePointBefore, codePointCount, offsetByCodePoints, codePoints, chars, indexOf, lastIndexOf, indexOfChar, contains,
-  startsWith, endsWith, concat, repeat, join, lines, StringBuilder, CASE_INSENSITIVE_ORDER, stringHashCode,
+  startsWith, endsWith, concat, toUpperCase, toLowerCase, repeat, join, lines, StringBuilder, CASE_INSENSITIVE_ORDER, stringHashCode,
 } from '../../src/lib/java/strings.js';
+import * as C from '../../src/lib/java/Character.js';
+import { normalize, Form } from '../../src/lib/java/Normalizer.js';
 import { StringTokenizer } from '../../src/lib/java/StringTokenizer.js';
 import { objectsHash, arraysHashCode, listHashCode, setHashCode, mapHashCode } from '../../src/lib/java/hash.js';
 import { Objects } from '../../src/lib/java/Objects.js';
@@ -158,8 +160,10 @@ export function run(a) {
       if (v === null) throw new NullPointerException();
       return I(Objects.hashCode(v));
     }
-    case 'toUpperCase': case 'toLowerCase': throw new NotPorted(`${fn} case mapping (S09)`);
-    case 'charCase': case 'charInfo': throw new NotPorted(`${fn} Character tables (S09)`);
+    case 'toUpperCase': return strOut('locale' in a ? toUpperCase(s, locale(str(a, 'locale'))) : toUpperCase(s));
+    case 'toLowerCase': return strOut('locale' in a ? toLowerCase(s, locale(str(a, 'locale'))) : toLowerCase(s));
+    case 'charCase': return charCase(asInt(a.cp));
+    case 'charInfo': return charInfo(asInt(a.cp));
     case 'charAt': return num('char', charAt(s, asInt(a.i)));
     case 'substring': return strOut('e' in a ? substring(s, asInt(a.b), asInt(a.e)) : substring(s, asInt(a.b)));
     case 'subSequence': return strOut(subSequence(s, asInt(a.b), asInt(a.e)));
@@ -182,11 +186,54 @@ export function run(a) {
     case 'valueOfNull': return `${Objects.toString(null)}:${`x${null}`}:${Objects.toString(null)}:${Objects.toString(null, 'd')}`;
     case 'sb': return sb(a);
     case 'tokenizer': return tokenizer(a, s, t);
-    case 'normalize': throw new NotPorted('Normalizer (S09)');
+    case 'normalize': return strOut(normalize(s, Form.valueOf(t)));
     case 'bytes': case 'fromBytes': throw new NotPorted('charsets (S24)');
     case 'caseInsensitiveOrder': return I(CASE_INSENSITIVE_ORDER(s, t));
     default: throw new IllegalArgumentException(`unknown fn: ${fn}`);
   }
+}
+
+// Java: Probe#locale(String); language tag, ROOT and default (en_US) only
+function locale(tag) {
+  if (tag === null || tag === 'default') return 'en';
+  if (tag === 'ROOT') return '';
+  return tag;
+}
+
+// Java: ProbeStrings#charCase(int)
+function charCase(cp) {
+  const m = {};
+  m.toUpperCase = C.toUpperCase(cp);
+  m.toLowerCase = C.toLowerCase(cp);
+  m.toTitleCase = C.toTitleCase(cp);
+  if (cp < 0x10000) {
+    m.charToUpperCase = C.toUpperCase(cp);
+    m.charToLowerCase = C.toLowerCase(cp);
+  }
+  const s = C.toChars(cp);
+  m.strUpper = units(toUpperCase(s, ''));
+  m.strLower = units(toLowerCase(s, ''));
+  m.strUpperTr = units(toUpperCase(s, 'tr'));
+  m.strLowerTr = units(toLowerCase(s, 'tr'));
+  m.strUpperDefault = units(toUpperCase(s));
+  m.strLowerDefault = units(toLowerCase(s));
+  return m;
+}
+
+// Java: ProbeStrings#charInfo(int)
+function charInfo(cp) {
+  const m = {};
+  for (const k of ['isWhitespace', 'isSpaceChar', 'isLetter', 'isDigit', 'isLetterOrDigit', 'isAlphabetic', 'isUpperCase', 'isLowerCase',
+    'isTitleCase', 'isISOControl', 'isIdeographic', 'isJavaIdentifierStart']) m[k] = C[k](cp);
+  m.isSurrogate = cp < 0x10000 && C.isSurrogate(cp);
+  m.type = C.getType(cp);
+  m.digit10 = C.digit(cp, 10);
+  m.digit16 = C.digit(cp, 16);
+  m.numericValue = C.getNumericValue(cp);
+  m.script = C.UnicodeScript.of(cp).name();
+  m.charCount = C.charCount(cp);
+  m.isValidCodePoint = C.isValidCodePoint(cp);
+  return m;
 }
 
 // Java: ProbeStrings#sb(JsonNode)

@@ -104,7 +104,7 @@ export function isEmpty(s) {
 // language of a Locale argument: a Locale-like object (getLanguage()) or a language code string; null -> NPE as in StringLatin1/UTF16#toLowerCase
 function localeLanguage(locale) {
   if (locale === null) throw new NullPointerException();
-  return typeof locale === 'string' ? locale.toLowerCase() : locale.getLanguage();
+  return typeof locale === 'string' ? locale.split(/[-_]/)[0].toLowerCase() : locale.getLanguage(); // string = language tag
 }
 
 // default Locale (D-018: en_US); language only is needed for case mapping
