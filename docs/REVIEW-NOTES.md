@@ -7,3 +7,4 @@
 - Comments: one line only, also file headers.
 - Oracle adapters must reproduce Harness.java error paths for malformed input.
 - int helpers must never return -0 (use `| 0`); adapters/tests compare with Object.is so -0 is not hidden by printing.
+- JDK overload sets: pick JS variant by Java static type (P15); NPE texts per entry point (P15).

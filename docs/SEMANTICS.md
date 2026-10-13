@@ -189,3 +189,9 @@ Observable Java hash-order sites (use the order helper; elsewhere JS `Map`/`Set`
 ### P14 Boxed number equality (from S02/S03 review)
 - Trap: JS number is ambiguous between Java Integer/Long/Double. -> Rule: Objects.equals/hash/toString on numbers use Object.is semantics and print -0 as "-0.0" (Java ints never produce -0, so this matches both). Where a Java Double holds an integral value and is printed, the caller uses doubleToString explicitly. -> Helper: Objects.js (single shared valueOf/equals/hashCode).
 - P14b: Java `new X((Throwable) null)` is ported as `new X(null, null)`; `new X(null)` means `(String) null`. (S02 review)
+
+### P15 Typed overloads and NPE texts (from S06 review)
+- StringBuilder.append: choose the variant by the Java static type, never by value: `append` (String/Object/int), `appendLong` (BigInt), `appendDouble`, `appendFloat`, `appendChar`. `append(number)` accepts only safe integers (Java int); anything else throws TypeError. Same rule for any other JDK overload set (insert, valueOf, ...).
+- Hashing boxed numbers: Objects.hash/Arrays.hashCode on Java Double/Float/Long/Short values require typed wrappers (`typedHash`) — a plain JS number hashes as Integer.
+- JDK helpful NullPointerException texts depend on the JDK entry point (e.g. indexOf(String) -> `"String.coder()" because "str"`, indexOf(String,int) -> `field "value" because "tgtStr"`). Reproduce them per entry point in src/lib/java helpers; texts naming caller locals (e.g. `"s"`) are not reproducible and are only produced where they reach observable output (HTTP 500 bodies, CLI traces) — such sites get oracle fixtures.
+- Null receivers: helpers taking the receiver as first arg may throw TypeError for null; ported code where Java can call a method on null and the NPE is observable must check explicitly and throw the Java NPE.
