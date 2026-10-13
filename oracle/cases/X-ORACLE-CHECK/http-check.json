@@ -1,0 +1,58 @@
+{
+  "kind": "http",
+  "clock": "fixed",
+  "description": "/v2/check de-DE and en-US, error path, languages",
+  "compare": "api",
+  "normalize": [
+    "buildDate",
+    "commit"
+  ],
+  "serverArgs": [],
+  "requests": [
+    {
+      "method": "POST",
+      "path": "/v2/check",
+      "params": {
+        "language": "de-DE",
+        "text": "Das ist ein Tesst. Das ist ist gut."
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/v2/check",
+      "params": {
+        "language": "en-US",
+        "text": "This are a test.",
+        "level": "picky"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/v2/check",
+      "params": {
+        "language": "fr",
+        "text": "Je suis aller au marché."
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/v2/check",
+      "params": {
+        "language": "xx-nonexistent",
+        "text": "x"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/v2/check",
+      "params": {
+        "text": "Das ist ein Tesst.",
+        "language": "auto"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/v2/healthcheck"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "kind": "harness",
+  "clock": "fixed",
+  "description": "check options: disabled rule, enabledOnly, level picky, mother tongue, error path",
+  "compare": "check",
+  "normalize": [],
+  "ops": [
+    {
+      "op": "check",
+      "args": {
+        "lang": "de-DE",
+        "text": "Das ist ist gut. Das ist ein Tesst.",
+        "disabledRules": [
+          "GERMAN_WORD_REPEAT_RULE"
+        ]
+      }
+    },
+    {
+      "op": "check",
+      "args": {
+        "lang": "de-DE",
+        "text": "Das ist ist gut. Das ist ein Tesst.",
+        "enabledRules": [
+          "GERMAN_WORD_REPEAT_RULE"
+        ],
+        "enabledOnly": true
+      }
+    },
+    {
+      "op": "check",
+      "args": {
+        "lang": "en-US",
+        "text": "This is a very good and really nice test, it is fine.",
+        "level": "PICKY"
+      }
+    },
+    {
+      "op": "check",
+      "args": {
+        "lang": "en-US",
+        "text": "I has a apple.",
+        "motherTongue": "de-DE"
+      }
+    },
+    {
+      "op": "check",
+      "args": {
+        "lang": "xx-nonexistent",
+        "text": "x"
+      }
+    }
+  ]
+}

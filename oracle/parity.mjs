@@ -1,5 +1,6 @@
 // npm run parity [-- <ID>...]   (docs/ORACLE.md section 9)
-import { existsSync, readFileSync, readdirSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { ROOT } from './lib/env.mjs';
 import { normalize } from './lib/normalizers.mjs';
@@ -35,10 +36,48 @@ function harnessOps() {
   return new Set([...src.matchAll(/case "([^"]+)":/g)].map((m) => m[1]));
 }
 
+// cli/http: the JS side is oracle/adapters/<kind>.mjs; run(cs, {workDir, port?}) returns the same shape as the Java side.
+async function runKindCase(cs, meta, dir) {
+  const f = path.join(ADAPTERS, `${cs.kind}.mjs`);
+  const ad = existsSync(f) ? await import(f) : { notPorted: true };
+  if (ad.notPorted) return { status: 'NOT PORTED', note: `${cs.kind} adapter not ported` };
+  const workDir = mkdtempSync(path.join(tmpdir(), 'ltjs-parity-'));
+  mkdirSync(path.join(workDir, 'tmp'));
+  try {
+    const actual = await ad.run(cs, { workDir });
+    const ctxE = { workDir: meta.workDir, tmpDir: meta.tmpDir };
+    const ctxA = { workDir, tmpDir: path.join(workDir, 'tmp') };
+    const cmp = await getComparator(cs.compare ?? cs.kind);
+    let diffs;
+    if (cs.kind === 'cli') {
+      const exp = {
+        exitCode: Number(readFileSync(path.join(dir, 'exit.txt'), 'utf8')),
+        stdout: readFileSync(path.join(dir, 'stdout.txt'), 'utf8'),
+        stderr: readFileSync(path.join(dir, 'stderr.txt'), 'utf8'),
+        files: JSON.parse(readFileSync(path.join(dir, 'files.json'), 'utf8')),
+      };
+      const n = (t, c) => normalize(cs.normalize ?? [], t, c);
+      exp.stdout = n(exp.stdout, ctxE); exp.stderr = n(exp.stderr, ctxE);
+      actual.stdout = n(actual.stdout, ctxA); actual.stderr = n(actual.stderr, ctxA);
+      diffs = cmp(exp, actual, { normalizers: cs.normalize ?? [], json: (cs.args ?? []).includes('--json') || (cs.args ?? []).includes('-json') });
+    } else {
+      const exp = JSON.parse(readFileSync(path.join(dir, 'responses.json'), 'utf8'));
+      diffs = cmp(exp, actual.responses ?? actual, { normalizers: cs.normalize ?? [], ctx: ctxA });
+    }
+    return diffs.length ? { status: 'FAIL', diffs } : { status: 'PASS' };
+  } catch (e) {
+    if (e && e.notPorted === true) return { status: 'NOT PORTED', note: `${cs.kind} not ported` };
+    throw e;
+  } finally {
+    rmSync(workDir, { recursive: true, force: true });
+  }
+}
+
 async function runCase(id, name) {
   const dir = path.join(GOLDEN, id, name);
   const cs = JSON.parse(readFileSync(path.join(dir, 'case.json'), 'utf8'));
   const meta = JSON.parse(readFileSync(path.join(dir, 'meta.json'), 'utf8'));
+  if (cs.kind === 'cli' || cs.kind === 'http') return runKindCase(cs, meta, dir);
   if (cs.kind !== 'harness') return { status: 'SKIP', note: `kind ${cs.kind}` };
   const reqs = jsonl(readFileSync(path.join(dir, 'requests.jsonl'), 'utf8'));
   // ops handled by Harness.java's switch; anything else yields its "unknown op" error

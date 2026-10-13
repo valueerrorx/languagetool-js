@@ -3,6 +3,8 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, w
 import path from 'node:path';
 import { ROOT, GENERATOR_VERSION, InfraError, PIN, FIXED_TIME, LT, preflight, sha256File } from './lib/env.mjs';
 import { runHarness } from './lib/harness-run.mjs';
+import { runCli } from './lib/cli-run.mjs';
+import { runHttp, stopServers } from './lib/http-run.mjs';
 
 const CASES = path.join(ROOT, 'oracle/cases');
 const GOLDEN = path.join(ROOT, 'tests/golden');
@@ -25,16 +27,26 @@ async function generate(id, caseName, javaLine) {
     const name = f.replace(/\.json$/, '');
     const raw = readFileSync(path.join(dir, f));
     const cs = JSON.parse(raw);
-    if (cs.kind !== 'harness') throw new InfraError(`kind ${cs.kind} not supported yet (${id}/${name})`);
-    const r = await runHarness(cs);
+    const kind = cs.kind ?? 'harness';
+    if (!['harness', 'cli', 'http'].includes(kind)) throw new InfraError(`kind ${cs.kind} not supported (${id}/${name})`);
+    const r = kind === 'harness' ? await runHarness(cs) : kind === 'cli' ? await runCli(cs) : await runHttp(cs);
     const tmp = path.join(GOLDEN, id, `.${name}.tmp`);
     rmSync(tmp, { recursive: true, force: true });
     mkdirSync(tmp, { recursive: true });
     writeFileSync(path.join(tmp, 'case.json'), raw);
-    writeFileSync(path.join(tmp, 'requests.jsonl'), r.requests);
-    writeFileSync(path.join(tmp, 'responses.jsonl'), r.responses);
-    writeFileSync(path.join(tmp, 'stderr.bin'), r.stderr);
-    writeFileSync(path.join(tmp, 'exit.txt'), `${r.exitCode}\n`);
+    if (kind === 'harness') {
+      writeFileSync(path.join(tmp, 'requests.jsonl'), r.requests);
+      writeFileSync(path.join(tmp, 'responses.jsonl'), r.responses);
+      writeFileSync(path.join(tmp, 'stderr.bin'), r.stderr);
+      writeFileSync(path.join(tmp, 'exit.txt'), `${r.exitCode}\n`);
+    } else if (kind === 'cli') {
+      writeFileSync(path.join(tmp, 'stdout.txt'), r.stdout);
+      writeFileSync(path.join(tmp, 'stderr.txt'), r.stderr);
+      writeFileSync(path.join(tmp, 'exit.txt'), `${r.exitCode}\n`);
+      writeFileSync(path.join(tmp, 'files.json'), JSON.stringify(r.files, null, 2) + '\n');
+    } else {
+      writeFileSync(path.join(tmp, 'responses.json'), JSON.stringify(r.responses, null, 2) + '\n');
+    }
     writeFileSync(path.join(tmp, 'meta.json'), JSON.stringify({
       java: javaLine, pin: PIN, entryJarSha256: sha256File(path.join(LT, 'languagetool-server.jar')),
       clock: cs.clock === 'fixed' ? `fixed @${FIXED_TIME} Europe/Vienna` : 'real',
@@ -44,9 +56,10 @@ async function generate(id, caseName, javaLine) {
     const final = path.join(GOLDEN, id, name);
     rmSync(final, { recursive: true, force: true });
     renameSync(tmp, final);
-    rmSync(r.workDir, { recursive: true, force: true });
+    if (kind !== 'http') rmSync(r.workDir, { recursive: true, force: true });
     n++;
-    console.log(`  ${id}/${name}: exit ${r.exitCode}, ${r.responses.split('\n').filter(Boolean).length} responses`);
+    const cnt = kind === 'harness' ? `${r.responses.split('\n').filter(Boolean).length} responses` : kind === 'http' ? `${r.responses.length} responses` : 'cli';
+    console.log(`  ${id}/${name}: ${kind} ${r.exitCode !== undefined ? `exit ${r.exitCode}, ` : ''}${cnt}`);
   }
   return n;
 }
@@ -69,6 +82,9 @@ try {
   console.log(`oracle: ${total} cases written`);
   if (argv.includes('--selftest') && !checkSelftest()) process.exitCode = 1;
 } catch (e) {
+  stopServers();
   if (e instanceof InfraError) { console.error(`oracle: ${e.message}`); process.exit(2); }
   throw e;
 }
+stopServers();
+process.exit(process.exitCode ?? 0);

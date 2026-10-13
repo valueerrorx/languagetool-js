@@ -55,6 +55,11 @@ public class Harness {
       case "unicode-dump": return UnicodeDump.run(a);
       case "locale-dump": return LocaleDump.run(a);
       case "probe-collections": return ProbeCollections.run(a);
+      case "check": return ContentOps.check(a);
+      case "analyze": return ContentOps.analyze(a);
+      case "rules-list": return ContentOps.rulesList(a);
+      case "rule-examples": return ContentOps.ruleExamples(a);
+      case "disambiguation-examples": return ContentOps.disambiguationExamples(a);
       default: throw new IllegalArgumentException("unknown op: " + op);
     }
   }
