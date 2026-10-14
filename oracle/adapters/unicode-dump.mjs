@@ -3,6 +3,7 @@ import * as C from '../../src/lib/java/Character.js';
 import { toLowerCase, toUpperCase, equalsIgnoreCase } from '../../src/lib/java/strings.js';
 import { normalize, Form } from '../../src/lib/java/Normalizer.js';
 import { IllegalArgumentException } from '../../src/lib/java/errors.js';
+import { Pattern } from '../../src/lib/java/regex/index.js';
 
 const MAX = 0x10ffff;
 const JAVA_VERSION = '17.0.20.1'; // JDK 17 of the pinned oracle environment (docs/ORACLE.md)
@@ -124,8 +125,21 @@ export function run(a) {
       m.sequences = (a.strings ?? []).map((s) => [s, normalize(s, Form.NFC), normalize(s, Form.NFD), normalize(s, Form.NFKC), normalize(s, Form.NFKD)]);
       break;
     }
-    case 'pattern':
-      throw Object.assign(new Error('NOT PORTED: Pattern classes (S15-S18)'), { notPorted: true });
+    case 'pattern': {
+      m.note = 'per name: flat runs [start,len,0|1] of Pattern.compile(regex,flags).matcher(1-char-or-surrogate-pair string).matches() over all code points';
+      const res = {};
+      for (const n of a.classes) {
+        const flags = n.flags !== undefined ? n.flags : 0;
+        try {
+          const p = Pattern.compile(n.regex, flags);
+          res[n.name] = rle((cp) => (p.matchesText(C.toChars(cp)) ? 1 : 0));
+        } catch (t) {
+          res[n.name] = `ERROR ${t.javaClass}: ${t.getMessage()}`;
+        }
+      }
+      m.classes = res;
+      break;
+    }
     default:
       throw new IllegalArgumentException(`unknown unicode-dump part: ${part}`);
   }

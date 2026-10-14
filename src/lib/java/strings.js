@@ -718,3 +718,6 @@ export class StringBuilder {
     return this._s;
   }
 }
+
+// regex based String methods (split, replaceAll, replaceFirst, matches) live with the regex port
+export { javaSplit, javaReplaceAll, javaReplaceFirst, javaMatches } from './regex/index.js';

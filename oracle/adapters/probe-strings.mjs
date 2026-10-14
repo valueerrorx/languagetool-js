@@ -10,6 +10,7 @@ import { normalize, Form } from '../../src/lib/java/Normalizer.js';
 import { StringTokenizer } from '../../src/lib/java/StringTokenizer.js';
 import { objectsHash, arraysHashCode, listHashCode, setHashCode, mapHashCode } from '../../src/lib/java/hash.js';
 import { Objects } from '../../src/lib/java/Objects.js';
+import { Pattern, Matcher, javaSplit, javaReplaceAll, javaReplaceFirst, javaMatches } from '../../src/lib/java/regex/index.js';
 import { Integer } from '../../src/lib/java/int.js';
 import { Long } from '../../src/lib/java/long.js';
 import { Float } from '../../src/lib/java/float.js';
@@ -135,8 +136,12 @@ export function run(a) {
     case 'isEmpty': return isEmpty(s);
     case 'replace': return strOut(javaReplace(s, t, str(a, 'u')));
     case 'replaceChar': return strOut(replaceChar(s, charAt(t, 0), charAt(str(a, 'u'), 0)));
-    case 'replaceAll': case 'replaceFirst': case 'matches': case 'quote': case 'quoteReplacement': case 'split':
-      throw new NotPorted(`regex ${fn} (S15-S18)`);
+    case 'replaceAll': return strOut(javaReplaceAll(s, t, str(a, 'u')));
+    case 'replaceFirst': return strOut(javaReplaceFirst(s, t, str(a, 'u')));
+    case 'matches': return javaMatches(s, t);
+    case 'quote': return strOut(Pattern.quote(s));
+    case 'quoteReplacement': return strOut(Matcher.quoteReplacement(s));
+    case 'split': return a.limit !== undefined && a.limit !== null ? javaSplit(s, t, asInt(a.limit)) : javaSplit(s, t);
     case 'compareTo': return I(javaCompare(s, t));
     case 'compareToIgnoreCase': return I(compareToIgnoreCase(s, t));
     case 'equalsIgnoreCase': return s === null ? 'n/a' : equalsIgnoreCase(s, t);
