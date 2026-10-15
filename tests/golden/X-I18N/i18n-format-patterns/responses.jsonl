@@ -1,0 +1,35 @@
+{"id":1,"ok":true,"result":{"pattern":"plain","result":"plain"}}
+{"id":2,"ok":true,"result":{"pattern":"It's","result":"Its"}}
+{"id":3,"ok":true,"result":{"pattern":"It''s","result":"It's"}}
+{"id":4,"ok":true,"result":{"pattern":"'{0}'","result":"{0}"}}
+{"id":5,"ok":true,"result":{"pattern":"''{0}''","result":"'{0}'"}}
+{"id":6,"ok":true,"result":{"pattern":"'{'0}","result":"{0}"}}
+{"id":7,"ok":true,"result":{"pattern":"{0}","result":"{0}"}}
+{"id":8,"ok":true,"result":{"pattern":"{0}{1}{0}","result":"aba"}}
+{"id":9,"ok":true,"result":{"pattern":"{1}","result":"{1}"}}
+{"id":10,"ok":true,"result":{"pattern":"{0} {0}","result":"1,000 1,000"}}
+{"id":11,"ok":true,"result":{"pattern":"{0,number}","result":"1,234.568"}}
+{"id":12,"ok":true,"result":{"pattern":"{0,number,#.##}","result":"1234.57"}}
+{"id":13,"ok":true,"result":{"pattern":"{0,number,integer}","result":"2"}}
+{"id":14,"ok":true,"result":{"pattern":"{0,number,percent}","result":"26%"}}
+{"id":15,"ok":true,"result":{"pattern":"{0,choice,0#none|1#one|1<many {0}}","result":"none"}}
+{"id":16,"ok":true,"result":{"pattern":"{0,choice,0#none|1#one|1<many {0}}","result":"one"}}
+{"id":17,"ok":true,"result":{"pattern":"{0,choice,0#none|1#one|1<many {0}}","result":"many 5"}}
+{"id":18,"ok":true,"result":{"pattern":"{0,date}","result":"Mar 15, 2026"}}
+{"id":19,"ok":true,"result":{"pattern":"{0,time}","result":"9:40:00 AM"}}
+{"id":20,"ok":true,"result":{"pattern":"{0,date,short}","result":"3/15/26"}}
+{"id":21,"ok":true,"result":{"pattern":"{0}","result":"3/15/26, 9:40 AM"}}
+{"id":22,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Unmatched braces in the pattern.","causes":[]}}
+{"id":23,"ok":true,"result":{"pattern":"}","result":"}"}}
+{"id":24,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Unmatched braces in the pattern.","causes":[]}}
+{"id":25,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"can't parse argument number: a","causes":[{"class":"java.lang.NumberFormatException","message":"For input string: \"a\""}]}}
+{"id":26,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"negative argument number: -1","causes":[]}}
+{"id":27,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"unknown format type: foo","causes":[]}}
+{"id":28,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"Unmatched braces in the pattern.","causes":[]}}
+{"id":29,"ok":false,"error":{"class":"java.lang.IllegalArgumentException","message":"can't parse argument number:  0 ","causes":[{"class":"java.lang.NumberFormatException","message":"For input string: \" 0 \""}]}}
+{"id":30,"ok":true,"result":{"pattern":"{0}\n{1}\t","result":"a\nb\t"}}
+{"id":31,"ok":true,"result":{"pattern":"{10}","result":"{10}"}}
+{"id":32,"ok":true,"result":{"pattern":"{0}","result":"\u00FC\uD83D\uDE00"}}
+{"id":33,"ok":true,"result":{"pattern":"\u00DCn\u00EF {0} \u00E4","result":"\u00DCn\u00EF \u00DF \u00E4"}}
+{"id":34,"ok":true,"result":{"pattern":"{0}","result":"0"}}
+{"id":35,"ok":true,"result":{"pattern":"{0}","result":"100,000,000,000"}}

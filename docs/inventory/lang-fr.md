@@ -34,7 +34,7 @@ Notes valid for the whole file:
 | FR-0011 | `CanadianFrench` "fr-CA": name "French (Canada)", [CA], default disabled [DOUBLER_UNE_CLASSE] | JF:language/CanadianFrench.java | - | - | todo |
 | FR-0012 | `SwissFrench` "fr-CH": name "French (Switzerland)", [CH], default disabled [DOUBLER_UNE_CLASSE] | JF:language/SwissFrench.java | - | - | todo |
 | FR-0013 | Language registration `language-module.properties`: French, CanadianFrench, SwissFrench, BelgianFrench | RF:../../META-INF/org/languagetool/language-module.properties | - | - | todo |
-| FR-0014 | `MessagesBundle_fr.properties`: French UI/rule message bundle; semantics: file is pure ASCII with 164 `\uXXXX` escapes (Java properties unescaping, MessageFormat quoting where used) -> port must decode identically | RF:MessagesBundle_fr.properties | FrenchTest (message checks) | - | todo |
+| FR-0014 | `MessagesBundle_fr.properties`: French UI/rule message bundle; semantics: file is pure ASCII with 164 `\uXXXX` escapes (Java properties unescaping, MessageFormat quoting where used) -> port must decode identically | RF:MessagesBundle_fr.properties | FrenchTest (message checks) | - | verified |
 
 ## Tokenizers, tagger, synthesizer, disambiguator
 

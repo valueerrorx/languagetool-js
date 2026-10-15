@@ -1,0 +1,78 @@
+// npm run resources: copies the Java runtime resources byte-exact into resources/ (classpath layout) and writes MANIFEST.sha256.
+import { createHash } from 'node:crypto';
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { readZipEntries } from './lib/zip.mjs';
+import { writeBuildInfo } from './build-info.mjs';
+
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const SRC = process.env.LTJS_JAVA_SRC ?? path.join(ROOT, 'oracle/java-src');
+const OUT = path.join(ROOT, 'resources');
+const DIST = path.join(SRC, 'languagetool-standalone/target/LanguageTool-6.9-SNAPSHOT/LanguageTool-6.9-SNAPSHOT/libs');
+
+// classpath order: first module wins on duplicate paths
+const MODULES = ['languagetool-core', 'languagetool-commandline', 'languagetool-server', 'languagetool-language-modules/de', 'languagetool-language-modules/en', 'languagetool-language-modules/fr'];
+const JARS = ['german-pos-dict', 'english-pos-dict', 'french-pos-dict', 'opennlp-chunk-models', 'opennlp-postag-models', 'opennlp-tokenize-models', 'jwordsplitter', 'language-detector'];
+
+const files = new Map(); // relative path -> { data(): Buffer, origin }
+const conflicts = [];
+
+// a path present in several classpath entries keeps the first copy; further copies go to .dup/<n>/<path> (Java ClassLoader#getResources returns all)
+function add(rel, origin, data) {
+  const old = files.get(rel);
+  if (old) {
+    if (!old.read().equals(data())) conflicts.push(`${rel}: ${old.origin} vs ${origin} (differs, first wins for getResource)`);
+    let n = 1;
+    while (files.has(`.dup/${n}/${rel}`)) n++;
+    files.set(`.dup/${n}/${rel}`, { origin, read: data });
+    return;
+  }
+  files.set(rel, { origin, read: data });
+}
+
+function walk(dir, base, cb) {
+  for (const e of readdirSync(dir, { withFileTypes: true })) {
+    const p = path.join(dir, e.name);
+    if (e.isDirectory()) walk(p, `${base}${e.name}/`, cb);
+    else if (e.isFile()) cb(p, `${base}${e.name}`);
+  }
+}
+
+for (const m of MODULES) {
+  const dir = path.join(SRC, m, 'src/main/resources');
+  if (!existsSync(dir)) throw new Error(`missing ${dir}`);
+  walk(dir, '', (p, rel) => add(rel, m, () => readFileSync(p)));
+}
+// message bundles of all other language modules (JLanguageTool.getMessageBundle resolves every UI language, X-I18N)
+for (const m of readdirSync(path.join(SRC, 'languagetool-language-modules')).sort()) {
+  if (MODULES.includes(`languagetool-language-modules/${m}`)) continue;
+  const dir = path.join(SRC, 'languagetool-language-modules', m, 'src/main/resources');
+  if (!existsSync(dir)) continue;
+  walk(dir, '', (p, rel) => {
+    if (/(^|\/)MessagesBundle[^/]*\.properties$/.test(rel)) add(rel, `languagetool-language-modules/${m}`, () => readFileSync(p));
+  });
+}
+for (const j of JARS) {
+  const f = path.join(DIST, `${j}.jar`);
+  if (!existsSync(f)) throw new Error(`missing ${f} (build the distribution, docs/inventory/BUILD.md)`);
+  for (const e of readZipEntries(f)) {
+    if (e.name.startsWith('META-INF/') || e.name.endsWith('.class')) continue;
+    add(e.name, `${j}.jar`, () => e.read());
+  }
+}
+
+rmSync(OUT, { recursive: true, force: true });
+const manifest = [];
+for (const rel of [...files.keys()].sort()) {
+  const data = files.get(rel).read();
+  const target = path.join(OUT, rel);
+  mkdirSync(path.dirname(target), { recursive: true });
+  writeFileSync(target, data);
+  manifest.push(`${createHash('sha256').update(data).digest('hex')}  ${rel}`);
+}
+writeFileSync(path.join(OUT, 'MANIFEST.sha256'), `${manifest.join('\n')}\n`);
+writeBuildInfo(SRC, OUT);
+console.log(`resources: ${files.size} files, ${conflicts.length} conflicts`);
+for (const c of conflicts) console.log(`  conflict ${c}`);
+if (!statSync(OUT).isDirectory()) process.exit(1);

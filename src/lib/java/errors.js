@@ -34,6 +34,11 @@ export class Throwable extends Error {
     return this.constructor.FQCN;
   }
 
+  // JS-side view of Throwable#getCause() for generic error reporters (parity envelope)
+  get cause() {
+    return this._cause ?? undefined;
+  }
+
   // Java: Throwable#getMessage()
   getMessage() {
     return this.message;
@@ -143,6 +148,7 @@ export const ArrayIndexOutOfBoundsException = defineThrowable('ArrayIndexOutOfBo
 export const StringIndexOutOfBoundsException = defineThrowable('StringIndexOutOfBoundsException', IndexOutOfBoundsException, 'java.lang.StringIndexOutOfBoundsException');
 export const NegativeArraySizeException = defineThrowable('NegativeArraySizeException', RuntimeException, 'java.lang.NegativeArraySizeException');
 export const ConcurrentModificationException = defineThrowable('ConcurrentModificationException', RuntimeException, 'java.util.ConcurrentModificationException');
+export const DateTimeParseException = defineThrowable('DateTimeParseException', RuntimeException, 'java.time.format.DateTimeParseException');
 export const NoSuchElementException = defineThrowable('NoSuchElementException', RuntimeException, 'java.util.NoSuchElementException');
 export const InterruptedException = defineThrowable('InterruptedException', Exception, 'java.lang.InterruptedException');
 export const CloneNotSupportedException = defineThrowable('CloneNotSupportedException', Exception, 'java.lang.CloneNotSupportedException');

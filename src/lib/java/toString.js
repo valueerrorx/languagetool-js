@@ -55,6 +55,8 @@ class BinaryToASCIIBuffer {
     this.decExponent = 0;
     this.nDigits = 0;
     this.kind = 'normal'; // normal | zero | inf | nan
+    this.decimalDigitsRoundedUp = false; // Java: digitsRoundedUp() (DecimalFormat tie decisions)
+    this.exactDecimalConversion = false; // Java: decimalDigitsExact()
   }
 
   // Java: FloatingDecimal.BinaryToASCIIBuffer#roundup()
@@ -75,6 +77,7 @@ class BinaryToASCIIBuffer {
       }
     }
     digits[i] = String.fromCharCode(q.charCodeAt(0) + 1);
+    this.decimalDigitsRoundedUp = true;
   }
 
   // Java: FloatingDecimal.BinaryToASCIIBuffer#developLongDigits(int,long,int)
@@ -175,6 +178,7 @@ class BinaryToASCIIBuffer {
         digits.push(String(q));
       }
       lowDigitDifference = w(w(b << 1n) - tens);
+      this.exactDecimalConversion = b === 0n;
     } else {
       let B = (fractBits * big5(B5)) << BigInt(B2);
       const S = big5(S5) << BigInt(S2);
@@ -200,6 +204,7 @@ class BinaryToASCIIBuffer {
         digits.push(String(q));
       }
       lowDigitDifference = (B << 1n) - tenS;
+      this.exactDecimalConversion = B === 0n;
     }
     this.digits = digits;
     this.decExponent = decExp + 1;
@@ -330,6 +335,11 @@ function getBinaryToASCIIConverterFloat(f, isCompatibleFormat) {
   binExp -= FLOAT_EXP_BIAS;
   buf.dtoa(binExp, BigInt(fractBits) << BigInt(EXP_SHIFT - SINGLE_EXP_SHIFT), nSignificantBits, isCompatibleFormat);
   return buf;
+}
+
+// Java: FloatingDecimal#getBinaryToASCIIConverter(double) for DigitList (digits, decimal exponent, rounding flags)
+export function doubleDigits(d) {
+  return getBinaryToASCIIConverterDouble(d, true);
 }
 
 // Java: Double#toString(double)

@@ -1,0 +1,437 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "Tools.i18n on synthetic patterns (one-key bundle): placeholders, quotes, number/choice/date subformats, malformed patterns",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "plain",
+    "args": []
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "It's",
+    "args": []
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "It''s",
+    "args": []
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "'{0}'",
+    "args": []
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "''{0}''",
+    "args": []
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "'{'0}",
+    "args": []
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "{0}",
+    "args": []
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "{0}{1}{0}",
+    "args": [
+     {
+      "t": "string",
+      "v": "a"
+     },
+     {
+      "t": "string",
+      "v": "b"
+     }
+    ]
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "{1}",
+    "args": [
+     {
+      "t": "string",
+      "v": "a"
+     }
+    ]
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "{0} {0}",
+    "args": [
+     {
+      "t": "int",
+      "v": "1000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "{0,number}",
+    "args": [
+     {
+      "t": "double",
+      "v": "1234.5678"
+     }
+    ]
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "{0,number,#.##}",
+    "args": [
+     {
+      "t": "double",
+      "v": "1234.5678"
+     }
+    ]
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "{0,number,integer}",
+    "args": [
+     {
+      "t": "double",
+      "v": "2.5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "{0,number,percent}",
+    "args": [
+     {
+      "t": "double",
+      "v": "0.256"
+     }
+    ]
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "{0,choice,0#none|1#one|1<many {0}}",
+    "args": [
+     {
+      "t": "int",
+      "v": "0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "{0,choice,0#none|1#one|1<many {0}}",
+    "args": [
+     {
+      "t": "int",
+      "v": "1"
+     }
+    ]
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "{0,choice,0#none|1#one|1<many {0}}",
+    "args": [
+     {
+      "t": "int",
+      "v": "5"
+     }
+    ]
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "{0,date}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773564000000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "{0,time}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773564000000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "{0,date,short}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773564000000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "{0}",
+    "args": [
+     {
+      "t": "date",
+      "v": "1773564000000"
+     }
+    ]
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "{",
+    "args": [
+     {
+      "t": "string",
+      "v": "a"
+     }
+    ]
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "}",
+    "args": [
+     {
+      "t": "string",
+      "v": "a"
+     }
+    ]
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "{0",
+    "args": [
+     {
+      "t": "string",
+      "v": "a"
+     }
+    ]
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "{a}",
+    "args": [
+     {
+      "t": "string",
+      "v": "a"
+     }
+    ]
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "{-1}",
+    "args": [
+     {
+      "t": "string",
+      "v": "a"
+     }
+    ]
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "{0,foo}",
+    "args": [
+     {
+      "t": "string",
+      "v": "a"
+     }
+    ]
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "{0}} {",
+    "args": [
+     {
+      "t": "string",
+      "v": "a"
+     }
+    ]
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "{ 0 }",
+    "args": [
+     {
+      "t": "string",
+      "v": "a"
+     }
+    ]
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "{0}\n{1}\t",
+    "args": [
+     {
+      "t": "string",
+      "v": "a"
+     },
+     {
+      "t": "string",
+      "v": "b"
+     }
+    ]
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "{10}",
+    "args": [
+     {
+      "t": "string",
+      "v": "a"
+     }
+    ]
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "{0}",
+    "args": [
+     {
+      "t": "string",
+      "v": "ü😀"
+     }
+    ]
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "Ünï {0} ä",
+    "args": [
+     {
+      "t": "string",
+      "v": "ß"
+     }
+    ]
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "{0}",
+    "args": [
+     {
+      "t": "int",
+      "v": "-0"
+     }
+    ]
+   }
+  },
+  {
+   "op": "i18n-format",
+   "args": {
+    "lang": "en-US",
+    "pattern": "{0}",
+    "args": [
+     {
+      "t": "long",
+      "v": "100000000000"
+     }
+    ]
+   }
+  }
+ ]
+}
