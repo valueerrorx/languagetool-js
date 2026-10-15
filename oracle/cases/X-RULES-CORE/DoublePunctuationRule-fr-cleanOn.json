@@ -1,0 +1,201 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "check-rules fr: DoublePunctuationRule with default clean-overlapping ON (F35 flag)",
+ "normalize": [],
+ "compare": "check-pipe",
+ "ops": [
+  {
+   "op": "check-rules",
+   "args": {
+    "lang": "fr",
+    "classes": [
+     "org.languagetool.rules.DoublePunctuationRule"
+    ],
+    "cleanOverlapping": true,
+    "cases": [
+     {
+      "text": "This is a test sentence..."
+     },
+     {
+      "text": "Это тестовое предложение?.."
+     },
+     {
+      "text": "Это тестовое предложение!.. "
+     },
+     {
+      "text": "This is a test sentence... More stuff...."
+     },
+     {
+      "text": "This is a test sentence..... More stuff...."
+     },
+     {
+      "text": "This, is, a test sentence."
+     },
+     {
+      "text": "The path is ../data/vtest.avi"
+     },
+     {
+      "text": "The path is ..\\data\\vtest.avi"
+     },
+     {
+      "text": "Something … … .."
+     },
+     {
+      "text": "Something … … ... …"
+     },
+     {
+      "text": "Something … … .... …"
+     },
+     {
+      "text": "Something … … .. …"
+     },
+     {
+      "text": "Something …….."
+     },
+     {
+      "text": "This,, is a test sentence."
+     },
+     {
+      "text": "This is a test sentence.. Another sentence"
+     },
+     {
+      "text": ""
+     },
+     {
+      "text": " "
+     },
+     {
+      "text": "\n"
+     },
+     {
+      "text": "a"
+     },
+     {
+      "text": "Hello, world."
+     },
+     {
+      "text": "Hello , world ."
+     },
+     {
+      "text": "Hello,world"
+     },
+     {
+      "text": "Hello ,world"
+     },
+     {
+      "text": "( Hello )"
+     },
+     {
+      "text": "(Hello)"
+     },
+     {
+      "text": "Hello (world"
+     },
+     {
+      "text": "Hello world)"
+     },
+     {
+      "text": "((a)"
+     },
+     {
+      "text": "(a))"
+     },
+     {
+      "text": "([a)]"
+     },
+     {
+      "text": "{a [b (c) d] e}"
+     },
+     {
+      "text": "[a (b] c)"
+     },
+     {
+      "text": "„Hallo“ sagte er."
+     },
+     {
+      "text": "„Hallo sagte er."
+     },
+     {
+      "text": "Hallo“ sagte er."
+     },
+     {
+      "text": "«Bonjour» dit-il."
+     },
+     {
+      "text": "« Bonjour » dit-il."
+     },
+     {
+      "text": "«Bonjour dit-il."
+     },
+     {
+      "text": "\"Hello\" he said."
+     },
+     {
+      "text": "\"Hello he said."
+     },
+     {
+      "text": "'Hello' he said."
+     },
+     {
+      "text": "'Hello he said."
+     },
+     {
+      "text": "‚Hallo‘ sagte er."
+     },
+     {
+      "text": "‚Hallo sagte er."
+     },
+     {
+      "text": "“Hello” he said."
+     },
+     {
+      "text": "“Hello he said."
+     },
+     {
+      "text": "“Hello„ he said."
+     },
+     {
+      "text": "He said \"a\" and \"b\" and \"c\"."
+     },
+     {
+      "text": "It's a dog's life, isn't it?"
+     },
+     {
+      "text": "The '90s were fun."
+     },
+     {
+      "text": "Rock ’n’ roll."
+     },
+     {
+      "text": "The 5\" screen and 6' pole."
+     },
+     {
+      "text": "Er sagte: „Das ist ‚gut‘ so“."
+     },
+     {
+      "text": "„Hallo\nWelt“"
+     },
+     {
+      "text": "„Hallo\n\nWelt“"
+     },
+     {
+      "text": "\"A\n\nB\""
+     },
+     {
+      "text": "Smile :-) now"
+     },
+     {
+      "text": "Sad :-( now"
+     },
+     {
+      "text": "Wink ;-) and :( and :) done"
+     },
+     {
+      "text": "Look :) (here)"
+     }
+    ]
+   }
+  }
+ ]
+}

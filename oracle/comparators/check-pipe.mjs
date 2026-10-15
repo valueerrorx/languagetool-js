@@ -4,10 +4,13 @@
 // lt-api: JVM "helpful NullPointerException" texts (Cannot invoke ...) compare by class only.
 import { deepDiff } from './deep.mjs';
 
+// X-RULES-CORE: cases with disambChanged (rule result depends on the disambiguator/immunization) are skipped until the disambiguators are ported (F32/F45/F51); set true then
+const DISAMB_PORTED = false;
 const errKey = (e) => (e ? `${e.class}: ${e.message}` : null);
 
 function check2Case(e, a, p, out) {
   if (e.languageFilterChanged) return;
+  if (e.disambChanged && !DISAMB_PORTED) return;
   if (e.error || a.error) {
     if (errKey(e.error?.error ?? e.error) !== errKey(a.error?.error ?? a.error)) out.push(`${p}: error ${JSON.stringify(e.error)} != ${JSON.stringify(a.error)}`);
     if (e.cancelCalls || a.cancelCalls) deepDiff(e.cancelCalls, a.cancelCalls, `${p}.cancelCalls`, [], out);

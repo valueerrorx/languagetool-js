@@ -1,0 +1,1071 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "check-rules en-US: GenericUnpairedBracketsRule (enabledOnly, clean-overlapping off); 78 JUnit literals + edge + corpus",
+ "normalize": [],
+ "compare": "check-pipe",
+ "ops": [
+  {
+   "op": "check-rules",
+   "args": {
+    "lang": "en-US",
+    "classes": [
+     "org.languagetool.rules.GenericUnpairedBracketsRule"
+    ],
+    "cleanOverlapping": false,
+    "cases": [
+     {
+      "text": "This is »correct«."
+     },
+     {
+      "text": "»Correct«\n»And »here« it ends.«"
+     },
+     {
+      "text": "»Correct. This is more than one sentence.«"
+     },
+     {
+      "text": "»Correct. This is more than one sentence.«\n»And »here« it ends.«"
+     },
+     {
+      "text": "»Correct«\n\n»And here it ends.«\n\nMore text."
+     },
+     {
+      "text": "»Correct, he said. This is the next sentence.« Here's another sentence."
+     },
+     {
+      "text": "»Correct, he said.\n\nThis is the next sentence.« Here's another sentence."
+     },
+     {
+      "text": "»Correct, he said.\n\n\n\nThis is the next sentence.« Here's another sentence."
+     },
+     {
+      "text": "This »is also »correct««."
+     },
+     {
+      "text": "Good.\n\nThis »is also »correct««."
+     },
+     {
+      "text": "Good.\n\n\nThis »is also »correct««."
+     },
+     {
+      "text": "Good.\n\n\n\nThis »is also »correct««."
+     },
+     {
+      "text": "This is funny :-)"
+     },
+     {
+      "text": "This is sad :-( isn't it"
+     },
+     {
+      "text": "This is funny :)"
+     },
+     {
+      "text": "This is sad :( isn't it"
+     },
+     {
+      "text": "a) item one\nb) item two"
+     },
+     {
+      "text": "a) item one\nb) item two\nc) item three"
+     },
+     {
+      "text": "\na) item one\nb) item two\nc) item three"
+     },
+     {
+      "text": "\n\na) item one\nb) item two\nc) item three"
+     },
+     {
+      "text": "This is a), not b)"
+     },
+     {
+      "text": "This is it (a, not b) some more test"
+     },
+     {
+      "text": "This is »not an error yet"
+     },
+     {
+      "text": "See https://de.wikipedia.org/wiki/Schlammersdorf_(Adelsgeschlecht)"
+     },
+     {
+      "text": "This is not correct«"
+     },
+     {
+      "text": "This is »not correct."
+     },
+     {
+      "text": "This is »not an error yet\n\nBut now it has become one"
+     },
+     {
+      "text": "This is correct.\n\n»But this is not."
+     },
+     {
+      "text": "This is correct.\n\nBut this is not«"
+     },
+     {
+      "text": "»This is correct«\n\nBut this is not«"
+     },
+     {
+      "text": "»This is correct«\n\nBut this »is« not«"
+     },
+     {
+      "text": "This is not correct. No matter if it's more than one sentence«"
+     },
+     {
+      "text": "»This is not correct. No matter if it's more than one sentence"
+     },
+     {
+      "text": "Correct, he said. This is the next sentence.« Here's another sentence."
+     },
+     {
+      "text": "»Correct, he said. This is the next sentence. Here's another sentence."
+     },
+     {
+      "text": "»Correct, he said. This is the next sentence.\n\nHere's another sentence."
+     },
+     {
+      "text": "»Correct, he said. This is the next sentence.\n\n\n\nHere's another sentence."
+     },
+     {
+      "text": "This »is a test."
+     },
+     {
+      "text": "This.\nSome stuff.\nIt »is a test."
+     },
+     {
+      "text": "Th­is »is a test."
+     },
+     {
+      "text": "Expected "
+     },
+     {
+      "text": " matches, got: "
+     },
+     {
+      "text": "Rule not found: "
+     },
+     {
+      "text": "(This is a test sentence)."
+     },
+     {
+      "text": "This is a word 'test'."
+     },
+     {
+      "text": "This is no smiley: (some more text)"
+     },
+     {
+      "text": "This is a sentence with a smiley :)"
+     },
+     {
+      "text": "This is a sentence with a smiley :("
+     },
+     {
+      "text": "This is a sentence with a smiley :-)"
+     },
+     {
+      "text": "This is a sentence with a smiley ;-) and so on..."
+     },
+     {
+      "text": "This is a [test] sentence..."
+     },
+     {
+      "text": "The plight of Tamil refugees caused a surge of support from most of the Tamil political parties.[90]"
+     },
+     {
+      "text": "(([20] [20] [20]))"
+     },
+     {
+      "text": "This is a \"special test\", right?"
+     },
+     {
+      "text": "We discussed this in Chapter 1)."
+     },
+     {
+      "text": "The jury recommended that: (1) Four additional deputies be employed."
+     },
+     {
+      "text": "We discussed this in section 1a)."
+     },
+     {
+      "text": "We discussed this in section iv)."
+     },
+     {
+      "text": "(Ketab fi Isti'mal al-'Adad al-Hindi)"
+     },
+     {
+      "text": "(al-'Adad al-Hindi)"
+     }
+    ]
+   }
+  },
+  {
+   "op": "check-rules",
+   "args": {
+    "lang": "en-US",
+    "classes": [
+     "org.languagetool.rules.GenericUnpairedBracketsRule"
+    ],
+    "cleanOverlapping": false,
+    "cases": [
+     {
+      "text": "will-o'-the-wisp"
+     },
+     {
+      "text": "cat-o’-nine-tails"
+     },
+     {
+      "text": "\n\na) New York\nb) Boston\n"
+     },
+     {
+      "text": "\n\n1.) New York\n2.) Boston\n"
+     },
+     {
+      "text": "\n\nXII.) New York\nXIII.) Boston\n"
+     },
+     {
+      "text": "\n\nA) New York\nB) Boston\nC) Foo\n"
+     },
+     {
+      "text": "(This is a test sentence."
+     },
+     {
+      "text": "This is not so (neither a nor b"
+     },
+     {
+      "text": "This is not so (neither a nor b."
+     },
+     {
+      "text": "This is not so neither a nor b)"
+     },
+     {
+      "text": "This is not so neither foo nor bar)"
+     },
+     {
+      "text": "Some text (and some funny remark :-) with more text to follow"
+     },
+     {
+      "text": "Some text (and some funny remark :-) with more text to follow!"
+     },
+     {
+      "text": "(This is a test] sentence."
+     },
+     {
+      "text": "This [is (a test} sentence."
+     },
+     {
+      "text": "This is multiple sentence text that contains a bracket: [This is a bracket. With some text.] and this continues.\n"
+     },
+     {
+      "text": "This is multiple sentence text that contains a bracket. (This is a bracket. \n\n With some text.) and this continues."
+     },
+     {
+      "text": "This is multiple sentence text that contains a bracket: [This is a bracket. With some text. And this continues.\n\n"
+     },
+     {
+      "text": ""
+     },
+     {
+      "text": " "
+     },
+     {
+      "text": "\n"
+     },
+     {
+      "text": "a"
+     },
+     {
+      "text": "Hello, world."
+     },
+     {
+      "text": "Hello , world ."
+     },
+     {
+      "text": "Hello,world"
+     },
+     {
+      "text": "Hello ,world"
+     },
+     {
+      "text": "( Hello )"
+     },
+     {
+      "text": "(Hello)"
+     },
+     {
+      "text": "Hello (world"
+     },
+     {
+      "text": "Hello world)"
+     },
+     {
+      "text": "((a)"
+     },
+     {
+      "text": "(a))"
+     },
+     {
+      "text": "([a)]"
+     },
+     {
+      "text": "{a [b (c) d] e}"
+     },
+     {
+      "text": "[a (b] c)"
+     },
+     {
+      "text": "„Hallo“ sagte er."
+     },
+     {
+      "text": "„Hallo sagte er."
+     },
+     {
+      "text": "Hallo“ sagte er."
+     },
+     {
+      "text": "«Bonjour» dit-il."
+     },
+     {
+      "text": "« Bonjour » dit-il."
+     },
+     {
+      "text": "«Bonjour dit-il."
+     },
+     {
+      "text": "\"Hello\" he said."
+     },
+     {
+      "text": "\"Hello he said."
+     },
+     {
+      "text": "'Hello' he said."
+     },
+     {
+      "text": "'Hello he said."
+     },
+     {
+      "text": "‚Hallo‘ sagte er."
+     },
+     {
+      "text": "‚Hallo sagte er."
+     },
+     {
+      "text": "“Hello” he said."
+     },
+     {
+      "text": "“Hello he said."
+     },
+     {
+      "text": "“Hello„ he said."
+     },
+     {
+      "text": "He said \"a\" and \"b\" and \"c\"."
+     },
+     {
+      "text": "It's a dog's life, isn't it?"
+     },
+     {
+      "text": "The '90s were fun."
+     },
+     {
+      "text": "Rock ’n’ roll."
+     },
+     {
+      "text": "The 5\" screen and 6' pole."
+     },
+     {
+      "text": "Er sagte: „Das ist ‚gut‘ so“."
+     },
+     {
+      "text": "„Hallo\nWelt“"
+     },
+     {
+      "text": "„Hallo\n\nWelt“"
+     },
+     {
+      "text": "\"A\n\nB\""
+     },
+     {
+      "text": "Smile :-) now"
+     }
+    ]
+   }
+  },
+  {
+   "op": "check-rules",
+   "args": {
+    "lang": "en-US",
+    "classes": [
+     "org.languagetool.rules.GenericUnpairedBracketsRule"
+    ],
+    "cleanOverlapping": false,
+    "cases": [
+     {
+      "text": "Sad :-( now"
+     },
+     {
+      "text": "Wink ;-) and :( and :) done"
+     },
+     {
+      "text": "Look :) (here)"
+     },
+     {
+      "text": "(Look :)"
+     },
+     {
+      "text": "Look :-)) now"
+     },
+     {
+      "text": "(a :-) b"
+     },
+     {
+      "text": "a) first\nb) second"
+     },
+     {
+      "text": "a) first b) second"
+     },
+     {
+      "text": "1) one 2) two"
+     },
+     {
+      "text": "1) one\n2) two\n3) three"
+     },
+     {
+      "text": "a) b) c)"
+     },
+     {
+      "text": "- item (one\n- item two)"
+     },
+     {
+      "text": "• Punkt\n• Punkt (zwei"
+     },
+     {
+      "text": "The price is 1.000,5 euros."
+     },
+     {
+      "text": "Der Preis ist 1.000,5 Euro."
+     },
+     {
+      "text": "1,5 und 2,5"
+     },
+     {
+      "text": "1, 2, 3"
+     },
+     {
+      "text": "1 , 2"
+     },
+     {
+      "text": "3.14 and 2,718"
+     },
+     {
+      "text": "Value: 12.5 %"
+     },
+     {
+      "text": "Wert : 12 %"
+     },
+     {
+      "text": "Wert: 12 %"
+     },
+     {
+      "text": "Wert; 12 % ; fertig"
+     },
+     {
+      "text": "Il a dit : oui ; non"
+     },
+     {
+      "text": "Ce n'est pas 100 % sûr !"
+     },
+     {
+      "text": "10 % ,"
+     },
+     {
+      "text": "x : y"
+     },
+     {
+      "text": "Wait... what?"
+     },
+     {
+      "text": "Wait.. what?"
+     },
+     {
+      "text": "Wait…. what?"
+     },
+     {
+      "text": "Wait,, what?"
+     },
+     {
+      "text": "Wait,,, what?"
+     },
+     {
+      "text": "Wait.... what"
+     },
+     {
+      "text": "Wait ... what"
+     },
+     {
+      "text": "Wait . . ."
+     },
+     {
+      "text": ".."
+     },
+     {
+      "text": ",,"
+     },
+     {
+      "text": ".. .."
+     },
+     {
+      "text": "So... .."
+     },
+     {
+      "text": "Eh?? Really!! Ok.."
+     },
+     {
+      "text": "?!"
+     },
+     {
+      "text": "Hi!!"
+     },
+     {
+      "text": "Hi,,."
+     },
+     {
+      "text": "See https://example.org/a,b.c?x=1&y=2 for more."
+     },
+     {
+      "text": "See www.example.org , please"
+     },
+     {
+      "text": "Mail me at foo@bar.com, thanks"
+     },
+     {
+      "text": "URL: http://a.b/c..d"
+     },
+     {
+      "text": "file.txt,file2.txt"
+     },
+     {
+      "text": "a.b.c.d"
+     },
+     {
+      "text": "e.g. this, i.e. that"
+     },
+     {
+      "text": "z.B. das und d.h. dies"
+     },
+     {
+      "text": "First sentence.Second sentence."
+     },
+     {
+      "text": "First sentence. Second sentence."
+     },
+     {
+      "text": "First sentence.  Second sentence."
+     },
+     {
+      "text": "First sentence.   Second"
+     },
+     {
+      "text": "First sentence?Second"
+     },
+     {
+      "text": "Wie geht es?Gut!"
+     },
+     {
+      "text": "First.\nSecond."
+     },
+     {
+      "text": "First.\n\nSecond."
+     },
+     {
+      "text": "First.\r\nSecond."
+     }
+    ]
+   }
+  },
+  {
+   "op": "check-rules",
+   "args": {
+    "lang": "en-US",
+    "classes": [
+     "org.languagetool.rules.GenericUnpairedBracketsRule"
+    ],
+    "cleanOverlapping": false,
+    "cases": [
+     {
+      "text": "Eins. Zwei.Drei"
+     },
+     {
+      "text": "A.B"
+     },
+     {
+      "text": "A. B"
+     },
+     {
+      "text": "Dr.Müller kommt"
+     },
+     {
+      "text": "Visit www.a.org.Then go"
+     },
+     {
+      "text": "Hello:World"
+     },
+     {
+      "text": "ok.Next"
+     },
+     {
+      "text": "This is  a test."
+     },
+     {
+      "text": "This is   a test."
+     },
+     {
+      "text": "This is a  test.  Another  one."
+     },
+     {
+      "text": "Tab\there"
+     },
+     {
+      "text": "Tab\t\there"
+     },
+     {
+      "text": "a   b"
+     },
+     {
+      "text": "a  b"
+     },
+     {
+      "text": "a  b"
+     },
+     {
+      "text": "a \t b"
+     },
+     {
+      "text": "  Leading two spaces"
+     },
+     {
+      "text": " Leading one"
+     },
+     {
+      "text": "Trailing two  "
+     },
+     {
+      "text": "Para one.\n\n  Para two."
+     },
+     {
+      "text": "Para one.\n   Para two."
+     },
+     {
+      "text": "a\n  b"
+     },
+     {
+      "text": "    indented code"
+     },
+     {
+      "text": "a  \n  b"
+     },
+     {
+      "text": "This is is a test."
+     },
+     {
+      "text": "This is IS a test."
+     },
+     {
+      "text": "is is"
+     },
+     {
+      "text": "Is is it"
+     },
+     {
+      "text": "Das ist ist ein Test."
+     },
+     {
+      "text": "Das ist ein ein Test."
+     },
+     {
+      "text": "Das das ist gut."
+     },
+     {
+      "text": "Il y a a un chat."
+     },
+     {
+      "text": "Nous nous lavons."
+     },
+     {
+      "text": "That that is that."
+     },
+     {
+      "text": "A a a a"
+     },
+     {
+      "text": "bla bla bla"
+     },
+     {
+      "text": "ha ha"
+     },
+     {
+      "text": "no no no!"
+     },
+     {
+      "text": "one, one"
+     },
+     {
+      "text": "one one,"
+     },
+     {
+      "text": "foo-foo foo foo-bar"
+     },
+     {
+      "text": "1 1 2"
+     },
+     {
+      "text": "2 2"
+     },
+     {
+      "text": "Test.\nTest test."
+     },
+     {
+      "text": "ich ich"
+     },
+     {
+      "text": "Ich ich"
+     },
+     {
+      "text": "sehr sehr gut"
+     },
+     {
+      "text": "wie wie"
+     },
+     {
+      "text": "there there"
+     },
+     {
+      "text": "sentence one. and the second"
+     },
+     {
+      "text": "etwas beginnen. und der auch nicht"
+     },
+     {
+      "text": "schön!"
+     },
+     {
+      "text": "Schön! der Hund"
+     },
+     {
+      "text": "Hello. the world"
+     },
+     {
+      "text": "Hello! the world"
+     },
+     {
+      "text": "Hello? the world"
+     },
+     {
+      "text": "Hello.\nthe world"
+     },
+     {
+      "text": "Hello.\n\nthe world"
+     },
+     {
+      "text": "hello"
+     },
+     {
+      "text": "hello world"
+     }
+    ]
+   }
+  },
+  {
+   "op": "check-rules",
+   "args": {
+    "lang": "en-US",
+    "classes": [
+     "org.languagetool.rules.GenericUnpairedBracketsRule"
+    ],
+    "cleanOverlapping": false,
+    "cases": [
+     {
+      "text": "Hello world. 1. item"
+     },
+     {
+      "text": "1. an item\n2. another item."
+     },
+     {
+      "text": "\"quoted. lowercase after\""
+     },
+     {
+      "text": "He said. „lowercase quote“"
+     },
+     {
+      "text": "Ellipsis… lowercase"
+     },
+     {
+      "text": "Ellipsis... lowercase"
+     },
+     {
+      "text": "Colon: lowercase"
+     },
+     {
+      "text": "Q: what? a: this"
+     },
+     {
+      "text": "e-mail. foo"
+     },
+     {
+      "text": "etc. und so weiter"
+     },
+     {
+      "text": "bspw. und z.B. inside"
+     },
+     {
+      "text": "microRNA is. mRNA is. iDeal is"
+     },
+     {
+      "text": "ℹ️ Tree Structure."
+     },
+     {
+      "text": "ℹ Tree Structure."
+     },
+     {
+      "text": "— dash item"
+     },
+     {
+      "text": "— Dash item"
+     },
+     {
+      "text": "ß ist ein Buchstabe. ßtrasse"
+     },
+     {
+      "text": "Ändern. äpfel"
+     },
+     {
+      "text": "Ärger. über uns"
+     },
+     {
+      "text": "État. été"
+     },
+     {
+      "text": "Ça. ça va"
+     },
+     {
+      "text": "😀 emoji. 😀 lower"
+     },
+     {
+      "text": "Mr. smith. mrs. brown"
+     },
+     {
+      "text": "Ph.D. thesis."
+     },
+     {
+      "text": "a. b. c."
+     },
+     {
+      "text": "U.S. army. u.s. army"
+     },
+     {
+      "text": "List:\n- one\n- two"
+     },
+     {
+      "text": "List:\n\n• one\n• two"
+     },
+     {
+      "text": "Satz mit Umlauten: äöü ÄÖÜ ß, und Komma ,falsch"
+     },
+     {
+      "text": "Ein Satz.\nEin zweiter Satz.\n\nEin dritter (unvollständiger Satz"
+     },
+     {
+      "text": "Kein Absatzende"
+     },
+     {
+      "text": "Das ist ein Test (mit Klammer) und „Zitat“."
+     },
+     {
+      "text": "ʻOkina and ʼ apostrophe"
+     },
+     {
+      "text": "Hyphen­ated soft­hyphen, test ."
+     },
+     {
+      "text": "Soft ­ hyphen  spaces"
+     },
+     {
+      "text": "a­,b"
+     },
+     {
+      "text": "﻿Hello ,BOM"
+     },
+     {
+      "text": "Emoji 😀 ,after"
+     },
+     {
+      "text": "😀  😀"
+     },
+     {
+      "text": "​zero width , space"
+     },
+     {
+      "text": "Very long line word, word, word, word, word, word, word, word, word, word, word, word, word, word, word, end ."
+     },
+     {
+      "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+     },
+     {
+      "text": "a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, a, "
+     },
+     {
+      "text": "(a (a (a (a (a (a (a (a (a (a (a (a (a (a (a "
+     },
+     {
+      "text": "word word word word word word word word word word word word word word word word "
+     },
+     {
+      "text": "S. T S. T S. T S. T S. T S. T S. T S. T S. T S. T S. T S. T S. T S. T S. T "
+     },
+     {
+      "text": "First paragraph with a (bracket.\n\nSecond paragraph closes it)."
+     },
+     {
+      "text": "First „quote\n\nsecond“ paragraph."
+     },
+     {
+      "text": "Para one , bad.\n\nPara two ..\n\nPara three  spaces."
+     },
+     {
+      "text": "Line one.\nline two lowercase.\n\nline three."
+     },
+     {
+      "text": "Title\n\nBody text.Missing space. next"
+     },
+     {
+      "text": "a\r\nb\r\n\r\nc  d"
+     },
+     {
+      "text": "one\n\n\n\ntwo"
+     },
+     {
+      "text": "one\n \ntwo"
+     },
+     {
+      "text": "List\n1. a\n2. b\n\n(see above"
+     },
+     {
+      "text": "Der Hund (Canis lupus) ist ein Tier.\n\nDie Katze („Felis catus“) auch.\n\nEnde ."
+     },
+     {
+      "text": "“Pride,” observed Mary, who piqued herself upon the solidity of her reflections, “is a very common failing, I believe. By all that I have ever read, I am convinced that it is very common indeed; that human nature is part"
+     },
+     {
+      "text": "“It may, perhaps, be pleasant,” replied Charlotte, “to be able to impose on the public in such a case; but it is sometimes a disadvantage to be so very guarded. If a woman conceals her affection with the same skill from "
+     },
+     {
+      "text": "“Perhaps he must, if he sees enough of her. But though Bingley and Jane meet tolerably often, it is never for many hours together; and as they always see each other in large mixed parties, it is impossible that every mom"
+     },
+     {
+      "text": "“Well,” said Charlotte, “I wish Jane success with all my heart; and if she were married to him to-morrow, I should think she had as good a chance of happiness as if she were to be studying his character for a twelvemonth"
+     }
+    ]
+   }
+  },
+  {
+   "op": "check-rules",
+   "args": {
+    "lang": "en-US",
+    "classes": [
+     "org.languagetool.rules.GenericUnpairedBracketsRule"
+    ],
+    "cleanOverlapping": false,
+    "cases": [
+     {
+      "text": "“You are a very strange creature by way of a friend!--always wanting me to play and sing before anybody and everybody! If my vanity had taken a musical turn, you would have been invaluable; but as it is, I would really r"
+     },
+     {
+      "text": "“What a charming amusement for young people this is, Mr. Darcy! There is nothing like dancing, after all. I consider it as one of the first refinements of polished societies.”"
+     },
+     {
+      "text": "“My dear Miss Eliza, why are not you dancing? Mr. Darcy, you must allow me to present this young lady to you as a very desirable partner. You cannot refuse to dance, I am sure, when so much beauty is before you.” And, ta"
+     },
+     {
+      "text": "“You are considering how insupportable it would be to pass many evenings in this manner,--in such society; and, indeed, I am quite of your opinion. I was never more annoyed! The insipidity, and yet the noise--the nothing"
+     },
+     {
+      "text": "“Pride,” observed Mary, who piqued herself upon the solidity of her reflections, “is a very common failing, I believe. By all that I have ever read, I\n\n“It may, perhaps, be pleasant,” replied Charlotte, “to be able to impose on the public in such a case; but it is sometimes a disadvantage to be so ver\n\n“Perhaps he must, if he sees enough of her. But though Bingley and Jane meet tolerably often, it is never for many hours together; and as they always "
+     },
+     {
+      "text": "“How I long to see her again! I never met with anybody who delighted me so much. Such a countenance, such manners, and so extremely accomplished for h\n\n“Your list of the common extent of accomplishments,” said Darcy, “has too much truth. The word is applied to many a woman who deserves it no otherwise\n\nElizabeth joined them again only to say that her sister was worse, and that she could not leave her. Bingley urged Mr. Jones’s being sent for immediat"
+     },
+     {
+      "text": "“Mr. Darcy is not to be laughed at!” cried Elizabeth. “That is an uncommon advantage, and uncommon I hope it will continue, for it would be a great lo\n\n“Certainly,” replied Elizabeth, “there are such people, but I hope I am not one of _them_. I hope I never ridicule what is wise or good. Follies and n\n\n“No,” said Darcy, “I have made no such pretension. I have faults enough, but they are not, I hope, of understanding. My temper I dare not vouch for. I"
+     },
+     {
+      "text": "A (b.\n\nC) d.",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "A (b.\n\nC) d.",
+      "paraMode": "ONLYPARA"
+     },
+     {
+      "text": "x  y ,z.\n\nu  v",
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "x  y ,z.\n\nu  v",
+      "mode": "ALL_BUT_TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "x  y ,z",
+      "level": "PICKY"
+     },
+     {
+      "text": "x  y ,z",
+      "tokenizeText": false
+     }
+    ]
+   }
+  },
+  {
+   "op": "check-rules",
+   "args": {
+    "lang": "en-US",
+    "classes": [
+     "org.languagetool.rules.GenericUnpairedBracketsRule"
+    ],
+    "cleanOverlapping": false,
+    "cases": [
+     {
+      "parts": [
+       {
+        "type": "markup",
+        "text": "<b>"
+       },
+       {
+        "type": "text",
+        "text": "Hello ,world  and (bracket"
+       },
+       {
+        "type": "markup",
+        "text": "</b>"
+       }
+      ]
+     },
+     {
+      "parts": [
+       {
+        "type": "text",
+        "text": "One."
+       },
+       {
+        "type": "markup",
+        "text": "<p>",
+        "interpretAs": "\n\n"
+       },
+       {
+        "type": "text",
+        "text": "two  spaces .."
+       }
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,201 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "check-rules fr: UppercaseSentenceStartRule with default clean-overlapping ON (F35 flag)",
+ "normalize": [],
+ "compare": "check-pipe",
+ "ops": [
+  {
+   "op": "check-rules",
+   "args": {
+    "lang": "fr",
+    "classes": [
+     "org.languagetool.rules.UppercaseSentenceStartRule"
+    ],
+    "cleanOverlapping": true,
+    "cases": [
+     {
+      "text": "<marker>a</marker> sentence."
+     },
+     {
+      "text": "<marker>A</marker> sentence."
+     },
+     {
+      "text": "this"
+     },
+     {
+      "text": "a) This is a test sentence."
+     },
+     {
+      "text": "iv. This is a test sentence..."
+     },
+     {
+      "text": "\"iv. This is a test sentence...\""
+     },
+     {
+      "text": "»iv. This is a test sentence..."
+     },
+     {
+      "text": "This"
+     },
+     {
+      "text": "This is"
+     },
+     {
+      "text": "This is a test sentence"
+     },
+     {
+      "text": "http://www.languagetool.org"
+     },
+     {
+      "text": "eBay can be at sentence start in lowercase."
+     },
+     {
+      "text": "¿Esto es una pregunta?"
+     },
+     {
+      "text": "¿Esto es una pregunta?, ¿y esto?"
+     },
+     {
+      "text": "ø This is a test sentence with a wrong bullet character."
+     },
+     {
+      "text": "this is a test sentence."
+     },
+     {
+      "text": "this!"
+     },
+     {
+      "text": "'this is a sentence'."
+     },
+     {
+      "text": "\"this is a sentence.\""
+     },
+     {
+      "text": "„this is a sentence."
+     },
+     {
+      "text": "«this is a sentence."
+     },
+     {
+      "text": "‘this is a sentence."
+     },
+     {
+      "text": "¿esto es una pregunta?"
+     },
+     {
+      "text": "¿Esto es una pregunta? ¿y esto?"
+     },
+     {
+      "text": ""
+     },
+     {
+      "text": " "
+     },
+     {
+      "text": "\n"
+     },
+     {
+      "text": "a"
+     },
+     {
+      "text": "Hello, world."
+     },
+     {
+      "text": "Hello , world ."
+     },
+     {
+      "text": "Hello,world"
+     },
+     {
+      "text": "Hello ,world"
+     },
+     {
+      "text": "( Hello )"
+     },
+     {
+      "text": "(Hello)"
+     },
+     {
+      "text": "Hello (world"
+     },
+     {
+      "text": "Hello world)"
+     },
+     {
+      "text": "((a)"
+     },
+     {
+      "text": "(a))"
+     },
+     {
+      "text": "([a)]"
+     },
+     {
+      "text": "{a [b (c) d] e}"
+     },
+     {
+      "text": "[a (b] c)"
+     },
+     {
+      "text": "„Hallo“ sagte er."
+     },
+     {
+      "text": "„Hallo sagte er."
+     },
+     {
+      "text": "Hallo“ sagte er."
+     },
+     {
+      "text": "«Bonjour» dit-il."
+     },
+     {
+      "text": "« Bonjour » dit-il."
+     },
+     {
+      "text": "«Bonjour dit-il."
+     },
+     {
+      "text": "\"Hello\" he said."
+     },
+     {
+      "text": "\"Hello he said."
+     },
+     {
+      "text": "'Hello' he said."
+     },
+     {
+      "text": "'Hello he said."
+     },
+     {
+      "text": "‚Hallo‘ sagte er."
+     },
+     {
+      "text": "‚Hallo sagte er."
+     },
+     {
+      "text": "“Hello” he said."
+     },
+     {
+      "text": "“Hello he said."
+     },
+     {
+      "text": "“Hello„ he said."
+     },
+     {
+      "text": "He said \"a\" and \"b\" and \"c\"."
+     },
+     {
+      "text": "It's a dog's life, isn't it?"
+     },
+     {
+      "text": "The '90s were fun."
+     },
+     {
+      "text": "Rock ’n’ roll."
+     }
+    ]
+   }
+  }
+ ]
+}

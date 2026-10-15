@@ -1,0 +1,201 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "check-rules de-DE: UppercaseSentenceStartRule with default clean-overlapping ON (F35 flag)",
+ "normalize": [],
+ "compare": "check-pipe",
+ "ops": [
+  {
+   "op": "check-rules",
+   "args": {
+    "lang": "de-DE",
+    "classes": [
+     "org.languagetool.rules.UppercaseSentenceStartRule"
+    ],
+    "cleanOverlapping": true,
+    "cases": [
+     {
+      "text": "<marker>a</marker> sentence."
+     },
+     {
+      "text": "<marker>A</marker> sentence."
+     },
+     {
+      "text": "this"
+     },
+     {
+      "text": "a) This is a test sentence."
+     },
+     {
+      "text": "iv. This is a test sentence..."
+     },
+     {
+      "text": "\"iv. This is a test sentence...\""
+     },
+     {
+      "text": "»iv. This is a test sentence..."
+     },
+     {
+      "text": "This"
+     },
+     {
+      "text": "This is"
+     },
+     {
+      "text": "This is a test sentence"
+     },
+     {
+      "text": "http://www.languagetool.org"
+     },
+     {
+      "text": "eBay can be at sentence start in lowercase."
+     },
+     {
+      "text": "¿Esto es una pregunta?"
+     },
+     {
+      "text": "¿Esto es una pregunta?, ¿y esto?"
+     },
+     {
+      "text": "ø This is a test sentence with a wrong bullet character."
+     },
+     {
+      "text": "this is a test sentence."
+     },
+     {
+      "text": "this!"
+     },
+     {
+      "text": "'this is a sentence'."
+     },
+     {
+      "text": "\"this is a sentence.\""
+     },
+     {
+      "text": "„this is a sentence."
+     },
+     {
+      "text": "«this is a sentence."
+     },
+     {
+      "text": "‘this is a sentence."
+     },
+     {
+      "text": "¿esto es una pregunta?"
+     },
+     {
+      "text": "¿Esto es una pregunta? ¿y esto?"
+     },
+     {
+      "text": "etwas beginnen. und der auch nicht"
+     },
+     {
+      "text": "schön"
+     },
+     {
+      "text": "Satz"
+     },
+     {
+      "text": "Dies ist ein Satz. Und hier kommt noch einer"
+     },
+     {
+      "text": "Dies ist ein Satz. Ätsch, noch einer mit Umlaut."
+     },
+     {
+      "text": "Dieser Satz ist bspw. okay so."
+     },
+     {
+      "text": "Dieser Satz ist z.B. okay so."
+     },
+     {
+      "text": "Dies ist ein Satz. \"Aber der hier auch!\"."
+     },
+     {
+      "text": "\"Dies ist ein Satz!\""
+     },
+     {
+      "text": "'Dies ist ein Satz!'"
+     },
+     {
+      "text": "mRNA-Impfstoffe sind wichtig."
+     },
+     {
+      "text": "Sehr geehrte Frau Merkel,\nwie wir Ihnen schon früher mitgeteilt haben..."
+     },
+     {
+      "text": "schön!"
+     },
+     {
+      "text": "Dies ist ein Satz. ätsch, noch einer mit Umlaut."
+     },
+     {
+      "text": "Dies ist ein Satz. \"aber der hier auch!\""
+     },
+     {
+      "text": "Dies ist ein Satz. „aber der hier auch!“"
+     },
+     {
+      "text": "\"dies ist ein Satz!\""
+     },
+     {
+      "text": "'dies ist ein Satz!'"
+     },
+     {
+      "text": "Ein Test. was?"
+     },
+     {
+      "text": "Ein ­Test. was?"
+     },
+     {
+      "text": "Ein ­Te­st. was?"
+     },
+     {
+      "text": "Ein ­Te­st. Te­st. was?"
+     },
+     {
+      "text": "Willkommen… im Berlin."
+     },
+     {
+      "text": "Die neue Kollektion von NAU! ist jetzt online."
+     },
+     {
+      "text": ""
+     },
+     {
+      "text": " "
+     },
+     {
+      "text": "\n"
+     },
+     {
+      "text": "a"
+     },
+     {
+      "text": "Hello, world."
+     },
+     {
+      "text": "Hello , world ."
+     },
+     {
+      "text": "Hello,world"
+     },
+     {
+      "text": "Hello ,world"
+     },
+     {
+      "text": "( Hello )"
+     },
+     {
+      "text": "(Hello)"
+     },
+     {
+      "text": "Hello (world"
+     },
+     {
+      "text": "Hello world)"
+     }
+    ]
+   }
+  }
+ ]
+}

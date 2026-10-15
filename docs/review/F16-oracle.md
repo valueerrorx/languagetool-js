@@ -1,0 +1,16 @@
+# F16 oracle (X-RULES-CORE)
+Status: generated via `npm run oracle -- X-RULES-CORE` (see size/counts in the report). Parity: `npm run parity -- X-RULES-CORE` (all NOT PORTED until adapter oracle/adapters/check-rules.mjs exists; no stub written).
+Files: Java op `check-rules` in oracle/harness/src/ltjs/oracle/CheckPipeOps.java#checkRules (+ Harness.java case), generator oracle/scripts/gen-cases-rulescore.mjs, cases oracle/cases/X-RULES-CORE/, comparator `check-pipe` (extended: skips cases with `disambChanged` while DISAMB_PORTED=false in oracle/comparators/check-pipe.mjs).
+Env: pinned oracle env (docs/ORACLE.md 1), JDK 17, TZ Europe/Vienna, en_US, UTF-8, fixed clock.
+
+## Op check-rules (adapter oracle/adapters/check-rules.mjs, `run(args)`)
+args `{lang (en-US|fr|de-DE), classes:[fqcn], cleanOverlapping:bool, cases:[check2 case, see F15-oracle.md]}`. Java: `new JLanguageTool(lang)` with real built-in rules, `setCleanOverlappingMatches(cleanOverlapping)`, selected = every rule of that language that is `instanceof` one of `classes` (so language subclasses e.g. GermanCommaWhitespaceRule, EnglishUnpairedBracketsRule, EnglishWordRepeatRule are included), `Tools.selectRules(enabledOnly=true, enabledRules=ids of those)`. Then each case `check2` (same case fields and result fields as check2 in F15-oracle.md).
+Result: `{selected:["fullId|SimpleClassName"], active:[fullIds], cases:[check2 result + anyImmunized, disambDiffers, disambChanged]}`.
+- `disambChanged` = `disambDiffers || anyImmunized`. disambDiffers: the case re-run with Language disambiguator = NoopDisambiguator and chunker = NoopChunker gives different matches/error. anyImmunized: any token of lt.analyzeText(plain text) is immunized with the real disambiguator. Comparator skips such cases (DISAMB_PORTED=false) and `languageFilterChanged` cases.
+- Inputs: string literals of the Java JUnit classes (core + de/en/fr tests, extracted by the generator), generic edge cases (quotes, brackets, smileys, lists, numbers, ellipsis, URLs, line breaks, soft hyphen, BOM, emoji), multi-paragraph texts, corpus paragraphs (en/fr/de), ParagraphHandling/Mode/Level variants, tokenizeText=false, AnnotatedText parts.
+- Cases per rule class and language: `<Class>-<lang>` (clean-overlapping OFF) and `<Class>-<lang>-cleanOn` (default ON, first 120 cases; flag `languageFilterChanged` recorded, F35). de-DE: adapter throws notPorted (German tagger).
+- Rule options/userConfig: none of CORE-0250..0258 has RuleOption (LongSentenceRule/LongParagraphRule are CORE-0259/0260, other step), so no userConfig variants.
+
+## Result
+DONE: 54 case files (9 core rule classes x en-US/fr/de-DE x {off, cleanOn}), 3.8 MB, ~10.6k check cases of which ~470 disambChanged and ~77 languageFilterChanged (all skipped by the comparator). Parity: 54 NOT PORTED (no adapter yet).
+Selected rules per language (`selected` in results): en EN_UNPAIRED_BRACKETS/EN_UNPAIRED_QUOTES/ENGLISH_WORD_REPEAT_RULE subclasses; de GermanCommaWhitespaceRule, DE_DOUBLE_PUNCTUATION, GermanUnpairedBrackets/QuotesRule, GermanWordRepeatRule, DE_SENTENCE_WHITESPACE; fr plain core rules. Where the language has no instance (fr UnpairedQuotes, fr/en/de WordRepeat core? only fr, WhitespaceBeforePunctuation in all three), the harness instantiates the core class directly with the language's message bundle (`selected` entry ends in `|instantiated`).

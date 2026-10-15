@@ -214,6 +214,69 @@ final class CheckPipeOps {
     return r;
   }
 
+
+  /** X-RULES-CORE: {lang, classes:[fqcn], ruleIds?:[id], cleanOverlapping, cases:[...]} -> {selected, cases:[... + disambChanged, disambDiffers, anyImmunized]}. See docs/review/F16-oracle.md. */
+  static Object checkRules(JsonNode a) throws Exception {
+    Language l = Languages.getLanguageForShortCode(a.get("lang").asText());
+    HarnessLT lt = new HarnessLT(l, (Language) null);
+    lt.setCleanOverlappingMatches(a.has("cleanOverlapping") && a.get("cleanOverlapping").asBoolean());
+    List<Class<?>> cls = new ArrayList<>();
+    for (String c : strs(a, "classes")) cls.add(Class.forName(c));
+    Set<String> enabled = new LinkedHashSet<>(strs(a, "ruleIds"));
+    List<String> selected = new ArrayList<>();
+    for (Rule r : lt.getAllRules()) {
+      boolean m = enabled.contains(r.getId());
+      for (Class<?> c : cls) if (c.isInstance(r)) m = true;
+      if (m) { enabled.add(r.getId()); selected.add(r.getFullId() + "|" + r.getClass().getSimpleName()); }
+    }
+    if (enabled.isEmpty()) {
+      // no language instance: instantiate the core class itself (messages bundle of the language)
+      for (Rule r : lt.getAllRules()) lt.disableRule(r.getFullId());
+      for (Class<?> c : cls) {
+        java.lang.reflect.Constructor<?> k;
+        Rule r;
+        java.util.ResourceBundle mb = JLanguageTool.getMessageBundle(l);
+        try { r = (Rule) c.getConstructor(java.util.ResourceBundle.class, Language.class).newInstance(mb, l); }
+        catch (NoSuchMethodException e) { r = (Rule) c.getConstructor(java.util.ResourceBundle.class).newInstance(mb); }
+        lt.addRule(r);
+        enabled.add(r.getId());
+        selected.add(r.getFullId() + "|" + r.getClass().getSimpleName() + "|instantiated");
+      }
+    }
+    if (!enabled.isEmpty()) Tools.selectRules(lt, new LinkedHashSet<>(), new LinkedHashSet<>(), new LinkedHashSet<>(), enabled, true, false);
+    List<String> active = new ArrayList<>();
+    for (Rule r : lt.getAllActiveRules()) active.add(r.getFullId());
+    Map<String, Object> res = new LinkedHashMap<>();
+    res.put("selected", selected);
+    res.put("active", active);
+    List<Object> out = new ArrayList<>();
+    for (JsonNode c : a.get("cases")) {
+      Map<String, Object> r1 = runCase(lt, c);
+      Map<String, Object> r2;
+      boolean imm = false;
+      org.languagetool.tagging.disambiguation.Disambiguator d = l.getDisambiguator();
+      org.languagetool.chunking.Chunker ch = l.getChunker();
+      try {
+        try {
+          for (AnalyzedSentence s : lt.analyzeText(annotated(c).getPlainText())) for (AnalyzedTokenReadings t : s.getTokens()) if (t.isImmunized()) imm = true;
+        } catch (Throwable t) { /* error cases carry the error */ }
+        l.setDisambiguator(new org.languagetool.noop.NoopDisambiguator());
+        l.setChunker(new org.languagetool.noop.NoopChunker());
+        r2 = runCase(lt, c);
+      } finally {
+        l.setDisambiguator(d);
+        l.setChunker(ch);
+      }
+      boolean differs = !String.valueOf(r1.get("matches")).equals(String.valueOf(r2.get("matches"))) || !String.valueOf(r1.get("error")).equals(String.valueOf(r2.get("error")));
+      r1.put("anyImmunized", imm);
+      r1.put("disambDiffers", differs);
+      r1.put("disambChanged", differs || imm);
+      out.add(r1);
+    }
+    res.put("cases", out);
+    return res;
+  }
+
   private static List<String> ids(List<Rule> rules) {
     List<String> l = new ArrayList<>();
     for (Rule r : rules) if (r.getId().startsWith(SynthRules.PREFIX)) l.add(r.getFullId());

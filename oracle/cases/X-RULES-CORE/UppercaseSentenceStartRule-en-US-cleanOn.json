@@ -1,0 +1,201 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "check-rules en-US: UppercaseSentenceStartRule with default clean-overlapping ON (F35 flag)",
+ "normalize": [],
+ "compare": "check-pipe",
+ "ops": [
+  {
+   "op": "check-rules",
+   "args": {
+    "lang": "en-US",
+    "classes": [
+     "org.languagetool.rules.UppercaseSentenceStartRule"
+    ],
+    "cleanOverlapping": true,
+    "cases": [
+     {
+      "text": "<marker>a</marker> sentence."
+     },
+     {
+      "text": "<marker>A</marker> sentence."
+     },
+     {
+      "text": "this"
+     },
+     {
+      "text": "a) This is a test sentence."
+     },
+     {
+      "text": "iv. This is a test sentence..."
+     },
+     {
+      "text": "\"iv. This is a test sentence...\""
+     },
+     {
+      "text": "»iv. This is a test sentence..."
+     },
+     {
+      "text": "This"
+     },
+     {
+      "text": "This is"
+     },
+     {
+      "text": "This is a test sentence"
+     },
+     {
+      "text": "http://www.languagetool.org"
+     },
+     {
+      "text": "eBay can be at sentence start in lowercase."
+     },
+     {
+      "text": "¿Esto es una pregunta?"
+     },
+     {
+      "text": "¿Esto es una pregunta?, ¿y esto?"
+     },
+     {
+      "text": "ø This is a test sentence with a wrong bullet character."
+     },
+     {
+      "text": "this is a test sentence."
+     },
+     {
+      "text": "this!"
+     },
+     {
+      "text": "'this is a sentence'."
+     },
+     {
+      "text": "\"this is a sentence.\""
+     },
+     {
+      "text": "„this is a sentence."
+     },
+     {
+      "text": "«this is a sentence."
+     },
+     {
+      "text": "‘this is a sentence."
+     },
+     {
+      "text": "¿esto es una pregunta?"
+     },
+     {
+      "text": "¿Esto es una pregunta? ¿y esto?"
+     },
+     {
+      "text": "v8.2.0 has been released"
+     },
+     {
+      "text": "In Nov. next year."
+     },
+     {
+      "text": "www.languagetool.org is a website."
+     },
+     {
+      "text": "Languagetool.org is a website."
+     },
+     {
+      "text": "1. an item in a list\n2. another item."
+     },
+     {
+      "text": "This is a sentence. microRNA is the start of another sentence."
+     },
+     {
+      "text": "This is a sentence. mRNA is the start of another sentence."
+     },
+     {
+      "text": "This is a sentence. iDeal is the start of another sentence."
+     },
+     {
+      "text": "languagetool.org is a website."
+     },
+     {
+      "text": "a sentence."
+     },
+     {
+      "text": "a sentence!"
+     },
+     {
+      "text": "— Dash introducing enumeration item!"
+     },
+     {
+      "text": "— dash introducing enumeration item!"
+     },
+     {
+      "text": "Hi Mr. Miller,\n\n \n\nhow are you?"
+     },
+     {
+      "text": "ℹ️ Tree Structure."
+     },
+     {
+      "text": "ℹ Tree Structure."
+     },
+     {
+      "text": ""
+     },
+     {
+      "text": " "
+     },
+     {
+      "text": "\n"
+     },
+     {
+      "text": "a"
+     },
+     {
+      "text": "Hello, world."
+     },
+     {
+      "text": "Hello , world ."
+     },
+     {
+      "text": "Hello,world"
+     },
+     {
+      "text": "Hello ,world"
+     },
+     {
+      "text": "( Hello )"
+     },
+     {
+      "text": "(Hello)"
+     },
+     {
+      "text": "Hello (world"
+     },
+     {
+      "text": "Hello world)"
+     },
+     {
+      "text": "((a)"
+     },
+     {
+      "text": "(a))"
+     },
+     {
+      "text": "([a)]"
+     },
+     {
+      "text": "{a [b (c) d] e}"
+     },
+     {
+      "text": "[a (b] c)"
+     },
+     {
+      "text": "„Hallo“ sagte er."
+     },
+     {
+      "text": "„Hallo sagte er."
+     },
+     {
+      "text": "Hallo“ sagte er."
+     }
+    ]
+   }
+  }
+ ]
+}
