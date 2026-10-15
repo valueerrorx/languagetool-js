@@ -1,0 +1,2663 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "StringTools.escapeHTML over 440 strings (ASCII, umlauts, sharp s, Turkish i, Greek sigma, digits, apostrophes, NBSP/zero-width, non-BMP, controls, long)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "escapeHTML",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "  "
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "a"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "A"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "z"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Z"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "1"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "0"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "12"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "1a"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "a1"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "A1"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ab"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "AB"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Ab"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "aB"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "abc"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ABC"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Abc"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "aBc"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "abC"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "AbC"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ABc"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "aBC"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Hello"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "hello"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "HELLO"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "hELLO"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "HeLLo"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Hello World"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "hello world"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "HELLO WORLD"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Hello world"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "hello World"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "A B"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "The Lord Of The Rings"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "the lord of the rings"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "a tale of two cities"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "The  double  space"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       " leading"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "trailing "
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       " both "
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "  both  "
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "\tTab"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Tab\t"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "a\tb"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "a\nb"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "a\r\nb"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "\n"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "\r"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "\r\n"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "\n\n"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "a\n\nb"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "\n\nx"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "x\n"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Äpfel"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "äpfel"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ÄPFEL"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Öl"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "öl"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ÖL"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Übel"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "übel"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ÜBEL"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Straße"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "straße"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "STRASSE"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "STRAẞE"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ß"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ẞ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ßa"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ẞa"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Ssa"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ǅ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ǆ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Ǆ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ǈ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ﬁsh"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ﬃ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "FIsh"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ŉ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ΐ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "İstanbul"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "istanbul"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Istanbul"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ıstanbul"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "İ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ı"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "I"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "i"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "IİıiI"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "TITLE"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "title"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Ώ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ώ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ΣΑΣ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "σας"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Σας"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ὈΔΥΣΣΕΎΣ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "οδυσσεύς"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Ὀδυσσεύς"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ΑΣ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ας"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Ας"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ς"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Σ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "σ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "αβγ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Αβγ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ΑΒΓ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "αΒΓ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "élève"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Élève"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ÉLÈVE"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "élÈve"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "œuvre"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Œuvre"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ŒUVRE"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ç"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Ç"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ÿ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Ÿ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ñ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Ñ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Ø"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ø"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "þ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Þ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ÿa"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ÝÞ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "d'accord"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "D'accord"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "l'homme"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "L'Homme"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "L’homme"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "l’homme"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "'quoted'"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "\"Quoted\""
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "«Guillemets»"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "»Anführung«"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "„Anführung“"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "(Klammer)"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "(klammer)"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "[x]"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "\"hello\""
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "\"Hello\""
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "'a'"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "--x"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "-Abc"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "-abc"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "...Abc"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "...abc"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "¿Qué?"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "¡Hola!"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "*Stern"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "3D"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "3d"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "3 D"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "4Ever"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "4ever"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ij"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "IJ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Ij"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "iJ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ijsselmeer"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "IJsselmeer"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Ijsselmeer"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ijs"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ij-"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ï"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Ïj"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "hello-world"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Hello-World"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Hello-world"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ABC-def"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "camelCase"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "CamelCase"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "camelCaseWord"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "camelCASE"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "camel"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "abcDef"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "abcDefGhi"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "aBCD"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "myURLParser"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "iPhone"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "eBay"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "McDonald"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "macOS"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "äBc"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ÄBc"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "abcÄ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "a1B"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "a_B"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "x-Y"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       " a "
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "​"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "​a"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "a​"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "​​"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "　"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "﻿"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "﻿a"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "\u0001"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "\u0002"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "\u0000"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "a\u0000b"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "\u0003"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "\u000b"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "\f"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "\u001f"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "᠎"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "­"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "a­b"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "‌"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "‍"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "⁠"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "‎"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "‏"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "‪"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "‬"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "‭"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "á"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "é"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "́"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ö"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "über"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "café"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Café"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "😀"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "😀a"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "a😀"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "😀😀"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "👍🏽"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "👨‍👩‍👧"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "❤️"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "❤"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "©"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "®"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "™"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "€"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "$"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "£"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "¥"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "%"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "‰"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "°"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "+"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "="
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "<"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       ">"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "|"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "~"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "^"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "`"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "¬"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "±"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "×"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "÷"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "∑"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "∞"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "𝒜"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "𝒜bc"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "a𝒜"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "𐐨"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "𐐀"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "𐐀𐐨"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "𐐨𐐀"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "𝟙"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "𝟏𝟐"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "𠀀"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "a𠀀b"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "."
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       ","
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       ";"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       ":"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "!"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "?"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "-"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "–"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "—"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "…"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "..."
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       ".."
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "("
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       ")"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "["
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "]"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "{"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "}"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "\""
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "'"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "’"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "‘"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "“"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "”"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "„"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "«"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "»"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "‹"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "›"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "/"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "\\"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "_"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "*"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "&"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "#"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "@"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "§"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "¿"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "¡"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "·"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "•"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "،"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "؟"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "。"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "、"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "！"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "？"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "&amp;"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "&lt;"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "&#39;"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "<b>"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "</b>"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "<b>bold</b>"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "<<b>>"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "<<b>"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "<b>>"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "<a href=\"x\">link</a>"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "<!-- c -->"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "a<!-- c -->b"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "<!-- a --><!-- b -->"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "<!-- unclosed"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "<!--x-->y<!--z-->"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "x <!-- multi\nline --> y"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "<br/>"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "<br />"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "< b>"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "<>"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "< >"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "<a<b>c"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "<\n>"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "a<\nb>c"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "\"quoted\" & 'single' <tag>"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "x > y"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "x < y"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "a&b"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "a & b"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "&&"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "\"\""
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "''"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "<![CDATA[x]]>"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "<?xml version=\"1.0\"?>"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "<tag attr=\"v\">t</tag>"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "\u0000<"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "€ & £"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "123"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "+123"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "-123"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "1.5"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "1,5"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "1 000"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "1,000.5"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "1.000,5"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       ".5"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "5."
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       ",5"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "1..2"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "1."
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "   "
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "1 2"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "12 "
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       " 12"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "١٢٣"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "１２３"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "१२३"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "²"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "½"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Ⅻ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "1e5"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "0x1F"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "1_000"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Wort"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Haus"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Häuser"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Straßenbahn"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Donaudampfschifffahrtsgesellschaft"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "E-Mail"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "e-mail"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "U-Bahn"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "u-bahn"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "A-B-C"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "O'Neil"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "o'neil"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "McDonald’s"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ǆa"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ǅa"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ٱلْعَرَبِيَّةُ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "العربية"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "كَتَبَ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "كتب"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ـكتابـ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ـ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "שלום"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "שָׁלוֹם"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Привет"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "привет"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ПРИВЕТ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Ёж"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ёж"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "日本語"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ひらがな"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "한국어"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ภาษาไทย"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "ខ្មែរ"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "हिन्दी"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "AbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAb"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b "
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "                                                                                                    "
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "äöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäö"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "<b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word"
+      ]
+     },
+     {
+      "fn": "escapeHTML",
+      "args": [
+       "Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

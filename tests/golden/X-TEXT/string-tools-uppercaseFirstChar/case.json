@@ -1,0 +1,2663 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "StringTools.uppercaseFirstChar over 440 strings (ASCII, umlauts, sharp s, Turkish i, Greek sigma, digits, apostrophes, NBSP/zero-width, non-BMP, controls, long)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "  "
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "a"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "A"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "z"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Z"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "1"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "0"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "12"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "1a"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "a1"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "A1"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ab"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "AB"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Ab"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "aB"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "abc"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ABC"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Abc"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "aBc"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "abC"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "AbC"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ABc"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "aBC"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Hello"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "hello"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "HELLO"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "hELLO"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "HeLLo"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Hello World"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "hello world"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "HELLO WORLD"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Hello world"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "hello World"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "A B"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "The Lord Of The Rings"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "the lord of the rings"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "a tale of two cities"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "The  double  space"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       " leading"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "trailing "
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       " both "
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "  both  "
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "\tTab"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Tab\t"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "a\tb"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "a\nb"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "a\r\nb"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "\n"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "\r"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "\r\n"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "\n\n"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "a\n\nb"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "\n\nx"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "x\n"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Äpfel"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "äpfel"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ÄPFEL"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Öl"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "öl"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ÖL"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Übel"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "übel"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ÜBEL"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Straße"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "straße"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "STRASSE"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "STRAẞE"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ß"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ẞ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ßa"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ẞa"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Ssa"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ǅ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ǆ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Ǆ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ǈ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ﬁsh"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ﬃ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "FIsh"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ŉ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ΐ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "İstanbul"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "istanbul"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Istanbul"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ıstanbul"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "İ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ı"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "I"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "i"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "IİıiI"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "TITLE"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "title"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Ώ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ώ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ΣΑΣ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "σας"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Σας"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ὈΔΥΣΣΕΎΣ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "οδυσσεύς"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Ὀδυσσεύς"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ΑΣ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ας"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Ας"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ς"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Σ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "σ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "αβγ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Αβγ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ΑΒΓ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "αΒΓ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "élève"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Élève"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ÉLÈVE"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "élÈve"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "œuvre"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Œuvre"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ŒUVRE"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ç"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Ç"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ÿ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Ÿ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ñ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Ñ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Ø"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ø"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "þ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Þ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ÿa"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ÝÞ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "d'accord"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "D'accord"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "l'homme"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "L'Homme"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "L’homme"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "l’homme"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "'quoted'"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "\"Quoted\""
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "«Guillemets»"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "»Anführung«"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "„Anführung“"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "(Klammer)"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "(klammer)"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "[x]"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "\"hello\""
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "\"Hello\""
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "'a'"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "--x"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "-Abc"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "-abc"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "...Abc"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "...abc"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "¿Qué?"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "¡Hola!"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "*Stern"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "3D"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "3d"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "3 D"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "4Ever"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "4ever"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ij"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "IJ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Ij"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "iJ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ijsselmeer"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "IJsselmeer"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Ijsselmeer"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ijs"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ij-"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ï"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Ïj"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "hello-world"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Hello-World"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Hello-world"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ABC-def"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "camelCase"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "CamelCase"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "camelCaseWord"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "camelCASE"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "camel"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "abcDef"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "abcDefGhi"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "aBCD"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "myURLParser"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "iPhone"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "eBay"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "McDonald"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "macOS"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "äBc"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ÄBc"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "abcÄ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "a1B"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "a_B"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "x-Y"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       " a "
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "​"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "​a"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "a​"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "​​"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "　"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "﻿"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "﻿a"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "\u0001"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "\u0002"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "\u0000"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "a\u0000b"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "\u0003"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "\u000b"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "\f"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "\u001f"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "᠎"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "­"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "a­b"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "‌"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "‍"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "⁠"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "‎"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "‏"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "‪"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "‬"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "‭"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "á"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "é"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "́"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ö"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "über"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "café"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Café"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "😀"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "😀a"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "a😀"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "😀😀"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "👍🏽"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "👨‍👩‍👧"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "❤️"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "❤"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "©"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "®"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "™"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "€"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "$"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "£"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "¥"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "%"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "‰"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "°"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "+"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "="
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "<"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       ">"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "|"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "~"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "^"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "`"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "¬"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "±"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "×"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "÷"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "∑"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "∞"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "𝒜"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "𝒜bc"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "a𝒜"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "𐐨"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "𐐀"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "𐐀𐐨"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "𐐨𐐀"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "𝟙"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "𝟏𝟐"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "𠀀"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "a𠀀b"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "."
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       ","
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       ";"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       ":"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "!"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "?"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "-"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "–"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "—"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "…"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "..."
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       ".."
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "("
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       ")"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "["
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "]"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "{"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "}"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "\""
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "'"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "’"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "‘"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "“"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "”"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "„"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "«"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "»"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "‹"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "›"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "/"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "\\"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "_"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "*"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "&"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "#"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "@"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "§"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "¿"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "¡"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "·"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "•"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "،"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "؟"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "。"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "、"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "！"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "？"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "&amp;"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "&lt;"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "&#39;"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "<b>"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "</b>"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "<b>bold</b>"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "<<b>>"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "<<b>"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "<b>>"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "<a href=\"x\">link</a>"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "<!-- c -->"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "a<!-- c -->b"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "<!-- a --><!-- b -->"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "<!-- unclosed"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "<!--x-->y<!--z-->"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "x <!-- multi\nline --> y"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "<br/>"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "<br />"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "< b>"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "<>"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "< >"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "<a<b>c"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "<\n>"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "a<\nb>c"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "\"quoted\" & 'single' <tag>"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "x > y"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "x < y"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "a&b"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "a & b"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "&&"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "\"\""
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "''"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "<![CDATA[x]]>"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "<?xml version=\"1.0\"?>"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "<tag attr=\"v\">t</tag>"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "\u0000<"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "€ & £"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "123"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "+123"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "-123"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "1.5"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "1,5"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "1 000"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "1,000.5"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "1.000,5"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       ".5"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "5."
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       ",5"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "1..2"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "1."
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "   "
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "1 2"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "12 "
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       " 12"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "١٢٣"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "１２３"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "१२३"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "²"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "½"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Ⅻ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "1e5"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "0x1F"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "1_000"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Wort"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Haus"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Häuser"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Straßenbahn"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Donaudampfschifffahrtsgesellschaft"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "E-Mail"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "e-mail"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "U-Bahn"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "u-bahn"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "A-B-C"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "O'Neil"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "o'neil"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "McDonald’s"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ǆa"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ǅa"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ٱلْعَرَبِيَّةُ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "العربية"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "كَتَبَ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "كتب"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ـكتابـ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ـ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "שלום"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "שָׁלוֹם"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Привет"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "привет"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ПРИВЕТ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Ёж"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ёж"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "日本語"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ひらがな"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "한국어"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ภาษาไทย"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "ខ្មែរ"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "हिन्दी"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "AbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAb"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b "
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "                                                                                                    "
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "äöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäö"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "<b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word"
+      ]
+     },
+     {
+      "fn": "uppercaseFirstChar",
+      "args": [
+       "Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

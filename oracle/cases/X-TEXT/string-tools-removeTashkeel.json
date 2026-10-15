@@ -1,0 +1,2663 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "StringTools.removeTashkeel over 440 strings (ASCII, umlauts, sharp s, Turkish i, Greek sigma, digits, apostrophes, NBSP/zero-width, non-BMP, controls, long)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "  "
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "a"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "A"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "z"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Z"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "1"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "0"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "12"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "1a"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "a1"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "A1"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ab"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "AB"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Ab"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "aB"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "abc"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ABC"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Abc"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "aBc"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "abC"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "AbC"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ABc"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "aBC"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Hello"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "hello"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "HELLO"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "hELLO"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "HeLLo"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Hello World"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "hello world"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "HELLO WORLD"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Hello world"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "hello World"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "A B"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "The Lord Of The Rings"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "the lord of the rings"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "a tale of two cities"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "The  double  space"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       " leading"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "trailing "
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       " both "
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "  both  "
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "\tTab"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Tab\t"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "a\tb"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "a\nb"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "a\r\nb"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "\n"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "\r"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "\r\n"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "\n\n"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "a\n\nb"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "\n\nx"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "x\n"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Äpfel"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "äpfel"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ÄPFEL"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Öl"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "öl"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ÖL"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Übel"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "übel"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ÜBEL"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Straße"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "straße"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "STRASSE"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "STRAẞE"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ß"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ẞ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ßa"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ẞa"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Ssa"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ǅ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ǆ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Ǆ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ǈ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ﬁsh"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ﬃ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "FIsh"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ŉ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ΐ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "İstanbul"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "istanbul"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Istanbul"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ıstanbul"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "İ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ı"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "I"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "i"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "IİıiI"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "TITLE"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "title"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Ώ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ώ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ΣΑΣ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "σας"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Σας"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ὈΔΥΣΣΕΎΣ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "οδυσσεύς"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Ὀδυσσεύς"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ΑΣ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ας"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Ας"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ς"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Σ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "σ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "αβγ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Αβγ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ΑΒΓ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "αΒΓ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "élève"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Élève"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ÉLÈVE"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "élÈve"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "œuvre"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Œuvre"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ŒUVRE"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ç"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Ç"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ÿ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Ÿ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ñ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Ñ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Ø"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ø"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "þ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Þ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ÿa"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ÝÞ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "d'accord"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "D'accord"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "l'homme"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "L'Homme"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "L’homme"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "l’homme"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "'quoted'"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "\"Quoted\""
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "«Guillemets»"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "»Anführung«"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "„Anführung“"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "(Klammer)"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "(klammer)"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "[x]"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "\"hello\""
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "\"Hello\""
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "'a'"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "--x"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "-Abc"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "-abc"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "...Abc"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "...abc"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "¿Qué?"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "¡Hola!"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "*Stern"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "3D"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "3d"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "3 D"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "4Ever"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "4ever"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ij"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "IJ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Ij"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "iJ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ijsselmeer"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "IJsselmeer"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Ijsselmeer"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ijs"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ij-"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ï"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Ïj"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "hello-world"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Hello-World"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Hello-world"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ABC-def"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "camelCase"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "CamelCase"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "camelCaseWord"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "camelCASE"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "camel"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "abcDef"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "abcDefGhi"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "aBCD"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "myURLParser"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "iPhone"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "eBay"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "McDonald"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "macOS"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "äBc"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ÄBc"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "abcÄ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "a1B"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "a_B"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "x-Y"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       " a "
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "​"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "​a"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "a​"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "​​"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "　"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "﻿"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "﻿a"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "\u0001"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "\u0002"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "\u0000"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "a\u0000b"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "\u0003"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "\u000b"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "\f"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "\u001f"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "᠎"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "­"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "a­b"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "‌"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "‍"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "⁠"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "‎"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "‏"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "‪"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "‬"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "‭"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "á"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "é"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "́"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ö"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "über"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "café"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Café"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "😀"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "😀a"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "a😀"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "😀😀"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "👍🏽"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "👨‍👩‍👧"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "❤️"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "❤"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "©"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "®"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "™"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "€"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "$"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "£"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "¥"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "%"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "‰"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "°"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "+"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "="
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "<"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       ">"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "|"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "~"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "^"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "`"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "¬"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "±"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "×"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "÷"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "∑"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "∞"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "𝒜"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "𝒜bc"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "a𝒜"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "𐐨"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "𐐀"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "𐐀𐐨"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "𐐨𐐀"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "𝟙"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "𝟏𝟐"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "𠀀"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "a𠀀b"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "."
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       ","
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       ";"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       ":"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "!"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "?"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "-"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "–"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "—"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "…"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "..."
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       ".."
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "("
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       ")"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "["
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "]"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "{"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "}"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "\""
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "'"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "’"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "‘"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "“"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "”"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "„"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "«"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "»"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "‹"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "›"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "/"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "\\"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "_"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "*"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "&"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "#"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "@"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "§"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "¿"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "¡"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "·"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "•"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "،"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "؟"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "。"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "、"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "！"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "？"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "&amp;"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "&lt;"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "&#39;"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "<b>"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "</b>"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "<b>bold</b>"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "<<b>>"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "<<b>"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "<b>>"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "<a href=\"x\">link</a>"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "<!-- c -->"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "a<!-- c -->b"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "<!-- a --><!-- b -->"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "<!-- unclosed"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "<!--x-->y<!--z-->"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "x <!-- multi\nline --> y"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "<br/>"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "<br />"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "< b>"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "<>"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "< >"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "<a<b>c"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "<\n>"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "a<\nb>c"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "\"quoted\" & 'single' <tag>"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "x > y"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "x < y"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "a&b"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "a & b"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "&&"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "\"\""
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "''"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "<![CDATA[x]]>"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "<?xml version=\"1.0\"?>"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "<tag attr=\"v\">t</tag>"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "\u0000<"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "€ & £"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "123"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "+123"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "-123"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "1.5"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "1,5"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "1 000"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "1,000.5"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "1.000,5"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       ".5"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "5."
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       ",5"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "1..2"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "1."
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "   "
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "1 2"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "12 "
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       " 12"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "١٢٣"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "１２３"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "१२३"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "²"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "½"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Ⅻ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "1e5"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "0x1F"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "1_000"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Wort"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Haus"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Häuser"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Straßenbahn"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Donaudampfschifffahrtsgesellschaft"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "E-Mail"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "e-mail"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "U-Bahn"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "u-bahn"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "A-B-C"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "O'Neil"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "o'neil"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "McDonald’s"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ǆa"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ǅa"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ٱلْعَرَبِيَّةُ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "العربية"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "كَتَبَ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "كتب"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ـكتابـ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ـ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "שלום"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "שָׁלוֹם"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Привет"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "привет"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ПРИВЕТ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Ёж"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ёж"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "日本語"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ひらがな"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "한국어"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ภาษาไทย"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "ខ្មែរ"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "हिन्दी"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "AbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAb"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b "
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "                                                                                                    "
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "äöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäö"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "<b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word"
+      ]
+     },
+     {
+      "fn": "removeTashkeel",
+      "args": [
+       "Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

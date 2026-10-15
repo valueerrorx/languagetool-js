@@ -1,0 +1,2663 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "StringTools.asString over 440 strings (ASCII, umlauts, sharp s, Turkish i, Greek sigma, digits, apostrophes, NBSP/zero-width, non-BMP, controls, long)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "asString",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "  "
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "a"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "A"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "z"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Z"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "1"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "0"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "12"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "1a"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "a1"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "A1"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ab"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "AB"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Ab"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "aB"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "abc"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ABC"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Abc"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "aBc"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "abC"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "AbC"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ABc"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "aBC"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Hello"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "hello"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "HELLO"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "hELLO"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "HeLLo"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Hello World"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "hello world"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "HELLO WORLD"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Hello world"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "hello World"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "A B"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "The Lord Of The Rings"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "the lord of the rings"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "a tale of two cities"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "The  double  space"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       " leading"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "trailing "
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       " both "
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "  both  "
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "\tTab"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Tab\t"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "a\tb"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "a\nb"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "a\r\nb"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "\n"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "\r"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "\r\n"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "\n\n"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "a\n\nb"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "\n\nx"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "x\n"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Äpfel"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "äpfel"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ÄPFEL"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Öl"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "öl"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ÖL"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Übel"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "übel"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ÜBEL"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Straße"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "straße"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "STRASSE"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "STRAẞE"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ß"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ẞ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ßa"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ẞa"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Ssa"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ǅ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ǆ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Ǆ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ǈ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ﬁsh"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ﬃ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "FIsh"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ŉ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ΐ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "İstanbul"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "istanbul"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Istanbul"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ıstanbul"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "İ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ı"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "I"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "i"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "IİıiI"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "TITLE"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "title"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Ώ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ώ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ΣΑΣ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "σας"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Σας"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ὈΔΥΣΣΕΎΣ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "οδυσσεύς"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Ὀδυσσεύς"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ΑΣ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ας"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Ας"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ς"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Σ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "σ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "αβγ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Αβγ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ΑΒΓ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "αΒΓ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "élève"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Élève"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ÉLÈVE"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "élÈve"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "œuvre"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Œuvre"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ŒUVRE"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ç"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Ç"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ÿ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Ÿ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ñ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Ñ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Ø"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ø"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "þ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Þ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ÿa"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ÝÞ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "d'accord"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "D'accord"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "l'homme"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "L'Homme"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "L’homme"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "l’homme"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "'quoted'"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "\"Quoted\""
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "«Guillemets»"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "»Anführung«"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "„Anführung“"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "(Klammer)"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "(klammer)"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "[x]"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "\"hello\""
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "\"Hello\""
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "'a'"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "--x"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "-Abc"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "-abc"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "...Abc"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "...abc"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "¿Qué?"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "¡Hola!"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "*Stern"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "3D"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "3d"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "3 D"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "4Ever"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "4ever"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ij"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "IJ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Ij"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "iJ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ijsselmeer"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "IJsselmeer"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Ijsselmeer"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ijs"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ij-"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ï"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Ïj"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "hello-world"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Hello-World"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Hello-world"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ABC-def"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "camelCase"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "CamelCase"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "camelCaseWord"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "camelCASE"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "camel"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "abcDef"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "abcDefGhi"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "aBCD"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "myURLParser"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "iPhone"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "eBay"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "McDonald"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "macOS"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "äBc"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ÄBc"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "abcÄ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "a1B"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "a_B"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "x-Y"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       " a "
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "​"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "​a"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "a​"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "​​"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "　"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "﻿"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "﻿a"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "\u0001"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "\u0002"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "\u0000"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "a\u0000b"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "\u0003"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "\u000b"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "\f"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "\u001f"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "᠎"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "­"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "a­b"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "‌"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "‍"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "⁠"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "‎"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "‏"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "‪"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "‬"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "‭"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "á"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "é"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "́"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ö"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "über"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "café"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Café"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "😀"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "😀a"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "a😀"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "😀😀"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "👍🏽"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "👨‍👩‍👧"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "❤️"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "❤"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "©"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "®"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "™"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "€"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "$"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "£"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "¥"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "%"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "‰"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "°"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "+"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "="
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "<"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       ">"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "|"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "~"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "^"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "`"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "¬"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "±"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "×"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "÷"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "∑"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "∞"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "𝒜"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "𝒜bc"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "a𝒜"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "𐐨"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "𐐀"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "𐐀𐐨"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "𐐨𐐀"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "𝟙"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "𝟏𝟐"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "𠀀"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "a𠀀b"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "."
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       ","
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       ";"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       ":"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "!"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "?"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "-"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "–"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "—"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "…"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "..."
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       ".."
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "("
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       ")"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "["
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "]"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "{"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "}"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "\""
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "'"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "’"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "‘"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "“"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "”"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "„"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "«"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "»"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "‹"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "›"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "/"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "\\"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "_"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "*"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "&"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "#"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "@"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "§"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "¿"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "¡"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "·"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "•"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "،"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "؟"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "。"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "、"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "！"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "？"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "&amp;"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "&lt;"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "&#39;"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "<b>"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "</b>"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "<b>bold</b>"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "<<b>>"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "<<b>"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "<b>>"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "<a href=\"x\">link</a>"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "<!-- c -->"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "a<!-- c -->b"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "<!-- a --><!-- b -->"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "<!-- unclosed"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "<!--x-->y<!--z-->"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "x <!-- multi\nline --> y"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "<br/>"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "<br />"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "< b>"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "<>"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "< >"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "<a<b>c"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "<\n>"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "a<\nb>c"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "\"quoted\" & 'single' <tag>"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "x > y"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "x < y"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "a&b"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "a & b"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "&&"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "\"\""
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "''"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "<![CDATA[x]]>"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "<?xml version=\"1.0\"?>"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "<tag attr=\"v\">t</tag>"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "\u0000<"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "€ & £"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "123"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "+123"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "-123"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "1.5"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "1,5"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "1 000"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "1,000.5"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "1.000,5"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       ".5"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "5."
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       ",5"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "1..2"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "1."
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "   "
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "1 2"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "12 "
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       " 12"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "١٢٣"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "１２３"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "१२३"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "²"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "½"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Ⅻ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "1e5"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "0x1F"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "1_000"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Wort"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Haus"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Häuser"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Straßenbahn"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Donaudampfschifffahrtsgesellschaft"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "E-Mail"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "asString",
+      "args": [
+       "e-mail"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "U-Bahn"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "u-bahn"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "A-B-C"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "O'Neil"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "o'neil"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "McDonald’s"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ǆa"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ǅa"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ٱلْعَرَبِيَّةُ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "العربية"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "كَتَبَ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "كتب"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ـكتابـ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ـ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "שלום"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "שָׁלוֹם"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Привет"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "привет"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ПРИВЕТ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Ёж"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ёж"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "日本語"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ひらがな"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "한국어"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ภาษาไทย"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "ខ្មែរ"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "हिन्दी"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "AbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAb"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b "
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "                                                                                                    "
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "äöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäö"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "<b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word"
+      ]
+     },
+     {
+      "fn": "asString",
+      "args": [
+       "Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

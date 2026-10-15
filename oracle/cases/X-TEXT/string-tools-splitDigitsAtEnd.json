@@ -1,0 +1,2663 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "StringTools.splitDigitsAtEnd over 440 strings (ASCII, umlauts, sharp s, Turkish i, Greek sigma, digits, apostrophes, NBSP/zero-width, non-BMP, controls, long)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "  "
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "a"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "A"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "z"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Z"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "1"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "0"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "12"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "1a"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "a1"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "A1"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ab"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "AB"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Ab"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "aB"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "abc"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ABC"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Abc"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "aBc"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "abC"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "AbC"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ABc"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "aBC"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Hello"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "hello"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "HELLO"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "hELLO"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "HeLLo"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Hello World"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "hello world"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "HELLO WORLD"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Hello world"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "hello World"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "A B"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "The Lord Of The Rings"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "the lord of the rings"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "a tale of two cities"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "The  double  space"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       " leading"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "trailing "
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       " both "
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "  both  "
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "\tTab"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Tab\t"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "a\tb"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "a\nb"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "a\r\nb"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "\n"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "\r"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "\r\n"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "\n\n"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "a\n\nb"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "\n\nx"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "x\n"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Äpfel"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "äpfel"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ÄPFEL"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Öl"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "öl"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ÖL"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Übel"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "übel"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ÜBEL"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Straße"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "straße"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "STRASSE"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "STRAẞE"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ß"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ẞ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ßa"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ẞa"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Ssa"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ǅ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ǆ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Ǆ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ǈ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ﬁsh"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ﬃ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "FIsh"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ŉ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ΐ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "İstanbul"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "istanbul"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Istanbul"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ıstanbul"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "İ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ı"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "I"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "i"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "IİıiI"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "TITLE"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "title"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Ώ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ώ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ΣΑΣ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "σας"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Σας"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ὈΔΥΣΣΕΎΣ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "οδυσσεύς"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Ὀδυσσεύς"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ΑΣ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ας"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Ας"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ς"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Σ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "σ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "αβγ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Αβγ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ΑΒΓ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "αΒΓ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "élève"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Élève"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ÉLÈVE"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "élÈve"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "œuvre"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Œuvre"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ŒUVRE"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ç"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Ç"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ÿ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Ÿ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ñ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Ñ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Ø"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ø"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "þ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Þ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ÿa"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ÝÞ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "d'accord"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "D'accord"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "l'homme"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "L'Homme"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "L’homme"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "l’homme"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "'quoted'"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "\"Quoted\""
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "«Guillemets»"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "»Anführung«"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "„Anführung“"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "(Klammer)"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "(klammer)"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "[x]"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "\"hello\""
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "\"Hello\""
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "'a'"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "--x"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "-Abc"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "-abc"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "...Abc"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "...abc"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "¿Qué?"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "¡Hola!"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "*Stern"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "3D"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "3d"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "3 D"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "4Ever"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "4ever"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ij"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "IJ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Ij"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "iJ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ijsselmeer"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "IJsselmeer"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Ijsselmeer"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ijs"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ij-"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ï"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Ïj"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "hello-world"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Hello-World"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Hello-world"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ABC-def"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "camelCase"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "CamelCase"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "camelCaseWord"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "camelCASE"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "camel"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "abcDef"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "abcDefGhi"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "aBCD"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "myURLParser"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "iPhone"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "eBay"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "McDonald"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "macOS"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "äBc"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ÄBc"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "abcÄ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "a1B"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "a_B"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "x-Y"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       " a "
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "​"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "​a"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "a​"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "​​"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "　"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "﻿"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "﻿a"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "\u0001"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "\u0002"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "\u0000"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "a\u0000b"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "\u0003"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "\u000b"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "\f"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "\u001f"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "᠎"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "­"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "a­b"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "‌"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "‍"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "⁠"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "‎"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "‏"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "‪"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "‬"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "‭"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "á"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "é"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "́"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ö"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "über"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "café"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Café"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "😀"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "😀a"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "a😀"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "😀😀"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "👍🏽"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "👨‍👩‍👧"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "❤️"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "❤"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "©"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "®"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "™"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "€"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "$"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "£"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "¥"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "%"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "‰"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "°"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "+"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "="
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "<"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       ">"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "|"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "~"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "^"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "`"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "¬"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "±"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "×"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "÷"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "∑"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "∞"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "𝒜"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "𝒜bc"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "a𝒜"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "𐐨"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "𐐀"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "𐐀𐐨"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "𐐨𐐀"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "𝟙"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "𝟏𝟐"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "𠀀"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "a𠀀b"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "."
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       ","
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       ";"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       ":"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "!"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "?"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "-"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "–"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "—"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "…"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "..."
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       ".."
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "("
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       ")"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "["
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "]"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "{"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "}"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "\""
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "'"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "’"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "‘"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "“"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "”"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "„"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "«"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "»"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "‹"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "›"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "/"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "\\"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "_"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "*"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "&"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "#"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "@"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "§"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "¿"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "¡"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "·"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "•"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "،"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "؟"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "。"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "、"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "！"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "？"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "&amp;"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "&lt;"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "&#39;"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "<b>"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "</b>"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "<b>bold</b>"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "<<b>>"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "<<b>"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "<b>>"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "<a href=\"x\">link</a>"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "<!-- c -->"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "a<!-- c -->b"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "<!-- a --><!-- b -->"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "<!-- unclosed"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "<!--x-->y<!--z-->"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "x <!-- multi\nline --> y"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "<br/>"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "<br />"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "< b>"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "<>"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "< >"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "<a<b>c"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "<\n>"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "a<\nb>c"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "\"quoted\" & 'single' <tag>"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "x > y"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "x < y"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "a&b"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "a & b"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "&&"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "\"\""
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "''"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "<![CDATA[x]]>"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "<?xml version=\"1.0\"?>"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "<tag attr=\"v\">t</tag>"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "\u0000<"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "€ & £"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "123"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "+123"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "-123"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "1.5"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "1,5"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "1 000"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "1,000.5"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "1.000,5"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       ".5"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "5."
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       ",5"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "1..2"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "1."
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "   "
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "1 2"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "12 "
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       " 12"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "١٢٣"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "１２３"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "१२३"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "²"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "½"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Ⅻ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "1e5"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "0x1F"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "1_000"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Wort"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Haus"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Häuser"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Straßenbahn"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Donaudampfschifffahrtsgesellschaft"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "E-Mail"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "e-mail"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "U-Bahn"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "u-bahn"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "A-B-C"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "O'Neil"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "o'neil"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "McDonald’s"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ǆa"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ǅa"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ٱلْعَرَبِيَّةُ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "العربية"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "كَتَبَ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "كتب"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ـكتابـ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ـ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "שלום"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "שָׁלוֹם"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Привет"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "привет"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ПРИВЕТ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Ёж"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ёж"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "日本語"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ひらがな"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "한국어"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ภาษาไทย"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "ខ្មែរ"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "हिन्दी"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "AbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAb"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b "
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "                                                                                                    "
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "äöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäö"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "<b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word"
+      ]
+     },
+     {
+      "fn": "splitDigitsAtEnd",
+      "args": [
+       "Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

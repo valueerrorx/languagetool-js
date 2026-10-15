@@ -1,0 +1,2663 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "StringTools.isNumeric over 440 strings (ASCII, umlauts, sharp s, Turkish i, Greek sigma, digits, apostrophes, NBSP/zero-width, non-BMP, controls, long)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "isNumeric",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "  "
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "a"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "A"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "z"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Z"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "1"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "0"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "12"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "1a"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "a1"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "A1"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ab"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "AB"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Ab"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "aB"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "abc"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ABC"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Abc"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "aBc"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "abC"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "AbC"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ABc"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "aBC"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Hello"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "hello"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "HELLO"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "hELLO"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "HeLLo"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Hello World"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "hello world"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "HELLO WORLD"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Hello world"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "hello World"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "A B"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "The Lord Of The Rings"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "the lord of the rings"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "a tale of two cities"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "The  double  space"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       " leading"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "trailing "
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       " both "
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "  both  "
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "\tTab"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Tab\t"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "a\tb"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "a\nb"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "a\r\nb"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "\n"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "\r"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "\r\n"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "\n\n"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "a\n\nb"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "\n\nx"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "x\n"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Äpfel"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "äpfel"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ÄPFEL"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Öl"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "öl"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ÖL"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Übel"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "übel"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ÜBEL"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Straße"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "straße"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "STRASSE"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "STRAẞE"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ß"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ẞ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ßa"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ẞa"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Ssa"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ǅ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ǆ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Ǆ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ǈ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ﬁsh"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ﬃ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "FIsh"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ŉ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ΐ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "İstanbul"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "istanbul"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Istanbul"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ıstanbul"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "İ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ı"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "I"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "i"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "IİıiI"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "TITLE"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "title"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Ώ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ώ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ΣΑΣ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "σας"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Σας"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ὈΔΥΣΣΕΎΣ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "οδυσσεύς"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Ὀδυσσεύς"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ΑΣ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ας"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Ας"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ς"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Σ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "σ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "αβγ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Αβγ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ΑΒΓ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "αΒΓ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "élève"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Élève"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ÉLÈVE"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "élÈve"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "œuvre"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Œuvre"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ŒUVRE"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ç"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Ç"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ÿ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Ÿ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ñ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Ñ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Ø"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ø"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "þ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Þ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ÿa"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ÝÞ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "d'accord"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "D'accord"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "l'homme"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "L'Homme"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "L’homme"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "l’homme"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "'quoted'"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "\"Quoted\""
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "«Guillemets»"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "»Anführung«"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "„Anführung“"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "(Klammer)"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "(klammer)"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "[x]"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "\"hello\""
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "\"Hello\""
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "'a'"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "--x"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "-Abc"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "-abc"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "...Abc"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "...abc"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "¿Qué?"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "¡Hola!"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "*Stern"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "3D"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "3d"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "3 D"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "4Ever"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "4ever"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ij"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "IJ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Ij"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "iJ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ijsselmeer"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "IJsselmeer"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Ijsselmeer"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ijs"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ij-"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ï"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Ïj"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "hello-world"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Hello-World"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Hello-world"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ABC-def"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "camelCase"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "CamelCase"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "camelCaseWord"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "camelCASE"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "camel"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "abcDef"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "abcDefGhi"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "aBCD"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "myURLParser"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "iPhone"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "eBay"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "McDonald"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "macOS"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "äBc"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ÄBc"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "abcÄ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "a1B"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "a_B"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "x-Y"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       " a "
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "​"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "​a"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "a​"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "​​"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "　"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "﻿"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "﻿a"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "\u0001"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "\u0002"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "\u0000"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "a\u0000b"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "\u0003"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "\u000b"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "\f"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "\u001f"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "᠎"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "­"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "a­b"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "‌"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "‍"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "⁠"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "‎"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "‏"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "‪"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "‬"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "‭"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "á"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "é"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "́"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ö"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "über"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "café"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Café"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "😀"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "😀a"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "a😀"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "😀😀"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "👍🏽"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "👨‍👩‍👧"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "❤️"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "❤"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "©"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "®"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "™"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "€"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "$"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "£"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "¥"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "%"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "‰"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "°"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "+"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "="
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "<"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       ">"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "|"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "~"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "^"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "`"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "¬"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "±"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "×"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "÷"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "∑"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "∞"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "𝒜"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "𝒜bc"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "a𝒜"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "𐐨"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "𐐀"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "𐐀𐐨"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "𐐨𐐀"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "𝟙"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "𝟏𝟐"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "𠀀"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "a𠀀b"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "."
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       ","
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       ";"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       ":"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "!"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "?"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "-"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "–"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "—"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "…"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "..."
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       ".."
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "("
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       ")"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "["
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "]"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "{"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "}"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "\""
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "'"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "’"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "‘"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "“"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "”"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "„"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "«"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "»"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "‹"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "›"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "/"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "\\"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "_"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "*"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "&"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "#"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "@"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "§"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "¿"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "¡"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "·"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "•"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "،"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "؟"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "。"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "、"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "！"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "？"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "&amp;"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "&lt;"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "&#39;"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "<b>"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "</b>"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "<b>bold</b>"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "<<b>>"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "<<b>"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "<b>>"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "<a href=\"x\">link</a>"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "<!-- c -->"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "a<!-- c -->b"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "<!-- a --><!-- b -->"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "<!-- unclosed"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "<!--x-->y<!--z-->"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "x <!-- multi\nline --> y"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "<br/>"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "<br />"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "< b>"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "<>"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "< >"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "<a<b>c"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "<\n>"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "a<\nb>c"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "\"quoted\" & 'single' <tag>"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "x > y"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "x < y"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "a&b"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "a & b"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "&&"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "\"\""
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "''"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "<![CDATA[x]]>"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "<?xml version=\"1.0\"?>"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "<tag attr=\"v\">t</tag>"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "\u0000<"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "€ & £"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "123"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "+123"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "-123"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "1.5"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "1,5"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "1 000"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "1,000.5"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "1.000,5"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       ".5"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "5."
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       ",5"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "1..2"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "1."
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "   "
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "1 2"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "12 "
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       " 12"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "١٢٣"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "１２３"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "१२३"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "²"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "½"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Ⅻ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "1e5"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "0x1F"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "1_000"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Wort"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Haus"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Häuser"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Straßenbahn"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Donaudampfschifffahrtsgesellschaft"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "E-Mail"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "isNumeric",
+      "args": [
+       "e-mail"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "U-Bahn"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "u-bahn"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "A-B-C"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "O'Neil"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "o'neil"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "McDonald’s"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ǆa"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ǅa"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ٱلْعَرَبِيَّةُ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "العربية"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "كَتَبَ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "كتب"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ـكتابـ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ـ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "שלום"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "שָׁלוֹם"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Привет"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "привет"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ПРИВЕТ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Ёж"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ёж"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "日本語"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ひらがな"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "한국어"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ภาษาไทย"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "ខ្មែរ"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "हिन्दी"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "AbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAb"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b "
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "                                                                                                    "
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "äöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäö"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "<b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word"
+      ]
+     },
+     {
+      "fn": "isNumeric",
+      "args": [
+       "Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

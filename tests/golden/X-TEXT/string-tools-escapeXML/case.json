@@ -1,0 +1,2663 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "StringTools.escapeXML over 440 strings (ASCII, umlauts, sharp s, Turkish i, Greek sigma, digits, apostrophes, NBSP/zero-width, non-BMP, controls, long)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "escapeXML",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "  "
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "a"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "A"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "z"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Z"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "1"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "0"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "12"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "1a"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "a1"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "A1"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ab"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "AB"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Ab"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "aB"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "abc"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ABC"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Abc"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "aBc"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "abC"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "AbC"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ABc"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "aBC"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Hello"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "hello"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "HELLO"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "hELLO"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "HeLLo"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Hello World"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "hello world"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "HELLO WORLD"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Hello world"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "hello World"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "A B"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "The Lord Of The Rings"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "the lord of the rings"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "a tale of two cities"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "The  double  space"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       " leading"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "trailing "
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       " both "
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "  both  "
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "\tTab"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Tab\t"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "a\tb"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "a\nb"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "a\r\nb"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "\n"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "\r"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "\r\n"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "\n\n"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "a\n\nb"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "\n\nx"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "x\n"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Äpfel"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "äpfel"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ÄPFEL"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Öl"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "öl"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ÖL"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Übel"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "übel"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ÜBEL"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Straße"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "straße"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "STRASSE"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "STRAẞE"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ß"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ẞ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ßa"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ẞa"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Ssa"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ǅ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ǆ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Ǆ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ǈ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ﬁsh"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ﬃ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "FIsh"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ŉ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ΐ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "İstanbul"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "istanbul"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Istanbul"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ıstanbul"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "İ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ı"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "I"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "i"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "IİıiI"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "TITLE"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "title"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Ώ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ώ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ΣΑΣ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "σας"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Σας"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ὈΔΥΣΣΕΎΣ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "οδυσσεύς"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Ὀδυσσεύς"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ΑΣ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ας"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Ας"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ς"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Σ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "σ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "αβγ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Αβγ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ΑΒΓ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "αΒΓ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "élève"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Élève"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ÉLÈVE"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "élÈve"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "œuvre"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Œuvre"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ŒUVRE"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ç"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Ç"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ÿ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Ÿ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ñ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Ñ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Ø"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ø"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "þ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Þ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ÿa"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ÝÞ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "d'accord"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "D'accord"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "l'homme"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "L'Homme"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "L’homme"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "l’homme"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "'quoted'"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "\"Quoted\""
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "«Guillemets»"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "»Anführung«"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "„Anführung“"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "(Klammer)"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "(klammer)"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "[x]"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "\"hello\""
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "\"Hello\""
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "'a'"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "--x"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "-Abc"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "-abc"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "...Abc"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "...abc"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "¿Qué?"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "¡Hola!"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "*Stern"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "3D"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "3d"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "3 D"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "4Ever"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "4ever"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ij"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "IJ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Ij"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "iJ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ijsselmeer"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "IJsselmeer"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Ijsselmeer"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ijs"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ij-"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ï"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Ïj"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "hello-world"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Hello-World"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Hello-world"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ABC-def"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "camelCase"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "CamelCase"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "camelCaseWord"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "camelCASE"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "camel"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "abcDef"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "abcDefGhi"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "aBCD"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "myURLParser"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "iPhone"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "eBay"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "McDonald"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "macOS"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "äBc"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ÄBc"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "abcÄ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "a1B"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "a_B"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "x-Y"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       " a "
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "​"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "​a"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "a​"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "​​"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "　"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "﻿"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "﻿a"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "\u0001"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "\u0002"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "\u0000"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "a\u0000b"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "\u0003"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "\u000b"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "\f"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "\u001f"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "᠎"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "­"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "a­b"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "‌"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "‍"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "⁠"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "‎"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "‏"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "‪"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "‬"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "‭"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "á"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "é"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "́"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ö"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "über"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "café"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Café"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "😀"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "😀a"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "a😀"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "😀😀"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "👍🏽"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "👨‍👩‍👧"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "❤️"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "❤"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "©"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "®"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "™"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "€"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "$"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "£"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "¥"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "%"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "‰"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "°"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "+"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "="
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "<"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       ">"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "|"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "~"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "^"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "`"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "¬"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "±"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "×"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "÷"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "∑"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "∞"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "𝒜"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "𝒜bc"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "a𝒜"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "𐐨"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "𐐀"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "𐐀𐐨"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "𐐨𐐀"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "𝟙"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "𝟏𝟐"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "𠀀"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "a𠀀b"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "."
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       ","
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       ";"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       ":"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "!"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "?"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "-"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "–"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "—"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "…"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "..."
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       ".."
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "("
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       ")"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "["
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "]"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "{"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "}"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "\""
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "'"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "’"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "‘"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "“"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "”"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "„"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "«"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "»"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "‹"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "›"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "/"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "\\"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "_"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "*"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "&"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "#"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "@"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "§"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "¿"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "¡"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "·"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "•"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "،"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "؟"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "。"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "、"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "！"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "？"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "&amp;"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "&lt;"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "&#39;"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "<b>"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "</b>"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "<b>bold</b>"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "<<b>>"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "<<b>"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "<b>>"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "<a href=\"x\">link</a>"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "<!-- c -->"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "a<!-- c -->b"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "<!-- a --><!-- b -->"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "<!-- unclosed"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "<!--x-->y<!--z-->"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "x <!-- multi\nline --> y"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "<br/>"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "<br />"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "< b>"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "<>"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "< >"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "<a<b>c"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "<\n>"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "a<\nb>c"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "\"quoted\" & 'single' <tag>"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "x > y"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "x < y"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "a&b"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "a & b"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "&&"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "\"\""
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "''"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "<![CDATA[x]]>"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "<?xml version=\"1.0\"?>"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "<tag attr=\"v\">t</tag>"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "\u0000<"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "€ & £"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "123"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "+123"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "-123"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "1.5"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "1,5"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "1 000"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "1,000.5"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "1.000,5"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       ".5"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "5."
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       ",5"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "1..2"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "1."
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "   "
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "1 2"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "12 "
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       " 12"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "١٢٣"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "１２３"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "१२३"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "²"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "½"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Ⅻ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "1e5"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "0x1F"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "1_000"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Wort"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Haus"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Häuser"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Straßenbahn"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Donaudampfschifffahrtsgesellschaft"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "E-Mail"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "escapeXML",
+      "args": [
+       "e-mail"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "U-Bahn"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "u-bahn"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "A-B-C"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "O'Neil"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "o'neil"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "McDonald’s"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ǆa"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ǅa"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ٱلْعَرَبِيَّةُ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "العربية"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "كَتَبَ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "كتب"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ـكتابـ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ـ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "שלום"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "שָׁלוֹם"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Привет"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "привет"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ПРИВЕТ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Ёж"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ёж"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "日本語"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ひらがな"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "한국어"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ภาษาไทย"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "ខ្មែរ"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "हिन्दी"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "AbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAb"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b "
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "                                                                                                    "
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "äöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäö"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "<b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word"
+      ]
+     },
+     {
+      "fn": "escapeXML",
+      "args": [
+       "Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

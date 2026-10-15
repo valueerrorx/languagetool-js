@@ -1,0 +1,2663 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "StringTools.removeDiacritics over 440 strings (ASCII, umlauts, sharp s, Turkish i, Greek sigma, digits, apostrophes, NBSP/zero-width, non-BMP, controls, long)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "  "
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "a"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "A"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "z"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Z"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "1"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "0"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "12"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "1a"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "a1"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "A1"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ab"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "AB"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Ab"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "aB"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "abc"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ABC"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Abc"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "aBc"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "abC"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "AbC"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ABc"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "aBC"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Hello"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "hello"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "HELLO"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "hELLO"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "HeLLo"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Hello World"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "hello world"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "HELLO WORLD"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Hello world"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "hello World"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "A B"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "The Lord Of The Rings"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "the lord of the rings"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "a tale of two cities"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "The  double  space"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       " leading"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "trailing "
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       " both "
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "  both  "
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "\tTab"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Tab\t"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "a\tb"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "a\nb"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "a\r\nb"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "\n"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "\r"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "\r\n"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "\n\n"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "a\n\nb"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "\n\nx"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "x\n"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Äpfel"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "äpfel"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ÄPFEL"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Öl"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "öl"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ÖL"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Übel"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "übel"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ÜBEL"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Straße"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "straße"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "STRASSE"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "STRAẞE"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ß"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ẞ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ßa"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ẞa"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Ssa"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ǅ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ǆ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Ǆ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ǈ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ﬁsh"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ﬃ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "FIsh"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ŉ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ΐ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "İstanbul"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "istanbul"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Istanbul"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ıstanbul"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "İ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ı"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "I"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "i"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "IİıiI"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "TITLE"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "title"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Ώ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ώ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ΣΑΣ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "σας"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Σας"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ὈΔΥΣΣΕΎΣ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "οδυσσεύς"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Ὀδυσσεύς"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ΑΣ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ας"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Ας"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ς"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Σ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "σ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "αβγ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Αβγ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ΑΒΓ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "αΒΓ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "élève"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Élève"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ÉLÈVE"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "élÈve"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "œuvre"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Œuvre"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ŒUVRE"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ç"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Ç"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ÿ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Ÿ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ñ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Ñ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Ø"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ø"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "þ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Þ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ÿa"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ÝÞ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "d'accord"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "D'accord"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "l'homme"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "L'Homme"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "L’homme"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "l’homme"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "'quoted'"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "\"Quoted\""
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "«Guillemets»"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "»Anführung«"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "„Anführung“"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "(Klammer)"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "(klammer)"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "[x]"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "\"hello\""
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "\"Hello\""
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "'a'"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "--x"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "-Abc"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "-abc"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "...Abc"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "...abc"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "¿Qué?"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "¡Hola!"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "*Stern"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "3D"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "3d"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "3 D"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "4Ever"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "4ever"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ij"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "IJ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Ij"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "iJ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ijsselmeer"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "IJsselmeer"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Ijsselmeer"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ijs"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ij-"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ï"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Ïj"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "hello-world"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Hello-World"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Hello-world"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ABC-def"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "camelCase"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "CamelCase"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "camelCaseWord"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "camelCASE"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "camel"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "abcDef"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "abcDefGhi"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "aBCD"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "myURLParser"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "iPhone"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "eBay"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "McDonald"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "macOS"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "äBc"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ÄBc"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "abcÄ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "a1B"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "a_B"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "x-Y"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       " a "
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "​"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "​a"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "a​"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "​​"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "　"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "﻿"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "﻿a"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "\u0001"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "\u0002"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "\u0000"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "a\u0000b"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "\u0003"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "\u000b"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "\f"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "\u001f"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "᠎"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "­"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "a­b"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "‌"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "‍"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "⁠"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "‎"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "‏"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "‪"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "‬"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "‭"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "á"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "é"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "́"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ö"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "über"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "café"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Café"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "😀"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "😀a"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "a😀"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "😀😀"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "👍🏽"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "👨‍👩‍👧"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "❤️"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "❤"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "©"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "®"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "™"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "€"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "$"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "£"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "¥"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "%"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "‰"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "°"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "+"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "="
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "<"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       ">"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "|"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "~"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "^"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "`"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "¬"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "±"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "×"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "÷"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "∑"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "∞"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "𝒜"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "𝒜bc"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "a𝒜"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "𐐨"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "𐐀"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "𐐀𐐨"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "𐐨𐐀"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "𝟙"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "𝟏𝟐"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "𠀀"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "a𠀀b"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "."
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       ","
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       ";"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       ":"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "!"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "?"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "-"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "–"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "—"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "…"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "..."
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       ".."
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "("
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       ")"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "["
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "]"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "{"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "}"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "\""
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "'"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "’"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "‘"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "“"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "”"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "„"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "«"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "»"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "‹"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "›"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "/"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "\\"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "_"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "*"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "&"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "#"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "@"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "§"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "¿"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "¡"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "·"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "•"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "،"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "؟"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "。"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "、"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "！"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "？"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "&amp;"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "&lt;"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "&#39;"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "<b>"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "</b>"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "<b>bold</b>"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "<<b>>"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "<<b>"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "<b>>"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "<a href=\"x\">link</a>"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "<!-- c -->"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "a<!-- c -->b"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "<!-- a --><!-- b -->"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "<!-- unclosed"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "<!--x-->y<!--z-->"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "x <!-- multi\nline --> y"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "<br/>"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "<br />"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "< b>"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "<>"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "< >"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "<a<b>c"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "<\n>"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "a<\nb>c"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "\"quoted\" & 'single' <tag>"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "x > y"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "x < y"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "a&b"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "a & b"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "&&"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "\"\""
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "''"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "<![CDATA[x]]>"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "<?xml version=\"1.0\"?>"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "<tag attr=\"v\">t</tag>"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "\u0000<"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "€ & £"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "123"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "+123"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "-123"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "1.5"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "1,5"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "1 000"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "1,000.5"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "1.000,5"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       ".5"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "5."
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       ",5"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "1..2"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "1."
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "   "
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "1 2"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "12 "
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       " 12"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "١٢٣"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "１２３"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "१२३"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "²"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "½"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Ⅻ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "1e5"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "0x1F"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "1_000"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Wort"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Haus"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Häuser"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Straßenbahn"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Donaudampfschifffahrtsgesellschaft"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "E-Mail"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "e-mail"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "U-Bahn"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "u-bahn"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "A-B-C"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "O'Neil"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "o'neil"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "McDonald’s"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ǆa"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ǅa"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ٱلْعَرَبِيَّةُ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "العربية"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "كَتَبَ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "كتب"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ـكتابـ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ـ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "שלום"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "שָׁלוֹם"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Привет"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "привет"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ПРИВЕТ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Ёж"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ёж"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "日本語"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ひらがな"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "한국어"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ภาษาไทย"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "ខ្មែរ"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "हिन्दी"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "AbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAb"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b "
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "                                                                                                    "
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "äöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäö"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "<b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word"
+      ]
+     },
+     {
+      "fn": "removeDiacritics",
+      "args": [
+       "Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

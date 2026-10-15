@@ -1,0 +1,321 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "StringTools isAllUppercase(List) / allStartWithLowercase(String) over lists",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       []
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       [
+        ""
+       ]
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       [
+        "A"
+       ]
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       [
+        "A",
+        "B"
+       ]
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       [
+        "A",
+        "b"
+       ]
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       [
+        "ABC",
+        "DEF",
+        "GHI"
+       ]
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       [
+        "ABC",
+        "Def"
+       ]
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       [
+        "a",
+        "b"
+       ]
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       [
+        "Ä",
+        "Ö",
+        "Ü"
+       ]
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       [
+        "ÄB",
+        "ö"
+       ]
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       [
+        "1",
+        "2"
+       ]
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       [
+        "1",
+        "A"
+       ]
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       [
+        "A",
+        null
+       ]
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       [
+        null
+       ]
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       [
+        "ǅ",
+        "A"
+       ]
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       [
+        "ß"
+       ]
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       [
+        "SS",
+        "ẞ"
+       ]
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       [
+        "A",
+        " "
+       ]
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       [
+        "",
+        ""
+       ]
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       [
+        "a",
+        "B"
+       ]
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       [
+        "Ab",
+        "Cd"
+       ]
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       [
+        "ab",
+        "cd",
+        "ef"
+       ]
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       [
+        "ab",
+        "Cd"
+       ]
+      ]
+     },
+     {
+      "fn": "allStartWithLowercase",
+      "args": [
+       "a b c"
+      ]
+     },
+     {
+      "fn": "allStartWithLowercase",
+      "args": [
+       "a B c"
+      ]
+     },
+     {
+      "fn": "allStartWithLowercase",
+      "args": [
+       "A b"
+      ]
+     },
+     {
+      "fn": "allStartWithLowercase",
+      "args": [
+       "a"
+      ]
+     },
+     {
+      "fn": "allStartWithLowercase",
+      "args": [
+       "a  b"
+      ]
+     },
+     {
+      "fn": "allStartWithLowercase",
+      "args": [
+       " a b"
+      ]
+     },
+     {
+      "fn": "allStartWithLowercase",
+      "args": [
+       "a b "
+      ]
+     },
+     {
+      "fn": "allStartWithLowercase",
+      "args": [
+       "ä ö ü"
+      ]
+     },
+     {
+      "fn": "allStartWithLowercase",
+      "args": [
+       "ä Ö"
+      ]
+     },
+     {
+      "fn": "allStartWithLowercase",
+      "args": [
+       "1 2"
+      ]
+     },
+     {
+      "fn": "allStartWithLowercase",
+      "args": [
+       "a 1"
+      ]
+     },
+     {
+      "fn": "allStartWithLowercase",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "allStartWithLowercase",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "allStartWithLowercase",
+      "args": [
+       "a-b c"
+      ]
+     },
+     {
+      "fn": "allStartWithLowercase",
+      "args": [
+       "x.y z"
+      ]
+     },
+     {
+      "fn": "allStartWithLowercase",
+      "args": [
+       "𝒜 b"
+      ]
+     },
+     {
+      "fn": "allStartWithLowercase",
+      "args": [
+       "a 😀"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

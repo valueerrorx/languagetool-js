@@ -1,0 +1,2663 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "StringTools.isPunctuationOrSymbol over 440 strings (ASCII, umlauts, sharp s, Turkish i, Greek sigma, digits, apostrophes, NBSP/zero-width, non-BMP, controls, long)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "  "
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "a"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "A"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "z"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Z"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "1"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "0"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "12"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "1a"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "a1"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "A1"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ab"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "AB"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Ab"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "aB"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "abc"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ABC"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Abc"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "aBc"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "abC"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "AbC"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ABc"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "aBC"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Hello"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "hello"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "HELLO"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "hELLO"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "HeLLo"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Hello World"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "hello world"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "HELLO WORLD"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Hello world"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "hello World"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "A B"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "The Lord Of The Rings"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "the lord of the rings"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "a tale of two cities"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "The  double  space"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       " leading"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "trailing "
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       " both "
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "  both  "
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "\tTab"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Tab\t"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "a\tb"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "a\nb"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "a\r\nb"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "\n"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "\r"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "\r\n"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "\n\n"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "a\n\nb"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "\n\nx"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "x\n"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Äpfel"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "äpfel"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ÄPFEL"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Öl"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "öl"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ÖL"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Übel"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "übel"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ÜBEL"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Straße"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "straße"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "STRASSE"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "STRAẞE"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ß"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ẞ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ßa"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ẞa"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Ssa"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ǅ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ǆ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Ǆ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ǈ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ﬁsh"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ﬃ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "FIsh"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ŉ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ΐ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "İstanbul"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "istanbul"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Istanbul"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ıstanbul"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "İ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ı"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "I"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "i"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "IİıiI"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "TITLE"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "title"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Ώ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ώ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ΣΑΣ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "σας"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Σας"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ὈΔΥΣΣΕΎΣ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "οδυσσεύς"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Ὀδυσσεύς"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ΑΣ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ας"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Ας"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ς"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Σ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "σ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "αβγ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Αβγ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ΑΒΓ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "αΒΓ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "élève"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Élève"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ÉLÈVE"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "élÈve"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "œuvre"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Œuvre"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ŒUVRE"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ç"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Ç"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ÿ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Ÿ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ñ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Ñ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Ø"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ø"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "þ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Þ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ÿa"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ÝÞ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "d'accord"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "D'accord"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "l'homme"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "L'Homme"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "L’homme"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "l’homme"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "'quoted'"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "\"Quoted\""
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "«Guillemets»"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "»Anführung«"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "„Anführung“"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "(Klammer)"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "(klammer)"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "[x]"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "\"hello\""
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "\"Hello\""
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "'a'"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "--x"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "-Abc"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "-abc"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "...Abc"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "...abc"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "¿Qué?"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "¡Hola!"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "*Stern"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "3D"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "3d"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "3 D"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "4Ever"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "4ever"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ij"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "IJ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Ij"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "iJ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ijsselmeer"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "IJsselmeer"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Ijsselmeer"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ijs"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ij-"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ï"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Ïj"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "hello-world"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Hello-World"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Hello-world"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ABC-def"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "camelCase"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "CamelCase"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "camelCaseWord"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "camelCASE"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "camel"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "abcDef"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "abcDefGhi"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "aBCD"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "myURLParser"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "iPhone"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "eBay"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "McDonald"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "macOS"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "äBc"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ÄBc"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "abcÄ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "a1B"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "a_B"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "x-Y"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       " a "
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "​"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "​a"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "a​"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "​​"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "　"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "﻿"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "﻿a"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "\u0001"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "\u0002"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "\u0000"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "a\u0000b"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "\u0003"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "\u000b"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "\f"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "\u001f"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "᠎"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "­"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "a­b"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "‌"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "‍"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "⁠"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "‎"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "‏"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "‪"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "‬"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "‭"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "á"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "é"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "́"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ö"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "über"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "café"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Café"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "😀"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "😀a"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "a😀"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "😀😀"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "👍🏽"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "👨‍👩‍👧"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "❤️"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "❤"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "©"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "®"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "™"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "€"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "$"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "£"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "¥"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "%"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "‰"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "°"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "+"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "="
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "<"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       ">"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "|"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "~"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "^"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "`"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "¬"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "±"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "×"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "÷"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "∑"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "∞"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "𝒜"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "𝒜bc"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "a𝒜"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "𐐨"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "𐐀"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "𐐀𐐨"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "𐐨𐐀"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "𝟙"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "𝟏𝟐"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "𠀀"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "a𠀀b"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "."
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       ","
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       ";"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       ":"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "!"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "?"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "-"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "–"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "—"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "…"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "..."
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       ".."
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "("
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       ")"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "["
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "]"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "{"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "}"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "\""
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "'"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "’"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "‘"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "“"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "”"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "„"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "«"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "»"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "‹"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "›"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "/"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "\\"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "_"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "*"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "&"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "#"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "@"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "§"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "¿"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "¡"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "·"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "•"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "،"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "؟"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "。"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "、"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "！"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "？"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "&amp;"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "&lt;"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "&#39;"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "<b>"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "</b>"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "<b>bold</b>"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "<<b>>"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "<<b>"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "<b>>"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "<a href=\"x\">link</a>"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "<!-- c -->"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "a<!-- c -->b"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "<!-- a --><!-- b -->"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "<!-- unclosed"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "<!--x-->y<!--z-->"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "x <!-- multi\nline --> y"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "<br/>"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "<br />"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "< b>"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "<>"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "< >"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "<a<b>c"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "<\n>"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "a<\nb>c"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "\"quoted\" & 'single' <tag>"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "x > y"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "x < y"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "a&b"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "a & b"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "&&"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "\"\""
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "''"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "<![CDATA[x]]>"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "<?xml version=\"1.0\"?>"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "<tag attr=\"v\">t</tag>"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "\u0000<"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "€ & £"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "123"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "+123"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "-123"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "1.5"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "1,5"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "1 000"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "1,000.5"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "1.000,5"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       ".5"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "5."
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       ",5"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "1..2"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "1."
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "   "
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "1 2"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "12 "
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       " 12"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "١٢٣"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "１２３"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "१२३"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "²"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "½"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Ⅻ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "1e5"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "0x1F"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "1_000"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Wort"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Haus"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Häuser"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Straßenbahn"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Donaudampfschifffahrtsgesellschaft"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "E-Mail"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "e-mail"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "U-Bahn"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "u-bahn"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "A-B-C"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "O'Neil"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "o'neil"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "McDonald’s"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ǆa"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ǅa"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ٱلْعَرَبِيَّةُ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "العربية"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "كَتَبَ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "كتب"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ـكتابـ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ـ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "שלום"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "שָׁלוֹם"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Привет"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "привет"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ПРИВЕТ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Ёж"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ёж"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "日本語"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ひらがな"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "한국어"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ภาษาไทย"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "ខ្មែរ"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "हिन्दी"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "AbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAb"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b "
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "                                                                                                    "
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "äöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäö"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "<b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word"
+      ]
+     },
+     {
+      "fn": "isPunctuationOrSymbol",
+      "args": [
+       "Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

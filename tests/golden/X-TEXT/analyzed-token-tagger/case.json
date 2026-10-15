@@ -1,0 +1,209 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "CLI -t / --taggeronly path: sentenceTokenize + getAnalyzedSentence, AnalyzedSentence#toString and token details",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "tagger",
+    "lang": "de",
+    "text": "Das ist ein Test."
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "tagger",
+    "lang": "de",
+    "text": "Das Haus ist groß. Es steht in Wien!"
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "tagger",
+    "lang": "de",
+    "text": "Ich gehe nach Hause.\n\nMorgen kommt er."
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "tagger",
+    "lang": "de",
+    "text": "Äpfel & Birnen kosten 3,50 €."
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "tagger",
+    "lang": "de",
+    "text": ""
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "tagger",
+    "lang": "de",
+    "text": "Wir haben gestern einen Fehler gemacht"
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "tagger",
+    "lang": "de",
+    "text": "z. B. bei Dr. Müller"
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "tagger",
+    "lang": "de",
+    "text": "Straße"
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "tagger",
+    "lang": "de",
+    "text": "😀 Emoji"
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "tagger",
+    "lang": "de",
+    "text": "  Leerzeichen   mehrfach  "
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "tagger",
+    "lang": "en",
+    "text": "This is a test."
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "tagger",
+    "lang": "en",
+    "text": "The houses are big. They stand in London!"
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "tagger",
+    "lang": "en",
+    "text": "I don't know. Isn't it nice?"
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "tagger",
+    "lang": "en",
+    "text": "Line one.\nLine two."
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "tagger",
+    "lang": "en",
+    "text": "Running dogs went home."
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "tagger",
+    "lang": "en",
+    "text": "The quick brown fox."
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "tagger",
+    "lang": "en",
+    "text": ""
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "tagger",
+    "lang": "en",
+    "text": "3.5 % of $10"
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "tagger",
+    "lang": "en",
+    "text": "Café au lait"
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "tagger",
+    "lang": "fr",
+    "text": "Ceci est un test."
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "tagger",
+    "lang": "fr",
+    "text": "L'homme est allé à l'école. Il pleut!"
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "tagger",
+    "lang": "fr",
+    "text": "Les chevaux mangent des pommes."
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "tagger",
+    "lang": "fr",
+    "text": "Aujourd'hui, c'est l'été."
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "tagger",
+    "lang": "fr",
+    "text": "Ça va ?"
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "tagger",
+    "lang": "fr",
+    "text": ""
+   }
+  }
+ ]
+}

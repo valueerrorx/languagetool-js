@@ -1,0 +1,3103 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "StringTools.assureSet over 440 strings (ASCII, umlauts, sharp s, Turkish i, Greek sigma, digits, apostrophes, NBSP/zero-width, non-BMP, controls, long)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "assureSet",
+      "args": [
+       "",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       " ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "  ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "a",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "A",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "z",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Z",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "1",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "0",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "12",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "1a",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "a1",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "A1",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ab",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "AB",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Ab",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "aB",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "abc",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ABC",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Abc",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "aBc",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "abC",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "AbC",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ABc",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "aBC",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Hello",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "hello",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "HELLO",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "hELLO",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "HeLLo",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Hello World",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "hello world",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "HELLO WORLD",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Hello world",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "hello World",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "a b",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "A B",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "The Lord Of The Rings",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "the lord of the rings",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "a tale of two cities",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "The  double  space",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       " leading",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "trailing ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       " both ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "  both  ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "\tTab",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Tab\t",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "a\tb",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "a\nb",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "a\r\nb",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "\n",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "\r",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "\r\n",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "\n\n",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "a\n\nb",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "\n\nx",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "x\n",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Äpfel",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "äpfel",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ÄPFEL",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Öl",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "öl",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ÖL",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Übel",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "übel",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ÜBEL",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Straße",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "straße",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "STRASSE",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "STRAẞE",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ß",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ẞ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ßa",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ẞa",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Ssa",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ǅ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ǆ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Ǆ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ǈ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ﬁsh",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ﬃ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "FIsh",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ŉ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ΐ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "İstanbul",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "istanbul",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Istanbul",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ıstanbul",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "İ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ı",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "I",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "i",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "IİıiI",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "TITLE",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "title",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Ώ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ώ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ΣΑΣ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "σας",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Σας",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ὈΔΥΣΣΕΎΣ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "οδυσσεύς",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Ὀδυσσεύς",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ΑΣ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ας",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Ας",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ς",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Σ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "σ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "αβγ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Αβγ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ΑΒΓ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "αΒΓ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "élève",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Élève",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ÉLÈVE",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "élÈve",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "œuvre",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Œuvre",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ŒUVRE",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ç",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Ç",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ÿ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Ÿ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ñ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Ñ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Ø",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ø",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "þ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Þ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ÿa",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ÝÞ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "d'accord",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "D'accord",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "l'homme",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "L'Homme",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "L’homme",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "l’homme",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "'quoted'",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "\"Quoted\"",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "«Guillemets»",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "»Anführung«",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "„Anführung“",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "(Klammer)",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "(klammer)",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "[x]",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "\"hello\"",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "\"Hello\"",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "'a'",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "--x",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "-Abc",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "-abc",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "...Abc",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "...abc",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "¿Qué?",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "¡Hola!",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "*Stern",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "3D",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "3d",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "3 D",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "4Ever",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "4ever",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ij",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "IJ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Ij",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "iJ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ijsselmeer",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "IJsselmeer",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Ijsselmeer",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ijs",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ij-",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ï",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Ïj",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "hello-world",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Hello-World",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Hello-world",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ABC-def",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "camelCase",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "CamelCase",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "camelCaseWord",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "camelCASE",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "camel",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "abcDef",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "abcDefGhi",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "aBCD",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "myURLParser",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "iPhone",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "eBay",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "McDonald",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "macOS",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "äBc",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ÄBc",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "abcÄ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "a1B",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "a_B",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "x-Y",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       " ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "a b",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       " a ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       " ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "​",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "​a",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "a​",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "​​",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       " ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       " ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "　",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "﻿",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "﻿a",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "\u0001",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "\u0002",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "\u0000",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "a\u0000b",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "\u0003",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "\u000b",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "\f",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "\u001f",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       " ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       " ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       " ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "᠎",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "­",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "a­b",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "‌",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "‍",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "⁠",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "‎",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "‏",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "‪",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "‬",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "‭",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "á",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "é",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "́",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ä",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ö",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ä",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "über",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "café",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Café",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "😀",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "😀a",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "a😀",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "😀😀",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "👍🏽",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "👨‍👩‍👧",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "❤️",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "❤",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "©",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "®",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "™",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "€",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "$",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "£",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "¥",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "%",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "‰",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "°",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "+",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "=",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "<",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       ">",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "|",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "~",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "^",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "`",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "¬",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "±",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "×",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "÷",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "∑",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "∞",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "𝒜",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "𝒜bc",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "a𝒜",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "𐐨",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "𐐀",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "𐐀𐐨",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "𐐨𐐀",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "𝟙",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "𝟏𝟐",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "𠀀",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "a𠀀b",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       ".",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       ",",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       ";",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       ":",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "!",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "?",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "-",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "–",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "—",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "…",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "...",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "..",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "(",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       ")",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "[",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "]",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "{",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "}",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "\"",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "'",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "’",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "‘",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "“",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "”",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "„",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "«",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "»",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "‹",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "›",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "/",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "\\",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "_",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "*",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "&",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "#",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "@",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "§",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "¿",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "¡",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "·",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "•",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "،",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "؟",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "。",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "、",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "！",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "？",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "&amp;",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "&lt;",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "&#39;",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "<b>",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "</b>",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "<b>bold</b>",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "<<b>>",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "<<b>",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "<b>>",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "<a href=\"x\">link</a>",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "<!-- c -->",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "a<!-- c -->b",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "<!-- a --><!-- b -->",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "<!-- unclosed",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "<!--x-->y<!--z-->",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "x <!-- multi\nline --> y",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "<br/>",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "<br />",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "< b>",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "<>",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "< >",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "<a<b>c",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "<\n>",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "a<\nb>c",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "\"quoted\" & 'single' <tag>",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "x > y",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "x < y",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "a&b",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "a & b",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "&&",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "\"\"",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "''",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "<![CDATA[x]]>",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "<?xml version=\"1.0\"?>",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "<tag attr=\"v\">t</tag>",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "\u0000<",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "€ & £",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "123",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "+123",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "-123",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "1.5",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "1,5",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "1 000",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "1,000.5",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "1.000,5",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       ".5",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "5.",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       ",5",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "1..2",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "1.",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "   ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "1 2",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "12 ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       " 12",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "١٢٣",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "１２３",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "१२३",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "²",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "½",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Ⅻ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "1e5",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "0x1F",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "1_000",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Wort",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Haus",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Häuser",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Straßenbahn",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Donaudampfschifffahrtsgesellschaft",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "E-Mail",
+       "myVar"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "assureSet",
+      "args": [
+       "e-mail",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "U-Bahn",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "u-bahn",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "A-B-C",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "O'Neil",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "o'neil",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "McDonald’s",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ǆa",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ǅa",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ٱلْعَرَبِيَّةُ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "العربية",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "كَتَبَ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "كتب",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ـكتابـ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ـ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "שלום",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "שָׁלוֹם",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Привет",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "привет",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ПРИВЕТ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Ёж",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ёж",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "日本語",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ひらがな",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "한국어",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ภาษาไทย",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "ខ្មែរ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "हिन्दी",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "AbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAb",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "                                                                                                    ",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "äöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäö",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "<b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word",
+       "myVar"
+      ]
+     },
+     {
+      "fn": "assureSet",
+      "args": [
+       "Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word",
+       "myVar"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

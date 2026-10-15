@@ -1,0 +1,61 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "StringTools.loadLines on wave-1 resource files (comments and empty lines skipped)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "loadLines",
+      "args": [
+       "/de/case_rule_exceptions.txt"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "loadLines",
+      "args": [
+       "/de/added.txt"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "loadLines",
+      "args": [
+       "/en/added.txt"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "loadLines",
+      "args": [
+       "/fr/added.txt"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

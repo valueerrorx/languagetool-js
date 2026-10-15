@@ -1,0 +1,2663 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "StringTools.startsWithLowercase over 440 strings (ASCII, umlauts, sharp s, Turkish i, Greek sigma, digits, apostrophes, NBSP/zero-width, non-BMP, controls, long)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "  "
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "a"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "A"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "z"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Z"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "1"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "0"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "12"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "1a"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "a1"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "A1"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ab"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "AB"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Ab"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "aB"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "abc"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ABC"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Abc"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "aBc"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "abC"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "AbC"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ABc"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "aBC"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Hello"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "hello"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "HELLO"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "hELLO"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "HeLLo"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Hello World"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "hello world"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "HELLO WORLD"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Hello world"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "hello World"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "A B"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "The Lord Of The Rings"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "the lord of the rings"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "a tale of two cities"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "The  double  space"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       " leading"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "trailing "
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       " both "
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "  both  "
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "\tTab"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Tab\t"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "a\tb"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "a\nb"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "a\r\nb"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "\n"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "\r"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "\r\n"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "\n\n"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "a\n\nb"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "\n\nx"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "x\n"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Äpfel"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "äpfel"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ÄPFEL"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Öl"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "öl"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ÖL"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Übel"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "übel"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ÜBEL"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Straße"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "straße"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "STRASSE"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "STRAẞE"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ß"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ẞ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ßa"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ẞa"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Ssa"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ǅ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ǆ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Ǆ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ǈ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ﬁsh"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ﬃ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "FIsh"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ŉ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ΐ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "İstanbul"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "istanbul"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Istanbul"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ıstanbul"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "İ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ı"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "I"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "i"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "IİıiI"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "TITLE"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "title"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Ώ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ώ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ΣΑΣ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "σας"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Σας"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ὈΔΥΣΣΕΎΣ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "οδυσσεύς"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Ὀδυσσεύς"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ΑΣ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ας"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Ας"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ς"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Σ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "σ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "αβγ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Αβγ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ΑΒΓ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "αΒΓ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "élève"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Élève"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ÉLÈVE"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "élÈve"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "œuvre"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Œuvre"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ŒUVRE"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ç"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Ç"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ÿ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Ÿ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ñ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Ñ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Ø"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ø"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "þ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Þ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ÿa"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ÝÞ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "d'accord"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "D'accord"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "l'homme"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "L'Homme"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "L’homme"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "l’homme"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "'quoted'"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "\"Quoted\""
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "«Guillemets»"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "»Anführung«"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "„Anführung“"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "(Klammer)"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "(klammer)"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "[x]"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "\"hello\""
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "\"Hello\""
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "'a'"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "--x"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "-Abc"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "-abc"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "...Abc"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "...abc"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "¿Qué?"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "¡Hola!"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "*Stern"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "3D"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "3d"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "3 D"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "4Ever"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "4ever"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ij"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "IJ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Ij"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "iJ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ijsselmeer"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "IJsselmeer"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Ijsselmeer"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ijs"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ij-"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ï"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Ïj"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "hello-world"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Hello-World"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Hello-world"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ABC-def"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "camelCase"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "CamelCase"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "camelCaseWord"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "camelCASE"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "camel"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "abcDef"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "abcDefGhi"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "aBCD"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "myURLParser"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "iPhone"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "eBay"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "McDonald"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "macOS"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "äBc"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ÄBc"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "abcÄ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "a1B"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "a_B"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "x-Y"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       " a "
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "​"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "​a"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "a​"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "​​"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "　"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "﻿"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "﻿a"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "\u0001"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "\u0002"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "\u0000"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "a\u0000b"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "\u0003"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "\u000b"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "\f"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "\u001f"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "᠎"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "­"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "a­b"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "‌"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "‍"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "⁠"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "‎"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "‏"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "‪"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "‬"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "‭"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "á"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "é"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "́"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ö"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "über"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "café"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Café"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "😀"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "😀a"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "a😀"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "😀😀"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "👍🏽"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "👨‍👩‍👧"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "❤️"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "❤"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "©"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "®"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "™"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "€"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "$"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "£"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "¥"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "%"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "‰"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "°"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "+"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "="
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "<"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       ">"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "|"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "~"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "^"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "`"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "¬"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "±"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "×"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "÷"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "∑"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "∞"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "𝒜"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "𝒜bc"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "a𝒜"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "𐐨"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "𐐀"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "𐐀𐐨"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "𐐨𐐀"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "𝟙"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "𝟏𝟐"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "𠀀"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "a𠀀b"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "."
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       ","
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       ";"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       ":"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "!"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "?"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "-"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "–"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "—"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "…"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "..."
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       ".."
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "("
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       ")"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "["
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "]"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "{"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "}"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "\""
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "'"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "’"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "‘"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "“"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "”"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "„"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "«"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "»"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "‹"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "›"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "/"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "\\"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "_"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "*"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "&"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "#"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "@"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "§"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "¿"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "¡"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "·"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "•"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "،"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "؟"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "。"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "、"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "！"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "？"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "&amp;"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "&lt;"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "&#39;"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "<b>"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "</b>"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "<b>bold</b>"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "<<b>>"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "<<b>"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "<b>>"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "<a href=\"x\">link</a>"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "<!-- c -->"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "a<!-- c -->b"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "<!-- a --><!-- b -->"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "<!-- unclosed"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "<!--x-->y<!--z-->"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "x <!-- multi\nline --> y"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "<br/>"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "<br />"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "< b>"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "<>"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "< >"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "<a<b>c"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "<\n>"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "a<\nb>c"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "\"quoted\" & 'single' <tag>"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "x > y"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "x < y"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "a&b"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "a & b"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "&&"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "\"\""
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "''"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "<![CDATA[x]]>"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "<?xml version=\"1.0\"?>"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "<tag attr=\"v\">t</tag>"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "\u0000<"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "€ & £"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "123"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "+123"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "-123"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "1.5"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "1,5"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "1 000"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "1,000.5"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "1.000,5"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       ".5"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "5."
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       ",5"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "1..2"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "1."
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "   "
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "1 2"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "12 "
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       " 12"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "١٢٣"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "１２３"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "१२३"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "²"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "½"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Ⅻ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "1e5"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "0x1F"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "1_000"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Wort"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Haus"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Häuser"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Straßenbahn"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Donaudampfschifffahrtsgesellschaft"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "E-Mail"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "e-mail"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "U-Bahn"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "u-bahn"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "A-B-C"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "O'Neil"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "o'neil"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "McDonald’s"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ǆa"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ǅa"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ٱلْعَرَبِيَّةُ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "العربية"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "كَتَبَ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "كتب"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ـكتابـ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ـ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "שלום"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "שָׁלוֹם"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Привет"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "привет"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ПРИВЕТ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Ёж"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ёж"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "日本語"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ひらがな"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "한국어"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ภาษาไทย"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "ខ្មែរ"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "हिन्दी"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "AbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAb"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b "
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "                                                                                                    "
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "äöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäö"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "<b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word"
+      ]
+     },
+     {
+      "fn": "startsWithLowercase",
+      "args": [
+       "Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

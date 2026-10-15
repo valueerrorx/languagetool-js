@@ -1,0 +1,2663 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "StringTools.normalizeNFKC over 440 strings (ASCII, umlauts, sharp s, Turkish i, Greek sigma, digits, apostrophes, NBSP/zero-width, non-BMP, controls, long)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "  "
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "a"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "A"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "z"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Z"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "1"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "0"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "12"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "1a"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "a1"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "A1"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ab"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "AB"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Ab"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "aB"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "abc"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ABC"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Abc"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "aBc"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "abC"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "AbC"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ABc"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "aBC"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Hello"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "hello"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "HELLO"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "hELLO"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "HeLLo"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Hello World"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "hello world"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "HELLO WORLD"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Hello world"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "hello World"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "A B"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "The Lord Of The Rings"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "the lord of the rings"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "a tale of two cities"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "The  double  space"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       " leading"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "trailing "
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       " both "
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "  both  "
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "\tTab"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Tab\t"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "a\tb"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "a\nb"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "a\r\nb"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "\n"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "\r"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "\r\n"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "\n\n"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "a\n\nb"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "\n\nx"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "x\n"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Äpfel"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "äpfel"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ÄPFEL"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Öl"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "öl"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ÖL"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Übel"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "übel"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ÜBEL"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Straße"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "straße"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "STRASSE"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "STRAẞE"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ß"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ẞ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ßa"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ẞa"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Ssa"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ǅ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ǆ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Ǆ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ǈ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ﬁsh"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ﬃ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "FIsh"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ŉ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ΐ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "İstanbul"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "istanbul"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Istanbul"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ıstanbul"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "İ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ı"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "I"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "i"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "IİıiI"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "TITLE"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "title"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Ώ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ώ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ΣΑΣ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "σας"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Σας"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ὈΔΥΣΣΕΎΣ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "οδυσσεύς"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Ὀδυσσεύς"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ΑΣ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ας"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Ας"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ς"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Σ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "σ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "αβγ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Αβγ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ΑΒΓ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "αΒΓ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "élève"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Élève"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ÉLÈVE"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "élÈve"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "œuvre"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Œuvre"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ŒUVRE"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ç"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Ç"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ÿ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Ÿ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ñ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Ñ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Ø"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ø"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "þ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Þ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ÿa"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ÝÞ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "d'accord"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "D'accord"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "l'homme"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "L'Homme"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "L’homme"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "l’homme"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "'quoted'"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "\"Quoted\""
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "«Guillemets»"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "»Anführung«"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "„Anführung“"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "(Klammer)"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "(klammer)"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "[x]"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "\"hello\""
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "\"Hello\""
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "'a'"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "--x"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "-Abc"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "-abc"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "...Abc"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "...abc"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "¿Qué?"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "¡Hola!"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "*Stern"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "3D"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "3d"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "3 D"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "4Ever"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "4ever"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ij"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "IJ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Ij"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "iJ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ijsselmeer"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "IJsselmeer"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Ijsselmeer"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ijs"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ij-"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ï"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Ïj"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "hello-world"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Hello-World"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Hello-world"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ABC-def"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "camelCase"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "CamelCase"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "camelCaseWord"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "camelCASE"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "camel"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "abcDef"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "abcDefGhi"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "aBCD"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "myURLParser"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "iPhone"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "eBay"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "McDonald"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "macOS"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "äBc"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ÄBc"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "abcÄ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "a1B"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "a_B"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "x-Y"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       " a "
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "​"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "​a"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "a​"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "​​"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "　"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "﻿"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "﻿a"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "\u0001"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "\u0002"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "\u0000"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "a\u0000b"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "\u0003"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "\u000b"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "\f"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "\u001f"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "᠎"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "­"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "a­b"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "‌"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "‍"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "⁠"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "‎"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "‏"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "‪"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "‬"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "‭"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "á"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "é"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "́"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ö"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "über"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "café"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Café"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "😀"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "😀a"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "a😀"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "😀😀"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "👍🏽"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "👨‍👩‍👧"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "❤️"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "❤"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "©"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "®"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "™"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "€"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "$"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "£"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "¥"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "%"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "‰"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "°"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "+"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "="
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "<"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       ">"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "|"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "~"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "^"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "`"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "¬"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "±"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "×"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "÷"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "∑"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "∞"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "𝒜"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "𝒜bc"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "a𝒜"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "𐐨"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "𐐀"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "𐐀𐐨"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "𐐨𐐀"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "𝟙"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "𝟏𝟐"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "𠀀"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "a𠀀b"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "."
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       ","
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       ";"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       ":"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "!"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "?"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "-"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "–"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "—"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "…"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "..."
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       ".."
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "("
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       ")"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "["
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "]"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "{"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "}"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "\""
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "'"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "’"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "‘"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "“"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "”"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "„"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "«"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "»"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "‹"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "›"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "/"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "\\"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "_"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "*"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "&"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "#"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "@"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "§"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "¿"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "¡"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "·"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "•"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "،"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "؟"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "。"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "、"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "！"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "？"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "&amp;"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "&lt;"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "&#39;"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "<b>"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "</b>"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "<b>bold</b>"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "<<b>>"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "<<b>"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "<b>>"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "<a href=\"x\">link</a>"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "<!-- c -->"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "a<!-- c -->b"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "<!-- a --><!-- b -->"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "<!-- unclosed"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "<!--x-->y<!--z-->"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "x <!-- multi\nline --> y"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "<br/>"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "<br />"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "< b>"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "<>"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "< >"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "<a<b>c"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "<\n>"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "a<\nb>c"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "\"quoted\" & 'single' <tag>"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "x > y"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "x < y"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "a&b"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "a & b"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "&&"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "\"\""
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "''"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "<![CDATA[x]]>"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "<?xml version=\"1.0\"?>"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "<tag attr=\"v\">t</tag>"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "\u0000<"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "€ & £"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "123"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "+123"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "-123"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "1.5"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "1,5"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "1 000"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "1,000.5"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "1.000,5"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       ".5"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "5."
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       ",5"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "1..2"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "1."
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "   "
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "1 2"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "12 "
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       " 12"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "١٢٣"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "１２３"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "१२३"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "²"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "½"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Ⅻ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "1e5"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "0x1F"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "1_000"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Wort"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Haus"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Häuser"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Straßenbahn"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Donaudampfschifffahrtsgesellschaft"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "E-Mail"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "e-mail"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "U-Bahn"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "u-bahn"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "A-B-C"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "O'Neil"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "o'neil"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "McDonald’s"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ǆa"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ǅa"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ٱلْعَرَبِيَّةُ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "العربية"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "كَتَبَ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "كتب"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ـكتابـ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ـ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "שלום"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "שָׁלוֹם"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Привет"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "привет"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ПРИВЕТ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Ёж"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ёж"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "日本語"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ひらがな"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "한국어"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ภาษาไทย"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "ខ្មែរ"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "हिन्दी"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "AbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAb"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b "
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "                                                                                                    "
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "äöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäö"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "<b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word"
+      ]
+     },
+     {
+      "fn": "normalizeNFKC",
+      "args": [
+       "Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,2663 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "StringTools.isNotWordString over 440 strings (ASCII, umlauts, sharp s, Turkish i, Greek sigma, digits, apostrophes, NBSP/zero-width, non-BMP, controls, long)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "isNotWordString",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "  "
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "a"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "A"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "z"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Z"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "1"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "0"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "12"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "1a"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "a1"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "A1"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ab"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "AB"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Ab"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "aB"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "abc"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ABC"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Abc"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "aBc"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "abC"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "AbC"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ABc"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "aBC"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Hello"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "hello"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "HELLO"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "hELLO"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "HeLLo"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Hello World"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "hello world"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "HELLO WORLD"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Hello world"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "hello World"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "A B"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "The Lord Of The Rings"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "the lord of the rings"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "a tale of two cities"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "The  double  space"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       " leading"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "trailing "
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       " both "
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "  both  "
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "\tTab"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Tab\t"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "a\tb"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "a\nb"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "a\r\nb"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "\n"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "\r"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "\r\n"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "\n\n"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "a\n\nb"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "\n\nx"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "x\n"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Äpfel"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "äpfel"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ÄPFEL"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Öl"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "öl"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ÖL"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Übel"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "übel"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ÜBEL"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Straße"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "straße"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "STRASSE"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "STRAẞE"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ß"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ẞ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ßa"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ẞa"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Ssa"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ǅ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ǆ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Ǆ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ǈ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ﬁsh"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ﬃ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "FIsh"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ŉ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ΐ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "İstanbul"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "istanbul"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Istanbul"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ıstanbul"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "İ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ı"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "I"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "i"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "IİıiI"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "TITLE"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "title"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Ώ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ώ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ΣΑΣ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "σας"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Σας"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ὈΔΥΣΣΕΎΣ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "οδυσσεύς"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Ὀδυσσεύς"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ΑΣ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ας"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Ας"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ς"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Σ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "σ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "αβγ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Αβγ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ΑΒΓ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "αΒΓ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "élève"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Élève"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ÉLÈVE"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "élÈve"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "œuvre"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Œuvre"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ŒUVRE"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ç"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Ç"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ÿ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Ÿ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ñ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Ñ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Ø"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ø"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "þ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Þ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ÿa"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ÝÞ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "d'accord"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "D'accord"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "l'homme"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "L'Homme"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "L’homme"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "l’homme"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "'quoted'"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "\"Quoted\""
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "«Guillemets»"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "»Anführung«"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "„Anführung“"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "(Klammer)"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "(klammer)"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "[x]"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "\"hello\""
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "\"Hello\""
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "'a'"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "--x"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "-Abc"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "-abc"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "...Abc"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "...abc"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "¿Qué?"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "¡Hola!"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "*Stern"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "3D"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "3d"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "3 D"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "4Ever"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "4ever"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ij"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "IJ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Ij"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "iJ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ijsselmeer"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "IJsselmeer"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Ijsselmeer"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ijs"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ij-"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ï"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Ïj"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "hello-world"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Hello-World"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Hello-world"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ABC-def"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "camelCase"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "CamelCase"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "camelCaseWord"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "camelCASE"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "camel"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "abcDef"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "abcDefGhi"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "aBCD"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "myURLParser"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "iPhone"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "eBay"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "McDonald"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "macOS"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "äBc"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ÄBc"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "abcÄ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "a1B"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "a_B"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "x-Y"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       " a "
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "​"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "​a"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "a​"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "​​"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "　"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "﻿"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "﻿a"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "\u0001"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "\u0002"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "\u0000"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "a\u0000b"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "\u0003"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "\u000b"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "\f"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "\u001f"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "᠎"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "­"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "a­b"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "‌"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "‍"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "⁠"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "‎"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "‏"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "‪"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "‬"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "‭"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "á"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "é"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "́"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ö"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "über"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "café"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Café"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "😀"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "😀a"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "a😀"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "😀😀"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "👍🏽"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "👨‍👩‍👧"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "❤️"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "❤"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "©"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "®"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "™"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "€"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "$"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "£"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "¥"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "%"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "‰"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "°"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "+"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "="
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "<"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       ">"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "|"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "~"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "^"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "`"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "¬"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "±"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "×"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "÷"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "∑"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "∞"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "𝒜"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "𝒜bc"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "a𝒜"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "𐐨"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "𐐀"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "𐐀𐐨"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "𐐨𐐀"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "𝟙"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "𝟏𝟐"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "𠀀"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "a𠀀b"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "."
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       ","
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       ";"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       ":"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "!"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "?"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "-"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "–"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "—"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "…"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "..."
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       ".."
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "("
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       ")"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "["
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "]"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "{"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "}"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "\""
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "'"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "’"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "‘"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "“"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "”"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "„"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "«"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "»"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "‹"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "›"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "/"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "\\"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "_"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "*"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "&"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "#"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "@"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "§"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "¿"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "¡"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "·"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "•"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "،"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "؟"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "。"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "、"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "！"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "？"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "&amp;"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "&lt;"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "&#39;"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "<b>"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "</b>"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "<b>bold</b>"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "<<b>>"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "<<b>"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "<b>>"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "<a href=\"x\">link</a>"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "<!-- c -->"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "a<!-- c -->b"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "<!-- a --><!-- b -->"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "<!-- unclosed"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "<!--x-->y<!--z-->"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "x <!-- multi\nline --> y"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "<br/>"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "<br />"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "< b>"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "<>"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "< >"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "<a<b>c"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "<\n>"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "a<\nb>c"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "\"quoted\" & 'single' <tag>"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "x > y"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "x < y"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "a&b"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "a & b"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "&&"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "\"\""
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "''"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "<![CDATA[x]]>"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "<?xml version=\"1.0\"?>"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "<tag attr=\"v\">t</tag>"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "\u0000<"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "€ & £"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "123"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "+123"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "-123"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "1.5"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "1,5"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "1 000"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "1,000.5"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "1.000,5"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       ".5"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "5."
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       ",5"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "1..2"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "1."
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "   "
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "1 2"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "12 "
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       " 12"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "١٢٣"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "１２３"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "१२३"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "²"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "½"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Ⅻ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "1e5"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "0x1F"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "1_000"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Wort"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Haus"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Häuser"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Straßenbahn"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Donaudampfschifffahrtsgesellschaft"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "E-Mail"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "e-mail"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "U-Bahn"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "u-bahn"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "A-B-C"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "O'Neil"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "o'neil"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "McDonald’s"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ǆa"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ǅa"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ٱلْعَرَبِيَّةُ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "العربية"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "كَتَبَ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "كتب"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ـكتابـ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ـ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "שלום"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "שָׁלוֹם"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Привет"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "привет"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ПРИВЕТ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Ёж"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ёж"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "日本語"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ひらがな"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "한국어"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ภาษาไทย"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "ខ្មែរ"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "हिन्दी"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "AbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAb"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b "
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "                                                                                                    "
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "äöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäö"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "<b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word"
+      ]
+     },
+     {
+      "fn": "isNotWordString",
+      "args": [
+       "Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

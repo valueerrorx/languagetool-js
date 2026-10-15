@@ -1,0 +1,2663 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "StringTools.trimWhitespace over 440 strings (ASCII, umlauts, sharp s, Turkish i, Greek sigma, digits, apostrophes, NBSP/zero-width, non-BMP, controls, long)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "  "
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "a"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "A"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "z"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Z"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "1"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "0"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "12"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "1a"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "a1"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "A1"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ab"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "AB"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Ab"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "aB"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "abc"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ABC"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Abc"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "aBc"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "abC"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "AbC"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ABc"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "aBC"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Hello"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "hello"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "HELLO"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "hELLO"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "HeLLo"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Hello World"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "hello world"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "HELLO WORLD"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Hello world"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "hello World"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "A B"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "The Lord Of The Rings"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "the lord of the rings"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "a tale of two cities"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "The  double  space"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       " leading"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "trailing "
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       " both "
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "  both  "
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "\tTab"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Tab\t"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "a\tb"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "a\nb"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "a\r\nb"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "\n"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "\r"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "\r\n"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "\n\n"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "a\n\nb"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "\n\nx"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "x\n"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Äpfel"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "äpfel"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ÄPFEL"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Öl"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "öl"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ÖL"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Übel"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "übel"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ÜBEL"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Straße"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "straße"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "STRASSE"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "STRAẞE"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ß"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ẞ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ßa"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ẞa"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Ssa"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ǅ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ǆ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Ǆ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ǈ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ﬁsh"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ﬃ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "FIsh"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ŉ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ΐ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "İstanbul"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "istanbul"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Istanbul"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ıstanbul"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "İ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ı"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "I"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "i"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "IİıiI"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "TITLE"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "title"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Ώ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ώ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ΣΑΣ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "σας"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Σας"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ὈΔΥΣΣΕΎΣ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "οδυσσεύς"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Ὀδυσσεύς"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ΑΣ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ας"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Ας"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ς"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Σ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "σ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "αβγ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Αβγ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ΑΒΓ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "αΒΓ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "élève"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Élève"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ÉLÈVE"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "élÈve"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "œuvre"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Œuvre"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ŒUVRE"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ç"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Ç"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ÿ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Ÿ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ñ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Ñ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Ø"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ø"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "þ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Þ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ÿa"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ÝÞ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "d'accord"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "D'accord"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "l'homme"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "L'Homme"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "L’homme"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "l’homme"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "'quoted'"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "\"Quoted\""
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "«Guillemets»"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "»Anführung«"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "„Anführung“"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "(Klammer)"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "(klammer)"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "[x]"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "\"hello\""
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "\"Hello\""
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "'a'"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "--x"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "-Abc"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "-abc"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "...Abc"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "...abc"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "¿Qué?"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "¡Hola!"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "*Stern"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "3D"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "3d"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "3 D"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "4Ever"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "4ever"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ij"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "IJ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Ij"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "iJ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ijsselmeer"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "IJsselmeer"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Ijsselmeer"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ijs"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ij-"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ï"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Ïj"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "hello-world"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Hello-World"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Hello-world"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ABC-def"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "camelCase"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "CamelCase"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "camelCaseWord"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "camelCASE"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "camel"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "abcDef"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "abcDefGhi"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "aBCD"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "myURLParser"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "iPhone"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "eBay"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "McDonald"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "macOS"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "äBc"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ÄBc"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "abcÄ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "a1B"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "a_B"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "x-Y"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       " a "
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "​"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "​a"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "a​"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "​​"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "　"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "﻿"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "﻿a"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "\u0001"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "\u0002"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "\u0000"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "a\u0000b"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "\u0003"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "\u000b"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "\f"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "\u001f"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "᠎"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "­"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "a­b"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "‌"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "‍"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "⁠"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "‎"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "‏"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "‪"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "‬"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "‭"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "á"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "é"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "́"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ö"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "über"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "café"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Café"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "😀"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "😀a"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "a😀"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "😀😀"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "👍🏽"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "👨‍👩‍👧"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "❤️"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "❤"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "©"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "®"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "™"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "€"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "$"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "£"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "¥"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "%"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "‰"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "°"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "+"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "="
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "<"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       ">"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "|"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "~"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "^"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "`"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "¬"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "±"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "×"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "÷"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "∑"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "∞"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "𝒜"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "𝒜bc"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "a𝒜"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "𐐨"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "𐐀"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "𐐀𐐨"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "𐐨𐐀"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "𝟙"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "𝟏𝟐"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "𠀀"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "a𠀀b"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "."
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       ","
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       ";"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       ":"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "!"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "?"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "-"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "–"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "—"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "…"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "..."
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       ".."
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "("
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       ")"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "["
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "]"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "{"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "}"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "\""
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "'"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "’"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "‘"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "“"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "”"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "„"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "«"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "»"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "‹"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "›"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "/"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "\\"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "_"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "*"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "&"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "#"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "@"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "§"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "¿"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "¡"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "·"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "•"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "،"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "؟"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "。"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "、"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "！"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "？"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "&amp;"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "&lt;"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "&#39;"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "<b>"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "</b>"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "<b>bold</b>"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "<<b>>"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "<<b>"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "<b>>"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "<a href=\"x\">link</a>"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "<!-- c -->"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "a<!-- c -->b"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "<!-- a --><!-- b -->"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "<!-- unclosed"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "<!--x-->y<!--z-->"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "x <!-- multi\nline --> y"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "<br/>"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "<br />"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "< b>"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "<>"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "< >"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "<a<b>c"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "<\n>"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "a<\nb>c"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "\"quoted\" & 'single' <tag>"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "x > y"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "x < y"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "a&b"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "a & b"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "&&"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "\"\""
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "''"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "<![CDATA[x]]>"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "<?xml version=\"1.0\"?>"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "<tag attr=\"v\">t</tag>"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "\u0000<"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "€ & £"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "123"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "+123"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "-123"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "1.5"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "1,5"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "1 000"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "1,000.5"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "1.000,5"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       ".5"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "5."
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       ",5"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "1..2"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "1."
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "   "
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "1 2"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "12 "
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       " 12"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "١٢٣"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "１２３"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "१२३"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "²"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "½"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Ⅻ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "1e5"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "0x1F"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "1_000"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Wort"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Haus"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Häuser"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Straßenbahn"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Donaudampfschifffahrtsgesellschaft"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "E-Mail"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "e-mail"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "U-Bahn"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "u-bahn"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "A-B-C"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "O'Neil"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "o'neil"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "McDonald’s"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ǆa"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ǅa"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ٱلْعَرَبِيَّةُ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "العربية"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "كَتَبَ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "كتب"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ـكتابـ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ـ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "שלום"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "שָׁלוֹם"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Привет"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "привет"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ПРИВЕТ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Ёж"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ёж"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "日本語"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ひらがな"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "한국어"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ภาษาไทย"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "ខ្មែរ"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "हिन्दी"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "AbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAb"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b "
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "                                                                                                    "
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "äöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäö"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "<b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word"
+      ]
+     },
+     {
+      "fn": "trimWhitespace",
+      "args": [
+       "Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

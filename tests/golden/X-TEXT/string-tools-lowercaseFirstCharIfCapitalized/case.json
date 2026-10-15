@@ -1,0 +1,2663 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "StringTools.lowercaseFirstCharIfCapitalized over 440 strings (ASCII, umlauts, sharp s, Turkish i, Greek sigma, digits, apostrophes, NBSP/zero-width, non-BMP, controls, long)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "  "
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "a"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "A"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "z"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Z"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "1"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "0"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "12"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "1a"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "a1"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "A1"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ab"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "AB"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Ab"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "aB"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "abc"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ABC"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Abc"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "aBc"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "abC"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "AbC"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ABc"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "aBC"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Hello"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "hello"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "HELLO"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "hELLO"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "HeLLo"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Hello World"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "hello world"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "HELLO WORLD"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Hello world"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "hello World"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "A B"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "The Lord Of The Rings"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "the lord of the rings"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "a tale of two cities"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "The  double  space"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       " leading"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "trailing "
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       " both "
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "  both  "
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "\tTab"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Tab\t"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "a\tb"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "a\nb"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "a\r\nb"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "\n"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "\r"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "\r\n"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "\n\n"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "a\n\nb"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "\n\nx"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "x\n"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Äpfel"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "äpfel"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ÄPFEL"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Öl"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "öl"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ÖL"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Übel"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "übel"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ÜBEL"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Straße"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "straße"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "STRASSE"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "STRAẞE"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ß"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ẞ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ßa"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ẞa"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Ssa"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ǅ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ǆ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Ǆ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ǈ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ﬁsh"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ﬃ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "FIsh"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ŉ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ΐ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "İstanbul"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "istanbul"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Istanbul"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ıstanbul"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "İ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ı"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "I"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "i"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "IİıiI"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "TITLE"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "title"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Ώ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ώ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ΣΑΣ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "σας"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Σας"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ὈΔΥΣΣΕΎΣ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "οδυσσεύς"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Ὀδυσσεύς"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ΑΣ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ας"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Ας"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ς"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Σ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "σ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "αβγ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Αβγ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ΑΒΓ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "αΒΓ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "élève"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Élève"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ÉLÈVE"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "élÈve"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "œuvre"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Œuvre"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ŒUVRE"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ç"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Ç"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ÿ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Ÿ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ñ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Ñ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Ø"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ø"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "þ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Þ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ÿa"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ÝÞ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "d'accord"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "D'accord"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "l'homme"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "L'Homme"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "L’homme"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "l’homme"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "'quoted'"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "\"Quoted\""
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "«Guillemets»"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "»Anführung«"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "„Anführung“"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "(Klammer)"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "(klammer)"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "[x]"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "\"hello\""
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "\"Hello\""
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "'a'"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "--x"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "-Abc"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "-abc"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "...Abc"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "...abc"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "¿Qué?"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "¡Hola!"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "*Stern"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "3D"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "3d"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "3 D"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "4Ever"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "4ever"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ij"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "IJ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Ij"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "iJ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ijsselmeer"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "IJsselmeer"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Ijsselmeer"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ijs"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ij-"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ï"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Ïj"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "hello-world"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Hello-World"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Hello-world"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ABC-def"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "camelCase"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "CamelCase"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "camelCaseWord"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "camelCASE"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "camel"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "abcDef"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "abcDefGhi"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "aBCD"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "myURLParser"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "iPhone"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "eBay"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "McDonald"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "macOS"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "äBc"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ÄBc"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "abcÄ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "a1B"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "a_B"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "x-Y"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       " a "
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "​"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "​a"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "a​"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "​​"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "　"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "﻿"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "﻿a"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "\u0001"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "\u0002"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "\u0000"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "a\u0000b"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "\u0003"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "\u000b"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "\f"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "\u001f"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "᠎"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "­"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "a­b"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "‌"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "‍"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "⁠"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "‎"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "‏"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "‪"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "‬"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "‭"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "á"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "é"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "́"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ö"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "über"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "café"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Café"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "😀"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "😀a"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "a😀"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "😀😀"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "👍🏽"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "👨‍👩‍👧"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "❤️"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "❤"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "©"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "®"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "™"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "€"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "$"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "£"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "¥"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "%"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "‰"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "°"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "+"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "="
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "<"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       ">"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "|"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "~"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "^"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "`"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "¬"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "±"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "×"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "÷"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "∑"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "∞"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "𝒜"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "𝒜bc"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "a𝒜"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "𐐨"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "𐐀"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "𐐀𐐨"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "𐐨𐐀"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "𝟙"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "𝟏𝟐"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "𠀀"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "a𠀀b"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "."
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       ","
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       ";"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       ":"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "!"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "?"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "-"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "–"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "—"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "…"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "..."
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       ".."
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "("
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       ")"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "["
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "]"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "{"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "}"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "\""
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "'"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "’"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "‘"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "“"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "”"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "„"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "«"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "»"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "‹"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "›"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "/"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "\\"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "_"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "*"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "&"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "#"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "@"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "§"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "¿"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "¡"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "·"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "•"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "،"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "؟"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "。"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "、"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "！"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "？"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "&amp;"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "&lt;"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "&#39;"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "<b>"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "</b>"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "<b>bold</b>"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "<<b>>"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "<<b>"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "<b>>"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "<a href=\"x\">link</a>"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "<!-- c -->"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "a<!-- c -->b"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "<!-- a --><!-- b -->"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "<!-- unclosed"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "<!--x-->y<!--z-->"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "x <!-- multi\nline --> y"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "<br/>"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "<br />"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "< b>"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "<>"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "< >"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "<a<b>c"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "<\n>"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "a<\nb>c"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "\"quoted\" & 'single' <tag>"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "x > y"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "x < y"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "a&b"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "a & b"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "&&"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "\"\""
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "''"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "<![CDATA[x]]>"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "<?xml version=\"1.0\"?>"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "<tag attr=\"v\">t</tag>"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "\u0000<"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "€ & £"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "123"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "+123"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "-123"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "1.5"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "1,5"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "1 000"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "1,000.5"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "1.000,5"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       ".5"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "5."
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       ",5"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "1..2"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "1."
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "   "
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "1 2"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "12 "
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       " 12"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "١٢٣"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "１２３"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "१२३"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "²"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "½"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Ⅻ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "1e5"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "0x1F"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "1_000"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Wort"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Haus"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Häuser"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Straßenbahn"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Donaudampfschifffahrtsgesellschaft"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "E-Mail"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "e-mail"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "U-Bahn"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "u-bahn"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "A-B-C"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "O'Neil"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "o'neil"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "McDonald’s"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ǆa"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ǅa"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ٱلْعَرَبِيَّةُ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "العربية"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "كَتَبَ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "كتب"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ـكتابـ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ـ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "שלום"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "שָׁלוֹם"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Привет"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "привет"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ПРИВЕТ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Ёж"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ёж"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "日本語"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ひらがな"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "한국어"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ภาษาไทย"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "ខ្មែរ"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "हिन्दी"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "AbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAb"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b "
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "                                                                                                    "
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "äöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäö"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "<b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word"
+      ]
+     },
+     {
+      "fn": "lowercaseFirstCharIfCapitalized",
+      "args": [
+       "Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

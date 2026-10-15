@@ -1,0 +1,2663 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "StringTools.titlecaseGlobal over 440 strings (ASCII, umlauts, sharp s, Turkish i, Greek sigma, digits, apostrophes, NBSP/zero-width, non-BMP, controls, long)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "  "
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "a"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "A"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "z"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Z"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "1"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "0"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "12"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "1a"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "a1"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "A1"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ab"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "AB"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Ab"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "aB"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "abc"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ABC"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Abc"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "aBc"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "abC"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "AbC"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ABc"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "aBC"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Hello"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "hello"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "HELLO"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "hELLO"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "HeLLo"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Hello World"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "hello world"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "HELLO WORLD"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Hello world"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "hello World"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "A B"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "The Lord Of The Rings"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "the lord of the rings"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "a tale of two cities"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "The  double  space"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       " leading"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "trailing "
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       " both "
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "  both  "
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "\tTab"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Tab\t"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "a\tb"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "a\nb"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "a\r\nb"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "\n"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "\r"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "\r\n"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "\n\n"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "a\n\nb"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "\n\nx"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "x\n"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Äpfel"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "äpfel"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ÄPFEL"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Öl"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "öl"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ÖL"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Übel"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "übel"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ÜBEL"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Straße"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "straße"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "STRASSE"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "STRAẞE"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ß"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ẞ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ßa"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ẞa"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Ssa"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ǅ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ǆ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Ǆ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ǈ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ﬁsh"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ﬃ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "FIsh"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ŉ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ΐ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "İstanbul"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "istanbul"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Istanbul"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ıstanbul"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "İ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ı"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "I"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "i"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "IİıiI"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "TITLE"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "title"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Ώ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ώ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ΣΑΣ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "σας"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Σας"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ὈΔΥΣΣΕΎΣ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "οδυσσεύς"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Ὀδυσσεύς"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ΑΣ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ας"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Ας"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ς"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Σ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "σ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "αβγ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Αβγ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ΑΒΓ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "αΒΓ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "élève"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Élève"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ÉLÈVE"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "élÈve"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "œuvre"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Œuvre"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ŒUVRE"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ç"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Ç"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ÿ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Ÿ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ñ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Ñ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Ø"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ø"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "þ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Þ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ÿa"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ÝÞ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "d'accord"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "D'accord"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "l'homme"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "L'Homme"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "L’homme"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "l’homme"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "'quoted'"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "\"Quoted\""
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "«Guillemets»"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "»Anführung«"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "„Anführung“"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "(Klammer)"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "(klammer)"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "[x]"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "\"hello\""
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "\"Hello\""
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "'a'"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "--x"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "-Abc"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "-abc"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "...Abc"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "...abc"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "¿Qué?"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "¡Hola!"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "*Stern"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "3D"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "3d"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "3 D"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "4Ever"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "4ever"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ij"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "IJ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Ij"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "iJ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ijsselmeer"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "IJsselmeer"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Ijsselmeer"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ijs"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ij-"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ï"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Ïj"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "hello-world"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Hello-World"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Hello-world"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ABC-def"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "camelCase"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "CamelCase"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "camelCaseWord"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "camelCASE"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "camel"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "abcDef"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "abcDefGhi"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "aBCD"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "myURLParser"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "iPhone"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "eBay"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "McDonald"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "macOS"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "äBc"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ÄBc"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "abcÄ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "a1B"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "a_B"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "x-Y"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       " a "
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "​"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "​a"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "a​"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "​​"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "　"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "﻿"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "﻿a"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "\u0001"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "\u0002"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "\u0000"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "a\u0000b"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "\u0003"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "\u000b"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "\f"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "\u001f"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "᠎"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "­"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "a­b"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "‌"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "‍"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "⁠"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "‎"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "‏"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "‪"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "‬"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "‭"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "á"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "é"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "́"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ö"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "über"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "café"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Café"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "😀"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "😀a"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "a😀"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "😀😀"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "👍🏽"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "👨‍👩‍👧"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "❤️"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "❤"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "©"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "®"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "™"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "€"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "$"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "£"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "¥"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "%"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "‰"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "°"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "+"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "="
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "<"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       ">"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "|"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "~"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "^"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "`"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "¬"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "±"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "×"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "÷"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "∑"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "∞"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "𝒜"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "𝒜bc"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "a𝒜"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "𐐨"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "𐐀"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "𐐀𐐨"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "𐐨𐐀"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "𝟙"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "𝟏𝟐"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "𠀀"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "a𠀀b"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "."
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       ","
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       ";"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       ":"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "!"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "?"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "-"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "–"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "—"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "…"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "..."
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       ".."
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "("
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       ")"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "["
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "]"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "{"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "}"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "\""
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "'"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "’"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "‘"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "“"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "”"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "„"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "«"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "»"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "‹"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "›"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "/"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "\\"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "_"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "*"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "&"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "#"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "@"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "§"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "¿"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "¡"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "·"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "•"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "،"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "؟"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "。"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "、"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "！"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "？"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "&amp;"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "&lt;"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "&#39;"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "<b>"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "</b>"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "<b>bold</b>"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "<<b>>"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "<<b>"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "<b>>"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "<a href=\"x\">link</a>"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "<!-- c -->"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "a<!-- c -->b"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "<!-- a --><!-- b -->"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "<!-- unclosed"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "<!--x-->y<!--z-->"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "x <!-- multi\nline --> y"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "<br/>"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "<br />"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "< b>"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "<>"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "< >"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "<a<b>c"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "<\n>"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "a<\nb>c"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "\"quoted\" & 'single' <tag>"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "x > y"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "x < y"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "a&b"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "a & b"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "&&"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "\"\""
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "''"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "<![CDATA[x]]>"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "<?xml version=\"1.0\"?>"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "<tag attr=\"v\">t</tag>"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "\u0000<"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "€ & £"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "123"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "+123"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "-123"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "1.5"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "1,5"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "1 000"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "1,000.5"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "1.000,5"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       ".5"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "5."
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       ",5"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "1..2"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "1."
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "   "
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "1 2"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "12 "
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       " 12"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "١٢٣"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "１２３"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "१२३"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "²"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "½"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Ⅻ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "1e5"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "0x1F"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "1_000"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Wort"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Haus"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Häuser"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Straßenbahn"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Donaudampfschifffahrtsgesellschaft"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "E-Mail"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "e-mail"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "U-Bahn"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "u-bahn"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "A-B-C"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "O'Neil"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "o'neil"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "McDonald’s"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ǆa"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ǅa"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ٱلْعَرَبِيَّةُ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "العربية"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "كَتَبَ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "كتب"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ـكتابـ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ـ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "שלום"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "שָׁלוֹם"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Привет"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "привет"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ПРИВЕТ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Ёж"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ёж"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "日本語"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ひらがな"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "한국어"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ภาษาไทย"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "ខ្មែរ"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "हिन्दी"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "AbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAb"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b "
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "                                                                                                    "
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "äöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäö"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "<b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word"
+      ]
+     },
+     {
+      "fn": "titlecaseGlobal",
+      "args": [
+       "Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

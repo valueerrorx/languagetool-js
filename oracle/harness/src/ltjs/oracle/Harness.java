@@ -29,7 +29,7 @@ public class Harness {
         JsonNode req = MAPPER.readTree(line);
         if (req.has("id")) resp.put("id", MAPPER.treeToValue(req.get("id"), Object.class));
         String op = req.get("op").asText();
-        if (op.startsWith("probe-") || op.equals("unicode-dump") || op.equals("locale-dump") || op.startsWith("regex") || op.startsWith("i18n-") || op.equals("sax-dump") || op.equals("xml-validate") || op.startsWith("fsa-")) writer = PROBE_MAPPER;
+        if (op.startsWith("probe-") || op.equals("unicode-dump") || op.equals("locale-dump") || op.startsWith("regex") || op.startsWith("i18n-") || op.equals("sax-dump") || op.equals("xml-validate") || op.startsWith("fsa-") || op.equals("annotated-text") || op.equals("string-tools") || op.equals("context-tools") || op.equals("analyzed-token")) writer = PROBE_MAPPER;
         JsonNode a = req.has("args") ? req.get("args") : MAPPER.createObjectNode();
         Object result = dispatch(op, a);
         resp.put("ok", true);
@@ -65,6 +65,10 @@ public class Harness {
       case "fsa-info": return FsaOps.info(a);
       case "fsa-lookup": return FsaOps.lookup(a);
       case "fsa-enum": return FsaOps.enumerate(a);
+      case "annotated-text": return TextOps.annotatedText(a);
+      case "string-tools": return TextOps.stringTools(a);
+      case "context-tools": return TextOps.contextTools(a);
+      case "analyzed-token": return TextOps.analyzedToken(a);
       case "check": return ContentOps.check(a);
       case "analyze": return ContentOps.analyze(a);
       case "rules-list": return ContentOps.rulesList(a);

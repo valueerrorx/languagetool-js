@@ -1,0 +1,2663 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "StringTools.normalizeNFC over 440 strings (ASCII, umlauts, sharp s, Turkish i, Greek sigma, digits, apostrophes, NBSP/zero-width, non-BMP, controls, long)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "  "
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "a"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "A"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "z"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Z"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "1"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "0"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "12"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "1a"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "a1"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "A1"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ab"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "AB"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Ab"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "aB"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "abc"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ABC"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Abc"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "aBc"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "abC"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "AbC"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ABc"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "aBC"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Hello"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "hello"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "HELLO"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "hELLO"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "HeLLo"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Hello World"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "hello world"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "HELLO WORLD"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Hello world"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "hello World"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "A B"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "The Lord Of The Rings"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "the lord of the rings"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "a tale of two cities"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "The  double  space"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       " leading"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "trailing "
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       " both "
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "  both  "
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "\tTab"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Tab\t"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "a\tb"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "a\nb"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "a\r\nb"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "\n"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "\r"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "\r\n"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "\n\n"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "a\n\nb"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "\n\nx"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "x\n"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Äpfel"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "äpfel"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ÄPFEL"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Öl"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "öl"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ÖL"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Übel"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "übel"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ÜBEL"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Straße"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "straße"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "STRASSE"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "STRAẞE"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ß"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ẞ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ßa"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ẞa"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Ssa"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ǅ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ǆ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Ǆ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ǈ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ﬁsh"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ﬃ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "FIsh"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ŉ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ΐ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "İstanbul"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "istanbul"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Istanbul"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ıstanbul"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "İ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ı"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "I"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "i"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "IİıiI"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "TITLE"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "title"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Ώ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ώ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ΣΑΣ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "σας"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Σας"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ὈΔΥΣΣΕΎΣ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "οδυσσεύς"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Ὀδυσσεύς"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ΑΣ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ας"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Ας"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ς"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Σ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "σ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "αβγ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Αβγ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ΑΒΓ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "αΒΓ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "élève"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Élève"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ÉLÈVE"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "élÈve"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "œuvre"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Œuvre"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ŒUVRE"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ç"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Ç"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ÿ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Ÿ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ñ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Ñ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Ø"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ø"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "þ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Þ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ÿa"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ÝÞ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "d'accord"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "D'accord"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "l'homme"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "L'Homme"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "L’homme"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "l’homme"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "'quoted'"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "\"Quoted\""
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "«Guillemets»"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "»Anführung«"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "„Anführung“"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "(Klammer)"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "(klammer)"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "[x]"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "\"hello\""
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "\"Hello\""
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "'a'"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "--x"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "-Abc"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "-abc"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "...Abc"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "...abc"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "¿Qué?"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "¡Hola!"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "*Stern"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "3D"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "3d"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "3 D"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "4Ever"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "4ever"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ij"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "IJ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Ij"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "iJ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ijsselmeer"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "IJsselmeer"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Ijsselmeer"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ijs"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ij-"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ï"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Ïj"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "hello-world"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Hello-World"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Hello-world"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ABC-def"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "camelCase"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "CamelCase"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "camelCaseWord"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "camelCASE"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "camel"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "abcDef"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "abcDefGhi"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "aBCD"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "myURLParser"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "iPhone"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "eBay"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "McDonald"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "macOS"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "äBc"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ÄBc"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "abcÄ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "a1B"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "a_B"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "x-Y"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       " a "
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "​"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "​a"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "a​"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "​​"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "　"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "﻿"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "﻿a"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "\u0001"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "\u0002"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "\u0000"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "a\u0000b"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "\u0003"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "\u000b"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "\f"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "\u001f"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "᠎"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "­"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "a­b"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "‌"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "‍"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "⁠"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "‎"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "‏"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "‪"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "‬"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "‭"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "á"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "é"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "́"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ö"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "über"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "café"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Café"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "😀"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "😀a"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "a😀"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "😀😀"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "👍🏽"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "👨‍👩‍👧"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "❤️"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "❤"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "©"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "®"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "™"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "€"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "$"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "£"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "¥"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "%"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "‰"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "°"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "+"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "="
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "<"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       ">"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "|"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "~"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "^"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "`"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "¬"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "±"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "×"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "÷"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "∑"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "∞"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "𝒜"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "𝒜bc"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "a𝒜"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "𐐨"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "𐐀"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "𐐀𐐨"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "𐐨𐐀"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "𝟙"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "𝟏𝟐"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "𠀀"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "a𠀀b"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "."
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       ","
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       ";"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       ":"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "!"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "?"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "-"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "–"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "—"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "…"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "..."
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       ".."
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "("
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       ")"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "["
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "]"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "{"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "}"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "\""
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "'"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "’"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "‘"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "“"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "”"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "„"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "«"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "»"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "‹"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "›"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "/"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "\\"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "_"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "*"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "&"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "#"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "@"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "§"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "¿"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "¡"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "·"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "•"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "،"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "؟"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "。"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "、"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "！"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "？"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "&amp;"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "&lt;"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "&#39;"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "<b>"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "</b>"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "<b>bold</b>"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "<<b>>"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "<<b>"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "<b>>"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "<a href=\"x\">link</a>"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "<!-- c -->"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "a<!-- c -->b"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "<!-- a --><!-- b -->"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "<!-- unclosed"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "<!--x-->y<!--z-->"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "x <!-- multi\nline --> y"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "<br/>"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "<br />"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "< b>"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "<>"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "< >"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "<a<b>c"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "<\n>"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "a<\nb>c"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "\"quoted\" & 'single' <tag>"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "x > y"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "x < y"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "a&b"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "a & b"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "&&"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "\"\""
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "''"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "<![CDATA[x]]>"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "<?xml version=\"1.0\"?>"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "<tag attr=\"v\">t</tag>"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "\u0000<"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "€ & £"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "123"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "+123"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "-123"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "1.5"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "1,5"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "1 000"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "1,000.5"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "1.000,5"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       ".5"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "5."
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       ",5"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "1..2"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "1."
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "   "
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "1 2"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "12 "
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       " 12"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "١٢٣"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "１２３"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "१२३"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "²"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "½"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Ⅻ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "1e5"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "0x1F"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "1_000"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Wort"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Haus"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Häuser"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Straßenbahn"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Donaudampfschifffahrtsgesellschaft"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "E-Mail"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "e-mail"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "U-Bahn"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "u-bahn"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "A-B-C"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "O'Neil"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "o'neil"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "McDonald’s"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ǆa"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ǅa"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ٱلْعَرَبِيَّةُ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "العربية"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "كَتَبَ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "كتب"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ـكتابـ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ـ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "שלום"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "שָׁלוֹם"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Привет"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "привет"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ПРИВЕТ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Ёж"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ёж"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "日本語"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ひらがな"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "한국어"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ภาษาไทย"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "ខ្មែរ"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "हिन्दी"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "AbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAb"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b "
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "                                                                                                    "
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "äöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäö"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "<b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word"
+      ]
+     },
+     {
+      "fn": "normalizeNFC",
+      "args": [
+       "Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,1826 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "ContextTools.getContext / getPlainTextContext: positions, context sizes, markers, escaping, line breaks, error paths",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "context-tools",
+   "args": {
+    "calls": [
+     {
+      "text": "abc",
+      "from": 0,
+      "to": 0
+     },
+     {
+      "text": "abc",
+      "from": 0,
+      "to": 1
+     },
+     {
+      "text": "abc",
+      "from": 0,
+      "to": 3
+     },
+     {
+      "text": "abc",
+      "from": 1,
+      "to": 2
+     },
+     {
+      "text": "abc",
+      "from": 2,
+      "to": 3
+     },
+     {
+      "text": "abc",
+      "from": 3,
+      "to": 3
+     },
+     {
+      "text": "abc",
+      "from": 1,
+      "to": 3
+     },
+     {
+      "text": "This is a test.",
+      "from": 0,
+      "to": 0
+     },
+     {
+      "text": "This is a test.",
+      "from": 0,
+      "to": 1
+     },
+     {
+      "text": "This is a test.",
+      "from": 0,
+      "to": 15
+     },
+     {
+      "text": "This is a test.",
+      "from": 7,
+      "to": 8
+     },
+     {
+      "text": "This is a test.",
+      "from": 14,
+      "to": 15
+     },
+     {
+      "text": "This is a test.",
+      "from": 15,
+      "to": 15
+     },
+     {
+      "text": "This is a test.",
+      "from": 5,
+      "to": 7
+     },
+     {
+      "text": "Hello world",
+      "from": 0,
+      "to": 0
+     },
+     {
+      "text": "Hello world",
+      "from": 0,
+      "to": 1
+     },
+     {
+      "text": "Hello world",
+      "from": 0,
+      "to": 11
+     },
+     {
+      "text": "Hello world",
+      "from": 5,
+      "to": 6
+     },
+     {
+      "text": "Hello world",
+      "from": 10,
+      "to": 11
+     },
+     {
+      "text": "Hello world",
+      "from": 11,
+      "to": 11
+     },
+     {
+      "text": "Hello world",
+      "from": 3,
+      "to": 5
+     },
+     {
+      "text": "one\ntwo\nthree",
+      "from": 0,
+      "to": 0
+     },
+     {
+      "text": "one\ntwo\nthree",
+      "from": 0,
+      "to": 1
+     },
+     {
+      "text": "one\ntwo\nthree",
+      "from": 0,
+      "to": 13
+     },
+     {
+      "text": "one\ntwo\nthree",
+      "from": 6,
+      "to": 7
+     },
+     {
+      "text": "one\ntwo\nthree",
+      "from": 12,
+      "to": 13
+     },
+     {
+      "text": "one\ntwo\nthree",
+      "from": 13,
+      "to": 13
+     },
+     {
+      "text": "one\ntwo\nthree",
+      "from": 4,
+      "to": 6
+     },
+     {
+      "text": "a\r\nb\r\nc",
+      "from": 0,
+      "to": 0
+     },
+     {
+      "text": "a\r\nb\r\nc",
+      "from": 0,
+      "to": 1
+     },
+     {
+      "text": "a\r\nb\r\nc",
+      "from": 0,
+      "to": 7
+     },
+     {
+      "text": "a\r\nb\r\nc",
+      "from": 3,
+      "to": 4
+     },
+     {
+      "text": "a\r\nb\r\nc",
+      "from": 6,
+      "to": 7
+     },
+     {
+      "text": "a\r\nb\r\nc",
+      "from": 7,
+      "to": 7
+     },
+     {
+      "text": "a\r\nb\r\nc",
+      "from": 2,
+      "to": 4
+     },
+     {
+      "text": "tab\there",
+      "from": 0,
+      "to": 0
+     },
+     {
+      "text": "tab\there",
+      "from": 0,
+      "to": 1
+     },
+     {
+      "text": "tab\there",
+      "from": 0,
+      "to": 8
+     },
+     {
+      "text": "tab\there",
+      "from": 4,
+      "to": 5
+     },
+     {
+      "text": "tab\there",
+      "from": 7,
+      "to": 8
+     },
+     {
+      "text": "tab\there",
+      "from": 8,
+      "to": 8
+     },
+     {
+      "text": "tab\there",
+      "from": 2,
+      "to": 4
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 0,
+      "to": 0
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 0,
+      "to": 1
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 0,
+      "to": 450
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 225,
+      "to": 226
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 449,
+      "to": 450
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 450,
+      "to": 450
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 150,
+      "to": 152
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 0,
+      "to": 0
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 0,
+      "to": 1
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 0,
+      "to": 109
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 54,
+      "to": 55
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 108,
+      "to": 109
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 109,
+      "to": 109
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 36,
+      "to": 38
+     },
+     {
+      "text": "<b>&\"'</b>",
+      "from": 0,
+      "to": 0
+     },
+     {
+      "text": "<b>&\"'</b>",
+      "from": 0,
+      "to": 1
+     },
+     {
+      "text": "<b>&\"'</b>",
+      "from": 0,
+      "to": 10
+     },
+     {
+      "text": "<b>&\"'</b>",
+      "from": 5,
+      "to": 6
+     },
+     {
+      "text": "<b>&\"'</b>",
+      "from": 9,
+      "to": 10
+     },
+     {
+      "text": "<b>&\"'</b>",
+      "from": 10,
+      "to": 10
+     },
+     {
+      "text": "<b>&\"'</b>",
+      "from": 3,
+      "to": 5
+     },
+     {
+      "text": "a b  c",
+      "from": 0,
+      "to": 0
+     },
+     {
+      "text": "a b  c",
+      "from": 0,
+      "to": 1
+     },
+     {
+      "text": "a b  c",
+      "from": 0,
+      "to": 6
+     },
+     {
+      "text": "a b  c",
+      "from": 3,
+      "to": 4
+     },
+     {
+      "text": "a b  c",
+      "from": 5,
+      "to": 6
+     },
+     {
+      "text": "a b  c",
+      "from": 6,
+      "to": 6
+     },
+     {
+      "text": "a b  c",
+      "from": 2,
+      "to": 4
+     },
+     {
+      "text": "",
+      "from": 0,
+      "to": 0
+     },
+     {
+      "text": "",
+      "from": 0,
+      "to": 0
+     },
+     {
+      "text": "",
+      "from": 0,
+      "to": 0
+     },
+     {
+      "text": "",
+      "from": 0,
+      "to": 0
+     },
+     {
+      "text": "x",
+      "from": 0,
+      "to": 0
+     },
+     {
+      "text": "x",
+      "from": 0,
+      "to": 1
+     },
+     {
+      "text": "x",
+      "from": 0,
+      "to": 1
+     },
+     {
+      "text": "x",
+      "from": 0,
+      "to": 1
+     },
+     {
+      "text": "x",
+      "from": 0,
+      "to": 1
+     },
+     {
+      "text": "x",
+      "from": 1,
+      "to": 1
+     },
+     {
+      "text": "😀 emoji 😀 text",
+      "from": 0,
+      "to": 0
+     },
+     {
+      "text": "😀 emoji 😀 text",
+      "from": 0,
+      "to": 1
+     },
+     {
+      "text": "😀 emoji 😀 text",
+      "from": 0,
+      "to": 16
+     },
+     {
+      "text": "😀 emoji 😀 text",
+      "from": 8,
+      "to": 9
+     },
+     {
+      "text": "😀 emoji 😀 text",
+      "from": 15,
+      "to": 16
+     },
+     {
+      "text": "😀 emoji 😀 text",
+      "from": 16,
+      "to": 16
+     },
+     {
+      "text": "😀 emoji 😀 text",
+      "from": 5,
+      "to": 7
+     },
+     {
+      "text": "äöü ÄÖÜ ß",
+      "from": 0,
+      "to": 0
+     },
+     {
+      "text": "äöü ÄÖÜ ß",
+      "from": 0,
+      "to": 1
+     },
+     {
+      "text": "äöü ÄÖÜ ß",
+      "from": 0,
+      "to": 9
+     },
+     {
+      "text": "äöü ÄÖÜ ß",
+      "from": 4,
+      "to": 5
+     },
+     {
+      "text": "äöü ÄÖÜ ß",
+      "from": 8,
+      "to": 9
+     },
+     {
+      "text": "äöü ÄÖÜ ß",
+      "from": 9,
+      "to": 9
+     },
+     {
+      "text": "äöü ÄÖÜ ß",
+      "from": 3,
+      "to": 5
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 100,
+      "to": 105,
+      "contextSize": 0
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 0,
+      "to": 3,
+      "contextSize": 0
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 446,
+      "to": 450,
+      "contextSize": 0
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 20,
+      "to": 28,
+      "contextSize": 0
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 30,
+      "to": 35,
+      "contextSize": 0
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 60,
+      "to": 70,
+      "contextSize": 0
+     },
+     {
+      "text": "short text here",
+      "from": 6,
+      "to": 10,
+      "contextSize": 0
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 100,
+      "to": 105,
+      "contextSize": 1
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 0,
+      "to": 3,
+      "contextSize": 1
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 446,
+      "to": 450,
+      "contextSize": 1
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 20,
+      "to": 28,
+      "contextSize": 1
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 30,
+      "to": 35,
+      "contextSize": 1
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 60,
+      "to": 70,
+      "contextSize": 1
+     },
+     {
+      "text": "short text here",
+      "from": 6,
+      "to": 10,
+      "contextSize": 1
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 100,
+      "to": 105,
+      "contextSize": 3
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 0,
+      "to": 3,
+      "contextSize": 3
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 446,
+      "to": 450,
+      "contextSize": 3
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 20,
+      "to": 28,
+      "contextSize": 3
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 30,
+      "to": 35,
+      "contextSize": 3
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 60,
+      "to": 70,
+      "contextSize": 3
+     },
+     {
+      "text": "short text here",
+      "from": 6,
+      "to": 10,
+      "contextSize": 3
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 100,
+      "to": 105,
+      "contextSize": 5
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 0,
+      "to": 3,
+      "contextSize": 5
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 446,
+      "to": 450,
+      "contextSize": 5
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 20,
+      "to": 28,
+      "contextSize": 5
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 30,
+      "to": 35,
+      "contextSize": 5
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 60,
+      "to": 70,
+      "contextSize": 5
+     },
+     {
+      "text": "short text here",
+      "from": 6,
+      "to": 10,
+      "contextSize": 5
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 100,
+      "to": 105,
+      "contextSize": 10
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 0,
+      "to": 3,
+      "contextSize": 10
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 446,
+      "to": 450,
+      "contextSize": 10
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 20,
+      "to": 28,
+      "contextSize": 10
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 30,
+      "to": 35,
+      "contextSize": 10
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 60,
+      "to": 70,
+      "contextSize": 10
+     },
+     {
+      "text": "short text here",
+      "from": 6,
+      "to": 10,
+      "contextSize": 10
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 100,
+      "to": 105,
+      "contextSize": 40
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 0,
+      "to": 3,
+      "contextSize": 40
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 446,
+      "to": 450,
+      "contextSize": 40
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 20,
+      "to": 28,
+      "contextSize": 40
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 30,
+      "to": 35,
+      "contextSize": 40
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 60,
+      "to": 70,
+      "contextSize": 40
+     },
+     {
+      "text": "short text here",
+      "from": 6,
+      "to": 10,
+      "contextSize": 40
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 100,
+      "to": 105,
+      "contextSize": 100
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 0,
+      "to": 3,
+      "contextSize": 100
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 446,
+      "to": 450,
+      "contextSize": 100
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 20,
+      "to": 28,
+      "contextSize": 100
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 30,
+      "to": 35,
+      "contextSize": 100
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 60,
+      "to": 70,
+      "contextSize": 100
+     },
+     {
+      "text": "short text here",
+      "from": 6,
+      "to": 10,
+      "contextSize": 100
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 100,
+      "to": 105,
+      "contextSize": 1000
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 0,
+      "to": 3,
+      "contextSize": 1000
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 446,
+      "to": 450,
+      "contextSize": 1000
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 20,
+      "to": 28,
+      "contextSize": 1000
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 30,
+      "to": 35,
+      "contextSize": 1000
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 60,
+      "to": 70,
+      "contextSize": 1000
+     },
+     {
+      "text": "short text here",
+      "from": 6,
+      "to": 10,
+      "contextSize": 1000
+     }
+    ]
+   }
+  },
+  {
+   "op": "context-tools",
+   "args": {
+    "calls": [
+     {
+      "text": "a < b & c > \"d\"",
+      "from": 2,
+      "to": 3,
+      "escapeHtml": true
+     },
+     {
+      "text": "a < b & c > \"d\"",
+      "from": 2,
+      "to": 3,
+      "escapeHtml": true,
+      "marker": [
+       "<span class=\"err\">",
+       "</span>"
+      ]
+     },
+     {
+      "text": "a < b & c > \"d\"",
+      "from": 2,
+      "to": 3,
+      "escapeHtml": true,
+      "marker": [
+       "[",
+       "]"
+      ]
+     },
+     {
+      "text": "a < b & c > \"d\"",
+      "from": 2,
+      "to": 3,
+      "escapeHtml": true,
+      "marker": [
+       "",
+       ""
+      ]
+     },
+     {
+      "text": "a < b & c > \"d\"",
+      "from": 2,
+      "to": 3,
+      "escapeHtml": true,
+      "marker": [
+       "<<",
+       ">>"
+      ]
+     },
+     {
+      "text": "a < b & c > \"d\"",
+      "from": 0,
+      "to": 15,
+      "escapeHtml": true
+     },
+     {
+      "text": "a < b & c > \"d\"",
+      "from": 0,
+      "to": 15,
+      "escapeHtml": true,
+      "marker": [
+       "<span class=\"err\">",
+       "</span>"
+      ]
+     },
+     {
+      "text": "a < b & c > \"d\"",
+      "from": 0,
+      "to": 15,
+      "escapeHtml": true,
+      "marker": [
+       "[",
+       "]"
+      ]
+     },
+     {
+      "text": "a < b & c > \"d\"",
+      "from": 0,
+      "to": 15,
+      "escapeHtml": true,
+      "marker": [
+       "",
+       ""
+      ]
+     },
+     {
+      "text": "a < b & c > \"d\"",
+      "from": 0,
+      "to": 15,
+      "escapeHtml": true,
+      "marker": [
+       "<<",
+       ">>"
+      ]
+     },
+     {
+      "text": "x  y",
+      "from": 1,
+      "to": 3,
+      "escapeHtml": true
+     },
+     {
+      "text": "x  y",
+      "from": 1,
+      "to": 3,
+      "escapeHtml": true,
+      "marker": [
+       "<span class=\"err\">",
+       "</span>"
+      ]
+     },
+     {
+      "text": "x  y",
+      "from": 1,
+      "to": 3,
+      "escapeHtml": true,
+      "marker": [
+       "[",
+       "]"
+      ]
+     },
+     {
+      "text": "x  y",
+      "from": 1,
+      "to": 3,
+      "escapeHtml": true,
+      "marker": [
+       "",
+       ""
+      ]
+     },
+     {
+      "text": "x  y",
+      "from": 1,
+      "to": 3,
+      "escapeHtml": true,
+      "marker": [
+       "<<",
+       ">>"
+      ]
+     },
+     {
+      "text": "Hello world",
+      "from": 5,
+      "to": 6,
+      "escapeHtml": true
+     },
+     {
+      "text": "Hello world",
+      "from": 5,
+      "to": 6,
+      "escapeHtml": true,
+      "marker": [
+       "<span class=\"err\">",
+       "</span>"
+      ]
+     },
+     {
+      "text": "Hello world",
+      "from": 5,
+      "to": 6,
+      "escapeHtml": true,
+      "marker": [
+       "[",
+       "]"
+      ]
+     },
+     {
+      "text": "Hello world",
+      "from": 5,
+      "to": 6,
+      "escapeHtml": true,
+      "marker": [
+       "",
+       ""
+      ]
+     },
+     {
+      "text": "Hello world",
+      "from": 5,
+      "to": 6,
+      "escapeHtml": true,
+      "marker": [
+       "<<",
+       ">>"
+      ]
+     },
+     {
+      "text": "Hello world",
+      "from": 0,
+      "to": 5,
+      "escapeHtml": true
+     },
+     {
+      "text": "Hello world",
+      "from": 0,
+      "to": 5,
+      "escapeHtml": true,
+      "marker": [
+       "<span class=\"err\">",
+       "</span>"
+      ]
+     },
+     {
+      "text": "Hello world",
+      "from": 0,
+      "to": 5,
+      "escapeHtml": true,
+      "marker": [
+       "[",
+       "]"
+      ]
+     },
+     {
+      "text": "Hello world",
+      "from": 0,
+      "to": 5,
+      "escapeHtml": true,
+      "marker": [
+       "",
+       ""
+      ]
+     },
+     {
+      "text": "Hello world",
+      "from": 0,
+      "to": 5,
+      "escapeHtml": true,
+      "marker": [
+       "<<",
+       ">>"
+      ]
+     },
+     {
+      "text": "<tag> text",
+      "from": 0,
+      "to": 5,
+      "escapeHtml": true
+     },
+     {
+      "text": "<tag> text",
+      "from": 0,
+      "to": 5,
+      "escapeHtml": true,
+      "marker": [
+       "<span class=\"err\">",
+       "</span>"
+      ]
+     },
+     {
+      "text": "<tag> text",
+      "from": 0,
+      "to": 5,
+      "escapeHtml": true,
+      "marker": [
+       "[",
+       "]"
+      ]
+     },
+     {
+      "text": "<tag> text",
+      "from": 0,
+      "to": 5,
+      "escapeHtml": true,
+      "marker": [
+       "",
+       ""
+      ]
+     },
+     {
+      "text": "<tag> text",
+      "from": 0,
+      "to": 5,
+      "escapeHtml": true,
+      "marker": [
+       "<<",
+       ">>"
+      ]
+     },
+     {
+      "text": "a\nb",
+      "from": 1,
+      "to": 2,
+      "escapeHtml": true
+     },
+     {
+      "text": "a\nb",
+      "from": 1,
+      "to": 2,
+      "escapeHtml": true,
+      "marker": [
+       "<span class=\"err\">",
+       "</span>"
+      ]
+     },
+     {
+      "text": "a\nb",
+      "from": 1,
+      "to": 2,
+      "escapeHtml": true,
+      "marker": [
+       "[",
+       "]"
+      ]
+     },
+     {
+      "text": "a\nb",
+      "from": 1,
+      "to": 2,
+      "escapeHtml": true,
+      "marker": [
+       "",
+       ""
+      ]
+     },
+     {
+      "text": "a\nb",
+      "from": 1,
+      "to": 2,
+      "escapeHtml": true,
+      "marker": [
+       "<<",
+       ">>"
+      ]
+     },
+     {
+      "text": "a\nb",
+      "from": 0,
+      "to": 3,
+      "escapeHtml": true
+     },
+     {
+      "text": "a\nb",
+      "from": 0,
+      "to": 3,
+      "escapeHtml": true,
+      "marker": [
+       "<span class=\"err\">",
+       "</span>"
+      ]
+     },
+     {
+      "text": "a\nb",
+      "from": 0,
+      "to": 3,
+      "escapeHtml": true,
+      "marker": [
+       "[",
+       "]"
+      ]
+     },
+     {
+      "text": "a\nb",
+      "from": 0,
+      "to": 3,
+      "escapeHtml": true,
+      "marker": [
+       "",
+       ""
+      ]
+     },
+     {
+      "text": "a\nb",
+      "from": 0,
+      "to": 3,
+      "escapeHtml": true,
+      "marker": [
+       "<<",
+       ">>"
+      ]
+     },
+     {
+      "text": "it's \"q\"",
+      "from": 3,
+      "to": 8,
+      "escapeHtml": true
+     },
+     {
+      "text": "it's \"q\"",
+      "from": 3,
+      "to": 8,
+      "escapeHtml": true,
+      "marker": [
+       "<span class=\"err\">",
+       "</span>"
+      ]
+     },
+     {
+      "text": "it's \"q\"",
+      "from": 3,
+      "to": 8,
+      "escapeHtml": true,
+      "marker": [
+       "[",
+       "]"
+      ]
+     },
+     {
+      "text": "it's \"q\"",
+      "from": 3,
+      "to": 8,
+      "escapeHtml": true,
+      "marker": [
+       "",
+       ""
+      ]
+     },
+     {
+      "text": "it's \"q\"",
+      "from": 3,
+      "to": 8,
+      "escapeHtml": true,
+      "marker": [
+       "<<",
+       ">>"
+      ]
+     },
+     {
+      "text": "äöü & ß",
+      "from": 4,
+      "to": 5,
+      "escapeHtml": true
+     },
+     {
+      "text": "äöü & ß",
+      "from": 4,
+      "to": 5,
+      "escapeHtml": true,
+      "marker": [
+       "<span class=\"err\">",
+       "</span>"
+      ]
+     },
+     {
+      "text": "äöü & ß",
+      "from": 4,
+      "to": 5,
+      "escapeHtml": true,
+      "marker": [
+       "[",
+       "]"
+      ]
+     },
+     {
+      "text": "äöü & ß",
+      "from": 4,
+      "to": 5,
+      "escapeHtml": true,
+      "marker": [
+       "",
+       ""
+      ]
+     },
+     {
+      "text": "äöü & ß",
+      "from": 4,
+      "to": 5,
+      "escapeHtml": true,
+      "marker": [
+       "<<",
+       ">>"
+      ]
+     },
+     {
+      "text": "a < b & c > \"d\"",
+      "from": 2,
+      "to": 3,
+      "escapeHtml": false
+     },
+     {
+      "text": "a < b & c > \"d\"",
+      "from": 2,
+      "to": 3,
+      "escapeHtml": false,
+      "marker": [
+       "<span class=\"err\">",
+       "</span>"
+      ]
+     },
+     {
+      "text": "a < b & c > \"d\"",
+      "from": 2,
+      "to": 3,
+      "escapeHtml": false,
+      "marker": [
+       "[",
+       "]"
+      ]
+     },
+     {
+      "text": "a < b & c > \"d\"",
+      "from": 2,
+      "to": 3,
+      "escapeHtml": false,
+      "marker": [
+       "",
+       ""
+      ]
+     },
+     {
+      "text": "a < b & c > \"d\"",
+      "from": 2,
+      "to": 3,
+      "escapeHtml": false,
+      "marker": [
+       "<<",
+       ">>"
+      ]
+     },
+     {
+      "text": "a < b & c > \"d\"",
+      "from": 0,
+      "to": 15,
+      "escapeHtml": false
+     },
+     {
+      "text": "a < b & c > \"d\"",
+      "from": 0,
+      "to": 15,
+      "escapeHtml": false,
+      "marker": [
+       "<span class=\"err\">",
+       "</span>"
+      ]
+     },
+     {
+      "text": "a < b & c > \"d\"",
+      "from": 0,
+      "to": 15,
+      "escapeHtml": false,
+      "marker": [
+       "[",
+       "]"
+      ]
+     },
+     {
+      "text": "a < b & c > \"d\"",
+      "from": 0,
+      "to": 15,
+      "escapeHtml": false,
+      "marker": [
+       "",
+       ""
+      ]
+     },
+     {
+      "text": "a < b & c > \"d\"",
+      "from": 0,
+      "to": 15,
+      "escapeHtml": false,
+      "marker": [
+       "<<",
+       ">>"
+      ]
+     },
+     {
+      "text": "x  y",
+      "from": 1,
+      "to": 3,
+      "escapeHtml": false
+     },
+     {
+      "text": "x  y",
+      "from": 1,
+      "to": 3,
+      "escapeHtml": false,
+      "marker": [
+       "<span class=\"err\">",
+       "</span>"
+      ]
+     },
+     {
+      "text": "x  y",
+      "from": 1,
+      "to": 3,
+      "escapeHtml": false,
+      "marker": [
+       "[",
+       "]"
+      ]
+     },
+     {
+      "text": "x  y",
+      "from": 1,
+      "to": 3,
+      "escapeHtml": false,
+      "marker": [
+       "",
+       ""
+      ]
+     },
+     {
+      "text": "x  y",
+      "from": 1,
+      "to": 3,
+      "escapeHtml": false,
+      "marker": [
+       "<<",
+       ">>"
+      ]
+     },
+     {
+      "text": "Hello world",
+      "from": 5,
+      "to": 6,
+      "escapeHtml": false
+     },
+     {
+      "text": "Hello world",
+      "from": 5,
+      "to": 6,
+      "escapeHtml": false,
+      "marker": [
+       "<span class=\"err\">",
+       "</span>"
+      ]
+     },
+     {
+      "text": "Hello world",
+      "from": 5,
+      "to": 6,
+      "escapeHtml": false,
+      "marker": [
+       "[",
+       "]"
+      ]
+     },
+     {
+      "text": "Hello world",
+      "from": 5,
+      "to": 6,
+      "escapeHtml": false,
+      "marker": [
+       "",
+       ""
+      ]
+     },
+     {
+      "text": "Hello world",
+      "from": 5,
+      "to": 6,
+      "escapeHtml": false,
+      "marker": [
+       "<<",
+       ">>"
+      ]
+     },
+     {
+      "text": "Hello world",
+      "from": 0,
+      "to": 5,
+      "escapeHtml": false
+     },
+     {
+      "text": "Hello world",
+      "from": 0,
+      "to": 5,
+      "escapeHtml": false,
+      "marker": [
+       "<span class=\"err\">",
+       "</span>"
+      ]
+     },
+     {
+      "text": "Hello world",
+      "from": 0,
+      "to": 5,
+      "escapeHtml": false,
+      "marker": [
+       "[",
+       "]"
+      ]
+     },
+     {
+      "text": "Hello world",
+      "from": 0,
+      "to": 5,
+      "escapeHtml": false,
+      "marker": [
+       "",
+       ""
+      ]
+     },
+     {
+      "text": "Hello world",
+      "from": 0,
+      "to": 5,
+      "escapeHtml": false,
+      "marker": [
+       "<<",
+       ">>"
+      ]
+     },
+     {
+      "text": "<tag> text",
+      "from": 0,
+      "to": 5,
+      "escapeHtml": false
+     },
+     {
+      "text": "<tag> text",
+      "from": 0,
+      "to": 5,
+      "escapeHtml": false,
+      "marker": [
+       "<span class=\"err\">",
+       "</span>"
+      ]
+     },
+     {
+      "text": "<tag> text",
+      "from": 0,
+      "to": 5,
+      "escapeHtml": false,
+      "marker": [
+       "[",
+       "]"
+      ]
+     },
+     {
+      "text": "<tag> text",
+      "from": 0,
+      "to": 5,
+      "escapeHtml": false,
+      "marker": [
+       "",
+       ""
+      ]
+     },
+     {
+      "text": "<tag> text",
+      "from": 0,
+      "to": 5,
+      "escapeHtml": false,
+      "marker": [
+       "<<",
+       ">>"
+      ]
+     },
+     {
+      "text": "a\nb",
+      "from": 1,
+      "to": 2,
+      "escapeHtml": false
+     },
+     {
+      "text": "a\nb",
+      "from": 1,
+      "to": 2,
+      "escapeHtml": false,
+      "marker": [
+       "<span class=\"err\">",
+       "</span>"
+      ]
+     },
+     {
+      "text": "a\nb",
+      "from": 1,
+      "to": 2,
+      "escapeHtml": false,
+      "marker": [
+       "[",
+       "]"
+      ]
+     },
+     {
+      "text": "a\nb",
+      "from": 1,
+      "to": 2,
+      "escapeHtml": false,
+      "marker": [
+       "",
+       ""
+      ]
+     },
+     {
+      "text": "a\nb",
+      "from": 1,
+      "to": 2,
+      "escapeHtml": false,
+      "marker": [
+       "<<",
+       ">>"
+      ]
+     },
+     {
+      "text": "a\nb",
+      "from": 0,
+      "to": 3,
+      "escapeHtml": false
+     },
+     {
+      "text": "a\nb",
+      "from": 0,
+      "to": 3,
+      "escapeHtml": false,
+      "marker": [
+       "<span class=\"err\">",
+       "</span>"
+      ]
+     },
+     {
+      "text": "a\nb",
+      "from": 0,
+      "to": 3,
+      "escapeHtml": false,
+      "marker": [
+       "[",
+       "]"
+      ]
+     },
+     {
+      "text": "a\nb",
+      "from": 0,
+      "to": 3,
+      "escapeHtml": false,
+      "marker": [
+       "",
+       ""
+      ]
+     },
+     {
+      "text": "a\nb",
+      "from": 0,
+      "to": 3,
+      "escapeHtml": false,
+      "marker": [
+       "<<",
+       ">>"
+      ]
+     },
+     {
+      "text": "it's \"q\"",
+      "from": 3,
+      "to": 8,
+      "escapeHtml": false
+     },
+     {
+      "text": "it's \"q\"",
+      "from": 3,
+      "to": 8,
+      "escapeHtml": false,
+      "marker": [
+       "<span class=\"err\">",
+       "</span>"
+      ]
+     },
+     {
+      "text": "it's \"q\"",
+      "from": 3,
+      "to": 8,
+      "escapeHtml": false,
+      "marker": [
+       "[",
+       "]"
+      ]
+     },
+     {
+      "text": "it's \"q\"",
+      "from": 3,
+      "to": 8,
+      "escapeHtml": false,
+      "marker": [
+       "",
+       ""
+      ]
+     },
+     {
+      "text": "it's \"q\"",
+      "from": 3,
+      "to": 8,
+      "escapeHtml": false,
+      "marker": [
+       "<<",
+       ">>"
+      ]
+     },
+     {
+      "text": "äöü & ß",
+      "from": 4,
+      "to": 5,
+      "escapeHtml": false
+     },
+     {
+      "text": "äöü & ß",
+      "from": 4,
+      "to": 5,
+      "escapeHtml": false,
+      "marker": [
+       "<span class=\"err\">",
+       "</span>"
+      ]
+     },
+     {
+      "text": "äöü & ß",
+      "from": 4,
+      "to": 5,
+      "escapeHtml": false,
+      "marker": [
+       "[",
+       "]"
+      ]
+     },
+     {
+      "text": "äöü & ß",
+      "from": 4,
+      "to": 5,
+      "escapeHtml": false,
+      "marker": [
+       "",
+       ""
+      ]
+     },
+     {
+      "text": "äöü & ß",
+      "from": 4,
+      "to": 5,
+      "escapeHtml": false,
+      "marker": [
+       "<<",
+       ">>"
+      ]
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 100,
+      "to": 104,
+      "escapeHtml": true,
+      "markerStart": "<u>"
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 100,
+      "to": 104,
+      "escapeHtml": true,
+      "markerEnd": "</u>"
+     },
+     {
+      "text": "The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog. ",
+      "from": 100,
+      "to": 104,
+      "markerStart": "<u>",
+      "markerEnd": "</u>",
+      "contextSize": 7
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 0,
+      "to": 5,
+      "contextSize": 200
+     },
+     {
+      "text": "Zeile eins hat einen Fehler.\nZeile zwei ist auch hier.\r\nZeile drei\tmit Tab und <b>HTML</b> & Umlauten: äöüß.\n",
+      "from": 0,
+      "to": 5,
+      "contextSize": 200,
+      "escapeHtml": true
+     },
+     {
+      "text": "abc",
+      "from": -1,
+      "to": 2
+     },
+     {
+      "text": "abc",
+      "from": 2,
+      "to": 1
+     },
+     {
+      "text": "abc",
+      "from": 0,
+      "to": 10
+     },
+     {
+      "text": "abc",
+      "from": 5,
+      "to": 6
+     },
+     {
+      "text": "abc",
+      "from": 1,
+      "to": 1
+     },
+     {
+      "text": null,
+      "from": 0,
+      "to": 1
+     },
+     {
+      "text": "abc",
+      "from": 0,
+      "to": 1,
+      "contextSize": -1
+     },
+     {
+      "text": "abc",
+      "from": 1,
+      "to": 2,
+      "contextSize": -2
+     }
+    ]
+   }
+  }
+ ]
+}

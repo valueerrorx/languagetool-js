@@ -1,0 +1,2663 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "StringTools.containsLineBreak over 440 strings (ASCII, umlauts, sharp s, Turkish i, Greek sigma, digits, apostrophes, NBSP/zero-width, non-BMP, controls, long)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "  "
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "a"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "A"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "z"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Z"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "1"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "0"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "12"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "1a"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "a1"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "A1"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ab"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "AB"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Ab"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "aB"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "abc"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ABC"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Abc"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "aBc"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "abC"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "AbC"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ABc"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "aBC"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Hello"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "hello"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "HELLO"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "hELLO"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "HeLLo"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Hello World"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "hello world"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "HELLO WORLD"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Hello world"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "hello World"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "A B"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "The Lord Of The Rings"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "the lord of the rings"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "a tale of two cities"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "The  double  space"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       " leading"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "trailing "
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       " both "
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "  both  "
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "\tTab"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Tab\t"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "a\tb"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "a\nb"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "a\r\nb"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "\n"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "\r"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "\r\n"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "\n\n"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "a\n\nb"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "\n\nx"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "x\n"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Äpfel"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "äpfel"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ÄPFEL"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Öl"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "öl"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ÖL"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Übel"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "übel"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ÜBEL"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Straße"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "straße"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "STRASSE"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "STRAẞE"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ß"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ẞ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ßa"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ẞa"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Ssa"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ǅ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ǆ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Ǆ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ǈ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ﬁsh"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ﬃ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "FIsh"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ŉ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ΐ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "İstanbul"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "istanbul"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Istanbul"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ıstanbul"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "İ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ı"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "I"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "i"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "IİıiI"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "TITLE"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "title"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Ώ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ώ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ΣΑΣ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "σας"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Σας"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ὈΔΥΣΣΕΎΣ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "οδυσσεύς"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Ὀδυσσεύς"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ΑΣ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ας"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Ας"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ς"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Σ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "σ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "αβγ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Αβγ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ΑΒΓ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "αΒΓ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "élève"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Élève"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ÉLÈVE"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "élÈve"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "œuvre"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Œuvre"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ŒUVRE"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ç"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Ç"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ÿ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Ÿ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ñ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Ñ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Ø"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ø"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "þ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Þ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ÿa"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ÝÞ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "d'accord"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "D'accord"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "l'homme"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "L'Homme"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "L’homme"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "l’homme"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "'quoted'"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "\"Quoted\""
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "«Guillemets»"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "»Anführung«"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "„Anführung“"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "(Klammer)"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "(klammer)"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "[x]"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "\"hello\""
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "\"Hello\""
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "'a'"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "--x"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "-Abc"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "-abc"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "...Abc"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "...abc"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "¿Qué?"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "¡Hola!"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "*Stern"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "3D"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "3d"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "3 D"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "4Ever"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "4ever"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ij"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "IJ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Ij"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "iJ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ijsselmeer"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "IJsselmeer"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Ijsselmeer"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ijs"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ij-"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ï"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Ïj"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "hello-world"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Hello-World"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Hello-world"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ABC-def"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "camelCase"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "CamelCase"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "camelCaseWord"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "camelCASE"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "camel"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "abcDef"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "abcDefGhi"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "aBCD"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "myURLParser"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "iPhone"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "eBay"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "McDonald"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "macOS"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "äBc"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ÄBc"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "abcÄ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "a1B"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "a_B"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "x-Y"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       " a "
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "​"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "​a"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "a​"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "​​"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "　"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "﻿"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "﻿a"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "\u0001"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "\u0002"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "\u0000"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "a\u0000b"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "\u0003"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "\u000b"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "\f"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "\u001f"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "᠎"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "­"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "a­b"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "‌"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "‍"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "⁠"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "‎"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "‏"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "‪"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "‬"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "‭"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "á"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "é"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "́"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ö"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "über"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "café"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Café"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "😀"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "😀a"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "a😀"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "😀😀"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "👍🏽"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "👨‍👩‍👧"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "❤️"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "❤"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "©"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "®"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "™"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "€"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "$"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "£"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "¥"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "%"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "‰"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "°"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "+"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "="
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "<"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       ">"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "|"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "~"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "^"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "`"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "¬"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "±"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "×"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "÷"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "∑"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "∞"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "𝒜"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "𝒜bc"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "a𝒜"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "𐐨"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "𐐀"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "𐐀𐐨"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "𐐨𐐀"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "𝟙"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "𝟏𝟐"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "𠀀"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "a𠀀b"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "."
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       ","
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       ";"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       ":"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "!"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "?"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "-"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "–"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "—"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "…"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "..."
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       ".."
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "("
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       ")"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "["
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "]"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "{"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "}"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "\""
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "'"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "’"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "‘"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "“"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "”"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "„"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "«"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "»"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "‹"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "›"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "/"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "\\"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "_"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "*"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "&"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "#"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "@"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "§"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "¿"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "¡"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "·"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "•"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "،"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "؟"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "。"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "、"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "！"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "？"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "&amp;"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "&lt;"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "&#39;"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "<b>"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "</b>"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "<b>bold</b>"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "<<b>>"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "<<b>"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "<b>>"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "<a href=\"x\">link</a>"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "<!-- c -->"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "a<!-- c -->b"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "<!-- a --><!-- b -->"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "<!-- unclosed"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "<!--x-->y<!--z-->"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "x <!-- multi\nline --> y"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "<br/>"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "<br />"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "< b>"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "<>"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "< >"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "<a<b>c"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "<\n>"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "a<\nb>c"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "\"quoted\" & 'single' <tag>"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "x > y"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "x < y"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "a&b"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "a & b"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "&&"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "\"\""
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "''"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "<![CDATA[x]]>"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "<?xml version=\"1.0\"?>"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "<tag attr=\"v\">t</tag>"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "\u0000<"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "€ & £"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "123"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "+123"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "-123"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "1.5"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "1,5"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "1 000"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "1,000.5"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "1.000,5"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       ".5"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "5."
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       ",5"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "1..2"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "1."
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "   "
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "1 2"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "12 "
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       " 12"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "١٢٣"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "１２３"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "१२३"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "²"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "½"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Ⅻ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "1e5"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "0x1F"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "1_000"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Wort"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Haus"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Häuser"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Straßenbahn"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Donaudampfschifffahrtsgesellschaft"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "E-Mail"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "e-mail"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "U-Bahn"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "u-bahn"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "A-B-C"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "O'Neil"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "o'neil"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "McDonald’s"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ǆa"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ǅa"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ٱلْعَرَبِيَّةُ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "العربية"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "كَتَبَ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "كتب"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ـكتابـ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ـ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "שלום"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "שָׁלוֹם"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Привет"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "привет"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ПРИВЕТ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Ёж"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ёж"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "日本語"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ひらがな"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "한국어"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ภาษาไทย"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "ខ្មែរ"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "हिन्दी"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "AbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAb"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b "
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "                                                                                                    "
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "äöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäö"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "<b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word"
+      ]
+     },
+     {
+      "fn": "containsLineBreak",
+      "args": [
+       "Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

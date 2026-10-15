@@ -1,0 +1,2663 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "StringTools.isAllUppercase over 440 strings (ASCII, umlauts, sharp s, Turkish i, Greek sigma, digits, apostrophes, NBSP/zero-width, non-BMP, controls, long)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "  "
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "a"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "A"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "z"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Z"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "1"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "0"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "12"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "1a"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "a1"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "A1"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ab"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "AB"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Ab"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "aB"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "abc"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ABC"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Abc"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "aBc"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "abC"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "AbC"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ABc"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "aBC"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Hello"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "hello"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "HELLO"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "hELLO"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "HeLLo"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Hello World"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "hello world"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "HELLO WORLD"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Hello world"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "hello World"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "A B"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "The Lord Of The Rings"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "the lord of the rings"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "a tale of two cities"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "The  double  space"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       " leading"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "trailing "
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       " both "
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "  both  "
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "\tTab"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Tab\t"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "a\tb"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "a\nb"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "a\r\nb"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "\n"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "\r"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "\r\n"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "\n\n"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "a\n\nb"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "\n\nx"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "x\n"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Äpfel"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "äpfel"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ÄPFEL"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Öl"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "öl"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ÖL"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Übel"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "übel"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ÜBEL"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Straße"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "straße"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "STRASSE"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "STRAẞE"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ß"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ẞ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ßa"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ẞa"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Ssa"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ǅ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ǆ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Ǆ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ǈ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ﬁsh"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ﬃ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "FIsh"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ŉ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ΐ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "İstanbul"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "istanbul"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Istanbul"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ıstanbul"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "İ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ı"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "I"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "i"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "IİıiI"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "TITLE"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "title"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Ώ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ώ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ΣΑΣ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "σας"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Σας"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ὈΔΥΣΣΕΎΣ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "οδυσσεύς"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Ὀδυσσεύς"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ΑΣ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ας"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Ας"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ς"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Σ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "σ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "αβγ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Αβγ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ΑΒΓ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "αΒΓ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "élève"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Élève"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ÉLÈVE"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "élÈve"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "œuvre"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Œuvre"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ŒUVRE"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ç"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Ç"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ÿ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Ÿ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ñ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Ñ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Ø"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ø"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "þ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Þ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ÿa"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ÝÞ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "d'accord"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "D'accord"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "l'homme"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "L'Homme"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "L’homme"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "l’homme"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "'quoted'"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "\"Quoted\""
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "«Guillemets»"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "»Anführung«"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "„Anführung“"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "(Klammer)"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "(klammer)"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "[x]"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "\"hello\""
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "\"Hello\""
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "'a'"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "--x"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "-Abc"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "-abc"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "...Abc"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "...abc"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "¿Qué?"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "¡Hola!"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "*Stern"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "3D"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "3d"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "3 D"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "4Ever"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "4ever"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ij"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "IJ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Ij"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "iJ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ijsselmeer"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "IJsselmeer"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Ijsselmeer"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ijs"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ij-"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ï"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Ïj"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "hello-world"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Hello-World"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Hello-world"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ABC-def"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "camelCase"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "CamelCase"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "camelCaseWord"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "camelCASE"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "camel"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "abcDef"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "abcDefGhi"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "aBCD"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "myURLParser"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "iPhone"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "eBay"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "McDonald"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "macOS"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "äBc"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ÄBc"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "abcÄ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "a1B"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "a_B"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "x-Y"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       " a "
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "​"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "​a"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "a​"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "​​"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "　"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "﻿"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "﻿a"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "\u0001"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "\u0002"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "\u0000"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "a\u0000b"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "\u0003"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "\u000b"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "\f"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "\u001f"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "᠎"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "­"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "a­b"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "‌"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "‍"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "⁠"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "‎"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "‏"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "‪"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "‬"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "‭"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "á"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "é"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "́"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ö"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "über"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "café"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Café"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "😀"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "😀a"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "a😀"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "😀😀"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "👍🏽"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "👨‍👩‍👧"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "❤️"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "❤"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "©"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "®"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "™"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "€"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "$"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "£"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "¥"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "%"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "‰"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "°"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "+"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "="
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "<"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       ">"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "|"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "~"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "^"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "`"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "¬"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "±"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "×"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "÷"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "∑"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "∞"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "𝒜"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "𝒜bc"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "a𝒜"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "𐐨"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "𐐀"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "𐐀𐐨"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "𐐨𐐀"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "𝟙"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "𝟏𝟐"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "𠀀"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "a𠀀b"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "."
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       ","
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       ";"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       ":"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "!"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "?"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "-"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "–"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "—"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "…"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "..."
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       ".."
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "("
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       ")"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "["
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "]"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "{"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "}"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "\""
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "'"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "’"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "‘"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "“"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "”"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "„"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "«"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "»"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "‹"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "›"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "/"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "\\"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "_"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "*"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "&"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "#"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "@"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "§"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "¿"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "¡"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "·"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "•"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "،"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "؟"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "。"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "、"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "！"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "？"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "&amp;"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "&lt;"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "&#39;"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "<b>"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "</b>"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "<b>bold</b>"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "<<b>>"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "<<b>"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "<b>>"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "<a href=\"x\">link</a>"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "<!-- c -->"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "a<!-- c -->b"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "<!-- a --><!-- b -->"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "<!-- unclosed"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "<!--x-->y<!--z-->"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "x <!-- multi\nline --> y"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "<br/>"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "<br />"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "< b>"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "<>"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "< >"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "<a<b>c"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "<\n>"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "a<\nb>c"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "\"quoted\" & 'single' <tag>"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "x > y"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "x < y"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "a&b"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "a & b"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "&&"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "\"\""
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "''"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "<![CDATA[x]]>"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "<?xml version=\"1.0\"?>"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "<tag attr=\"v\">t</tag>"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "\u0000<"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "€ & £"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "123"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "+123"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "-123"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "1.5"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "1,5"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "1 000"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "1,000.5"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "1.000,5"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       ".5"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "5."
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       ",5"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "1..2"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "1."
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "   "
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "1 2"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "12 "
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       " 12"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "١٢٣"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "１２３"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "१२३"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "²"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "½"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Ⅻ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "1e5"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "0x1F"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "1_000"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Wort"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Haus"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Häuser"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Straßenbahn"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Donaudampfschifffahrtsgesellschaft"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "E-Mail"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "e-mail"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "U-Bahn"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "u-bahn"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "A-B-C"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "O'Neil"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "o'neil"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "McDonald’s"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ǆa"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ǅa"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ٱلْعَرَبِيَّةُ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "العربية"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "كَتَبَ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "كتب"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ـكتابـ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ـ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "שלום"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "שָׁלוֹם"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Привет"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "привет"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ПРИВЕТ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Ёж"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ёж"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "日本語"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ひらがな"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "한국어"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ภาษาไทย"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "ខ្មែរ"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "हिन्दी"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "AbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAb"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b "
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "                                                                                                    "
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "äöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäö"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "<b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word"
+      ]
+     },
+     {
+      "fn": "isAllUppercase",
+      "args": [
+       "Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

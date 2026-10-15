@@ -10,3 +10,4 @@
 - JDK overload sets: pick JS variant by Java static type (P15); NPE texts per entry point (P15).
 - D-042: do not reject idiomatic JS solutions that are fixture-verified identical; reject only observable divergence or unverified claims.
 - D-043: block only divergences reachable from API/CLI output or degrading results; log unreachable JDK edge cases in docs/review/unreachable.md.
+- Adapters must call the port; never hardcode Java expected values. Missing dependency -> throw notPorted for that request.

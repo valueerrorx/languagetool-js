@@ -1,0 +1,2663 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "StringTools.filterXML over 440 strings (ASCII, umlauts, sharp s, Turkish i, Greek sigma, digits, apostrophes, NBSP/zero-width, non-BMP, controls, long)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "filterXML",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "  "
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "a"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "A"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "z"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Z"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "1"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "0"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "12"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "1a"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "a1"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "A1"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ab"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "AB"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Ab"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "aB"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "abc"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ABC"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Abc"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "aBc"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "abC"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "AbC"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ABc"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "aBC"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Hello"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "hello"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "HELLO"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "hELLO"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "HeLLo"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Hello World"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "hello world"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "HELLO WORLD"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Hello world"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "hello World"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "A B"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "The Lord Of The Rings"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "the lord of the rings"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "a tale of two cities"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "The  double  space"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       " leading"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "trailing "
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       " both "
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "  both  "
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "\tTab"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Tab\t"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "a\tb"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "a\nb"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "a\r\nb"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "\n"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "\r"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "\r\n"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "\n\n"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "a\n\nb"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "\n\nx"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "x\n"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Äpfel"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "äpfel"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ÄPFEL"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Öl"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "öl"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ÖL"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Übel"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "übel"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ÜBEL"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Straße"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "straße"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "STRASSE"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "STRAẞE"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ß"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ẞ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ßa"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ẞa"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Ssa"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ǅ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ǆ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Ǆ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ǈ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ﬁsh"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ﬃ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "FIsh"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ŉ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ΐ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "İstanbul"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "istanbul"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Istanbul"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ıstanbul"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "İ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ı"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "I"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "i"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "IİıiI"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "TITLE"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "title"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Ώ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ώ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ΣΑΣ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "σας"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Σας"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ὈΔΥΣΣΕΎΣ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "οδυσσεύς"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Ὀδυσσεύς"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ΑΣ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ας"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Ας"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ς"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Σ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "σ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "αβγ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Αβγ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ΑΒΓ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "αΒΓ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "élève"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Élève"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ÉLÈVE"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "élÈve"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "œuvre"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Œuvre"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ŒUVRE"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ç"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Ç"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ÿ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Ÿ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ñ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Ñ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Ø"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ø"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "þ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Þ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ÿa"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ÝÞ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "d'accord"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "D'accord"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "l'homme"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "L'Homme"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "L’homme"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "l’homme"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "'quoted'"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "\"Quoted\""
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "«Guillemets»"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "»Anführung«"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "„Anführung“"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "(Klammer)"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "(klammer)"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "[x]"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "\"hello\""
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "\"Hello\""
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "'a'"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "--x"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "-Abc"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "-abc"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "...Abc"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "...abc"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "¿Qué?"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "¡Hola!"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "*Stern"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "3D"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "3d"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "3 D"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "4Ever"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "4ever"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ij"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "IJ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Ij"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "iJ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ijsselmeer"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "IJsselmeer"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Ijsselmeer"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ijs"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ij-"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ï"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Ïj"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "hello-world"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Hello-World"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Hello-world"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ABC-def"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "camelCase"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "CamelCase"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "camelCaseWord"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "camelCASE"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "camel"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "abcDef"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "abcDefGhi"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "aBCD"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "myURLParser"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "iPhone"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "eBay"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "McDonald"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "macOS"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "äBc"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ÄBc"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "abcÄ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "a1B"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "a_B"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "x-Y"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       " a "
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "​"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "​a"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "a​"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "​​"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "　"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "﻿"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "﻿a"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "\u0001"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "\u0002"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "\u0000"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "a\u0000b"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "\u0003"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "\u000b"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "\f"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "\u001f"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "᠎"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "­"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "a­b"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "‌"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "‍"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "⁠"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "‎"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "‏"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "‪"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "‬"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "‭"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "á"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "é"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "́"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ö"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "über"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "café"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Café"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "😀"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "😀a"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "a😀"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "😀😀"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "👍🏽"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "👨‍👩‍👧"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "❤️"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "❤"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "©"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "®"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "™"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "€"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "$"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "£"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "¥"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "%"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "‰"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "°"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "+"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "="
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "<"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       ">"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "|"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "~"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "^"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "`"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "¬"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "±"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "×"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "÷"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "∑"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "∞"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "𝒜"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "𝒜bc"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "a𝒜"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "𐐨"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "𐐀"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "𐐀𐐨"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "𐐨𐐀"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "𝟙"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "𝟏𝟐"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "𠀀"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "a𠀀b"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "."
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       ","
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       ";"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       ":"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "!"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "?"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "-"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "–"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "—"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "…"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "..."
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       ".."
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "("
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       ")"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "["
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "]"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "{"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "}"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "\""
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "'"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "’"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "‘"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "“"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "”"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "„"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "«"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "»"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "‹"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "›"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "/"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "\\"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "_"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "*"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "&"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "#"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "@"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "§"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "¿"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "¡"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "·"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "•"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "،"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "؟"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "。"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "、"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "！"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "？"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "&amp;"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "&lt;"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "&#39;"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "<b>"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "</b>"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "<b>bold</b>"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "<<b>>"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "<<b>"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "<b>>"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "<a href=\"x\">link</a>"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "<!-- c -->"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "a<!-- c -->b"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "<!-- a --><!-- b -->"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "<!-- unclosed"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "<!--x-->y<!--z-->"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "x <!-- multi\nline --> y"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "<br/>"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "<br />"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "< b>"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "<>"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "< >"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "<a<b>c"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "<\n>"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "a<\nb>c"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "\"quoted\" & 'single' <tag>"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "x > y"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "x < y"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "a&b"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "a & b"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "&&"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "\"\""
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "''"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "<![CDATA[x]]>"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "<?xml version=\"1.0\"?>"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "<tag attr=\"v\">t</tag>"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "\u0000<"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "€ & £"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "123"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "+123"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "-123"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "1.5"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "1,5"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "1 000"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "1,000.5"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "1.000,5"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       ".5"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "5."
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       ",5"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "1..2"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "1."
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "   "
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "1 2"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "12 "
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       " 12"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "١٢٣"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "１２３"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "१२३"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "²"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "½"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Ⅻ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "1e5"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "0x1F"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "1_000"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Wort"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Haus"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Häuser"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Straßenbahn"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Donaudampfschifffahrtsgesellschaft"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "E-Mail"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "filterXML",
+      "args": [
+       "e-mail"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "U-Bahn"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "u-bahn"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "A-B-C"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "O'Neil"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "o'neil"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "McDonald’s"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ǆa"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ǅa"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ٱلْعَرَبِيَّةُ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "العربية"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "كَتَبَ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "كتب"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ـكتابـ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ـ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "שלום"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "שָׁלוֹם"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Привет"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "привет"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ПРИВЕТ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Ёж"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ёж"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "日本語"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ひらがな"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "한국어"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ภาษาไทย"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "ខ្មែរ"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "हिन्दी"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "AbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAb"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b "
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "                                                                                                    "
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "äöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäö"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "<b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word"
+      ]
+     },
+     {
+      "fn": "filterXML",
+      "args": [
+       "Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

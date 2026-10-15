@@ -1,0 +1,521 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "AnalyzedToken#toString / AnalyzedTokenReadings#toString / AnalyzedSentence#toString with synthetic tokens (flags, chunk tags, immunize)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "synthetic",
+    "tokens": [
+     {
+      "token": "",
+      "readings": [
+       [
+        "SENT_START",
+        null
+       ]
+      ],
+      "startPos": 0
+     },
+     {
+      "token": "Hello",
+      "readings": [
+       [
+        "UH",
+        "hello"
+       ]
+      ]
+     },
+     {
+      "token": " ",
+      "readings": [
+       [
+        null,
+        null
+       ]
+      ]
+     },
+     {
+      "token": "world",
+      "readings": [
+       [
+        "NN",
+        "world"
+       ],
+       [
+        "VB",
+        "world"
+       ]
+      ],
+      "sentEnd": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "synthetic",
+    "tokens": [
+     {
+      "token": "",
+      "readings": [
+       [
+        "SENT_START",
+        null
+       ]
+      ],
+      "startPos": 0
+     },
+     {
+      "token": "Das",
+      "readings": [
+       [
+        "ART:DEF:NOM:SIN:NEU",
+        "der"
+       ]
+      ]
+     },
+     {
+      "token": " ",
+      "readings": [
+       [
+        null,
+        null
+       ]
+      ]
+     },
+     {
+      "token": "Haus",
+      "readings": [
+       [
+        "SUB:NOM:SIN:NEU",
+        "Haus"
+       ]
+      ],
+      "chunkTags": [
+       "NPS",
+       "B-NP"
+      ]
+     },
+     {
+      "token": ".",
+      "readings": [
+       [
+        "PKT",
+        "."
+       ]
+      ],
+      "sentEnd": true,
+      "paraEnd": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "synthetic",
+    "tokens": [
+     {
+      "token": "",
+      "readings": [
+       [
+        "SENT_START",
+        null
+       ]
+      ],
+      "startPos": 0
+     },
+     {
+      "token": "unknown",
+      "readings": [
+       [
+        null,
+        null
+       ]
+      ]
+     },
+     {
+      "token": "word",
+      "readings": [
+       [
+        null,
+        null
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "synthetic",
+    "tokens": [
+     {
+      "token": "",
+      "readings": [
+       [
+        "SENT_START",
+        null
+       ]
+      ],
+      "startPos": 0
+     },
+     {
+      "token": "x",
+      "readings": [
+       [
+        "A",
+        "a"
+       ]
+      ],
+      "immunize": 7
+     },
+     {
+      "token": "y",
+      "readings": [
+       [
+        "B",
+        "b"
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "synthetic",
+    "tokens": [
+     {
+      "token": "only",
+      "readings": [
+       [
+        "T",
+        "only"
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "synthetic",
+    "tokens": []
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "synthetic",
+    "tokens": [
+     {
+      "token": "empty-readings",
+      "readings": []
+     }
+    ]
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "synthetic",
+    "tokens": [
+     {
+      "token": "",
+      "readings": [
+       [
+        "SENT_START",
+        null
+       ]
+      ],
+      "startPos": 0
+     },
+     {
+      "token": "\n",
+      "readings": [
+       [
+        null,
+        null
+       ]
+      ]
+     },
+     {
+      "token": "a",
+      "readings": [
+       [
+        "X",
+        "a"
+       ]
+      ]
+     },
+     {
+      "token": "\r\n",
+      "readings": [
+       [
+        null,
+        null
+       ]
+      ]
+     },
+     {
+      "token": "b",
+      "readings": [
+       [
+        "X",
+        null
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "synthetic",
+    "tokens": [
+     {
+      "token": "",
+      "readings": [
+       [
+        "SENT_START",
+        null
+       ]
+      ],
+      "startPos": 0
+     },
+     {
+      "token": "Ünï",
+      "readings": [
+       [
+        "N",
+        "ünï"
+       ],
+       [
+        "N",
+        "Ünï"
+       ]
+      ]
+     },
+     {
+      "token": "😀",
+      "readings": [
+       [
+        "SYM",
+        "😀"
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "synthetic",
+    "tokens": [
+     {
+      "token": "",
+      "readings": [
+       [
+        "SENT_START",
+        null
+       ]
+      ],
+      "startPos": 0
+     },
+     {
+      "token": "a",
+      "readings": [
+       [
+        "P",
+        "a"
+       ],
+       [
+        "P",
+        "a"
+       ]
+      ],
+      "chunkTags": [
+       "B-NP",
+       "E-NP",
+       "NPP"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "synthetic",
+    "tokens": [
+     {
+      "token": "",
+      "readings": [
+       [
+        "SENT_START",
+        null
+       ]
+      ],
+      "startPos": 0
+     },
+     {
+      "token": " ",
+      "readings": [
+       [
+        null,
+        null
+       ]
+      ]
+     },
+     {
+      "token": " ",
+      "readings": [
+       [
+        null,
+        null
+       ]
+      ]
+     },
+     {
+      "token": "a",
+      "readings": [
+       [
+        "X",
+        "a"
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "synthetic",
+    "tokens": [
+     {
+      "token": "",
+      "readings": [
+       [
+        "SENT_START",
+        null
+       ]
+      ],
+      "startPos": 0
+     },
+     {
+      "token": "end",
+      "readings": [
+       [
+        "X",
+        "end"
+       ]
+      ],
+      "sentEnd": true
+     },
+     {
+      "token": "",
+      "readings": [
+       [
+        "PARA_END",
+        null
+       ]
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "token",
+    "token": "a",
+    "pos": "NN",
+    "lemma": "a"
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "token",
+    "token": "a",
+    "pos": null,
+    "lemma": null
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "token",
+    "token": null,
+    "pos": null,
+    "lemma": null
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "token",
+    "token": "",
+    "pos": "",
+    "lemma": ""
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "token",
+    "token": "Haus",
+    "pos": "SUB:NOM",
+    "lemma": "Haus"
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "token",
+    "token": "x",
+    "pos": "P",
+    "lemma": null
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "token",
+    "token": "x",
+    "pos": null,
+    "lemma": "y"
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "token",
+    "token": "😀",
+    "pos": "SYM",
+    "lemma": "😀"
+   }
+  },
+  {
+   "op": "analyzed-token",
+   "args": {
+    "mode": "token",
+    "token": "ä",
+    "pos": "N/A",
+    "lemma": "ä/b"
+   }
+  }
+ ]
+}

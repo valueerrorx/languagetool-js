@@ -1,0 +1,2663 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "StringTools.stringForSpeller over 440 strings (ASCII, umlauts, sharp s, Turkish i, Greek sigma, digits, apostrophes, NBSP/zero-width, non-BMP, controls, long)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "  "
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "a"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "A"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "z"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Z"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "1"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "0"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "12"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "1a"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "a1"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "A1"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ab"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "AB"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Ab"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "aB"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "abc"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ABC"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Abc"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "aBc"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "abC"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "AbC"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ABc"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "aBC"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Hello"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "hello"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "HELLO"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "hELLO"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "HeLLo"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Hello World"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "hello world"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "HELLO WORLD"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Hello world"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "hello World"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "A B"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "The Lord Of The Rings"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "the lord of the rings"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "a tale of two cities"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "The  double  space"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       " leading"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "trailing "
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       " both "
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "  both  "
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "\tTab"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Tab\t"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "a\tb"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "a\nb"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "a\r\nb"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "\n"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "\r"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "\r\n"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "\n\n"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "a\n\nb"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "\n\nx"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "x\n"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Äpfel"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "äpfel"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ÄPFEL"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Öl"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "öl"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ÖL"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Übel"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "übel"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ÜBEL"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Straße"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "straße"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "STRASSE"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "STRAẞE"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ß"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ẞ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ßa"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ẞa"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Ssa"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ǅ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ǆ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Ǆ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ǈ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ﬁsh"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ﬃ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "FIsh"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ŉ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ΐ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "İstanbul"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "istanbul"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Istanbul"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ıstanbul"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "İ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ı"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "I"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "i"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "IİıiI"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "TITLE"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "title"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Ώ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ώ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ΣΑΣ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "σας"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Σας"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ὈΔΥΣΣΕΎΣ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "οδυσσεύς"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Ὀδυσσεύς"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ΑΣ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ας"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Ας"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ς"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Σ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "σ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "αβγ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Αβγ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ΑΒΓ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "αΒΓ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "élève"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Élève"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ÉLÈVE"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "élÈve"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "œuvre"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Œuvre"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ŒUVRE"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ç"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Ç"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ÿ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Ÿ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ñ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Ñ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Ø"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ø"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "þ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Þ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ÿa"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ÝÞ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "d'accord"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "D'accord"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "l'homme"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "L'Homme"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "L’homme"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "l’homme"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "'quoted'"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "\"Quoted\""
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "«Guillemets»"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "»Anführung«"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "„Anführung“"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "(Klammer)"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "(klammer)"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "[x]"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "\"hello\""
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "\"Hello\""
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "'a'"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "--x"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "-Abc"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "-abc"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "...Abc"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "...abc"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "¿Qué?"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "¡Hola!"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "*Stern"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "3D"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "3d"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "3 D"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "4Ever"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "4ever"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ij"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "IJ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Ij"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "iJ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ijsselmeer"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "IJsselmeer"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Ijsselmeer"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ijs"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ij-"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ï"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Ïj"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "hello-world"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Hello-World"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Hello-world"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ABC-def"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "camelCase"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "CamelCase"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "camelCaseWord"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "camelCASE"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "camel"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "abcDef"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "abcDefGhi"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "aBCD"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "myURLParser"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "iPhone"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "eBay"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "McDonald"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "macOS"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "äBc"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ÄBc"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "abcÄ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "a1B"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "a_B"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "x-Y"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       " a "
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "​"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "​a"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "a​"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "​​"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "　"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "﻿"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "﻿a"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "\u0001"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "\u0002"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "\u0000"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "a\u0000b"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "\u0003"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "\u000b"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "\f"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "\u001f"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "᠎"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "­"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "a­b"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "‌"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "‍"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "⁠"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "‎"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "‏"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "‪"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "‬"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "‭"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "á"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "é"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "́"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ö"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "über"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "café"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Café"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "😀"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "😀a"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "a😀"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "😀😀"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "👍🏽"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "👨‍👩‍👧"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "❤️"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "❤"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "©"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "®"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "™"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "€"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "$"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "£"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "¥"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "%"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "‰"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "°"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "+"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "="
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "<"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       ">"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "|"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "~"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "^"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "`"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "¬"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "±"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "×"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "÷"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "∑"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "∞"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "𝒜"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "𝒜bc"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "a𝒜"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "𐐨"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "𐐀"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "𐐀𐐨"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "𐐨𐐀"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "𝟙"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "𝟏𝟐"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "𠀀"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "a𠀀b"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "."
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       ","
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       ";"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       ":"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "!"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "?"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "-"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "–"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "—"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "…"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "..."
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       ".."
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "("
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       ")"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "["
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "]"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "{"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "}"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "\""
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "'"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "’"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "‘"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "“"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "”"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "„"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "«"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "»"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "‹"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "›"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "/"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "\\"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "_"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "*"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "&"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "#"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "@"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "§"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "¿"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "¡"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "·"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "•"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "،"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "؟"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "。"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "、"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "！"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "？"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "&amp;"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "&lt;"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "&#39;"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "<b>"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "</b>"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "<b>bold</b>"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "<<b>>"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "<<b>"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "<b>>"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "<a href=\"x\">link</a>"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "<!-- c -->"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "a<!-- c -->b"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "<!-- a --><!-- b -->"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "<!-- unclosed"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "<!--x-->y<!--z-->"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "x <!-- multi\nline --> y"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "<br/>"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "<br />"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "< b>"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "<>"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "< >"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "<a<b>c"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "<\n>"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "a<\nb>c"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "\"quoted\" & 'single' <tag>"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "x > y"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "x < y"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "a&b"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "a & b"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "&&"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "\"\""
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "''"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "<![CDATA[x]]>"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "<?xml version=\"1.0\"?>"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "<tag attr=\"v\">t</tag>"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "\u0000<"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "€ & £"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "123"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "+123"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "-123"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "1.5"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "1,5"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "1 000"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "1,000.5"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "1.000,5"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       ".5"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "5."
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       ",5"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "1..2"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "1."
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "   "
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "1 2"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "12 "
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       " 12"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "١٢٣"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "１２３"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "१२३"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "²"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "½"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Ⅻ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "1e5"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "0x1F"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "1_000"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Wort"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Haus"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Häuser"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Straßenbahn"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Donaudampfschifffahrtsgesellschaft"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "E-Mail"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "e-mail"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "U-Bahn"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "u-bahn"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "A-B-C"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "O'Neil"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "o'neil"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "McDonald’s"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ǆa"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ǅa"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ٱلْعَرَبِيَّةُ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "العربية"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "كَتَبَ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "كتب"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ـكتابـ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ـ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "שלום"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "שָׁלוֹם"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Привет"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "привет"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ПРИВЕТ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Ёж"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ёж"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "日本語"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ひらがな"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "한국어"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ภาษาไทย"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "ខ្មែរ"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "हिन्दी"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "AbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAb"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b "
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "                                                                                                    "
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "äöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäö"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "<b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word"
+      ]
+     },
+     {
+      "fn": "stringForSpeller",
+      "args": [
+       "Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

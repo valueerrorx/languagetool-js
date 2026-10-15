@@ -1,0 +1,2663 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "StringTools.splitCamelCase over 440 strings (ASCII, umlauts, sharp s, Turkish i, Greek sigma, digits, apostrophes, NBSP/zero-width, non-BMP, controls, long)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "  "
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "a"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "A"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "z"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Z"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "1"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "0"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "12"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "1a"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "a1"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "A1"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ab"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "AB"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Ab"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "aB"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "abc"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ABC"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Abc"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "aBc"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "abC"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "AbC"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ABc"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "aBC"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Hello"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "hello"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "HELLO"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "hELLO"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "HeLLo"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Hello World"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "hello world"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "HELLO WORLD"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Hello world"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "hello World"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "A B"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "The Lord Of The Rings"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "the lord of the rings"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "a tale of two cities"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "The  double  space"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       " leading"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "trailing "
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       " both "
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "  both  "
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "\tTab"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Tab\t"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "a\tb"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "a\nb"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "a\r\nb"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "\n"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "\r"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "\r\n"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "\n\n"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "a\n\nb"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "\n\nx"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "x\n"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Äpfel"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "äpfel"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ÄPFEL"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Öl"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "öl"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ÖL"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Übel"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "übel"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ÜBEL"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Straße"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "straße"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "STRASSE"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "STRAẞE"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ß"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ẞ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ßa"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ẞa"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Ssa"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ǅ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ǆ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Ǆ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ǈ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ﬁsh"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ﬃ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "FIsh"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ŉ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ΐ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "İstanbul"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "istanbul"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Istanbul"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ıstanbul"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "İ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ı"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "I"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "i"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "IİıiI"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "TITLE"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "title"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Ώ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ώ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ΣΑΣ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "σας"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Σας"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ὈΔΥΣΣΕΎΣ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "οδυσσεύς"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Ὀδυσσεύς"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ΑΣ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ας"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Ας"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ς"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Σ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "σ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "αβγ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Αβγ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ΑΒΓ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "αΒΓ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "élève"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Élève"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ÉLÈVE"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "élÈve"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "œuvre"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Œuvre"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ŒUVRE"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ç"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Ç"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ÿ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Ÿ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ñ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Ñ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Ø"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ø"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "þ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Þ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ÿa"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ÝÞ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "d'accord"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "D'accord"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "l'homme"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "L'Homme"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "L’homme"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "l’homme"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "'quoted'"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "\"Quoted\""
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "«Guillemets»"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "»Anführung«"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "„Anführung“"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "(Klammer)"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "(klammer)"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "[x]"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "\"hello\""
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "\"Hello\""
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "'a'"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "--x"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "-Abc"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "-abc"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "...Abc"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "...abc"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "¿Qué?"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "¡Hola!"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "*Stern"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "3D"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "3d"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "3 D"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "4Ever"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "4ever"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ij"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "IJ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Ij"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "iJ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ijsselmeer"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "IJsselmeer"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Ijsselmeer"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ijs"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ij-"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ï"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Ïj"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "hello-world"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Hello-World"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Hello-world"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ABC-def"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "camelCase"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "CamelCase"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "camelCaseWord"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "camelCASE"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "camel"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "abcDef"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "abcDefGhi"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "aBCD"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "myURLParser"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "iPhone"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "eBay"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "McDonald"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "macOS"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "äBc"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ÄBc"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "abcÄ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "a1B"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "a_B"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "x-Y"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       " a "
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "​"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "​a"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "a​"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "​​"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "　"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "﻿"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "﻿a"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "\u0001"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "\u0002"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "\u0000"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "a\u0000b"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "\u0003"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "\u000b"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "\f"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "\u001f"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "᠎"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "­"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "a­b"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "‌"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "‍"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "⁠"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "‎"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "‏"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "‪"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "‬"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "‭"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "á"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "é"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "́"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ö"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "über"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "café"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Café"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "😀"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "😀a"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "a😀"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "😀😀"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "👍🏽"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "👨‍👩‍👧"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "❤️"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "❤"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "©"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "®"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "™"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "€"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "$"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "£"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "¥"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "%"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "‰"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "°"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "+"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "="
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "<"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       ">"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "|"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "~"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "^"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "`"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "¬"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "±"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "×"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "÷"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "∑"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "∞"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "𝒜"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "𝒜bc"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "a𝒜"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "𐐨"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "𐐀"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "𐐀𐐨"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "𐐨𐐀"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "𝟙"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "𝟏𝟐"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "𠀀"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "a𠀀b"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "."
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       ","
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       ";"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       ":"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "!"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "?"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "-"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "–"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "—"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "…"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "..."
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       ".."
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "("
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       ")"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "["
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "]"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "{"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "}"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "\""
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "'"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "’"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "‘"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "“"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "”"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "„"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "«"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "»"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "‹"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "›"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "/"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "\\"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "_"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "*"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "&"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "#"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "@"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "§"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "¿"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "¡"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "·"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "•"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "،"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "؟"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "。"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "、"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "！"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "？"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "&amp;"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "&lt;"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "&#39;"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "<b>"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "</b>"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "<b>bold</b>"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "<<b>>"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "<<b>"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "<b>>"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "<a href=\"x\">link</a>"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "<!-- c -->"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "a<!-- c -->b"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "<!-- a --><!-- b -->"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "<!-- unclosed"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "<!--x-->y<!--z-->"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "x <!-- multi\nline --> y"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "<br/>"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "<br />"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "< b>"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "<>"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "< >"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "<a<b>c"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "<\n>"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "a<\nb>c"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "\"quoted\" & 'single' <tag>"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "x > y"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "x < y"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "a&b"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "a & b"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "&&"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "\"\""
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "''"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "<![CDATA[x]]>"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "<?xml version=\"1.0\"?>"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "<tag attr=\"v\">t</tag>"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "\u0000<"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "€ & £"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "123"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "+123"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "-123"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "1.5"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "1,5"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "1 000"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "1,000.5"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "1.000,5"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       ".5"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "5."
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       ",5"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "1..2"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "1."
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "   "
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "1 2"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "12 "
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       " 12"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "١٢٣"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "１２３"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "१२३"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "²"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "½"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Ⅻ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "1e5"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "0x1F"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "1_000"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Wort"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Haus"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Häuser"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Straßenbahn"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Donaudampfschifffahrtsgesellschaft"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "E-Mail"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "e-mail"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "U-Bahn"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "u-bahn"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "A-B-C"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "O'Neil"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "o'neil"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "McDonald’s"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ǆa"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ǅa"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ٱلْعَرَبِيَّةُ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "العربية"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "كَتَبَ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "كتب"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ـكتابـ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ـ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "שלום"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "שָׁלוֹם"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Привет"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "привет"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ПРИВЕТ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Ёж"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ёж"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "日本語"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ひらがな"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "한국어"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ภาษาไทย"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "ខ្មែរ"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "हिन्दी"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "AbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAb"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b "
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "                                                                                                    "
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "äöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäö"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "<b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word"
+      ]
+     },
+     {
+      "fn": "splitCamelCase",
+      "args": [
+       "Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

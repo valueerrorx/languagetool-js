@@ -1,0 +1,2663 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "StringTools.trimSpecialCharacters over 440 strings (ASCII, umlauts, sharp s, Turkish i, Greek sigma, digits, apostrophes, NBSP/zero-width, non-BMP, controls, long)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "  "
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "a"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "A"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "z"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Z"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "1"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "0"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "12"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "1a"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "a1"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "A1"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ab"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "AB"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Ab"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "aB"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "abc"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ABC"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Abc"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "aBc"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "abC"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "AbC"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ABc"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "aBC"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Hello"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "hello"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "HELLO"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "hELLO"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "HeLLo"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Hello World"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "hello world"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "HELLO WORLD"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Hello world"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "hello World"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "A B"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "The Lord Of The Rings"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "the lord of the rings"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "a tale of two cities"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "The  double  space"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       " leading"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "trailing "
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       " both "
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "  both  "
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "\tTab"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Tab\t"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "a\tb"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "a\nb"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "a\r\nb"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "\n"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "\r"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "\r\n"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "\n\n"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "a\n\nb"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "\n\nx"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "x\n"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Äpfel"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "äpfel"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ÄPFEL"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Öl"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "öl"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ÖL"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Übel"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "übel"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ÜBEL"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Straße"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "straße"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "STRASSE"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "STRAẞE"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ß"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ẞ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ßa"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ẞa"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Ssa"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ǅ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ǆ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Ǆ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ǈ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ﬁsh"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ﬃ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "FIsh"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ŉ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ΐ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "İstanbul"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "istanbul"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Istanbul"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ıstanbul"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "İ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ı"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "I"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "i"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "IİıiI"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "TITLE"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "title"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Ώ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ώ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ΣΑΣ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "σας"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Σας"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ὈΔΥΣΣΕΎΣ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "οδυσσεύς"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Ὀδυσσεύς"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ΑΣ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ας"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Ας"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ς"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Σ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "σ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "αβγ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Αβγ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ΑΒΓ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "αΒΓ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "élève"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Élève"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ÉLÈVE"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "élÈve"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "œuvre"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Œuvre"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ŒUVRE"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ç"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Ç"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ÿ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Ÿ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ñ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Ñ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Ø"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ø"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "þ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Þ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ÿa"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ÝÞ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "d'accord"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "D'accord"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "l'homme"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "L'Homme"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "L’homme"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "l’homme"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "'quoted'"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "\"Quoted\""
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "«Guillemets»"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "»Anführung«"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "„Anführung“"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "(Klammer)"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "(klammer)"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "[x]"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "\"hello\""
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "\"Hello\""
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "'a'"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "--x"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "-Abc"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "-abc"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "...Abc"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "...abc"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "¿Qué?"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "¡Hola!"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "*Stern"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "3D"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "3d"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "3 D"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "4Ever"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "4ever"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ij"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "IJ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Ij"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "iJ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ijsselmeer"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "IJsselmeer"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Ijsselmeer"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ijs"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ij-"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ï"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Ïj"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "hello-world"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Hello-World"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Hello-world"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ABC-def"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "camelCase"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "CamelCase"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "camelCaseWord"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "camelCASE"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "camel"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "abcDef"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "abcDefGhi"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "aBCD"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "myURLParser"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "iPhone"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "eBay"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "McDonald"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "macOS"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "äBc"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ÄBc"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "abcÄ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "a1B"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "a_B"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "x-Y"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "a b"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       " a "
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "​"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "​a"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "a​"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "​​"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "　"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "﻿"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "﻿a"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "\u0001"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "\u0002"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "\u0000"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "a\u0000b"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "\u0003"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "\u000b"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "\f"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "\u001f"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       ""
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       " "
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "᠎"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "­"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "a­b"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "‌"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "‍"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "⁠"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "‎"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "‏"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "‪"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "‬"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "‭"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "á"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "é"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "́"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ö"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ä"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "über"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "café"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Café"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "😀"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "😀a"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "a😀"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "😀😀"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "👍🏽"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "👨‍👩‍👧"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "❤️"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "❤"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "©"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "®"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "™"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "€"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "$"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "£"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "¥"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "%"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "‰"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "°"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "+"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "="
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "<"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       ">"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "|"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "~"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "^"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "`"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "¬"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "±"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "×"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "÷"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "∑"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "∞"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "𝒜"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "𝒜bc"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "a𝒜"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "𐐨"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "𐐀"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "𐐀𐐨"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "𐐨𐐀"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "𝟙"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "𝟏𝟐"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "𠀀"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "a𠀀b"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "."
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       ","
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       ";"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       ":"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "!"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "?"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "-"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "–"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "—"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "…"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "..."
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       ".."
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "("
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       ")"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "["
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "]"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "{"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "}"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "\""
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "'"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "’"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "‘"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "“"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "”"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "„"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "«"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "»"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "‹"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "›"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "/"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "\\"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "_"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "*"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "&"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "#"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "@"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "§"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "¿"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "¡"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "·"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "•"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "،"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "؟"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "。"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "、"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "！"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "？"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "&amp;"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "&lt;"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "&#39;"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "<b>"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "</b>"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "<b>bold</b>"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "<<b>>"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "<<b>"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "<b>>"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "<a href=\"x\">link</a>"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "<!-- c -->"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "a<!-- c -->b"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "<!-- a --><!-- b -->"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "<!-- unclosed"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "<!--x-->y<!--z-->"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "x <!-- multi\nline --> y"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "<br/>"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "<br />"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "< b>"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "<>"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "< >"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "<a<b>c"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "<\n>"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "a<\nb>c"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "\"quoted\" & 'single' <tag>"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "x > y"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "x < y"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "a&b"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "a & b"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "&&"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "\"\""
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "''"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "<![CDATA[x]]>"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "<?xml version=\"1.0\"?>"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "<tag attr=\"v\">t</tag>"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "\u0000<"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "€ & £"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "123"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "+123"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "-123"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "1.5"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "1,5"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "1 000"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "1,000.5"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "1.000,5"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       ".5"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "5."
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       ",5"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "1..2"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "1."
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "   "
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "1 2"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "12 "
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       " 12"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "١٢٣"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "１２３"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "१२३"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "²"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "½"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Ⅻ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "1e5"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "0x1F"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "1_000"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Wort"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Haus"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Häuser"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Straßenbahn"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Donaudampfschifffahrtsgesellschaft"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "E-Mail"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "e-mail"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "U-Bahn"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "u-bahn"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "A-B-C"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "O'Neil"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "o'neil"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "McDonald’s"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ǆa"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ǅa"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ٱلْعَرَبِيَّةُ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "العربية"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "كَتَبَ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "كتب"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ـكتابـ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ـ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "שלום"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "שָׁלוֹם"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Привет"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "привет"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ПРИВЕТ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Ёж"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ёж"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "日本語"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ひらがな"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "한국어"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ภาษาไทย"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "ខ្មែរ"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "हिन्दी"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "AbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAbAb"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b a b "
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "                                                                                                    "
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "äöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäöäö"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "<b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b><b>"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->a<!-- c -->"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word"
+      ]
+     },
+     {
+      "fn": "trimSpecialCharacters",
+      "args": [
+       "Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word Word"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,33 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "string-tools harness meta: unknown fn, wrong arity",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "string-tools",
+   "args": {
+    "calls": [
+     {
+      "fn": "noSuch",
+      "args": [
+       "a"
+      ]
+     },
+     {
+      "fn": "isEmpty",
+      "args": []
+     },
+     {
+      "fn": "isEmpty",
+      "args": [
+       "a",
+       "b"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}
