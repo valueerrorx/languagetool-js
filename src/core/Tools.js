@@ -1,11 +1,23 @@
 // org.languagetool.tools.Tools (message formatting and rule selection; the rest follows in later steps).
 import { MessageFormat } from '../lib/java/MessageFormat.js';
+import { RuntimeException } from '../lib/java/errors.js';
+import { MalformedURLException, URL } from '../lib/java/URL.js';
 
 // Java: Tools#i18n(ResourceBundle,String,Object...)
 export function i18n(messages, key, ...messageArguments) {
   const formatter = new MessageFormat('');
   formatter.applyPattern(messages.getString(key));
   return formatter.format(messageArguments);
+}
+
+// Java: Tools#getUrl(String)
+export function getUrl(url) {
+  try {
+    return new URL(url);
+  } catch (e) {
+    if (e instanceof MalformedURLException) throw new RuntimeException(e);
+    throw e;
+  }
 }
 
 // Java: Set<CategoryId>#contains via CategoryId#equals (ids compared as strings)

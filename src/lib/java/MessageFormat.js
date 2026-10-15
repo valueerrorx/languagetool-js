@@ -196,6 +196,11 @@ export class MessageFormat {
     this.formats[offsetNumber] = newFormat;
   }
 
+  // Java: MessageFormat#format(String,Object...) (static)
+  static format(pattern, ...args) {
+    return new MessageFormat(pattern).format(args);
+  }
+
   // Java: MessageFormat#format(Object) (Format#format(Object) with an Object[] argument)
   format(arguments_) {
     return this.subformat(arguments_);

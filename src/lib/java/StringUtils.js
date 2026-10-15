@@ -1,4 +1,5 @@
 // org.apache.commons.lang3.StringUtils subset used by ported code.
+import { Character } from './Character.js';
 import { IllegalArgumentException } from './errors.js';
 
 // Java: StringUtils#replaceOnce(String,String,String)
@@ -15,4 +16,29 @@ export function abbreviate(str, maxWidth) {
   if (maxWidth < 4) throw new IllegalArgumentException('Minimum abbreviation width is 4');
   if (str.length <= maxWidth) return str;
   return `${str.substring(0, maxWidth - 3)}...`;
+}
+
+// Java: StringUtils#isNumeric(CharSequence) (commons-lang3 3.18: Character.isDigit per char, empty -> false)
+export function isNumeric(cs) {
+  if (cs === null || cs === undefined || cs.length === 0) return false;
+  for (let i = 0; i < cs.length; i++) {
+    if (!Character.isDigit(cs.charCodeAt(i))) return false;
+  }
+  return true;
+}
+
+// Java: StringUtils#isNumericSpace(CharSequence) (null -> false, empty -> true)
+export function isNumericSpace(cs) {
+  if (cs === null || cs === undefined) return false;
+  for (let i = 0; i < cs.length; i++) {
+    const nz = cs.charCodeAt(i);
+    if (!Character.isDigit(nz) && nz !== 0x20) return false;
+  }
+  return true;
+}
+
+// Java: StringUtils#equalsAny(CharSequence,CharSequence...)
+export function equalsAny(string, ...searchStrings) {
+  for (const s of searchStrings) if (string === s) return true;
+  return false;
 }
