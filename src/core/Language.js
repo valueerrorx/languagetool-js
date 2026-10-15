@@ -8,7 +8,7 @@ import { replaceOnce } from '../lib/java/StringUtils.js';
 import { JavaHashMap } from '../lib/java/collections/JavaHashMap.js';
 import { getDataBroker } from './resources/LtStatics.js';
 import { getMessageBundleForLanguage } from './resources/ResourceBundleTools.js';
-import { CUSTOM_PATTERN_FILE, PATTERN_FILE, STYLE_FILE } from './JLanguageTool.js';
+import { CUSTOM_PATTERN_FILE, PATTERN_FILE, STYLE_FILE } from './JLanguageToolConstants.js';
 import { LanguageMaintainedState } from './LanguageMaintainedState.js';
 import { createComponent, sharedComponent } from './language/components.js';
 import { languages } from './languagesRef.js';

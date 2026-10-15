@@ -6,7 +6,7 @@ import { NullPointerException, NoSuchElementException, ArrayIndexOutOfBoundsExce
 import { toLowerCase } from '../lib/java/strings.js';
 import { AnalyzedToken } from './AnalyzedToken.js';
 import { GlobalConfig } from './rules/model/GlobalConfig.js';
-import { SENTENCE_START_TAGNAME, SENTENCE_END_TAGNAME, PARAGRAPH_END_TAGNAME } from './JLanguageTool.js';
+import { SENTENCE_START_TAGNAME, SENTENCE_END_TAGNAME, PARAGRAPH_END_TAGNAME } from './JLanguageToolConstants.js';
 import { isWhitespace as stringToolsIsWhitespace } from './text/StringTools.js';
 
 const NON_WORD_REGEX = Pattern.compile('[.?!…:;,~’\'"„“”»«‚‘›‹()\\[\\]\\-–—*×∗·+÷/=]');

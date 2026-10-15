@@ -1,7 +1,7 @@
 // org.languagetool.AnalyzedToken
 import { Objects } from '../lib/java/Objects.js';
 import { toLowerCase, javaTrim } from '../lib/java/strings.js';
-import { SENTENCE_END_TAGNAME, PARAGRAPH_END_TAGNAME } from './JLanguageTool.js';
+import { SENTENCE_END_TAGNAME, PARAGRAPH_END_TAGNAME } from './JLanguageToolConstants.js';
 
 export class AnalyzedToken {
   static FQCN = 'org.languagetool.AnalyzedToken';

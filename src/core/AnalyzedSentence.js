@@ -3,7 +3,7 @@ import { ArrayIndexOutOfBoundsException } from '../lib/java/errors.js';
 import { Objects } from '../lib/java/Objects.js';
 import { AnalyzedToken } from './AnalyzedToken.js';
 import { AnalyzedTokenReadings } from './AnalyzedTokenReadings.js';
-import { SENTENCE_END_TAGNAME, PARAGRAPH_END_TAGNAME } from './JLanguageTool.js';
+import { SENTENCE_END_TAGNAME, PARAGRAPH_END_TAGNAME } from './JLanguageToolConstants.js';
 
 export class AnalyzedSentence {
   static FQCN = 'org.languagetool.AnalyzedSentence';

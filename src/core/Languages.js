@@ -6,7 +6,7 @@ import { getResources } from './resources/ResourceDataBroker.js';
 import { getClassBroker } from './resources/LtStatics.js';
 import { assureSet } from './text/StringTools.js';
 import { MultiKeyProperties } from './tools/MultiKeyProperties.js';
-import { DICTIONARY_FILENAME_EXTENSION } from './JLanguageTool.js';
+import { DICTIONARY_FILENAME_EXTENSION } from './JLanguageToolConstants.js';
 import { Language } from './Language.js';
 import { DynamicHunspellLanguage, DynamicMorfologikLanguage } from './DynamicLanguage.js';
 import { NoopLanguage } from './noop/NoopLanguage.js';
