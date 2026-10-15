@@ -1,0 +1,47 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "unknown tagger kind, missing dict, language without BaseTagger",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "manual-tagger",
+   "args": {
+    "tagger": {
+     "kind": "nope"
+    },
+    "words": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "manual-tagger",
+   "args": {
+    "tagger": {
+     "kind": "dict",
+     "dict": "/en/nonexistent.dict"
+    },
+    "words": [
+     "x"
+    ]
+   }
+  },
+  {
+   "op": "manual-tagger",
+   "args": {
+    "tagger": {
+     "kind": "manual",
+     "lang": "xx",
+     "files": [
+      "added.txt"
+     ]
+    },
+    "words": [
+     "x"
+    ]
+   }
+  }
+ ]
+}

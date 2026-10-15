@@ -1,0 +1,267 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "CombiningTagger: union, overwrite, removal, duplicates (removeAll removes all equal), null removal",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "manual-tagger",
+   "args": {
+    "tagger": {
+     "kind": "combining",
+     "tagger1": {
+      "kind": "manual",
+      "content": "x\tx1\tA\nx\tx2\tB\ny\ty1\tA\nz\tz1\tC\n"
+     },
+     "tagger2": {
+      "kind": "manual",
+      "content": "x\tx3\tD\nx\tx1\tA\ny\ty2\tE\nw\tw1\tF\n"
+     },
+     "overwrite": false
+    },
+    "words": [
+     "x",
+     "y",
+     "z",
+     "w",
+     "v",
+     "",
+     null
+    ]
+   }
+  },
+  {
+   "op": "manual-tagger",
+   "args": {
+    "tagger": {
+     "kind": "combining",
+     "tagger1": {
+      "kind": "manual",
+      "content": "x\tx1\tA\nx\tx2\tB\ny\ty1\tA\nz\tz1\tC\n"
+     },
+     "tagger2": {
+      "kind": "manual",
+      "content": "x\tx3\tD\nx\tx1\tA\ny\ty2\tE\nw\tw1\tF\n"
+     },
+     "removal": {
+      "kind": "manual",
+      "content": "x\tx1\tA\ny\ty2\tE\nz\tz1\tC\nw\tnolemma\tF\n"
+     },
+     "overwrite": false
+    },
+    "words": [
+     "x",
+     "y",
+     "z",
+     "w",
+     "v",
+     "",
+     null
+    ]
+   }
+  },
+  {
+   "op": "manual-tagger",
+   "args": {
+    "tagger": {
+     "kind": "combining",
+     "tagger1": {
+      "kind": "manual",
+      "content": "x\tx3\tD\nx\tx1\tA\ny\ty2\tE\nw\tw1\tF\n"
+     },
+     "tagger2": {
+      "kind": "manual",
+      "content": "x\tx1\tA\nx\tx2\tB\ny\ty1\tA\nz\tz1\tC\n"
+     },
+     "removal": {
+      "kind": "manual",
+      "content": "x\tx1\tA\ny\ty2\tE\nz\tz1\tC\nw\tnolemma\tF\n"
+     },
+     "overwrite": false
+    },
+    "words": [
+     "x",
+     "y",
+     "z",
+     "w",
+     "v",
+     "",
+     null
+    ]
+   }
+  },
+  {
+   "op": "manual-tagger",
+   "args": {
+    "tagger": {
+     "kind": "combining",
+     "tagger1": {
+      "kind": "manual",
+      "content": "x\tx1\tA\nx\tx2\tB\ny\ty1\tA\nz\tz1\tC\n"
+     },
+     "tagger2": {
+      "kind": "manual",
+      "content": ""
+     },
+     "removal": {
+      "kind": "manual",
+      "content": "x\tx1\tA\ny\ty2\tE\nz\tz1\tC\nw\tnolemma\tF\n"
+     },
+     "overwrite": false
+    },
+    "words": [
+     "x",
+     "y",
+     "z",
+     "w",
+     "v",
+     "",
+     null
+    ]
+   }
+  },
+  {
+   "op": "manual-tagger",
+   "args": {
+    "tagger": {
+     "kind": "combining",
+     "tagger1": {
+      "kind": "manual",
+      "content": "x\tx1\tA\nx\tx2\tB\ny\ty1\tA\nz\tz1\tC\n"
+     },
+     "tagger2": {
+      "kind": "manual",
+      "content": "x\tx3\tD\nx\tx1\tA\ny\ty2\tE\nw\tw1\tF\n"
+     },
+     "overwrite": true
+    },
+    "words": [
+     "x",
+     "y",
+     "z",
+     "w",
+     "v",
+     "",
+     null
+    ]
+   }
+  },
+  {
+   "op": "manual-tagger",
+   "args": {
+    "tagger": {
+     "kind": "combining",
+     "tagger1": {
+      "kind": "manual",
+      "content": "x\tx1\tA\nx\tx2\tB\ny\ty1\tA\nz\tz1\tC\n"
+     },
+     "tagger2": {
+      "kind": "manual",
+      "content": "x\tx3\tD\nx\tx1\tA\ny\ty2\tE\nw\tw1\tF\n"
+     },
+     "removal": {
+      "kind": "manual",
+      "content": "x\tx1\tA\ny\ty2\tE\nz\tz1\tC\nw\tnolemma\tF\n"
+     },
+     "overwrite": true
+    },
+    "words": [
+     "x",
+     "y",
+     "z",
+     "w",
+     "v",
+     "",
+     null
+    ]
+   }
+  },
+  {
+   "op": "manual-tagger",
+   "args": {
+    "tagger": {
+     "kind": "combining",
+     "tagger1": {
+      "kind": "manual",
+      "content": "x\tx3\tD\nx\tx1\tA\ny\ty2\tE\nw\tw1\tF\n"
+     },
+     "tagger2": {
+      "kind": "manual",
+      "content": "x\tx1\tA\nx\tx2\tB\ny\ty1\tA\nz\tz1\tC\n"
+     },
+     "removal": {
+      "kind": "manual",
+      "content": "x\tx1\tA\ny\ty2\tE\nz\tz1\tC\nw\tnolemma\tF\n"
+     },
+     "overwrite": true
+    },
+    "words": [
+     "x",
+     "y",
+     "z",
+     "w",
+     "v",
+     "",
+     null
+    ]
+   }
+  },
+  {
+   "op": "manual-tagger",
+   "args": {
+    "tagger": {
+     "kind": "combining",
+     "tagger1": {
+      "kind": "manual",
+      "content": "x\tx1\tA\nx\tx2\tB\ny\ty1\tA\nz\tz1\tC\n"
+     },
+     "tagger2": {
+      "kind": "manual",
+      "content": ""
+     },
+     "removal": {
+      "kind": "manual",
+      "content": "x\tx1\tA\ny\ty2\tE\nz\tz1\tC\nw\tnolemma\tF\n"
+     },
+     "overwrite": true
+    },
+    "words": [
+     "x",
+     "y",
+     "z",
+     "w",
+     "v",
+     "",
+     null
+    ]
+   }
+  },
+  {
+   "op": "manual-tagger",
+   "args": {
+    "tagger": {
+     "kind": "combining",
+     "tagger1": {
+      "kind": "manual",
+      "content": "bad line\n"
+     },
+     "tagger2": {
+      "kind": "manual",
+      "content": "x\tx3\tD\nx\tx1\tA\ny\ty2\tE\nw\tw1\tF\n"
+     },
+     "overwrite": false
+    },
+    "words": [
+     "x",
+     "y",
+     "z",
+     "w",
+     "v",
+     "",
+     null
+    ]
+   }
+  }
+ ]
+}
