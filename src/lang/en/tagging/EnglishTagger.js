@@ -1,15 +1,21 @@
-// Java: org.languagetool.tagging.en.EnglishTagger (tag(List) path; the rest of the tagger API follows with F13)
+// Java: org.languagetool.tagging.en.EnglishTagger
+import { NullPointerException } from '../../../lib/java/errors.js';
 import { Locale } from '../../../lib/java/Locale.js';
 import { toLowerCase } from '../../../lib/java/strings.js';
 import { AnalyzedToken } from '../../../core/AnalyzedToken.js';
 import { AnalyzedTokenReadings } from '../../../core/AnalyzedTokenReadings.js';
-import { registerComponent } from '../../../core/language/components.js';
+import { registerComponent, sharedComponent } from '../../../core/language/components.js';
 import { BaseTagger } from '../../../core/tagging/BaseTagger.js';
 import { isAllUppercase, isMixedCase, uppercaseFirstChar } from '../../../core/text/StringTools.js';
 
 // Java: EnglishTagger
 export class EnglishTagger extends BaseTagger {
   static FQCN = 'org.languagetool.tagging.en.EnglishTagger';
+
+  // Java: EnglishTagger#INSTANCE
+  static get INSTANCE() {
+    return sharedComponent(EnglishTagger.FQCN);
+  }
 
   // Java: EnglishTagger#EnglishTagger()
   constructor() {
@@ -21,6 +27,7 @@ export class EnglishTagger extends BaseTagger {
     const tokenReadings = [];
     let pos = 0;
     for (let word of sentenceTokens) {
+      if (word === null || word === undefined) throw new NullPointerException('Cannot invoke "String.length()" because "word" is null');
       let containsTypographicApostrophe = false;
       if (word.length > 1) {
         if (word.includes('’')) {

@@ -1,7 +1,7 @@
 // Java: org.languagetool.tagging.ManualTagger
 import { decodeUtf8, readerLines } from '../../lib/java/io.js';
 import { javaSplit, javaTrim } from '../../lib/java/strings.js';
-import { RuntimeException, IOException } from '../../lib/java/errors.js';
+import { RuntimeException, IOException, NullPointerException } from '../../lib/java/errors.js';
 import { isEmpty } from '../text/StringTools.js';
 import { TaggedWord } from './TaggedWord.js';
 
@@ -9,6 +9,7 @@ const DEFAULT_SEPARATOR = '\t';
 
 // Java: ManualTagger#loadMapping(InputStream,boolean)
 function loadMapping(inputStream) {
+  if (inputStream === null || inputStream === undefined) throw new NullPointerException();
   const map = new Map();
   let lineCount = 0;
   let separator = DEFAULT_SEPARATOR;
@@ -42,8 +43,8 @@ function loadMapping(inputStream) {
 export class ManualTagger {
   static FQCN = 'org.languagetool.tagging.ManualTagger';
 
-  // Java: ManualTagger#ManualTagger(InputStream,boolean)
-  constructor(inputStream) {
+  // Java: ManualTagger#ManualTagger(InputStream) / (InputStream,boolean); interning is not observable
+  constructor(inputStream, internTags = false) {
     this.map = loadMapping(inputStream);
   }
 

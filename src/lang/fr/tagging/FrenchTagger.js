@@ -1,11 +1,12 @@
-// Java: org.languagetool.tagging.fr.FrenchTagger (tag(List) path; the rest of the tagger API follows with F13)
+// Java: org.languagetool.tagging.fr.FrenchTagger
+import { NullPointerException } from '../../../lib/java/errors.js';
 import { Locale } from '../../../lib/java/Locale.js';
 import { Pattern } from '../../../lib/java/regex/index.js';
 import { toLowerCase } from '../../../lib/java/strings.js';
 import { AnalyzedToken } from '../../../core/AnalyzedToken.js';
 import { AnalyzedTokenReadings } from '../../../core/AnalyzedTokenReadings.js';
 import { ChunkTag } from '../../../core/chunking/ChunkTag.js';
-import { registerComponent } from '../../../core/language/components.js';
+import { registerComponent, sharedComponent } from '../../../core/language/components.js';
 import { BaseTagger } from '../../../core/tagging/BaseTagger.js';
 import { convertToTitleCaseIteratingChars, isAllUppercase, isCapitalizedWord, isEmoji } from '../../../core/text/StringTools.js';
 
@@ -25,6 +26,11 @@ const AMBIGOUS_TOKENS = ['-Le', '-Les', '-La', '-Elle', '-Elles', '-On', '-Tu', 
 export class FrenchTagger extends BaseTagger {
   static FQCN = 'org.languagetool.tagging.fr.FrenchTagger';
 
+  // Java: FrenchTagger#INSTANCE
+  static get INSTANCE() {
+    return sharedComponent(FrenchTagger.FQCN);
+  }
+
   // Java: FrenchTagger#FrenchTagger()
   constructor() {
     super('/fr/french.dict', Locale.FRENCH, false);
@@ -40,6 +46,7 @@ export class FrenchTagger extends BaseTagger {
     const tokenReadings = [];
     let pos = 0;
     for (let word of sentenceTokens) {
+      if (word === null || word === undefined) throw new NullPointerException('Cannot invoke "String.length()" because "word" is null');
       let containsTypewriterApostrophe = false;
       let containsTypographicApostrophe = false;
       if (word.length > 1) {
