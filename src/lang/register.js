@@ -15,3 +15,7 @@ import './fr/language/French.js';
 import './fr/language/CanadianFrench.js';
 import './fr/language/SwissFrench.js';
 import './fr/language/BelgianFrench.js';
+import '../core/text/tokenizers/WordTokenizer.js';
+import './de/tokenizers/GermanWordTokenizer.js';
+import './en/tokenizers/EnglishWordTokenizer.js';
+import './fr/tokenizers/FrenchWordTokenizer.js';

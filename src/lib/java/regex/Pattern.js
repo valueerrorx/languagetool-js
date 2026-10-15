@@ -289,6 +289,7 @@ export class Matcher {
   // Java: Matcher#Matcher(Pattern,CharSequence)
   constructor(parent, text) {
     this.parentPattern = parent;
+    if (text === null || text === undefined) throw new NullPointerException('Cannot invoke "java.lang.CharSequence.length()" because "this.text" is null');
     this.text = String(text);
     this.groups = null;
     this.reset();
@@ -301,7 +302,10 @@ export class Matcher {
 
   // Java: Matcher#reset()
   reset(input) {
-    if (input !== undefined) this.text = String(input);
+    if (input !== undefined) {
+      if (input === null) throw new NullPointerException('Cannot invoke "java.lang.CharSequence.length()" because "this.text" is null');
+      this.text = String(input);
+    }
     this.first = -1;
     this.last = 0;
     this.oldLast = -1;
