@@ -110,3 +110,9 @@ All Java patterns (XML `regexp`, `postag_regexp`, `<regexp>`, SRX, disambiguatio
 - P13 part: `Thread.interrupted()` read-and-clear details, ThreadPoolExecutor queue kinds and cancelled-task counting, `fs.writeSync` cross-thread line ordering, JVM signal exit codes 143/130, shared clock origin across workers.
 - P14/P15 part: boxed-number `Objects.equals` -0 printing, helpful NPE texts per JDK entry point.
 - General rules "System.exit flush order", "stdout/stderr buffering order": streams are compared separately by content.
+
+## Check pipeline (F15)
+- Offsets: all match/sentence positions are UTF-16 code-unit indices (JS string indices), never code points.
+- Java `String.split(regex)` drops trailing empty strings and keeps a leading empty string only if the match is not at index 0 with zero width; use `javaSplit` from src/lib/java/strings.js, never `String.prototype.split`.
+- Language ignored-character patterns (soft hyphen etc.) are Java regexes: compile via src/lib/java/regex.
+- `getCategories()` is a HashMap in Java; its order matters only where emitted (none in API v2 check); use JavaHashMap only if an output path iterates it.
