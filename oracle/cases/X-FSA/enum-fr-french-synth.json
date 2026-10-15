@@ -1,0 +1,23 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "fsa-enum /fr/french_synth.dict: full FSA sequence enumeration (count, SHA-256, first/last 100) and DictionaryLookup iteration",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "fsa-enum",
+   "args": {
+    "dict": "/fr/french_synth.dict",
+    "mode": "fsa"
+   }
+  },
+  {
+   "op": "fsa-enum",
+   "args": {
+    "dict": "/fr/french_synth.dict",
+    "mode": "lookup"
+   }
+  }
+ ]
+}

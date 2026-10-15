@@ -1,0 +1,26 @@
+# F08 oracle checkpoint (X-FSA)
+
+Status: done. Fixtures tests/golden/X-FSA (5.8 MB, 37 cases), cases by oracle/scripts/gen-cases-fsa.mjs, Java ops oracle/harness/src/ltjs/oracle/FsaOps.java (`fsa-info`, `fsa-lookup`, `fsa-enum`). JS adapters: none yet (parity: 37 NOT PORTED). Regenerate: `node oracle/scripts/gen-cases-fsa.mjs && npm run oracle -- X-FSA` (3 min).
+Dicts (all 15 wave-1 .dict, in resources/): de german, german_synth, hunspell de_AT/CH/DE; en english, english_synth, hunspell en_AU/CA/GB/NZ/US/ZA; fr french, french_synth. All CFSA2 (version 0xC6 = 198, flags FLEXIBLE,STOPBIT,NEXTBIT), all encoder SUFFIX. No FSA5 (it/italian), PREFIX or NONE dict exists in resources/: those paths are covered only through `info` overrides on real CFSA2 dicts (see lookup-overrides); FSA5 reader is UNORACLED (no FSA5 file; proposed manual check: build one with morfologik-tools if F08 needs it).
+
+## Ops (args via JSON, dict = path via data broker `getFromResourceDirAsUrl`, e.g. `/de/german.dict`)
+Open = `Dictionary.read(URL)` (as MorfologikTagger / MorfologikSpeller#getDictionaryWithCaching). Optional `info` = .info text (ISO-8859-1) replacing the file via `Dictionary.read(InputStream, InputStream)`; `noInfo:true` copies the .dict alone to a temp dir and uses `Dictionary.read(Path)`.
+- `fsa-info {dict, info?, noInfo?}`: fsaClass, flags (names), flagBits, rootNode, reachableNodes/arcs/finalArcs/terminalArcs/maxArcsPerNode (DFS from root via getFirstArc/getNextArc/getEndNode), rootArcCount, sequenceCountFromNumbers (NUMBERS flag only, else null), CFSA2: version, arcsLength, labelMapping hex; FSA5: version, arcsLength, nodeDataLength, gtl, filler, annotation; `metadata`: attributes (propertyName -> value in getAttributes() order), separator byte/char, encoding, locale, encoderType, frequencyIncluded, ignoring*, convertingCase, supportingRunOnWords, input/outputConversionPairs, replacementPairs, equivalentChars. Failures (missing .info, bad key) are error envelopes (`java.io.IOException: Use an explicit fsa.dict.encoder=SUFFIX ...`, NoSuchFileException, RuntimeException "Path ... not found in class path ...").
+- `fsa-lookup {dict, info?, words[], mode?: lookup|tagger, keysFromTagger?: {dict}, extraKeys?[]}`: `new DictionaryLookup(dict).lookup(w)` -> `results[i]` = list of `[word, stem, tag]` (CharSequence toString, null kept) in Java order, or `{error:{class,message}}` per word. mode `tagger` = `MorfologikTagger.tag(w)` -> `[lemma, posTag]` (frequency byte stripped). With `keysFromTagger` (synth dicts) the looked-up keys `lemma|tag` are built inside Java from the tagger readings of `words` (deduped, insertion order) + `extraKeys`, and returned as `words`.
+- `fsa-enum {dict, info?, mode: fsa|lookup}`: `fsa`: FSA.iterator() over all byte sequences, count, maxLength, sha256 over (4-byte BE length + bytes) per sequence, first100/last100 as {hex, text decoded with metadata encoding}. `lookup`: DictionaryLookup.iterator(), sha256 over `word TAB stem TAB tag LF` (UTF-8, null = "\0null"), first100/last100 as [word,stem,tag]. An exception during iteration is recorded in `error` with the count/digest so far.
+
+## Cases
+- info-wave1 (15), info-synthetic (62: ~58 .info variants - separator forms/escapes, encoder case variants, encodings, booleans, locale, replacement-pairs, equivalent-chars, conversions, comments/continuations/CRLF, unknown keys, noInfo, missing dict, .info as dict).
+- lookup-<dict> for the 3 taggers and 11 speller dicts: 2.8-3.1k words each = edge cases (empty, blanks, separator chars + _ | NUL, digits, non-BMP, lone surrogates, 10000-char word, umlauts/ß/ẞ, combining marks, apostrophes ’, hyphens, case variants, fr ligatures) + up to 2500 unique tokens from the language's grammar.xml/style.xml/disambiguation.xml (+ en grammar-l2-*) `<example>` texts and `correction` attributes (sorted by sha1 for a stable pseudo-random sample) + 900 lowercase variants.
+- lookup-<synth> (3): ~830-2800 `lemma|tag` keys derived in Java + fixed keys (`gehen|VER:INF:NON`, empty parts, regex-looking tags) + edge strings. tagger-<dict> (3): 1200 words via MorfologikTagger.
+- lookup-overrides (46) / enum-overrides (5): english.dict and german.dict with .info overridden: encoder SUFFIX/PREFIX/INFIX/NONE + case variants, separators (_ | space NUL tab ab ä), encodings (iso-8859-1, utf8, UTF-16, windows-1252, us-ascii, nosuch).
+- enum-<dict> (15 x 2 modes).
+
+## Pinned Java findings
+- Speller dicts (hunspell, frequency-included, no tag part) via DictionaryLookup: ~30-40 % of lookups raise `IndexOutOfBoundsException` (entries lacking the separator); `enum` mode lookup on de_DE stops after 215785 of 2226828 sequences with that exception. Real speller use goes through morfologik Speller on the FSA, not DictionaryLookup, so these are library behaviour to reproduce only if the port exposes DictionaryLookup on them.
+- german.dict tags may contain ` -- comment` text (taken verbatim).
+- Wrong encoder overrides give empty/garbage/exception results (data, not failures).
+- Fixture error messages with temp paths (noInfo) are normalised by `paths`; case file info-synthetic lists it.
+
+## Environment
+JDK 17, pinned env per docs/ORACLE.md (fixed clock, Europe/Vienna, UTF-8, en_US). Harness responses for fsa-* are ASCII-escaped (lone surrogates survive).

@@ -1,0 +1,443 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "fsa-info with synthetic .info content (Properties syntax, missing/invalid keys, options) and failure modes (no .info, missing dict)",
+ "normalize": [
+  "paths"
+ ],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "noInfo": true
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/nosuch.dict"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.info"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": ""
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "# only comment\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=ab\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=\\u00e4\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=\\u20ac\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=\\t\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator = +\nfsa.dict.encoding : utf-8\nfsa.dict.encoder\tSUFFIX\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+ \nfsa.dict.encoding=utf-8 \nfsa.dict.encoder=SUFFIX \n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=NOSUCH\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=prefix\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=PREFIX\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=Prefix\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=infix\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=none\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=NONE\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=suffix\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=Suffix\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder= SUFFIX\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=nosuch\nfsa.dict.encoder=SUFFIX\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=UTF-16\nfsa.dict.encoder=SUFFIX\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=iso-8859-1\nfsa.dict.encoder=SUFFIX\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\nfsa.dict.frequency-included=true\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\nfsa.dict.frequency-included=TRUE\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\nfsa.dict.frequency-included=yes\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\nfsa.dict.frequency-included=\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\nfsa.dict.speller.ignore-numbers=true\nfsa.dict.speller.ignore-punctuation=true\nfsa.dict.speller.ignore-camel-case=true\nfsa.dict.speller.ignore-all-uppercase=true\nfsa.dict.speller.ignore-diacritics=true\nfsa.dict.speller.convert-case=true\nfsa.dict.speller.runon-words=true\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\nfsa.dict.speller.ignore-numbers=false\nfsa.dict.speller.ignore-punctuation=false\nfsa.dict.speller.ignore-camel-case=false\nfsa.dict.speller.convert-case=false\nfsa.dict.speller.runon-words=false\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\nfsa.dict.speller.ignore-numbers=maybe\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\nfsa.dict.speller.locale=en_US\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\nfsa.dict.speller.locale=de\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\nfsa.dict.speller.locale=de-AT\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\nfsa.dict.speller.locale=nosuch\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\nfsa.dict.speller.locale=\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\nfsa.dict.speller.replacement-pairs=a b, c d,e f\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\nfsa.dict.speller.replacement-pairs=a b,a c,a b\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\nfsa.dict.speller.replacement-pairs=a\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\nfsa.dict.speller.replacement-pairs=a b c\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\nfsa.dict.speller.replacement-pairs=\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\nfsa.dict.speller.equivalent-chars=a à,à a,e é\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\nfsa.dict.speller.equivalent-chars=a àb\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\nfsa.dict.speller.equivalent-chars=a\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\nfsa.dict.speller.equivalent-chars=a à, a á\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\nfsa.dict.input-conversion=a b, c d\nfsa.dict.output-conversion=x y\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\nfsa.dict.input-conversion=a\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\nfsa.dict.input-conversion=\\u2019 '\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\nfsa.dict.license=x\nfsa.dict.author=y\nfsa.dict.created=2020-01-01\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\nfsa.dict.unknown=foo\nrandom.key=1\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\nfsa.dict.speller.ignore-numbers=true\nfsa.dict.speller.ignore-numbers=false\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "# c\n! c2\nfsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\\\n\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\r\nfsa.dict.encoding=utf-8\r\nfsa.dict.encoder=SUFFIX\r\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/en/english.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\nfsa.dict.speller.replacement-pairs=ä ae, ö oeü\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/de/hunspell/de_DE.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\n"
+   }
+  },
+  {
+   "op": "fsa-info",
+   "args": {
+    "dict": "/fr/french.dict",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\n"
+   }
+  }
+ ]
+}

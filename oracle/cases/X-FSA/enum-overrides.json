@@ -1,0 +1,49 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "fsa-enum with overridden .info (encoder / separator / encoding)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "fsa-enum",
+   "args": {
+    "dict": "/en/english.dict",
+    "mode": "lookup",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=PREFIX\n"
+   }
+  },
+  {
+   "op": "fsa-enum",
+   "args": {
+    "dict": "/en/english.dict",
+    "mode": "lookup",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=INFIX\n"
+   }
+  },
+  {
+   "op": "fsa-enum",
+   "args": {
+    "dict": "/en/english.dict",
+    "mode": "lookup",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=NONE\n"
+   }
+  },
+  {
+   "op": "fsa-enum",
+   "args": {
+    "dict": "/en/english.dict",
+    "mode": "lookup",
+    "info": "fsa.dict.separator=_\nfsa.dict.encoding=utf-8\nfsa.dict.encoder=SUFFIX\n"
+   }
+  },
+  {
+   "op": "fsa-enum",
+   "args": {
+    "dict": "/en/english.dict",
+    "mode": "lookup",
+    "info": "fsa.dict.separator=+\nfsa.dict.encoding=iso-8859-1\nfsa.dict.encoder=SUFFIX\n"
+   }
+  }
+ ]
+}

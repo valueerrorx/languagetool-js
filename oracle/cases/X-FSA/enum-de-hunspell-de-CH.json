@@ -1,0 +1,23 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "fsa-enum /de/hunspell/de_CH.dict: full FSA sequence enumeration (count, SHA-256, first/last 100) and DictionaryLookup iteration",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "fsa-enum",
+   "args": {
+    "dict": "/de/hunspell/de_CH.dict",
+    "mode": "fsa"
+   }
+  },
+  {
+   "op": "fsa-enum",
+   "args": {
+    "dict": "/de/hunspell/de_CH.dict",
+    "mode": "lookup"
+   }
+  }
+ ]
+}
