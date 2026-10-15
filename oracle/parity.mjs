@@ -86,7 +86,11 @@ async function runCase(id, name) {
   for (const r of reqs) {
     if (adapters.has(r.op)) continue;
     const f = path.join(ADAPTERS, `${r.op}.mjs`);
-    if (existsSync(f)) adapters.set(r.op, await import(f));
+    if (existsSync(f)) {
+      const mod = await import(f);
+      if (typeof mod.beginCase === 'function') mod.beginCase(); // each case file is its own JVM in the oracle
+      adapters.set(r.op, mod);
+    }
     else if (!javaOps.has(r.op)) adapters.set(r.op, { run: () => { throw Object.assign(new Error(`unknown op: ${r.op}`), { javaClass: 'java.lang.IllegalArgumentException' }); } });
     else adapters.set(r.op, { notPorted: true });
   }

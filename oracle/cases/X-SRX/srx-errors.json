@@ -1,0 +1,143 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "SRX loading errors: missing resource, directory, non-SRX resource, custom SRX path through SRXSentenceTokenizer and unknown language",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "srx-segment",
+   "args": {
+    "srx": "/nope.srx",
+    "code": "de_two",
+    "texts": [
+     "A. B."
+    ]
+   }
+  },
+  {
+   "op": "srx-segment",
+   "args": {
+    "srx": "",
+    "code": "de_two",
+    "texts": [
+     "A. B."
+    ]
+   }
+  },
+  {
+   "op": "srx-segment",
+   "args": {
+    "srx": "/org/languagetool/tokenizers",
+    "code": "de_two",
+    "texts": [
+     "A. B."
+    ]
+   }
+  },
+  {
+   "op": "srx-segment",
+   "args": {
+    "srx": "/META-INF/MANIFEST.MF",
+    "code": "de_two",
+    "texts": [
+     "A. B."
+    ]
+   }
+  },
+  {
+   "op": "srx-segment",
+   "args": {
+    "srx": "/org/languagetool/language/de/hunspell/de_DE.info",
+    "code": "de_two",
+    "texts": [
+     "A. B."
+    ]
+   }
+  },
+  {
+   "op": "sentence-tokenize",
+   "args": {
+    "tokenizer": "srx",
+    "srx": "/nope.srx",
+    "lang": "de-DE",
+    "modes": [
+     false
+    ],
+    "texts": [
+     "A. B."
+    ]
+   }
+  },
+  {
+   "op": "sentence-tokenize",
+   "args": {
+    "tokenizer": "srx",
+    "srx": "/org/languagetool/tokenizers/segment-simple.srx",
+    "lang": "de-DE",
+    "modes": [
+     false,
+     true
+    ],
+    "texts": [
+     "A. B.",
+     "Dr. Müller kommt. Er ist spät."
+    ]
+   }
+  },
+  {
+   "op": "sentence-tokenize",
+   "args": {
+    "tokenizer": "srx",
+    "srx": "/segment.srx",
+    "lang": "en-US",
+    "modes": [
+     false,
+     true
+    ],
+    "texts": [
+     "Mr. Smith came. He left.",
+     null
+    ]
+   }
+  },
+  {
+   "op": "sentence-tokenize",
+   "args": {
+    "lang": "zz",
+    "modes": [
+     false
+    ],
+    "texts": [
+     "A. B."
+    ]
+   }
+  },
+  {
+   "op": "sentence-tokenize",
+   "args": {
+    "lang": "pl-PL",
+    "modes": [
+     false,
+     true
+    ],
+    "texts": [
+     "A. B. C."
+    ]
+   }
+  },
+  {
+   "op": "sentence-tokenize",
+   "args": {
+    "lang": "de-DE",
+    "modes": [
+     false
+    ],
+    "texts": [
+     null,
+     "A. B."
+    ]
+   }
+  }
+ ]
+}

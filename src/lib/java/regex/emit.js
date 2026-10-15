@@ -217,6 +217,11 @@ export function pairSafe(root) {
   return !f.nullable && f.set.intersect(LOW_SURROGATES).isEmpty && behindUnitSafe(root, false);
 }
 
+// true when look-behinds see one unit per char for texts with surrogate pairs (anchored matches start at a fixed position)
+export function behindSafe(root) {
+  return behindUnitSafe(root, false);
+}
+
 // ---- source generation ----
 
 const hex4 = (c) => c.toString(16).toUpperCase().padStart(4, '0');

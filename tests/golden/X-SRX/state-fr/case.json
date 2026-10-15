@@ -1,0 +1,39 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "tokenizer state fr: initial singleLineBreaksMarksPara, order of mode switches on the cached tokenizer",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "sentence-tokenize",
+   "args": {
+    "lang": "fr",
+    "modes": [
+     true,
+     false,
+     true,
+     true,
+     false,
+     false
+    ],
+    "texts": [
+     "A.\nB.\n\nC.",
+     "Eins\nzwei\n\ndrei. Vier"
+    ]
+   }
+  },
+  {
+   "op": "sentence-tokenize",
+   "args": {
+    "lang": "fr",
+    "modes": [
+     false
+    ],
+    "texts": [
+     "A.\nB.\n\nC."
+    ]
+   }
+  }
+ ]
+}

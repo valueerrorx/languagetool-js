@@ -1,0 +1,30 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "SimpleSentenceTokenizerTest#testTokenize inputs",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "sentence-tokenize",
+   "args": {
+    "tokenizer": "simple",
+    "lang": "en",
+    "modes": [
+     false,
+     true
+    ],
+    "texts": [
+     "This is a sentence.",
+     "This is a sentence. ",
+     "This is a sentence. And another one.",
+     "This is a sentence. And another one. ",
+     "This is a sentence! And another one?",
+     "Mr. Smith is here. Dr. Who too.",
+     "Hello... world. Next",
+     "A\nB\n\nC"
+    ]
+   }
+  }
+ ]
+}

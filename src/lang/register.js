@@ -1,4 +1,5 @@
 // Registers the Java language classes of the in-scope modules (ClassBroker registry); import before using Languages.
+import '../core/text/tokenizers/SimpleSentenceTokenizer.js';
 import './de/language/German.js';
 import './de/language/GermanyGerman.js';
 import './de/language/AustrianGerman.js';

@@ -3,6 +3,7 @@ import { ArrayIndexOutOfBoundsException } from '../../../lib/java/errors.js';
 import { Pattern } from '../../../lib/java/regex/index.js';
 import { javaSplit, javaTrim } from '../../../lib/java/strings.js';
 import { JavaHashMap } from '../../../lib/java/collections/JavaHashMap.js';
+import { SRXSentenceTokenizer } from '../../../core/text/tokenizers/SRXSentenceTokenizer.js';
 import { LanguageWithModel } from '../../../core/LanguageWithModel.js';
 import { LanguageMaintainedState } from '../../../core/LanguageMaintainedState.js';
 import { Contributor } from '../../../core/language/Contributor.js';
@@ -28,7 +29,7 @@ export class English extends LanguageWithModel {
 
   // Java: English#createDefaultSentenceTokenizer()
   createDefaultSentenceTokenizer() {
-    return createComponent('org.languagetool.tokenizers.SRXSentenceTokenizer', this);
+    return new SRXSentenceTokenizer(this);
   }
 
   // Java: English#getName()

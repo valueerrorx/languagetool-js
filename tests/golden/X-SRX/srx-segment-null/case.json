@@ -1,0 +1,30 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "SrxTools.tokenize: null language code and null text",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "srx-segment",
+   "args": {
+    "srx": "/segment.srx",
+    "code": null,
+    "texts": [
+     "A. B."
+    ]
+   }
+  },
+  {
+   "op": "srx-segment",
+   "args": {
+    "srx": "/segment.srx",
+    "code": "de_two",
+    "texts": [
+     null,
+     "A. B."
+    ]
+   }
+  }
+ ]
+}

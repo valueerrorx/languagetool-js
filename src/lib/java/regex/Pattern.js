@@ -3,7 +3,7 @@ import { NullPointerException, IndexOutOfBoundsException, IllegalStateException,
 import {
   Parser, checkFlags, CASE_INSENSITIVE, MULTILINE, DOTALL, UNICODE_CASE, CANON_EQ, UNIX_LINES, LITERAL, UNICODE_CHARACTER_CLASS, COMMENTS,
 } from './parser.js';
-import { Emitter, interpReason, pairSafe } from './emit.js';
+import { Emitter, interpReason, pairSafe, behindSafe } from './emit.js';
 import { compileInterp } from './interp.js';
 
 export const NOANCHOR = 0;
@@ -202,6 +202,9 @@ function jsEngine(p, lazyGroups) {
   };
   // the native RegExp is exact for texts with surrogate pairs only when no match can start inside a pair
   const safePattern = pairSafe(p.root);
+  // look-behind start positions inside a pair are tried by Java for every kind of match
+  const behindOk = behindSafe(p.root);
+  const anchoredSafe = (text) => behindOk || !PAIR.test(text);
   let pairText = null;
   let pairRes = false;
   const safe = (text) => {
@@ -238,6 +241,7 @@ function jsEngine(p, lazyGroups) {
     kind: 'js',
     lazyGroups,
     exec(text, from, anchor, oldLast, search) {
+      if (!anchoredSafe(text) && (anchor === ENDANCHOR || !search)) return p.getInterp().exec(text, from, anchor, oldLast, search);
       if (anchor === ENDANCHOR) {
         if (reMatch === null) reMatch = mk(`(?:${source()})$`, `yu${f}`);
         if (reMatch === null) return p.engine.exec(text, from, anchor, oldLast, search);
@@ -265,6 +269,7 @@ function jsEngine(p, lazyGroups) {
     },
     // boolean matches() without group offsets
     test(text) {
+      if (!anchoredSafe(text)) return p.getInterp().exec(text, 0, ENDANCHOR, 0, false) !== null;
       if (gc === 0) { // same RegExp as exec(...ENDANCHOR): no group offsets requested
         if (reMatch === null) reMatch = mk(`(?:${source()})$`, 'yu');
         if (reMatch === null) return p.engine.exec(text, 0, ENDANCHOR, 0, false) !== null;

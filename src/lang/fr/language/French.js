@@ -5,6 +5,7 @@ import { Pattern } from '../../../lib/java/regex/index.js';
 import { javaSplit, javaTrim } from '../../../lib/java/strings.js';
 import { JavaHashMap } from '../../../lib/java/collections/JavaHashMap.js';
 import { Languages } from '../../../core/Languages.js';
+import { SRXSentenceTokenizer } from '../../../core/text/tokenizers/SRXSentenceTokenizer.js';
 import { LanguageWithModel } from '../../../core/LanguageWithModel.js';
 import { LanguageMaintainedState } from '../../../core/LanguageMaintainedState.js';
 import { DOMINIQUE_PELLE } from '../../../core/language/Contributors.js';
@@ -61,7 +62,7 @@ export class French extends LanguageWithModel {
 
   // Java: French#createDefaultSentenceTokenizer()
   createDefaultSentenceTokenizer() {
-    return createComponent('org.languagetool.tokenizers.SRXSentenceTokenizer', this);
+    return new SRXSentenceTokenizer(this);
   }
 
   // Java: French#getName()
