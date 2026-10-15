@@ -29,7 +29,7 @@ public class Harness {
         JsonNode req = MAPPER.readTree(line);
         if (req.has("id")) resp.put("id", MAPPER.treeToValue(req.get("id"), Object.class));
         String op = req.get("op").asText();
-        if (op.startsWith("probe-") || op.equals("unicode-dump") || op.equals("locale-dump") || op.startsWith("regex") || op.startsWith("i18n-") || op.equals("sax-dump") || op.equals("xml-validate") || op.startsWith("fsa-") || op.equals("annotated-text") || op.equals("string-tools") || op.equals("context-tools") || op.equals("analyzed-token") || op.startsWith("lang-") || op.startsWith("srx-") || op.equals("sentence-tokenize")) writer = PROBE_MAPPER;
+        if (op.startsWith("probe-") || op.equals("unicode-dump") || op.equals("locale-dump") || op.startsWith("regex") || op.startsWith("i18n-") || op.equals("sax-dump") || op.equals("xml-validate") || op.startsWith("fsa-") || op.equals("annotated-text") || op.equals("string-tools") || op.equals("context-tools") || op.equals("analyzed-token") || op.startsWith("lang-") || op.startsWith("srx-") || op.equals("sentence-tokenize") || op.equals("word-tokenize") || op.equals("wordtok-static")) writer = PROBE_MAPPER;
         JsonNode a = req.has("args") ? req.get("args") : MAPPER.createObjectNode();
         Object result = dispatch(op, a);
         resp.put("ok", true);
@@ -72,6 +72,8 @@ public class Harness {
       case "sentence-tokenize": return SrxOps.sentenceTokenize(a);
       case "srx-segment": return SrxOps.srxSegment(a);
       case "srx-rules": return SrxOps.srxRules(a);
+      case "word-tokenize": return WordTokOps.wordTokenize(a);
+      case "wordtok-static": return WordTokOps.wordtokStatic(a);
       case "lang-lookup": return LangOps.lookup(a);
       case "lang-describe": return LangOps.describeOp(a);
       case "lang-dynamic": return LangOps.dynamic(a);

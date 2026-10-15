@@ -1,0 +1,47 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "null text, unknown language",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "word-tokenize",
+   "args": {
+    "lang": "de-DE",
+    "texts": [
+     null,
+     ""
+    ]
+   }
+  },
+  {
+   "op": "word-tokenize",
+   "args": {
+    "lang": "en-US",
+    "texts": [
+     null
+    ],
+    "tokenizer": "core"
+   }
+  },
+  {
+   "op": "word-tokenize",
+   "args": {
+    "lang": "zz",
+    "texts": [
+     "a b"
+    ]
+   }
+  },
+  {
+   "op": "word-tokenize",
+   "args": {
+    "lang": "pl-PL",
+    "texts": [
+     "a b"
+    ]
+   }
+  }
+ ]
+}
