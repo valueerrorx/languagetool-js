@@ -1,0 +1,216 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "check2 de-DE: corpus paragraphs",
+ "normalize": [],
+ "compare": "check-pipe",
+ "ops": [
+  {
+   "op": "check2",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_OFF",
+      "regex": "off",
+      "message": "Default off {t}",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TEMP",
+      "regex": "temp",
+      "message": "Temp off {t}",
+      "defaultTempOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_CATOFF",
+      "regex": "cat",
+      "message": "In default-off category {t}",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_CLARITY",
+      "regex": "unclear",
+      "message": "Clarity {t}",
+      "toneTags": [
+       "clarity"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_GOAL",
+      "regex": "goal",
+      "message": "Goal {t}",
+      "toneTags": [
+       "persuasive"
+      ],
+      "goalSpecific": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_UNI",
+      "regex": ".*[\\p{So}\\p{Cs}äöüÄÖÜéèàç].*",
+      "message": "Unicode {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_SOFT",
+      "regex": "foobar|Foobar",
+      "message": "Soft {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "selection": {},
+    "cases": [
+     {
+      "text": "Das auf die Ähnlichkeit zwischen Reiz und Trauminhalt gegründete Argument läßt eine Verstärkung zu, wenn es gelingt, bei einem Schlafenden durch planmäßige Anbringung von Sinnesreizen dem Reize entsprechende Träume zu erzeugen. Solche Versuche hat nach _Macnish_ schon _Giron de Buzareingues_ angestellt. »Er ließ seine Knie unbedeckt und träumte, daß er in der Nacht auf einem Postwagen reise. Er bemerkt dabei, daß Reisende wohl wissen würden, wie in einer Kutsche die Knie des Nachts kalt würden. Ein anderes Mal ließ er den Kopf hinten unbedeckt und träumte, daß er einer religiösen Zeremonie in freier Luft beiwohne. Es war nämlich in dem Lande, in welchem er lebte, Sitte, den Kopf stets bedeckt zu tragen, ausgenommen bei solchen Veranlassungen wie die eben genannte.«"
+     },
+     {
+      "text": "3. Man läßt ihn Kölnerwasser riechen. -- Er ist in Kairo im Laden von Johann Maria Farina. Daran schließen sich tolle Abenteuer, die er nicht reproduzieren kann. bad foo very."
+     },
+     {
+      "text": "9. Man läßt wiederholt durch ein rotes Papier das Licht einer Kerze auf ihn fallen. -- Er träumt vom Wetter, von Hitze und befindet sich wieder in einem Seesturm, den er einmal auf dem Kanal _La Manche_ mitgemacht. bad foo very."
+     },
+     {
+      "text": "_Volkelt_ (p. 68) erzählt: Einem Komponisten träumte einmal, er halte Schule und wolle eben seinen Schülern etwas klar machen. Schon ist er damit fertig und wendet sich an einen der Knaben mit der Frage: »Hast du mich verstanden?« Dieser schreit wie ein Besessener: »_O ja!_« Ungehalten hierüber verweist er ihm das Schreien. Doch schon schreit die ganze Klasse: »_Orja!_« Hierauf: »_Eurjo!_« Und endlich: »_Feuerjo!_« Und nun erwacht er von wirklichem Feuerjogeschrei auf der Straße."
+     },
+     {
+      "text": "»Noch das dritte Beispiel! Ich sehe ein Küchenmädchen mit einigen Dutzend aufgetürmter Teller den Korridor entlang zum Speisezimmer schreiten. Die Porzellansäule in ihren Armen scheint mir in Gefahr, das Gleichgewicht zu verlieren. ›Nimm dich in acht,‹ warne ich, ›die ganze Ladung wird zur Erde fall bad foo very."
+     },
+     {
+      "text": "Bei den Griechen gab es Traumorakel, welche gewöhnlich Genesung suchende Kranke aufzusuchen pflegten. Der Kranke ging in den Tempel des Apollo oder des Äskulap, dort wurde er verschiedenen Zeremonien unterworfen, gebadet, gerieben, geräuchert, und so in Exaltation versetzt, legte man ihn im Tempel a bad foo very."
+     },
+     {
+      "text": "Es scheint an beglaubigten Beispielen für solche diagnostische Leistungen des Traumes auch aus neuerer Zeit nicht zu fehlen. So z. B. berichtet _Tissié_ nach _Artigues_ (Essai sur la valeur séméiologique des rêves) die Geschichte einer 43 jährigen Frau, die durch einige Jahre in scheinbar voller Gesundheit von Angstträumen heimgesucht wurde und bei der die ärztliche Untersuchung dann eine beginnende Herzaffektion aufwies, welcher sie alsbald erlag."
+     },
+     {
+      "text": "Der Zuwachs an Traumquellen aus diesen unzweifelhaft festgestellten Tatsachen ist übrigens nicht so bedeutsam, als man meinen möchte. Der Traum ist ja ein Phänomen, das sich bei Gesunden -- vielleicht bei allen, vielleicht allnächtlich -- einstellt, und das Organerkrankung offenbar nicht zu seinen u bad foo very."
+     },
+     {
+      "text": "Den Hergang der Traumbilderentstehung auf Grund der Leibreize nimmt _Krauss_ folgendermaßen an: Die geweckte Empfindung ruft nach irgend einem Assoziationsgesetz eine ihr verwandte Vorstellung wach und verbindet sich mit ihr zu einem organischen Gebilde, gegen welches sich aber das Bewußtsein anders bad foo very."
+     },
+     {
+      "text": "M. _Simon_ hat versucht, aus der Vergleichung einer Reihe von ähnlichen Träumen einige Regeln für den Einfluß der Organreize auf die Bestimmung ihrer Traumerfolge abzuleiten. Er sagt (p. 34): Wenn im Schlafe irgend ein Organapparat, der normaler Weise am Ausdruck eines Affektes beteiligt ist, durch irgend einen anderen Anlaß sich in dem Erregungszustand befindet, in den er sonst bei jenem Affekt versetzt wird, so wird der dabei entstehende Traum Vorstellungen enthalten, die dem Affekt angepaßt sind."
+     }
+    ]
+   }
+  }
+ ]
+}

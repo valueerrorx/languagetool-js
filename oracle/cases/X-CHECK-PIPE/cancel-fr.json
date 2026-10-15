@@ -1,0 +1,366 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "check2 fr: checkCancelledCallback cancelling after N direct calls",
+ "normalize": [],
+ "compare": "check-pipe",
+ "ops": [
+  {
+   "op": "check2",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_OFF",
+      "regex": "off",
+      "message": "Default off {t}",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TEMP",
+      "regex": "temp",
+      "message": "Temp off {t}",
+      "defaultTempOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_CATOFF",
+      "regex": "cat",
+      "message": "In default-off category {t}",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_CLARITY",
+      "regex": "unclear",
+      "message": "Clarity {t}",
+      "toneTags": [
+       "clarity"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_GOAL",
+      "regex": "goal",
+      "message": "Goal {t}",
+      "toneTags": [
+       "persuasive"
+      ],
+      "goalSpecific": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_UNI",
+      "regex": ".*[\\p{So}\\p{Cs}äöüÄÖÜéèàç].*",
+      "message": "Unicode {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_SOFT",
+      "regex": "foobar|Foobar",
+      "message": "Soft {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "selection": {},
+    "cases": [
+     {
+      "text": "First sentence bad. Second sentence foo. Third sentence worse. Fourth sentence very. Fifth sentence the end.",
+      "cancelAfter": 0,
+      "mode": "ALL"
+     },
+     {
+      "text": "First sentence bad. Second sentence foo. Third sentence worse. Fourth sentence very. Fifth sentence the end.",
+      "cancelAfter": 0,
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "bad",
+      "cancelAfter": 0,
+      "mode": "ALL"
+     },
+     {
+      "text": "bad",
+      "cancelAfter": 0,
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "bad.\n\nfoo.\n\nworse.",
+      "cancelAfter": 0,
+      "mode": "ALL"
+     },
+     {
+      "text": "bad.\n\nfoo.\n\nworse.",
+      "cancelAfter": 0,
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "First sentence bad. Second sentence foo. Third sentence worse. Fourth sentence very. Fifth sentence the end.",
+      "cancelAfter": 1,
+      "mode": "ALL"
+     },
+     {
+      "text": "First sentence bad. Second sentence foo. Third sentence worse. Fourth sentence very. Fifth sentence the end.",
+      "cancelAfter": 1,
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "bad",
+      "cancelAfter": 1,
+      "mode": "ALL"
+     },
+     {
+      "text": "bad",
+      "cancelAfter": 1,
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "bad.\n\nfoo.\n\nworse.",
+      "cancelAfter": 1,
+      "mode": "ALL"
+     },
+     {
+      "text": "bad.\n\nfoo.\n\nworse.",
+      "cancelAfter": 1,
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "First sentence bad. Second sentence foo. Third sentence worse. Fourth sentence very. Fifth sentence the end.",
+      "cancelAfter": 2,
+      "mode": "ALL"
+     },
+     {
+      "text": "First sentence bad. Second sentence foo. Third sentence worse. Fourth sentence very. Fifth sentence the end.",
+      "cancelAfter": 2,
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "bad",
+      "cancelAfter": 2,
+      "mode": "ALL"
+     },
+     {
+      "text": "bad",
+      "cancelAfter": 2,
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "bad.\n\nfoo.\n\nworse.",
+      "cancelAfter": 2,
+      "mode": "ALL"
+     },
+     {
+      "text": "bad.\n\nfoo.\n\nworse.",
+      "cancelAfter": 2,
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "First sentence bad. Second sentence foo. Third sentence worse. Fourth sentence very. Fifth sentence the end.",
+      "cancelAfter": 3,
+      "mode": "ALL"
+     },
+     {
+      "text": "First sentence bad. Second sentence foo. Third sentence worse. Fourth sentence very. Fifth sentence the end.",
+      "cancelAfter": 3,
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "bad",
+      "cancelAfter": 3,
+      "mode": "ALL"
+     },
+     {
+      "text": "bad",
+      "cancelAfter": 3,
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "bad.\n\nfoo.\n\nworse.",
+      "cancelAfter": 3,
+      "mode": "ALL"
+     },
+     {
+      "text": "bad.\n\nfoo.\n\nworse.",
+      "cancelAfter": 3,
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "First sentence bad. Second sentence foo. Third sentence worse. Fourth sentence very. Fifth sentence the end.",
+      "cancelAfter": 5,
+      "mode": "ALL"
+     },
+     {
+      "text": "First sentence bad. Second sentence foo. Third sentence worse. Fourth sentence very. Fifth sentence the end.",
+      "cancelAfter": 5,
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "bad",
+      "cancelAfter": 5,
+      "mode": "ALL"
+     },
+     {
+      "text": "bad",
+      "cancelAfter": 5,
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "bad.\n\nfoo.\n\nworse.",
+      "cancelAfter": 5,
+      "mode": "ALL"
+     },
+     {
+      "text": "bad.\n\nfoo.\n\nworse.",
+      "cancelAfter": 5,
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "First sentence bad. Second sentence foo. Third sentence worse. Fourth sentence very. Fifth sentence the end.",
+      "cancelAfter": 100,
+      "mode": "ALL"
+     },
+     {
+      "text": "First sentence bad. Second sentence foo. Third sentence worse. Fourth sentence very. Fifth sentence the end.",
+      "cancelAfter": 100,
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "bad",
+      "cancelAfter": 100,
+      "mode": "ALL"
+     },
+     {
+      "text": "bad",
+      "cancelAfter": 100,
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "bad.\n\nfoo.\n\nworse.",
+      "cancelAfter": 100,
+      "mode": "ALL"
+     },
+     {
+      "text": "bad.\n\nfoo.\n\nworse.",
+      "cancelAfter": 100,
+      "mode": "TEXTLEVEL_ONLY"
+     }
+    ]
+   }
+  }
+ ]
+}

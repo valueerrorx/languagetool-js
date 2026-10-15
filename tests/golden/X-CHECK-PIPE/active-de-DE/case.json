@@ -1,0 +1,4495 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "active-rules de-DE: selection variants",
+ "normalize": [],
+ "compare": "check-pipe",
+ "ops": [
+  {
+   "op": "active-rules",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_OFF",
+      "regex": "off",
+      "message": "Default off {t}",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TEMP",
+      "regex": "temp",
+      "message": "Temp off {t}",
+      "defaultTempOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_CATOFF",
+      "regex": "cat",
+      "message": "In default-off category {t}",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_CLARITY",
+      "regex": "unclear",
+      "message": "Clarity {t}",
+      "toneTags": [
+       "clarity"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_GOAL",
+      "regex": "goal",
+      "message": "Goal {t}",
+      "toneTags": [
+       "persuasive"
+      ],
+      "goalSpecific": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_UNI",
+      "regex": ".*[\\p{So}\\p{Cs}äöüÄÖÜéèàç].*",
+      "message": "Unicode {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_SOFT",
+      "regex": "foobar|Foobar",
+      "message": "Soft {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "selection": {},
+    "combos": [
+     {
+      "level": "DEFAULT",
+      "toneTags": []
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": []
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "active-rules",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_OFF",
+      "regex": "off",
+      "message": "Default off {t}",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TEMP",
+      "regex": "temp",
+      "message": "Temp off {t}",
+      "defaultTempOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_CATOFF",
+      "regex": "cat",
+      "message": "In default-off category {t}",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_CLARITY",
+      "regex": "unclear",
+      "message": "Clarity {t}",
+      "toneTags": [
+       "clarity"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_GOAL",
+      "regex": "goal",
+      "message": "Goal {t}",
+      "toneTags": [
+       "persuasive"
+      ],
+      "goalSpecific": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_UNI",
+      "regex": ".*[\\p{So}\\p{Cs}äöüÄÖÜéèàç].*",
+      "message": "Unicode {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_SOFT",
+      "regex": "foobar|Foobar",
+      "message": "Soft {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "selection": {
+     "disabledRules": [
+      "SYN_BAD"
+     ]
+    },
+    "combos": [
+     {
+      "level": "DEFAULT",
+      "toneTags": []
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": []
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "active-rules",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_OFF",
+      "regex": "off",
+      "message": "Default off {t}",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TEMP",
+      "regex": "temp",
+      "message": "Temp off {t}",
+      "defaultTempOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_CATOFF",
+      "regex": "cat",
+      "message": "In default-off category {t}",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_CLARITY",
+      "regex": "unclear",
+      "message": "Clarity {t}",
+      "toneTags": [
+       "clarity"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_GOAL",
+      "regex": "goal",
+      "message": "Goal {t}",
+      "toneTags": [
+       "persuasive"
+      ],
+      "goalSpecific": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_UNI",
+      "regex": ".*[\\p{So}\\p{Cs}äöüÄÖÜéèàç].*",
+      "message": "Unicode {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_SOFT",
+      "regex": "foobar|Foobar",
+      "message": "Soft {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "selection": {
+     "disabledRules": [
+      "SYN_SUB[1]"
+     ]
+    },
+    "combos": [
+     {
+      "level": "DEFAULT",
+      "toneTags": []
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": []
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "active-rules",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_OFF",
+      "regex": "off",
+      "message": "Default off {t}",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TEMP",
+      "regex": "temp",
+      "message": "Temp off {t}",
+      "defaultTempOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_CATOFF",
+      "regex": "cat",
+      "message": "In default-off category {t}",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_CLARITY",
+      "regex": "unclear",
+      "message": "Clarity {t}",
+      "toneTags": [
+       "clarity"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_GOAL",
+      "regex": "goal",
+      "message": "Goal {t}",
+      "toneTags": [
+       "persuasive"
+      ],
+      "goalSpecific": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_UNI",
+      "regex": ".*[\\p{So}\\p{Cs}äöüÄÖÜéèàç].*",
+      "message": "Unicode {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_SOFT",
+      "regex": "foobar|Foobar",
+      "message": "Soft {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "selection": {
+     "disabledRules": [
+      "SYN_SUB"
+     ]
+    },
+    "combos": [
+     {
+      "level": "DEFAULT",
+      "toneTags": []
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": []
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "active-rules",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_OFF",
+      "regex": "off",
+      "message": "Default off {t}",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TEMP",
+      "regex": "temp",
+      "message": "Temp off {t}",
+      "defaultTempOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_CATOFF",
+      "regex": "cat",
+      "message": "In default-off category {t}",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_CLARITY",
+      "regex": "unclear",
+      "message": "Clarity {t}",
+      "toneTags": [
+       "clarity"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_GOAL",
+      "regex": "goal",
+      "message": "Goal {t}",
+      "toneTags": [
+       "persuasive"
+      ],
+      "goalSpecific": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_UNI",
+      "regex": ".*[\\p{So}\\p{Cs}äöüÄÖÜéèàç].*",
+      "message": "Unicode {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_SOFT",
+      "regex": "foobar|Foobar",
+      "message": "Soft {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "selection": {
+     "enabledRules": [
+      "SYN_OFF",
+      "SYN_TEMP"
+     ]
+    },
+    "combos": [
+     {
+      "level": "DEFAULT",
+      "toneTags": []
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": []
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "active-rules",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_OFF",
+      "regex": "off",
+      "message": "Default off {t}",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TEMP",
+      "regex": "temp",
+      "message": "Temp off {t}",
+      "defaultTempOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_CATOFF",
+      "regex": "cat",
+      "message": "In default-off category {t}",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_CLARITY",
+      "regex": "unclear",
+      "message": "Clarity {t}",
+      "toneTags": [
+       "clarity"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_GOAL",
+      "regex": "goal",
+      "message": "Goal {t}",
+      "toneTags": [
+       "persuasive"
+      ],
+      "goalSpecific": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_UNI",
+      "regex": ".*[\\p{So}\\p{Cs}äöüÄÖÜéèàç].*",
+      "message": "Unicode {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_SOFT",
+      "regex": "foobar|Foobar",
+      "message": "Soft {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "selection": {
+     "enabledRules": [
+      "SYN_OFF[]"
+     ]
+    },
+    "combos": [
+     {
+      "level": "DEFAULT",
+      "toneTags": []
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": []
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "active-rules",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_OFF",
+      "regex": "off",
+      "message": "Default off {t}",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TEMP",
+      "regex": "temp",
+      "message": "Temp off {t}",
+      "defaultTempOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_CATOFF",
+      "regex": "cat",
+      "message": "In default-off category {t}",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_CLARITY",
+      "regex": "unclear",
+      "message": "Clarity {t}",
+      "toneTags": [
+       "clarity"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_GOAL",
+      "regex": "goal",
+      "message": "Goal {t}",
+      "toneTags": [
+       "persuasive"
+      ],
+      "goalSpecific": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_UNI",
+      "regex": ".*[\\p{So}\\p{Cs}äöüÄÖÜéèàç].*",
+      "message": "Unicode {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_SOFT",
+      "regex": "foobar|Foobar",
+      "message": "Soft {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "selection": {
+     "enabledCategories": [
+      "SYN_CAT_C"
+     ]
+    },
+    "combos": [
+     {
+      "level": "DEFAULT",
+      "toneTags": []
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": []
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "active-rules",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_OFF",
+      "regex": "off",
+      "message": "Default off {t}",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TEMP",
+      "regex": "temp",
+      "message": "Temp off {t}",
+      "defaultTempOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_CATOFF",
+      "regex": "cat",
+      "message": "In default-off category {t}",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_CLARITY",
+      "regex": "unclear",
+      "message": "Clarity {t}",
+      "toneTags": [
+       "clarity"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_GOAL",
+      "regex": "goal",
+      "message": "Goal {t}",
+      "toneTags": [
+       "persuasive"
+      ],
+      "goalSpecific": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_UNI",
+      "regex": ".*[\\p{So}\\p{Cs}äöüÄÖÜéèàç].*",
+      "message": "Unicode {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_SOFT",
+      "regex": "foobar|Foobar",
+      "message": "Soft {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "selection": {
+     "disabledCategories": [
+      "SYN_CAT_A"
+     ]
+    },
+    "combos": [
+     {
+      "level": "DEFAULT",
+      "toneTags": []
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": []
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "active-rules",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_OFF",
+      "regex": "off",
+      "message": "Default off {t}",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TEMP",
+      "regex": "temp",
+      "message": "Temp off {t}",
+      "defaultTempOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_CATOFF",
+      "regex": "cat",
+      "message": "In default-off category {t}",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_CLARITY",
+      "regex": "unclear",
+      "message": "Clarity {t}",
+      "toneTags": [
+       "clarity"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_GOAL",
+      "regex": "goal",
+      "message": "Goal {t}",
+      "toneTags": [
+       "persuasive"
+      ],
+      "goalSpecific": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_UNI",
+      "regex": ".*[\\p{So}\\p{Cs}äöüÄÖÜéèàç].*",
+      "message": "Unicode {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_SOFT",
+      "regex": "foobar|Foobar",
+      "message": "Soft {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "selection": {
+     "disabledCategories": [
+      "SYN_CAT_A"
+     ],
+     "enabledRules": [
+      "SYN_BAD"
+     ]
+    },
+    "combos": [
+     {
+      "level": "DEFAULT",
+      "toneTags": []
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": []
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "active-rules",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_OFF",
+      "regex": "off",
+      "message": "Default off {t}",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TEMP",
+      "regex": "temp",
+      "message": "Temp off {t}",
+      "defaultTempOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_CATOFF",
+      "regex": "cat",
+      "message": "In default-off category {t}",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_CLARITY",
+      "regex": "unclear",
+      "message": "Clarity {t}",
+      "toneTags": [
+       "clarity"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_GOAL",
+      "regex": "goal",
+      "message": "Goal {t}",
+      "toneTags": [
+       "persuasive"
+      ],
+      "goalSpecific": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_UNI",
+      "regex": ".*[\\p{So}\\p{Cs}äöüÄÖÜéèàç].*",
+      "message": "Unicode {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_SOFT",
+      "regex": "foobar|Foobar",
+      "message": "Soft {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "selection": {
+     "enabledRules": [
+      "SYN_BAD"
+     ],
+     "enabledOnly": true
+    },
+    "combos": [
+     {
+      "level": "DEFAULT",
+      "toneTags": []
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": []
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "active-rules",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_OFF",
+      "regex": "off",
+      "message": "Default off {t}",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TEMP",
+      "regex": "temp",
+      "message": "Temp off {t}",
+      "defaultTempOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_CATOFF",
+      "regex": "cat",
+      "message": "In default-off category {t}",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_CLARITY",
+      "regex": "unclear",
+      "message": "Clarity {t}",
+      "toneTags": [
+       "clarity"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_GOAL",
+      "regex": "goal",
+      "message": "Goal {t}",
+      "toneTags": [
+       "persuasive"
+      ],
+      "goalSpecific": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_UNI",
+      "regex": ".*[\\p{So}\\p{Cs}äöüÄÖÜéèàç].*",
+      "message": "Unicode {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_SOFT",
+      "regex": "foobar|Foobar",
+      "message": "Soft {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "selection": {
+     "enabledCategories": [
+      "SYN_CAT_B"
+     ],
+     "enabledOnly": true
+    },
+    "combos": [
+     {
+      "level": "DEFAULT",
+      "toneTags": []
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": []
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "active-rules",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_OFF",
+      "regex": "off",
+      "message": "Default off {t}",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TEMP",
+      "regex": "temp",
+      "message": "Temp off {t}",
+      "defaultTempOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_CATOFF",
+      "regex": "cat",
+      "message": "In default-off category {t}",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_CLARITY",
+      "regex": "unclear",
+      "message": "Clarity {t}",
+      "toneTags": [
+       "clarity"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_GOAL",
+      "regex": "goal",
+      "message": "Goal {t}",
+      "toneTags": [
+       "persuasive"
+      ],
+      "goalSpecific": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_UNI",
+      "regex": ".*[\\p{So}\\p{Cs}äöüÄÖÜéèàç].*",
+      "message": "Unicode {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_SOFT",
+      "regex": "foobar|Foobar",
+      "message": "Soft {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "selection": {
+     "enabledRules": [
+      "SYN_BAD",
+      "SYN_CATOFF"
+     ],
+     "enabledCategories": [
+      "SYN_CAT_B"
+     ],
+     "enabledOnly": true
+    },
+    "combos": [
+     {
+      "level": "DEFAULT",
+      "toneTags": []
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": []
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "active-rules",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_OFF",
+      "regex": "off",
+      "message": "Default off {t}",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TEMP",
+      "regex": "temp",
+      "message": "Temp off {t}",
+      "defaultTempOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_CATOFF",
+      "regex": "cat",
+      "message": "In default-off category {t}",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_CLARITY",
+      "regex": "unclear",
+      "message": "Clarity {t}",
+      "toneTags": [
+       "clarity"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_GOAL",
+      "regex": "goal",
+      "message": "Goal {t}",
+      "toneTags": [
+       "persuasive"
+      ],
+      "goalSpecific": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_UNI",
+      "regex": ".*[\\p{So}\\p{Cs}äöüÄÖÜéèàç].*",
+      "message": "Unicode {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_SOFT",
+      "regex": "foobar|Foobar",
+      "message": "Soft {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "selection": {
+     "enableTempOff": true
+    },
+    "combos": [
+     {
+      "level": "DEFAULT",
+      "toneTags": []
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": []
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "active-rules",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_OFF",
+      "regex": "off",
+      "message": "Default off {t}",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TEMP",
+      "regex": "temp",
+      "message": "Temp off {t}",
+      "defaultTempOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_CATOFF",
+      "regex": "cat",
+      "message": "In default-off category {t}",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_CLARITY",
+      "regex": "unclear",
+      "message": "Clarity {t}",
+      "toneTags": [
+       "clarity"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_GOAL",
+      "regex": "goal",
+      "message": "Goal {t}",
+      "toneTags": [
+       "persuasive"
+      ],
+      "goalSpecific": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_UNI",
+      "regex": ".*[\\p{So}\\p{Cs}äöüÄÖÜéèàç].*",
+      "message": "Unicode {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_SOFT",
+      "regex": "foobar|Foobar",
+      "message": "Soft {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "selection": {
+     "disabledRules": [
+      "SYN_BAD"
+     ],
+     "enabledRules": [
+      "SYN_BAD"
+     ]
+    },
+    "combos": [
+     {
+      "level": "DEFAULT",
+      "toneTags": []
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": []
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "active-rules",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_OFF",
+      "regex": "off",
+      "message": "Default off {t}",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TEMP",
+      "regex": "temp",
+      "message": "Temp off {t}",
+      "defaultTempOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_CATOFF",
+      "regex": "cat",
+      "message": "In default-off category {t}",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_CLARITY",
+      "regex": "unclear",
+      "message": "Clarity {t}",
+      "toneTags": [
+       "clarity"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_GOAL",
+      "regex": "goal",
+      "message": "Goal {t}",
+      "toneTags": [
+       "persuasive"
+      ],
+      "goalSpecific": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_UNI",
+      "regex": ".*[\\p{So}\\p{Cs}äöüÄÖÜéèàç].*",
+      "message": "Unicode {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_SOFT",
+      "regex": "foobar|Foobar",
+      "message": "Soft {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "selection": {
+     "disabledCategories": [
+      "SYN_CAT_B"
+     ],
+     "enabledCategories": [
+      "SYN_CAT_B"
+     ]
+    },
+    "combos": [
+     {
+      "level": "DEFAULT",
+      "toneTags": []
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": []
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "active-rules",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_OFF",
+      "regex": "off",
+      "message": "Default off {t}",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TEMP",
+      "regex": "temp",
+      "message": "Temp off {t}",
+      "defaultTempOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_CATOFF",
+      "regex": "cat",
+      "message": "In default-off category {t}",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_CLARITY",
+      "regex": "unclear",
+      "message": "Clarity {t}",
+      "toneTags": [
+       "clarity"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_GOAL",
+      "regex": "goal",
+      "message": "Goal {t}",
+      "toneTags": [
+       "persuasive"
+      ],
+      "goalSpecific": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_UNI",
+      "regex": ".*[\\p{So}\\p{Cs}äöüÄÖÜéèàç].*",
+      "message": "Unicode {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_SOFT",
+      "regex": "foobar|Foobar",
+      "message": "Soft {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "selection": {
+     "enabledOnly": true
+    },
+    "combos": [
+     {
+      "level": "DEFAULT",
+      "toneTags": []
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": []
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "active-rules",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_OFF",
+      "regex": "off",
+      "message": "Default off {t}",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TEMP",
+      "regex": "temp",
+      "message": "Temp off {t}",
+      "defaultTempOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_CATOFF",
+      "regex": "cat",
+      "message": "In default-off category {t}",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_CLARITY",
+      "regex": "unclear",
+      "message": "Clarity {t}",
+      "toneTags": [
+       "clarity"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_GOAL",
+      "regex": "goal",
+      "message": "Goal {t}",
+      "toneTags": [
+       "persuasive"
+      ],
+      "goalSpecific": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_UNI",
+      "regex": ".*[\\p{So}\\p{Cs}äöüÄÖÜéèàç].*",
+      "message": "Unicode {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_SOFT",
+      "regex": "foobar|Foobar",
+      "message": "Soft {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "selection": {
+     "disabledRules": [
+      "NO_SUCH_RULE"
+     ],
+     "enabledRules": [
+      "NO_SUCH"
+     ],
+     "disabledCategories": [
+      "NO_CAT"
+     ]
+    },
+    "combos": [
+     {
+      "level": "DEFAULT",
+      "toneTags": []
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": []
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "clarity",
+       "formal"
+      ]
+     },
+     {
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

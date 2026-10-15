@@ -1,0 +1,216 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "check2 en-US: corpus paragraphs",
+ "normalize": [],
+ "compare": "check-pipe",
+ "ops": [
+  {
+   "op": "check2",
+   "args": {
+    "lang": "en-US",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_OFF",
+      "regex": "off",
+      "message": "Default off {t}",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TEMP",
+      "regex": "temp",
+      "message": "Temp off {t}",
+      "defaultTempOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_CATOFF",
+      "regex": "cat",
+      "message": "In default-off category {t}",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_CLARITY",
+      "regex": "unclear",
+      "message": "Clarity {t}",
+      "toneTags": [
+       "clarity"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_GOAL",
+      "regex": "goal",
+      "message": "Goal {t}",
+      "toneTags": [
+       "persuasive"
+      ],
+      "goalSpecific": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_UNI",
+      "regex": ".*[\\p{So}\\p{Cs}äöüÄÖÜéèàç].*",
+      "message": "Unicode {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_SOFT",
+      "regex": "foobar|Foobar",
+      "message": "Soft {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "selection": {},
+    "cases": [
+     {
+      "text": "Nothing but concern for Elizabeth could enable Bingley to keep his countenance. His sister was less delicate, and directed her eye towards Mr. Darcy with a very expressive smile. Elizabeth, for the sake of saying something that might turn her mother’s thoughts, now asked her if Charlotte Lucas had been at Longbourn since _her_ coming away."
+     },
+     {
+      "text": "“No, she would go home. I fancy she was wanted about the mince-pies. For my part, Mr. Bingley, _I_ always keep servants that can do their own work; _my_ daughters are brought up differently. But everybody is to judge for themselves, and the Lucases are a very good sort of girls, I assure you. It is  bad foo very."
+     },
+     {
+      "text": "“And so ended his affection,” said Elizabeth, impatiently. “There has been many a one, I fancy, overcome in the same way. I wonder who first discovered the efficacy of poetry in driving away love!” bad foo very."
+     },
+     {
+      "text": "Lydia was a stout, well-grown girl of fifteen, with a fine complexion and good-humoured countenance; a favourite with her mother, whose affection had brought her into public at an early age. She had high animal spirits, and a sort of natural self-consequence, which the attentions of the officers, to whom her uncle’s good dinners and her own easy manners recommended her, had increased into assurance. She was very equal, therefore, to address Mr. Bingley on the subject of the ball, and abruptly reminded him of his promise; adding, that it would be the most shameful thing in the world if he did not keep it. His answer to this sudden attack was delightful to her mother’s ear."
+     },
+     {
+      "text": "Lydia declared herself satisfied. “Oh yes--it would be much better to wait till Jane was well; and by that time, most likely, Captain Carter would be at Meryton again. And when you have given _your_ ball,” she added, “I shall insist on their giving one also. I shall tell Colonel Forster it will be q bad foo very."
+     },
+     {
+      "text": "“The indirect boast; for you are really proud of your defects in writing, because you consider them as proceeding from a rapidity of thought and carelessness of execution, which, if not estimable, you think at least highly interesting. The power of doing anything with quickness is always much prized bad foo very."
+     },
+     {
+      "text": "“You appear to me, Mr. Darcy, to allow nothing for the influence of friendship and affection. A regard for the requester would often make one readily yield to a request, without waiting for arguments to reason one into it. I am not particularly speaking of such a case as you have supposed about Mr. Bingley. We may as well wait, perhaps, till the circumstance occurs, before we discuss the discretion of his behaviour thereupon. But in general and ordinary cases, between friend and friend, where one of them is desired by the other to change a resolution of no very great moment, should you think ill of that person for complying with the desire, without waiting to be argued into it?”"
+     },
+     {
+      "text": "“By all means,” cried Bingley; “let us hear all the particulars, not forgetting their comparative height and size, for that will have more weight in the argument, Miss Bennet, than you may be aware of. I assure you that if Darcy were not such a great tall fellow, in comparison with myself, I should  bad foo very."
+     },
+     {
+      "text": "“Perhaps I do. Arguments are too much like disputes. If you and Miss Bennet will defer yours till I am out of the room, I shall be very thankful; and then you may say whatever you like of me.” bad foo very."
+     },
+     {
+      "text": "Mrs. Hurst sang with her sister; and while they were thus employed, Elizabeth could not help observing, as she turned over some music-books that lay on the instrument, how frequently Mr. Darcy’s eyes were fixed on her. She hardly knew how to suppose that she could be an object of admiration to so great a man, and yet that he should look at her because he disliked her was still more strange. She could only imagine, however, at last, that she drew his notice because there was something about her more wrong and reprehensible, according to his ideas of right, than in any other person present. The supposition did not pain her. She liked him too little to care for his approbation."
+     }
+    ]
+   }
+  }
+ ]
+}

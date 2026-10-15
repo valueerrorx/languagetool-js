@@ -1,0 +1,216 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "check2 en-US: corpus paragraphs",
+ "normalize": [],
+ "compare": "check-pipe",
+ "ops": [
+  {
+   "op": "check2",
+   "args": {
+    "lang": "en-US",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_OFF",
+      "regex": "off",
+      "message": "Default off {t}",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TEMP",
+      "regex": "temp",
+      "message": "Temp off {t}",
+      "defaultTempOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_CATOFF",
+      "regex": "cat",
+      "message": "In default-off category {t}",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_CLARITY",
+      "regex": "unclear",
+      "message": "Clarity {t}",
+      "toneTags": [
+       "clarity"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_GOAL",
+      "regex": "goal",
+      "message": "Goal {t}",
+      "toneTags": [
+       "persuasive"
+      ],
+      "goalSpecific": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_UNI",
+      "regex": ".*[\\p{So}\\p{Cs}äöüÄÖÜéèàç].*",
+      "message": "Unicode {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_SOFT",
+      "regex": "foobar|Foobar",
+      "message": "Soft {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "selection": {},
+    "cases": [
+     {
+      "text": "“Pride,” observed Mary, who piqued herself upon the solidity of her reflections, “is a very common failing, I believe. By all that I have ever read, I am convinced that it is very common indeed; that human nature is particularly prone to it, and that there are very few of us who do not cherish a feeling of self-complacency on the score of some quality or other, real or imaginary. Vanity and pride are different things, though the words are often used synonymously. A person may be proud without being vain. Pride relates more to our opinion of ourselves; vanity to what we would have others think of us.”"
+     },
+     {
+      "text": "“It may, perhaps, be pleasant,” replied Charlotte, “to be able to impose on the public in such a case; but it is sometimes a disadvantage to be so very guarded. If a woman conceals her affection with the same skill from the object of it, she may lose the opportunity of fixing him; and it will then b bad foo very."
+     },
+     {
+      "text": "“Perhaps he must, if he sees enough of her. But though Bingley and Jane meet tolerably often, it is never for many hours together; and as they always see each other in large mixed parties, it is impossible that every moment should be employed in conversing together. Jane should therefore make the mo bad foo very."
+     },
+     {
+      "text": "“Well,” said Charlotte, “I wish Jane success with all my heart; and if she were married to him to-morrow, I should think she had as good a chance of happiness as if she were to be studying his character for a twelvemonth. Happiness in marriage is entirely a matter of chance. If the dispositions of the parties are ever so well known to each other, or ever so similar beforehand, it does not advance their felicity in the least. They always continue to grow sufficiently unlike afterwards to have their share of vexation; and it is better to know as little as possible of the defects of the person with whom you are to pass your life.”"
+     },
+     {
+      "text": "“You are a very strange creature by way of a friend!--always wanting me to play and sing before anybody and everybody! If my vanity had taken a musical turn, you would have been invaluable; but as it is, I would really rather not sit down before those who must be in the habit of hearing the very bes bad foo very."
+     },
+     {
+      "text": "“What a charming amusement for young people this is, Mr. Darcy! There is nothing like dancing, after all. I consider it as one of the first refinements of polished societies.” bad foo very."
+     },
+     {
+      "text": "“My dear Miss Eliza, why are not you dancing? Mr. Darcy, you must allow me to present this young lady to you as a very desirable partner. You cannot refuse to dance, I am sure, when so much beauty is before you.” And, taking her hand, he would have given it to Mr. Darcy, who, though extremely surprised, was not unwilling to receive it, when she instantly drew back, and said with some discomposure to Sir William,--"
+     },
+     {
+      "text": "“You are considering how insupportable it would be to pass many evenings in this manner,--in such society; and, indeed, I am quite of your opinion. I was never more annoyed! The insipidity, and yet the noise--the nothingness, and yet the self-importance, of all these people! What would I give to hea bad foo very."
+     },
+     {
+      "text": "Mr. Bennet’s property consisted almost entirely in an estate of two thousand a year, which, unfortunately for his daughters, was entailed, in default of heirs male, on a distant relation; and their mother’s fortune, though ample for her situation in life, could but ill supply the deficiency of his.  bad foo very."
+     },
+     {
+      "text": "The village of Longbourn was only one mile from Meryton; a most convenient distance for the young ladies, who were usually tempted thither three or four times a week, to pay their duty to their aunt, and to a milliner’s shop just over the way. The two youngest of the family, Catherine and Lydia, were particularly frequent in these attentions: their minds were more vacant than their sisters’, and when nothing better offered, a walk to Meryton was necessary to amuse their morning hours and furnish conversation for the evening; and, however bare of news the country in general might be, they always contrived to learn some from their aunt. At present, indeed, they were well supplied both with news and happiness by the recent arrival of a militia regiment in the neighbourhood; it was to remain the whole winter, and Meryton was the head-quarters."
+     }
+    ]
+   }
+  }
+ ]
+}

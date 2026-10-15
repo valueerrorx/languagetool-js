@@ -1,0 +1,201 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "check2 de-DE: multi-paragraph corpus text",
+ "normalize": [],
+ "compare": "check-pipe",
+ "ops": [
+  {
+   "op": "check2",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_OFF",
+      "regex": "off",
+      "message": "Default off {t}",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TEMP",
+      "regex": "temp",
+      "message": "Temp off {t}",
+      "defaultTempOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_CATOFF",
+      "regex": "cat",
+      "message": "In default-off category {t}",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_CLARITY",
+      "regex": "unclear",
+      "message": "Clarity {t}",
+      "toneTags": [
+       "clarity"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_GOAL",
+      "regex": "goal",
+      "message": "Goal {t}",
+      "toneTags": [
+       "persuasive"
+      ],
+      "goalSpecific": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_UNI",
+      "regex": ".*[\\p{So}\\p{Cs}äöüÄÖÜéèàç].*",
+      "message": "Unicode {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_SOFT",
+      "regex": "foobar|Foobar",
+      "message": "Soft {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "selection": {},
+    "cases": [
+     {
+      "text": "Darauf gieng Zarathustra wieder zwei Stunden und vertraute dem Wege und dem Lichte der Sterne: denn er war ein gewohnter Nachtgänger und liebte es, allem Schlafenden in’s Gesicht zu sehn. Als aber der Morgen graute, fand sich Zarathustra in einem tiefen Walde, und kein Weg zeigte sich ihm mehr. Da legte er den Todten in einen hohlen Baum sich zu Häupten—denn er wollte ihn vor den Wölfen schützen—und sich selber auf den Boden und das Moos. Und alsbald schlief er ein, müden Leibes, aber mit einer unbewegten Seele.\n\nSiehe die Guten und Gerechten! Wen hassen sie am meisten? Den, der zerbricht ihre Tafeln der Werthe, den Brecher, den Verbrecher:—das aber ist der Schaffende.\n\nGefährten sucht der Schaffende, und solche, die ihre Sicheln zu wetzen wissen. Vernichter wird man sie heissen und Verächter des Guten und Bösen. Aber die Erntenden sind es und die Feiernden.\nbad foo"
+     },
+     {
+      "text": "Eines Tages war Zarathustra unter einem Feigenbaume eingeschlafen, da es heiss war, und hatte seine Arme über das Gesicht gelegt. Da kam eine Natter und biss ihn in den Hals, so dass Zarathustra vor Schmerz aufschrie. Als er den Arm vom Gesicht genommen hatte, sah er die Schlange an: da erkannte sie die Augen Zarathustra’s, wand sich ungeschickt und wollte davon. „Nicht doch, sprach Zarathustra; noch nahmst du meinen Dank nicht an! Du wecktest mich zur Zeit, mein Weg ist noch lang.“ „Dein Weg ist noch kurz, sagte die Natter traurig; mein Gift tödtet.“ Zarathustra lächelte. „Wann starb wohl je ein Drache am Gift einer Schlange?—sagte er. Aber nimm dein Gift zurück! Du bist nicht reich genug, es mir zu schenken.“ Da fiel ihm die Natter von Neuem um den Hals und leckte ihm seine Wunde.\n\nGlaubt es mir, meine Brüder! Er starb zu früh; er selber hätte seine Lehre widerrufen, wäre er bis zu meinem Alter gekommen! Edel genug war er zum Widerrufen!\n\nNur als Abbild der höchsten Tugend kam Gold zum höchsten Werthe. Goldgleich leuchtet der Blick dem Schenkenden. Goldes-Glanz schliesst Friede zwischen Mond und Sonne.\nbad foo"
+     },
+     {
+      "text": "»Noch das dritte Beispiel! Ich sehe ein Küchenmädchen mit einigen Dutzend aufgetürmter Teller den Korridor entlang zum Speisezimmer schreiten. Die Porzellansäule in ihren Armen scheint mir in Gefahr, das Gleichgewicht zu verlieren. ›Nimm dich in acht,‹ warne ich, ›die ganze Ladung wird zur Erde fallen.‹ Natürlich bleibt der obligate Widerspruch nicht aus: man sei dergleichen schon gewohnt usw., währenddessen ich noch immer mit Blicken der Besorgnis die Wandelnde begleite. Richtig, an der Türschwelle erfolgt ein Straucheln -- das zerbrechliche Geschirr fällt und rasselt und prasselt in hundert Scherben auf dem Fußboden umher. Aber -- das endlos sich fortsetzende Getön ist doch, wie ich bald merke, kein eigentliches Rasseln, sondern ein richtiges Klingeln; -- und mit diesem Klingeln hat, wie nunmehr der Erwachende erkennt, nur der Wecker seine Schuldigkeit getan.«\n\nBei den Griechen gab es Traumorakel, welche gewöhnlich Genesung suchende Kranke aufzusuchen pflegten. Der Kranke ging in den Tempel des Apollo oder des Äskulap, dort wurde er verschiedenen Zeremonien unterworfen, gebadet, gerieben, geräuchert, und so in Exaltation versetzt, legte man ihn im Tempel auf das Fell eines geopferten Widders. Er schlief ein und träumte von Heilmitteln, die ihm in natürlicher Gestalt oder in Symbolen und Bildern gezeigt wurden, welche dann die Priester deuteten.\n\nEs scheint an beglaubigten Beispielen für solche diagnostische Leistungen des Traumes auch aus neuerer Zeit nicht zu fehlen. So z. B. berichtet _Tissié_ nach _Artigues_ (Essai sur la valeur séméiologique des rêves) die Geschichte einer 43 jährigen Frau, die durch einige Jahre in scheinbar voller Gesundheit von Angstträumen heimgesucht wurde und bei der die ärztliche Untersuchung dann eine beginnende Herzaffektion aufwies, welcher sie alsbald erlag.\nbad foo"
+     },
+     {
+      "text": "Vetter Dagobert war am Bahnhof, als die Damen ihre Rückreise nach Hohen-Cremmen antraten. Es waren glückliche Tage gewesen, vor allem auch darin, daß man nicht unter unbequemer und beinahe unstandesgemäßer Verwandtschaft gelitten hatte. »Für Tante Therese«, so hatte Effi gleich nach der Ankunft gesagt, »müssen wir diesmal inkognito bleiben. Es geht nicht, daß sie hier ins Hotel kommt. Entweder Hotel du Nord oder Tante Therese; beides zusammen paßt nicht.« Die Mama hatte sich schließlich einverstanden damit erklärt, ja, dem Liebling zur Besiegelung des Einverständnisses einen Kuß auf die Stirn gegeben.\n\nGegen Mittag trafen beide Damen an ihrer havelländischen Bahnstation ein, mitten im Luch, und fuhren in einer halben Stunde nach Hohen-Cremmen hinüber. Briest war sehr froh, Frau und Tochter wieder zu Hause zu haben, und stellte Fragen über Fragen, deren Beantwortung er meist nicht abwartete. Statt dessen erging er sich in Mitteilung dessen, was er inzwischen erlebt. »Ihr habt mir da vorhin von der Nationalgalerie gesprochen und von der 'Insel der Seligen' - nun, wir haben hier, während ihr fort wart, auch so was gehabt: unser Inspektor Pink und die Gärtnersfrau. Natürlich habe ich Pink entlassen müssen, übrigens ungern. Es ist sehr fatal, daß solche Geschichten fast immer in die Erntezeit fallen. Und Pink war sonst ein ungewöhnlich tüchtiger Mann, hier leider am unrechten Fleck. Aber lassen wir das; Wilke wird schon unruhig.«\n\n»Heute hat Goschenhofer das letzte geschickt«, sagte Frau von Briest, als sie wie gewöhnlich in Front des Seitenflügels mit Effi am Arbeitstisch saß, auf dem die Leinen- und Wäschevorräte beständig wuchsen, während der Zeitungen, die bloß Platz wegnahmen, immer weniger wurden. »Ich hoffe, du hast nun alles, Effi. Wenn du aber noch kleine Wünsche hegst, so mußt du sie jetzt aussprechen, womöglich in dieser Stunde noch. Papa hat den Raps vorteilhaft verkauft und ist ungewöhnlich guter Laune.«\nbad foo"
+     },
+     {
+      "text": "»Auch einen Chinesen. Wie gut du raten kannst. Es ist möglich, daß wir wirklich noch einen haben, aber jedenfalls haben wir einen gehabt; jetzt ist er tot und auf einem kleinen eingegitterten Stück Erde begraben, dicht neben dem Kirchhof. Wenn du nicht furchtsam bist, will ich dir bei Gelegenheit mal sein Grab zeigen; es liegt zwischen den Dünen, bloß Strandhafer drumrum und dann und wann ein paar Immortellen, und immer hört man das Meer. Es ist sehr schön und sehr schauerlich.«\n\n»Was ist mit mir geschehen?« dachte er. Es war kein Traum. Sein Zimmer, ein richtiges, nur etwas zu kleines Menschenzimmer, lag ruhig zwischen den vier wohlbekannten Wänden. Über dem Tisch, auf dem eine auseinandergepackte Musterkollektion von Tuchwaren ausgebreitet war -- Samsa war Reisender --, hing das Bild, das er vor kurzem aus einer illustrierten Zeitschrift ausgeschnitten und in einem hübschen, vergoldeten Rahmen untergebracht hatte. Es stellte eine Dame dar, die, mit einem Pelzhut und einer Pelzboa versehen, aufrecht dasaß und einen schweren Pelzmuff, in dem ihr ganzer Unterarm verschwunden war, dem Beschauer entgegenhob.\n\nGregors Blick richtete sich dann zum Fenster, und das trübe Wetter -- man hörte Regentropfen auf das Fensterblech aufschlagen -- machte ihn ganz melancholisch. »Wie wäre es, wenn ich noch ein wenig weiterschliefe und alle Narrheiten vergäße,« dachte er, aber das war gänzlich undurchführbar, denn er war gewöhnt, auf der rechten Seite zu schlafen, konnte sich aber in seinem gegenwärtigen Zustand nicht in diese Lage bringen. Mit welcher Kraft er sich auch auf die rechte Seite warf, immer wieder schaukelte er in die Rückenlage zurück. Er versuchte es wohl hundertmal, schloß die Augen, um die zappelnden Beine nicht sehen zu müssen, und ließ erst ab, als er in der Seite einen noch nie gefühlten, leichten, dumpfen Schmerz zu fühlen begann.\nbad foo"
+     }
+    ]
+   }
+  }
+ ]
+}

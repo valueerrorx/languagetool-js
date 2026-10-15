@@ -1,0 +1,216 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "check2 fr: corpus paragraphs",
+ "normalize": [],
+ "compare": "check-pipe",
+ "ops": [
+  {
+   "op": "check2",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_OFF",
+      "regex": "off",
+      "message": "Default off {t}",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TEMP",
+      "regex": "temp",
+      "message": "Temp off {t}",
+      "defaultTempOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_CATOFF",
+      "regex": "cat",
+      "message": "In default-off category {t}",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_CLARITY",
+      "regex": "unclear",
+      "message": "Clarity {t}",
+      "toneTags": [
+       "clarity"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_GOAL",
+      "regex": "goal",
+      "message": "Goal {t}",
+      "toneTags": [
+       "persuasive"
+      ],
+      "goalSpecific": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_UNI",
+      "regex": ".*[\\p{So}\\p{Cs}äöüÄÖÜéèàç].*",
+      "message": "Unicode {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_SOFT",
+      "regex": "foobar|Foobar",
+      "message": "Soft {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "selection": {},
+    "cases": [
+     {
+      "text": "A peine les janissaires eurent-ils fait le repas que nous leur avions fourni, que les Russes arrivent sur des bateaux plats; pas un janissaire ne réchappa. Les Russes ne firent aucune attention à l’état où nous étions. Il y a partout des chirurgiens français: un d’eux qui était fort adroit prit soin bad foo very."
+     },
+     {
+      "text": "La belle Cunégonde, ayant entendu l’histoire de la vieille, lui fit toutes les politesses qu’on devait à une personne de son rang et de son mérite. Elle accepta la proposition; elle engagea tous les passagers, l’un après l’autre, à lui conter leurs aventures. Candide et elle avouèrent que la vieille avait raison. C’est bien dommage, disait Candide, que le sage Pangloss ait été pendu contre la coutume dans un auto-da-fé; il nous dirait des choses admirables sur le mal physique et sur le mal moral qui couvrent la terre et la mer, et je me sentirais assez de force pour oser lui faire respectueusement quelques objections."
+     },
+     {
+      "text": "Don Fernando d’Ibaraa, y Figueora, y Mascarenes, y Lampourdos, y Souza, relevant sa moustache, sourit amèrement, et ordonna au capitaine Candide d’aller faire la revue de sa compagnie. Candide obéit; le gouverneur demeura avec mademoiselle Cunégonde. Il lui déclara sa passion, lui protesta que le le bad foo very."
+     },
+     {
+      "text": "La vieille dit à Cunégonde: Mademoiselle, vous avez soixante et douze quartiers et pas une obole; il ne tient qu’à vous d’être la femme du plus grand seigneur de l’Amérique méridionale, qui a une très belle moustache; est-ce à vous de vous piquer d’une fidélité à toute épreuve? Vous avez été violée  bad foo very."
+     },
+     {
+      "text": "Le sergent alla sur-le-champ rendre compte de ce discours au commandant. Dieu soit béni! dit ce seigneur, puisqu’il est Allemand, je peux lui parler; qu’on le mène dans ma feuillée. Aussitôt on conduit Candide dans un cabinet de verdure, orné d’une très jolie colonnade de marbre vert et or, et de treillages qui renfermaient des perroquets, des colibris, des oiseaux-mouches, des pintades, et tous les oiseaux les plus rares. Un excellent déjeuner était préparé dans des vases d’or; et tandis que les Paraguains mangèrent du maïs dans des écuelles de bois, en plein champ, à l’ardeur du soleil, le révérend père commandant entra dans la feuillée."
+     },
+     {
+      "text": "Cacambo, qui fesait sentinelle à la porte de la feuillée, accourut. Il ne nous reste qu’à vendre cher notre vie, lui dit son maître; on va, sans doute, entrer dans la feuillée; il faut mourir les armes à la main. Cacambo, qui en avait bien vu d’autres, ne perdit point la tête; il prit la robe de jés bad foo very."
+     },
+     {
+      "text": "Ces réflexions solides engagèrent Candide à quitter la prairie, et à s’enfoncer dans un bois. Il y soupa avec Cacambo; et tous deux, après avoir maudit l’inquisiteur de Portugal, le gouverneur de Buénos-Ayres, et le baron, s’endormirent sur de la mousse. A leur réveil, ils sentirent qu’ils ne pouvai bad foo very."
+     },
+     {
+      "text": "Je vous l’avais bien dit, mon cher maître, s’écria tristement Cacambo, que ces deux filles nous joueraient d’un mauvais tour. Candide apercevant la chaudière et les broches s’écria: Nous allons certainement être rôtis ou bouillis. Ah! que dirait maître Pangloss, s’il voyait comme la pure nature est faite? Tout est bien; soit, mais j’avoue qu’il est bien cruel, d’avoir perdu mademoiselle Cunégonde, et d’être mis à la broche par des Oreillons. Cacambo ne perdait jamais la tête. Ne désespérez de rien, dit-il au désolé Candide; j’entends un peu le jargon de ces peuples, je vais leur parler. Ne manquez pas, dit Candide, de leur représenter quelle est l’inhumanité affreuse de faire cuire des hommes, et combien cela est peu chrétien."
+     },
+     {
+      "text": "Candide ne se lassait point d’admirer le sujet de sa délivrance. Quel peuple! disait-il, quels hommes! quelles moeurs! si je n’avais pas eu le bonheur de donner un grand coup d’épée au travers du corps du frère de mademoiselle Cunégonde, j’étais mangé sans rémission. Mais, après tout, la pure nature bad foo very."
+     },
+     {
+      "text": "Quand ils furent aux frontières des Oreillons: Vous voyez, dit Cacambo à Candide, que cet hémisphère-ci ne vaut pas mieux que l’autre; croyez-moi, retournons en Europe par le plus court chemin. Comment y retourner, dit Candide; et où aller? Si je vais dans mon pays, les Bulgares et les Abares y égor bad foo very."
+     }
+    ]
+   }
+  }
+ ]
+}

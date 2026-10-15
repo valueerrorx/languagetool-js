@@ -1,0 +1,216 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "check2 fr: corpus paragraphs",
+ "normalize": [],
+ "compare": "check-pipe",
+ "ops": [
+  {
+   "op": "check2",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_OFF",
+      "regex": "off",
+      "message": "Default off {t}",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TEMP",
+      "regex": "temp",
+      "message": "Temp off {t}",
+      "defaultTempOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_CATOFF",
+      "regex": "cat",
+      "message": "In default-off category {t}",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_CLARITY",
+      "regex": "unclear",
+      "message": "Clarity {t}",
+      "toneTags": [
+       "clarity"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_GOAL",
+      "regex": "goal",
+      "message": "Goal {t}",
+      "toneTags": [
+       "persuasive"
+      ],
+      "goalSpecific": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_UNI",
+      "regex": ".*[\\p{So}\\p{Cs}äöüÄÖÜéèàç].*",
+      "message": "Unicode {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_SOFT",
+      "regex": "foobar|Foobar",
+      "message": "Soft {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "selection": {},
+    "cases": [
+     {
+      "text": "Il y avait en Vestphalie, dans le château de M. le baron de Thunder-ten-tronckh, un jeune garçon à qui la nature avait donné les moeurs les plus douces. Sa physionomie annonçait son âme. Il avait le jugement assez droit, avec l’esprit le plus simple; c’est, je crois, pour cette raison qu’on le nommait Candide. Les anciens domestiques de la maison soupçonnaient qu’il était fils de la soeur de monsieur le baron et d’un bon et honnête gentilhomme du voisinage, que cette demoiselle ne voulut jamais épouser parce qu’il n’avait pu prouver que soixante et onze quartiers, et que le reste de son arbre généalogique avait été perdu par l’injure du temps."
+     },
+     {
+      "text": "Monsieur le baron était un des plus puissants seigneurs de la Westphalie, car son château avait une porte et des fenêtres. Sa grande salle même était ornée d’une tapisserie. Tous les chiens de ses basses-cours composaient une meute dans le besoin; ses palefreniers étaient ses piqueurs; le vicaire du bad foo very."
+     },
+     {
+      "text": "Rien n’était si beau, si leste, si brillant, si bien ordonné que les deux armées. Les trompettes, les fifres, les hautbois, les tambours, les canons; formaient une harmonie telle qu’il n’y en eut jamais en enfer. Les canons renversèrent d’abord à peu près six mille hommes de chaque côté; ensuite la  bad foo very."
+     },
+     {
+      "text": "Enfin, tandis que les deux rois fesaient chanter des _Te Deum_, chacun dans son camp, il prit le parti d’aller raisonner ailleurs des effets et des causes. Il passa par-dessus des tas de morts et de mourants, et gagna d’abord un village voisin; il était en cendres: c’était un village abare que les Bulgares avaient brûlé, selon les lois du droit public. Ici des vieillards criblés de coups regardaient mourir leurs femmes égorgées, qui tenaient leurs enfants à leurs mamelles sanglantes; là des filles éventrées après avoir assouvi les besoins naturels de quelques héros, rendaient les derniers soupirs; d’autres à demi brûlées criaient qu’on achevât de leur donner la mort. Des cervelles étaient répandues sur la terre à côté de bras et de jambes coupés."
+     },
+     {
+      "text": "Candide s’enfuit au plus vite dans un autre village: il appartenait à des Bulgares, et les héros abares l’avaient traité de même. Candide, toujours marchant sur des membres palpitants ou à travers des ruines, arriva enfin hors du théâtre de la guerre, portant quelques petites provisions dans son bis bad foo very."
+     },
+     {
+      "text": "A ce discours, Candide s’évanouit encore; mais revenu à soi, et ayant dit tout ce qu’il devait dire, il s’enquit de la cause et de l’effet, et de la raison suffisante qui avait mis Pangloss dans un si piteux état. Hélas! dit l’autre, c’est l’amour: l’amour, le consolateur du genre humain, le conserv bad foo very."
+     },
+     {
+      "text": "Pangloss répondit en ces termes: O mon cher Candide! vous avez connu Paquette, cette jolie suivante de notre auguste baronne: j’ai goûté dans ses bras les délices du paradis, qui ont produit ces tourments d’enfer dont vous me voyez dévoré; elle en était infectée, elle en est peut-être morte. Paquette tenait ce présent d’un cordelier très savant qui avait remonté à la source, car il l’avait eu d’une vieille comtesse, qui l’avait reçu d’un capitaine de cavalerie, qui le devait à une marquise, qui le tenait d’un page, qui l’avait reçu d’un jésuite, qui, étant novice, l’avait eu en droite ligne d’un des compagnons de Christophe Colomb. Pour moi, je ne le donnerai à personne, car je me meurs."
+     },
+     {
+      "text": "Voilà qui est admirable, dit Candide; mais il faut vous faire guérir. Et comment le puis-je? dit Pangloss; je n’ai pas le sou, mon ami, et dans toute l’étendue de ce globe on ne peut ni se faire saigner, ni prendre un lavement sans payer, ou sans qu’il y ait quelqu’un qui paie pour nous. bad foo very."
+     },
+     {
+      "text": "Quelques éclats de pierre avaient blessé Candide; il était étendu dans la rue et couvert de débris. Il disait à Pangloss: Hélas! procure-moi un peu de vin et d’huile; je me meurs. Ce tremblement de terre n’est pas une chose nouvelle, répondit Pangloss; la ville de Lima éprouva les mêmes secousses en bad foo very."
+     },
+     {
+      "text": "Le lendemain, ayant trouvé quelques provisions de bouche en se glissant à travers des décombres, ils réparèrent un peu leurs forces. Ensuite ils travaillèrent comme les autres à soulager les habitants échappés à la mort. Quelques citoyens, secourus par eux, leur donnèrent un aussi bon dîner qu’on le pouvait dans un tel désastre: il est vrai que le repas était triste; les convives arrosaient leur pain de leurs larmes; mais Pangloss les consola, en les assurant que les choses ne pouvaient être autrement: Car, dit-il, tout ceci est ce qu’il y a de mieux; car s’il y a un volcan à Lisbonne, il ne pouvait être ailleurs; car il est impossible que les choses ne soient pas où elles sont, car tout est bien."
+     }
+    ]
+   }
+  }
+ ]
+}

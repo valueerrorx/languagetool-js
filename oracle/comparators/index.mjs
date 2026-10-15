@@ -6,6 +6,7 @@ import { compareAnalyze } from './analyze.mjs';
 import { compareRuleExamples, compareDisambiguationExamples, compareRulesList } from './examples.mjs';
 import { compareApi } from './api.mjs';
 import { compareCli } from './cli.mjs';
+import { compareCheckPipe } from './check-pipe.mjs';
 import { compareDev006, compareLanguagesList } from './dev006.mjs';
 
 // jsonl: per line deep-equal after parsing; doubles are strings (text + bits) in the protocol.
@@ -49,6 +50,7 @@ export const KIND_COMPARATORS = { api: compareApi, cli: compareCli };
 export async function getComparator(name) {
   if (name === 'jsonl' || name === 'bytes') return compareJsonl;
   if (RESULT[name]) return envelopeComparator(RESULT[name]);
+  if (name === 'check-pipe') return compareCheckPipe;
   if (name === 'api') return compareApi;
   if (name === 'cli') return compareCli;
   if (name === 'structure:dev006-languages') return compareLanguagesList;

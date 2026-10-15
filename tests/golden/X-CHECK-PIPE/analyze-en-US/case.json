@@ -1,0 +1,63 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "analyze-raw en-US: raw / disambiguated / pre-disambiguation token dumps",
+ "normalize": [],
+ "compare": "check-pipe",
+ "ops": [
+  {
+   "op": "analyze-raw",
+   "args": {
+    "lang": "en-US",
+    "texts": [
+     "This is a test.",
+     "Dog.",
+     "",
+     " ",
+     "\n",
+     "Hello world. How are you? Fine!",
+     "First paragraph.\n\nSecond paragraph.\n",
+     "Line one.\nLine two.",
+     "Line.\r\nLine2.",
+     "foo­bar is soft.",
+     "­foo",
+     "bad­",
+     "a­b­c d­e.",
+     "soft­ hyphen at end­.",
+     "co­operate. re­enter.",
+     "😀 emoji. 𝒳 astral.",
+     "x﻿y z.",
+     "Mr. Smith went to Washington. He said: “Hello”.",
+     "Don't stop. It's 5 p.m. e.g. now.",
+     "I’m here. L’homme est là. Aujourd’hui c’est bien.",
+     "Der Hund läuft. Er ist 3,5 km gelaufen.",
+     "a;b;c",
+     "The U.S. army (very big) is bad.",
+     "   leading spaces.",
+     "trailing spaces.   ",
+     "tab\there.",
+     "No final punctuation",
+     "Il y a un problème avec l'ordinateur. J'ai dit: \"Non.\"",
+     "Ça va? Oui, ça va très bien.",
+     "...",
+     "?!",
+     "e-mail e.g. foo-bar well-known."
+    ]
+   }
+  },
+  {
+   "op": "analyze-raw",
+   "args": {
+    "lang": "en-US",
+    "texts": [
+     "“Pride,” observed Mary, who piqued herself upon the solidity of her reflections, “is a very common failing, I believe. By all that I have ever read, I am convinced that it is very common indeed; that human nature is particularly prone to it, and that there are very few of us who do not cherish a feeling of self-complacency on the score of some quality or other, real or imaginary. Vanity and pride ",
+     "“It may, perhaps, be pleasant,” replied Charlotte, “to be able to impose on the public in such a case; but it is sometimes a disadvantage to be so very guarded. If a woman conceals her affection with the same skill from the object of it, she may lose the opportunity of fixing him; and it will then be but poor consolation to believe the world equally in the dark. There is so much of gratitude or va",
+     "“Perhaps he must, if he sees enough of her. But though Bingley and Jane meet tolerably often, it is never for many hours together; and as they always see each other in large mixed parties, it is impossible that every moment should be employed in conversing together. Jane should therefore make the most of every half hour in which she can command his attention. When she is secure of him, there will ",
+     "“Well,” said Charlotte, “I wish Jane success with all my heart; and if she were married to him to-morrow, I should think she had as good a chance of happiness as if she were to be studying his character for a twelvemonth. Happiness in marriage is entirely a matter of chance. If the dispositions of the parties are ever so well known to each other, or ever so similar beforehand, it does not advance ",
+     "“You are a very strange creature by way of a friend!--always wanting me to play and sing before anybody and everybody! If my vanity had taken a musical turn, you would have been invaluable; but as it is, I would really rather not sit down before those who must be in the habit of hearing the very best performers.” On Miss Lucas’s persevering, however, she added, “Very well; if it must be so, it mus",
+     "“What a charming amusement for young people this is, Mr. Darcy! There is nothing like dancing, after all. I consider it as one of the first refinements of polished societies.”"
+    ]
+   }
+  }
+ ]
+}

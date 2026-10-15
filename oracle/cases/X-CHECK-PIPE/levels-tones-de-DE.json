@@ -1,0 +1,360 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "check2 de-DE: Level x tone tags",
+ "normalize": [],
+ "compare": "check-pipe",
+ "ops": [
+  {
+   "op": "check2",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_OFF",
+      "regex": "off",
+      "message": "Default off {t}",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TEMP",
+      "regex": "temp",
+      "message": "Temp off {t}",
+      "defaultTempOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_CATOFF",
+      "regex": "cat",
+      "message": "In default-off category {t}",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_CLARITY",
+      "regex": "unclear",
+      "message": "Clarity {t}",
+      "toneTags": [
+       "clarity"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_GOAL",
+      "regex": "goal",
+      "message": "Goal {t}",
+      "toneTags": [
+       "persuasive"
+      ],
+      "goalSpecific": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_UNI",
+      "regex": ".*[\\p{So}\\p{Cs}äöüÄÖÜéèàç].*",
+      "message": "Unicode {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_SOFT",
+      "regex": "foobar|Foobar",
+      "message": "Soft {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "selection": {},
+    "cases": [
+     {
+      "text": "bad very color gonna unclear goal hey link off temp cat. The end.",
+      "level": "DEFAULT",
+      "toneTags": []
+     },
+     {
+      "text": "bad very color gonna unclear goal hey link off temp cat. The end.",
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "text": "bad very color gonna unclear goal hey link off temp cat. The end.",
+      "level": "DEFAULT",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "text": "bad very color gonna unclear goal hey link off temp cat. The end.",
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     },
+     {
+      "text": "bad very color gonna unclear goal hey link off temp cat. The end.",
+      "level": "DEFAULT",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "text": "bad very color gonna unclear goal hey link off temp cat. The end.",
+      "level": "DEFAULT",
+      "toneTags": [
+       "clarity"
+      ]
+     },
+     {
+      "text": "bad very color gonna unclear goal hey link off temp cat. The end.",
+      "level": "DEFAULT",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "text": "bad very color gonna unclear goal hey link off temp cat. The end.",
+      "level": "DEFAULT",
+      "toneTags": [
+       "formal",
+       "persuasive"
+      ]
+     },
+     {
+      "text": "bad very color gonna unclear goal hey link off temp cat. The end.",
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_TONE_RULES",
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "text": "bad very color gonna unclear goal hey link off temp cat. The end.",
+      "level": "DEFAULT",
+      "toneTags": [
+       "NO_TONE_RULE",
+       "formal"
+      ]
+     },
+     {
+      "text": "bad very color gonna unclear goal hey link off temp cat. The end.",
+      "level": "DEFAULT",
+      "toneTags": [
+       "povrem",
+       "general"
+      ]
+     },
+     {
+      "text": "bad very color gonna unclear goal hey link off temp cat. The end.",
+      "level": "DEFAULT",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC",
+       "persuasive"
+      ]
+     },
+     {
+      "text": "bad very color gonna unclear goal hey link off temp cat. The end.",
+      "level": "PICKY",
+      "toneTags": []
+     },
+     {
+      "text": "bad very color gonna unclear goal hey link off temp cat. The end.",
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "text": "bad very color gonna unclear goal hey link off temp cat. The end.",
+      "level": "PICKY",
+      "toneTags": [
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "text": "bad very color gonna unclear goal hey link off temp cat. The end.",
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC"
+      ]
+     },
+     {
+      "text": "bad very color gonna unclear goal hey link off temp cat. The end.",
+      "level": "PICKY",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "text": "bad very color gonna unclear goal hey link off temp cat. The end.",
+      "level": "PICKY",
+      "toneTags": [
+       "clarity"
+      ]
+     },
+     {
+      "text": "bad very color gonna unclear goal hey link off temp cat. The end.",
+      "level": "PICKY",
+      "toneTags": [
+       "persuasive"
+      ]
+     },
+     {
+      "text": "bad very color gonna unclear goal hey link off temp cat. The end.",
+      "level": "PICKY",
+      "toneTags": [
+       "formal",
+       "persuasive"
+      ]
+     },
+     {
+      "text": "bad very color gonna unclear goal hey link off temp cat. The end.",
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_TONE_RULES",
+       "NO_TONE_RULE"
+      ]
+     },
+     {
+      "text": "bad very color gonna unclear goal hey link off temp cat. The end.",
+      "level": "PICKY",
+      "toneTags": [
+       "NO_TONE_RULE",
+       "formal"
+      ]
+     },
+     {
+      "text": "bad very color gonna unclear goal hey link off temp cat. The end.",
+      "level": "PICKY",
+      "toneTags": [
+       "povrem",
+       "general"
+      ]
+     },
+     {
+      "text": "bad very color gonna unclear goal hey link off temp cat. The end.",
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_WITHOUT_GOAL_SPECIFIC",
+       "persuasive"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}
