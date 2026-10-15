@@ -1,0 +1,356 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "XMLValidator on synthetic broken inputs: missing files/schemas, unclosed tag, undefined entity, internal-DTD entity, bad encoding, DTD/XSD violations",
+ "normalize": [
+  "paths"
+ ],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "dtd",
+    "path": "/no/such/file.xml",
+    "schema": "/org/languagetool/rules/false-friends.dtd",
+    "docType": "rules"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "dtd",
+    "path": "/org/languagetool/rules/false-friends.xml",
+    "schema": "/no/such.dtd",
+    "docType": "rules"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "dtd",
+    "path": "/org/languagetool/rules/false-friends.xml",
+    "schema": "/org/languagetool/rules/false-friends.dtd",
+    "docType": "other"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd",
+    "path": "/no/such/file.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd",
+    "path": "/org/languagetool/rules/de/grammar.xml",
+    "schema": "/no/such.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd",
+    "path": "/org/languagetool/rules/de/grammar.xml",
+    "schema": "/org/languagetool/rules/pattern.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd",
+    "path": "/org/languagetool/rules/de/grammar.xml",
+    "schema": "/org/languagetool/rules/remote-rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd-merge",
+    "base": "/no/such.xml",
+    "path": "/org/languagetool/rules/de/grammar.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-dtd",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"g\"><rule><pattern lang=\"de\"><token>a</token></pattern><translation lang=\"en\">b</translation><example type=\"correct\">x</example></rule></rulegroup></rules>",
+    "schema": "/org/languagetool/rules/false-friends.dtd",
+    "docType": "rules"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-dtd",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules/>",
+    "schema": "/org/languagetool/rules/false-friends.dtd",
+    "docType": "rules"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-dtd",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"g\"><rule><x/><pattern lang=\"de\"><token>a</token></pattern><translation lang=\"en\">b</translation><example type=\"correct\">x</example></rule></rulegroup></rules>",
+    "schema": "/org/languagetool/rules/false-friends.dtd",
+    "docType": "rules"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-dtd",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"g\"><rule><pattern lang=\"de\"><token>a</token></pattern><translation lang=\"en\">b</translation><example type=\"correct\">x</example></rule></rulegroup>",
+    "schema": "/org/languagetool/rules/false-friends.dtd",
+    "docType": "rules"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-dtd",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"g\"><rule><pattern lang=\"de\"><token>a&undefined;</token></pattern><translation lang=\"en\">b</translation><example type=\"correct\">x</example></rule></rulegroup></rules>",
+    "schema": "/org/languagetool/rules/false-friends.dtd",
+    "docType": "rules"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-dtd",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE rules [<!ENTITY e \"x\">]><rules><rulegroup id=\"g\"><rule><pattern lang=\"de\"><token>&e;</token></pattern><translation lang=\"en\">b</translation><example type=\"correct\">x</example></rule></rulegroup></rules>",
+    "schema": "/org/languagetool/rules/false-friends.dtd",
+    "docType": "rules"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-dtd",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"g\"<rule><pattern lang=\"de\"><token>a</token></pattern><translation lang=\"en\">b</translation><example type=\"correct\">x</example></rule></rulegroup></rules>",
+    "schema": "/org/languagetool/rules/false-friends.dtd",
+    "docType": "rules"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-dtd",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"1 g\"><rule><pattern lang=\"de\"><token>a</token></pattern><translation lang=\"en\">b</translation><example type=\"correct\">x</example></rule></rulegroup></rules>",
+    "schema": "/org/languagetool/rules/false-friends.dtd",
+    "docType": "rules"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-dtd",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"g\"><rulegroup id=\"g\"><rule><pattern lang=\"de\"><token>a</token></pattern><translation lang=\"en\">b</translation><example type=\"correct\">x</example></rule></rule></rulegroup></rules>",
+    "schema": "/org/languagetool/rules/false-friends.dtd",
+    "docType": "rules"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-dtd",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"g\"><rule><pattern lang=\"de\"><token>a</token></pattern><translation lang=\"en\">b</translation><example type=\"maybe\">x</example></rule></rulegroup></rules>",
+    "schema": "/org/languagetool/rules/false-friends.dtd",
+    "docType": "rules"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-dtd",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"g\"><rule><pattern lang=\"de\"><token>a</token></pattern><translation lang=\"xx\">b</translation><example type=\"correct\">x</example></rule></rulegroup></rules>",
+    "schema": "/org/languagetool/rules/false-friends.dtd",
+    "docType": "rules"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-dtd",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"g\"><rule><pattern lang=\"de\"><token>a</token></pattern><translation lang=\"en\">b</translation><example type=\"correct\">Ünï ä ß 😀</example></rule></rulegroup></rules>",
+    "schema": "/org/languagetool/rules/false-friends.dtd",
+    "docType": "rules"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-dtd",
+    "xml": "<!-- c -->\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"g\"><rule><pattern lang=\"de\"><token>a</token></pattern><translation lang=\"en\">b</translation><example type=\"correct\">x</example></rule></rulegroup></rules>",
+    "schema": "/org/languagetool/rules/false-friends.dtd",
+    "docType": "rules"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-dtd",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE rules SYSTEM \"x.dtd\">\n<rules><rulegroup id=\"g\"><rule><pattern lang=\"de\"><token>a</token></pattern><translation lang=\"en\">b</translation><example type=\"correct\">x</example></rule></rulegroup></rules>",
+    "schema": "/org/languagetool/rules/false-friends.dtd",
+    "docType": "rules"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-dtd",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"g\"><rule><pattern lang=\"de\"><token>\ud800</token></pattern><translation lang=\"en\">b</translation><example type=\"correct\">x</example></rule></rulegroup></rules>",
+    "schema": "/org/languagetool/rules/false-friends.dtd",
+    "docType": "rules"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-dtd",
+    "xml": "<?xml version=\"1.0\" encoding=\"NOSUCH\"?>\n<rules><rulegroup id=\"g\"><rule><pattern lang=\"de\"><token>a</token></pattern><translation lang=\"en\">b</translation><example type=\"correct\">x</example></rule></rulegroup></rules>",
+    "schema": "/org/languagetool/rules/false-friends.dtd",
+    "docType": "rules"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-dtd",
+    "xml": "<rules/>",
+    "schema": "/org/languagetool/rules/false-friends.dtd",
+    "docType": "rules"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-dtd",
+    "xml": "",
+    "schema": "/org/languagetool/rules/false-friends.dtd",
+    "docType": "rules"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-dtd",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"g\"><rule><pattern lang=\"de\" lang=\"en\"><token>a</token></pattern><translation lang=\"en\">b</translation><example type=\"correct\">x</example></rule></rulegroup></rules>",
+    "schema": "/org/languagetool/rules/false-friends.dtd",
+    "docType": "rules"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-dtd",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"g\"><rule><pattern lang=\"de\"><token>a</token></pattern><translation foo=\"1\" lang=\"en\">b</translation><example type=\"correct\">x</example></rule></rulegroup></rules>",
+    "schema": "/org/languagetool/rules/false-friends.dtd",
+    "docType": "rules"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-dtd",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules>\n<unclosed>\n</rules>",
+    "schema": "/org/languagetool/rules/false-friends.dtd",
+    "docType": "rules"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-xsd",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"de\"><category id=\"C\" name=\"n\"><rule id=\"R\" name=\"r\"><pattern><token>a</token></pattern><message>m</message></rule></category></rules>",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-xsd",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"de\"><category id=\"C\" name=\"n\"><rule id=\"R\" name=\"r\"><pattern><token>a</token><message>m</message></rule></category></rules>",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-xsd",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"de\"><category id=\"C\" name=\"n\"><rule id=\"R\" name=\"r\"><pattern><token>a</token></pattern><message>m</message></rule></category>",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-xsd",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"de\">&undefined;</rules>",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-xsd",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE rules [<!ENTITY e \"x\">]><rules lang=\"de\"><category id=\"C\" name=\"&e;\"/></rules>",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-xsd",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-16\"?><rules lang=\"de\"/>",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-xsd",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><rules lang=\"de\"/>",
+    "schema": "/no/such.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-xsd",
+    "xml": "",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-xsd",
+    "xml": "not xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-xsd",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"de\"><category id=\"C\" name=\"Ünï ä\"/></rules>",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "string-xsd",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"de\"><category id=\"C\" name=\"n\"><rule id=\"R\" name=\"r\"><pattern><token>a</token></pattern><message>m</message></rule></category><rulegroup/></rules>",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  }
+ ]
+}

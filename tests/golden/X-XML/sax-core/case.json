@@ -1,0 +1,72 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "sax-dump: core resources (segment.srx, segment-simple.srx, disambiguation-global.xml, false-friends.xml, logback, server mappers)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "sax-dump",
+   "args": {
+    "path": "/logback.xml",
+    "profile": "plain"
+   }
+  },
+  {
+   "op": "sax-dump",
+   "args": {
+    "path": "/org/languagetool/resource/disambiguation-global.xml",
+    "profile": "disambiguation"
+   }
+  },
+  {
+   "op": "sax-dump",
+   "args": {
+    "path": "/org/languagetool/resource/org/languagetool/tokenizers/segment-simple.srx",
+    "profile": "plain"
+   }
+  },
+  {
+   "op": "sax-dump",
+   "args": {
+    "path": "/org/languagetool/resource/segment.srx",
+    "profile": "plain"
+   }
+  },
+  {
+   "op": "sax-dump",
+   "args": {
+    "path": "/org/languagetool/rules/false-friends.xml",
+    "profile": "falsefriends"
+   }
+  },
+  {
+   "op": "sax-dump",
+   "args": {
+    "path": "/org/languagetool/server/DictMapperOpenSource.xml",
+    "profile": "plain"
+   }
+  },
+  {
+   "op": "sax-dump",
+   "args": {
+    "path": "/org/languagetool/server/GroupMapperOpenSource.xml",
+    "profile": "plain"
+   }
+  },
+  {
+   "op": "sax-dump",
+   "args": {
+    "path": "/org/languagetool/server/LogMapperOpenSource.xml",
+    "profile": "plain"
+   }
+  },
+  {
+   "op": "sax-dump",
+   "args": {
+    "path": "/org/languagetool/server/mybatis-config.xml",
+    "profile": "plain"
+   }
+  }
+ ]
+}

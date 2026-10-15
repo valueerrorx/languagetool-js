@@ -1,0 +1,37 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "sax-dump: all fr XML (grammar variants, style, disambiguation, remote-rule-filters)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "sax-dump",
+   "args": {
+    "path": "/org/languagetool/resource/fr/disambiguation.xml",
+    "profile": "disambiguation"
+   }
+  },
+  {
+   "op": "sax-dump",
+   "args": {
+    "path": "/org/languagetool/rules/fr/grammar.xml",
+    "profile": "pattern"
+   }
+  },
+  {
+   "op": "sax-dump",
+   "args": {
+    "path": "/org/languagetool/rules/fr/remote-rule-filters.xml",
+    "profile": "plain"
+   }
+  },
+  {
+   "op": "sax-dump",
+   "args": {
+    "path": "/org/languagetool/rules/fr/style.xml",
+    "profile": "pattern"
+   }
+  }
+ ]
+}

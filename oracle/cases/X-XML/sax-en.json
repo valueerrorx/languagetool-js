@@ -1,0 +1,100 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "sax-dump: all en XML (grammar variants, style, disambiguation, remote-rule-filters)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "sax-dump",
+   "args": {
+    "path": "/org/languagetool/resource/en/disambiguation.xml",
+    "profile": "disambiguation"
+   }
+  },
+  {
+   "op": "sax-dump",
+   "args": {
+    "path": "/org/languagetool/rules/en/en-AU/grammar.xml",
+    "profile": "pattern"
+   }
+  },
+  {
+   "op": "sax-dump",
+   "args": {
+    "path": "/org/languagetool/rules/en/en-CA/grammar.xml",
+    "profile": "pattern"
+   }
+  },
+  {
+   "op": "sax-dump",
+   "args": {
+    "path": "/org/languagetool/rules/en/en-GB/grammar.xml",
+    "profile": "pattern"
+   }
+  },
+  {
+   "op": "sax-dump",
+   "args": {
+    "path": "/org/languagetool/rules/en/en-GB/style.xml",
+    "profile": "pattern"
+   }
+  },
+  {
+   "op": "sax-dump",
+   "args": {
+    "path": "/org/languagetool/rules/en/en-NZ/grammar.xml",
+    "profile": "pattern"
+   }
+  },
+  {
+   "op": "sax-dump",
+   "args": {
+    "path": "/org/languagetool/rules/en/en-US/grammar.xml",
+    "profile": "pattern"
+   }
+  },
+  {
+   "op": "sax-dump",
+   "args": {
+    "path": "/org/languagetool/rules/en/en-US/style.xml",
+    "profile": "pattern"
+   }
+  },
+  {
+   "op": "sax-dump",
+   "args": {
+    "path": "/org/languagetool/rules/en/grammar-l2-de.xml",
+    "profile": "pattern"
+   }
+  },
+  {
+   "op": "sax-dump",
+   "args": {
+    "path": "/org/languagetool/rules/en/grammar-l2-fr.xml",
+    "profile": "pattern"
+   }
+  },
+  {
+   "op": "sax-dump",
+   "args": {
+    "path": "/org/languagetool/rules/en/grammar.xml",
+    "profile": "pattern"
+   }
+  },
+  {
+   "op": "sax-dump",
+   "args": {
+    "path": "/org/languagetool/rules/en/remote-rule-filters.xml",
+    "profile": "plain"
+   }
+  },
+  {
+   "op": "sax-dump",
+   "args": {
+    "path": "/org/languagetool/rules/en/style.xml",
+    "profile": "pattern"
+   }
+  }
+ ]
+}

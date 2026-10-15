@@ -1,0 +1,309 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "XMLValidator on wave-1 files: false-friends (DTD), rules (rules.xsd, with unification merge for variants), remote-rule-filters, disambiguation (XSD)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "dtd",
+    "path": "/org/languagetool/rules/false-friends.xml",
+    "schema": "/org/languagetool/rules/false-friends.dtd",
+    "docType": "rules"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd",
+    "path": "/org/languagetool/rules/de/de-CH/grammar.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd-merge",
+    "base": "/org/languagetool/rules/de/grammar.xml",
+    "path": "/org/languagetool/rules/de/de-CH/grammar.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd",
+    "path": "/org/languagetool/rules/de/de-DE-AT/grammar.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd-merge",
+    "base": "/org/languagetool/rules/de/grammar.xml",
+    "path": "/org/languagetool/rules/de/de-DE-AT/grammar.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd",
+    "path": "/org/languagetool/rules/de/grammar.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd",
+    "path": "/org/languagetool/rules/de/remote-rule-filters.xml",
+    "schema": "/org/languagetool/rules/remote-rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd",
+    "path": "/org/languagetool/rules/de/style.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd",
+    "path": "/org/languagetool/rules/en/en-AU/grammar.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd-merge",
+    "base": "/org/languagetool/rules/en/grammar.xml",
+    "path": "/org/languagetool/rules/en/en-AU/grammar.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd",
+    "path": "/org/languagetool/rules/en/en-CA/grammar.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd-merge",
+    "base": "/org/languagetool/rules/en/grammar.xml",
+    "path": "/org/languagetool/rules/en/en-CA/grammar.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd",
+    "path": "/org/languagetool/rules/en/en-GB/grammar.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd-merge",
+    "base": "/org/languagetool/rules/en/grammar.xml",
+    "path": "/org/languagetool/rules/en/en-GB/grammar.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd",
+    "path": "/org/languagetool/rules/en/en-GB/style.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd-merge",
+    "base": "/org/languagetool/rules/en/grammar.xml",
+    "path": "/org/languagetool/rules/en/en-GB/style.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd",
+    "path": "/org/languagetool/rules/en/en-NZ/grammar.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd-merge",
+    "base": "/org/languagetool/rules/en/grammar.xml",
+    "path": "/org/languagetool/rules/en/en-NZ/grammar.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd",
+    "path": "/org/languagetool/rules/en/en-US/grammar.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd-merge",
+    "base": "/org/languagetool/rules/en/grammar.xml",
+    "path": "/org/languagetool/rules/en/en-US/grammar.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd",
+    "path": "/org/languagetool/rules/en/en-US/style.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd-merge",
+    "base": "/org/languagetool/rules/en/grammar.xml",
+    "path": "/org/languagetool/rules/en/en-US/style.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd",
+    "path": "/org/languagetool/rules/en/grammar-l2-de.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd-merge",
+    "base": "/org/languagetool/rules/en/grammar.xml",
+    "path": "/org/languagetool/rules/en/grammar-l2-de.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd",
+    "path": "/org/languagetool/rules/en/grammar-l2-fr.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd-merge",
+    "base": "/org/languagetool/rules/en/grammar.xml",
+    "path": "/org/languagetool/rules/en/grammar-l2-fr.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd",
+    "path": "/org/languagetool/rules/en/grammar.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd",
+    "path": "/org/languagetool/rules/en/remote-rule-filters.xml",
+    "schema": "/org/languagetool/rules/remote-rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd",
+    "path": "/org/languagetool/rules/en/style.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd",
+    "path": "/org/languagetool/rules/fr/grammar.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd",
+    "path": "/org/languagetool/rules/fr/remote-rule-filters.xml",
+    "schema": "/org/languagetool/rules/remote-rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd",
+    "path": "/org/languagetool/rules/fr/style.xml",
+    "schema": "/org/languagetool/rules/rules.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd",
+    "path": "/org/languagetool/resource/de/disambiguation.xml",
+    "schema": "/org/languagetool/resource/disambiguation.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd",
+    "path": "/org/languagetool/resource/disambiguation-global.xml",
+    "schema": "/org/languagetool/resource/disambiguation.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd",
+    "path": "/org/languagetool/resource/en/disambiguation.xml",
+    "schema": "/org/languagetool/resource/disambiguation.xsd"
+   }
+  },
+  {
+   "op": "xml-validate",
+   "args": {
+    "mode": "xsd",
+    "path": "/org/languagetool/resource/fr/disambiguation.xml",
+    "schema": "/org/languagetool/resource/disambiguation.xsd"
+   }
+  }
+ ]
+}
