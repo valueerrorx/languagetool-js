@@ -4,13 +4,16 @@ import { StringReader } from '../../src/lib/java/io.js';
 import { IllegalArgumentException } from '../../src/lib/java/errors.js';
 import { javaCompare } from '../../src/lib/java/strings.js';
 import { safe } from './_text-common.mjs';
+import '../../src/lang/register.js';
+import { Languages } from '../../src/core/Languages.js';
 
-const KNOWN = new Set(['ar', 'de', 'en', 'eo', 'es', 'fa', 'fr', 'it', 'nl', 'pt', 'sv', 'ca', 'el', 'uk', 'ja', 'km', 'ro', 'ru', 'sk', 'sl', 'ta', 'tl', 'zh', 'pl', 'da', 'ga', 'gl', 'be', 'br', 'ast', 'crh']);
+// short codes of Java languages outside the wave-1 modules (DEV-006): the port has no such language, a descriptor with the short code stands in
+const OUT_OF_SCOPE = new Set(['ar', 'eo', 'es', 'fa', 'it', 'nl', 'pt', 'sv', 'ca', 'el', 'uk', 'ja', 'km', 'ro', 'ru', 'sk', 'sl', 'ta', 'tl', 'zh', 'pl', 'da', 'ga', 'gl', 'be', 'br', 'ast', 'crh']);
 
-// Java: Languages#getLanguageForShortCode(String) reduced to getShortCode(); unknown codes are notPorted until F10 (Java message not hardcoded)
+// Java: Languages#getLanguageForShortCode(String) (unknown codes give the Java error, its code list is DEV-006 filtered)
 function languageFor(code) {
-  if (!KNOWN.has(code)) throw Object.assign(new Error('unknown language code (Java message needs F10 Languages)'), { notPorted: true });
-  return { getShortCode: () => code };
+  if (OUT_OF_SCOPE.has(code)) return { getShortCode: () => code };
+  return Languages.getLanguageForShortCode(code);
 }
 
 // public static methods: name -> overloads [paramTypes, impl]; List before String so that null picks the List overload

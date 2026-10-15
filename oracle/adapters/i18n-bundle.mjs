@@ -1,16 +1,12 @@
-// JS twin of harness op "i18n-bundle" (I18nOps#bundleDump). Language is a minimal stand-in until the Language port exists (F-later):
-// short code, countries and default-variant country as observed for the languages used by the X-I18N cases.
+// JS twin of harness op "i18n-bundle" (I18nOps#bundleDump). Wave-1 languages come from Languages; out-of-scope ones (DEV-006) use descriptors.
+import '../../src/lang/register.js';
+import { Languages } from '../../src/core/Languages.js';
 import { Locale } from '../../src/lib/java/Locale.js';
 import { getMessageBundle, getMessageBundleForLanguage, MESSAGE_BUNDLE } from '../../src/core/resources/ResourceBundleTools.js';
 import { getDataBroker } from '../../src/core/resources/LtStatics.js';
-import { IllegalArgumentException } from '../../src/lib/java/errors.js';
 
-// code -> [shortCode, countries, default variant shortCode (null = none), default variant countries]
-const LANGS = {
-  'de-DE': ['de', ['DE'], 'de', ['DE']], 'de-AT': ['de', ['AT'], 'de', ['DE']], 'de-CH': ['de', ['CH'], 'de', ['DE']],
-  'en-US': ['en', ['US'], 'en', ['US']], 'en-GB': ['en', ['GB'], 'en', ['US']], fr: ['fr', ['FR'], 'fr', ['FR']],
-  de: ['de', ['LU'], 'de', ['DE']], en: ['en', [], 'en', ['US']], 'fr-CA': ['fr', ['CA'], 'fr', ['FR']], 'fr-FR': ['fr', ['FR'], 'fr', ['FR']],
-  'en-CA': ['en', ['CA'], 'en', ['US']], 'en-AU': ['en', ['AU'], 'en', ['US']],
+// Languages outside the wave-1 modules (DEV-006): code -> [shortCode, countries, default variant shortCode (null = none), default variant countries]
+const OUT_OF_SCOPE = {
   'de-DE-x-simple-language': ['de-DE-x-simple-language', ['DE'], 'de', ['DE']],
   'ca-ES': ['ca', ['ES'], 'ca', ['ES']], es: ['es', ['ES'], 'es', ['ES']], 'pl-PL': ['pl', ['PL'], 'pl', ['PL']],
   'uk-UA': ['uk', ['UA'], 'uk', ['UA']], nl: ['nl', ['NL'], 'nl', ['NL']], 'pt-PT': ['pt', ['PT'], 'pt', ['PT']],
@@ -18,19 +14,18 @@ const LANGS = {
   'ga-IE': ['ga', ['IE'], 'ga', ['IE']], 'el-GR': ['el', ['GR'], 'el', ['GR']], 'ru-RU': ['ru', ['RU'], 'ru', ['RU']],
 };
 
-// Java: Languages#getLanguageForShortCode(String)
+// Java: Languages#getLanguageForShortCode(String); out-of-scope languages (DEV-006) get a descriptor with the observed locale data
 function languageFor(code) {
-  const e = LANGS[code];
-  if (!e) throw new IllegalArgumentException(`'${code}' is not a language code known to LanguageTool`);
+  const e = Object.hasOwn(OUT_OF_SCOPE, code) ? OUT_OF_SCOPE[code] : null;
+  if (e === null) return Languages.getLanguageForShortCode(code);
   const [sc, countries, dvSc, dvCountries] = e;
-  const lang = {
+  return {
     getShortCode: () => sc,
     getCountries: () => countries,
     getLocale: () => new Locale(sc),
     getLocaleWithCountryAndVariant: () => (countries.length > 0 ? new Locale(sc, countries[0]) : new Locale(sc)),
     getDefaultLanguageVariant: () => (dvSc === null ? null : { getShortCode: () => dvSc, getCountries: () => dvCountries }),
   };
-  return lang;
 }
 
 // Java: I18nOps#bundle(JsonNode)

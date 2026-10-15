@@ -1,0 +1,107 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "GET /v2/languages (api comparator, dev006-languages filter), POST, and unknown-language errors listing supported codes",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/languages"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/languages"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/languages",
+   "params": {
+    "foo": "bar"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "xx-nonexistent",
+    "text": "x"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE-x-nope",
+    "text": "x"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "a-b-c-d",
+    "text": "x"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "ca",
+    "text": "x"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "",
+    "text": "x"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "DE_de",
+    "text": "Das ist ein Test."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE-x-simple-language",
+    "text": "Das ist ein Test."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "fr-FR",
+    "text": "Ceci est un test."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en",
+    "text": "This is a test."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "x"
+   }
+  }
+ ]
+}

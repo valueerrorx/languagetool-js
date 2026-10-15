@@ -1,0 +1,30 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "Language identity/variant relations as in Languages.get() (level 0) for sanity",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "list",
+      "level": 0
+     },
+     {
+      "fn": "shortCode",
+      "code": "zz",
+      "level": 2
+     },
+     {
+      "fn": "shortCode",
+      "code": "xx",
+      "level": 0
+     }
+    ]
+   }
+  }
+ ]
+}

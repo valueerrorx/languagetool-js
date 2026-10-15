@@ -1,0 +1,73 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "Language data hooks of every registered language (level 1; out-of-scope entries are flagged dev006OutOfScope)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "lang-describe",
+   "args": {
+    "codes": [
+     "ca",
+     "ca-ES",
+     "ca-ES-valencia",
+     "ca-ES-balear",
+     "es",
+     "es-ES",
+     "es-AR",
+     "pt",
+     "pt-PT",
+     "pt-BR",
+     "pl-PL",
+     "ru-RU",
+     "uk-UA",
+     "nl",
+     "nl-BE",
+     "it",
+     "sv",
+     "da",
+     "ga-IE",
+     "gl-ES",
+     "ja-JP",
+     "zh-CN",
+     "ar",
+     "el-GR",
+     "ro-RO",
+     "sk-SK",
+     "sl-SI",
+     "ta-IN",
+     "tl-PH",
+     "br-FR",
+     "ast-ES",
+     "be-BY",
+     "crh-UA",
+     "eo",
+     "fa",
+     "km-KH",
+     "sr",
+     "sr-RS",
+     "ml-IN",
+     "lt-LT",
+     "is-IS",
+     "ko-KR",
+     "tr-TR",
+     "zz",
+     "xx"
+    ],
+    "level": 1
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "list",
+      "level": 1
+     }
+    ]
+   }
+  }
+ ]
+}

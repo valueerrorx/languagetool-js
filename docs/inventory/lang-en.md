@@ -36,7 +36,7 @@ Notes valid for the whole file:
 | EN-0012 | `CanadianEnglish` "en-CA": name "English (Canadian)", [CA], single-instantiation guard, rules + UnitConversionRuleImperial, speller MorfologikCanadianSpellerRule, en-CA/grammar.xml, `getInstance()` | JE:language/CanadianEnglish.java | CanadianEnglishConcurrencyTest | - | todo |
 | EN-0013 | `NewZealandEnglish` "en-NZ": name "English (New Zealand)", [NZ], rules + NewZealandReplaceRule(`/en/en-NZ/replace.txt`) + UnitConversionRuleImperial, speller MorfologikNewZealandSpellerRule, en-NZ/grammar.xml | JE:language/NewZealandEnglish.java | NewZealandEnglishConcurrencyTest | - | todo |
 | EN-0014 | `SouthAfricanEnglish` "en-ZA": name "English (South African)", [ZA], rules = English rules only, speller MorfologikSouthAfricanSpellerRule, no variant XML | JE:language/SouthAfricanEnglish.java | SouthAfricanEnglishConcurrencyTest | - | todo |
-| EN-0015 | Language registration `language-module.properties`: English, AmericanEnglish, BritishEnglish, AustralianEnglish, CanadianEnglish, NewZealandEnglish, SouthAfricanEnglish | RE:../../META-INF/org/languagetool/language-module.properties | - | - | todo |
+| EN-0015 | Language registration `language-module.properties`: English, AmericanEnglish, BritishEnglish, AustralianEnglish, CanadianEnglish, NewZealandEnglish, SouthAfricanEnglish | RE:../../META-INF/org/languagetool/language-module.properties | - | - | verified |
 
 ## Tokenizers, tagger, synthesizer, disambiguator, chunker
 

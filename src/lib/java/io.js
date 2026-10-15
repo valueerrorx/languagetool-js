@@ -20,6 +20,25 @@ export function readerLines(text) {
   return lines;
 }
 
+// Java: Scanner#nextLine() loop -> lines without terminators (\r\n, \n, \r, U+2028, U+2029, U+0085; no trailing empty line)
+export function scannerLines(text) {
+  const lines = [];
+  let start = 0;
+  const n = text.length;
+  let i = 0;
+  while (i < n) {
+    const c = text[i];
+    if (c === '\n' || c === '\r' || c === '\u2028' || c === '\u2029' || c === '\u0085') {
+      lines.push(text.slice(start, i));
+      if (c === '\r' && text[i + 1] === '\n') i++;
+      start = i + 1;
+    }
+    i++;
+  }
+  if (start < n) lines.push(text.slice(start));
+  return lines;
+}
+
 // Java: new InputStreamReader(in, UTF_8) decoding (malformed input -> U+FFFD, BOM kept)
 export function decodeUtf8(buf) {
   return new TextDecoder('utf-8', { fatal: false, ignoreBOM: true }).decode(buf);

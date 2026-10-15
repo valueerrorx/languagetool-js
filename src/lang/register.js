@@ -1,0 +1,16 @@
+// Registers the Java language classes of the in-scope modules (ClassBroker registry); import before using Languages.
+import './de/language/German.js';
+import './de/language/GermanyGerman.js';
+import './de/language/AustrianGerman.js';
+import './de/language/SwissGerman.js';
+import './en/language/English.js';
+import './en/language/AmericanEnglish.js';
+import './en/language/BritishEnglish.js';
+import './en/language/AustralianEnglish.js';
+import './en/language/CanadianEnglish.js';
+import './en/language/NewZealandEnglish.js';
+import './en/language/SouthAfricanEnglish.js';
+import './fr/language/French.js';
+import './fr/language/CanadianFrench.js';
+import './fr/language/SwissFrench.js';
+import './fr/language/BelgianFrench.js';

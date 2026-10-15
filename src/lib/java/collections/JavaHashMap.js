@@ -1,0 +1,93 @@
+// java.util.HashMap iteration order (bucket index by spread hash, insertion order within a bucket; tree bins are not modelled).
+import { Objects } from '../Objects.js';
+
+// Java: HashMap#tableSizeFor(int)
+function tableSizeFor(cap) {
+  let n = 1;
+  while (n < cap) n *= 2;
+  return Math.min(n, 1 << 30);
+}
+
+// Java: java.util.HashMap
+export class JavaHashMap {
+  // Java: HashMap#HashMap() / HashMap(int)
+  constructor(initialCapacity = null) {
+    this.table = null;
+    this.size_ = 0;
+    this.threshold = initialCapacity === null ? 0 : tableSizeFor(initialCapacity);
+  }
+
+  // Java: HashMap#hash(Object)
+  static hash(key) {
+    const h = Objects.hashCode(key);
+    return (h ^ (h >>> 16)) | 0;
+  }
+
+  // Java: HashMap#resize() (re-inserting in iteration order keeps the relative order of split bins)
+  resize() {
+    const old = this.table;
+    const newCap = old === null ? (this.threshold > 0 ? this.threshold : 16) : old.length * 2;
+    const table = Array.from({ length: newCap }, () => []);
+    if (old !== null) for (const bin of old) for (const node of bin) table[node.hash & (newCap - 1)].push(node);
+    this.table = table;
+    this.threshold = Math.floor(newCap * 0.75);
+  }
+
+  // Java: HashMap#put(Object,Object)
+  put(key, value) {
+    if (this.table === null) this.resize();
+    const hash = JavaHashMap.hash(key);
+    const bin = this.table[hash & (this.table.length - 1)];
+    for (const node of bin) {
+      if (node.hash === hash && Objects.equals(node.key, key)) {
+        const old = node.value;
+        node.value = value;
+        return old;
+      }
+    }
+    bin.push({ hash, key, value });
+    if (++this.size_ > this.threshold) this.resize();
+    return null;
+  }
+
+  // Java: HashMap#getNode(Object)
+  getNode(key) {
+    if (this.table === null) return null;
+    const hash = JavaHashMap.hash(key);
+    for (const node of this.table[hash & (this.table.length - 1)]) if (node.hash === hash && Objects.equals(node.key, key)) return node;
+    return null;
+  }
+
+  // Java: HashMap#get(Object)
+  get(key) {
+    const n = this.getNode(key);
+    return n === null ? null : n.value;
+  }
+
+  // Java: HashMap#containsKey(Object)
+  containsKey(key) {
+    return this.getNode(key) !== null;
+  }
+
+  // Java: HashMap#size()
+  size() {
+    return this.size_;
+  }
+
+  // Java: HashMap#entrySet() iteration as [key, value] pairs
+  entrySet() {
+    const out = [];
+    if (this.table !== null) for (const bin of this.table) for (const n of bin) out.push([n.key, n.value]);
+    return out;
+  }
+
+  // Java: HashMap#keySet() iteration
+  keySet() {
+    return this.entrySet().map((e) => e[0]);
+  }
+
+  // Java: HashMap#values() iteration
+  values() {
+    return this.entrySet().map((e) => e[1]);
+  }
+}

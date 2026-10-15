@@ -1,0 +1,603 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "Languages.getLanguageForName: exact match on getName(), case-significant, unknown, empty, null",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "German"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "German (Germany)"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "German (Austria)"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "German (Swiss)"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "German (Germany, simple language)"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "Simple German"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "English"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "English (US)"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "English (GB)"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "English (Australian)"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "English (Canadian)"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "English (New Zealand)"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "English (South African)"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "English (Great Britain)"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "French"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "French (France)"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "French (Canada)"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "French (Belgium)"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "French (Switzerland)"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "Catalan"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "Spanish"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "Portuguese"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "Portuguese (Portugal)"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "Polish"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "Russian"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "Ukrainian"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "Dutch"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "Italian"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "Swedish"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "Japanese"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "Chinese"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "Arabic"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "Greek"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "Irish"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "Esperanto"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "Persian"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "german"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "GERMAN"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "english"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "French "
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": " French"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": ""
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": " "
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "Deutsch"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "Englisch"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "Français"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "Demo"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "Noop"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "No Operation"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "English (Ireland)"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "😀"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "Gärman"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "name",
+      "name": null
+     }
+    ]
+   }
+  }
+ ]
+}

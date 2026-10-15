@@ -6,9 +6,12 @@ import { compareAnalyze } from './analyze.mjs';
 import { compareRuleExamples, compareDisambiguationExamples, compareRulesList } from './examples.mjs';
 import { compareApi } from './api.mjs';
 import { compareCli } from './cli.mjs';
+import { compareDev006, compareLanguagesList } from './dev006.mjs';
 
 // jsonl: per line deep-equal after parsing; doubles are strings (text + bits) in the protocol.
 export function compareJsonl(expectedLines, actualLines) {
+  // fixtures with DEV-006 markers (language registry) are compared modulo the out-of-scope languages
+  if (expectedLines.some((l) => /"dev006|Supported language codes are/.test(JSON.stringify(l)))) return compareDev006(expectedLines, actualLines);
   const diffs = [];
   const n = Math.max(expectedLines.length, actualLines.length);
   for (let i = 0; i < n; i++) {
@@ -48,6 +51,7 @@ export async function getComparator(name) {
   if (RESULT[name]) return envelopeComparator(RESULT[name]);
   if (name === 'api') return compareApi;
   if (name === 'cli') return compareCli;
+  if (name === 'structure:dev006-languages') return compareLanguagesList;
   if (name.startsWith('structure:')) {
     const f = new URL(`../../tests/parity/comparators/${name.slice(10)}.mjs`, import.meta.url);
     try {

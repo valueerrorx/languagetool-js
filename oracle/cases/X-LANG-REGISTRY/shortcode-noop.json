@@ -1,0 +1,144 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "getLanguageForShortCode(code, noopLanguageCodes): NoopLanguage for listed unknown codes, known codes win, null/empty",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "lang-lookup",
+   "args": {
+    "calls": [
+     {
+      "fn": "shortCode",
+      "code": "xyz",
+      "level": 1,
+      "noop": [
+       "xyz"
+      ]
+     },
+     {
+      "fn": "shortCode",
+      "code": "xyz",
+      "level": 1,
+      "noop": [
+       "abc"
+      ]
+     },
+     {
+      "fn": "shortCode",
+      "code": "xyz",
+      "level": 0,
+      "noop": []
+     },
+     {
+      "fn": "shortCode",
+      "code": "de",
+      "level": 0,
+      "noop": [
+       "de"
+      ]
+     },
+     {
+      "fn": "shortCode",
+      "code": "fr-FR",
+      "level": 0,
+      "noop": [
+       "fr-FR"
+      ]
+     },
+     {
+      "fn": "shortCode",
+      "code": "zz",
+      "level": 1,
+      "noop": [
+       "zz"
+      ]
+     },
+     {
+      "fn": "shortCode",
+      "code": "zz",
+      "level": 1
+     },
+     {
+      "fn": "shortCode",
+      "code": "xx",
+      "level": 1
+     },
+     {
+      "fn": "shortCode",
+      "code": "xx",
+      "level": 1,
+      "noop": [
+       "xx"
+      ]
+     },
+     {
+      "fn": "shortCode",
+      "code": "nope-XX",
+      "level": 1,
+      "noop": [
+       "nope-XX"
+      ]
+     },
+     {
+      "fn": "shortCode",
+      "code": "xyz",
+      "level": 0,
+      "noop": [
+       "XYZ"
+      ]
+     },
+     {
+      "fn": "shortCode",
+      "code": null,
+      "level": 0,
+      "noop": [
+       "xyz"
+      ]
+     },
+     {
+      "fn": "shortCode",
+      "code": "",
+      "level": 0,
+      "noop": [
+       ""
+      ]
+     },
+     {
+      "fn": "shortCode",
+      "code": " ",
+      "level": 0,
+      "noop": [
+       " "
+      ]
+     },
+     {
+      "fn": "shortCode",
+      "code": "abc",
+      "level": 0,
+      "noop": [
+       null
+      ]
+     },
+     {
+      "fn": "shortCode",
+      "code": "a-b-c-d",
+      "level": 0,
+      "noop": [
+       "a-b-c-d"
+      ]
+     },
+     {
+      "fn": "shortCode",
+      "code": "xyz-ZZ-Q",
+      "level": 1,
+      "noop": [
+       "xyz-ZZ-Q"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}
