@@ -84,6 +84,10 @@ public class Harness {
       case "lt-api": return CheckPipeOps.ltApi(a);
       case "analyze-raw": return CheckPipeOps.analyzeRaw(a);
       case "check-rules": return CheckPipeOps.checkRules(a);
+      case "lang-priority": return MetaOps.priority(a);
+      case "lang-filter": return MetaOps.filter(a);
+      case "lang-typo": return MetaOps.typo(a);
+      case "lang-statics": return MetaOps.statics(a);
       case "check": return ContentOps.check(a);
       case "analyze": return ContentOps.analyze(a);
       case "rules-list": return ContentOps.rulesList(a);

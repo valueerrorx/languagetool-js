@@ -1,0 +1,1128 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "Language#filterRuleMatches / filterRuleMatchesAfterOverlapping on harness RuleMatch objects (38 cases)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "lang-filter",
+   "args": {
+    "lang": "en-CA",
+    "cases": [
+     {
+      "name": "apos-add-space",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "EN_FOO",
+        "from": 5,
+        "to": 8,
+        "message": "msg EN_FOO",
+        "suggestions": [
+         "have"
+        ],
+        "errorStr": true
+       }
+      ]
+     },
+     {
+      "name": "apos-keep-apos",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "EN_FOO",
+        "from": 5,
+        "to": 8,
+        "message": "msg EN_FOO",
+        "suggestions": [
+         "'ve"
+        ],
+        "errorStr": true
+       }
+      ]
+     },
+     {
+      "name": "apos-keep-typographic",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "EN_FOO",
+        "from": 5,
+        "to": 8,
+        "message": "msg EN_FOO",
+        "suggestions": [
+         "’ve"
+        ],
+        "errorStr": true
+       }
+      ]
+     },
+     {
+      "name": "apos-keep-space",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "EN_FOO",
+        "from": 5,
+        "to": 8,
+        "message": "msg EN_FOO",
+        "suggestions": [
+         " have"
+        ],
+        "errorStr": true
+       }
+      ]
+     },
+     {
+      "name": "apos-multi",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "EN_FOO",
+        "from": 5,
+        "to": 8,
+        "message": "msg EN_FOO",
+        "suggestions": [
+         "have",
+         "'ve",
+         "’ve",
+         " have",
+         "has",
+         "",
+         "x"
+        ],
+        "errorStr": true
+       }
+      ]
+     },
+     {
+      "name": "apos-empty-suggestion",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "EN_FOO",
+        "from": 5,
+        "to": 8,
+        "message": "msg EN_FOO",
+        "suggestions": [
+         ""
+        ],
+        "errorStr": true
+       }
+      ]
+     },
+     {
+      "name": "nt-add-space",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "EN_FOO",
+        "from": 23,
+        "to": 26,
+        "message": "msg EN_FOO",
+        "suggestions": [
+         "not"
+        ],
+        "errorStr": true
+       }
+      ]
+     },
+     {
+      "name": "nt-keep",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "EN_FOO",
+        "from": 23,
+        "to": 26,
+        "message": "msg EN_FOO",
+        "suggestions": [
+         "n't"
+        ],
+        "errorStr": true
+       }
+      ]
+     },
+     {
+      "name": "nt-keep-typographic",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "EN_FOO",
+        "from": 23,
+        "to": 26,
+        "message": "msg EN_FOO",
+        "suggestions": [
+         "n’t"
+        ],
+        "errorStr": true
+       }
+      ]
+     },
+     {
+      "name": "nt-prefix-match",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "EN_FOO",
+        "from": 23,
+        "to": 26,
+        "message": "msg EN_FOO",
+        "suggestions": [
+         "n'tx",
+         "n’tx",
+         "nt"
+        ],
+        "errorStr": true
+       }
+      ]
+     },
+     {
+      "name": "short-errorstr-2",
+      "fn": "filter",
+      "text": "It 's fine",
+      "matches": [
+       {
+        "ruleId": "EN_FOO",
+        "from": 3,
+        "to": 5,
+        "message": "msg EN_FOO",
+        "suggestions": [
+         "is"
+        ],
+        "errorStr": true
+       }
+      ]
+     },
+     {
+      "name": "short-errorstr-1",
+      "fn": "filter",
+      "text": "a ' b",
+      "matches": [
+       {
+        "ruleId": "EN_FOO",
+        "from": 2,
+        "to": 3,
+        "message": "msg EN_FOO",
+        "suggestions": [
+         "x"
+        ],
+        "errorStr": true
+       }
+      ]
+     },
+     {
+      "name": "errorstr-not-set",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "EN_FOO",
+        "from": 5,
+        "to": 8,
+        "message": "msg EN_FOO",
+        "suggestions": [
+         "have"
+        ],
+        "errorStr": false
+       }
+      ]
+     },
+     {
+      "name": "errorstr-explicit-apos",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "EN_FOO",
+        "from": 5,
+        "to": 8,
+        "message": "msg EN_FOO",
+        "suggestions": [
+         "have"
+        ],
+        "errorStr": "'ll long"
+       }
+      ]
+     },
+     {
+      "name": "errorstr-explicit-nt",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "EN_FOO",
+        "from": 5,
+        "to": 8,
+        "message": "msg EN_FOO",
+        "suggestions": [
+         "have"
+        ],
+        "errorStr": "n't long"
+       }
+      ]
+     },
+     {
+      "name": "errorstr-explicit-short",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "EN_FOO",
+        "from": 5,
+        "to": 8,
+        "message": "msg EN_FOO",
+        "suggestions": [
+         "have"
+        ],
+        "errorStr": "ab"
+       }
+      ]
+     },
+     {
+      "name": "errorstr-empty",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "EN_FOO",
+        "from": 5,
+        "to": 8,
+        "message": "msg EN_FOO",
+        "suggestions": [
+         "have"
+        ],
+        "errorStr": ""
+       }
+      ]
+     },
+     {
+      "name": "errorstr-both-prefix",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "EN_FOO",
+        "from": 5,
+        "to": 8,
+        "message": "msg EN_FOO",
+        "suggestions": [
+         "have"
+        ],
+        "errorStr": "'n't"
+       }
+      ]
+     },
+     {
+      "name": "no-sentence",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "EN_FOO",
+        "from": 5,
+        "to": 8,
+        "message": "msg EN_FOO",
+        "suggestions": [
+         "have"
+        ],
+        "errorStr": false,
+        "noSentence": true
+       }
+      ]
+     },
+     {
+      "name": "empty-suggestions",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "EN_FOO",
+        "from": 5,
+        "to": 8,
+        "message": "msg EN_FOO",
+        "suggestions": [],
+        "errorStr": true
+       }
+      ]
+     },
+     {
+      "name": "no-suggestion-field",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "EN_FOO",
+        "from": 5,
+        "to": 8,
+        "message": "msg EN_FOO",
+        "errorStr": true
+       }
+      ]
+     },
+     {
+      "name": "dedupe-simple",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "EN_FOO",
+        "from": 9,
+        "to": 13,
+        "message": "msg EN_FOO",
+        "suggestions": [
+         "did",
+         "did",
+         "done",
+         "did"
+        ],
+        "errorStr": true
+       }
+      ]
+     },
+     {
+      "name": "dedupe-after-transform",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "EN_FOO",
+        "from": 5,
+        "to": 8,
+        "message": "msg EN_FOO",
+        "suggestions": [
+         "have",
+         " have",
+         "has"
+        ],
+        "errorStr": true
+       }
+      ]
+     },
+     {
+      "name": "dedupe-objects-different-desc",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "EN_FOO",
+        "from": 9,
+        "to": 13,
+        "message": "msg EN_FOO",
+        "suggestions": [
+         {
+          "replacement": "did",
+          "shortDescription": "a"
+         },
+         {
+          "replacement": "did",
+          "shortDescription": "b"
+         },
+         {
+          "replacement": "did",
+          "shortDescription": "a"
+         },
+         {
+          "replacement": "did",
+          "shortDescription": "a",
+          "suffix": "s"
+         }
+        ],
+        "errorStr": true
+       }
+      ]
+     },
+     {
+      "name": "dedupe-objects-transform",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "EN_FOO",
+        "from": 5,
+        "to": 8,
+        "message": "msg EN_FOO",
+        "suggestions": [
+         {
+          "replacement": "have",
+          "shortDescription": "a"
+         },
+         {
+          "replacement": " have",
+          "shortDescription": "a"
+         }
+        ],
+        "errorStr": true
+       }
+      ]
+     },
+     {
+      "name": "gramme-rule-id",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "EN_SIMPLE_REPLACE_KILOGRAMME",
+        "from": 9,
+        "to": 13,
+        "message": "msg EN_SIMPLE_REPLACE_KILOGRAMME",
+        "suggestions": [
+         "x"
+        ],
+        "errorStr": true
+       }
+      ]
+     },
+     {
+      "name": "grammes-rule-id",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "EN_SIMPLE_REPLACE_KILOGRAMMES",
+        "from": 9,
+        "to": 13,
+        "message": "msg EN_SIMPLE_REPLACE_KILOGRAMMES",
+        "suggestions": [
+         "x"
+        ],
+        "errorStr": true
+       }
+      ]
+     },
+     {
+      "name": "gramme-specific-only",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "FOO_RULE",
+        "from": 9,
+        "to": 13,
+        "message": "msg FOO_RULE",
+        "suggestions": [
+         "x"
+        ],
+        "errorStr": true,
+        "specificRuleId": "EN_SIMPLE_REPLACE_GRAMME"
+       }
+      ]
+     },
+     {
+      "name": "grammes-specific-only",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "FOO_RULE",
+        "from": 9,
+        "to": 13,
+        "message": "msg FOO_RULE",
+        "suggestions": [
+         "x"
+        ],
+        "errorStr": true,
+        "specificRuleId": "EN_SIMPLE_REPLACE_FOO_GRAMMES"
+       }
+      ]
+     },
+     {
+      "name": "simple-replace-other",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "EN_SIMPLE_REPLACE_FOO",
+        "from": 9,
+        "to": 13,
+        "message": "msg EN_SIMPLE_REPLACE_FOO",
+        "suggestions": [
+         "x"
+        ],
+        "errorStr": true
+       }
+      ]
+     },
+     {
+      "name": "gramme-without-prefix",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "XEN_SIMPLE_REPLACE_GRAMME",
+        "from": 9,
+        "to": 13,
+        "message": "msg XEN_SIMPLE_REPLACE_GRAMME",
+        "suggestions": [
+         "x"
+        ],
+        "errorStr": true
+       }
+      ]
+     },
+     {
+      "name": "gramme-with-its-type",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "EN_SIMPLE_REPLACE_GRAMME",
+        "from": 9,
+        "to": 13,
+        "message": "msg EN_SIMPLE_REPLACE_GRAMME",
+        "suggestions": [
+         "x"
+        ],
+        "errorStr": true,
+        "issueType": "Style"
+       }
+      ]
+     },
+     {
+      "name": "gramme-shared-rule",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "EN_SIMPLE_REPLACE_GRAMME",
+        "from": 9,
+        "to": 13,
+        "message": "msg EN_SIMPLE_REPLACE_GRAMME",
+        "ruleKey": "s",
+        "suggestions": [
+         "x"
+        ],
+        "issueType": "Style"
+       },
+       {
+        "ruleId": "EN_SIMPLE_REPLACE_GRAMME",
+        "from": 14,
+        "to": 16,
+        "message": "msg EN_SIMPLE_REPLACE_GRAMME",
+        "ruleKey": "s",
+        "suggestions": [
+         "y"
+        ],
+        "specificRuleId": "OTHER"
+       },
+       {
+        "ruleId": "FOO",
+        "from": 27,
+        "to": 31,
+        "message": "msg FOO",
+        "suggestions": [
+         "z"
+        ]
+       }
+      ]
+     },
+     {
+      "name": "empty-list",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": []
+     },
+     {
+      "name": "many-matches",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "A",
+        "from": 5,
+        "to": 8,
+        "message": "msg A",
+        "suggestions": [
+         "have"
+        ],
+        "errorStr": true
+       },
+       {
+        "ruleId": "B",
+        "from": 23,
+        "to": 26,
+        "message": "msg B",
+        "suggestions": [
+         "not",
+         "n’t"
+        ],
+        "errorStr": true
+       },
+       {
+        "ruleId": "C",
+        "from": 0,
+        "to": 4,
+        "message": "msg C",
+        "suggestions": [
+         "They",
+         "They"
+        ],
+        "errorStr": true
+       }
+      ]
+     },
+     {
+      "name": "unicode",
+      "fn": "filter",
+      "text": "Ça 've 😀 done",
+      "matches": [
+       {
+        "ruleId": "A",
+        "from": 3,
+        "to": 6,
+        "message": "msg A",
+        "suggestions": [
+         "have",
+         "😀"
+        ],
+        "errorStr": true
+       }
+      ]
+     },
+     {
+      "name": "after-overlapping",
+      "fn": "afterOverlapping",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "A",
+        "from": 5,
+        "to": 8,
+        "message": "msg A",
+        "suggestions": [
+         "have"
+        ]
+       }
+      ]
+     },
+     {
+      "name": "enabled-rules-ignored",
+      "fn": "filter",
+      "text": "They 've done it and don't know n't",
+      "matches": [
+       {
+        "ruleId": "A",
+        "from": 5,
+        "to": 8,
+        "message": "msg A",
+        "suggestions": [
+         "have"
+        ],
+        "errorStr": true
+       }
+      ],
+      "enabledRules": [
+       "APOS_TYP",
+       "A"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-filter",
+   "args": {
+    "lang": "en-CA",
+    "cases": [
+     {
+      "name": "period-dropped",
+      "fn": "filter",
+      "text": "Das ist ein Test",
+      "matches": [
+       {
+        "ruleId": "AI_DE_GGEC_MISSING_PUNCTUATION_PERIOD",
+        "from": 12,
+        "to": 16,
+        "message": "msg AI_DE_GGEC_MISSING_PUNCTUATION_PERIOD",
+        "suggestions": [
+         "Test."
+        ]
+       }
+      ]
+     },
+     {
+      "name": "period-kept-has-dot",
+      "fn": "filter",
+      "text": "Das ist ein Test.",
+      "matches": [
+       {
+        "ruleId": "AI_DE_GGEC_MISSING_PUNCTUATION_PERIOD",
+        "from": 12,
+        "to": 16,
+        "message": "msg AI_DE_GGEC_MISSING_PUNCTUATION_PERIOD",
+        "suggestions": [
+         "Test."
+        ]
+       }
+      ]
+     },
+     {
+      "name": "period-kept-other-end",
+      "fn": "filter",
+      "text": "Das ist ein Test noch",
+      "matches": [
+       {
+        "ruleId": "AI_DE_GGEC_MISSING_PUNCTUATION_PERIOD",
+        "from": 12,
+        "to": 16,
+        "message": "msg AI_DE_GGEC_MISSING_PUNCTUATION_PERIOD",
+        "suggestions": [
+         "Test."
+        ]
+       }
+      ]
+     },
+     {
+      "name": "period-trailing-ws",
+      "fn": "filter",
+      "text": "Das ist ein Test  \n",
+      "matches": [
+       {
+        "ruleId": "AI_DE_GGEC_MISSING_PUNCTUATION_PERIOD",
+        "from": 12,
+        "to": 16,
+        "message": "msg AI_DE_GGEC_MISSING_PUNCTUATION_PERIOD",
+        "suggestions": [
+         "Test."
+        ]
+       }
+      ]
+     },
+     {
+      "name": "period-two-suggestions",
+      "fn": "filter",
+      "text": "Das ist ein Test",
+      "matches": [
+       {
+        "ruleId": "AI_DE_GGEC_MISSING_PUNCTUATION_PERIOD",
+        "from": 12,
+        "to": 16,
+        "message": "msg AI_DE_GGEC_MISSING_PUNCTUATION_PERIOD",
+        "suggestions": [
+         "Test.",
+         "Test!"
+        ]
+       }
+      ]
+     },
+     {
+      "name": "period-no-dot-suggestion",
+      "fn": "filter",
+      "text": "Das ist ein Test",
+      "matches": [
+       {
+        "ruleId": "AI_DE_GGEC_MISSING_PUNCTUATION_PERIOD",
+        "from": 12,
+        "to": 16,
+        "message": "msg AI_DE_GGEC_MISSING_PUNCTUATION_PERIOD",
+        "suggestions": [
+         "Test!"
+        ]
+       }
+      ]
+     },
+     {
+      "name": "period-other-id",
+      "fn": "filter",
+      "text": "Das ist ein Test",
+      "matches": [
+       {
+        "ruleId": "AI_DE_GGEC_MISSING_PUNCTUATION_PERIOD_X",
+        "from": 12,
+        "to": 16,
+        "message": "msg AI_DE_GGEC_MISSING_PUNCTUATION_PERIOD_X",
+        "suggestions": [
+         "Test."
+        ]
+       }
+      ]
+     },
+     {
+      "name": "period-non-ggec-id",
+      "fn": "filter",
+      "text": "Das ist ein Test",
+      "matches": [
+       {
+        "ruleId": "MISSING_PUNCTUATION_PERIOD",
+        "from": 12,
+        "to": 16,
+        "message": "msg MISSING_PUNCTUATION_PERIOD",
+        "suggestions": [
+         "Test."
+        ]
+       }
+      ]
+     },
+     {
+      "name": "period-dot-only",
+      "fn": "filter",
+      "text": "Das.",
+      "matches": [
+       {
+        "ruleId": "AI_DE_GGEC_MISSING_PUNCTUATION_PERIOD",
+        "from": 0,
+        "to": 3,
+        "message": "msg AI_DE_GGEC_MISSING_PUNCTUATION_PERIOD",
+        "suggestions": [
+         "."
+        ]
+       }
+      ]
+     },
+     {
+      "name": "period-no-sentence",
+      "fn": "filter",
+      "text": "Das ist ein Test",
+      "matches": [
+       {
+        "ruleId": "AI_DE_GGEC_MISSING_PUNCTUATION_PERIOD",
+        "from": 12,
+        "to": 16,
+        "message": "msg AI_DE_GGEC_MISSING_PUNCTUATION_PERIOD",
+        "suggestions": [
+         "Test."
+        ],
+        "noSentence": true
+       }
+      ]
+     },
+     {
+      "name": "empty-list",
+      "fn": "filter",
+      "text": "Das ist ein Test",
+      "matches": []
+     },
+     {
+      "name": "single-plain",
+      "fn": "filter",
+      "text": "Das ist ein Test",
+      "matches": [
+       {
+        "ruleId": "FOO_RULE",
+        "from": 4,
+        "to": 7,
+        "message": "msg FOO_RULE",
+        "suggestions": [
+         "war"
+        ],
+        "shortMessage": "kurz"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-filter",
+   "args": {
+    "lang": "en-CA",
+    "cases": [
+     {
+      "name": "case-only-filter",
+      "fn": "filter",
+      "text": "Si on veut, il a dit Bonjour. Je suis ici",
+      "matches": [
+       {
+        "ruleId": "AI_FR_GGEC_REPLACEMENT_ORTHOGRAPHY",
+        "from": 21,
+        "to": 28,
+        "message": "msg AI_FR_GGEC_REPLACEMENT_ORTHOGRAPHY",
+        "suggestions": [
+         "bonjour"
+        ]
+       }
+      ]
+     },
+     {
+      "name": "case-only-no-orthography-filter",
+      "fn": "filter",
+      "text": "Si on veut, il a dit Bonjour. Je suis ici",
+      "matches": [
+       {
+        "ruleId": "AI_FR_GGEC_REPLACEMENT_OTHER",
+        "from": 21,
+        "to": 28,
+        "message": "msg AI_FR_GGEC_REPLACEMENT_OTHER",
+        "suggestions": [
+         "bonjour"
+        ]
+       }
+      ]
+     },
+     {
+      "name": "case-only-orthography-twice-filter",
+      "fn": "filter",
+      "text": "Si on veut, il a dit Bonjour. Je suis ici",
+      "matches": [
+       {
+        "ruleId": "AI_FR_GGEC_REPLACEMENT_ORTHOGRAPHY_ORTHOGRAPHY_X",
+        "from": 21,
+        "to": 28,
+        "message": "msg AI_FR_GGEC_REPLACEMENT_ORTHOGRAPHY_ORTHOGRAPHY_X",
+        "suggestions": [
+         "BONJOUR"
+        ]
+       }
+      ]
+     },
+     {
+      "name": "case-same-text-filter",
+      "fn": "filter",
+      "text": "Si on veut, il a dit Bonjour. Je suis ici",
+      "matches": [
+       {
+        "ruleId": "AI_FR_GGEC_REPLACEMENT_ORTHOGRAPHY",
+        "from": 21,
+        "to": 28,
+        "message": "msg AI_FR_GGEC_REPLACEMENT_ORTHOGRAPHY",
+        "suggestions": [
+         "Bonjour"
+        ]
+       }
+      ]
+     },
+     {
+      "name": "case-differs-filter",
+      "fn": "filter",
+      "text": "Si on veut, il a dit Bonjour. Je suis ici",
+      "matches": [
+       {
+        "ruleId": "AI_FR_GGEC_REPLACEMENT_ORTHOGRAPHY",
+        "from": 21,
+        "to": 28,
+        "message": "msg AI_FR_GGEC_REPLACEMENT_ORTHOGRAPHY",
+        "suggestions": [
+         "Bonsoir"
+        ]
+       }
+      ]
+     },
+     {
+      "name": "case-two-suggestions-filter",
+      "fn": "filter",
+      "text": "Si on veut, il a dit Bonjour. Je suis ici",
+      "matches": [
+       {
+        "ruleId": "AI_FR_GGEC_REPLACEMENT_ORTHOGRAPHY",
+        "from": 21,
+        "to": 28,
+        "message": "msg AI_FR_GGEC_REPLACEMENT_ORTHOGRAPHY",
+        "suggestions": [
+         "bonjour",
+         "BONJOUR"
+        ]
+       }
+      ]
+     },
+     {
+      "name": "case-no-suggestions-filter",
+      "fn": "filter",
+      "text": "Si on veut, il a dit Bonjour. Je suis ici",
+      "matches": [
+       {
+        "ruleId": "AI_FR_GGEC_REPLACEMENT_ORTHOGRAPHY",
+        "from": 21,
+        "to": 28,
+        "message": "msg AI_FR_GGEC_REPLACEMENT_ORTHOGRAPHY",
+        "suggestions": []
+       }
+      ]
+     },
+     {
+      "name": "case-non-ggec-filter",
+      "fn": "filter",
+      "text": "Si on veut, il a dit Bonjour. Je suis ici",
+      "matches": [
+       {
+        "ruleId": "FOO_ORTHOGRAPHY",
+        "from": 21,
+        "to": 28,
+        "message": "msg FOO_ORTHOGRAPHY",
+        "suggestions": [
+         "bonjour"
+        ]
+       }
+      ]
+     },
+     {
+      "name": "case-turkish-i-filter",
+      "fn": "filter",
+      "text": "Il est İci ici",
+      "matches": [
+       {
+        "ruleId": "AI_FR_GGEC_REPLACEMENT_ORTHOGRAPHY",
+        "from": 7,
+        "to": 10,
+        "message": "msg AI_FR_GGEC_REPLACEMENT_ORTHOGRAPHY",
+        "suggestions": [
+         "ici"
+        ]
+       }
+      ]
+     },
+     {
+      "name": "case-sharp-s-filter",
+      "fn": "filter",
+      "text": "Die Straße",
+      "matches": [
+       {
+        "ruleId": "AI_FR_GGEC_REPLACEMENT_ORTHOGRAPHY",
+        "from": 4,
+        "to": 10,
+        "message": "msg AI_FR_GGEC_REPLACEMENT_ORTHOGRAPHY",
+        "suggestions": [
+         "STRASSE"
+        ]
+       }
+      ]
+     },
+     {
+      "name": "case-errorstr-preset-filter",
+      "fn": "filter",
+      "text": "Si on veut, il a dit Bonjour. Je suis ici",
+      "matches": [
+       {
+        "ruleId": "AI_FR_GGEC_REPLACEMENT_ORTHOGRAPHY",
+        "from": 21,
+        "to": 28,
+        "message": "msg AI_FR_GGEC_REPLACEMENT_ORTHOGRAPHY",
+        "suggestions": [
+         "bonjour"
+        ],
+        "errorStr": "preset"
+       }
+      ]
+     },
+     {
+      "name": "case-no-sentence-filter",
+      "fn": "filter",
+      "text": "Si on veut, il a dit Bonjour. Je suis ici",
+      "matches": [
+       {
+        "ruleId": "AI_FR_GGEC_REPLACEMENT_ORTHOGRAPHY",
+        "from": 21,
+        "to": 28,
+        "message": "msg AI_FR_GGEC_REPLACEMENT_ORTHOGRAPHY",
+        "suggestions": [
+         "bonjour"
+        ],
+        "noSentence": true
+       }
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

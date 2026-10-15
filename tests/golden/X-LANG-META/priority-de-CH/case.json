@@ -1,0 +1,4097 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "Language#getPriorityForId over 295 ids (priority maps + fallback probes), getRulePriority over 580 synthetic rules, and every real rule of the language",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "lang-priority",
+   "args": {
+    "lang": "de-CH",
+    "ids": [
+     "ABERS_SATZANFANG_SPELLING_RULE",
+     "AB_TEST",
+     "AKZENT_STATT_APOSTROPH",
+     "ALLES_GUTE",
+     "ALL_UPPERCASE",
+     "ALTERNATIVEN_FUER_ANGLIZISMEN",
+     "ANFUEHRUNGSZEICHEN_CH_FR",
+     "ANFUEHRUNGSZEICHEN_DE_AT",
+     "ANFUEHRUNG_VERSCHACHTELT",
+     "ANGLIZISMEN",
+     "ANGLIZISMUS_PA_MIT_ED",
+     "ANGL_PA_ED_UNANGEMESSEN",
+     "ANS_OHNE_APOSTROPH",
+     "AN_STATT",
+     "ART_ADJ_SOL",
+     "ART_IND_ADJ_SUB",
+     "AUFFORDERUNG_SIE",
+     "AUF_BITTEN",
+     "AUF_DRÄNGEN",
+     "AUF_ZACK",
+     "AUSLASSUNGSPUNKTE_LEERZEICHEN",
+     "AUSSER_ORDENTLICH",
+     "AUSTRIAN_GERMAN_SPELLER_RULE",
+     "BEENDE_IST_SENTEND",
+     "BEI_GOOGLE",
+     "BEI_VERB",
+     "BLUETOOTH_LAUTSPRECHER",
+     "BZGL_ABK",
+     "COLLOQUIALISMS",
+     "COMMA_BEHIND_RELATIVE_CLAUSE",
+     "COMMA_IN_FRONT_RELATIVE_CLAUSE",
+     "COVID_19",
+     "DASS_DAS_PA2_DAS_PROIND",
+     "DASS_MIT_VERB",
+     "DAS_ALTER",
+     "DAS_IST_GLAUBE_ICH_EGAL",
+     "DAS_WETTER_IST",
+     "DAS_WUENSCHE_ICH",
+     "DATIV_NACH_PRP",
+     "DAT_ODER_AKK_NACH_PRP",
+     "DA_DURCH",
+     "DA_VOR",
+     "DEF_ARTIKEL_INDEF_ADJ",
+     "DE_AGREEMENT",
+     "DE_AGREEMENT2",
+     "DE_COMPOUNDS",
+     "DE_COMPOUND_COHERENCY",
+     "DE_PHRASE_REPETITION",
+     "DE_PROHIBITED_PHRASE",
+     "DE_UNPAIRED_QUOTES",
+     "DE_VERBAGREEMENT",
+     "DIESEN_JAHRES",
+     "DIESE_HABE_ER_BELEIDIGTE",
+     "DIES_MAL",
+     "DOPPELTER_NOMINATIV",
+     "DOPPELTES_VERB",
+     "DOPPELUNG_GLEICHES_VERB",
+     "DOPPELUNG_MODALVERB",
+     "DOPPELUNG_VER_MOD_AUX",
+     "DRIVE_IN",
+     "DURCH_WACHSEN",
+     "EBEN_FALLS",
+     "EINEN_VERSUCH_WERT",
+     "EINE_ORIGINAL_RECHNUNG",
+     "EINE_ORIGINAL_RECHNUNG_TEST",
+     "EINZELBUCHSTABE_PREMIUM",
+     "EIN_FACH",
+     "EIN_LOGGEN",
+     "EMAIL",
+     "ERNEUERBARE_ENERGIEN",
+     "E_MAIL_SIGNATUR",
+     "FALSCHES_ANFUEHRUNGSZEICHEN",
+     "FALSCHES_RELATIVPRONOMEN",
+     "FEHLENDES_NOMEN",
+     "FRAGEZEICHEN_NACH_DIREKTER_REDE",
+     "FUER_INSBESONDERE",
+     "F_ANSTATT_PH_2",
+     "GEFEATURED",
+     "GENDER_NEUTRALITY",
+     "GERMAN_SPELLER_RULE",
+     "GERMAN_WORD_REPEAT_BEGINNING_RULE",
+     "GERMAN_WORD_REPEAT_RULE",
+     "GROSSSCHREIBUNG_WOERTLICHER_REDE",
+     "GRUNDE",
+     "HAST_DICH",
+     "HAT_DU",
+     "HIER_FUER",
+     "HIER_MIT",
+     "ICH_BIN_STAND_JETZT_KOMMA",
+     "ICH_GEHE_DU_BLEIBST",
+     "ICH_GLAUBE_FUER_EUCH",
+     "ICH_INF_PREMIUM",
+     "ICH_KOENNT",
+     "ICH_LIEBS",
+     "IMPFLICHT",
+     "IM_ALTER",
+     "IM_ERSCHEINUNG_SPELLING_RULE",
+     "IM_IHM_SPELLING_RULE",
+     "IM_STICH_LASSEN",
+     "IM_UM",
+     "INF_VER_MOD_SPELLING_RULE",
+     "INS_FITNESS",
+     "IN_DEUTSCHE_SPRACHE",
+     "IN_UND_AUSWENDIG",
+     "IN_UNKNOWNKLEIN_VER",
+     "IRGEND_COMPOUND",
+     "JEDEN_FALLS",
+     "JOE_BIDEN",
+     "KANNST_WERDEN",
+     "KATARI",
+     "KLEINSCHREIBUNG_MAL",
+     "KOMMA_NEBEN_UND_HAUPTSATZ",
+     "KOMMA_ZWISCHEN_HAUPT_UND_NEBENSATZ",
+     "KOMMA_ZWISCHEN_HAUPT_UND_NEBENSATZ_2",
+     "KUDAMM",
+     "LEERZEICHEN_NACH_VOR_ANFUEHRUNGSZEICHEN",
+     "LT_RECOMMENDATION",
+     "MAN_SIEHT_SEHR_SCHOEN",
+     "MEHRERE_WOCHE_PREMIUM",
+     "MEINET_WEGEN",
+     "MEINSTE",
+     "MEIN_KLEIN_HAUS",
+     "MFG",
+     "MIO_PUNKT",
+     "MIT_FREUNDLICHEN_GRUESSE",
+     "MIT_REISSEN",
+     "MIT_UNTER",
+     "MIT_VERANTWORTLICH",
+     "MODALVERB_FLEKT_VERB",
+     "MOEGLICHER_WEISE_ETC",
+     "NEUN_NEUEN",
+     "NULL_KOMMA_NICHTS",
+     "NUMBER_SUB",
+     "NUR_LEDIGLICH",
+     "N_NETTER_TYP",
+     "OBJECT_AGREEMENT",
+     "OK",
+     "OLD_SPELLING_RULE",
+     "PASSWORTE",
+     "PA_WAS",
+     "PROPERNOMSIN_VERIMPSIN",
+     "PRP_ADJ_AGREEMENT",
+     "PRP_VER_PRGK",
+     "PUNCTUATION_PARAGRAPH_END",
+     "PUNKT_ENDE_DIREKTE_REDE",
+     "REDUNDANCY",
+     "REPETITIONS_STYLE",
+     "ROCK_N_ROLL",
+     "RUNDUM_SORGLOS_PAKET",
+     "SAGT_RUFT",
+     "SAGT_SAGT",
+     "SATZBAU_AN_DEN_KOMMT",
+     "SCHMIERE_STEHEN",
+     "SCHOENE_WETTER",
+     "SEHR_GEEHRTER_NAME",
+     "SEIT_BEKANNT_WERDEN",
+     "SEIT_GEBURT_AN",
+     "SEIT_KLEIN_AUF",
+     "SEIT_LAENGEREN",
+     "SEIT_VS_SEID",
+     "SENT_START_PLU_SIN",
+     "SENT_START_SIN_PLU",
+     "SICH_SICHT",
+     "SIE_WOLLTEN_SIND",
+     "SO_WIES_IST",
+     "SPACE_BEFORE_OG",
+     "STYLE",
+     "STYLE_KEINE_AHNUNG",
+     "SUBJECT_VERB_AGREEMENT",
+     "SUBJUNKTION_KOMMA_2",
+     "SUB_VER_KLEIN",
+     "SWISS_GERMAN_SPELLER_RULE",
+     "TAG_EIN_TAG_AUS",
+     "TELEFON_NR",
+     "TOO_LONG_PARAGRAPH",
+     "TOUREN_SUBST",
+     "TYPOGRAPHY",
+     "UEBER_EIN_MANGEL",
+     "UNPAIRED_BRACKETS",
+     "UNTER_DRUCK",
+     "UPPERCASE_SENTENCE_START",
+     "UST_ID",
+     "VER123_VERAUXMOD",
+     "VER123_VERAUXMOD_TEST1",
+     "VERBEN_PRAEFIX_AUS",
+     "VERB_FEM_SUBST",
+     "VERB_IST",
+     "VEREIZ_VERINF_PKT",
+     "VERINF_DAS_DASS_SUB",
+     "VERMOD_SKIP_VER_PKT",
+     "VERNEB",
+     "VERSEHENTLICHERWEISE",
+     "VERWANDET_VERWANDTE",
+     "VERWECHSLUNG_MIR_DIR_MIR_DIE",
+     "VER_ADJ_ZU_SCHLAFEN",
+     "VER_DOPPELUNG",
+     "VER_INFNOMEN",
+     "VER_INF_PKT_VER_INF",
+     "VER_INF_VER_INF",
+     "VER_KOMMA_PRO_RIN",
+     "VER_WER_VER_3",
+     "VONSTATTEN_GEHEN",
+     "VON_LEBENSLAEUFE_SPELLING_RULE",
+     "VON_SEITEN_RECOMMENDATION",
+     "VORHER_NACHHER_BILD",
+     "VOR_BEI",
+     "VOR_LACHEN",
+     "WAEHRUNGSANGABEN_CHF",
+     "WAR_WAHR",
+     "WAR_WERDEN",
+     "WEIS_ICH",
+     "WENNS_UND_ABERS",
+     "WERT_SEIN",
+     "WER_STARK_SCHWITZ",
+     "WIR_GEFUEHL",
+     "WIR_HABE",
+     "WOGEN_SUBST",
+     "WO_VON",
+     "WRONG_SPELLING_PREMIUM_INTERNAL",
+     "WURDEN_WORDEN_1",
+     "ZAHL_IM_WORT_SPELLING_RULE",
+     "ZEICHENSETZUNG_DIREKTE_REDE",
+     "ZUCCHINIS",
+     "ZULANGE",
+     "ZUSAMMENGESETZTE_VERBEN",
+     "ZU_GENÜGE",
+     "ZU_KOMMEN_LASSEN",
+     "ZU_SCHICKEN_LASSEN",
+     "ZWEI_AN_HALB",
+     "DE_PROHIBITED_COMPOUNDS_X",
+     "DE_PROHIBITED_COMPOUNDS_PREMIUM_X",
+     "DE_PROHIBITED_COMPOUNDS_",
+     "DE_PROHIBITED_COMPOUNDS",
+     "DE_MULTITOKEN_SPELLING",
+     "DE_MULTITOKEN_SPELLING_FOO",
+     "CONFUSION_RULE_",
+     "CONFUSION_RULE_ABC",
+     "CONFUSION_RULE",
+     "CONFUSION_RULE_PREMIUM",
+     "AI_DE_HYDRA_LEO",
+     "AI_DE_HYDRA_LEO_MISSING_COMMA",
+     "AI_DE_HYDRA_LEO_MISSING_COMMA_X",
+     "AI_DE_HYDRA_LEO_CP",
+     "AI_DE_HYDRA_LEO_CP_X",
+     "AI_DE_HYDRA_LEO_DATAKK",
+     "AI_DE_HYDRA_LEO_DATAKK_1",
+     "AI_DE_HYDRA_LEO_FOO",
+     "AI_DE_KOMMA",
+     "AI_DE_KOMMA_X",
+     "AI_DE_GGEC",
+     "AI_DE_GGEC_X",
+     "AI_DE_GGEC_MISSING_PUNCTUATION_E_DASH_MAIL",
+     "AI_DE_GGEC_REPLACEMENT_ADJECTIVE",
+     "AI_DE_GGEC_REPLACEMENT_ADVERB",
+     "AI_DE_GGEC_REPLACEMENT_NOUN",
+     "AI_DE_GGEC_REPLACEMENT_ORTHOGRAPHY_LOWERCASE",
+     "AI_DE_GGEC_REPLACEMENT_ORTHOGRAPHY_SPELL",
+     "AI_DE_GGEC_REPLACEMENT_OTHER",
+     "AI_DE_GGEC_REPLACEMENT_VERB",
+     "AI_DE_GGEC_REPLACEMENT_VERB_FORM",
+     "AI_DE_GGEC_UNNECESSARY_ORTHOGRAPHY_SPACE",
+     "AI_DE_GGEC_UNNECESSARY_OTHER",
+     "AI_DE_GGEC_UNNECESSARY_SPACE",
+     "AI_DE_GGEC_REPLACEMENT_ADJECTIVE_FORM",
+     "AI_DE_GGEC_MISSING_ORTHOGRAPHY_SPACE",
+     "AI_DE_GGEC_MISSING_ORTHOGRAPHY_SPACE_X",
+     "AI_DE_GGEC_MISSING_PUNCTUATION_PERIOD",
+     "AI_DE_GGEC_MISSING_PUNCTUATION_PERIOD_X",
+     "AI_DE_GGEC_UNNECESSARY_PUNCTUATION",
+     "AI_DE_GGEC_UNNECESSARY_PUNCTUATION_COMMA",
+     "AI_DE_GGEC_MISSING_PUNCTUATION_COMMA",
+     "AI_DE_GGEC_MISSING_PUNCTUATION_12_DASH_JAEHRIG",
+     "AI_DE_GGEC_MISSING_PUNCTUATION_5_DASH_J_HRIG",
+     "AI_DE_GGEC_MISSING_PUNCTUATION_X_DASH_JAEHRIG",
+     "AI_DE_GGEC_MISSING_PUNCTUATION_5_dash_jaehrig",
+     "AI_DE_GGEC_MISSING_PUNCTUATION_5_DASH_JAEHRIGE",
+     "AI_DE_GGEC_REPLACEMENT_CONFUSION",
+     "AI_DE_GGEC_REPLACEMENT_CONFUSION_X",
+     "AI_DE_GGEC_replacement_confusion",
+     "AI_DE_GGEC_REPLACEMENT_CONFUSIONS",
+     "ai_de_ggec_x",
+     "german_speller_rule",
+     "DE_COMPOUNDS_X",
+     "MY_STYLE_ID",
+     "TOO_LONG_SENTENCE",
+     "too_long_sentence",
+     "TOO_LONG_SENTENCE_X",
+     "SOME_UNKNOWN_RULE",
+     "GRAMMAR",
+     "MISC",
+     "TYPOS",
+     "",
+     " ",
+     "ÄÖÜ_STYLE",
+     "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    ]
+   }
+  },
+  {
+   "op": "lang-priority",
+   "args": {
+    "lang": "de-CH",
+    "rules": [
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_X"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_X",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_X",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_X",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_X",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_X",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_X",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_X",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_X",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_X",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_X",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_X",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_X",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_X",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_X",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_X",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_PREMIUM_X"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_PREMIUM_X",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_PREMIUM_X",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_PREMIUM_X",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_PREMIUM_X",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_PREMIUM_X",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_PREMIUM_X",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_PREMIUM_X",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_PREMIUM_X",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_PREMIUM_X",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_PREMIUM_X",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_PREMIUM_X",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_PREMIUM_X",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_PREMIUM_X",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_PREMIUM_X",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_PREMIUM_X",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING_FOO"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING_FOO",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING_FOO",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING_FOO",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING_FOO",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING_FOO",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING_FOO",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING_FOO",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING_FOO",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING_FOO",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING_FOO",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING_FOO",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING_FOO",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING_FOO",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING_FOO",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING_FOO",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "CONFUSION_RULE_",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "CONFUSION_RULE_",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "CONFUSION_RULE_",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_ABC"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_ABC",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_ABC",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_ABC",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_ABC",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "CONFUSION_RULE_ABC",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_ABC",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_ABC",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_ABC",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "CONFUSION_RULE_ABC",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_ABC",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_ABC",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_ABC",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "CONFUSION_RULE_ABC",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_ABC",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_ABC",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE"
+     },
+     {
+      "ruleId": "CONFUSION_RULE",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "CONFUSION_RULE",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "CONFUSION_RULE",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "CONFUSION_RULE",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "CONFUSION_RULE",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "CONFUSION_RULE",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "CONFUSION_RULE",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "CONFUSION_RULE",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_PREMIUM"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_PREMIUM",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_PREMIUM",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_PREMIUM",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_PREMIUM",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "CONFUSION_RULE_PREMIUM",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_PREMIUM",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_PREMIUM",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_PREMIUM",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "CONFUSION_RULE_PREMIUM",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_PREMIUM",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_PREMIUM",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_PREMIUM",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "CONFUSION_RULE_PREMIUM",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_PREMIUM",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_PREMIUM",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA_X"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA_X",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA_X",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA_X",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA_X",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA_X",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA_X",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA_X",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA_X",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA_X",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA_X",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA_X",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA_X",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA_X",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA_X",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA_X",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP_X"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP_X",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP_X",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP_X",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP_X",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP_X",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP_X",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP_X",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP_X",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP_X",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP_X",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP_X",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP_X",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP_X",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP_X",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_CP_X",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK_1"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK_1",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK_1",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK_1",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK_1",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK_1",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK_1",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK_1",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK_1",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK_1",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK_1",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK_1",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK_1",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK_1",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK_1",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_DATAKK_1",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_FOO"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_FOO",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_FOO",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_FOO",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_FOO",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_FOO",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_FOO",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_FOO",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_FOO",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_FOO",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_FOO",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_FOO",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_FOO",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_FOO",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_FOO",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_FOO",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_KOMMA"
+     },
+     {
+      "ruleId": "AI_DE_KOMMA",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_KOMMA",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_KOMMA",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_KOMMA",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "AI_DE_KOMMA",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_KOMMA",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_KOMMA",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_KOMMA",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "AI_DE_KOMMA",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_KOMMA",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_KOMMA",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_KOMMA",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "AI_DE_KOMMA",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_KOMMA",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_KOMMA",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_KOMMA_X"
+     },
+     {
+      "ruleId": "AI_DE_KOMMA_X",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_KOMMA_X",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_KOMMA_X",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_KOMMA_X",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "AI_DE_KOMMA_X",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_KOMMA_X",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_KOMMA_X",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_KOMMA_X",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "AI_DE_KOMMA_X",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_KOMMA_X",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_KOMMA_X",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_KOMMA_X",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "AI_DE_KOMMA_X",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_KOMMA_X",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_KOMMA_X",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_GGEC"
+     },
+     {
+      "ruleId": "AI_DE_GGEC",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_GGEC",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_GGEC",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_GGEC",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "AI_DE_GGEC",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_GGEC",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_GGEC",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_GGEC",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "AI_DE_GGEC",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_GGEC",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_GGEC",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_GGEC",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "AI_DE_GGEC",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_GGEC",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_GGEC",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_GGEC_X"
+     },
+     {
+      "ruleId": "AI_DE_GGEC_X",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_GGEC_X",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_GGEC_X",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_GGEC_X",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "AI_DE_GGEC_X",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_GGEC_X",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_GGEC_X",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_GGEC_X",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "AI_DE_GGEC_X",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_GGEC_X",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_GGEC_X",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_GGEC_X",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "AI_DE_GGEC_X",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_GGEC_X",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AI_DE_GGEC_X",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ABERS_SATZANFANG_SPELLING_RULE"
+     },
+     {
+      "ruleId": "ABERS_SATZANFANG_SPELLING_RULE",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ABERS_SATZANFANG_SPELLING_RULE",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ABERS_SATZANFANG_SPELLING_RULE",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ABERS_SATZANFANG_SPELLING_RULE",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "ABERS_SATZANFANG_SPELLING_RULE",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ABERS_SATZANFANG_SPELLING_RULE",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ABERS_SATZANFANG_SPELLING_RULE",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ABERS_SATZANFANG_SPELLING_RULE",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "ABERS_SATZANFANG_SPELLING_RULE",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ABERS_SATZANFANG_SPELLING_RULE",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ABERS_SATZANFANG_SPELLING_RULE",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ABERS_SATZANFANG_SPELLING_RULE",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "ABERS_SATZANFANG_SPELLING_RULE",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ABERS_SATZANFANG_SPELLING_RULE",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ABERS_SATZANFANG_SPELLING_RULE",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AB_TEST"
+     },
+     {
+      "ruleId": "AB_TEST",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AB_TEST",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AB_TEST",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AB_TEST",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "AB_TEST",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AB_TEST",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AB_TEST",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AB_TEST",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "AB_TEST",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AB_TEST",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AB_TEST",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AB_TEST",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "AB_TEST",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AB_TEST",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AB_TEST",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AKZENT_STATT_APOSTROPH"
+     },
+     {
+      "ruleId": "AKZENT_STATT_APOSTROPH",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AKZENT_STATT_APOSTROPH",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AKZENT_STATT_APOSTROPH",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AKZENT_STATT_APOSTROPH",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "AKZENT_STATT_APOSTROPH",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AKZENT_STATT_APOSTROPH",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AKZENT_STATT_APOSTROPH",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AKZENT_STATT_APOSTROPH",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "AKZENT_STATT_APOSTROPH",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AKZENT_STATT_APOSTROPH",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AKZENT_STATT_APOSTROPH",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AKZENT_STATT_APOSTROPH",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "AKZENT_STATT_APOSTROPH",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AKZENT_STATT_APOSTROPH",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "AKZENT_STATT_APOSTROPH",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ALLES_GUTE"
+     },
+     {
+      "ruleId": "ALLES_GUTE",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ALLES_GUTE",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ALLES_GUTE",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ALLES_GUTE",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "ALLES_GUTE",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ALLES_GUTE",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ALLES_GUTE",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ALLES_GUTE",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "ALLES_GUTE",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ALLES_GUTE",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ALLES_GUTE",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ALLES_GUTE",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "ALLES_GUTE",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ALLES_GUTE",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ALLES_GUTE",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ALL_UPPERCASE"
+     },
+     {
+      "ruleId": "ALL_UPPERCASE",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ALL_UPPERCASE",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ALL_UPPERCASE",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ALL_UPPERCASE",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "ALL_UPPERCASE",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ALL_UPPERCASE",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ALL_UPPERCASE",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ALL_UPPERCASE",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "ALL_UPPERCASE",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ALL_UPPERCASE",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ALL_UPPERCASE",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ALL_UPPERCASE",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "ALL_UPPERCASE",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ALL_UPPERCASE",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ALL_UPPERCASE",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ALTERNATIVEN_FUER_ANGLIZISMEN"
+     },
+     {
+      "ruleId": "ALTERNATIVEN_FUER_ANGLIZISMEN",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ALTERNATIVEN_FUER_ANGLIZISMEN",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ALTERNATIVEN_FUER_ANGLIZISMEN",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ALTERNATIVEN_FUER_ANGLIZISMEN",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "ALTERNATIVEN_FUER_ANGLIZISMEN",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ALTERNATIVEN_FUER_ANGLIZISMEN",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ALTERNATIVEN_FUER_ANGLIZISMEN",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ALTERNATIVEN_FUER_ANGLIZISMEN",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "ALTERNATIVEN_FUER_ANGLIZISMEN",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ALTERNATIVEN_FUER_ANGLIZISMEN",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ALTERNATIVEN_FUER_ANGLIZISMEN",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ALTERNATIVEN_FUER_ANGLIZISMEN",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "ALTERNATIVEN_FUER_ANGLIZISMEN",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ALTERNATIVEN_FUER_ANGLIZISMEN",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ALTERNATIVEN_FUER_ANGLIZISMEN",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_CH_FR"
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_CH_FR",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_CH_FR",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_CH_FR",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_CH_FR",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_CH_FR",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_CH_FR",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_CH_FR",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_CH_FR",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_CH_FR",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_CH_FR",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_CH_FR",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_CH_FR",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_CH_FR",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_CH_FR",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_CH_FR",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_DE_AT"
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_DE_AT",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_DE_AT",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_DE_AT",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_DE_AT",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_DE_AT",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_DE_AT",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_DE_AT",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_DE_AT",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_DE_AT",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_DE_AT",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_DE_AT",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_DE_AT",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_DE_AT",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_DE_AT",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ANFUEHRUNGSZEICHEN_DE_AT",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANFUEHRUNG_VERSCHACHTELT"
+     },
+     {
+      "ruleId": "ANFUEHRUNG_VERSCHACHTELT",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANFUEHRUNG_VERSCHACHTELT",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ANFUEHRUNG_VERSCHACHTELT",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANFUEHRUNG_VERSCHACHTELT",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "ANFUEHRUNG_VERSCHACHTELT",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANFUEHRUNG_VERSCHACHTELT",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ANFUEHRUNG_VERSCHACHTELT",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANFUEHRUNG_VERSCHACHTELT",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "ANFUEHRUNG_VERSCHACHTELT",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANFUEHRUNG_VERSCHACHTELT",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ANFUEHRUNG_VERSCHACHTELT",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANFUEHRUNG_VERSCHACHTELT",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "ANFUEHRUNG_VERSCHACHTELT",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANFUEHRUNG_VERSCHACHTELT",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ANFUEHRUNG_VERSCHACHTELT",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANGLIZISMEN"
+     },
+     {
+      "ruleId": "ANGLIZISMEN",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANGLIZISMEN",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ANGLIZISMEN",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANGLIZISMEN",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "ANGLIZISMEN",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANGLIZISMEN",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ANGLIZISMEN",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANGLIZISMEN",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "ANGLIZISMEN",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANGLIZISMEN",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ANGLIZISMEN",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANGLIZISMEN",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "ANGLIZISMEN",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "ANGLIZISMEN",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "ANGLIZISMEN",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "STYLE"
+     },
+     {
+      "ruleId": "STYLE",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "STYLE",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "STYLE",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "STYLE",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "STYLE",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "STYLE",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "STYLE",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "STYLE",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "STYLE",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "STYLE",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "STYLE",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "STYLE",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "STYLE",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "STYLE",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "STYLE",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "TOO_LONG_SENTENCE"
+     },
+     {
+      "ruleId": "TOO_LONG_SENTENCE",
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "TOO_LONG_SENTENCE",
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "TOO_LONG_SENTENCE",
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "TOO_LONG_SENTENCE",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "TOO_LONG_SENTENCE",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "TOO_LONG_SENTENCE",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "TOO_LONG_SENTENCE",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "TOO_LONG_SENTENCE",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "TOO_LONG_SENTENCE",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "TOO_LONG_SENTENCE",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "TOO_LONG_SENTENCE",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "TOO_LONG_SENTENCE",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "TOO_LONG_SENTENCE",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": 7,
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "TOO_LONG_SENTENCE",
+      "category": {
+       "id": "STYLE"
+      },
+      "priority": -9,
+      "issueType": "Grammar"
+     },
+     {
+      "ruleId": "TOO_LONG_SENTENCE",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_X",
+      "subId": "1"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_X",
+      "subId": "2",
+      "priority": 3,
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_PREMIUM_X",
+      "subId": "1"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_PREMIUM_X",
+      "subId": "2",
+      "priority": 3,
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_",
+      "subId": "1"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS_",
+      "subId": "2",
+      "priority": 3,
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS",
+      "subId": "1"
+     },
+     {
+      "ruleId": "DE_PROHIBITED_COMPOUNDS",
+      "subId": "2",
+      "priority": 3,
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING",
+      "subId": "1"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING",
+      "subId": "2",
+      "priority": 3,
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING_FOO",
+      "subId": "1"
+     },
+     {
+      "ruleId": "DE_MULTITOKEN_SPELLING_FOO",
+      "subId": "2",
+      "priority": 3,
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_",
+      "subId": "1"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_",
+      "subId": "2",
+      "priority": 3,
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_ABC",
+      "subId": "1"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_ABC",
+      "subId": "2",
+      "priority": 3,
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE",
+      "subId": "1"
+     },
+     {
+      "ruleId": "CONFUSION_RULE",
+      "subId": "2",
+      "priority": 3,
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_PREMIUM",
+      "subId": "1"
+     },
+     {
+      "ruleId": "CONFUSION_RULE_PREMIUM",
+      "subId": "2",
+      "priority": 3,
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO",
+      "subId": "1"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO",
+      "subId": "2",
+      "priority": 3,
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA",
+      "subId": "1"
+     },
+     {
+      "ruleId": "AI_DE_HYDRA_LEO_MISSING_COMMA",
+      "subId": "2",
+      "priority": 3,
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "UNKNOWN_RULE_X",
+      "category": {
+       "id": "TYPOGRAPHY"
+      }
+     },
+     {
+      "ruleId": "UNKNOWN_RULE_X",
+      "category": {
+       "id": "TYPOGRAPHY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "UNKNOWN_RULE_X",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      }
+     },
+     {
+      "ruleId": "UNKNOWN_RULE_X",
+      "category": {
+       "id": "COLLOQUIALISMS"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "UNKNOWN_RULE_X",
+      "category": {
+       "id": "STYLE"
+      }
+     },
+     {
+      "ruleId": "UNKNOWN_RULE_X",
+      "category": {
+       "id": "STYLE"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "UNKNOWN_RULE_X",
+      "category": {
+       "id": "REDUNDANCY"
+      }
+     },
+     {
+      "ruleId": "UNKNOWN_RULE_X",
+      "category": {
+       "id": "REDUNDANCY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "UNKNOWN_RULE_X",
+      "category": {
+       "id": "GENDER_NEUTRALITY"
+      }
+     },
+     {
+      "ruleId": "UNKNOWN_RULE_X",
+      "category": {
+       "id": "GENDER_NEUTRALITY"
+      },
+      "issueType": "Style"
+     },
+     {
+      "ruleId": "UNKNOWN_RULE_X",
+      "category": {
+       "id": "REPETITIONS_STYLE"
+      }
+     },
+     {
+      "ruleId": "UNKNOWN_RULE_X",
+      "category": {
+       "id": "REPETITIONS_STYLE"
+      },
+      "issueType": "Style"
+     }
+    ]
+   }
+  },
+  {
+   "op": "lang-priority",
+   "args": {
+    "lang": "de-CH",
+    "real": true
+   }
+  }
+ ]
+}
