@@ -1,8 +1,8 @@
 // Java: org.languagetool.language.French (rule lists, rule match filters and speller rules follow in F17/F16)
-import { ArrayIndexOutOfBoundsException, RuntimeException, Throwable } from '../../../lib/java/errors.js';
+import { ArrayIndexOutOfBoundsException, IndexOutOfBoundsException, NullPointerException, RuntimeException, Throwable } from '../../../lib/java/errors.js';
 import { Objects } from '../../../lib/java/Objects.js';
 import { Pattern } from '../../../lib/java/regex/index.js';
-import { javaSplit, javaTrim } from '../../../lib/java/strings.js';
+import { javaSplit, javaTrim, javaReplaceAll, equalsIgnoreCase, toLowerCase, replaceChar } from '../../../lib/java/strings.js';
 import { JavaHashMap } from '../../../lib/java/collections/JavaHashMap.js';
 import { Languages } from '../../../core/Languages.js';
 import { SRXSentenceTokenizer } from '../../../core/text/tokenizers/SRXSentenceTokenizer.js';
@@ -11,7 +11,27 @@ import { LanguageMaintainedState } from '../../../core/LanguageMaintainedState.j
 import { DOMINIQUE_PELLE } from '../../../core/language/Contributors.js';
 import { createComponent, notPortedYet, sharedComponent } from '../../../core/language/components.js';
 import { registerClass } from '../../../core/resources/ClassBroker.js';
+import { RuleMatch } from '../../../core/rules/model/RuleMatch.js';
+import { ITSIssueType } from '../../../core/rules/model/ITSIssueType.js';
+import { Tag } from '../../../core/rules/model/Tag.js';
+import { Categories } from '../../../core/rules/model/Category.js';
+import { getMessageBundleForLanguage } from '../../../core/resources/ResourceBundleTools.js';
 import { ID2PRIO_ENTRIES } from './id2prioFrench.js';
+
+const TRAILING_WS = '\\s+$';
+
+// Java: currentMatch.getSentence().getText() (helpful NPE when the sentence is null)
+function sentenceText(m) {
+  if (m.getSentence() === null) throw new NullPointerException('Cannot invoke "org.languagetool.AnalyzedSentence.getText()" because the return value of "org.languagetool.rules.RuleMatch.getSentence()" is null');
+  return m.getSentence().getText();
+}
+
+// Java: match.getSuggestedReplacements().get(0)
+function firstSuggestion(m) {
+  const l = m.getSuggestedReplacements();
+  if (l.length === 0) throw new IndexOutOfBoundsException('Index 0 out of bounds for length 0');
+  return l[0];
+}
 
 const BEFORE_APOS = '([cjnmtsldCJNMTSLD]|qu|jusqu|lorsqu|puisqu|quoiqu|Qu|Jusqu|Lorsqu|Puisqu|Quoiqu|QU|JUSQU|LORSQU|PUISQU|QUOIQU)';
 const BEFORE_APOS_PATTERN_1 = Pattern.compile(`(\\b${BEFORE_APOS})'`);
@@ -251,10 +271,97 @@ export class French extends LanguageWithModel {
     return true;
   }
 
-  // Java: French#filterRuleMatches(List,AnnotatedText,Set); body in F17 (FR-0010)
-  filterRuleMatches(ruleMatches) {
-    if (ruleMatches.length === 0) return [];
-    throw notPortedYet('French#filterRuleMatches (F17)');
+  // Java: French#filterRuleMatches(List,AnnotatedText,Set)
+  filterRuleMatches(ruleMatches, text, enabledRules) {
+    const resultMatches = [];
+    let previousMatch = null;
+    for (let i = 0; i < ruleMatches.length; i++) {
+      const currentMatch = this.adjustFrenchRuleMatch(ruleMatches[i], enabledRules);
+      const suggestions = currentMatch.getSuggestedReplacements();
+      // ignore adding punctuation at the sentence end
+      if (suggestions.length === 1 && currentMatch.getRule().getId().startsWith('AI_FR_GGEC')) {
+        const suggestion = suggestions[0];
+        if (currentMatch.getRule().getId() === 'AI_FR_GGEC_MISSING_PUNCTUATION_PERIOD' && suggestion.endsWith('.')) {
+          if (javaReplaceAll(sentenceText(currentMatch), TRAILING_WS, '').endsWith(suggestion.substring(0, suggestion.length - 1))) {
+            continue;
+          }
+        }
+      }
+      if (previousMatch !== null && previousMatch.getRule().getId().startsWith('AI_FR_GGEC')
+        && currentMatch.getRule().getId().startsWith('AI_FR_GGEC')) {
+        if (previousMatch.getToPos() > currentMatch.getFromPos()) {
+          continue; // Skip overlapping matches
+        }
+        // Check if matches are adjacent and share the same 'picky' status
+        if ((previousMatch.getToPos() === currentMatch.getFromPos() || previousMatch.getToPos() + 1 === currentMatch.getFromPos())
+          && (previousMatch.getRule().getTags().includes(Tag.picky) === currentMatch.getRule().getTags().includes(Tag.picky))) {
+          // Merge if they have the same ITSIssueType
+          if (previousMatch.getRule().getLocQualityIssueType() === currentMatch.getRule().getLocQualityIssueType()) {
+            const mergedMatch = new RuleMatch(this.mergeMatches(previousMatch, currentMatch));
+            previousMatch = mergedMatch;
+            continue;
+          }
+          // If matches have different ITSIssueTypes but neither is a style match, merge them
+          if (previousMatch.getRule().getLocQualityIssueType() !== currentMatch.getRule().getLocQualityIssueType()
+            && previousMatch.getRule().getLocQualityIssueType() !== ITSIssueType.Style && currentMatch.getRule().getLocQualityIssueType() !== ITSIssueType.Style) {
+            const mergedMatch = new RuleMatch(this.mergeMatches(previousMatch, currentMatch));
+            previousMatch = mergedMatch;
+            continue;
+          }
+        }
+        // If no merge happened, add the previous match to results
+        resultMatches.push(previousMatch);
+        previousMatch = currentMatch; // Move to next match
+      } else {
+        // Ensure current match becomes previous if no merging criteria are met
+        if (previousMatch !== null) {
+          resultMatches.push(previousMatch);
+        }
+        previousMatch = currentMatch;
+      }
+    }
+    // Add the last processed match if it exists and hasn't been added yet
+    if (previousMatch !== null) {
+      resultMatches.push(previousMatch);
+    }
+    return resultMatches;
+  }
+
+  // Java: French#mergeMatches(RuleMatch,RuleMatch)
+  mergeMatches(match1, match2) {
+    // Calculate separator based on position
+    let separator = '';
+    if (match1.getToPos() + 1 === match2.getFromPos()) {
+      separator = ' ';
+    }
+    // Merge original error strings and suggested replacements
+    const newErrorStr = match1.getOriginalErrorStr() + separator + match2.getOriginalErrorStr();
+    const newReplacement = firstSuggestion(match1) + separator + firstSuggestion(match2);
+
+    // Create a new merged RuleMatch object
+    const mergedMatch = new RuleMatch(match1.getRule(), match1.getSentence(), match1.getFromPos(), match2.getToPos(),
+      'Il pourrait y avoir un problème ici.', 'Erreur potentielle');
+    mergedMatch.setOriginalErrorStr(newErrorStr);
+    mergedMatch.setSuggestedReplacement(newReplacement);
+
+    // Set ID based on issue type
+    let newId = 'AI_FR_MERGED_MATCH';
+    if (match1.getRule().getLocQualityIssueType().equals(ITSIssueType.Style)
+      && match2.getRule().getLocQualityIssueType().equals(ITSIssueType.Style)) {
+      newId += '_STYLE';
+    }
+    if (match1.getRule().getTags().includes(Tag.picky) && match2.getRule().getTags().includes(Tag.picky)) {
+      newId += '_PICKY';
+    }
+    mergedMatch.setSpecificRuleId(newId);
+
+    // Set ITSIssueType to Grammar unless both are Style
+    if (!match1.getRule().getLocQualityIssueType().equals(match2.getRule().getLocQualityIssueType())) {
+      mergedMatch.getRule().setLocQualityIssueType(ITSIssueType.Grammar);
+    } else if (match1.getRule().getLocQualityIssueType() === ITSIssueType.Style) {
+      mergedMatch.getRule().setLocQualityIssueType(ITSIssueType.Style);
+    }
+    return mergedMatch;
   }
 
   // Java: French#prepareLineForSpeller(String)
@@ -284,9 +391,46 @@ export class French extends LanguageWithModel {
     return sharedComponent('org.languagetool.rules.fr.FrenchMultitokenSpeller');
   }
 
-  // Java: French#adjustFrenchRuleMatch(RuleMatch,Set); body in F17
-  adjustFrenchRuleMatch() {
-    throw notPortedYet('French#adjustFrenchRuleMatch (F17)');
+  // Java: French#adjustFrenchRuleMatch(RuleMatch,Set)
+  adjustFrenchRuleMatch(rm, enabledRules) {
+    rm.setOriginalErrorStr();
+    const errorStr = rm.getOriginalErrorStr();
+    const suggestions = rm.getSuggestedReplacements();
+    if (suggestions.length === 1 && rm.getRule().getId().startsWith('AI_FR_GGEC')) {
+      const suggestion = suggestions[0];
+      // the suggestion only changes the casing
+      if (equalsIgnoreCase(suggestion, errorStr)) {
+        rm.setMessage('Un usage différent des majuscules et des minuscules est recommandé.');
+        rm.setShortMessage('Majuscules et minuscules');
+        rm.getRule().setLocQualityIssueType(ITSIssueType.Typographical);
+        rm.getRule().setCategory(Categories.CASING.getCategory(getMessageBundleForLanguage(this)));
+        rm.setSpecificRuleId(rm.getRule().getId().replaceAll('ORTHOGRAPHY', 'CASING'));
+      }
+    }
+    if (suggestions.length === 1 && rm.getRule().getId().startsWith('AI_FR_GGEC')
+      && rm.getRule().getId().includes('MISSING_PRONOUN_LAPOSTROPHE')) {
+      if (errorStr === 'on' && suggestions[0] === 'l\'on' && toLowerCase(sentenceText(rm)).includes('si on')) {
+        rm.setSpecificRuleId('AI_FR_GGEC_SI_LON');
+        rm.getRule().setTags([Tag.picky]);
+      }
+    }
+    if (rm.getRule().getId().startsWith('AI_FR_GGEC') && rm.getRule().getId().includes('REPLACEMENT_PUNCTUATION_QUOTE')) {
+      rm.setSpecificRuleId('AI_FR_GGEC_QUOTES');
+      rm.getRule().setTags([Tag.picky]);
+      rm.getRule().setLocQualityIssueType(ITSIssueType.Typographical);
+    }
+    // if the typographical apostrophe rule is enabled, use the typographical apostrophe in suggestons
+    if (enabledRules !== null && enabledRules !== undefined && enabledRules.has('APOS_TYP')) {
+      const newReplacements = [];
+      for (let s of rm.getSuggestedReplacements()) {
+        if (s.length > 1) {
+          s = replaceChar(s, 0x27, 0x2019);
+        }
+        newReplacements.push(s);
+      }
+      rm.setSuggestedReplacements(newReplacements);
+    }
+    return rm;
   }
 
   // Java: French#getInstance()

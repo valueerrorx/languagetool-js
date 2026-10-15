@@ -11,6 +11,9 @@ import { DANIEL_NABER, MARCIN_MILKOWSKI } from '../../../core/language/Contribut
 import { createComponent, notPortedYet, sharedComponent } from '../../../core/language/components.js';
 import { getClassBroker } from '../../../core/resources/LtStatics.js';
 import { registerClass } from '../../../core/resources/ClassBroker.js';
+import { RuleMatch } from '../../../core/rules/model/RuleMatch.js';
+import { SuggestedReplacement } from '../../../core/rules/model/SuggestedReplacement.js';
+import { ITSIssueType } from '../../../core/rules/model/ITSIssueType.js';
 import { ID2PRIO_ENTRIES } from './id2prioEnglish.js';
 
 const FALSE_FRIENDS_PATTERN = Pattern.compile('EN_FOR_[A-Z]+_SPEAKERS_FALSE_FRIENDS.*');
@@ -219,10 +222,39 @@ export class English extends LanguageWithModel {
     return createComponent('org.languagetool.rules.en.MorfologikAmericanSpellerRule', messages, this, null, []);
   }
 
-  // Java: English#filterRuleMatches(List,AnnotatedText,Set); body in F17 (EN-0005)
+  // Java: English#filterRuleMatches(List,AnnotatedText,Set)
   filterRuleMatches(ruleMatches) {
-    if (ruleMatches.length === 0) return [];
-    throw notPortedYet('English#filterRuleMatches (F17, EN-0005)');
+    const newRuleMatches = [];
+    for (const rm of ruleMatches) {
+      const errorStr = rm.getOriginalErrorStr();
+      const suggestedReplacements = rm.getSuggestedReplacementObjects();
+      const newReplacements = [];
+      for (const suggestedReplacement of suggestedReplacements) {
+        let newReplStr = suggestedReplacement.getReplacement();
+        if (errorStr.length > 2) {
+          // add a whitespace when the error is in a contraction and the suggestion is not
+          if (errorStr.startsWith("'") && !newReplStr.startsWith("'") && !newReplStr.startsWith('’')
+              && !newReplStr.startsWith(' ')) {
+            newReplStr = ` ${newReplStr}`;
+          }
+          if (errorStr.startsWith("n't") && !newReplStr.startsWith("n't") && !newReplStr.startsWith('n’t')) {
+            newReplStr = ` ${newReplStr}`;
+          }
+        }
+        const newSuggestedReplacement = new SuggestedReplacement(suggestedReplacement);
+        newSuggestedReplacement.setReplacement(newReplStr);
+        if (!newReplacements.some((r) => r.equals(newSuggestedReplacement))) {
+          newReplacements.push(newSuggestedReplacement);
+        }
+      }
+      const newMatch = new RuleMatch(rm, newReplacements);
+      if (newMatch.getSpecificRuleId().startsWith('EN_SIMPLE_REPLACE')
+        && (newMatch.getSpecificRuleId().endsWith('GRAMME') || newMatch.getSpecificRuleId().endsWith('GRAMMES'))) {
+        newMatch.getRule().setLocQualityIssueType(ITSIssueType.LocaleViolation);
+      }
+      newRuleMatches.push(newMatch);
+    }
+    return newRuleMatches;
   }
 
   // Java: English#prepareLineForSpeller(String)

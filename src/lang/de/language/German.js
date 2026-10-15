@@ -1,9 +1,9 @@
 // Java: org.languagetool.language.German (rule lists, rule match filters and speller rules follow in F17/F16)
 import { Pattern } from '../../../lib/java/regex/index.js';
-import { javaSplit } from '../../../lib/java/strings.js';
+import { javaSplit, javaReplaceAll } from '../../../lib/java/strings.js';
 import { JavaHashMap } from '../../../lib/java/collections/JavaHashMap.js';
 import { Objects } from '../../../lib/java/Objects.js';
-import { RuntimeException } from '../../../lib/java/errors.js';
+import { RuntimeException, NullPointerException, IndexOutOfBoundsException } from '../../../lib/java/errors.js';
 import { SRXSentenceTokenizer } from '../../../core/text/tokenizers/SRXSentenceTokenizer.js';
 import { LanguageWithModel } from '../../../core/LanguageWithModel.js';
 import { LanguageMaintainedState } from '../../../core/LanguageMaintainedState.js';
@@ -12,10 +12,28 @@ import { DANIEL_NABER } from '../../../core/language/Contributors.js';
 import { createComponent, notPortedYet, sharedComponent } from '../../../core/language/components.js';
 import { getClassBroker } from '../../../core/resources/LtStatics.js';
 import { registerClass } from '../../../core/resources/ClassBroker.js';
+import { RuleMatch } from '../../../core/rules/model/RuleMatch.js';
+import { ITSIssueType } from '../../../core/rules/model/ITSIssueType.js';
+import { Tag } from '../../../core/rules/model/Tag.js';
 import { ID2PRIO_ENTRIES } from './id2prioGerman.js';
 
 const TYPOGRAPHY_PATTERN = Pattern.compile('\\b([a-zA-Z]\\.)([a-zA-Z]\\.)');
 const AI_DE_GGEC_MISSING_PUNCT = Pattern.compile('AI_DE_GGEC_MISSING_PUNCTUATION_\\d+_DASH_J(_|AE)HRIG|AI_DE_GGEC_REPLACEMENT_CONFUSION', Pattern.CASE_INSENSITIVE);
+const TRAILING_WS = '\\s+$';
+
+// Java: currentMatch.getSentence().getText() (helpful NPE when the sentence is null)
+function sentenceText(m) {
+  if (m.getSentence() === null) throw new NullPointerException('Cannot invoke "org.languagetool.AnalyzedSentence.getText()" because the return value of "org.languagetool.rules.RuleMatch.getSentence()" is null');
+  return m.getSentence().getText();
+}
+
+// Java: match.getSuggestedReplacements().get(0)
+function firstSuggestion(m) {
+  const l = m.getSuggestedReplacements();
+  if (l.length === 0) throw new IndexOutOfBoundsException('Index 0 out of bounds for length 0');
+  return l[0];
+}
+
 const GERMAN_SHORT_CODE = 'de';
 
 const id2prio = new JavaHashMap(); // Java: German#id2prio
@@ -229,10 +247,91 @@ export class German extends LanguageWithModel {
     return true;
   }
 
-  // Java: German#filterRuleMatches(List,AnnotatedText,Set); RuleMatch is ported in F14, the filter body in F17 (DE-0005)
+  // Java: German#filterRuleMatches(List,AnnotatedText,Set)
   filterRuleMatches(ruleMatches) {
-    if (ruleMatches.length === 0) return [];
-    throw notPortedYet('German#filterRuleMatches (F17, DE-0005)');
+    const resultMatches = [];
+    let previousMatch = null;
+    for (let i = 0; i < ruleMatches.length; i++) {
+      const currentMatch = ruleMatches[i];
+      const suggestions = currentMatch.getSuggestedReplacements();
+      // ignore adding punctuation at the sentence end
+      if (suggestions.length === 1 && currentMatch.getRule().getId().startsWith('AI_DE_GGEC')) {
+        const suggestion = suggestions[0];
+        if (currentMatch.getRule().getId() === 'AI_DE_GGEC_MISSING_PUNCTUATION_PERIOD' && suggestion.endsWith('.')) {
+          if (javaReplaceAll(sentenceText(currentMatch), TRAILING_WS, '').endsWith(suggestion.substring(0, suggestion.length - 1))) {
+            continue;
+          }
+        }
+      }
+      if (previousMatch !== null && previousMatch.getRule().getId().startsWith('AI_DE_GGEC')
+        && currentMatch.getRule().getId().startsWith('AI_DE_GGEC')) {
+        if (previousMatch.getToPos() > currentMatch.getFromPos()) {
+          continue; // Skip overlapping matches
+        }
+        // Check if matches are adjacent and share the same 'picky' status
+        if ((previousMatch.getToPos() === currentMatch.getFromPos() || previousMatch.getToPos() + 1 === currentMatch.getFromPos())
+          && (previousMatch.getRule().getTags().includes(Tag.picky) === currentMatch.getRule().getTags().includes(Tag.picky))) {
+          // Merge if they have the same ITSIssueType
+          if (previousMatch.getRule().getLocQualityIssueType() === currentMatch.getRule().getLocQualityIssueType()) {
+            const mergedMatch = new RuleMatch(this.mergeMatches(previousMatch, currentMatch));
+            previousMatch = mergedMatch;
+            continue;
+          }
+          // If matches have different ITSIssueTypes but neither is a style match, merge them
+          if (previousMatch.getRule().getLocQualityIssueType() !== currentMatch.getRule().getLocQualityIssueType()
+            && previousMatch.getRule().getLocQualityIssueType() !== ITSIssueType.Style && currentMatch.getRule().getLocQualityIssueType() !== ITSIssueType.Style) {
+            const mergedMatch = new RuleMatch(this.mergeMatches(previousMatch, currentMatch));
+            previousMatch = mergedMatch;
+            continue;
+          }
+        }
+        // If no merge happened, add the previous match to results
+        resultMatches.push(previousMatch);
+        previousMatch = currentMatch; // Move to next match
+      } else {
+        // Ensure current match becomes previous if no merging criteria are met
+        if (previousMatch !== null) {
+          resultMatches.push(previousMatch);
+        }
+        previousMatch = currentMatch;
+      }
+    }
+    // Add the last processed match if it exists and hasn't been added yet
+    if (previousMatch !== null) {
+      resultMatches.push(previousMatch);
+    }
+    return resultMatches;
+  }
+
+  // Java: German#mergeMatches(RuleMatch,RuleMatch)
+  mergeMatches(match1, match2) {
+    // Calculate separator based on position
+    let separator = '';
+    if (match1.getToPos() + 1 === match2.getFromPos()) {
+      separator = ' ';
+    }
+    // Merge original error strings and suggested replacements
+    const newErrorStr = match1.getOriginalErrorStr() + separator + match2.getOriginalErrorStr();
+    const newReplacement = firstSuggestion(match1) + separator + firstSuggestion(match2);
+
+    // Create a new merged RuleMatch object
+    const mergedMatch = new RuleMatch(match1.getRule(), match1.getSentence(), match1.getFromPos(), match2.getToPos(),
+      'Hier scheint es einen Fehler zu geben.', 'Potenzieller Fehler');
+    mergedMatch.setOriginalErrorStr(newErrorStr);
+    mergedMatch.setSuggestedReplacement(newReplacement);
+
+    // Create a new specific rule ID based on conditions
+    const newId = 'AI_DE_MERGED_MATCH';
+    mergedMatch.setSpecificRuleId(newId);
+
+    // If issue types differ, set to Grammar unless both are Style
+    if (match1.getRule().getLocQualityIssueType() !== match2.getRule().getLocQualityIssueType()) {
+      mergedMatch.getRule().setLocQualityIssueType(ITSIssueType.Grammar);
+    } else if (match1.getRule().getLocQualityIssueType() === ITSIssueType.Style && match2.getRule().getLocQualityIssueType() === ITSIssueType.Style) {
+      mergedMatch.getRule().setLocQualityIssueType(ITSIssueType.Style);
+    }
+
+    return mergedMatch;
   }
 
   // Java: German#prepareLineForSpeller(String)
