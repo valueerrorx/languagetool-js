@@ -1,0 +1,25 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0002: option scanning left to right",
+ "args": [
+  "-l",
+  "en-US",
+  "-l",
+  "fr",
+  "-eo",
+  "-e",
+  "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,UPPERCASE_SENTENCE_START,WHITESPACE_RULE,EN_UNPAIRED_BRACKETS,ENGLISH_WORD_REPEAT_RULE,SENTENCE_WHITESPACE",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "Bonjour  le monde.\n"
+ }
+}

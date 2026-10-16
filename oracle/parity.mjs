@@ -38,6 +38,7 @@ function harnessOps() {
 
 // cli/http: the JS side is oracle/adapters/<kind>.mjs; run(cs, {workDir, port?}) returns the same shape as the Java side.
 async function runKindCase(cs, meta, dir) {
+  if (cs.kind === 'cli' && cs.portLater) return { status: 'SKIP', note: 'portLater (needs rules/language not ported)' };
   const f = path.join(ADAPTERS, `${cs.kind}.mjs`);
   const ad = existsSync(f) ? await import(f) : { notPorted: true };
   if (ad.notPorted) return { status: 'NOT PORTED', note: `${cs.kind} adapter not ported` };
@@ -59,7 +60,7 @@ async function runKindCase(cs, meta, dir) {
       const n = (t, c) => normalize(cs.normalize ?? [], t, c);
       exp.stdout = n(exp.stdout, ctxE); exp.stderr = n(exp.stderr, ctxE);
       actual.stdout = n(actual.stdout, ctxA); actual.stderr = n(actual.stderr, ctxA);
-      diffs = cmp(exp, actual, { normalizers: cs.normalize ?? [], streams: cs.streams, ignoreExit: cs.ignoreExit, stripTimestamp: cs.stripTimestamp, stderrExceptionOnly: cs.stderrExceptionOnly, json: (cs.args ?? []).includes('--json') || (cs.args ?? []).includes('-json') });
+      diffs = cmp(exp, actual, { normalizers: cs.normalize ?? [], streams: cs.streams, ignoreExit: cs.ignoreExit, stripTimestamp: cs.stripTimestamp, stderrExceptionOnly: cs.stderrExceptionOnly, listDev006: cs.listDev006, listCut: cs.listCut, json: (cs.args ?? []).includes('--json') || (cs.args ?? []).includes('-json') });
     } else {
       const exp = JSON.parse(readFileSync(path.join(dir, 'responses.json'), 'utf8'));
       diffs = cmp(exp, actual.responses ?? actual, { normalizers: cs.normalize ?? [], ctx: ctxA });

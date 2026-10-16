@@ -1,6 +1,6 @@
 // JS twin of case kind "cli" for the server start cases: runs bin/lt-server.mjs in the work dir (docs/review/F20-oracle.md).
 import { spawn } from 'node:child_process';
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { ROOT } from '../lib/env.mjs';
 import { snapshotFiles } from '../lib/cli-run.mjs';
@@ -9,7 +9,9 @@ const FIXED = '2026-03-15T10:00:00+01:00';
 
 // run(cs, {workDir}) -> {exitCode, stdout, stderr, files}
 export async function run(cs, { workDir }) {
-  if (cs.mainClass !== 'org.languagetool.server.HTTPServer') {
+  const isServer = cs.mainClass === 'org.languagetool.server.HTTPServer';
+  const bin = path.join(ROOT, isServer ? 'bin/lt-server.mjs' : 'bin/lt-cli.mjs');
+  if (!isServer && (cs.jar || cs.mainClass || !existsSync(bin))) {
     throw Object.assign(new Error(`cli case ${cs.mainClass ?? cs.jar ?? 'commandline'} not ported`), { notPorted: true });
   }
   mkdirSync(path.join(workDir, 'home'), { recursive: true });
@@ -17,8 +19,12 @@ export async function run(cs, { workDir }) {
     mkdirSync(path.dirname(path.join(workDir, rel)), { recursive: true });
     writeFileSync(path.join(workDir, rel), content);
   }
+  for (const [rel, b64] of Object.entries(cs.filesB64 ?? {})) {
+    mkdirSync(path.dirname(path.join(workDir, rel)), { recursive: true });
+    writeFileSync(path.join(workDir, rel), Buffer.from(b64, 'base64'));
+  }
   const before = snapshotFiles(workDir);
-  const child = spawn(process.execPath, [path.join(ROOT, 'bin/lt-server.mjs'), ...(cs.args ?? [])], {
+  const child = spawn(process.execPath, [bin, ...(cs.args ?? [])], {
     cwd: workDir, env: { ...process.env, LTJS_FIXED_TIME: FIXED, TZ: 'Europe/Vienna', ...(cs.env ?? {}) }, stdio: ['pipe', 'pipe', 'pipe'],
   });
   const out = [];
@@ -36,7 +42,7 @@ export async function run(cs, { workDir }) {
     child.on('close', () => clearInterval(iv));
   }
   child.stdin.on('error', () => {});
-  child.stdin.end(cs.stdin ?? '');
+  child.stdin.end(Buffer.from(cs.stdin ?? '', 'utf8'));
   const exitCode = await exit;
   const after = snapshotFiles(workDir);
   const files = {};

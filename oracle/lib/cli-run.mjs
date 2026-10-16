@@ -33,6 +33,10 @@ export async function runCli(cs) {
     mkdirSync(path.dirname(path.join(workDir, rel)), { recursive: true });
     writeFileSync(path.join(workDir, rel), content);
   }
+  for (const [rel, b64] of Object.entries(cs.filesB64 ?? {})) {
+    mkdirSync(path.dirname(path.join(workDir, rel)), { recursive: true });
+    writeFileSync(path.join(workDir, rel), Buffer.from(b64, 'base64'));
+  }
   const before = snapshotFiles(workDir);
   const jar = path.join(LT, cs.jar ?? 'languagetool-commandline.jar');
   const args = [...pinnedJvmFlags(workDir, cs.javaOpts ?? []), ...(cs.mainClass ? ['-cp', jar, cs.mainClass] : ['-jar', jar]), ...(cs.args ?? [])];

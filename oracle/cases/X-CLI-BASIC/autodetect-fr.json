@@ -1,0 +1,22 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0037: -adl on French text",
+ "args": [
+  "-adl",
+  "-eo",
+  "-e",
+  "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,UPPERCASE_SENTENCE_START,WHITESPACE_RULE,UNPAIRED_BRACKETS,SENTENCE_WHITESPACE",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "Ceci est un petit texte français pour tester la détection de la langue, avec  deux espaces.\n"
+ }
+}

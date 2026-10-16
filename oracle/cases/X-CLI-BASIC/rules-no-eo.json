@@ -1,0 +1,21 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0040: -e without -eo (full rule set, English dictionary rules) - ported rules + spelling not ported",
+ "args": [
+  "-l",
+  "en-US",
+  "-e",
+  "ENGLISH_WORD_REPEAT_RULE",
+  "-"
+ ],
+ "stdin": "This is a test of of language tool.  Hi ,there ( ok.. this is is a test.\n\nlowercase start",
+ "portLater": true
+}

@@ -1,0 +1,41 @@
+1.) Line 1, column 7, Rule ID: WHITESPACE_RULE premium: false
+Message: Faute de frappe possible : une espace est répétée
+Suggestion:  
+Bonjour  le  monde , ok.. voici voici un test (sans fi...
+       ^^                                             
+
+2.) Line 1, column 11, Rule ID: WHITESPACE_RULE premium: false
+Message: Faute de frappe possible : une espace est répétée
+Suggestion:  
+Bonjour  le  monde , ok.. voici voici un test (sans fin.  ...
+           ^^                                             
+
+3.) Line 1, column 19, Rule ID: COMMA_PARENTHESIS_WHITESPACE premium: false
+Message: Insérez une espace après la virgule et non avant.
+Suggestion: ,
+Bonjour  le  monde , ok.. voici voici un test (sans fin.  minuscu...
+                  ^^                                             
+
+4.) Line 1, column 24, Rule ID: DOUBLE_PUNCTUATION premium: false
+Message: Deux points consécutifs
+Suggestion: .; …
+Bonjour  le  monde , ok.. voici voici un test (sans fin.  minuscule.
+                       ^^                                           
+
+5.) Line 1, column 26, Rule ID: UPPERCASE_SENTENCE_START premium: false prio=-300
+Message: Cette phrase ne commence pas par une majuscule.
+Suggestion: Voici
+Bonjour  le  monde , ok.. voici voici un test (sans fin.  minuscule.
+                          ^^^^^                                     
+
+6.) Line 1, column 46, Rule ID: UNPAIRED_BRACKETS premium: false
+Message: Pas de correspondance fermante ou ouvrante pour le caractère « ) »
+...onjour  le  monde , ok.. voici voici un test (sans fin.  minuscule.
+                                                ^                     
+
+7.) Line 3, column 1, Rule ID: UPPERCASE_SENTENCE_START premium: false prio=-300
+Message: Cette phrase ne commence pas par une majuscule.
+Suggestion: Minuscule
+...monde , ok.. voici voici un test (sans fin.  minuscule.
+                                                ^^^^^^^^^ 
+Time: 421ms for 3 sentences (7.1 sentences/sec)

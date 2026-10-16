@@ -1,0 +1,23 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0040: MainTest.testEnglishFileRuleDisabled",
+ "args": [
+  "-l",
+  "en",
+  "-d",
+  "EN_A_VS_AN",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "This is an test.\n\nThis is a test of of language tool.\n\nThis is is a test of language tool."
+ },
+ "portLater": true
+}

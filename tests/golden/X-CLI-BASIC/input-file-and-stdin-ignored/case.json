@@ -1,0 +1,24 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0042: stdin ignored when file given",
+ "args": [
+  "-l",
+  "en-US",
+  "-eo",
+  "-e",
+  "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,UPPERCASE_SENTENCE_START,WHITESPACE_RULE,EN_UNPAIRED_BRACKETS,ENGLISH_WORD_REPEAT_RULE,SENTENCE_WHITESPACE",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "From file file.\n"
+ },
+ "stdin": "From stdin stdin.\n"
+}

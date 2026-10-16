@@ -11,14 +11,21 @@ function lineDiff(tag, e, a, diffs) {
 }
 
 // result: {exitCode, stdout, stderr, files:{path: content}}; json=true compares stdout as the check JSON.
-export function compareCli(e, a, { normalizers = [], ctx = {}, json = false, streams = ['stdout', 'stderr'], ignoreExit = false, stripTimestamp = false, stderrExceptionOnly = false } = {}) {
+export function compareCli(e, a, { normalizers = [], ctx = {}, json = false, streams = ['stdout', 'stderr'], ignoreExit = false, stripTimestamp = false, stderrExceptionOnly = false, listDev006 = false, listCut = false } = {}) {
   const diffs = [];
   if (!ignoreExit && e.exitCode !== a.exitCode) diffs.push(`exit code ${e.exitCode} != ${a.exitCode}`);
   const nn = (t) => normalize([...normalizers, 'stackFrames'], t, ctx);
   // server startup lines carry a timestamp prefix "yyyy-MM-dd HH:mm:ss +0000 " (D-045: content lines only)
-  const n = (t) => (stripTimestamp ? nn(t).replace(/^\d{4}-\d\d-\d\d \d\d:\d\d:\d\d [+-]\d{4} /gm, '') : nn(t));
-  const eo = n(e.stdout);
-  const ao = n(a.stdout);
+  // "Time: 123ms for 5 sentences (4.3 sentences/sec)": ms and rate are not compared (D-045), the sentence count is
+  const timeLine = (t) => t.replace(/^Time: \d+ms for (\d+) sentences \((?:[\d.,]+|NaN|Infinity) sentences\/sec\)$/gm, 'Time: #ms for $1 sentences (# sentences/sec)');
+  // unknown-language texts: the supported-code list is cut (DEV-006)
+  const cut = (t) => (listCut ? t.replace(/(Supported language codes are:).*?(\. The list of languages)/gs, '$1 <LIST>$2') : t);
+  const n0 = (t) => (stripTimestamp ? nn(t).replace(/^\d{4}-\d\d-\d\d \d\d:\d\d:\d\d [+-]\d{4} /gm, '') : nn(t));
+  const n = (t) => cut(timeLine(n0(t)));
+  // --list: Java prints all languages; keep only the in-scope ones (de, en, fr incl. variants) on the Java side
+  const listFilter = (t) => (listDev006 ? t.split('\n').filter((l) => l === '' || /^(de|en|fr)(-[A-Z]{2})? /.test(l)).join('\n') : t);
+  const eo = listFilter(n(e.stdout));
+  const ao = listFilter(n(a.stdout));
   let jsonDone = false;
   if (json) {
     try {

@@ -1,0 +1,22 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0043: -c with unknown charset",
+ "args": [
+  "-l",
+  "en-US",
+  "-c",
+  "foo-bar",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "Hi.\n"
+ }
+}
