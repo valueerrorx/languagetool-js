@@ -2,6 +2,7 @@
 import { describe, it, expect } from 'vitest';
 import { GermanCompoundTokenizer } from '../../../src/lang/de/tokenizers/GermanCompoundTokenizer.js';
 import { InputTooLongException } from '../../../src/lib/wordsplitter/InputTooLongException.js';
+import { German } from '../../../src/lang/de/language/German.js';
 import { GermanWordSplitter } from '../../../src/lib/wordsplitter/GermanWordSplitter.js';
 
 // Java: List#toString() of a List<String>
@@ -35,5 +36,34 @@ describe('GermanCompoundTokenizerTest', () => {
     }
     expect(ls(splitter.splitWord('Verkehrsamt'))).toBe('[Verkehrs, amt]');
     expect(GermanCompoundTokenizer.getNonStrictInstance().tokenize('Haustür')).toEqual(['Haus', 'tür']);
+  });
+
+  // extra: German#getStrictCompoundTokenizer / getNonStrictCompoundSplitter (memoised instances, fresh lists)
+  it('germanAccessors', () => {
+    const g = new German();
+    expect(g.getStrictCompoundTokenizer()).toBe(GermanCompoundTokenizer.getStrictInstance());
+    const r1 = g.getNonStrictCompoundSplitter().tokenize('Haustür');
+    expect(r1).toEqual(['Haus', 'tür']);
+    expect(g.getNonStrictCompoundSplitter().tokenize('Haustür')).not.toBe(r1);
+  });
+
+  // extra: GermanCompoundTokenizer#main
+  it('main', () => {
+    let out = '';
+    GermanCompoundTokenizer.main(['Haustür', 'Xyzzy'], (t) => { out += t; });
+    expect(out).toBe('[Haus, tür]\n[Xyzzy]\n');
+    out = '';
+    let code = null;
+    GermanCompoundTokenizer.main([], (t) => { out += t; }, (c) => { code = c; });
+    expect(out).toBe('Usage: GermanCompoundTokenizer <wordsToSplit... or file>\n');
+    expect(code).toBe(1);
+  });
+
+  // extra: jwordsplitter String bounds and null handling
+  it('boundsAndNull', () => {
+    const splitter = new GermanWordSplitter(false);
+    expect(() => splitter.getAllSplits(null)).toThrow('Cannot invoke "String.length()" because "word" is null');
+    splitter.setMinimumWordLength(-1);
+    expect(() => splitter.splitWord('Haustür')).toThrow('begin 0, end 8, length 7');
   });
 });

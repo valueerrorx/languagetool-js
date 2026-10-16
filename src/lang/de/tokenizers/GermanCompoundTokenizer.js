@@ -1,6 +1,9 @@
 // Java: org.languagetool.tokenizers.de.GermanCompoundTokenizer (split German nouns using jwordsplitter)
 import { GermanWordSplitter } from '../../../lib/wordsplitter/GermanWordSplitter.js';
 import { getWords } from '../../../lib/wordsplitter/EmbeddedGermanDictionary.js';
+import { readFileSync, existsSync } from 'node:fs';
+import { readerLines } from '../../../lib/java/io.js';
+import { MalformedInputException } from '../../../lib/java/errors.js';
 import { InputTooLongException } from '../../../lib/wordsplitter/InputTooLongException.js';
 
 // Add compound parts here so we don't need to update JWordSplitter for every missing word we find.
@@ -285,5 +288,35 @@ export class GermanCompoundTokenizer {
   static getNonStrictInstance() {
     if (nonStrictInstance === null) nonStrictInstance = new GermanCompoundTokenizer(false);
     return nonStrictInstance;
+  }
+
+  // Java: GermanCompoundTokenizer#main(String[]) (out = System.out#print, exit = System.exit)
+  static main(args, out = (t) => process.stdout.write(t), exit = (c) => process.exit(c)) {
+    const println = (t) => out(`${t}\n`);
+    const listToString = (l) => `[${l.join(', ')}]`;
+    if (args.length === 0) {
+      println('Usage: GermanCompoundTokenizer <wordsToSplit... or file>');
+      exit(1);
+      return;
+    }
+    const tokenizer = new GermanCompoundTokenizer();
+    if (existsSync(args[0])) {
+      println(`Working on lines from ${args[0]}:`);
+      let text;
+      try {
+        text = new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(readFileSync(args[0]));
+      } catch (e) {
+        if (e instanceof TypeError) throw new MalformedInputException('Input length = 1');
+        throw e;
+      }
+      const lines = readerLines(text); // Java: Files.readAllLines
+      for (const line of lines) {
+        println(listToString(tokenizer.tokenize(line)));
+      }
+    } else {
+      for (const arg of args) {
+        println(listToString(tokenizer.tokenize(arg)));
+      }
+    }
   }
 }

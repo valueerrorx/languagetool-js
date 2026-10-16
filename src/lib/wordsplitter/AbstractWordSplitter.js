@@ -1,5 +1,6 @@
 // Java: de.danielnaber.jwordsplitter.AbstractWordSplitter (jwordsplitter 4.7)
-import { javaTrim, toLowerCase } from '../java/strings.js';
+import { javaTrim, substring, toLowerCase } from '../java/strings.js';
+import { NullPointerException } from '../java/errors.js';
 import { ExceptionSplits } from './ExceptionSplits.js';
 import { InputTooLongException } from './InputTooLongException.js';
 
@@ -49,6 +50,7 @@ export class AbstractWordSplitter {
 
   // Java: AbstractWordSplitter#getAllSplits(String)
   getAllSplits(word) {
+    if (word === null || word === undefined) throw new NullPointerException('Cannot invoke "String.length()" because "word" is null');
     if (word.length > this.maximumWordLength) {
       throw new InputTooLongException(`Input too long (${word.length} characters), maximum is ${
         this.maximumWordLength} characters to avoid potentially long processing times: '${word}'`);
@@ -69,8 +71,8 @@ export class AbstractWordSplitter {
     const result = [];
     const start = fromLeft ? this.minimumWordLength : word.length - this.minimumWordLength;
     for (let i = start; this.isLoopEnd(fromLeft, i, word);) {
-      const left = word.substring(0, i);
-      const right = word.substring(i, word.length);
+      const left = substring(word, 0, i);
+      const right = substring(word, i, word.length);
       const relevantWord = fromLeft ? left : right;
       const isSimpleWord = this.isSimpleWord(relevantWord);
       if (isSimpleWord) {
@@ -191,8 +193,8 @@ export class AbstractWordSplitter {
     }
 
     for (let i = word.length - this.minimumWordLength; i >= this.minimumWordLength; i--) {
-      const leftPart = word.substring(0, i);
-      const rightPart = word.substring(i);
+      const leftPart = substring(word, 0, i);
+      const rightPart = substring(word, i);
       if (!this.strictMode) {
         const exceptionSplit = this.getExceptionSplitOrNullLR(rightPart, leftPart);
         if (exceptionSplit !== null) {

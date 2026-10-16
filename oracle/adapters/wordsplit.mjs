@@ -4,9 +4,10 @@ import { GermanWordSplitter } from '../../src/lib/wordsplitter/GermanWordSplitte
 import { GermanCompoundTokenizer } from '../../src/lang/de/tokenizers/GermanCompoundTokenizer.js';
 import { German } from '../../src/lang/de/language/German.js';
 import { IllegalArgumentException } from '../../src/lib/java/errors.js';
-import { safe, str } from './_text-common.mjs';
-
-const notPorted = (what) => Object.assign(new Error(`${what} not ported`), { notPorted: true });
+import { mkdtempSync, writeFileSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join, dirname } from 'node:path';
+import { safe, str, err } from './_text-common.mjs';
 
 // Java: WordSplitOps#identity()
 function identity() {
@@ -24,11 +25,33 @@ function identity() {
   };
 }
 
+// Java: WordSplitOps#main(JsonNode)
+function main(a) {
+  const args = [];
+  let file = null;
+  if (a.fileContent !== undefined) {
+    file = join(mkdtempSync(join(tmpdir(), 'wordsplit-')), 'wordsplit.txt');
+    writeFileSync(file, Buffer.from(a.fileContent, 'utf8'));
+    args.push(file);
+  }
+  for (const w of a.words) args.push(String(w));
+  const m = {};
+  let out = '';
+  try {
+    GermanCompoundTokenizer.main(args, (t) => { out += t; });
+  } catch (t) {
+    m.error = err(t).error;
+  }
+  if (file !== null) { out = out.split(file).join('<FILE>'); rmSync(dirname(file), { recursive: true }); }
+  m.stdout = out;
+  return m;
+}
+
 // Java: WordSplitOps#wordsplit(JsonNode)
 export function run(a) {
   const impl = a.impl;
   if (impl === 'identity') return identity();
-  if (impl === 'main') throw notPorted('GermanCompoundTokenizer#main');
+  if (impl === 'main') return main(a);
   if (impl === 'ws') {
     const hide = a.hide === true;
     const ws = a.customWords !== undefined ? new GermanWordSplitter(hide, new Set(a.customWords)) : new GermanWordSplitter(hide);

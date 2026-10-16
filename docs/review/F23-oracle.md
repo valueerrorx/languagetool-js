@@ -2,3 +2,4 @@
 
 Status: IN PROGRESS. New harness op wordsplit (oracle/harness/src/ltjs/oracle/WordSplitOps.java, registered in Harness.java, harness built). Next: generator oracle/scripts/gen-cases-wordsplit.mjs, adapter oracle/adapters/wordsplit.mjs, run oracle + parity.
 Status: fixtures generated (40 case files, gen-cases-wordsplit.mjs, adapter wordsplit.mjs). Running parity.
+Status: DONE. Parity X-WORDSPLIT: 25 pass, 2 fail (null-input NPE class; ws-min-1), 13 not ported (german-* accessors, main, identity). Full parity: 752 pass, 2 fail (both WORDSPLIT), 122 NP.

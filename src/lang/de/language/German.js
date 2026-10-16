@@ -15,6 +15,7 @@ import { registerClass } from '../../../core/resources/ClassBroker.js';
 import { RuleMatch } from '../../../core/rules/model/RuleMatch.js';
 import { ITSIssueType } from '../../../core/rules/model/ITSIssueType.js';
 import { Tag } from '../../../core/rules/model/Tag.js';
+import { GermanCompoundTokenizer } from '../tokenizers/GermanCompoundTokenizer.js';
 import { ID2PRIO_ENTRIES } from './id2prioGerman.js';
 
 const TYPOGRAPHY_PATTERN = Pattern.compile('\\b([a-zA-Z]\\.)([a-zA-Z]\\.)');
@@ -110,12 +111,13 @@ export class German extends LanguageWithModel {
 
   // Java: German#getNonStrictCompoundSplitter()
   getNonStrictCompoundSplitter() {
-    throw notPortedYet('German#getNonStrictCompoundSplitter (F23)');
+    const tokenizer = GermanCompoundTokenizer.getNonStrictInstance(); // there's a spelling mistake in (at least) one part, so strict mode wouldn't split the word
+    return { tokenize: (word) => [...tokenizer.tokenize(word)] }; // Java: lambda returning new ArrayList<>(...)
   }
 
   // Java: German#getStrictCompoundTokenizer()
   getStrictCompoundTokenizer() {
-    throw notPortedYet('German#getStrictCompoundTokenizer (F23)');
+    return GermanCompoundTokenizer.getStrictInstance();
   }
 
   // Java: German#getRelevantLanguageModelRules(ResourceBundle,LanguageModel,UserConfig)
