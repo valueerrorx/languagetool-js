@@ -82,7 +82,6 @@ function languageRules(l, messages) {
 // Java: CheckPipeOps#checkRules(JsonNode)
 export function run(a) {
   const l = languageFor(a.lang);
-  if (a.cleanOverlapping === true) throw Object.assign(new Error('CleanOverlappingFilter not ported (F35)'), { notPorted: true });
   const cls = (a.classes ?? []).map((n) => {
     const c = [...CORE, EnglishUnpairedBracketsRule, EnglishUnpairedQuotesRule, EnglishWordRepeatRule].find((k) => k.FQCN === n);
     if (c === undefined) throw Object.assign(new Error(`check-rules: class ${n} not ported`), { notPorted: true });

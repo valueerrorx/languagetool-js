@@ -12,6 +12,11 @@ import { MultipleWhitespaceRule } from '../core/rules/MultipleWhitespaceRule.js'
 import { SentenceWhitespaceRule } from '../core/rules/SentenceWhitespaceRule.js';
 import { EnglishUnpairedBracketsRule } from '../lang/en/rules/EnglishUnpairedBracketsRule.js';
 import { EnglishUnpairedQuotesRule } from '../lang/en/rules/EnglishUnpairedQuotesRule.js';
+import { GermanCommaWhitespaceRule } from '../lang/de/rules/GermanCommaWhitespaceRule.js';
+import { GermanDoublePunctuationRule } from '../lang/de/rules/GermanDoublePunctuationRule.js';
+import { GermanUnpairedBracketsRule } from '../lang/de/rules/GermanUnpairedBracketsRule.js';
+import { GermanUnpairedQuotesRule } from '../lang/de/rules/GermanUnpairedQuotesRule.js';
+import { SentenceWhitespaceRule as GermanSentenceWhitespaceRule } from '../lang/de/rules/SentenceWhitespaceRule.js';
 import { EnglishWordRepeatRule } from '../lang/en/rules/EnglishWordRepeatRule.js';
 
 // Java: English#getRelevantRules / French#getRelevantRules (the entries of the F16 rule classes, list order); other languages: no rules yet
@@ -45,6 +50,24 @@ export function interimRules(l) {
       new SentenceWhitespaceRule(messages),
     ];
   }
+  if (code === 'de') {
+    // GermanWordRepeatRule excluded: its ANTI_PATTERNS still throw notPorted
+    return [
+      new GermanCommaWhitespaceRule(messages,
+        Example.wrong('Die Partei<marker> ,</marker> die die letzte Wahl gewann.'),
+        Example.fixed('Die Partei<marker>,</marker> die die letzte Wahl gewann.'),
+        getUrl('https://languagetool.org/insights/de/beitrag/grammatik-leerzeichen/#fehler-1-leerzeichen-vor-und-nach-satzzeichen')),
+      new GermanUnpairedBracketsRule(messages, l),
+      new GermanUnpairedQuotesRule(messages, l),
+      new UppercaseSentenceStartRule(messages, l,
+        Example.wrong('Das Haus ist alt. <marker>es</marker> wurde 1950 gebaut.'),
+        Example.fixed('Das Haus ist alt. <marker>Es</marker> wurde 1950 gebaut.'),
+        getUrl('https://languagetool.org/insights/de/beitrag/gross-klein-schreibung-rechtschreibung/#1-satzanf%C3%A4nge-schreiben-wir-gro%C3%9F')),
+      new MultipleWhitespaceRule(messages, l),
+      new GermanSentenceWhitespaceRule(messages),
+      new GermanDoublePunctuationRule(messages),
+    ];
+  }
   return [];
 }
 
@@ -52,12 +75,15 @@ export function interimRules(l) {
 export function withInterimAnalysis(lang, fn) {
   const d = lang.getDisambiguator();
   const c = lang.getChunker();
+  const pc = lang.postDisambiguationChunker; // raw field: the getter would create the unported default
   lang.setDisambiguator(new NoopDisambiguator());
   lang.setChunker(new NoopChunker());
+  lang.setPostDisambiguationChunker(new NoopChunker());
   try {
     return fn();
   } finally {
     lang.setDisambiguator(d);
     lang.setChunker(c);
+    lang.setPostDisambiguationChunker(pc);
   }
 }

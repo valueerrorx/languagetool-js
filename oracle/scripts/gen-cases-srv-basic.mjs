@@ -16,11 +16,12 @@ const ONLY = (rules) => ({ enabledRules: rules, enabledOnly: 'true' });
 const enc = encodeURIComponent;
 const qs = (o) => Object.entries(o).map(([k, v]) => `${enc(k)}=${enc(v)}`).join('&');
 
-// Any request whose language param (query or body, first occurrence) is de / de-* needs the German module: flag it.
+// Valid German languages need GermanChunker/disambiguation (JS: not ported until F32/F51) -> portLater; unknown de-XX is an error path and stays comparable.
+const DE_VALID = /^(de|de-(DE|AT|CH))$/i;
 const isDeLang = (r) => {
   const q = r.path?.includes('?') ? new URLSearchParams(r.path.split('?')[1]) : null;
   const lang = r.params?.language ?? q?.get('language') ?? (typeof r.body === 'string' ? new URLSearchParams(r.body).get('language') : null);
-  return lang != null && /^de(-|$)/i.test(lang);
+  return lang != null && DE_VALID.test(lang);
 };
 function write(name, description, extra) {
   const requests = extra.requests?.map((r) => (isDeLang(r) && !r.portLater ? { ...r, portLater: true } : r));
@@ -28,7 +29,7 @@ function write(name, description, extra) {
 }
 const get = (p, params, more = {}) => ({ method: 'GET', path: p, ...(params ? { params } : {}), ...more });
 const post = (p, params, more = {}) => ({ method: 'POST', path: p, ...(params ? { params } : {}), ...more });
-const de = (r) => ({ ...r, portLater: true });
+const de = (r) => ({ ...r, portLater: true }); // detected/valid German needs GermanChunker (F32/F51)
 const dev006 = (r) => ({ ...r, expect: 'dev006' });
 
 const EN_TEXTS = [
@@ -164,7 +165,7 @@ const DE_TEXTS = ['Das ist ein Test,, ok.', 'Das das ist falsch.', 'Er sagte (ha
     get('/v2/check'),
     get('/v2/check', { language: 'en-US' }),
     get('/v2/check', { text: T }),
-    lang('xx'), lang('XX'), lang('en-XX'), de(lang('de-XX')), lang('en-US-foo'), lang('EN-us'), lang('en_US'), lang('english'), lang(' en-US'), lang('en-US '), lang('auto-detect'), lang('AUTO'), lang('%'), lang('x'.repeat(300)),
+    lang('xx'), lang('XX'), lang('en-XX'), lang('de-XX'), lang('en-US-foo'), lang('EN-us'), lang('en_US'), lang('english'), lang(' en-US'), lang('en-US '), lang('auto-detect'), lang('AUTO'), lang('%'), lang('x'.repeat(300)),
     lang('en'), lang('fr-FR'), de(lang('de')),
     dev006(lang('es')), dev006(lang('es-ES')), dev006(lang('pt-PT')), dev006(lang('pt')), dev006(lang('ca-ES')), dev006(lang('nl')), dev006(lang('ru-RU')), dev006(lang('ar')), dev006(lang('zh-CN')), dev006(lang('ja-JP')),
     post('/v2/check', { text: T, language: 'en-US', enabled: 'DOUBLE_PUNCTUATION' }),
