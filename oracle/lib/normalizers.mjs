@@ -10,13 +10,16 @@ const impl = {
   buildDate(text) {
     return text
       .replace(/("buildDate"\s*:\s*)(null|"[^"]*")/g, '$1"<BUILDDATE>"')
-      .replace(/\((\d{4}-\d\d-\d\d \d\d:\d\d:\d\d [+-]\d{4}|[^(),]*), ([0-9a-f]{7,40}|[^(),]*)\)/g, (m, d, c) => (/^\d{4}-/.test(d) ? `(<BUILDDATE>, ${c})` : m));
+      .replace(/\((\d{4}-\d\d-\d\d \d\d:\d\d:\d\d [+-]\d{4}|[^(),]*), ([0-9a-f]{7,40}|[^(),]*)\)/g, (m, d, c) => (/^\d{4}-/.test(d) ? `(<BUILDDATE>, ${c})` : m))
+      // server startup line "(build date: 2026-10-12 18:33:54 +0200, 9b0be9d)"
+      .replace(/\(build date: \d{4}-\d\d-\d\d \d\d:\d\d:\d\d [+-]\d{4}, ([0-9a-f]{7,40})\)/g, '(build date: <BUILDDATE>, $1)');
   },
   commit(text) {
     return text
       .replace(/("(?:commit|gitCommit|gitShortId)"\s*:\s*)(null|"[^"]*")/g, '$1"<COMMIT>"')
       .replace(/\(<BUILDDATE>, [^()]*\)/g, '(<BUILDDATE>, <COMMIT>)')
-      .replace(/\((\d{4}-\d\d-\d\d \d\d:\d\d:\d\d [+-]\d{4}), [0-9a-f]{7,40}\)/g, '($1, <COMMIT>)');
+      .replace(/\((\d{4}-\d\d-\d\d \d\d:\d\d:\d\d [+-]\d{4}), [0-9a-f]{7,40}\)/g, '($1, <COMMIT>)')
+      .replace(/\(build date: <BUILDDATE>, [0-9a-f]{7,40}\)/g, '(build date: <BUILDDATE>, <COMMIT>)');
   },
   // numbers in timing lines ("... took 123 ms", "Time: 1.5s") -> #
   durations(text) {

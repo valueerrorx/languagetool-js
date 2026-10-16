@@ -16,8 +16,15 @@ const ONLY = (rules) => ({ enabledRules: rules, enabledOnly: 'true' });
 const enc = encodeURIComponent;
 const qs = (o) => Object.entries(o).map(([k, v]) => `${enc(k)}=${enc(v)}`).join('&');
 
+// Any request whose language param (query or body, first occurrence) is de / de-* needs the German module: flag it.
+const isDeLang = (r) => {
+  const q = r.path?.includes('?') ? new URLSearchParams(r.path.split('?')[1]) : null;
+  const lang = r.params?.language ?? q?.get('language') ?? (typeof r.body === 'string' ? new URLSearchParams(r.body).get('language') : null);
+  return lang != null && /^de(-|$)/i.test(lang);
+};
 function write(name, description, extra) {
-  writeFileSync(path.join(OUT, `${name}.json`), JSON.stringify({ kind: 'http', clock: 'fixed', description, compare: 'api', normalize: NORM, serverArgs: [], ...extra }, null, 1) + '\n');
+  const requests = extra.requests?.map((r) => (isDeLang(r) && !r.portLater ? { ...r, portLater: true } : r));
+  writeFileSync(path.join(OUT, `${name}.json`), JSON.stringify({ kind: 'http', clock: 'fixed', description, compare: 'api', normalize: NORM, serverArgs: [], ...extra, ...(requests ? { requests } : {}) }, null, 1) + '\n');
 }
 const get = (p, params, more = {}) => ({ method: 'GET', path: p, ...(params ? { params } : {}), ...more });
 const post = (p, params, more = {}) => ({ method: 'POST', path: p, ...(params ? { params } : {}), ...more });
@@ -70,7 +77,7 @@ const DE_TEXTS = ['Das ist ein Test,, ok.', 'Das das ist falsch.', 'Er sagte (ha
     auto('This is a longer english sentence,, that the the detector can handle.', { preferredVariants: 'en-GB' }),
     auto('This is a longer english sentence,, that the the detector can handle.', { preferredVariants: 'en-US,de-AT' }),
     auto('This is a longer english sentence,, that the the detector can handle.', { noopLanguages: 'en' }),
-    auto('Ok.'),
+    de(auto('Ok.')), // detected de-DE (expected detectedLanguage German, D-051)
     auto('1234 5678'),
     auto(''),
     dev006(auto('Esta es una frase española bastante larga,, que que el detector puede reconocer sin problemas.')),
@@ -157,8 +164,8 @@ const DE_TEXTS = ['Das ist ein Test,, ok.', 'Das das ist falsch.', 'Er sagte (ha
     get('/v2/check'),
     get('/v2/check', { language: 'en-US' }),
     get('/v2/check', { text: T }),
-    lang('xx'), lang('XX'), lang('en-XX'), lang('de-XX'), lang('en-US-foo'), lang('EN-us'), lang('en_US'), lang('english'), lang(' en-US'), lang('en-US '), lang('auto-detect'), lang('AUTO'), lang('%'), lang('x'.repeat(300)),
-    lang('en'), lang('fr-FR'), lang('de'),
+    lang('xx'), lang('XX'), lang('en-XX'), de(lang('de-XX')), lang('en-US-foo'), lang('EN-us'), lang('en_US'), lang('english'), lang(' en-US'), lang('en-US '), lang('auto-detect'), lang('AUTO'), lang('%'), lang('x'.repeat(300)),
+    lang('en'), lang('fr-FR'), de(lang('de')),
     dev006(lang('es')), dev006(lang('es-ES')), dev006(lang('pt-PT')), dev006(lang('pt')), dev006(lang('ca-ES')), dev006(lang('nl')), dev006(lang('ru-RU')), dev006(lang('ar')), dev006(lang('zh-CN')), dev006(lang('ja-JP')),
     post('/v2/check', { text: T, language: 'en-US', enabled: 'DOUBLE_PUNCTUATION' }),
     post('/v2/check', { text: T, language: 'en-US', disabled: 'DOUBLE_PUNCTUATION' }),
