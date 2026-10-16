@@ -66,9 +66,9 @@ w('no-language', 'CLI-0037: no -l -> English default, message on stderr', [...EN
 w('no-language-file', 'CLI-0037: no -l with file', [...EN, 'input.txt'], { files: { 'input.txt': MIXED } });
 w('no-language-noargs-stdin', 'CLI-0037: only stdin (no file arg, no -l)', [], { stdin: MIXED, expectUsage: true });
 w('only-lang-implicit-stdin', 'CLI-0037: -l en, FILE defaults to -', ['-l', 'en-US', ...EN], { stdin: MIXED });
-w('autodetect-en', 'CLI-0037: -adl on English file (detector, F18)', ['-adl', ...EN, 'input.txt'], { files: { 'input.txt': MAIN_FILE } });
-w('autodetect-stdin', 'CLI-0037: -adl stdin', ['-adl', ...EN], { stdin: MAIN_STDIN });
-w('autodetect-fr', 'CLI-0037: -adl on French text', ['-adl', ...FR, 'input.txt'], { files: { 'input.txt': 'Ceci est un petit texte français pour tester la détection de la langue, avec  deux espaces.\n' } });
+w('autodetect-en', 'CLI-0037: -adl on English file (detector, F18)', ['-adl', ...EN, 'input.txt'], { files: { 'input.txt': MAIN_FILE }, normalize: [...BASE.normalize, 'logTimestamp'] });
+w('autodetect-stdin', 'CLI-0037: -adl stdin', ['-adl', ...EN], { stdin: MAIN_STDIN, normalize: [...BASE.normalize, 'logTimestamp'] });
+w('autodetect-fr', 'CLI-0037: -adl on French text', ['-adl', ...FR, 'input.txt'], { files: { 'input.txt': 'Ceci est un petit texte français pour tester la détection de la langue, avec  deux espaces.\n' }, normalize: [...BASE.normalize, 'logTimestamp'] });
 w('autodetect-de', 'CLI-0037: -adl on German text', ['-adl', ...DE, 'input.txt'], { files: { 'input.txt': 'Das ist ein kleiner deutscher Text zum Testen der Spracherkennung, mit  zwei Leerzeichen.\n' }, portLater: true });
 w('mothertongue', 'CLI-0040: -m de with -l en', ['-l', 'en-US', '-m', 'de', ...EN, '-'], { stdin: MIXED });
 

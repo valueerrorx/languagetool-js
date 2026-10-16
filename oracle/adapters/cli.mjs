@@ -44,8 +44,13 @@ export async function run(cs, { workDir }) {
   child.stdin.on('error', () => {});
   child.stdin.end(Buffer.from(cs.stdin ?? '', 'utf8'));
   const exitCode = await exit;
+  const stderr = Buffer.concat(err).toString('utf8');
+  // an unported path of the JS CLI ends with "not ported yet: ..." (uncaught): the case waits for that step
+  if (!isServer && /not ported yet: /.test(stderr)) {
+    throw Object.assign(new Error(stderr.match(/not ported yet: .*/)[0]), { notPorted: true });
+  }
   const after = snapshotFiles(workDir);
   const files = {};
   for (const [k, v] of Object.entries(after)) if (before[k] !== v) files[k] = v;
-  return { exitCode, stdout: Buffer.concat(out).toString('utf8'), stderr: Buffer.concat(err).toString('utf8'), files };
+  return { exitCode, stdout: Buffer.concat(out).toString('utf8'), stderr, files };
 }

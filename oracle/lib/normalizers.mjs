@@ -1,4 +1,4 @@
-// Normalisers per docs/ORACLE.md section 3.5: paths, buildDate, commit, durations, stackFrames.
+// Normalisers per docs/ORACLE.md section 3.5: paths, buildDate, commit, durations, stackFrames, logTimestamp.
 const impl = {
   paths(text, ctx) {
     let t = text;
@@ -25,6 +25,10 @@ const impl = {
   durations(text) {
     return text.split('\n').map((l) => (/\b(time|took|elapsed|ms|sec|seconds)\b/i.test(l) ? l.replace(/\d+(?:[.,]\d+)?/g, '#') : l)).join('\n');
   },
+  // log line timestamp prefix "yyyy-MM-dd HH:mm:ss.SSS " (D-045: log lines are not acceptance; only the prefix is replaced)
+  logTimestamp(text) {
+    return text.split('\n').map((l) => l.replace(/^\d{4}-\d\d-\d\d \d\d:\d\d:\d\d[.,]\d{3} /, '<TS> ')).join('\n');
+  },
   // remove "\tat ..." frames and "... n more" lines; "Caused by:" lines and the first line stay
   stackFrames(text) {
     return text.split('\n').filter((l) => !/^\s+at [\w$.<>/]+\(.*\)\s*$/.test(l) && !/^\s*\.\.\. \d+ (more|common frames omitted)\s*$/.test(l)).join('\n');
@@ -36,7 +40,7 @@ export const NORMALIZERS = Object.keys(impl);
 export function normalize(names, text, ctx = {}) {
   let t = text;
   // tmp dir lives inside the work dir, so paths runs first; order of the others is fixed
-  for (const n of ['paths', 'stackFrames', 'buildDate', 'commit', 'durations']) {
+  for (const n of ['paths', 'stackFrames', 'buildDate', 'commit', 'durations', 'logTimestamp']) {
     if (n !== 'paths' && !names.includes(n)) continue;
     t = impl[n](t, ctx);
   }

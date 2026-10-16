@@ -1,5 +1,7 @@
 // Interim rule lists of English and French (the ported F16 core rules); replaced by Language#getRelevantRules when the language rule steps land.
 import { getMessageBundleForLanguage } from '../core/resources/ResourceBundleTools.js';
+import { NoopDisambiguator } from '../core/noop/NoopDisambiguator.js';
+import { NoopChunker } from '../core/noop/NoopChunker.js';
 import { Example } from '../core/rules/model/Examples.js';
 import { getUrl } from '../core/Tools.js';
 import { CommaWhitespaceRule } from '../core/rules/CommaWhitespaceRule.js';
@@ -44,4 +46,18 @@ export function interimRules(l) {
     ];
   }
   return [];
+}
+
+// Interim analysis (disambiguation/chunking of the language steps are not ported yet): runs fn with the no-op disambiguator and chunker (shared by server and CLI)
+export function withInterimAnalysis(lang, fn) {
+  const d = lang.getDisambiguator();
+  const c = lang.getChunker();
+  lang.setDisambiguator(new NoopDisambiguator());
+  lang.setChunker(new NoopChunker());
+  try {
+    return fn();
+  } finally {
+    lang.setDisambiguator(d);
+    lang.setChunker(c);
+  }
 }

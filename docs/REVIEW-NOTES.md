@@ -12,3 +12,5 @@
 - D-043: block only divergences reachable from API/CLI output or degrading results; log unreachable JDK edge cases in docs/review/unreachable.md.
 - Adapters must call the port; never hardcode Java expected values. Missing dependency -> throw notPorted for that request.
 - Orphan golden dirs (no matching oracle/cases/<ID>/<case>.json) must be deleted when a generator drops cases; check before blaming stale fixtures.
+- A class pulled forward from a later step comes with its Java test class ported in the same step.
+- Interim guards/stubs need a removal note in docs/PLAN.md (target step), not only a code comment.

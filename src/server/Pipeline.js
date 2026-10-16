@@ -1,10 +1,8 @@
 // Java: PipelinePool#createPipeline (one fresh JLanguageTool per request; pooling/freezing follows with the worker pool)
 import { JLanguageTool, ParagraphHandling } from '../core/JLanguageTool.js';
 import { selectRules } from '../core/Tools.js';
-import { NoopDisambiguator } from '../core/noop/NoopDisambiguator.js';
-import { NoopChunker } from '../core/noop/NoopChunker.js';
 import { notPortedYet } from '../core/language/components.js';
-import { interimRules } from './interimRules.js';
+import { interimRules, withInterimAnalysis } from './interimRules.js';
 
 // Java: PipelinePool#createPipeline(Language,Language,QueryParams,GlobalConfig,UserConfig,List)
 export function createPipeline(config, lang, motherTongue, params, globalConfig, userConfig, disabledRuleIds) {
@@ -24,14 +22,5 @@ export function createPipeline(config, lang, motherTongue, params, globalConfig,
 
 // Java: Pipeline#check2(...) with the interim analysis (disambiguation/chunking of the language steps are not ported yet)
 export function checkWithPipeline(lt, lang, aText, listener, params, textSessionId) {
-  const d = lang.getDisambiguator();
-  const c = lang.getChunker();
-  lang.setDisambiguator(new NoopDisambiguator());
-  lang.setChunker(new NoopChunker());
-  try {
-    return lt.check2(aText, true, ParagraphHandling.NORMAL, listener, params.mode, params.level, params.toneTags, textSessionId);
-  } finally {
-    lang.setDisambiguator(d);
-    lang.setChunker(c);
-  }
+  return withInterimAnalysis(lang, () => lt.check2(aText, true, ParagraphHandling.NORMAL, listener, params.mode, params.level, params.toneTags, textSessionId));
 }

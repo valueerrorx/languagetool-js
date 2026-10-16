@@ -231,6 +231,7 @@ describe('JLanguageTool block tests', () => {
 
   it('modes and paragraph handling', () => {
     const lt = custom([new TextWordRule('TXT', 'foo'), new WordRule('W', 'foo')]);
+    lt.setCleanOverlappingMatches(false); // identical positions: CleanOverlappingFilter (F21) would keep only one
     const ids = (ph, mode) => {
       const at = new AnnotatedTextBuilder().addText('foo').build();
       const r = mode === undefined ? lt.check(at, true, ph) : lt.check(at, true, ph, null, mode, Level.DEFAULT);
@@ -253,6 +254,7 @@ describe('JLanguageTool block tests', () => {
 
   it('rule set cache is invalidated by mutations', () => {
     const lt = custom([new WordRule('W', 'x')]);
+    lt.setCleanOverlappingMatches(false); // identical positions: CleanOverlappingFilter (F21) would keep only one
     expect(lt.check('x').length).toBe(1);
     lt.disableRule('W');
     expect(lt.check('x').length).toBe(0);
