@@ -597,4 +597,66 @@ for (const kind of ['text', 'lemma']) hintOps.push(
   hint(kind, [B(['token', 'x'], ['min', 0]), B(['pos', 'b'])], [S('y', 'c', 'y')]),
 );
 write('ruleset-hints', 'RuleSet.plain/textHinted/textLemmaHinted rulesForSentence (RuleSetTest + extras)', hintOps);
+
+// ---- ruleset-hints-order: getPossibleValues / tokenHints iteration order (F25a review finding 1, guavaCapacity) ----
+{
+  const DE = ['der', 'die', 'das', 'eine', 'einen', 'einem', 'einer', 'eines', 'und', 'oder', 'aber', 'denn', 'weil', 'dass', 'wenn', 'als', 'wie', 'auch', 'noch', 'schon', 'sehr', 'mehr', 'nicht', 'kein', 'keine', 'mit', 'ohne', 'für', 'gegen', 'durch'];
+  const EN = ['the', 'a', 'an', 'and', 'or', 'but', 'because', 'that', 'if', 'when', 'as', 'how', 'also', 'still', 'already', 'very', 'more', 'not', 'no', 'none', 'with', 'without', 'for', 'against', 'through', 'Apple', 'Zebra', 'house', 'Mouse', 'tree'];
+  const UM = ['Äpfel', 'Öl', 'Übung', 'äußerst', 'schön', 'Füße', 'größer', 'Mädchen', 'über', 'Bär', 'Löwe', 'Mühle', 'Straße', 'Käse', 'Ärger', 'Ökonomie', 'Müll', 'Bücher', 'Hände', 'Tür', 'Köln', 'Fräulein', 'Jäger', 'Gänse', 'Würfel', 'Nüsse', 'Böden', 'Lüge', 'Süden', 'Ölung'];
+  const AB = Array.from({ length: 30 }, (_, i) => 'ab' + String.fromCharCode(99 + i % 24) + (i >= 24 ? '1' : ''));
+  const lists = { de: DE, en: EN, um: UM, ab: AB };
+  const ordOps = [];
+  const orOp = (rules) => op({ dump: true, rules }, 'ruleset-hints');
+  for (const [ln, L] of Object.entries(lists)) {
+    for (const call of ['tokenRegex', 'csTokenRegex']) {
+      for (let n = 1; n <= 30; n++) ordOps.push(orOp([B([call, L.slice(0, n).join('|')])]));
+    }
+    for (const n of [3, 6, 12, 24]) {
+      ordOps.push(orOp([B(['tokenRegex', L.slice(0, n).join('|')], ['matchInflectedForms'])]));
+      ordOps.push(orOp([B(['csTokenRegex', L.slice(0, n).join('|')], ['matchInflectedForms'])]));
+      ordOps.push(orOp([B(['tokenRegex', '(' + L.slice(0, n).join('|') + ')'])]));
+      ordOps.push(orOp([B(['tokenRegex', L.slice(0, n).join('|')], ['negate'])]));
+    }
+  }
+  const rx = (n, L = DE, call = 'tokenRegex') => B([call, L.slice(0, n).join('|')]);
+  const combos = [
+    [B(['tokenRegex', 'abc|abd|abe']), B(['tokenRegex', 'der|die|eine'])],
+    [B(['tokenRegex', 'der|die|eine']), B(['tokenRegex', 'abc|abd|abe'])],
+    [rx(3), rx(3, AB)], [rx(6), rx(6, AB)], [rx(12), rx(12, AB)], [rx(24), rx(24, AB)],
+    [rx(3, DE, 'csTokenRegex'), rx(3, AB, 'csTokenRegex')], [rx(12, DE, 'csTokenRegex'), rx(12, EN, 'csTokenRegex')],
+    [rx(5), rx(9), rx(2)], [rx(2), rx(9, EN), rx(5, UM)], [rx(7, UM), rx(7, DE)], [rx(4, EN), rx(4, UM), rx(4, DE)],
+    [B(['token', 'der']), rx(3)], [rx(3), B(['token', 'xyz'])], [rx(3), B(['token', 'Der'])], [rx(8), B(['pos', 'NN']), rx(8, AB)],
+    [rx(3), B(['tokenRegex', 'x|y|z'], ['matchInflectedForms'])], [rx(6, EN), rx(6, UM, 'csTokenRegex')],
+    [rx(15, DE), rx(15, EN)], [rx(30, AB), rx(30, DE)], [rx(10, UM), rx(10, AB), rx(10, EN), rx(10, DE)],
+    [B(['tokenRegex', 'abc|abd|abe'], ['min', 0]), B(['tokenRegex', 'der|die|eine'])],
+    [B(['tokenRegex', 'abc|abd|abe']), B(['tokenRegex', 'der|die|eine'], ['setSkip', 1]), rx(2, EN)],
+  ];
+  for (const c of combos) ordOps.push(orOp([c.length ? { tokens: c } : []]));
+  ordOps.push(orOp(combos.slice(0, 6).map((c) => ({ tokens: c }))));
+  // rulesForSentence: sentences that contain only one hint each
+  const sents = (c) => {
+    const out = new Set();
+    for (const t of c) {
+      const call = t.find((x) => x[0].includes('oken'));
+      if (!call) continue;
+      for (const v of call[1].replace(/[()]/g, '').split('|').slice(0, 3)) out.add(v);
+    }
+    return [...out];
+  };
+  for (const c of combos) {
+    for (const kind of ['text', 'lemma']) {
+      for (const w of sents(c)) {
+        ordOps.push(hint(kind, [{ tokens: c }], [S(w, 'NN', w)]));
+        ordOps.push(hint(kind, [{ tokens: c }], [S('x', 'NN', w)]));
+      }
+    }
+  }
+  for (const kind of ['text', 'lemma']) {
+    for (const w of ['der', 'abc', 'die', 'eine', 'abd', 'abe', 'xyz', 'DER', 'Der']) {
+      ordOps.push(hint(kind, combos.slice(0, 6).map((c) => ({ tokens: c })), [S(w, 'NN', w)]));
+      ordOps.push(hint(kind, combos.slice(0, 2).map((c) => ({ tokens: c })), [S(w), S('other')]));
+    }
+  }
+  write('ruleset-hints-order', 'StringMatcher/PatternToken possible values and AbstractTokenBasedRule.tokenHints iteration order; RuleSet hinted rulesForSentence', ordOps);
+}
 console.log('cases written:', readdirSync(DIR).length);

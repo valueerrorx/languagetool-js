@@ -14,3 +14,4 @@
 | F21 | CLI startup: `node bin/lt-cli.mjs -l en-US -eo -e ENGLISH_WORD_REPEAT_RULE small.txt` (wall, 3 runs) | ~265 ms | Java 17 `languagetool-commandline.jar` same args ~3.1 s (full rule set, JVM start); not like-for-like until the full rule sets are ported |
 | F22 | GermanTagger/SwissGermanTagger tag(List) (de corpus 315 sentences / 12,636 tokens incl. whitespace, warm best of 5) | de-DE 112 k tokens/s, de-CH 113 k tokens/s; init (spelling.txt expansion via synthesizer + compound splitter) ~1.7 s once | Java 17 same tokens: 129 k tokens/s (0.87x), init ~1.4 s; unknown words dominate (compound splitter + several FSA lookups) |
 | F22 | GermanTagger | 112k tokens/s de corpus vs Java 129k (0.87x); first use 1.7 s vs 1.4 s | ok (>=0.8x), watch startup |
+| F25a | Proxy-based unmodifiable views (src/lib/java/collections/Collections.js) on PatternToken getters / StringMatcher.getPossibleValues | measure in F27 matcher hot path; replace with frozen copies if slow |

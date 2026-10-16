@@ -69,6 +69,22 @@ export class JavaHashMap {
     return this.getNode(key) !== null;
   }
 
+  // Java: HashMap#remove(Object); returns the removed value or null
+  remove(key) {
+    if (this.table === null) return null;
+    const hash = JavaHashMap.hash(key);
+    const bin = this.table[hash & (this.table.length - 1)];
+    for (let i = 0; i < bin.length; i++) {
+      if (bin[i].hash === hash && Objects.equals(bin[i].key, key)) {
+        const value = bin[i].value;
+        bin.splice(i, 1);
+        this.size_--;
+        return value;
+      }
+    }
+    return null;
+  }
+
   // Java: HashMap#size()
   size() {
     return this.size_;

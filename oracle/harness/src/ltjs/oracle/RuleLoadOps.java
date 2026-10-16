@@ -638,6 +638,7 @@ final class RuleLoadOps {
       else toks.add(buildToken(spec));
       rules.add(new PatternRule("", l, toks, "", "", ""));
     }
+    if (a.has("dump")) return hintOrder(rules);
     String kind = a.get("kind").asText();
     RuleSet rs;
     switch (kind) {
@@ -656,6 +657,48 @@ final class RuleLoadOps {
     }
     Map<String, Object> w = new LinkedHashMap<>();
     w.put("indices", idx);
+    return w;
+  }
+
+  private static List<String> vals(Object set) {
+    if (set == null) return null;
+    return new ArrayList<>((Collection<String>) set);
+  }
+
+  private static Object hintDump(Object th) {
+    if (th == null) return null;
+    Class<?> c = th.getClass();
+    Map<String, Object> m = new LinkedHashMap<>();
+    m.put("inflected", fld(th, c, "inflected"));
+    m.put("tokenIndex", fld(th, c, "tokenIndex"));
+    m.put("lowerCaseValues", Arrays.asList((String[]) fld(th, c, "lowerCaseValues")));
+    return m;
+  }
+
+  /** {dump:true, rules} -> per rule: token possible values / form+lemma hints (iteration order), tokenHints, anchorHint. */
+  @SuppressWarnings("unchecked")
+  private static Object hintOrder(List<Rule> rules) throws Exception {
+    List<Object> out = new ArrayList<>();
+    for (Rule r : rules) {
+      Map<String, Object> d = new LinkedHashMap<>();
+      List<Object> toks = new ArrayList<>();
+      for (PatternToken t : ((PatternRule) r).getPatternTokens()) {
+        Map<String, Object> td = new LinkedHashMap<>();
+        Object tm = fld(t, PatternToken.class, "textMatcher");
+        td.put("possibleValues", vals(((StringMatcher) tm).getPossibleValues()));
+        td.put("formHints", vals(call(t, PatternToken.class, "calcFormHints")));
+        td.put("lemmaHints", vals(call(t, PatternToken.class, "calcLemmaHints")));
+        toks.add(td);
+      }
+      d.put("tokens", toks);
+      Object[] ths = (Object[]) fld(r, AbstractTokenBasedRule.class, "tokenHints");
+      if (ths == null) d.put("tokenHints", null);
+      else { List<Object> l = new ArrayList<>(); for (Object th : ths) l.add(hintDump(th)); d.put("tokenHints", l); }
+      d.put("anchorHint", hintDump(fld(r, AbstractTokenBasedRule.class, "anchorHint")));
+      out.add(d);
+    }
+    Map<String, Object> w = new LinkedHashMap<>();
+    w.put("rules", out);
     return w;
   }
 }

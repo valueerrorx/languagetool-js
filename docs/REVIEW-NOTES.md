@@ -14,4 +14,6 @@
 - Orphan golden dirs (no matching oracle/cases/<ID>/<case>.json) must be deleted when a generator drops cases; check before blaming stale fixtures.
 - A class pulled forward from a later step comes with its Java test class ported in the same step.
 - Interim guards/stubs need a removal note in docs/PLAN.md (target step), not only a code comment.
-- Java `substring`/`charAt`/`subList` with computed bounds: use the throwing helpers in src/lib/java/strings.js, never raw JS `substring` (JS clamps, Java throws).
+- Java `substring`/`charAt`/`subList`/array index with computed bounds: use the throwing helpers in src/lib/java/ (JS clamps or yields undefined/TypeError, Java throws StringIndexOutOfBounds/ArrayIndexOutOfBounds).
+- Guava/JDK collection sizing: take formulas from the pinned jar (javap), never from memory; iteration order depends on it.
+- No "same behaviour as Java" claim on a stub/fallback without an oracle check; otherwise mark it unverified.

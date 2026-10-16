@@ -85,18 +85,6 @@ export class RuleSet {
         unclassified.push(i);
       }
     }
-    // no hinted rule: every sentence gets all rules (same list content as filterList over all set bits)
-    if (byToken.size === 0 && byLemma.size === 0) {
-      return new (class extends RuleSet {
-        allRules() {
-          return allRules;
-        }
-
-        rulesForSentence() {
-          return allRules.slice();
-        }
-      })();
-    }
     return new (class extends RuleSet {
       allRules() {
         return allRules;
