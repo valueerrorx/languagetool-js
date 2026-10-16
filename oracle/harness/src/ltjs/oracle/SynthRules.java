@@ -30,6 +30,7 @@ final class SynthRules {
     if (spec.has("toneTags")) { List<String> t = new ArrayList<>(); for (JsonNode x : spec.get("toneTags")) t.add(x.asText()); r.addToneTags(t); }
     if (spec.has("goalSpecific")) r.setGoalSpecific(spec.get("goalSpecific").asBoolean());
     if (s(spec, "url") != null) r.setUrl(new URL(s(spec, "url")));
+    if (s(spec, "issueType") != null) r.setLocQualityIssueType(ITSIssueType.valueOf(s(spec, "issueType")));
   }
 
   static Rule make(JsonNode spec) throws Exception {
@@ -50,10 +51,14 @@ final class SynthRules {
   /** Matches each non-whitespace token (not SENT_START) whose text fully matches `regex`. */
   static final class WordRule extends Rule {
     final String id, subId, description, message, shortMessage, url;
+    final String sourceFile;
+    final int contextForSure;
     final Pattern pattern;
     final List<String> suggestions = new ArrayList<>();
     WordRule(JsonNode spec) {
       id = s(spec, "id"); subId = s(spec, "subId");
+      sourceFile = s(spec, "sourceFile");
+      contextForSure = spec.has("contextForSure") ? spec.get("contextForSure").asInt() : 0;
       description = s(spec, "description") != null ? s(spec, "description") : "Synthetic " + id;
       message = s(spec, "message") != null ? s(spec, "message") : "msg " + id;
       shortMessage = s(spec, "shortMessage");
@@ -63,6 +68,8 @@ final class SynthRules {
     }
     @Override public String getId() { return id; }
     @Override public String getSubId() { return subId; }
+    @Override public String getSourceFile() { return sourceFile; }
+    @Override public int estimateContextForSureMatch() { return contextForSure; }
     @Override public String getDescription() { return description; }
     @Override public RuleMatch[] match(AnalyzedSentence sentence) {
       List<RuleMatch> out = new ArrayList<>();
@@ -84,11 +91,15 @@ final class SynthRules {
   /** Text-level rule: every non-empty find() of `regex` over the concatenation of all sentence texts (AnalyzedSentence#getText). */
   static final class TextRule extends TextLevelRule {
     final String id, subId, description, message, shortMessage, url;
+    final String sourceFile;
+    final int contextForSure;
     final Pattern pattern;
     final int minToCheck, shiftFrom, shiftTo;
     final List<String> suggestions = new ArrayList<>();
     TextRule(JsonNode spec) {
       id = s(spec, "id"); subId = s(spec, "subId");
+      sourceFile = s(spec, "sourceFile");
+      contextForSure = spec.has("contextForSure") ? spec.get("contextForSure").asInt() : 0;
       description = s(spec, "description") != null ? s(spec, "description") : "Synthetic " + id;
       message = s(spec, "message") != null ? s(spec, "message") : "msg " + id;
       shortMessage = s(spec, "shortMessage");
@@ -101,6 +112,8 @@ final class SynthRules {
     }
     @Override public String getId() { return id; }
     @Override public String getSubId() { return subId; }
+    @Override public String getSourceFile() { return sourceFile; }
+    @Override public int estimateContextForSureMatch() { return contextForSure; }
     @Override public String getDescription() { return description; }
     @Override public int minToCheckParagraph() { return minToCheck; }
     @Override public RuleMatch[] match(List<AnalyzedSentence> sentences) {

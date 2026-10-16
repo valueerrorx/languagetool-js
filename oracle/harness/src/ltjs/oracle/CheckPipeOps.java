@@ -79,7 +79,7 @@ final class CheckPipeOps {
   private static List<String> strs(JsonNode a, String k) { return ContentOps.strs(a, k); }
 
   /** Builds (or reuses) a tool for lang + rules + selection; base state: all non-synthetic rules disabled by full id. */
-  private static HarnessLT tool(JsonNode a, boolean disableBuiltins) throws Exception {
+  static HarnessLT tool(JsonNode a, boolean disableBuiltins) throws Exception {
     String key = a.get("lang").asText() + "|" + (a.has("motherTongue") ? a.get("motherTongue") : "") + "|" + a.get("rules") + "|" + a.get("selection") + "|" + disableBuiltins;
     HarnessLT lt = CACHE.get(key);
     if (lt != null) return lt;

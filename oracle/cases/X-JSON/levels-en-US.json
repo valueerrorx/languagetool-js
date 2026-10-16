@@ -1,0 +1,189 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "json-serialize en-US: picky level, tone tags, tags in rule block",
+ "normalize": [],
+ "compare": "json-serialize",
+ "ops": [
+  {
+   "op": "json-serialize",
+   "args": {
+    "lang": "en-US",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word <suggestion>{t}</suggestion> here",
+      "shortMessage": "bad <suggestion>x</suggestion>",
+      "suggestions": [
+       "good",
+       "{t}ly",
+       "a\"b",
+       "tab\there",
+       "ü€😀"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words",
+      "issueType": "Misspelling"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky 'quoted' \"double\" {t}...",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      },
+      "issueType": "Style",
+      "contextForSure": -1
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      },
+      "sourceFile": "org/languagetool/rules/en/grammar.xml",
+      "issueType": "Grammar",
+      "contextForSure": 2
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      },
+      "sourceFile": "grammar.xml",
+      "contextForSure": 4
+     },
+     {
+      "id": "SYN_TEMP",
+      "regex": "temp",
+      "message": "Temp off {t}",
+      "defaultTempOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      },
+      "sourceFile": "a/b\nc/d.xml"
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "issueType": "Register"
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "issueType": "Whitespace"
+     },
+     {
+      "id": "SYN_URL2",
+      "regex": "ulink",
+      "message": "Url2 {t}",
+      "url": "https://example.org/rule#ä",
+      "category": {
+       "id": "SYN_CAT_U",
+       "name": "Ünïcode \"cat\" \\ name"
+      },
+      "issueType": "Other"
+     },
+     {
+      "id": "SYN_UNI",
+      "regex": ".*[\\p{So}\\p{Cs}äöüÄÖÜéèàç].*",
+      "message": "Unicode {t} \u0001 \u001f ctrl",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "issueType": "Characters"
+     },
+     {
+      "id": "SYN_APO",
+      "regex": "apo",
+      "message": "It's 'a' test -- ... \"q\" <suggestion>{t}</suggestion>",
+      "shortMessage": "'s...",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "issueType": "Numbers"
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      },
+      "issueType": "Typographical",
+      "description": "desc with \"quotes\" and \\ back"
+     },
+     {
+      "id": "SYN_DEF",
+      "regex": "defcat",
+      "message": "Default category {t}",
+      "issueType": "Internationalization"
+     }
+    ],
+    "selection": {},
+    "cases": [
+     {
+      "text": "very gonna hey bad",
+      "level": "PICKY"
+     },
+     {
+      "text": "very gonna hey bad",
+      "level": "PICKY",
+      "toneTags": [
+       "ALL_TONE_RULES"
+      ]
+     },
+     {
+      "text": "very gonna hey bad",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "text": "very gonna hey bad"
+     }
+    ]
+   }
+  }
+ ]
+}
