@@ -1,19 +1,25 @@
 // JS twin of harness op "json-serialize" (JsonOps#jsonSerialize, docs/review/F19-oracle.md).
-// notPorted until src/core/tools/RuleMatchesAsJsonSerializer.js (F19) exists; de-* requests carry args.portLater and stay notPorted until the German tagger is ported.
+// notPorted until src/core/RuleMatchesAsJsonSerializer.js (F19) exists; de-* requests carry args.portLater and stay notPorted until the German tagger is ported.
 import { existsSync } from 'node:fs';
 import { Level, Mode, ParagraphHandling } from '../../src/core/JLanguageTool.js';
-import { Languages } from '../../src/core/Languages.js';
+import { File } from '../../src/lib/java/io/File.js';
+import { Languages, resetDynamicLanguages } from '../../src/core/Languages.js';
 import { RuleMatch } from '../../src/core/rules/model/RuleMatch.js';
-import { SuggestedReplacement } from '../../src/core/rules/model/SuggestedReplacement.js';
+import { SuggestedReplacement, SuggestionType } from '../../src/core/rules/model/SuggestedReplacement.js';
 import { CheckResults } from '../../src/core/rules/model/CheckResults.js';
 import { SentenceRange } from '../../src/core/rules/model/SentenceRange.js';
 import { DetectedLanguage } from '../../src/core/rules/model/DetectedLanguage.js';
 import { makeAll, JavaURL, PREFIX } from './_synth-rules.mjs';
 import { annotated, errorOf, languageFor, newTool, select, tones, withNoopAnalysis } from './_check-pipe-common.mjs';
 
-const SER = new URL('../../src/core/tools/RuleMatchesAsJsonSerializer.js', import.meta.url);
+const SER = new URL('../../src/core/RuleMatchesAsJsonSerializer.js', import.meta.url);
 const s = (n, k) => (n[k] !== undefined && n[k] !== null ? String(n[k]) : null);
-const lang = (code) => (code === null || code === undefined ? null : Languages.getLanguageForShortCode(code));
+// DEV-006: languages outside the wave-1 modules are notPorted
+const lang = (code) => {
+  if (code === null || code === undefined) return null;
+  if (!Languages.isLanguageSupported(code)) throw Object.assign(new Error(`language ${code} not ported (DEV-006)`), { notPorted: true });
+  return Languages.getLanguageForShortCode(code);
+};
 
 // Java: JsonOps#param(JsonNode,JsonNode,String)
 const param = (c, a, k) => (c.ser && k in c.ser ? c.ser[k] : k in a ? a[k] : undefined);
@@ -28,7 +34,7 @@ function manualMatches(arr, rules, lt) {
     if (m.replacements !== undefined) {
       rm.setSuggestedReplacementObjects(m.replacements.map((x) => {
         const sr = new SuggestedReplacement(String(x.value), s(x, 'shortDescription'), s(x, 'suffix'));
-        if (x.type !== undefined) sr.setType(x.type);
+        if (x.type !== undefined) sr.setType(SuggestionType.valueOf(String(x.type)));
         if (x.confidence !== undefined && x.confidence !== null) sr.setConfidence(Math.fround(x.confidence));
         return sr;
       }));
@@ -66,8 +72,18 @@ function checkResult(lt, c) {
 export async function run(a) {
   if (a.portLater) throw Object.assign(new Error(`later: ${a.portLater}`), { notPorted: true });
   if (!existsSync(SER)) throw Object.assign(new Error('RuleMatchesAsJsonSerializer not ported'), { notPorted: true });
-  const { RuleMatchesAsJsonSerializer } = await import(SER.href);
+  const { RuleMatchesAsJsonSerializer, ConfidenceKey } = await import(SER.href);
   const l = languageFor(a.lang);
+  try {
+    return runCases(a, l, RuleMatchesAsJsonSerializer, ConfidenceKey);
+  } finally {
+    resetDynamicLanguages(); // each case file is its own JVM in the oracle
+  }
+}
+
+// Java: JsonOps#jsonSerialize(JsonNode) body
+function runCases(a, l, RuleMatchesAsJsonSerializer, ConfidenceKey) {
+  for (const d of a.dynamic ?? []) Languages.addLanguage(String(d.name), String(d.code), new File(String(d.path)));
   return withNoopAnalysis(l, true, () => {
     const lt = newTool(l, null);
     lt.setCleanOverlappingMatches(false);
@@ -85,10 +101,11 @@ export async function run(a) {
         const det = p('detected') === undefined || p('detected') === null ? given : lang(p('detected'));
         const dl = p('confidence') !== undefined && p('confidence') !== null ? new DetectedLanguage(given, det, Math.fround(p('confidence')), p('source') ?? null) : new DetectedLanguage(given, det);
         const ser = new RuleMatchesAsJsonSerializer(p('compactMode') ?? 0, lang(p('serLang') ?? null));
-        if (p('confidenceMap')) ser.setRuleIdToConfidenceMap(p('confidenceMap').map((e) => ({ lang: lang(e.lang), ruleId: e.ruleId, value: Math.fround(e.value) })));
+        if (p('confidenceMap')) ser.setRuleIdToConfidenceMap(new Map(p('confidenceMap').map((e) => [new ConfidenceKey(lang(e.lang), e.ruleId), Math.fround(e.value)])));
         const json = ser.ruleMatchesToJson2(results, hidden, text, p('contextSize') ?? 40, dl, p('incompleteReason') ?? null, p('showPremiumHint') === true, p('mode') ? Mode.valueOf(p('mode')) : null);
         return { json, parsed: JSON.parse(json) };
       } catch (t) {
+        if (t && t.notPorted === true) return { notPorted: true, reason: t.message }; // case-level skip (comparator ignores it)
         return errorOf(t);
       }
     });

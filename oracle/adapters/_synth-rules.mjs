@@ -4,6 +4,7 @@ import { javaReplace } from '../../src/lib/java/strings.js';
 import { Rule } from '../../src/core/rules/model/Rule.js';
 import { TextLevelRule } from '../../src/core/rules/model/TextLevelRule.js';
 import { RuleMatch } from '../../src/core/rules/model/RuleMatch.js';
+import { ITSIssueType } from '../../src/core/rules/model/ITSIssueType.js';
 import { Category, CategoryId, Location } from '../../src/core/rules/model/Category.js';
 
 export const PREFIX = 'SYN_';
@@ -38,6 +39,7 @@ function configure(r, spec) {
   if (spec.toneTags !== undefined) r.addToneTags(spec.toneTags.map(String));
   if (spec.goalSpecific !== undefined) r.setGoalSpecific(spec.goalSpecific === true);
   if (s(spec, 'url') !== null) r.setUrl(new JavaURL(s(spec, 'url')));
+  if (s(spec, 'issueType') !== null) r.setLocQualityIssueType(ITSIssueType.valueOf(s(spec, 'issueType')));
 }
 
 // Java: SynthRules#make(JsonNode)
@@ -64,6 +66,8 @@ export class WordRule extends Rule {
     super();
     this.id = s(spec, 'id');
     this.subId = s(spec, 'subId');
+    this.sourceFile = s(spec, 'sourceFile');
+    this.contextForSure = spec.contextForSure !== undefined ? spec.contextForSure : 0;
     this.description = s(spec, 'description') !== null ? s(spec, 'description') : `Synthetic ${this.id}`;
     this.message = s(spec, 'message') !== null ? s(spec, 'message') : `msg ${this.id}`;
     this.shortMessage = s(spec, 'shortMessage');
@@ -75,6 +79,10 @@ export class WordRule extends Rule {
   getId() { return this.id; }
 
   getSubId() { return this.subId; }
+
+  getSourceFile() { return this.sourceFile; }
+
+  estimateContextForSureMatch() { return this.contextForSure; }
 
   getDescription() { return this.description; }
 
@@ -100,6 +108,8 @@ export class TextRule extends TextLevelRule {
     super();
     this.id = s(spec, 'id');
     this.subId = s(spec, 'subId');
+    this.sourceFile = s(spec, 'sourceFile');
+    this.contextForSure = spec.contextForSure !== undefined ? spec.contextForSure : 0;
     this.description = s(spec, 'description') !== null ? s(spec, 'description') : `Synthetic ${this.id}`;
     this.message = s(spec, 'message') !== null ? s(spec, 'message') : `msg ${this.id}`;
     this.shortMessage = s(spec, 'shortMessage');
@@ -114,6 +124,10 @@ export class TextRule extends TextLevelRule {
   getId() { return this.id; }
 
   getSubId() { return this.subId; }
+
+  getSourceFile() { return this.sourceFile; }
+
+  estimateContextForSureMatch() { return this.contextForSure; }
 
   getDescription() { return this.description; }
 
