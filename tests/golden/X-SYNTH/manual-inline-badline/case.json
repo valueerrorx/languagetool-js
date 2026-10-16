@@ -1,0 +1,31 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "inline: error, 2 columns",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "synth",
+   "args": {
+    "impl": "manual",
+    "content": "a\tb\n",
+    "calls": [
+     {
+      "m": "possibleTags"
+     },
+     {
+      "m": "lookup",
+      "lemma": null,
+      "tag": "A"
+     },
+     {
+      "m": "lookup",
+      "lemma": "x",
+      "tag": null
+     }
+    ]
+   }
+  }
+ ]
+}

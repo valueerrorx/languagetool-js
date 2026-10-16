@@ -1,0 +1,34 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "en ManualSynthesizer from added_custom.txt: lookup order, possibleTags order",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "synth",
+   "args": {
+    "impl": "manual",
+    "lang": "en",
+    "files": [
+     "added_custom.txt"
+    ],
+    "calls": [
+     {
+      "m": "possibleTags"
+     },
+     {
+      "m": "lookup",
+      "lemma": null,
+      "tag": null
+     },
+     {
+      "m": "lookup",
+      "lemma": "",
+      "tag": ""
+     }
+    ]
+   }
+  }
+ ]
+}

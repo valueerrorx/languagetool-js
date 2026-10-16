@@ -1,0 +1,36 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "inline: space separator",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "synth",
+   "args": {
+    "impl": "manual",
+    "content": "#separatorRegExp= \na b C\nb b C\n",
+    "calls": [
+     {
+      "m": "possibleTags"
+     },
+     {
+      "m": "lookup",
+      "lemma": "b",
+      "tag": "C"
+     },
+     {
+      "m": "lookup",
+      "lemma": null,
+      "tag": "A"
+     },
+     {
+      "m": "lookup",
+      "lemma": "x",
+      "tag": null
+     }
+    ]
+   }
+  }
+ ]
+}

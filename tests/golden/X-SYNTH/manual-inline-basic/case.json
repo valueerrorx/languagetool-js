@@ -1,0 +1,66 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "inline: form lemma tag, comments, blank, multi-forms",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "synth",
+   "args": {
+    "impl": "manual",
+    "content": "# c\n\nhaus\thaus\tN\nhäuser\thaus\tN\nhaeuser\thaus\tN\nhäuslein\thaus\tN\nhaus\thaus\tM #comment\n  \nrun\trun\tV\nran\trun\tV\n",
+    "calls": [
+     {
+      "m": "possibleTags"
+     },
+     {
+      "m": "lookup",
+      "lemma": "haus",
+      "tag": "N"
+     },
+     {
+      "m": "lookup",
+      "lemma": "haus",
+      "tag": "M"
+     },
+     {
+      "m": "lookup",
+      "lemma": "Haus",
+      "tag": "N"
+     },
+     {
+      "m": "lookup",
+      "lemma": "haus",
+      "tag": "V"
+     },
+     {
+      "m": "lookup",
+      "lemma": "run",
+      "tag": "V"
+     },
+     {
+      "m": "lookup",
+      "lemma": "",
+      "tag": ""
+     },
+     {
+      "m": "lookup",
+      "lemma": "run",
+      "tag": "N"
+     },
+     {
+      "m": "lookup",
+      "lemma": null,
+      "tag": "A"
+     },
+     {
+      "m": "lookup",
+      "lemma": "x",
+      "tag": null
+     }
+    ]
+   }
+  }
+ ]
+}

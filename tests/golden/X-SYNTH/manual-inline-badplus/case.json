@@ -1,0 +1,31 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "inline: error, word starts with +",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "synth",
+   "args": {
+    "impl": "manual",
+    "content": "+a\tb\tc\n",
+    "calls": [
+     {
+      "m": "possibleTags"
+     },
+     {
+      "m": "lookup",
+      "lemma": null,
+      "tag": "A"
+     },
+     {
+      "m": "lookup",
+      "lemma": "x",
+      "tag": null
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,36 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "inline: empty file",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "synth",
+   "args": {
+    "impl": "manual",
+    "content": "",
+    "calls": [
+     {
+      "m": "possibleTags"
+     },
+     {
+      "m": "lookup",
+      "lemma": "a",
+      "tag": "b"
+     },
+     {
+      "m": "lookup",
+      "lemma": null,
+      "tag": "A"
+     },
+     {
+      "m": "lookup",
+      "lemma": "x",
+      "tag": null
+     }
+    ]
+   }
+  }
+ ]
+}
