@@ -35,13 +35,22 @@ export async function runCli(cs) {
   }
   const before = snapshotFiles(workDir);
   const jar = path.join(LT, cs.jar ?? 'languagetool-commandline.jar');
-  const args = [...pinnedJvmFlags(workDir, cs.javaOpts ?? []), '-jar', jar, ...(cs.args ?? [])];
+  const args = [...pinnedJvmFlags(workDir, cs.javaOpts ?? []), ...(cs.mainClass ? ['-cp', jar, cs.mainClass] : ['-jar', jar]), ...(cs.args ?? [])];
   const child = spawn(`${JDK}/bin/java`, args, { cwd: workDir, env: pinnedEnv(workDir, cs.env ?? {}), stdio: ['pipe', 'pipe', 'pipe'] });
   const out = [];
   const err = [];
   child.stdout.on('data', (d) => out.push(d));
   child.stderr.on('data', (d) => err.push(d));
   const exit = new Promise((res) => child.on('close', (code) => res(code)));
+  // long-running programs (server): kill once the pattern appeared on stdout (exit code then 143)
+  if (cs.stopOnOutput) {
+    const re = new RegExp(cs.stopOnOutput);
+    const t0 = Date.now();
+    const iv = setInterval(() => {
+      if (re.test(Buffer.concat(out).toString()) || Date.now() - t0 > 60000) { clearInterval(iv); setTimeout(() => child.kill('SIGTERM'), 300); }
+    }, 100);
+    child.on('close', () => clearInterval(iv));
+  }
   child.stdin.on('error', () => {});
   child.stdin.end(cs.stdin ?? '');
   const exitCode = await exit;

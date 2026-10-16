@@ -1,0 +1,25 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "jar": "languagetool-server.jar",
+ "mainClass": "org.languagetool.server.HTTPServer",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames"
+ ],
+ "stripTimestamp": true,
+ "stderrExceptionOnly": true,
+ "description": "--public startup warnings (SRV-0008)",
+ "args": [
+  "--port",
+  "18095",
+  "--public"
+ ],
+ "streams": [
+  "stdout"
+ ],
+ "ignoreExit": true,
+ "stopOnOutput": "Server started"
+}

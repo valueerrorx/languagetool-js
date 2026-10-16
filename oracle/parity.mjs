@@ -59,7 +59,7 @@ async function runKindCase(cs, meta, dir) {
       const n = (t, c) => normalize(cs.normalize ?? [], t, c);
       exp.stdout = n(exp.stdout, ctxE); exp.stderr = n(exp.stderr, ctxE);
       actual.stdout = n(actual.stdout, ctxA); actual.stderr = n(actual.stderr, ctxA);
-      diffs = cmp(exp, actual, { normalizers: cs.normalize ?? [], json: (cs.args ?? []).includes('--json') || (cs.args ?? []).includes('-json') });
+      diffs = cmp(exp, actual, { normalizers: cs.normalize ?? [], streams: cs.streams, ignoreExit: cs.ignoreExit, stripTimestamp: cs.stripTimestamp, stderrExceptionOnly: cs.stderrExceptionOnly, json: (cs.args ?? []).includes('--json') || (cs.args ?? []).includes('-json') });
     } else {
       const exp = JSON.parse(readFileSync(path.join(dir, 'responses.json'), 'utf8'));
       diffs = cmp(exp, actual.responses ?? actual, { normalizers: cs.normalize ?? [], ctx: ctxA });

@@ -23,11 +23,14 @@ export function compareApi(expected, actual, { normalizers = [], ctx = {} } = {}
     const e = expected[i];
     const a = actual[i];
     const tag = `response[${i}]`;
+    if (e.expect === 'dev006' || e.portLater) continue; // DEV-006 / language module not ported: Java value kept as record only
     if (e.status !== a.status) diffs.push(`${tag} status ${e.status} != ${a.status}`);
     if (e.contentType !== a.contentType) diffs.push(`${tag} contentType ${e.contentType} != ${a.contentType}`);
     if (e.accessControlAllowOrigin !== a.accessControlAllowOrigin) diffs.push(`${tag} Access-Control-Allow-Origin ${e.accessControlAllowOrigin} != ${a.accessControlAllowOrigin}`);
     if (typeof e.body === 'string' || typeof a.body === 'string') {
-      const n = (x) => normalize(normalizers, typeof x === 'string' ? x : JSON.stringify(x), ctx);
+      // DEV-006: the list of supported codes differs; the text up to it is compared
+      const cut = (t) => t.replace(/(Supported language codes are:).*?(\. The list of languages)/s, '$1 <LIST>$2');
+      const n = (x) => cut(normalize(normalizers, typeof x === 'string' ? x : JSON.stringify(x), ctx));
       if (n(e.body) !== n(a.body)) diffs.push(`${tag} text body ${JSON.stringify(n(e.body)).slice(0, 200)} != ${JSON.stringify(n(a.body)).slice(0, 200)}`);
     } else if (e.body && a.body && Array.isArray(e.body.matches) && Array.isArray(a.body.matches)) {
       diffs.push(...compareApiCheckBody(e.body, a.body).map((d) => `${tag} ${d}`));

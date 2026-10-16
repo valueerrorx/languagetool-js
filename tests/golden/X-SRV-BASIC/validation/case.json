@@ -1,0 +1,493 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "validation errors in Java order (missing text/data, both, language, legacy params, unknown/out-of-scope codes)",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {}
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": ""
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "",
+    "language": ""
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "data": "{\"text\":\"x\"}"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "data": "{\"text\":\"x\"}",
+    "language": "en-US"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "data": "{\"text\":\"x\"}",
+    "language": "xx"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "xx"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "xx"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "XX"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "en-XX"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "de-XX"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "en-US-foo"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "EN-us"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "en_US"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "english"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": " en-US"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "en-US "
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "auto-detect"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "AUTO"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "%"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "en"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "fr-FR"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "de"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "es"
+   },
+   "expect": "dev006"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "es-ES"
+   },
+   "expect": "dev006"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "pt-PT"
+   },
+   "expect": "dev006"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "pt"
+   },
+   "expect": "dev006"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "ca-ES"
+   },
+   "expect": "dev006"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "nl"
+   },
+   "expect": "dev006"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "ru-RU"
+   },
+   "expect": "dev006"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "ar"
+   },
+   "expect": "dev006"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "zh-CN"
+   },
+   "expect": "dev006"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "ja-JP"
+   },
+   "expect": "dev006"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "en-US",
+    "enabled": "DOUBLE_PUNCTUATION"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "en-US",
+    "disabled": "DOUBLE_PUNCTUATION"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "en-US",
+    "preferredvariants": "en-GB"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "en-US",
+    "autodetect": "1"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "en-US",
+    "enabled": "A",
+    "disabled": "B"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "enabled": "A"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "enabled": "A"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "en-US",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "en-US",
+    "enabledOnly": "true",
+    "enabledRules": ""
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "en-US",
+    "enabledRules": "NO_SUCH_RULE_X",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "en-US",
+    "c": "abc",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "en-US",
+    "level": "bogus",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "en-US",
+    "mode": "bogus",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "en-US",
+    "motherTongue": "xx",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "en-US",
+    "preferredVariants": "xx",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "en-US",
+    "disabledRules": "NO_SUCH_RULE_X",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test,, ok.",
+    "language": "en-US",
+    "enabledCategories": "NO_SUCH_CAT",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  }
+ ]
+}

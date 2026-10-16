@@ -1,0 +1,23 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "--stoppable: POST /v2/stop/x",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [
+  "--stoppable",
+  "--notLogIP"
+ ],
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/stop/x",
+   "params": {
+    "a": "b"
+   }
+  }
+ ]
+}

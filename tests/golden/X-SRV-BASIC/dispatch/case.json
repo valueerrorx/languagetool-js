@@ -1,0 +1,166 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "path dispatch, unsupported actions (404 text), old API paths, healthcheck, maxtextlength",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/"
+  },
+  {
+   "method": "GET",
+   "path": "/favicon.ico"
+  },
+  {
+   "method": "GET",
+   "path": "/foo"
+  },
+  {
+   "method": "GET",
+   "path": "/foo/bar"
+  },
+  {
+   "method": "GET",
+   "path": "/index.html"
+  },
+  {
+   "method": "GET",
+   "path": "/Languages"
+  },
+  {
+   "method": "GET",
+   "path": "/v1/Languages"
+  },
+  {
+   "method": "GET",
+   "path": "/v1/check",
+   "params": {
+    "language": "en-US",
+    "text": "x"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/x/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "x"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2x/check"
+  },
+  {
+   "method": "POST",
+   "path": "/"
+  },
+  {
+   "method": "POST",
+   "path": "/foo",
+   "params": {
+    "language": "en-US",
+    "text": "x"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/foo"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check/"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/CHECK",
+   "params": {
+    "language": "en-US",
+    "text": "x"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check/extra"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/languages/x"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/rule/examples"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/stop"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/stop/x"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/words/foo"
+  },
+  {
+   "method": "GET",
+   "path": "/v2//check"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/%63heck",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/healthcheck"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/healthcheck"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/healthcheck/x"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/maxtextlength"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/maxtextlength"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/maxtextlength",
+   "params": {
+    "language": "xx"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check?callback=cb&language=en-US&text=This+is+a+test,,+ok.&enabledRules=COMMA_PARENTHESIS_WHITESPACE%2CDOUBLE_PUNCTUATION%2CENGLISH_WORD_REPEAT_RULE%2CEN_UNPAIRED_BRACKETS%2CEN_UNPAIRED_QUOTES%2CSENTENCE_WHITESPACE%2CUPPERCASE_SENTENCE_START%2CWHITESPACE_PUNCTUATION%2CWHITESPACE_RULE&enabledOnly=true"
+  }
+ ]
+}

@@ -1,0 +1,37 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "other HTTP methods on /v2/check",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "PUT",
+   "path": "/v2/check",
+   "body": "language=en-US&text=x",
+   "contentType": "application/x-www-form-urlencoded"
+  },
+  {
+   "method": "DELETE",
+   "path": "/v2/check?language=en-US&text=x"
+  },
+  {
+   "method": "OPTIONS",
+   "path": "/v2/check"
+  },
+  {
+   "method": "HEAD",
+   "path": "/v2/check?language=en-US&text=x"
+  },
+  {
+   "method": "PATCH",
+   "path": "/v2/check",
+   "body": "x",
+   "contentType": "text/plain"
+  }
+ ]
+}
