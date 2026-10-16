@@ -16,13 +16,19 @@ import { WhitespaceBeforePunctuationRule } from '../../src/core/rules/Whitespace
 import { EnglishUnpairedBracketsRule } from '../../src/lang/en/rules/EnglishUnpairedBracketsRule.js';
 import { EnglishUnpairedQuotesRule } from '../../src/lang/en/rules/EnglishUnpairedQuotesRule.js';
 import { EnglishWordRepeatRule } from '../../src/lang/en/rules/EnglishWordRepeatRule.js';
+import { GermanCommaWhitespaceRule } from '../../src/lang/de/rules/GermanCommaWhitespaceRule.js';
+import { GermanDoublePunctuationRule } from '../../src/lang/de/rules/GermanDoublePunctuationRule.js';
+import { GermanUnpairedBracketsRule } from '../../src/lang/de/rules/GermanUnpairedBracketsRule.js';
+import { GermanUnpairedQuotesRule } from '../../src/lang/de/rules/GermanUnpairedQuotesRule.js';
+import { GermanWordRepeatRule } from '../../src/lang/de/rules/GermanWordRepeatRule.js';
+import { SentenceWhitespaceRule as GermanSentenceWhitespaceRule } from '../../src/lang/de/rules/SentenceWhitespaceRule.js';
 
 const CORE = [CommaWhitespaceRule, DoublePunctuationRule, GenericUnpairedBracketsRule, GenericUnpairedQuotesRule, UppercaseSentenceStartRule,
   WordRepeatRule, MultipleWhitespaceRule, SentenceWhitespaceRule, WhitespaceBeforePunctuationRule];
 // core classes that have a (ResourceBundle, Language) constructor
 const WITH_LANGUAGE = new Set([UppercaseSentenceStartRule, WordRepeatRule, MultipleWhitespaceRule]);
 
-// Java: English#getRelevantRules / French#getRelevantRules (the entries of the F16 rule classes, list order)
+// Java: English#getRelevantRules / French#getRelevantRules / German#getRelevantRules (the entries of the F16 rule classes, list order)
 function languageRules(l, messages) {
   const code = l.getShortCode();
   if (code === 'en') {
@@ -50,6 +56,24 @@ function languageRules(l, messages) {
       new UppercaseSentenceStartRule(messages, l),
       new MultipleWhitespaceRule(messages, l),
       new SentenceWhitespaceRule(messages),
+    ];
+  }
+  if (code === 'de') {
+    return [
+      new GermanCommaWhitespaceRule(messages,
+        Example.wrong('Die Partei<marker> ,</marker> die die letzte Wahl gewann.'),
+        Example.fixed('Die Partei<marker>,</marker> die die letzte Wahl gewann.'),
+        getUrl('https://languagetool.org/insights/de/beitrag/grammatik-leerzeichen/#fehler-1-leerzeichen-vor-und-nach-satzzeichen')),
+      new GermanUnpairedBracketsRule(messages, l),
+      new GermanUnpairedQuotesRule(messages, l),
+      new UppercaseSentenceStartRule(messages, l,
+        Example.wrong('Das Haus ist alt. <marker>es</marker> wurde 1950 gebaut.'),
+        Example.fixed('Das Haus ist alt. <marker>Es</marker> wurde 1950 gebaut.'),
+        getUrl('https://languagetool.org/insights/de/beitrag/gross-klein-schreibung-rechtschreibung/#1-satzanf%C3%A4nge-schreiben-wir-gro%C3%9F')),
+      new MultipleWhitespaceRule(messages, l),
+      new GermanSentenceWhitespaceRule(messages),
+      new GermanDoublePunctuationRule(messages),
+      new GermanWordRepeatRule(messages, l),
     ];
   }
   throw Object.assign(new Error(`check-rules: no rule list for ${code}`), { notPorted: true });

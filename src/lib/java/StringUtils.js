@@ -1,6 +1,7 @@
 // org.apache.commons.lang3.StringUtils subset used by ported code.
 import { Character } from './Character.js';
 import { IllegalArgumentException } from './errors.js';
+import { equalsIgnoreCase as javaEqualsIgnoreCase } from './strings.js';
 
 // Java: StringUtils#replaceOnce(String,String,String)
 export function replaceOnce(text, searchString, replacement) {
@@ -41,4 +42,121 @@ export function isNumericSpace(cs) {
 export function equalsAny(string, ...searchStrings) {
   for (const s of searchStrings) if (string === s) return true;
   return false;
+}
+
+const isEmptyCs = (cs) => cs === null || cs === undefined || cs.length === 0;
+
+// Java: StringUtils#startsWith(CharSequence,CharSequence) (null-safe, case-sensitive)
+function startsWithCs(str, prefix) {
+  if (str === null || str === undefined || prefix === null || prefix === undefined) return (str ?? null) === (prefix ?? null);
+  return prefix.length <= str.length && str.startsWith(prefix);
+}
+
+// Java: StringUtils#startsWithAny(CharSequence,CharSequence...) (empty sequence -> false)
+export function startsWithAny(sequence, ...searchStrings) {
+  if (isEmptyCs(sequence) || searchStrings.length === 0) return false;
+  for (const searchString of searchStrings) {
+    if (startsWithCs(sequence, searchString)) return true;
+  }
+  return false;
+}
+
+// Java: StringUtils#endsWith(CharSequence,CharSequence) (null-safe, case-sensitive)
+export function endsWith(str, suffix) {
+  if (str === null || str === undefined || suffix === null || suffix === undefined) return (str ?? null) === (suffix ?? null);
+  return suffix.length <= str.length && str.endsWith(suffix);
+}
+
+// Java: StringUtils#containsAny(CharSequence,CharSequence...) (substring search; empty cs -> false)
+export function containsAny(cs, ...searchCharSequences) {
+  if (isEmptyCs(cs) || searchCharSequences.length === 0) return false;
+  for (const s of searchCharSequences) {
+    if (s !== null && s !== undefined && cs.includes(s)) return true;
+  }
+  return false;
+}
+
+// Java: StringUtils#isAlphanumeric(CharSequence) (Character.isLetterOrDigit per char, empty -> false)
+export function isAlphanumeric(cs) {
+  if (isEmptyCs(cs)) return false;
+  for (let i = 0; i < cs.length; i++) {
+    if (!Character.isLetterOrDigit(cs.charCodeAt(i))) return false;
+  }
+  return true;
+}
+
+// Java: StringUtils#isBlank(CharSequence) (Character.isWhitespace per char)
+export function isBlank(cs) {
+  if (isEmptyCs(cs)) return true;
+  for (let i = 0; i < cs.length; i++) {
+    if (!Character.isWhitespace(cs.charCodeAt(i))) return false;
+  }
+  return true;
+}
+
+// Java: StringUtils#isAllBlank(CharSequence...)
+export function isAllBlank(...css) {
+  for (const cs of css) {
+    if (!isBlank(cs)) return false;
+  }
+  return true;
+}
+
+// Java: StringUtils#isWhitespace(CharSequence) (null -> false, empty -> true)
+export function isWhitespace(cs) {
+  if (cs === null || cs === undefined) return false;
+  for (let i = 0; i < cs.length; i++) {
+    if (!Character.isWhitespace(cs.charCodeAt(i))) return false;
+  }
+  return true;
+}
+
+// Java: StringUtils#equalsAnyIgnoreCase(CharSequence,CharSequence...)
+export function equalsAnyIgnoreCase(string, ...searchStrings) {
+  for (const next of searchStrings) {
+    if (string === next) return true;
+    if (string !== null && string !== undefined && next !== null && next !== undefined && javaEqualsIgnoreCase(string, next)) return true;
+  }
+  return false;
+}
+
+// Java: StringUtils#removeEnd(String,String)
+export function removeEnd(str, remove) {
+  if (isEmptyCs(str) || isEmptyCs(remove)) return str;
+  return str.endsWith(remove) ? str.substring(0, str.length - remove.length) : str;
+}
+
+// Java: StringUtils#removeStart(String,String)
+export function removeStart(str, remove) {
+  if (isEmptyCs(str) || isEmptyCs(remove)) return str;
+  return str.startsWith(remove) ? str.substring(remove.length) : str;
+}
+
+// Java: StringUtils#split(String,char) (adjacent separators are one separator, no empty tokens; null -> null)
+export function splitByChar(str, separatorChar) {
+  if (str === null || str === undefined) return null;
+  const list = [];
+  let start = 0;
+  let match = false;
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === separatorChar) {
+      if (match) {
+        list.push(str.substring(start, i));
+        match = false;
+      }
+      start = i + 1;
+    } else {
+      match = true;
+    }
+  }
+  if (match) list.push(str.substring(start));
+  return list;
+}
+
+// Java: StringUtils#substringBefore(String,String)
+export function substringBefore(str, separator) {
+  if (isEmptyCs(str) || separator === null || separator === undefined) return str;
+  if (separator.length === 0) return '';
+  const pos = str.indexOf(separator);
+  return pos === -1 ? str : str.substring(0, pos);
 }

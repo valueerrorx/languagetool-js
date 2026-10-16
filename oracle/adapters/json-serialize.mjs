@@ -1,5 +1,5 @@
 // JS twin of harness op "json-serialize" (JsonOps#jsonSerialize, docs/review/F19-oracle.md).
-// notPorted until src/core/RuleMatchesAsJsonSerializer.js (F19) exists; de-* requests carry args.portLater and stay notPorted until the German tagger is ported.
+// notPorted until src/core/RuleMatchesAsJsonSerializer.js (F19) exists; args.portLater marks requests for later steps (the German tagger marker is satisfied since F22).
 import { existsSync } from 'node:fs';
 import { Level, Mode, ParagraphHandling } from '../../src/core/JLanguageTool.js';
 import { File } from '../../src/lib/java/io/File.js';
@@ -68,9 +68,12 @@ function checkResult(lt, c) {
   return lt.check2(annotated(c), true, ParagraphHandling.NORMAL, null, mode, level, tones(c), null);
 }
 
+// portLater markers whose dependency is ported (generator labels; the German tagger landed in F22)
+const SATISFIED_PORT_LATER = new Set(['German tagger (F32)']);
+
 // Java: JsonOps#jsonSerialize(JsonNode)
 export async function run(a) {
-  if (a.portLater) throw Object.assign(new Error(`later: ${a.portLater}`), { notPorted: true });
+  if (a.portLater && !SATISFIED_PORT_LATER.has(a.portLater)) throw Object.assign(new Error(`later: ${a.portLater}`), { notPorted: true });
   if (!existsSync(SER)) throw Object.assign(new Error('RuleMatchesAsJsonSerializer not ported'), { notPorted: true });
   const { RuleMatchesAsJsonSerializer, ConfidenceKey } = await import(SER.href);
   const l = languageFor(a.lang);

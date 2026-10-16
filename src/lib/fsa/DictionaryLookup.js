@@ -1,6 +1,6 @@
 // morfologik-stemming Dictionary, WordData, DictionaryLookup, DictionaryIterator (byte-buffer faithful, buffers reused as in Java).
 import { readFileSync } from 'node:fs';
-import { FileNotFoundException, NoSuchFileException, RuntimeException } from '../java/errors.js';
+import { FileNotFoundException, NoSuchFileException, NullPointerException, RuntimeException } from '../java/errors.js';
 import { ByteBuf, bytesToString, clearAndEnsureCapacity } from './buffers.js';
 import { ByteSequenceIterator, FSATraversal, MatchResult, readFSA } from './FSA.js';
 import { DictionaryMetadata } from './metadata.js';
@@ -97,6 +97,7 @@ export class DictionaryLookup {
     const prefixBytes = this.prefixBytes;
     const md = this.dictionaryMetadata;
     if (md.getInputConversionPairs().size > 0) word = applyReplacements(word, md.getInputConversionPairs());
+    if (word === null || word === undefined) throw new NullPointerException('Cannot invoke "java.lang.CharSequence.length()" because "word" is null');
     const len = word.length;
     for (let i = 0; i < len; i++) {
       if (word[i] === this.separatorChar) return [];

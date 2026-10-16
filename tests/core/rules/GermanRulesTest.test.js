@@ -1,5 +1,5 @@
-// Ported from the de module rule tests (GenericUnpairedBracketsRuleTest, GermanWordRepeatRuleTest, UppercaseSentenceStartRuleTest, GermanCommaWhitespaceRuleTest, WordRepeatRuleTest, GermanUnpairedQuotesRuleTest, SentenceWhitespaceRuleTest); all skipped until the German tagger exists
-import { describe, it, expect } from 'vitest';
+// Ported from the de module rule tests (GenericUnpairedBracketsRuleTest, GermanWordRepeatRuleTest, UppercaseSentenceStartRuleTest, GermanCommaWhitespaceRuleTest, WordRepeatRuleTest, GermanUnpairedQuotesRuleTest, SentenceWhitespaceRuleTest); German tagger since F22, skipped tests name their missing step
+import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { GenericUnpairedBracketsRule } from '../../../src/core/rules/GenericUnpairedBracketsRule.js';
 import { GenericUnpairedQuotesRule } from '../../../src/core/rules/GenericUnpairedQuotesRule.js';
 import { GermanWordRepeatRule } from '../../../src/lang/de/rules/GermanWordRepeatRule.js';
@@ -7,9 +7,20 @@ import { GermanCommaWhitespaceRule } from '../../../src/lang/de/rules/GermanComm
 import { Example } from '../../../src/core/rules/model/Examples.js';
 import { getUrl } from '../../../src/core/Tools.js';
 import { Languages } from '../../../src/core/Languages.js';
+import { NoopChunker } from '../../../src/core/noop/NoopChunker.js';
 import { EN, englishMessages, newLt, useNoopAnalysis } from '../../support/ruleTestSupport.js';
 
 describe('GermanRulesTest', () => {
+  // GermanRuleDisambiguator and GermanChunker follow in F51: analysis runs with no-op disambiguation/chunking (as the en rule tests do)
+  const germanDe = Languages.getLanguageForShortCode('de');
+  useNoopAnalysis(germanDe);
+  let savedPostChunker;
+  beforeAll(() => {
+    savedPostChunker = germanDe.getPostDisambiguationChunker();
+    germanDe.setPostDisambiguationChunker(new NoopChunker());
+  });
+  afterAll(() => germanDe.setPostDisambiguationChunker(savedPostChunker));
+
   // lt/rule are created per test by the (skipped) bodies; the helpers mirror the Java private methods
   let lt;
   let rule;
@@ -20,7 +31,7 @@ describe('GermanRulesTest', () => {
   const getQuotesRule = () => { throw new Error('de rule list: F17'); };
   const disableAllRulesExcept = () => { throw new Error('de rule list: F17'); };
 
-  // SKIPPED: German tagger not ported (F22); German language rules need the full de rule list (F17)
+  // SKIPPED: German language rules need the full de rule list (F59) and GermanRuleDisambiguator/GermanChunker (F51)
   // Java: GenericUnpairedBracketsRuleTest (de)#testGermanRule
   it.skip('testGermanRule_brackets', () => {
     lt = newLt(Languages.getLanguageForShortCode("de-DE"));
@@ -48,7 +59,7 @@ describe('GermanRulesTest', () => {
     lt.check("Kran\u00ADken\u00ADhaus. (Auch");
   });
 
-  // SKIPPED: German tagger not ported (F22); German language rules need the full de rule list (F17)
+  // SKIPPED: German language rules need the full de rule list (F59) and GermanRuleDisambiguator/GermanChunker (F51)
   // Java: GermanUnpairedQuotesRuleTest#testGermanRule
   it.skip('testGermanRule_quotes', () => {
     lt = newLt(Languages.getLanguageForShortCode("de-DE"));
@@ -86,7 +97,7 @@ describe('GermanRulesTest', () => {
     lt.check("Kran\u00ADken\u00ADhaus. (Auch");
   });
 
-  // SKIPPED: German tagger not ported (F22); German language rules need the full de rule list (F17)
+  // SKIPPED: GermanWordRepeatRule.ANTI_PATTERNS need PatternToken/DisambiguationPatternRule (F25/F26)
   // Java: GermanWordRepeatRuleTest#testRule
   it.skip('testRule_germanWordRepeat', () => {
     const german = Languages.getLanguageForShortCode("de");
@@ -112,7 +123,7 @@ describe('GermanRulesTest', () => {
     expect(rule.match(lt.getAnalyzedSentence("hat hat")).length).toBe(1);
   });
 
-  // SKIPPED: German tagger not ported (F22); German language rules need the full de rule list (F17)
+  // SKIPPED: German language rules need the full de rule list (F59) and GermanRuleDisambiguator/GermanChunker (F51)
   // Java: UppercaseSentenceStartRuleTest (de)#testRule
   it.skip('testRule_uppercase', () => {
     const lt = newLt(Languages.getLanguageForShortCode("de-DE"));
@@ -157,9 +168,8 @@ describe('GermanRulesTest', () => {
     expect(lt.check("Die neue Kollektion von NAU! ist jetzt online.").length).toBe(0);
   });
 
-  // SKIPPED: German tagger not ported (F22); German language rules need the full de rule list (F17)
   // Java: GermanCommaWhitespaceRuleTest#testRule
-  it.skip('testRule_commaWhitespace', () => {
+  it('testRule_commaWhitespace', () => {
     const rule = new GermanCommaWhitespaceRule(englishMessages(),
       Example.wrong("Die Partei<marker> ,</marker> die die letzte Wahl gewann."),
       Example.fixed("Die Partei<marker>,</marker> die die letzte Wahl gewann."),
@@ -168,7 +178,7 @@ describe('GermanRulesTest', () => {
     expect(rule.match(lt.getAnalyzedSentence("Es gibt 5 Millionen .de-Domains.")).length).toBe(0);
   });
 
-  // SKIPPED: German tagger not ported (F22); German language rules need the full de rule list (F17)
+  // SKIPPED: German language rules need the full de rule list (F59) and GermanRuleDisambiguator/GermanChunker (F51)
   // Java: WordRepeatRuleTest (de)#testRuleGerman
   it.skip('testRuleGerman', () => {
     const lt = newLt(german);
@@ -185,7 +195,7 @@ describe('GermanRulesTest', () => {
     assertBad("Sie sie gehen nach Hause.", lt);
   });
 
-  // SKIPPED: German tagger not ported (F22); German language rules need the full de rule list (F17)
+  // SKIPPED: German language rules need the full de rule list (F59) and GermanRuleDisambiguator/GermanChunker (F51)
   // Java: SentenceWhitespaceRuleTest (de)#testMatch
   it.skip('testMatch_sentenceWhitespace', () => {
     const lt = newLt(Languages.getLanguageForShortCode("de-DE"));

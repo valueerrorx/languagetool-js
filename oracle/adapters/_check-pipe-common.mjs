@@ -12,9 +12,8 @@ import { NullPointerException } from '../../src/lib/java/errors.js';
 import { javaCompare } from '../../src/lib/java/strings.js';
 import { PREFIX } from './_synth-rules.mjs';
 
-// de-DE needs the German tagger (not ported yet): every request is notPorted
+// Java: Languages#getLanguageForShortCode(String) (German variants enabled since F22)
 export function languageFor(code) {
-  if (code === 'de-DE' || String(code).startsWith('de')) throw Object.assign(new Error('German tagger not ported yet'), { notPorted: true });
   return Languages.getLanguageForShortCode(code);
 }
 

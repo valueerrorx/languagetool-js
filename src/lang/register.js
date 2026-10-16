@@ -17,5 +17,8 @@ import './fr/language/SwissFrench.js';
 import './fr/language/BelgianFrench.js';
 import '../core/text/tokenizers/WordTokenizer.js';
 import './de/tokenizers/GermanWordTokenizer.js';
+import './de/tagging/GermanTagger.js';
+import './de/tagging/SwissGermanTagger.js';
+import './de/synthesis/GermanSynthesizer.js';
 import './en/tokenizers/EnglishWordTokenizer.js';
 import './fr/tokenizers/FrenchWordTokenizer.js';
