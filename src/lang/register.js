@@ -20,5 +20,7 @@ import './de/tokenizers/GermanWordTokenizer.js';
 import './de/tagging/GermanTagger.js';
 import './de/tagging/SwissGermanTagger.js';
 import './de/synthesis/GermanSynthesizer.js';
+import './en/synthesis/EnglishSynthesizer.js';
+import './fr/synthesis/FrenchSynthesizer.js';
 import './en/tokenizers/EnglishWordTokenizer.js';
 import './fr/tokenizers/FrenchWordTokenizer.js';

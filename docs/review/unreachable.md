@@ -16,3 +16,4 @@
 | F10 | adapter stand-ins (i18n-bundle, string-tools) carry locale data of out-of-scope langs as port inputs | output still compared to Java (D-042); convert to notPorted when cheap |
 | F16 | GermanWordRepeatRule.ANTI_PATTERNS lazy notPorted | de-DE notPorted until German tagger; port with PatternToken (F25/F34) |
 | F22 | ManualSynthesizer returns null instead of [] when two keys share a hash | unreachable with shipped data |
+| F24 | ManualSynthesizer: >255 forms per lemma/tag hash - which group throws first follows Int2ObjectOpenHashMap order, port uses insertion order | unreachable with shipped data |

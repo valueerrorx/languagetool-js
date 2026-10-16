@@ -1,4 +1,6 @@
 // Java: org.languagetool.tagging.TaggedWord
+import { Objects } from '../../lib/java/Objects.js';
+
 export class TaggedWord {
   static FQCN = 'org.languagetool.tagging.TaggedWord';
 
@@ -28,5 +30,10 @@ export class TaggedWord {
     if (this === o) return true;
     if (o === null || o === undefined || o.constructor !== this.constructor) return false;
     return this.lemma === o.lemma && this.posTag === o.posTag;
+  }
+
+  // Java: TaggedWord#hashCode()
+  hashCode() {
+    return Objects.hash(this.lemma, this.posTag);
   }
 }

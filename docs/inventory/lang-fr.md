@@ -43,7 +43,7 @@ Notes valid for the whole file:
 | FR-0020 | `FrenchWordTokenizer`: tokenizing chars = core + "-", decimal comma and digit-group spaces protected, doNotSplit list (rendez-vous, c'est-à-dire, sars-cov-2, ...), 7 regexes splitting elisions (c' j' n' m' t' s' l' d' qu' jusqu' lorsqu' puisqu' quoiqu') and enclitic pronouns (-t-il, -je, -moi, ...), apostrophe ' and ’ | JF:tokenizers/fr/FrenchWordTokenizer.java | FrenchWordTokenizerTest | - | verified |
 | FR-0021 | Sentence tokenizer: core SRXSentenceTokenizer with French rules from core segment.srx | JF:language/French.java#createDefaultSentenceTokenizer | FrenchSentenceTokenizerTest, language/FrenchTest#testSentenceTokenizer | - | verified |
 | FR-0022 | `FrenchTagger.INSTANCE` (BaseTagger `/fr/french.dict`, Locale.FRENCH, tagLowercaseWithUppercase=false; overwriteWithManualTagger=false): ’->' normalisation, lowercase/uppercase variants, ambiguous "-Le/-Les/-Il/..." tokens, additionalTags for prefixed verbs (auto, auto-, re-, sur-) and nouns/adjectives (post-, sur-, mini-, méga-, anti-, ...; mini/méga without hyphen) copying tags with prefixed lemma | JF:tagging/fr/FrenchTagger.java | FrenchTaggerTest | - | verified |
-| FR-0023 | `FrenchSynthesizer.INSTANCE` (soros `fr/fr.sor`, `/fr/french_synth.dict`, `/fr/french_tags.txt`, "fr") | JF:synthesis/FrenchSynthesizer.java | FrenchSynthesizerTest | - | todo |
+| FR-0023 | `FrenchSynthesizer.INSTANCE` (soros `fr/fr.sor`, `/fr/french_synth.dict`, `/fr/french_tags.txt`, "fr") | JF:synthesis/FrenchSynthesizer.java | FrenchSynthesizerTest | - | verified |
 | FR-0024 | `FrenchHybridDisambiguator()`: field initializers `MultiWordChunker.getInstance("/fr/multiwords.txt", true, true, false)` (no default tag; ctor `setRemovePreviousTags(true)`, NOT ignoreSpelling), `new XmlRuleDisambiguator(French.getInstance(), true)` (always the base French rules, also for fr-BE/CA/CH), `getInstance("/spelling_global.txt", false, true, false, tagForNotAddingTags)` with `setIgnoreSpelling(true)`; `disambiguate(input[, cb])` execution order: spelling_global -> multiwords -> XML (FrenchHybridDisambiguator.java:41-64); single-arg delegates with cb=null; semantics: getInstance instances are cached per (file, flags, defaultTag) and shared JVM-wide: the spelling_global instance is the same object as DE's (DE-0028) | JF:tagging/disambiguation/fr/FrenchHybridDisambiguator.java | FrenchRuleDisambiguatorTest, TestFrenchDisambiguator | - | todo |
 | FR-0025 | `FrenchMultitokenSpeller.INSTANCE`: `/fr/multiwords.txt`, `/spelling_global.txt`, `/fr/hyphenated_words.txt` | JF:rules/fr/FrenchMultitokenSpeller.java | JLanguageToolTest#testMultitokenSpeller | - | todo |
 
@@ -101,14 +101,14 @@ Notes valid for the whole file:
 | FR-0178 | `resource/fr/hunspell/ignore.txt`, `prohibit.txt` | RF:resource/fr/hunspell/ignore.txt, prohibit.txt | MorfologikFrenchSpellerRuleTest, LanguageSpecificSpellcheckerTest (core SpellcheckerTest: no word in both prohibit.txt and spelling.txt for any language on the classpath, else RuntimeException "Word(s) appear in both spelling.txt and prohibit.txt - this doesn't make sense: ...") | - | todo |
 | FR-0179 | `rules/fr/replace.txt`, `replace_custom.txt`: FR_SIMPLE_REPLACE_SIMPLE data | RF:rules/fr/replace*.txt | SimpleReplaceRuleTest | - | todo |
 | FR-0180 | `rules/fr/synonyms.txt`: FrenchRepeatedWordsRule | RF:rules/fr/synonyms.txt | FrenchRepeatedWordsRuleTest | - | todo |
-| FR-0181 | `resource/fr/fr.sor`: Soros number-to-words for FrenchSynthesizer | RF:resource/fr/fr.sor | FrenchSynthesizerTest | - | todo |
+| FR-0181 | `resource/fr/fr.sor`: Soros number-to-words for FrenchSynthesizer | RF:resource/fr/fr.sor | FrenchSynthesizerTest | - | verified |
 
 ## Binary dictionaries and external artifacts
 
 | ID | behaviour (one line) | Java source (path#member) | Java tests | fixtures | status |
 |---|---|---|---|---|---|
 | FR-0200 | Maven artifact `org.languagetool:french-pos-dict:0.7` (libs/french-pos-dict.jar; not in ~/.m2): `org/languagetool/resource/fr/french.dict` (1137949 B, morfologik FSA) + `french.info` (separator "_", SUFFIX, speller replacement-pairs, runon-words=true, ignore-punctuation=true, ignore-diacritics=true, convert-case=true, frequency-included) -> FrenchTagger and MorfologikFrenchSpellerRule, FindSuggestionsFilter | jar; JF:tagging/fr/FrenchTagger.java; JF:rules/fr/MorfologikFrenchSpellerRule.java | FrenchTaggerTest, MorfologikFrenchSpellerRuleTest | - | verified |
-| FR-0201 | same artifact: `french_synth.dict` (649325 B) + `french_synth.info`, `french_tags.txt` (3744 B) -> FrenchSynthesizer | jar; JF:synthesis/FrenchSynthesizer.java | FrenchSynthesizerTest | - | todo |
+| FR-0201 | same artifact: `french_synth.dict` (649325 B) + `french_synth.info`, `french_tags.txt` (3744 B) -> FrenchSynthesizer | jar; JF:synthesis/FrenchSynthesizer.java | FrenchSynthesizerTest | - | verified |
 
 ## Cross-cutting tests in the module
 

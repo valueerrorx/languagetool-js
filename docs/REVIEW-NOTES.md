@@ -14,3 +14,4 @@
 - Orphan golden dirs (no matching oracle/cases/<ID>/<case>.json) must be deleted when a generator drops cases; check before blaming stale fixtures.
 - A class pulled forward from a later step comes with its Java test class ported in the same step.
 - Interim guards/stubs need a removal note in docs/PLAN.md (target step), not only a code comment.
+- Java `substring`/`charAt`/`subList` with computed bounds: use the throwing helpers in src/lib/java/strings.js, never raw JS `substring` (JS clamps, Java throws).

@@ -1,11 +1,24 @@
-// Java: org.languagetool.synthesis.BaseSynthesizer (F22 subset: dictionary lookup and synthesizeForPosTags; synthesize() and Soros follow in F24)
+// Java: org.languagetool.synthesis.BaseSynthesizer
 import { DictionaryLookup } from '../../../lib/fsa/DictionaryLookup.js';
-import { IOException, RuntimeException } from '../../../lib/java/errors.js';
-import { notPortedYet } from '../../language/components.js';
+import { IOException, NullPointerException, RuntimeException } from '../../../lib/java/errors.js';
+import { decodeUtf8, readerLines } from '../../../lib/java/io.js';
+import { Pattern, PatternSyntaxException } from '../../../lib/java/regex/index.js';
+import { Soros } from '../../../lib/soros/Soros.js';
 import { getDictionaryWithCaching } from '../../rules/spelling/morfologik/MorfologikSpeller.js';
 import { getDataBroker } from '../../resources/LtStatics.js';
 import { ManualSynthesizer } from './ManualSynthesizer.js';
 import { loadWords } from './SynthesizerTools.js';
+
+// helpers for the helpful NPE texts of token.getToken()/getLemma() on a null token
+function tokenToken(token) {
+  if (token === null || token === undefined) throw new NullPointerException('Cannot invoke "org.languagetool.AnalyzedToken.getToken()" because "token" is null');
+  return token.getToken();
+}
+
+function tokenLemma(token) {
+  if (token === null || token === undefined) throw new NullPointerException('Cannot invoke "org.languagetool.AnalyzedToken.getLemma()" because "token" is null');
+  return token.getLemma();
+}
 
 // Java: BaseSynthesizer
 export class BaseSynthesizer {
@@ -15,7 +28,7 @@ export class BaseSynthesizer {
   SPELLNUMBER_FEMININE_TAG = '_spell_number_:feminine';
   SPELLNUMBER_ROMAN_TAG = '_spell_number_:Roman';
 
-  // Java: BaseSynthesizer#BaseSynthesizer(String,String,String,String) (number spellers are created in F24)
+  // Java: BaseSynthesizer#BaseSynthesizer(String,String,String,String) (the 3-arg form passes sorosFileName null)
   constructor(sorosFileName, resourceFileName, tagFileName, langShortCode) {
     this.possibleTags = null;
     this.dictionary = null;
@@ -24,6 +37,8 @@ export class BaseSynthesizer {
     this.tagFileName = tagFileName;
     this.stemmer = this.createStemmer();
     this.sorosFileName = sorosFileName;
+    this.numberSpeller = this.createNumberSpeller(langShortCode);
+    this.romanNumberer = this.createRomanNumberer();
     const broker = getDataBroker();
     const path = `/${langShortCode}/added.txt`;
     this.manualSynthesizer = broker.resourceExists(path) ? new ManualSynthesizer(broker.getFromResourceDirAsStream(path)) : null;
@@ -48,6 +63,35 @@ export class BaseSynthesizer {
     } catch (e) {
       if (e instanceof IOException) throw new RuntimeException('Could not load dictionary', e);
       throw e;
+    }
+  }
+
+  // Java: BaseSynthesizer#createNumberSpeller(String)
+  createNumberSpeller(langcode) {
+    return BaseSynthesizer.loadSoros(this.sorosFileName, langcode);
+  }
+
+  // Java: BaseSynthesizer#createRomanNumberer()
+  createRomanNumberer() {
+    return BaseSynthesizer.loadSoros('Roman.sor', 'Roman');
+  }
+
+  // shared body of createNumberSpeller/createRomanNumberer: any Exception -> null (Java: catch (Exception e) { return null; })
+  static loadSoros(fileName, langcode) {
+    try {
+      if (fileName === null || fileName === undefined) {
+        throw new NullPointerException();
+      }
+      const stream = getDataBroker().getFromResourceDirAsStream(fileName);
+      let sb = '';
+      for (const line of readerLines(decodeUtf8(stream))) {
+        sb += line;
+        sb += '\n';
+      }
+      return new Soros(sb, langcode);
+    } catch (e) {
+      if (e && e.notPorted === true) throw e;
+      return null;
     }
   }
 
@@ -79,9 +123,43 @@ export class BaseSynthesizer {
     return results;
   }
 
-  // Java: BaseSynthesizer#synthesize(AnalyzedToken,String[,boolean]) (F24)
-  synthesize() {
-    throw notPortedYet('BaseSynthesizer#synthesize (F24)');
+  // Java: BaseSynthesizer#synthesize(AnalyzedToken,String) / synthesize(AnalyzedToken,String,boolean) (overload by argument count)
+  synthesize(token, posTag, posTagRegExp) {
+    return posTagRegExp === undefined ? this.synthesize2(token, posTag) : this.synthesize3(token, posTag, posTagRegExp);
+  }
+
+  // Java: BaseSynthesizer#synthesize(AnalyzedToken,String)
+  synthesize2(token, posTag) {
+    if (posTag === null || posTag === undefined) {
+      throw new NullPointerException('Cannot invoke "String.equals(Object)" because "posTag" is null');
+    }
+    if (posTag === this.SPELLNUMBER_TAG) {
+      return [this.getSpelledNumber(tokenToken(token))];
+    }
+    if (posTag === this.SPELLNUMBER_FEMININE_TAG) {
+      return [this.getSpelledNumber(`feminine ${tokenToken(token)}`)];
+    }
+    if (posTag === this.SPELLNUMBER_ROMAN_TAG) {
+      return [this.getRomanNumber(tokenToken(token))];
+    }
+    const wordForms = this.lookup(tokenLemma(token), posTag);
+    return this.removeExceptions(wordForms);
+  }
+
+  // Java: BaseSynthesizer#synthesize(AnalyzedToken,String,boolean)
+  synthesize3(token, posTag, posTagRegExp) {
+    if (posTagRegExp) {
+      try {
+        const p = Pattern.compile(posTag);
+        return this.synthesizeForPosTags(tokenLemma(token), (tag) => p.matcher(tag).matches());
+      } catch (e) {
+        if (e instanceof PatternSyntaxException) {
+          throw new RuntimeException(`Error trying to synthesize POS tag ${posTag} (posTagRegExp: true) from token ${tokenToken(token)}`, e);
+        }
+        throw e;
+      }
+    }
+    return this.removeExceptions(this.synthesize2(token, posTag));
   }
 
   // Java: BaseSynthesizer#synthesizeForPosTags(String,Predicate)
@@ -94,6 +172,22 @@ export class BaseSynthesizer {
       }
     }
     return this.removeExceptions(results);
+  }
+
+  // Java: BaseSynthesizer#getSpelledNumber(String)
+  getSpelledNumber(arabicNumeral) {
+    if (this.numberSpeller !== null) {
+      return this.numberSpeller.run(arabicNumeral);
+    }
+    return arabicNumeral;
+  }
+
+  // Java: BaseSynthesizer#getRomanNumber(String)
+  getRomanNumber(arabicNumeral) {
+    if (this.romanNumberer !== null) {
+      return this.romanNumberer.run(arabicNumeral);
+    }
+    return arabicNumeral;
   }
 
   // Java: BaseSynthesizer#getPosTagCorrection(String)
@@ -144,6 +238,9 @@ export class BaseSynthesizer {
 
   // Java: BaseSynthesizer#getTargetPosTag(List,String)
   getTargetPosTag(posTags, targetPosTag) {
+    if (posTags === null || posTags === undefined) {
+      throw new NullPointerException('Cannot invoke "java.util.List.isEmpty()" because "posTags" is null');
+    }
     if (posTags.length === 0) {
       return targetPosTag;
     }
