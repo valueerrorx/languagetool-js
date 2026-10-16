@@ -1,0 +1,216 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "rulegroup attributes, subIds, default off inheritance and errors",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\" >\n<rulegroup id=\"G\" name=\"Group\" default=\"off\"><rule><pattern><token>a</token></pattern><message>m</message></rule><rule><pattern><token>b</token></pattern><message>m</message></rule></rulegroup>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\" >\n<rulegroup id=\"G\" name=\"Group\" default=\"temp_off\"><rule><pattern><token>a</token></pattern><message>m</message></rule></rulegroup>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\" >\n<rulegroup id=\"G\" name=\"Group\" default=\"off\"><rule default=\"on\"><pattern><token>a</token></pattern><message>m</message></rule></rulegroup>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\" >\n<rulegroup id=\"G\" name=\"Group\" default=\"off\"><rule default=\"off\"><pattern><token>a</token></pattern><message>m</message></rule></rulegroup>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\" >\n<rulegroup id=\"G\" name=\"Group\" default=\"temp_off\"><rule default=\"temp_off\"><pattern><token>a</token></pattern><message>m</message></rule></rulegroup>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\" >\n<rulegroup id=\"G\" name=\"Group\" default=\"on\"><rule default=\"off\"><pattern><token>a</token></pattern><message>m</message></rule><rule><pattern><token>b</token></pattern><message>m</message></rule></rulegroup>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\" >\n<rulegroup id=\"G\" name=\"Group\" default=\"bogus\"><rule><pattern><token>a</token></pattern><message>m</message></rule></rulegroup>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\" >\n<rulegroup id=\"G\" name=\"Group\" min_prev_matches=\"2\" distance_tokens=\"7\"><rule><pattern><token>a</token></pattern><message>m</message></rule><rule><pattern><token>b</token></pattern><message>m</message></rule></rulegroup>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\" >\n<rulegroup id=\"G\" name=\"Group\" min_prev_matches=\"2\"><rule min_prev_matches=\"3\"><pattern><token>a</token></pattern><message>m</message></rule></rulegroup>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\" >\n<rulegroup id=\"G\" name=\"Group\" distance_tokens=\"2\"><rule distance_tokens=\"4\"><pattern><token>a</token></pattern><message>m</message></rule></rulegroup>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\" >\n<rulegroup id=\"G\" name=\"Group\"><rule min_prev_matches=\"3\" distance_tokens=\"9\"><pattern><token>a</token></pattern><message>m</message></rule></rulegroup>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\" >\n<rule id=\"R\" name=\"n\" min_prev_matches=\"1\" distance_tokens=\"5\"><pattern><token>a</token></pattern><message>m</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\" >\n<rulegroup id=\"G\" name=\"Group\" type=\"style\" tags=\"picky\" tone_tags=\"formal\" is_goal_specific=\"true\" prio=\"4\" premium=\"yes\"><rule><pattern><token>a</token></pattern><message>m</message></rule><rule type=\"grammar\" tags=\"clarity\" tone_tags=\"informal\" is_goal_specific=\"false\" prio=\"-1\" premium=\"no\"><pattern><token>b</token></pattern><message>m</message></rule></rulegroup>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\" >\n<rulegroup id=\"G\" name=\"Group\" tags=\"nonsense\"><rule><pattern><token>a</token></pattern><message>m</message></rule></rulegroup>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\" >\n<rulegroup id=\"G\" name=\"Group\" tone_tags=\"nonsense\"><rule><pattern><token>a</token></pattern><message>m</message></rule></rulegroup>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\" >\n<rulegroup id=\"G\" name=\"Group\"><url>http://example.com/g</url><short>group short</short><rule><pattern><token>a</token></pattern><message>m</message></rule><rule><pattern><token>b</token></pattern><message>m</message><url>http://example.com/own</url><short>own short</short></rule></rulegroup>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\" >\n<rulegroup id=\"G\" name=\"Group\"><antipattern><token>x</token></antipattern><rule><antipattern><token>y</token></antipattern><pattern><token>a</token></pattern><message>m</message></rule><rule><pattern><token>b</token></pattern><message>m</message></rule></rulegroup>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\" >\n<rulegroup id=\"G\"><rule><pattern><token>a</token></pattern><message>m</message></rule></rulegroup>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\" >\n<rulegroup name=\"Gr\"><rule><pattern><token>a</token></pattern><message>m</message></rule></rulegroup>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\" >\n<rulegroup id=\"G\" name=\"Gr\"><rule id=\"G\"><pattern><token>a</token></pattern><message>m</message></rule></rulegroup>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\" >\n<rulegroup id=\"G\" name=\"Gr\"></rulegroup>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\" >\n<rulegroup id=\"G\" name=\"Gr\"><rule><pattern><token>a</token></pattern><message>m</message><example>ok.</example></rule><example>group example</example></rulegroup>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\" >\n<rulegroup id=\"G\" name=\"Gr\"><rulegroup id=\"H\" name=\"Inner\"><rule><pattern><token>a</token></pattern><message>m</message></rule></rulegroup></rulegroup>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  }
+ ]
+}

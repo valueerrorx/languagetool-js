@@ -1,0 +1,108 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "rules element: idprefix, lang, premium, integrate, missing lang, other languages",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\" idprefix=\"PRE_\">\n<category id=\"CAT\" name=\"Category\" >\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\" premium=\"yes\">\n<category id=\"CAT\" name=\"Category\" >\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\" premium=\"no\">\n<category id=\"CAT\" name=\"Category\" >\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\" premium=\"maybe\">\n<category id=\"CAT\" name=\"Category\" >\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\" integrate=\"yes\">\n<category id=\"CAT\" name=\"Category\" >\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\" idprefix=\"P_\" premium=\"yes\" integrate=\"no\">\n<category id=\"CAT\" name=\"Category\" >\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"de\">\n<category id=\"CAT\" name=\"Category\" >\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules >\n<category id=\"CAT\" name=\"Category\" >\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"xx-yy\">\n<category id=\"CAT\" name=\"Category\" >\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\" idprefix=\"PRE_\">\n<category id=\"CAT\" name=\"Category\" >\n<rulegroup id=\"G\" name=\"Gr\"><rule><pattern><token>a</token></pattern><message>m</message></rule></rulegroup>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\" idprefix=\"PRE_\">\n<category id=\"CAT\" name=\"Category\" >\n<rulegroup id=\"G\" name=\"Gr\"><rule id=\"X\"><pattern><token>a</token></pattern><message>m</message></rule></rulegroup>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  }
+ ]
+}

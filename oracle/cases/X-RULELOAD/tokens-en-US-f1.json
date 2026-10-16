@@ -1,0 +1,19 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "en-US /org/languagetool/rules/en/style.xml detailed token dumps (stride sample + first rules per feature)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "tokens",
+    "lang": "en-US",
+    "file": 1,
+    "limit": 200,
+    "extraPerFeature": 2
+   }
+  }
+ ]
+}

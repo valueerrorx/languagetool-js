@@ -1,0 +1,19 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "en-AU /org/languagetool/rules/en/en-AU/grammar.xml detailed token dumps (stride sample + first rules per feature)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "tokens",
+    "lang": "en-AU",
+    "file": 2,
+    "limit": 60,
+    "extraPerFeature": 1
+   }
+  }
+ ]
+}

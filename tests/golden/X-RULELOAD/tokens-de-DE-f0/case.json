@@ -1,0 +1,19 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "de-DE /org/languagetool/rules/de/grammar.xml detailed token dumps (stride sample + first rules per feature)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "tokens",
+    "lang": "de-DE",
+    "file": 0,
+    "limit": 200,
+    "extraPerFeature": 2
+   }
+  }
+ ]
+}

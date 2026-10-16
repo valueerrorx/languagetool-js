@@ -1,0 +1,189 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "phrases and includephrases",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<phrases><phrase id=\"P1\"><token>a</token><token>b</token></phrase></phrases><category id=\"CAT\" name=\"Category\" >\n<rule id=\"R1\" name=\"Rule one\"><pattern><includephrases><phraseref idref=\"P1\"/></includephrases></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<phrases><phrase id=\"P1\"><token>a</token><token>b</token></phrase></phrases><category id=\"CAT\" name=\"Category\" >\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>x</token><includephrases><phraseref idref=\"P1\"/></includephrases><token>y</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<phrases><phrase id=\"P1\"><token>a</token></phrase><phrase id=\"P2\"><token>b</token><token>c</token></phrase></phrases><category id=\"CAT\" name=\"Category\" >\n<rule id=\"R1\" name=\"Rule one\"><pattern><includephrases><phraseref idref=\"P1\"/><phraseref idref=\"P2\"/></includephrases></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<phrases><phrase id=\"P1\"><token>a</token></phrase><phrase id=\"P2\"><token>b</token></phrase></phrases><category id=\"CAT\" name=\"Category\" >\n<rule id=\"R1\" name=\"Rule one\"><pattern><includephrases><phraseref idref=\"P1\"/></includephrases><includephrases><phraseref idref=\"P2\"/></includephrases></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<phrases><phrase id=\"P1\"><token>a</token></phrase><phrase id=\"P2\"><includephrases><phraseref idref=\"P1\"/></includephrases><token>b</token></phrase></phrases><category id=\"CAT\" name=\"Category\" >\n<rule id=\"R1\" name=\"Rule one\"><pattern><includephrases><phraseref idref=\"P2\"/></includephrases></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<phrases><phrase id=\"P1\"><token>a</token></phrase></phrases><category id=\"CAT\" name=\"Category\" >\n<rule id=\"R1\" name=\"Rule one\"><pattern><includephrases><phraseref idref=\"NOPE\"/></includephrases></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<phrases><phrase id=\"P1\"><token>a</token></phrase></phrases><category id=\"CAT\" name=\"Category\" >\n<rule id=\"R1\" name=\"Rule one\"><pattern><includephrases><phraseref/></includephrases></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<phrases><phrase id=\"P1\"><token>a</token></phrase><phrase id=\"P1\"><token>b</token></phrase></phrases><category id=\"CAT\" name=\"Category\" >\n<rule id=\"R1\" name=\"Rule one\"><pattern><includephrases><phraseref idref=\"P1\"/></includephrases></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<phrases><phrase><token>a</token></phrase></phrases><category id=\"CAT\" name=\"Category\" >\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>x</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<phrases></phrases><category id=\"CAT\" name=\"Category\" >\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>x</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<phrases><phrase id=\"P1\"><token>a</token></phrase></phrases><category id=\"CAT\" name=\"Category\" >\n<rule id=\"R1\" name=\"Rule one\"><pattern><includephrases></includephrases></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<phrases><phrase id=\"P1\"><token>a</token></phrase></phrases><category id=\"CAT\" name=\"Category\" >\n<rule id=\"R1\" name=\"Rule one\"><pattern><marker><includephrases><phraseref idref=\"P1\"/></includephrases></marker><token>y</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<phrases><phrase id=\"P1\"><token>a</token><token>b</token></phrase></phrases><category id=\"CAT\" name=\"Category\" >\n<rule id=\"R1\" name=\"n\"><pattern><token>x</token><includephrases><phraseref idref=\"P1\"/></includephrases></pattern><message>\\1 \\2 \\3</message><suggestion>\\3</suggestion></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<phrases><phrase id=\"P1\"><token>a</token><token>b</token></phrase></phrases><category id=\"CAT\" name=\"Category\" >\n<rule id=\"R1\" name=\"n\"><pattern><token>x</token><includephrases><phraseref idref=\"P1\"/></includephrases></pattern><message>m <match no=\"3\"/></message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<phrases><phrase id=\"P1\"><token>a</token><token>b</token></phrase><phrase id=\"P2\"><token>c</token></phrase></phrases><category id=\"CAT\" name=\"Category\" >\n<rulegroup id=\"G\" name=\"Gr\"><rule><pattern><includephrases><phraseref idref=\"P1\"/><phraseref idref=\"P2\"/></includephrases><token>z</token></pattern><message>m</message></rule><rule><pattern><token>q</token></pattern><message>m</message></rule></rulegroup>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<phrases><phrase id=\"P1\"><token>a</token><token skip=\"1\">b</token></phrase></phrases><category id=\"CAT\" name=\"Category\" >\n<rule id=\"R1\" name=\"Rule one\"><pattern><includephrases><phraseref idref=\"P1\"/></includephrases></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<phrases><phrase id=\"P1\"><token>a</token></phrase></phrases><category id=\"CAT\" name=\"Category\" >\n<rule id=\"R1\" name=\"n\"><pattern><includephrases><phraseref idref=\"P1\"/></includephrases></pattern><message>m</message><filter class=\"org.languagetool.rules.UnderlineSpacesFilter\" args=\"a:\\1\"/></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<phrases><phrase id=\"P1\"><token>a</token></phrase></phrases><category id=\"CAT\" name=\"Category\" >\n<rule id=\"R1\" name=\"n\"><antipattern><includephrases><phraseref idref=\"P1\"/></includephrases></antipattern><pattern><token>z</token></pattern><message>m</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\" >\n<rule id=\"R1\" name=\"Rule one\"><pattern><includephrases><phraseref idref=\"P1\"/></includephrases></pattern><message>Msg</message></rule>\n</category><phrases><phrase id=\"P1\"><token>a</token></phrase></phrases>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<phrases><phrase id=\"P1\"><token>a</token></phrase></phrases><category id=\"CAT\" name=\"Category\" >\n<rule id=\"R1\" name=\"Rule one\"><pattern><phraseref idref=\"P1\"/></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  }
+ ]
+}

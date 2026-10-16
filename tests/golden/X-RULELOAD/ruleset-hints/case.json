@@ -1,0 +1,2783 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "RuleSet.plain/textHinted/textLemmaHinted rulesForSentence (RuleSetTest + extras)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "csToken",
+       "token"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "token",
+       "Token"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "tokenRegex",
+       "token|another"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "csToken",
+       "unsuitable"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "token",
+       "lemma"
+      ],
+      [
+       "matchInflectedForms"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "token",
+       "Lemma"
+      ],
+      [
+       "matchInflectedForms"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "csTokenRegex",
+       "lemm[ab]"
+      ],
+      [
+       "matchInflectedForms"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "csToken",
+       "unsuitable"
+      ],
+      [
+       "matchInflectedForms"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "csToken",
+       "unsuitable"
+      ],
+      [
+       "matchInflectedForms"
+      ]
+     ],
+     [
+      [
+       "pos",
+       "somePos"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "pos",
+       "somePos"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "pos",
+       "pos"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "posRegex",
+       "p.*"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "csToken",
+       "token"
+      ],
+      [
+       "negate"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "csToken",
+       "other"
+      ],
+      [
+       "negate"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "token",
+       "token"
+      ],
+      [
+       "min",
+       0
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "token",
+       "zzz"
+      ],
+      [
+       "min",
+       0
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "tokenRegex",
+       "tok.*"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "tokenRegex",
+       ".*"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "tokenRegex",
+       "a|b|c"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "csToken",
+       "lemma"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "csToken",
+       "lemma"
+      ],
+      [
+       "matchInflectedForms"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "csToken",
+       "token"
+      ],
+      [
+       "matchInflectedForms"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "token",
+       "a"
+      ]
+     ],
+     [
+      [
+       "token",
+       "token"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "token",
+       "token"
+      ]
+     ],
+     [
+      [
+       "token",
+       "a"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "csToken",
+       "token"
+      ]
+     ],
+     [
+      [
+       "csToken",
+       "nope"
+      ]
+     ],
+     [
+      [
+       "pos",
+       "x"
+      ]
+     ],
+     [
+      [
+       "token",
+       "TOKEN"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "csToken",
+       "token"
+      ]
+     ],
+     [
+      [
+       "csToken",
+       "nope"
+      ]
+     ],
+     [
+      [
+       "pos",
+       "x"
+      ]
+     ],
+     [
+      [
+       "token",
+       "TOKEN"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "a",
+      "pos": "p",
+      "lemma": "l"
+     },
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     },
+     {
+      "t": "other",
+      "pos": null,
+      "lemma": null
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     {
+      "tokens": [
+       [
+        [
+         "csToken",
+         "a"
+        ]
+       ],
+       [
+        [
+         "csToken",
+         "b"
+        ]
+       ]
+      ]
+     },
+     {
+      "tokens": [
+       [
+        [
+         "csToken",
+         "a"
+        ]
+       ],
+       [
+        [
+         "csToken",
+         "token"
+        ]
+       ]
+      ]
+     }
+    ],
+    "sentence": [
+     {
+      "t": "a",
+      "pos": "pos",
+      "lemma": "lemma"
+     },
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "csToken",
+       "token"
+      ]
+     ]
+    ],
+    "sentence": []
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "pos",
+       "pos"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": null,
+      "lemma": null
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "csToken",
+       "Ünï"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "Ünï",
+      "pos": "p",
+      "lemma": "l"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "token",
+       "ünï"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "Ünï",
+      "pos": "p",
+      "lemma": "l"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "plain",
+    "rules": [
+     [
+      [
+       "token",
+       "ß"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "SS",
+      "pos": "p",
+      "lemma": "l"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "csToken",
+       "token"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "token",
+       "Token"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "tokenRegex",
+       "token|another"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "csToken",
+       "unsuitable"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "token",
+       "lemma"
+      ],
+      [
+       "matchInflectedForms"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "token",
+       "Lemma"
+      ],
+      [
+       "matchInflectedForms"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "csTokenRegex",
+       "lemm[ab]"
+      ],
+      [
+       "matchInflectedForms"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "csToken",
+       "unsuitable"
+      ],
+      [
+       "matchInflectedForms"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "csToken",
+       "unsuitable"
+      ],
+      [
+       "matchInflectedForms"
+      ]
+     ],
+     [
+      [
+       "pos",
+       "somePos"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "pos",
+       "somePos"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "pos",
+       "pos"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "posRegex",
+       "p.*"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "csToken",
+       "token"
+      ],
+      [
+       "negate"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "csToken",
+       "other"
+      ],
+      [
+       "negate"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "token",
+       "token"
+      ],
+      [
+       "min",
+       0
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "token",
+       "zzz"
+      ],
+      [
+       "min",
+       0
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "tokenRegex",
+       "tok.*"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "tokenRegex",
+       ".*"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "tokenRegex",
+       "a|b|c"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "csToken",
+       "lemma"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "csToken",
+       "lemma"
+      ],
+      [
+       "matchInflectedForms"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "csToken",
+       "token"
+      ],
+      [
+       "matchInflectedForms"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "token",
+       "a"
+      ]
+     ],
+     [
+      [
+       "token",
+       "token"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "token",
+       "token"
+      ]
+     ],
+     [
+      [
+       "token",
+       "a"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "csToken",
+       "token"
+      ]
+     ],
+     [
+      [
+       "csToken",
+       "nope"
+      ]
+     ],
+     [
+      [
+       "pos",
+       "x"
+      ]
+     ],
+     [
+      [
+       "token",
+       "TOKEN"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "csToken",
+       "token"
+      ]
+     ],
+     [
+      [
+       "csToken",
+       "nope"
+      ]
+     ],
+     [
+      [
+       "pos",
+       "x"
+      ]
+     ],
+     [
+      [
+       "token",
+       "TOKEN"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "a",
+      "pos": "p",
+      "lemma": "l"
+     },
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     },
+     {
+      "t": "other",
+      "pos": null,
+      "lemma": null
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     {
+      "tokens": [
+       [
+        [
+         "csToken",
+         "a"
+        ]
+       ],
+       [
+        [
+         "csToken",
+         "b"
+        ]
+       ]
+      ]
+     },
+     {
+      "tokens": [
+       [
+        [
+         "csToken",
+         "a"
+        ]
+       ],
+       [
+        [
+         "csToken",
+         "token"
+        ]
+       ]
+      ]
+     }
+    ],
+    "sentence": [
+     {
+      "t": "a",
+      "pos": "pos",
+      "lemma": "lemma"
+     },
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "csToken",
+       "token"
+      ]
+     ]
+    ],
+    "sentence": []
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "pos",
+       "pos"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": null,
+      "lemma": null
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "csToken",
+       "Ünï"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "Ünï",
+      "pos": "p",
+      "lemma": "l"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "token",
+       "ünï"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "Ünï",
+      "pos": "p",
+      "lemma": "l"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "token",
+       "ß"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "SS",
+      "pos": "p",
+      "lemma": "l"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "csToken",
+       "token"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "token",
+       "Token"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "tokenRegex",
+       "token|another"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "csToken",
+       "unsuitable"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "token",
+       "lemma"
+      ],
+      [
+       "matchInflectedForms"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "token",
+       "Lemma"
+      ],
+      [
+       "matchInflectedForms"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "csTokenRegex",
+       "lemm[ab]"
+      ],
+      [
+       "matchInflectedForms"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "csToken",
+       "unsuitable"
+      ],
+      [
+       "matchInflectedForms"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "csToken",
+       "unsuitable"
+      ],
+      [
+       "matchInflectedForms"
+      ]
+     ],
+     [
+      [
+       "pos",
+       "somePos"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "pos",
+       "somePos"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "pos",
+       "pos"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "posRegex",
+       "p.*"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "csToken",
+       "token"
+      ],
+      [
+       "negate"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "csToken",
+       "other"
+      ],
+      [
+       "negate"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "token",
+       "token"
+      ],
+      [
+       "min",
+       0
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "token",
+       "zzz"
+      ],
+      [
+       "min",
+       0
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "tokenRegex",
+       "tok.*"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "tokenRegex",
+       ".*"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "tokenRegex",
+       "a|b|c"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "csToken",
+       "lemma"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "csToken",
+       "lemma"
+      ],
+      [
+       "matchInflectedForms"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "csToken",
+       "token"
+      ],
+      [
+       "matchInflectedForms"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "token",
+       "a"
+      ]
+     ],
+     [
+      [
+       "token",
+       "token"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "token",
+       "token"
+      ]
+     ],
+     [
+      [
+       "token",
+       "a"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "csToken",
+       "token"
+      ]
+     ],
+     [
+      [
+       "csToken",
+       "nope"
+      ]
+     ],
+     [
+      [
+       "pos",
+       "x"
+      ]
+     ],
+     [
+      [
+       "token",
+       "TOKEN"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "csToken",
+       "token"
+      ]
+     ],
+     [
+      [
+       "csToken",
+       "nope"
+      ]
+     ],
+     [
+      [
+       "pos",
+       "x"
+      ]
+     ],
+     [
+      [
+       "token",
+       "TOKEN"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "a",
+      "pos": "p",
+      "lemma": "l"
+     },
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     },
+     {
+      "t": "other",
+      "pos": null,
+      "lemma": null
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     {
+      "tokens": [
+       [
+        [
+         "csToken",
+         "a"
+        ]
+       ],
+       [
+        [
+         "csToken",
+         "b"
+        ]
+       ]
+      ]
+     },
+     {
+      "tokens": [
+       [
+        [
+         "csToken",
+         "a"
+        ]
+       ],
+       [
+        [
+         "csToken",
+         "token"
+        ]
+       ]
+      ]
+     }
+    ],
+    "sentence": [
+     {
+      "t": "a",
+      "pos": "pos",
+      "lemma": "lemma"
+     },
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "csToken",
+       "token"
+      ]
+     ]
+    ],
+    "sentence": []
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "pos",
+       "pos"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": null,
+      "lemma": null
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "csToken",
+       "Ünï"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "Ünï",
+      "pos": "p",
+      "lemma": "l"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "token",
+       "ünï"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "Ünï",
+      "pos": "p",
+      "lemma": "l"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "token",
+       "ß"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "SS",
+      "pos": "p",
+      "lemma": "l"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "pos",
+       "a"
+      ]
+     ],
+     [
+      [
+       "pos",
+       "b"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "pos",
+       "a"
+      ]
+     ],
+     [
+      [
+       "pos",
+       "pos"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "posRegex",
+       ".*"
+      ]
+     ],
+     [
+      [
+       "pos",
+       "b"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "x",
+      "pos": "b",
+      "lemma": "x"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "csToken",
+       "q"
+      ]
+     ],
+     [
+      [
+       "pos",
+       "b"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "x",
+      "pos": "b",
+      "lemma": "x"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "csToken",
+       "q"
+      ]
+     ],
+     [
+      [
+       "pos",
+       "b"
+      ]
+     ],
+     [
+      [
+       "token",
+       "x"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "x",
+      "pos": "b",
+      "lemma": "x"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "text",
+    "rules": [
+     [
+      [
+       "token",
+       "x"
+      ],
+      [
+       "min",
+       0
+      ]
+     ],
+     [
+      [
+       "pos",
+       "b"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "y",
+      "pos": "c",
+      "lemma": "y"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "pos",
+       "a"
+      ]
+     ],
+     [
+      [
+       "pos",
+       "b"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "pos",
+       "a"
+      ]
+     ],
+     [
+      [
+       "pos",
+       "pos"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "token",
+      "pos": "pos",
+      "lemma": "lemma"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "posRegex",
+       ".*"
+      ]
+     ],
+     [
+      [
+       "pos",
+       "b"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "x",
+      "pos": "b",
+      "lemma": "x"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "csToken",
+       "q"
+      ]
+     ],
+     [
+      [
+       "pos",
+       "b"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "x",
+      "pos": "b",
+      "lemma": "x"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "csToken",
+       "q"
+      ]
+     ],
+     [
+      [
+       "pos",
+       "b"
+      ]
+     ],
+     [
+      [
+       "token",
+       "x"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "x",
+      "pos": "b",
+      "lemma": "x"
+     }
+    ]
+   }
+  },
+  {
+   "op": "ruleset-hints",
+   "args": {
+    "kind": "lemma",
+    "rules": [
+     [
+      [
+       "token",
+       "x"
+      ],
+      [
+       "min",
+       0
+      ]
+     ],
+     [
+      [
+       "pos",
+       "b"
+      ]
+     ]
+    ],
+    "sentence": [
+     {
+      "t": "y",
+      "pos": "c",
+      "lemma": "y"
+     }
+    ]
+   }
+  }
+ ]
+}
