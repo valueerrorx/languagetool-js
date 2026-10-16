@@ -5,6 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { readZipEntries } from './lib/zip.mjs';
 import { writeBuildInfo } from './build-info.mjs';
+import { buildDescriptors } from './lib/language-descriptors.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = process.env.LTJS_JAVA_SRC ?? path.join(ROOT, 'oracle/java-src');
@@ -61,6 +62,21 @@ for (const j of JARS) {
     add(e.name, `${j}.jar`, () => e.read());
   }
 }
+
+// F18 (D-051/DEV-008): language detection needs every distribution language: common_words.txt and external profiles of all modules
+const DIST_ROOT = path.dirname(DIST);
+walk(path.join(DIST_ROOT, 'org/languagetool/resource'), 'org/languagetool/resource/', (p, rel) => {
+  if (!/^org\/languagetool\/resource\/[^/]+\/(common_words\.txt|[^/]+\.profile)$/.test(rel)) return;
+  if (!files.has(rel)) add(rel, 'distribution', () => readFileSync(p));
+});
+// descriptors of all distribution languages in Languages.get() order (merged language-module.properties, first class name wins)
+const classNames = [];
+for (const line of readFileSync(path.join(DIST_ROOT, 'META-INF/org/languagetool/language-module.properties'), 'utf8').split('\n')) {
+  const m = /^languageClasses\s*=\s*(.*)$/.exec(line.trim());
+  if (m) for (const c of m[1].split(/\s*,\s*/)) if (c !== '' && !classNames.includes(c)) classNames.push(c);
+}
+const descriptors = Buffer.from(`${JSON.stringify(buildDescriptors(SRC, classNames), null, 1)}\n`);
+add('ltjs/detection-languages.json', 'generated', () => descriptors);
 
 rmSync(OUT, { recursive: true, force: true });
 const manifest = [];

@@ -173,7 +173,7 @@ Notes valid for the whole file:
 | DE-0173 | `resource/de/alt_neu.csv`: old;new spelling pairs (OldSpellingRule, GermanSpellerRule) | RD:resource/de/alt_neu.csv | OldSpellingRuleTest | - | todo |
 | DE-0174 | `resource/de/ambiguous_case.txt`: UpperCaseNgramRule word list | RD:resource/de/ambiguous_case.txt | UpperCaseNgramRuleTest | - | later |
 | DE-0175 | `resource/de/case_rule_exceptions.txt`, `eigennamen_gross.txt`: CaseRule exceptions | RD:resource/de/case_rule_exceptions.txt | CaseRuleTest | - | todo |
-| DE-0176 | `resource/de/common_words.txt`: most common words for core language identifier (CommonWordsDetector) | RD:resource/de/common_words.txt; core:Language#getCommonWordsPath | - | - | todo |
+| DE-0176 | `resource/de/common_words.txt`: most common words for core language identifier (CommonWordsDetector) | RD:resource/de/common_words.txt; core:Language#getCommonWordsPath | - | - | verified |
 | DE-0177 | `resource/de/compounds.txt`, `compound-cities.txt`: GermanCompoundRule/SwissCompoundRule data | RD:resource/de/compounds.txt | GermanCompoundRuleTest | - | todo |
 | DE-0178 | `resource/de/compound_exceptions.txt`, `confusion_sets.txt`: ProhibitedCompoundRule / ngram confusion data (also loaded by GermanTest confusion-set check) | RD:resource/de/confusion_sets.txt | ProhibitedCompoundRuleTest, GermanTest | - | later |
 | DE-0179 | `resource/de/multitoken-ignore.txt` (2.4 MB), `multitoken-suggest.txt`: MultiWordChunker ignore lists, multitoken speller, speller dictionary input | RD:resource/de/multitoken-*.txt | SpellingCheckRuleTest#testMultitokenSpelling | - | todo |

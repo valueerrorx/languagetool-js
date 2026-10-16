@@ -96,7 +96,7 @@ Notes valid for the whole file:
 | FR-0173 | `resource/fr/hyphenated_words.txt`: multitoken speller (hyphenated words) | RF:resource/fr/hyphenated_words.txt | JLanguageToolTest#testMultitokenSpeller | - | todo |
 | FR-0174 | `resource/fr/compounds.txt`: CompoundRule | RF:resource/fr/compounds.txt | CompoundRuleTest | - | todo |
 | FR-0175 | `resource/fr/confusion_sets.txt`: ngram confusion sets (also loaded by FrenchTest check) | RF:resource/fr/confusion_sets.txt | FrenchTest | - | later |
-| FR-0176 | `resource/fr/common_words.txt`: language identifier | RF:resource/fr/common_words.txt | - | - | todo |
+| FR-0176 | `resource/fr/common_words.txt`: language identifier | RF:resource/fr/common_words.txt | - | - | verified |
 | FR-0177 | `resource/fr/hunspell/spelling.txt` (454 KB), `spelling_custom.txt`: words added to speller | RF:resource/fr/hunspell/spelling*.txt | MorfologikFrenchSpellerRuleTest | - | todo |
 | FR-0178 | `resource/fr/hunspell/ignore.txt`, `prohibit.txt` | RF:resource/fr/hunspell/ignore.txt, prohibit.txt | MorfologikFrenchSpellerRuleTest, LanguageSpecificSpellcheckerTest (core SpellcheckerTest: no word in both prohibit.txt and spelling.txt for any language on the classpath, else RuntimeException "Word(s) appear in both spelling.txt and prohibit.txt - this doesn't make sense: ...") | - | todo |
 | FR-0179 | `rules/fr/replace.txt`, `replace_custom.txt`: FR_SIMPLE_REPLACE_SIMPLE data | RF:rules/fr/replace*.txt | SimpleReplaceRuleTest | - | todo |

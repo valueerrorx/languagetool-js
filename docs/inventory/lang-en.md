@@ -154,7 +154,7 @@ Notes valid for the whole file:
 | EN-0174 | `resource/en/compounds.txt`: CompoundRule + EnglishDashRule | RE:resource/en/compounds.txt | CompoundRuleTest, EnglishDashRuleTest | - | todo |
 | EN-0175 | `resource/en/specific_case.txt`: EnglishSpecificCaseRule (and UpperCaseNgramRule) | RE:resource/en/specific_case.txt | EnglishSpecificCaseRuleTest | - | todo |
 | EN-0176 | `resource/en/en-US-GB.txt`: US<->GB spelling pairs for variant speller messages | RE:resource/en/en-US-GB.txt | MorfologikBritishSpellerRuleTest | - | todo |
-| EN-0177 | `resource/en/common_words.txt`: language identifier common words | RE:resource/en/common_words.txt | - | - | todo |
+| EN-0177 | `resource/en/common_words.txt`: language identifier common words | RE:resource/en/common_words.txt | - | - | verified |
 | EN-0178 | `resource/en/word_definitions.txt`: ShortDescriptionProvider data | RE:resource/en/word_definitions.txt | - | - | todo |
 | EN-0179 | `resource/en/confusion_sets.txt`, `confusion_sets_l2_{de,es,fr,nl}.txt` (+ `confusion_sets_l2_nl_wip.txt`, `confusion_sets_extended.txt` not loaded): ngram confusion data (loaded by EnglishTest confusion-set check) | RE:resource/en/confusion_sets*.txt | EnglishTest | - | later |
 | EN-0180 | `resource/en/hunspell/spelling.txt`, `spelling_custom.txt`, `spelling_en-{US,GB,AU,CA,NZ,ZA}.txt`: accepted words (ignore list and morfologik runtime dictionary additions) | RE:resource/en/hunspell/spelling*.txt | MorfologikAmericanSpellerRuleTest | - | todo |
