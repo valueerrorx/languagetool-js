@@ -1,0 +1,87 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "null word",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "wordsplit",
+   "args": {
+    "impl": "tok-strict",
+    "words": [
+     null,
+     "",
+     "Haus"
+    ]
+   }
+  },
+  {
+   "op": "wordsplit",
+   "args": {
+    "impl": "tok-nonstrict",
+    "words": [
+     null,
+     "",
+     "Haus"
+    ]
+   }
+  },
+  {
+   "op": "wordsplit",
+   "args": {
+    "impl": "tok-default",
+    "words": [
+     null,
+     "",
+     "Haus"
+    ]
+   }
+  },
+  {
+   "op": "wordsplit",
+   "args": {
+    "impl": "german-strict",
+    "words": [
+     null,
+     "",
+     "Haus"
+    ]
+   }
+  },
+  {
+   "op": "wordsplit",
+   "args": {
+    "impl": "german-nonstrict",
+    "words": [
+     null,
+     "",
+     "Haus"
+    ]
+   }
+  },
+  {
+   "op": "wordsplit",
+   "args": {
+    "impl": "ws",
+    "method": "getAllSplits",
+    "words": [
+     null,
+     "",
+     "Haus"
+    ]
+   }
+  },
+  {
+   "op": "wordsplit",
+   "args": {
+    "impl": "ws",
+    "method": "splitWord",
+    "words": [
+     null,
+     ""
+    ]
+   }
+  }
+ ]
+}

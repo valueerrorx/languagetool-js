@@ -1,0 +1,36 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "empty custom word list",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "wordsplit",
+   "args": {
+    "impl": "ws",
+    "method": "splitWord",
+    "customWords": [],
+    "words": [
+     "Haustür",
+     "Haus",
+     ""
+    ]
+   }
+  },
+  {
+   "op": "wordsplit",
+   "args": {
+    "impl": "ws",
+    "method": "splitWord",
+    "customWords": [],
+    "strict": false,
+    "words": [
+     "Haustür",
+     "Haus",
+     ""
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,52 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "addException in non-strict mode",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "wordsplit",
+   "args": {
+    "impl": "ws",
+    "method": "splitWord",
+    "words": [
+     "Haustür",
+     "Hauskatze",
+     "Kindergarten",
+     "Xyzabc",
+     "Haustürxyz"
+    ],
+    "exceptions": {
+     "Haustür": [
+      "Haus",
+      "tür"
+     ],
+     "HAUSKATZE": [
+      "Haus",
+      "Katze"
+     ],
+     "Kindergarten": [
+      "Kindergarten"
+     ],
+     "Liebesbrief": [
+      "Liebes",
+      "brief"
+     ],
+     "Samthandschuh": [
+      "Samt",
+      "Handschuh"
+     ],
+     "Sauerstoff-Flasche": [
+      "Sauerstoff",
+      "Flasche"
+     ],
+     "": [
+      "x"
+     ]
+    },
+    "strict": false
+   }
+  }
+ ]
+}

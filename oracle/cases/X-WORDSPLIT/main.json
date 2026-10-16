@@ -1,0 +1,70 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "GermanCompoundTokenizer.main with words / file (stdout captured)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "wordsplit",
+   "args": {
+    "impl": "main",
+    "words": [
+     "Haustür"
+    ]
+   }
+  },
+  {
+   "op": "wordsplit",
+   "args": {
+    "impl": "main",
+    "words": [
+     "Haustür",
+     "Arbeitszimmertür",
+     "Geburtstagsfeier",
+     "Xyzzy",
+     ""
+    ]
+   }
+  },
+  {
+   "op": "wordsplit",
+   "args": {
+    "impl": "main",
+    "words": [
+     "Donaudampfschifffahrtsgesellschaft",
+     "Vatertag",
+     "Vaterland",
+     "Müller-Lüdenscheidt",
+     "HausHausHausHausHausHausHausHausHausHausHausHausHausHausHausHausHausHau"
+    ]
+   }
+  },
+  {
+   "op": "wordsplit",
+   "args": {
+    "impl": "main",
+    "words": [],
+    "fileContent": "Haustür\nArbeitszimmertür\n\nGeburtstagsfeier\nKindergarten-Tante\nÄpfel\r\nÜbersetzung\n"
+   }
+  },
+  {
+   "op": "wordsplit",
+   "args": {
+    "impl": "main",
+    "words": [
+     "Haus"
+    ],
+    "fileContent": "Haustür\n"
+   }
+  },
+  {
+   "op": "wordsplit",
+   "args": {
+    "impl": "main",
+    "words": [],
+    "fileContent": ""
+   }
+  }
+ ]
+}
