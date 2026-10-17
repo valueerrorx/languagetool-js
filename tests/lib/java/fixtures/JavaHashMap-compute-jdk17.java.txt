@@ -1,0 +1,6 @@
+import java.util.*;
+public class P { public static void main(String[] a){ Random r=new Random(11);
+ for(int t=0;t<300;t++){ HashMap<Integer,Integer> m=new HashMap<>(); StringBuilder ops=new StringBuilder(); int n=r.nextInt(60)+1; int space=r.nextBoolean()?8:200; int mult=new int[]{1,16,64}[r.nextInt(3)];
+  for(int i=0;i<n;i++){ int k=r.nextInt(space)*mult; int op=r.nextInt(4); ops.append(op).append(':').append(k).append(' ');
+   if(op==0) m.compute(k,(x,v)->v==null?1:v+1); else if(op==1) m.put(k,k); else if(op==2) m.compute(k,(x,v)->null); else m.compute(k,(x,v)->v==null?null:v+5); }
+  System.out.println(ops+"|"+m.keySet()); } } }

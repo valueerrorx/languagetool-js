@@ -1,13 +1,15 @@
-// FQCN registrations of the rule filter base classes and placeholders for XML filter classes that are ported later (F30/F34/language steps).
+// FQCN registrations of the rule filter base classes and placeholders for XML filter classes that are ported later (F34/language steps).
 import { registerClass, hasClass } from '../resources/ClassBroker.js';
 import { notPortedYet } from '../language/components.js';
 import { RuleFilter } from './RuleFilter.js';
 import { RegexRuleFilter } from './RegexRuleFilter.js';
+import { RegexAntiPatternFilter } from './RegexAntiPatternFilter.js';
 
 RuleFilter.JAVA_ABSTRACT = true;
 RegexRuleFilter.JAVA_ABSTRACT = true;
 registerClass(RuleFilter.FQCN, RuleFilter);
 registerClass(RegexRuleFilter.FQCN, RegexRuleFilter);
+registerClass(RegexAntiPatternFilter.FQCN, RegexAntiPatternFilter);
 
 // filter classes referenced by the de/en/fr/core rule files (grep of <filter class=...>)
 const PENDING_RULE_FILTERS = [
@@ -62,7 +64,6 @@ const PENDING_RULE_FILTERS = [
   'org.languagetool.rules.ru.RussianSuppressMisspelledSuggestionsFilter',
   'org.languagetool.rules.spelling.multitoken.MultitokenSpellerFilter',
 ];
-const PENDING_REGEX_RULE_FILTERS = ['org.languagetool.rules.patterns.RegexAntiPatternFilter'];
 
 // class that loads and instantiates like the Java filter but throws notPorted when the filter runs
 function pendingFilterClass(fqcn, Base, method) {
@@ -79,9 +80,6 @@ function pendingFilterClass(fqcn, Base, method) {
 // a later step that ports the class calls registerClass(fqcn, cls), which replaces the placeholder
 for (const fqcn of PENDING_RULE_FILTERS) {
   if (!hasClass(fqcn)) registerClass(fqcn, pendingFilterClass(fqcn, RuleFilter, 'acceptRuleMatch'));
-}
-for (const fqcn of PENDING_REGEX_RULE_FILTERS) {
-  if (!hasClass(fqcn)) registerClass(fqcn, pendingFilterClass(fqcn, RegexRuleFilter, 'acceptRuleMatch'));
 }
 
 // abstract filter base classes: class -> public constructors (Class#getConstructors(), JDK 17 reflection of the pinned jars); newInstance throws InstantiationException

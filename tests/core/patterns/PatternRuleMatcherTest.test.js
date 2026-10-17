@@ -1,19 +1,17 @@
-// Ported from PatternRuleMatcherTest (languagetool-core); analysis adapted to en-US (Demo tagger not ported), matches via PatternRuleMatcher#match
+// Ported from PatternRuleMatcherTest (languagetool-core); matches via PatternRuleMatcher#match
 import { describe, it, expect, beforeAll } from 'vitest';
 import '../../../src/lang/register.js';
-import { Languages } from '../../../src/core/Languages.js';
+import { JLanguageTool } from '../../../src/core/JLanguageTool.js';
 import { PatternToken } from '../../../src/core/patterns/PatternToken.js';
 import { PatternRule } from '../../../src/core/patterns/PatternRule.js';
 import { Match, CaseConversion, IncludeRange } from '../../../src/core/patterns/Match.js';
 import { RuleMatch } from '../../../src/core/rules/model/RuleMatch.js';
 import { PatternRuleMatcher } from '../../../src/core/patterns/PatternRuleMatcher.js';
-import { getDemoLanguage } from '../../support/DemoLanguage.js';
-import { newTool, withNoopAnalysis } from '../../../oracle/adapters/_check-pipe-common.mjs';
+import { getDemoLanguage, useXxTestResources } from '../../support/DemoLanguage.js';
 
 let lt;
-let en;
 
-const getMatches = (input, matcher) => matcher.match(withNoopAnalysis(en, true, () => lt.getAnalyzedSentence(input)));
+const getMatches = (input, matcher) => matcher.match(lt.getAnalyzedSentence(input));
 const getMatcher = (...tokens) => new PatternRuleMatcher(getPatternRule(tokens), false);
 const assertPosition = (match, from, to) => {
   expect(match.getFromPos(), 'Wrong start position').toBe(from);
@@ -39,10 +37,8 @@ const getPatternRule = (x) => {
 };
 
 describe('PatternRuleMatcherTest', () => {
-  // adapted: Demo analysis (JLanguageTool with xx rules needs F30, DemoTagger not ported) -> en-US; only token texts matter here
-  beforeAll(() => { en = Languages.getLanguageForShortCode('en-US');
-    lt = newTool(en);
-  });
+  useXxTestResources();
+  beforeAll(() => { lt = new JLanguageTool(getDemoLanguage()); });
 
   // Java: PatternRuleMatcherTest#testMatch
   it('testMatch', () => {

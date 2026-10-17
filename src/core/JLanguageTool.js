@@ -29,6 +29,9 @@ import { SentenceRange } from './rules/model/SentenceRange.js';
 import { Tag, ToneTag } from './rules/model/Tag.js';
 import { SameRuleGroupFilter } from './rules/SameRuleGroupFilter.js';
 import { RuleSet } from './patterns/RuleSet.js';
+import { AbstractPatternRule } from './patterns/AbstractPatternRule.js';
+import { RepeatedPatternRuleTransformer, RepeatedPatternRule } from './patterns/RepeatedPatternRuleTransformer.js';
+import { ConsistencyPatternRuleTransformer, ConsistencyPatternRule } from './patterns/ConsistencyPatternRuleTransformer.js';
 import { Range } from './check/Range.js';
 import { ExtendedSentenceRange } from './check/ExtendedSentenceRange.js';
 import { ErrorRateTooHighException } from './check/ErrorRateTooHighException.js';
@@ -120,9 +123,9 @@ export class JLanguageTool {
   // class hooks set by later ports (null = class not ported, `instanceof` is false)
   static remoteRuleClass = null; // org.languagetool.rules.RemoteRule (DEV-001)
   static spellingCheckRuleClass = null; // org.languagetool.rules.spelling.SpellingCheckRule (F42)
-  static abstractPatternRuleClass = null; // org.languagetool.rules.patterns.AbstractPatternRule (F25)
-  static repeatedPatternRuleClass = null; // RepeatedPatternRuleTransformer.RepeatedPatternRule (F30)
-  static consistencyPatternRuleClass = null; // ConsistencyPatternRuleTransformer.ConsistencyPatternRule (F30)
+  static abstractPatternRuleClass = AbstractPatternRule; // org.languagetool.rules.patterns.AbstractPatternRule
+  static repeatedPatternRuleClass = RepeatedPatternRule; // RepeatedPatternRuleTransformer.RepeatedPatternRule
+  static consistencyPatternRuleClass = ConsistencyPatternRule; // ConsistencyPatternRuleTransformer.ConsistencyPatternRule
 
   maxErrorsPerWordRate = 0;
   userRules = []; // rules added via addRule() method
@@ -428,11 +431,10 @@ export class JLanguageTool {
     this.userRules.push(...transformed);
   }
 
-  // Java: JLanguageTool#transformPatternRules(List,Language); transformers ported in F30
+  // Java: JLanguageTool#transformPatternRules(List,Language)
   transformPatternRules(patternRules, lang) {
     let rules = patternRules.slice();
-    const transforms = [createComponent('org.languagetool.rules.patterns.RepeatedPatternRuleTransformer', lang),
-      createComponent('org.languagetool.rules.patterns.ConsistencyPatternRuleTransformer', lang)];
+    const transforms = [new RepeatedPatternRuleTransformer(lang), new ConsistencyPatternRuleTransformer(lang)];
     const transformed = [];
     for (const op of transforms) {
       const result = op.apply(rules);

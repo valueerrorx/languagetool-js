@@ -104,7 +104,7 @@ function tokens(a) {
   return w;
 }
 
-// Java: new JLanguageTool(l) as used to activate the default rules; the constructor throws notPorted until F17 (language rule lists)
+// Java: new JLanguageTool(l) as used to activate the default rules
 function activateDefaults(l) {
   return new JLanguageTool(l);
 }

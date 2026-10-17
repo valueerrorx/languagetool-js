@@ -1,4 +1,4 @@
-// Ported from RegexPatternRuleTest (languagetool-core); Demo language replaced by tests/support/DemoLanguage.js; bodies kept but skipped until F30 (JLanguageTool needs RepeatedPatternRuleTransformer to build)
+// Ported from RegexPatternRuleTest (languagetool-core); Demo language replaced by tests/support/DemoLanguage.js
 import { describe, it, expect } from 'vitest';
 import '../../../src/lang/register.js';
 import { JLanguageTool } from '../../../src/core/JLanguageTool.js';
@@ -8,7 +8,7 @@ describe('RegexPatternRuleTest', () => {
   useXxTestResources();
 
   // Java: RegexPatternRuleTest#testMatch
-  it.skip('testMatch (F30: RepeatedPatternRuleTransformer, pending in JLanguageTool)', () => {
+  it('testMatch', () => {
     const lt = new JLanguageTool(new DemoLanguage());
     const rule = lt.getPatternRulesByIdAndSubId('REGEX_PATTERN_RULE_DEMO_MARK_0', '1')[0];
 
@@ -32,7 +32,7 @@ describe('RegexPatternRuleTest', () => {
   });
 
   // Java: RegexPatternRuleTest#testMatchWithMark
-  it.skip('testMatchWithMark (F30: RepeatedPatternRuleTransformer)', () => {
+  it('testMatchWithMark', () => {
     const lt = new JLanguageTool(new DemoLanguage());
     const rule = lt.getPatternRulesByIdAndSubId('REGEX_PATTERN_RULE_DEMO_MARK_1', '1')[0];
     const matches2 = rule.match(lt.getAnalyzedSentence('This is foo bar'));

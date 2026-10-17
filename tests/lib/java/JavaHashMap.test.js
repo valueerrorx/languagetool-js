@@ -58,4 +58,24 @@ describe('JavaHashMap', () => {
     }
     expect(checked).toBeGreaterThan(200);
   });
+  // Java: HashMap#compute(Object,BiFunction) bin order vs JDK 17 (corpus from the .java.txt probe)
+  it('compute/put iteration order equals JDK 17', () => {
+    const lines = readFileSync(new URL('./fixtures/JavaHashMap-compute-jdk17.txt', import.meta.url), 'utf8').split('\n').filter(Boolean);
+    let checked = 0;
+    for (const line of lines) {
+      const [ops, keys] = line.split('|');
+      const m = new JavaHashMap();
+      for (const op of ops.trim().split(' ')) {
+        const [o, k] = op.split(':').map(Number);
+        if (o === 0) m.compute(k, (x, v) => (v === null ? 1 : v + 1));
+        else if (o === 1) m.put(k, k);
+        else if (o === 2) m.compute(k, () => null);
+        else m.compute(k, (x, v) => (v === null ? null : v + 5));
+      }
+      if (m.treeBinsNeeded) continue;
+      checked++;
+      expect(`[${m.keySet().join(', ')}]`).toBe(keys);
+    }
+    expect(checked).toBeGreaterThan(200);
+  });
 });

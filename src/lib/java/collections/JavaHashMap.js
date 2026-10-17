@@ -124,6 +124,32 @@ export class JavaHashMap {
     return v;
   }
 
+  // Java: HashMap#compute(Object,BiFunction); JDK 17: resize before insert when size > threshold, new node at bin head, null result removes/is not stored
+  compute(key, fn) {
+    if (this.size_ > this.threshold || this.table === null || this.table.length === 0) this.resize();
+    const hash = JavaHashMap.hash(key);
+    const bin = this.table[hash & (this.table.length - 1)];
+    let old = null;
+    let binCount = 0;
+    for (const node of bin) {
+      if (node.hash === hash && Objects.equals(node.key, key)) {
+        old = node;
+        break;
+      }
+      ++binCount;
+    }
+    const v = fn(key, old === null ? null : old.value);
+    if (old !== null) {
+      if (v !== null && v !== undefined) old.value = v;
+      else this.remove(key);
+    } else if (v !== null && v !== undefined) {
+      bin.unshift({ hash, key, value: v });
+      if (binCount >= 7) this.treeifyBin(); // Java: binCount >= TREEIFY_THRESHOLD - 1
+      ++this.size_;
+    }
+    return v === undefined ? null : v;
+  }
+
   // Java: HashMap#size()
   size() {
     return this.size_;

@@ -24,3 +24,4 @@
 - Adapters must not fake a class whose constructor is notPorted (no `Object.create(JLanguageTool.prototype)`); let notPorted propagate.
 - No local copies of src/lib/java helpers (e.g. listGet); import the shared one.
 - Java string semantics (javaSplit, Java regex) apply also in test code that mirrors Java test helpers.
+- Status verified only when every class named in the inventory row exists in src/ and is exercised by a fixture or test.

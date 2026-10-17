@@ -1,5 +1,5 @@
 // Java array element access with bounds check (ArrayIndexOutOfBoundsException).
-import { ArrayIndexOutOfBoundsException, IndexOutOfBoundsException } from './errors.js';
+import { ArrayIndexOutOfBoundsException, IllegalArgumentException, IndexOutOfBoundsException } from './errors.js';
 
 // Java: a[i] (array read)
 export function arrayGet(a, i) {
@@ -25,4 +25,14 @@ export function listSet(list, i, v) {
 export function arraySet(a, i, v) {
   if (i < 0 || i >= a.length) throw new ArrayIndexOutOfBoundsException(`Index ${i} out of bounds for length ${a.length}`);
   a[i] = v;
+}
+
+// Java: Arrays#copyOfRange(T[],int,int) (pads with null beyond the end; the arraycopy message of the out-of-range case is not modelled)
+export function copyOfRange(a, from, to) {
+  const newLength = to - from;
+  if (newLength < 0) throw new IllegalArgumentException(`${from} > ${to}`);
+  if (from < 0 || from > a.length) throw new ArrayIndexOutOfBoundsException(`arraycopy: source index ${from} out of bounds for object array[${a.length}]`);
+  const out = new Array(newLength).fill(null);
+  for (let i = 0; i < Math.min(newLength, a.length - from); i++) out[i] = a[from + i];
+  return out;
 }

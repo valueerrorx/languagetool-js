@@ -6,10 +6,10 @@ import { Integer } from '../../lib/java/int.js';
 import { Character } from '../../lib/java/Character.js';
 import { StringBuilder, charAt, javaSplit, substring } from '../../lib/java/strings.js';
 import { RuleMatch } from '../rules/model/RuleMatch.js';
-import { notPortedYet } from '../language/components.js';
 import { AbstractPatternRule } from './AbstractPatternRule.js';
 import { StringMatcher } from './StringMatcher.js';
 import { convertCase } from './CaseConversionHelper.js';
+import { RegexRuleFilterEvaluator } from './RegexRuleFilterEvaluator.js';
 
 const suggestionPattern = Pattern.compile('<suggestion>(.*?)</suggestion>'); // TODO in Java: this needs to be cleaned up
 const matchPattern = Pattern.compile('\\\\\\d');
@@ -80,8 +80,11 @@ export class RegexPatternRule extends AbstractPatternRule {
         const ruleMatch = new RuleMatch(this, sentenceObj, markStart, markEnd, patternMatcher.start(), patternMatcher.end(),
           processedMessage, this.shortMessage, startsWithUpperCase, false, processedSuggestionsOutMsg, true);
         if (this.regexFilter !== null) {
-          // Java: new RegexRuleFilterEvaluator(regexFilter).runFilter(...); the unfiltered match is added if the filter accepts
-          throw notPortedYet('RegexRuleFilterEvaluator (F30)');
+          const ruleFilterEvaluator = new RegexRuleFilterEvaluator(this.regexFilter);
+          const filteredMatch = ruleFilterEvaluator.runFilter(this.getFilterArguments(), ruleMatch, sentenceObj, patternMatcher);
+          if (filteredMatch !== null) {
+            matches.push(ruleMatch);
+          }
         } else {
           matches.push(ruleMatch);
         }

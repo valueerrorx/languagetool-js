@@ -8,3 +8,4 @@
 - Never run `npm run oracle -- --all` casually (regenerates everything).
 - [ ] json-serialize comparator skips per-case notPorted sub-cases (languages without port) silently inside a PASS; parity.mjs should count/report them (F19).
 - X-PROBE-COLLECTIONS: 13/17 cases notPorted (LinkedHashMap, TreeMap, PriorityQueue, ...). Decision F26: JDK helpers are ported only when LT code needs them; wire the probe case in the step that introduces the helper.
+- F30: CORE-0213 was verified since F13 but DemoTagger.js was only added in F30 (review F30 #7).

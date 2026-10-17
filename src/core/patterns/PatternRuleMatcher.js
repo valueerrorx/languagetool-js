@@ -1,7 +1,6 @@
 // org.languagetool.rules.patterns.PatternRuleMatcher (match driver, immunization, createRuleMatch, message/suggestion formatting)
 import { Exception, IOException, NullPointerException, RuntimeException } from '../../lib/java/errors.js';
-import { notPortedYet } from '../language/components.js';
-import { arrayGet, arraySet, listGet } from '../../lib/java/arrays.js';
+import { arrayGet, arraySet, copyOfRange, listGet } from '../../lib/java/arrays.js';
 import { Integer } from '../../lib/java/int.js';
 import { Character } from '../../lib/java/Character.js';
 import { Pattern } from '../../lib/java/regex/index.js';
@@ -10,6 +9,7 @@ import { RuleMatch } from '../rules/model/RuleMatch.js';
 import { RuleWithMaxFilter } from '../rules/RuleWithMaxFilter.js';
 import { isAllUppercase as stringToolsIsAllUppercase, startsWithUppercase as stringToolsStartsWithUppercase, isPositiveNumber, isEmpty, addSpace } from '../text/StringTools.js';
 import { AbstractPatternRulePerformer } from './AbstractPatternRulePerformer.js';
+import { RuleFilterEvaluator } from './RuleFilterEvaluator.js';
 
 const PLEASE_SPELL_ME = '<pleasespellme/>'; // Java: PatternRuleHandler.PLEASE_SPELL_ME (import would be circular)
 const MISTAKE = '<mistake/>';
@@ -139,8 +139,9 @@ export class PatternRuleMatcher extends AbstractPatternRulePerformer {
           clearMsg, shortErrMessage, startsWithUppercase, isAllUppercase, suggestionsOutMsg, true);
         ruleMatch.setType(rule.getType());
         if (rule.getFilter() !== null) {
-          // Java: new RuleFilterEvaluator(rule.getFilter()).runFilter(rule.getFilterArguments(), ruleMatch, Arrays.copyOfRange(tokens, firstMatchToken, lastMatchToken + 1), firstMatchToken, Ints.asList(tokenPositions))
-          throw notPortedYet('RuleFilterEvaluator (F30)');
+          const evaluator = new RuleFilterEvaluator(rule.getFilter());
+          const patternTokens = copyOfRange(tokens, firstMatchToken, lastMatchToken + 1);
+          return evaluator.runFilter(rule.getFilterArguments(), ruleMatch, patternTokens, firstMatchToken, tokenPositions);
         } else {
           return ruleMatch;
         }
