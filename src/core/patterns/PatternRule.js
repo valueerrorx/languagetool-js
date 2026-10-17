@@ -3,9 +3,9 @@ import { Objects } from '../../lib/java/Objects.js';
 import { RuleMatch } from '../rules/model/RuleMatch.js';
 import { SENTENCE_END_TAGNAME } from '../JLanguageToolConstants.js';
 import { isEmpty } from '../text/StringTools.js';
-import { notPortedYet } from '../language/components.js';
 import { AbstractTokenBasedRule } from './AbstractTokenBasedRule.js';
 import { PatternRuleId } from './PatternRuleId.js';
+import { PatternRuleMatcher } from './PatternRuleMatcher.js';
 import { PatternRuleXmlCreator } from './PatternRuleXmlCreator.js';
 
 // Java: PatternRule
@@ -126,7 +126,8 @@ export class PatternRule extends AbstractTokenBasedRule {
   match(sentence) {
     if (this.canBeIgnoredFor(sentence)) return RuleMatch.EMPTY_ARRAY;
 
-    throw notPortedYet('PatternRuleMatcher (F27)');
+    const matcher = new PatternRuleMatcher(this, this.useList);
+    return this.checkForAntiPatterns(sentence, matcher, matcher.match(sentence));
   }
 
   // Java: PatternRule#checkForAntiPatterns(AnalyzedSentence,RuleMatcher,RuleMatch[])
