@@ -201,7 +201,7 @@ function decodeDocument(bytes) {
         kind = 'label';
         label = e.toLowerCase();
       } catch {
-        throw new UnsupportedEncodingException(e);
+        throw new UnsupportedEncodingException(m[1] || m[2]);
       }
     }
   }
@@ -900,8 +900,8 @@ class XmlParser {
   scanEndElement() {
     const expected = this.openNames[this.openNames.length - 1];
     const at = this.lineCol();
-    const name = this.scanName();
-    if (name !== expected) {
+    const name = expected;
+    if (!this.skipString(expected)) {
       throw this.fatal(`The element type "${expected}" must be terminated by the matching end-tag "</${expected}>".`, null, at);
     }
     this.skipSpaces();

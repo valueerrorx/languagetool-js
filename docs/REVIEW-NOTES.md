@@ -23,3 +23,4 @@
 - .gitignore entries must be anchored (`/resources/`), otherwise source/test/golden directories named `resources` are silently untracked.
 - Adapters must not fake a class whose constructor is notPorted (no `Object.create(JLanguageTool.prototype)`); let notPorted propagate.
 - No local copies of src/lib/java helpers (e.g. listGet); import the shared one.
+- Java string semantics (javaSplit, Java regex) apply also in test code that mirrors Java test helpers.

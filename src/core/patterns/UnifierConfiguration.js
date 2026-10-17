@@ -1,4 +1,4 @@
-// org.languagetool.rules.patterns.UnifierConfiguration (equivalence types and features for unification; createUnifier comes with F28)
+// org.languagetool.rules.patterns.UnifierConfiguration (equivalence types and features for unification)
 import { JavaConcurrentHashMap } from '../../lib/java/collections/JavaConcurrentHashMap.js';
 import { registerComponent } from '../language/components.js';
 import { registerClass } from '../resources/ClassBroker.js';
@@ -50,7 +50,7 @@ export class UnifierConfiguration {
 
   // Java: UnifierConfiguration#createUnifier()
   createUnifier() {
-    return new Unifier(this.equivalenceTypes, this.equivalenceFeatures); // stub until F28: methods throw notPorted
+    return new Unifier(this.equivalenceTypes, this.equivalenceFeatures);
   }
 }
 

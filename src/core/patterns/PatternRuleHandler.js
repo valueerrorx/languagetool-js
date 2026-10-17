@@ -1,6 +1,7 @@
 // org.languagetool.rules.patterns.PatternRuleHandler (SAX handler that turns grammar.xml into PatternRule/RegexPatternRule objects)
 import { IllegalStateException, NullPointerException, RuntimeException } from '../../lib/java/errors.js';
 import { listGet } from '../../lib/java/arrays.js';
+import { JavaHashMap } from '../../lib/java/collections/JavaHashMap.js';
 import { Integer } from '../../lib/java/int.js';
 import { Pattern } from '../../lib/java/regex/index.js';
 import { StringBuilder, javaSplit } from '../../lib/java/strings.js';
@@ -712,13 +713,13 @@ export class PatternRuleHandler extends XMLRuleHandler {
         this.inUnificationDef = false;
         break;
       case FEATURE:
-        this.equivalenceFeatures.set(this.uFeature, this.uTypeList);
+        this.equivalenceFeatures.put(this.uFeature, this.uTypeList);
         this.uTypeList = [];
         break;
       case UNIFY: {
         this.inUnification = false;
         // clear the features...
-        this.equivalenceFeatures = new Map();
+        this.equivalenceFeatures = new JavaHashMap();
         // set negation on the last token only!
         const lastElement = this.patternTokens.length - 1;
         listGet(this.patternTokens, lastElement).setLastInUnification();

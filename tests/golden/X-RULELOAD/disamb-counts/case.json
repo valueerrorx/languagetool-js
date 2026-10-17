@@ -1,0 +1,36 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "disambiguation.xml rule counts de-DE/en-US/fr",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-file",
+    "lang": "de-DE",
+    "offset": 0,
+    "limit": 0
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-file",
+    "lang": "en-US",
+    "offset": 0,
+    "limit": 0
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-file",
+    "lang": "fr",
+    "offset": 0,
+    "limit": 0
+   }
+  }
+ ]
+}

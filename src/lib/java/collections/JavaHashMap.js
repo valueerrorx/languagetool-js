@@ -93,6 +93,37 @@ export class JavaHashMap {
     return null;
   }
 
+  // Java: HashMap#clear() (table capacity is kept)
+  clear() {
+    if (this.table !== null) for (let i = 0; i < this.table.length; i++) this.table[i] = [];
+    this.size_ = 0;
+  }
+
+  // Java: HashMap#computeIfAbsent(Object,Function); JDK 17: resize before insert when size > threshold, new node at bin head, null result not stored
+  computeIfAbsent(key, fn) {
+    if (this.size_ > this.threshold || this.table === null || this.table.length === 0) this.resize();
+    const hash = JavaHashMap.hash(key);
+    const bin = this.table[hash & (this.table.length - 1)];
+    let old = null;
+    for (const node of bin) {
+      if (node.hash === hash && Objects.equals(node.key, key)) {
+        old = node;
+        if (node.value !== null) return node.value;
+        break;
+      }
+    }
+    const v = fn(key);
+    if (v === null || v === undefined) return null;
+    if (old !== null) {
+      old.value = v;
+      return v;
+    }
+    bin.unshift({ hash, key, value: v });
+    if (bin.length >= 8) this.treeifyBin(); // Java: binCount >= TREEIFY_THRESHOLD - 1 (binCount = nodes before insert)
+    ++this.size_;
+    return v;
+  }
+
   // Java: HashMap#size()
   size() {
     return this.size_;

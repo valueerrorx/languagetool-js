@@ -1,0 +1,693 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "disambig action values with and without postag/wd",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"add\" postag=\"NN\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"remove\" postag=\"NN\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"replace\" postag=\"NN\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"filter\" postag=\"NN\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"filterall\" postag=\"NN\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"unify\" postag=\"NN\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"immunize\" postag=\"NN\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"ignore_spelling\" postag=\"NN\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"addchunk\" postag=\"NN\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"ADD\" postag=\"NN\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"Remove\" postag=\"NN\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"FilterAll\" postag=\"NN\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"IGNORE_SPELLING\" postag=\"NN\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"bogus\" postag=\"NN\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"\" postag=\"NN\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"ignore-spelling\" postag=\"NN\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\" add\" postag=\"NN\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"add\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"remove\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"replace\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"filter\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"filterall\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"unify\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"immunize\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"ignore_spelling\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"addchunk\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"ADD\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"Remove\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"FilterAll\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"IGNORE_SPELLING\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"bogus\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"ignore-spelling\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\" add\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"add\"><wd lemma=\"foo\" pos=\"NN\">foo</wd></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"remove\"><wd lemma=\"foo\" pos=\"NN\">foo</wd></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"replace\"><wd lemma=\"foo\" pos=\"NN\">foo</wd></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"filter\"><wd lemma=\"foo\" pos=\"NN\">foo</wd></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"filterall\"><wd lemma=\"foo\" pos=\"NN\">foo</wd></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"unify\"><wd lemma=\"foo\" pos=\"NN\">foo</wd></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"immunize\"><wd lemma=\"foo\" pos=\"NN\">foo</wd></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"ignore_spelling\"><wd lemma=\"foo\" pos=\"NN\">foo</wd></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"addchunk\"><wd lemma=\"foo\" pos=\"NN\">foo</wd></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"ADD\"><wd lemma=\"foo\" pos=\"NN\">foo</wd></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"Remove\"><wd lemma=\"foo\" pos=\"NN\">foo</wd></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"FilterAll\"><wd lemma=\"foo\" pos=\"NN\">foo</wd></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"IGNORE_SPELLING\"><wd lemma=\"foo\" pos=\"NN\">foo</wd></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"bogus\"><wd lemma=\"foo\" pos=\"NN\">foo</wd></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"\"><wd lemma=\"foo\" pos=\"NN\">foo</wd></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"ignore-spelling\"><wd lemma=\"foo\" pos=\"NN\">foo</wd></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\" add\"><wd lemma=\"foo\" pos=\"NN\">foo</wd></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig postag=\"NN\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig postag=\"\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig postag=\"NN|VB\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"remove\" postag=\"NN\"/><disambig action=\"add\" postag=\"VB\"/></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"filter\"><match no=\"1\" postag=\"N.*\" postag_regexp=\"yes\">x</match></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"filter\"><match no=\"1\"/></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"filter\"><match no=\"1\">lemma</match></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"filter\"><match>lemma</match></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"filter\"><match no=\"2\"/></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"filter\"><match no=\"0\"/></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"filter\"><match no=\"-1\"/></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"filter\"><match no=\"abc\"/></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"filter\"><match no=\"\"/></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"filter\"><match no=\"99999999999\"/></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"filter\"><match no=\"1\" case_conversion=\"allupper\" include_skipped=\"all\" setpos=\"yes\" suppress_mispelled=\"yes\" postag_replace=\"X\" regexp_match=\"a(b)\" regexp_replace=\"$1\">z</match></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"filter\"><match no=\"1\" case_conversion=\"bogus\"/></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"filter\"><match no=\"1\" include_skipped=\"bogus\"/></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"filter\"><match no=\"1\" case_conversion=\"STARTUPPER\" include_skipped=\"Following\"/></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"filter\"><match no=\"1\" case_conversion=\"startlower\"/></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"filter\"><match no=\"1\" case_conversion=\"nothing\"/></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"filter\"><match no=\"1\" case_conversion=\"preserve\"/></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"filter\"><match no=\"1\" case_conversion=\"alllower\" include_skipped=\"following\"/></disambig></rule>\n</rules>\n"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "disamb-inline",
+    "filename": "inline-disamb.xml",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><disambig action=\"filter\"><match no=\"1\" regexp_match=\"(\" regexp_replace=\"x\"/></disambig></rule>\n</rules>\n"
+   }
+  }
+ ]
+}

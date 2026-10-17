@@ -12,3 +12,11 @@ export function listGet(list, i) {
   if (i < 0 || i >= list.length) throw new IndexOutOfBoundsException(`Index ${i} out of bounds for length ${list.length}`);
   return list[i];
 }
+
+// Java: ArrayList#set(int,Object)
+export function listSet(list, i, v) {
+  if (i < 0 || i >= list.length) throw new IndexOutOfBoundsException(`Index ${i} out of bounds for length ${list.length}`);
+  const old = list[i];
+  list[i] = v;
+  return old;
+}

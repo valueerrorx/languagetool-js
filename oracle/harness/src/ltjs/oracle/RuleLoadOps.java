@@ -388,6 +388,8 @@ final class RuleLoadOps {
       case "patternRules": return patternRules(a);
       case "inline": return inline(a);
       case "builder": return builder(a);
+      case "disamb-file": return disambFile(a);
+      case "disamb-inline": return disambInline(a);
       default: throw new IllegalArgumentException("unknown mode: " + mode);
     }
   }
@@ -574,6 +576,106 @@ final class RuleLoadOps {
     return w;
   }
 
+  // ---- disambiguation rule loading (F28): {mode:"disamb-file", lang, offset, limit, detail} / {mode:"disamb-inline", lang, xml, filename, nullStream} ----
+
+  private static final Map<String, List<DisambiguationPatternRule>> DCACHE = new HashMap<>();
+
+  static Map<String, Object> disambDump(DisambiguationPatternRule r, boolean detail) {
+    Map<String, Object> o = new LinkedHashMap<>();
+    o.put("class", r.getClass().getSimpleName());
+    o.put("id", r.getId());
+    o.put("subId", r.getSubId());
+    o.put("fullId", r.getFullId());
+    o.put("description", r.getDescription());
+    o.put("action", enm(r.getAction()));
+    o.put("disambiguatedPOS", r.getDisambiguatedPOS());
+    o.put("matchElement", matchDump(r.getMatchElement()));
+    AnalyzedToken[] nr = r.getNewTokenReadings();
+    if (nr == null) o.put("newTokenReadings", null);
+    else {
+      List<Object> l = new ArrayList<>();
+      for (AnalyzedToken t : nr) l.add(t == null ? null : Arrays.asList(t.getToken(), t.getPOSTag(), t.getLemma()));
+      o.put("newTokenReadings", l);
+    }
+    o.put("start", r.getStartPositionCorrection());
+    o.put("end", r.getEndPositionCorrection());
+    o.put("message", r.getMessage());
+    o.put("suggestionsOutMsg", r.getSuggestionsOutMsg());
+    o.put("sourceFile", r.getSourceFile());
+    o.put("line", r.getXmlLineNumber());
+    o.put("sentStart", r.isSentStart());
+    o.put("testUnification", r.isTestUnification());
+    o.put("getUnified", r.isGetUnified());
+    o.put("groupsOrUnification", r.isGroupsOrUnification());
+    o.put("filterClass", r.getFilter() == null ? null : r.getFilter().getClass().getName());
+    o.put("filterArgs", r.getFilterArguments());
+    o.put("tokenCount", r.getPatternTokens() == null ? null : r.getPatternTokens().size());
+    o.put("maxSpanTokens", r.getPatternTokens() == null ? null : fld(r, AbstractTokenBasedRule.class, "maxSpanTokens"));
+    o.put("minTokenCount", r.getPatternTokens() == null ? null : fld(r, AbstractTokenBasedRule.class, "minTokenCount"));
+    List<DisambiguationPatternRule> aps = r.getAntiPatterns();
+    o.put("antiPatterns", aps.size());
+    List<Object> apIds = new ArrayList<>();
+    for (DisambiguationPatternRule a : aps) apIds.add(a.getId());
+    o.put("antiPatternIds", apIds);
+    List<Object> ex = new ArrayList<>();
+    for (org.languagetool.tagging.disambiguation.rules.DisambiguatedExample e : r.getExamples()) ex.add(Arrays.asList(e.getExample(), e.getAmbiguous(), e.getDisambiguated()));
+    o.put("examples", ex);
+    o.put("untouchedExamples", new ArrayList<>(r.getUntouchedExamples()));
+    if (detail) {
+      if (r.getPatternTokens() != null) o.put("tokens", dumpTokens(r.getPatternTokens()));
+      List<Object> ad = new ArrayList<>();
+      for (DisambiguationPatternRule a : aps) ad.add(disambDump(a, true));
+      o.put("antiPatternRules", ad);
+    }
+    return o;
+  }
+
+  private static Object disambFile(JsonNode a) {
+    Language l = lang(a.get("lang").asText());
+    Map<String, Object> w = new LinkedHashMap<>();
+    try {
+      String key = l.getShortCodeWithCountryAndVariant();
+      List<DisambiguationPatternRule> rules = DCACHE.get(key);
+      if (rules == null) {
+        org.languagetool.tagging.disambiguation.rules.DisambiguationRuleLoader loader = new org.languagetool.tagging.disambiguation.rules.DisambiguationRuleLoader();
+        String nameWithLocale = l.getShortCode() + "/disambiguation.xml";
+        String nameInResourceDir = JLanguageTool.getDataBroker().getResourceDir() + "/" + nameWithLocale;
+        rules = loader.getRules(loader.getClass().getResourceAsStream(nameInResourceDir), l, nameWithLocale);
+        DCACHE.put(key, rules);
+      }
+      int off = a.has("offset") ? a.get("offset").asInt() : 0;
+      int lim = a.has("limit") ? a.get("limit").asInt() : Integer.MAX_VALUE;
+      boolean detail = !a.has("detail") || a.get("detail").asBoolean();
+      w.put("total", rules.size());
+      List<Object> out = new ArrayList<>();
+      for (int i = off; i < rules.size() && i < off + lim; i++) out.add(disambDump(rules.get(i), detail));
+      w.put("rules", out);
+    } catch (Throwable t) {
+      w.put("error", err(t).get("error"));
+    }
+    return w;
+  }
+
+  private static Object disambInline(JsonNode a) {
+    Language l = lang(a.has("lang") ? a.get("lang").asText() : "en-US");
+    String filename = a.has("filename") ? a.get("filename").asText() : "inline-disamb.xml";
+    boolean detail = !a.has("detail") || a.get("detail").asBoolean();
+    Map<String, Object> w = new LinkedHashMap<>();
+    if (a.has("unifier") && a.get("unifier").asBoolean()) resetUnifierConfig(l, "disambiguationUnifierConfig");
+    try {
+      InputStream in = a.has("nullStream") && a.get("nullStream").asBoolean() ? null
+          : new ByteArrayInputStream(a.get("xml").asText().getBytes(StandardCharsets.UTF_8));
+      List<DisambiguationPatternRule> rules = new org.languagetool.tagging.disambiguation.rules.DisambiguationRuleLoader().getRules(in, l, filename);
+      List<Object> out = new ArrayList<>();
+      for (DisambiguationPatternRule r : rules) out.add(disambDump(r, detail));
+      w.put("rules", out);
+    } catch (Throwable t) {
+      w.put("error", err(t).get("error"));
+    }
+    if (a.has("unifier") && a.get("unifier").asBoolean()) w.put("unifier", unifierDump(l.getDisambiguationUnifierConfiguration()));
+    return w;
+  }
+
   private static final String[] POS_PROBES = {"NN", "UNKNOWN", "N|B", "N", "B", "A", "VB", "NNS", "", "N\\", "unknown", "A|UNKNOWN", "x"};
 
   // option "posDetail": per pattern token PosToken.posUnknown and POS matcher possible values / probe results
@@ -612,16 +714,19 @@ final class RuleLoadOps {
   }
 
   // option "unifier": fresh UnifierConfiguration per request (shared Language instance), dumped after loading
-  private static void resetUnifierConfig(Language l) {
+  private static void resetUnifierConfig(Language l) { resetUnifierConfig(l, "unifierConfig"); }
+
+  private static void resetUnifierConfig(Language l, String field) {
     try {
-      Field f = Language.class.getDeclaredField("unifierConfig");
+      Field f = Language.class.getDeclaredField(field);
       f.setAccessible(true);
       f.set(l, new org.languagetool.rules.patterns.UnifierConfiguration());
     } catch (Exception e) { throw new RuntimeException(e); }
   }
 
-  private static Object unifierDump(Language l) {
-    org.languagetool.rules.patterns.UnifierConfiguration c = l.getUnifierConfiguration();
+  private static Object unifierDump(Language l) { return unifierDump(l.getUnifierConfiguration()); }
+
+  private static Object unifierDump(org.languagetool.rules.patterns.UnifierConfiguration c) {
     Map<String, Object> o = new LinkedHashMap<>();
     List<Object> feats = new ArrayList<>();
     for (Map.Entry<String, List<String>> e : c.getEquivalenceFeatures().entrySet()) {

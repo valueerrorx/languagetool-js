@@ -1,6 +1,7 @@
 // org.languagetool.rules.patterns.XMLRuleHandler (SAX handler base: token/exception/phrase/match bookkeeping shared by the rule loaders)
 import { IndexOutOfBoundsException, NullPointerException, RuntimeException, SAXException } from '../../lib/java/errors.js';
 import { listGet } from '../../lib/java/arrays.js';
+import { JavaHashMap } from '../../lib/java/collections/JavaHashMap.js';
 import { Integer } from '../../lib/java/int.js';
 import { Character } from '../../lib/java/Character.js';
 import { Locale } from '../../lib/java/Locale.js';
@@ -228,7 +229,7 @@ export class XMLRuleHandler {
     this.uType = '';
 
     this.uTypeList = [];
-    this.equivalenceFeatures = new Map();
+    this.equivalenceFeatures = new JavaHashMap();
 
     this.internedMatchers = new Map();
     this.internedPos = new Map();

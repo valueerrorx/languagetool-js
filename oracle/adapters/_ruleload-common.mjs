@@ -69,7 +69,7 @@ export function tokenDump(t) {
   o.phrase = t.getPhraseName();
   o.partOfPhrase = t.isPartOfPhrase();
   o.unified = t.isUnified();
-  o.uniFeatures = t.getUniFeatures() === null ? null : Object.fromEntries([...t.getUniFeatures().entries()]);
+  o.uniFeatures = t.getUniFeatures() === null ? null : Object.fromEntries(t.getUniFeatures().entrySet());
   o.uniNegated = t.isUniNegated();
   o.lastInUnification = t.isLastInUnification();
   o.unificationNeutral = t.isUnificationNeutral();

@@ -5,11 +5,12 @@ import path from 'node:path';
 import { getDataBroker } from '../../src/core/resources/LtStatics.js';
 import { PatternRuleBuilderHelper } from '../../src/core/patterns/PatternRuleBuilderHelper.js';
 import { PatternRuleLoader } from '../../src/core/patterns/PatternRuleLoader.js';
+import { DisambiguationRuleLoader } from '../../src/core/disambiguation/DisambiguationRuleLoader.js';
 import { Languages } from '../../src/core/Languages.js';
 import { JLanguageTool } from '../../src/core/JLanguageTool.js';
 import { File } from '../../src/lib/java/io/File.js';
 import { UnifierConfiguration } from '../../src/core/patterns/UnifierConfiguration.js';
-import { err, buildToken, tokenDump, lang, ruleDump, compactDump, groupSizes, features } from './_ruleload-common.mjs';
+import { err, dumpTokens, matchDump, buildToken, tokenDump, lang, ruleDump, compactDump, groupSizes, features } from './_ruleload-common.mjs';
 
 const CACHE = new Map();
 
@@ -184,6 +185,95 @@ function inline(a) {
   return w;
 }
 
+// ---- disambiguation rule loading (F28) ----
+const DCACHE = new Map();
+
+// Java: RuleLoadOps#disambDump(DisambiguationPatternRule,boolean)
+function disambDump(r, detail) {
+  const o = {};
+  o.class = r.constructor.name;
+  o.id = r.getId();
+  o.subId = r.getSubId();
+  o.fullId = r.getFullId();
+  o.description = r.getDescription();
+  o.action = r.getAction() === null ? null : r.getAction().toString();
+  o.disambiguatedPOS = r.getDisambiguatedPOS();
+  o.matchElement = matchDump(r.getMatchElement());
+  const nr = r.getNewTokenReadings();
+  o.newTokenReadings = nr === null || nr === undefined ? null : nr.map((t) => (t === null ? null : [t.getToken(), t.getPOSTag(), t.getLemma()]));
+  o.start = r.getStartPositionCorrection();
+  o.end = r.getEndPositionCorrection();
+  o.message = r.getMessage();
+  o.suggestionsOutMsg = r.getSuggestionsOutMsg();
+  o.sourceFile = r.getSourceFile();
+  o.line = r.getXmlLineNumber();
+  o.sentStart = r.isSentStart();
+  o.testUnification = r.isTestUnification();
+  o.getUnified = r.isGetUnified();
+  o.groupsOrUnification = r.isGroupsOrUnification();
+  o.filterClass = r.getFilter() === null ? null : r.getFilter().constructor.FQCN;
+  o.filterArgs = r.getFilterArguments();
+  o.tokenCount = r.getPatternTokens() === null ? null : r.getPatternTokens().length;
+  o.maxSpanTokens = r.getPatternTokens() === null ? null : r.maxSpanTokens;
+  o.minTokenCount = r.getPatternTokens() === null ? null : r.minTokenCount;
+  const aps = r.getAntiPatterns();
+  o.antiPatterns = aps.length;
+  o.antiPatternIds = aps.map((a) => a.getId());
+  o.examples = r.getExamples().map((e) => [e.getExample(), e.getAmbiguous(), e.getDisambiguated()]);
+  o.untouchedExamples = r.getUntouchedExamples().slice();
+  if (detail) {
+    if (r.getPatternTokens() !== null) o.tokens = dumpTokens(r.getPatternTokens());
+    o.antiPatternRules = aps.map((a) => disambDump(a, true));
+  }
+  return o;
+}
+
+// Java: RuleLoadOps#disambFile(JsonNode)
+function disambFile(a) {
+  const l = lang(a.lang);
+  const w = {};
+  try {
+    const key = l.getShortCodeWithCountryAndVariant();
+    let rules = DCACHE.get(key);
+    if (rules === undefined) {
+      const loader = new DisambiguationRuleLoader();
+      const nameWithLocale = `${l.getShortCode()}/disambiguation.xml`;
+      const nameInResourceDir = `${getDataBroker().getResourceDir()}/${nameWithLocale}`;
+      rules = loader.getRules(getDataBroker().getAsStream(nameInResourceDir), l, nameWithLocale);
+      DCACHE.set(key, rules);
+    }
+    const off = a.offset !== undefined ? a.offset : 0;
+    const lim = a.limit !== undefined ? a.limit : 2147483647;
+    const detail = a.detail === undefined || a.detail === true;
+    w.total = rules.length;
+    const out = [];
+    for (let i = off; i < rules.length && i < off + lim; i++) out.push(disambDump(rules[i], detail));
+    w.rules = out;
+  } catch (t) {
+    w.error = err(t).error;
+  }
+  return w;
+}
+
+// Java: RuleLoadOps#disambInline(JsonNode)
+function disambInline(a) {
+  const l = lang(a.lang !== undefined ? a.lang : 'en-US');
+  const filename = a.filename !== undefined ? a.filename : 'inline-disamb.xml';
+  const detail = a.detail === undefined || a.detail === true;
+  const unifier = a.unifier === true;
+  const w = {};
+  if (unifier) l.disambiguationUnifierConfig = new UnifierConfiguration();
+  try {
+    const stream = a.nullStream === true ? null : Buffer.from(a.xml, 'utf8');
+    const rules = new DisambiguationRuleLoader().getRules(stream, l, filename);
+    w.rules = rules.map((r) => disambDump(r, detail));
+  } catch (t) {
+    w.error = err(t).error;
+  }
+  if (unifier) w.unifier = unifierDump(l, true);
+  return w;
+}
+
 const POS_PROBES = ['NN', 'UNKNOWN', 'N|B', 'N', 'B', 'A', 'VB', 'NNS', '', 'N\\', 'unknown', 'A|UNKNOWN', 'x'];
 // Java: RuleLoadOps#posDetail(PatternToken)
 function posDetail(t) {
@@ -210,8 +300,8 @@ function posDetail(t) {
 }
 
 // Java: RuleLoadOps#unifierDump(Language)
-function unifierDump(l) {
-  const c = l.getUnifierConfiguration();
+function unifierDump(l, disamb = false) {
+  const c = disamb ? l.getDisambiguationUnifierConfiguration() : l.getUnifierConfiguration();
   const features = [];
   for (const [k, v] of c.getEquivalenceFeatures().entrySet()) features.push([k, [...v]]);
   const types = [];
@@ -281,6 +371,8 @@ export function run(a) {
     case 'tokens': return tokens(a);
     case 'patternRules': return patternRules(a);
     case 'inline': return inline(a);
+    case 'disamb-file': return disambFile(a);
+    case 'disamb-inline': return disambInline(a);
     default: throw new Error(`unknown mode: ${a.mode}`);
   }
 }
