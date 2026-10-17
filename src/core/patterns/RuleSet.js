@@ -1,10 +1,6 @@
 // org.languagetool.rules.patterns.RuleSet (rule list with token/lemma hints for per-sentence preselection)
 import { UnsupportedOperationException } from '../../lib/java/errors.js';
-
-// Java: Collections.unmodifiableList(List); frozen copy (callers always pass a fresh list)
-function unmodifiable(list) {
-  return Object.freeze(list.slice());
-}
+import { unmodifiableList } from '../../lib/java/collections/Collections.js';
 
 export class RuleSet {
   static FQCN = 'org.languagetool.rules.patterns.RuleSet';
@@ -34,7 +30,7 @@ export class RuleSet {
 
   // Java: RuleSet#plain(List)
   static plain(rules) {
-    const allRules = unmodifiable(rules);
+    const allRules = unmodifiableList(rules);
     return new (class extends RuleSet {
       allRules() {
         return allRules;
@@ -58,7 +54,7 @@ export class RuleSet {
 
   // Java: RuleSet#hinted(List,boolean); BitSets as sorted index arrays / byte masks
   static hinted(rules, withLemmaHints) {
-    const allRules = unmodifiable(rules);
+    const allRules = unmodifiableList(rules);
     const byToken = new Map();
     const byLemma = new Map();
     const unclassified = [];

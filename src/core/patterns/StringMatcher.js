@@ -1,8 +1,10 @@
-// org.languagetool.rules.patterns.StringMatcher (text pattern + matching mode); sequence/postag fast paths come with F26
+// Java: org.languagetool.rules.patterns.StringMatcher (text pattern + matching modes incl. fast paths)
 import { Pattern, PatternSyntaxException } from '../../lib/java/regex/index.js';
-import { AssertionError, RuntimeException } from '../../lib/java/errors.js';
+import { AssertionError, RuntimeException, NullPointerException, NumberFormatException } from '../../lib/java/errors.js';
+import { Integer } from '../../lib/java/int.js';
 import {
-  getType, charCount, isLetterOrDigit, DASH_PUNCTUATION, OTHER_PUNCTUATION, INITIAL_QUOTE_PUNCTUATION, FINAL_QUOTE_PUNCTUATION,
+  getType, charCount, isLetterOrDigit, isLetter, isSurrogate, toLowerCase, toUpperCase, UPPERCASE_LETTER, LOWERCASE_LETTER,
+  TITLECASE_LETTER, DECIMAL_DIGIT_NUMBER, OTHER_NUMBER, DASH_PUNCTUATION, OTHER_PUNCTUATION, INITIAL_QUOTE_PUNCTUATION, FINAL_QUOTE_PUNCTUATION,
 } from '../../lib/java/Character.js';
 import { CASE_INSENSITIVE_ORDER, equalsIgnoreCase, charAt, codePointAt } from '../../lib/java/strings.js';
 import { JavaHashSet } from '../../lib/java/collections/JavaHashSet.js';
@@ -43,6 +45,7 @@ export class StringMatcher {
 
   // Java: StringMatcher(String,boolean,boolean) (private; subclasses are the anonymous classes below)
   constructor(pattern, isRegExp, caseSensitive) {
+    if (pattern === null || pattern === undefined) throw new NullPointerException(); // Java: StringInterner.intern(null)
     this.pattern = pattern;
     this.caseSensitive = caseSensitive;
     this.isRegExp = isRegExp;
@@ -215,9 +218,482 @@ export class StringMatcher {
   }
 }
 
-// Java: StringMatcher#tryCreateSequenceMatcher(String,boolean,Pattern); notPorted (PLAN.md F26): RunSequenceMatcher not built, null = Java's "unsupported" result, regex path matches the same strings
-function tryCreateSequenceMatcher() {
-  return null;
+// Java: StringMatcher#PROPERTY_PREDICATES
+const PROPERTY_PREDICATES = new Map([
+  ['L', (cp) => isLetter(cp)],
+  ['Ll', (cp) => getType(cp) === LOWERCASE_LETTER],
+  ['Lu', (cp) => getType(cp) === UPPERCASE_LETTER],
+  ['N', (cp) => getType(cp) >= DECIMAL_DIGIT_NUMBER && getType(cp) <= OTHER_NUMBER],
+  ['P', (cp) => isPunctuation(cp)],
+]);
+
+// Java: StringMatcher#isLineTerminator(int)
+function isLineTerminator(cp) {
+  return cp === 0x0a || cp === 0x0d || cp === 0x85 || cp === 0x2028 || cp === 0x2029;
+}
+
+// Java: StringMatcher#ANY_CODE_POINT / ASCII_DIGIT / ASCII_WORD / ASCII_SPACE
+const ANY_CODE_POINT = (cp) => !isLineTerminator(cp);
+const ASCII_DIGIT = (cp) => cp >= 0x30 && cp <= 0x39;
+const ASCII_WORD = (cp) => (cp >= 0x61 && cp <= 0x7a) || (cp >= 0x41 && cp <= 0x5a) || (cp >= 0x30 && cp <= 0x39) || cp === 0x5f;
+const ASCII_SPACE = (cp) => cp === 0x20 || cp === 0x09 || cp === 0x0a || cp === 0x0b || cp === 0x0c || cp === 0x0d;
+
+// Java: StringMatcher#tryCreateSequenceMatcher(String,boolean,Pattern)
+function tryCreateSequenceMatcher(pattern, caseSensitive, regexFallback) {
+  let regexp = pattern;
+  let effectiveCaseSensitive = caseSensitive;
+  // A leading inline flag that disables case-insensitivity applies to the rest of the pattern.
+  if (regexp.startsWith('(?-i)')) {
+    regexp = regexp.substring(5);
+    effectiveCaseSensitive = true;
+  }
+  const alternatives = parseAlternatives(regexp, effectiveCaseSensitive);
+  if (alternatives === null) {
+    return null;
+  }
+  const runAlternatives = [];
+  for (const terms of alternatives) {
+    const runAlternative = toRunAlternative(terms);
+    if (runAlternative === null) {
+      return null; // more than one quantified atom: let java.util.regex handle it
+    }
+    runAlternatives.push(runAlternative);
+  }
+  // Built with the original case-sensitivity flag; the effective flag is baked into the predicates.
+  return runSequenceMatcher(pattern, caseSensitive, runAlternatives, regexFallback);
+}
+
+const EMPTY_PREDICATES = [];
+
+// Java: StringMatcher#toRunAlternative(List)
+function toRunAlternative(terms) {
+  let runIndex = -1;
+  for (let i = 0; i < terms.length; i++) {
+    const term = terms[i];
+    if (term.min !== 1 || term.max !== 1) {
+      if (runIndex >= 0) {
+        return null;
+      }
+      runIndex = i;
+    }
+  }
+  if (runIndex < 0) {
+    const all = new Array(terms.length);
+    for (let i = 0; i < terms.length; i++) {
+      all[i] = toCharPredicate(terms[i].predicate);
+    }
+    return new RunAlternative(all, null, 0, 0, EMPTY_PREDICATES);
+  }
+  const prefix = new Array(runIndex);
+  for (let i = 0; i < runIndex; i++) {
+    prefix[i] = toCharPredicate(terms[i].predicate);
+  }
+  const run = terms[runIndex];
+  const suffix = new Array(terms.length - runIndex - 1);
+  for (let i = 0; i < suffix.length; i++) {
+    suffix[i] = toCharPredicate(terms[runIndex + 1 + i].predicate);
+  }
+  return new RunAlternative(prefix, toCharPredicate(run.predicate), run.min, run.max, suffix);
+}
+
+// Java: StringMatcher#toCharPredicate(IntPredicate)
+function toCharPredicate(predicate) {
+  const ascii = new Array(128);
+  for (let c = 0; c < ascii.length; c++) {
+    ascii[c] = predicate(c);
+  }
+  return new CharPredicate(ascii, predicate);
+}
+
+// Java: StringMatcher#parseAlternatives(String,boolean)
+function parseAlternatives(regexp, caseSensitive) {
+  let r = regexp;
+  if (r.startsWith('\\b')) {
+    return null; // \b semantics depend on the first char; let java.util.regex handle it
+  }
+  if (r.startsWith('^')) {
+    r = r.substring(1);
+  }
+  if (r.endsWith('\\b') && !r.endsWith('\\\\b')) {
+    return null;
+  }
+  if (r.endsWith('$') && !r.endsWith('\\$')) {
+    r = r.substring(0, r.length - 1);
+  }
+  const parts = splitTopLevelAlternatives(r);
+  if (parts === null) {
+    return null;
+  }
+  const result = [];
+  for (const part of parts) {
+    const terms = parseSequence(part, caseSensitive);
+    if (terms === null) {
+      return null;
+    }
+    result.push(terms);
+  }
+  return result;
+}
+
+// Java: StringMatcher#parseSequence(String,boolean)
+function parseSequence(s, caseSensitive) {
+  const terms = [];
+  let pos = 0;
+  const len = s.length;
+  while (pos < len) {
+    const c = s.charAt(pos);
+    let predicate;
+    let next;
+    if (c === '\\') {
+      if (pos + 1 >= len) return null;
+      const escaped = s.charAt(pos + 1);
+      if (escaped === 'p') {
+        if (pos + 2 >= len || s.charAt(pos + 2) !== '{') return null;
+        const close = s.indexOf('}', pos + 3);
+        if (close < 0) return null;
+        const base = PROPERTY_PREDICATES.get(s.substring(pos + 3, close)) ?? null;
+        if (base === null) return null;
+        const name = s.substring(pos + 3, close);
+        predicate = caseSensitive ? base : caseInsensitivePredicate(name, base);
+        next = close + 1;
+      } else if (escaped === 'd') {
+        predicate = ASCII_DIGIT;
+        next = pos + 2;
+      } else if (escaped === 'w') {
+        predicate = ASCII_WORD;
+        next = pos + 2;
+      } else if (escaped === 's') {
+        predicate = ASCII_SPACE;
+        next = pos + 2;
+      } else if (isLetterOrDigit(escaped.charCodeAt(0))) {
+        return null; // \b, \n, \1, ... not supported
+      } else {
+        predicate = literalPredicate(escaped, caseSensitive);
+        next = pos + 2;
+      }
+    } else if (c === '.') {
+      predicate = ANY_CODE_POINT;
+      next = pos + 1;
+    } else if (c === '[') {
+      const close = findCharClassEnd(s, pos);
+      if (close < 0) return null;
+      const classPredicate = parseCharClassPredicate(s, pos + 1, close, caseSensitive);
+      if (classPredicate === null) return null;
+      predicate = classPredicate;
+      next = close + 1;
+    } else if (c === '(' || c === ')' || c === '*' || c === '+' || c === '?' || c === '{' || c === '}'
+               || c === '^' || c === '$' || c === '|' || c === ']') {
+      return null;
+    } else {
+      predicate = literalPredicate(c, caseSensitive);
+      next = pos + 1;
+    }
+    let min = 1;
+    let max = 1;
+    if (next < len) {
+      const q = s.charAt(next);
+      if (q === '?') {
+        min = 0;
+        next++;
+      } else if (q === '*') {
+        min = 0;
+        max = 2147483647;
+        next++;
+      } else if (q === '+') {
+        max = 2147483647;
+        next++;
+      } else if (q === '{') {
+        const close = s.indexOf('}', next + 1);
+        if (close < 0) return null;
+        const bounds = parseOccurrenceBounds(s.substring(next + 1, close));
+        if (bounds === null) return null;
+        min = bounds[0];
+        max = bounds[1];
+        next = close + 1;
+      }
+      if (next < len) {
+        const lazy = s.charAt(next);
+        if (lazy === '?') {
+          next++; // lazy quantifier accepts the same strings as a greedy one for a full match
+        } else if (lazy === '+') {
+          return null; // possessive quantifier changes which strings are accepted
+        }
+      }
+    }
+    terms.push(new IntTerm(predicate, min, max));
+    pos = next;
+  }
+  return terms;
+}
+
+// Java: StringMatcher#parseOccurrenceBounds(String)
+function parseOccurrenceBounds(body) {
+  const comma = body.indexOf(',');
+  try {
+    if (comma < 0) {
+      const n = Integer.parseInt(body);
+      return [n, n];
+    }
+    const min = body.substring(0, comma).length === 0 ? 0 : Integer.parseInt(body.substring(0, comma));
+    const maxPart = body.substring(comma + 1);
+    const max = maxPart.length === 0 ? 2147483647 : Integer.parseInt(maxPart);
+    if (min > max) return null;
+    return [min, max];
+  } catch (e) {
+    if (e instanceof NumberFormatException) return null;
+    throw e;
+  }
+}
+
+// Java: StringMatcher#findCharClassEnd(String,int)
+function findCharClassEnd(s, start) {
+  let i = start + 1;
+  const len = s.length;
+  if (i < len && s.charAt(i) === '^') {
+    i++;
+  }
+  if (i < len && s.charAt(i) === ']') {
+    i++; // a ']' in the first position is a literal
+  }
+  while (i < len) {
+    const c = s.charAt(i);
+    if (c === '\\') {
+      i += 2;
+      continue;
+    }
+    if (c === ']') {
+      return i;
+    }
+    if (c === '[') {
+      return -1; // nested classes are not supported
+    }
+    i++;
+  }
+  return -1;
+}
+
+// Java: StringMatcher#parseCharClassPredicate(String,int,int,boolean)
+function parseCharClassPredicate(s, start, end, caseSensitive) {
+  if (s.substring(start, end).includes('&&')) {
+    return null; // class intersection is not supported
+  }
+  let negated = false;
+  let i = start;
+  if (i < end && s.charAt(i) === '^') {
+    negated = true;
+    i++;
+  }
+  const ranges = [];
+  const singles = [];
+  const extras = [];
+  while (i < end) {
+    let c = s.charCodeAt(i);
+    if (s.charAt(i) === '\\') {
+      if (i + 1 >= end) return null;
+      const escaped = s.charAt(i + 1);
+      if (escaped === 'd') {
+        extras.push(ASCII_DIGIT);
+        i += 2;
+        continue;
+      }
+      if (escaped === 'w') {
+        extras.push(ASCII_WORD);
+        i += 2;
+        continue;
+      }
+      if (escaped === 's') {
+        extras.push(ASCII_SPACE);
+        i += 2;
+        continue;
+      }
+      if (isLetterOrDigit(escaped.charCodeAt(0))) {
+        return null;
+      }
+      c = escaped.charCodeAt(0);
+      i += 2;
+    } else {
+      i++;
+    }
+    if (i < end - 1 && s.charAt(i) === '-') {
+      let rangeEnd = s.charCodeAt(i + 1);
+      let afterRange = i + 2;
+      if (s.charAt(i + 1) === '\\') {
+        if (i + 2 >= end) return null;
+        const escapedEnd = s.charAt(i + 2);
+        if (isLetterOrDigit(escapedEnd.charCodeAt(0))) return null;
+        rangeEnd = escapedEnd.charCodeAt(0);
+        afterRange = i + 3;
+      }
+      if (rangeEnd < c || rangeEnd - c > MAX_CLASS_RANGE_WIDTH) {
+        return null;
+      }
+      ranges.push([c, rangeEnd]);
+      i = afterRange;
+    } else {
+      singles.push(c);
+    }
+  }
+  const sortedSingles = new Set(singles); // Java: sorted int[] + binarySearch (membership only)
+  const neg = negated;
+  return (cp) => {
+    let member = containsInClass(cp, ranges, sortedSingles, extras);
+    if (!caseSensitive) {
+      member = member
+        || containsInClass(toLowerCase(cp), ranges, sortedSingles, extras)
+        || containsInClass(toUpperCase(cp), ranges, sortedSingles, extras);
+    }
+    return neg !== member;
+  };
+}
+
+// Java: StringMatcher#containsInClass(int,List,int[],List)
+function containsInClass(cp, ranges, sortedSingles, extras) {
+  for (const range of ranges) {
+    if (cp >= range[0] && cp <= range[1]) {
+      return true;
+    }
+  }
+  if (cp <= 0xffff && sortedSingles.has(cp)) {
+    return true;
+  }
+  for (const extra of extras) {
+    if (extra(cp)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// Java: StringMatcher#literalPredicate(char,boolean)
+function literalPredicate(ch, caseSensitive) {
+  const c = ch.charCodeAt(0);
+  if (caseSensitive) {
+    return (cp) => cp === c;
+  }
+  const lower = toLowerCase(c);
+  const upper = toUpperCase(c);
+  return (cp) => cp === c || toLowerCase(cp) === lower || toUpperCase(cp) === upper;
+}
+
+// Java: StringMatcher#caseInsensitivePredicate(String,IntPredicate); mirrors java.util.regex CharPredicates.forProperty(name, caseIns=true)
+function caseInsensitivePredicate(name, base) {
+  if (name === 'Lu' || name === 'Ll') {
+    return (cp) => {
+      const t = getType(cp);
+      return t === UPPERCASE_LETTER || t === LOWERCASE_LETTER || t === TITLECASE_LETTER;
+    };
+  }
+  return base;
+}
+
+// Java: StringMatcher.IntTerm
+class IntTerm {
+  constructor(predicate, min, max) {
+    this.predicate = predicate;
+    this.min = min;
+    this.max = max;
+  }
+}
+
+// Java: StringMatcher.CharPredicate
+class CharPredicate {
+  constructor(ascii, fallback) {
+    this.ascii = ascii;
+    this.fallback = fallback;
+  }
+
+  // Java: StringMatcher.CharPredicate#test(char); c is a UTF-16 code unit
+  test(c) {
+    return c < 128 ? this.ascii[c] : this.fallback(c);
+  }
+}
+
+// Java: StringMatcher.RunAlternative
+class RunAlternative {
+  constructor(prefix, run, runMin, runMax, suffix) {
+    this.prefix = prefix;
+    this.run = run; // null if there is no quantified atom
+    this.runMin = runMin;
+    this.runMax = runMax;
+    this.suffix = suffix;
+  }
+}
+
+// Java: StringMatcher.RunSequenceMatcher
+function runSequenceMatcher(pattern, caseSensitive, alternatives, regexFallback) {
+  const m = new StringMatcher(pattern, true, caseSensitive);
+  m.getPossibleValues = () => null;
+  m.matches = (s) => {
+    const len = s.length;
+    if (len > MAX_MATCH_LENGTH) {
+      return false;
+    }
+    if (containsSurrogate(s, len)) {
+      return regexFallback.matcher(s).matches();
+    }
+    for (const alt of alternatives) {
+      if (matchesAlternative(alt, s, len)) {
+        return true;
+      }
+    }
+    return false;
+  };
+  return m;
+}
+
+// Java: StringMatcher.RunSequenceMatcher#containsSurrogate(String,int)
+function containsSurrogate(s, len) {
+  for (let i = 0; i < len; i++) {
+    if (isSurrogate(s.charCodeAt(i))) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// Java: StringMatcher.RunSequenceMatcher#matchesAlternative(RunAlternative,String,int)
+function matchesAlternative(alt, s, len) {
+  let i = 0;
+  const prefix = alt.prefix;
+  for (let k = 0; k < prefix.length; k++) {
+    if (i >= len || !prefix[k].test(s.charCodeAt(i))) {
+      return false;
+    }
+    i++;
+  }
+  const run = alt.run;
+  if (run === null) {
+    if (len - i !== alt.suffix.length) {
+      return false;
+    }
+    return suffixMatches(alt.suffix, s, i);
+  }
+  let maxEnd = i;
+  while (maxEnd < len && run.test(s.charCodeAt(maxEnd))) {
+    maxEnd++;
+  }
+  const runCount = maxEnd - i;
+  if (alt.suffix.length === 0) {
+    return maxEnd === len && runCount >= alt.runMin && runCount <= alt.runMax;
+  }
+  const upper = Math.min(runCount, alt.runMax);
+  for (let rc = upper; rc >= alt.runMin; rc--) {
+    const pos = i + rc;
+    if (len - pos === alt.suffix.length && suffixMatches(alt.suffix, s, pos)) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// Java: StringMatcher.RunSequenceMatcher#suffixMatches(CharPredicate[],String,int)
+function suffixMatches(suffix, s, pos) {
+  for (let k = 0; k < suffix.length; k++) {
+    if (!suffix[k].test(s.charCodeAt(pos + k))) {
+      return false;
+    }
+  }
+  return true;
 }
 
 // Java: StringMatcher#tryCreatePostagTemplateMatcher(String,boolean)

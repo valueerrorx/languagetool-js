@@ -1,4 +1,4 @@
-// java.util.HashMap iteration order (bucket index by spread hash, insertion order within a bucket; tree bins are not modelled).
+// java.util.HashMap iteration order (bucket index by spread hash, insertion order within a bucket; bins in tables >= 64 are never treeified here, treeBinsNeeded flags that case).
 import { Objects } from '../Objects.js';
 
 // Java: HashMap#tableSizeFor(int)
@@ -15,6 +15,7 @@ export class JavaHashMap {
     this.table = null;
     this.size_ = 0;
     this.threshold = initialCapacity === null ? 0 : tableSizeFor(initialCapacity);
+    this.treeBinsNeeded = false; // set when Java would treeify a bin (iteration order of that bin is then not modelled)
   }
 
   // Java: HashMap#hash(Object)
@@ -33,6 +34,12 @@ export class JavaHashMap {
     this.threshold = Math.floor(newCap * 0.75);
   }
 
+  // Java: HashMap#treeifyBin(Node[],int); small tables resize instead of treeifying
+  treeifyBin() {
+    if (this.table.length < 64) this.resize();
+    else this.treeBinsNeeded = true;
+  }
+
   // Java: HashMap#put(Object,Object)
   put(key, value) {
     if (this.table === null) this.resize();
@@ -46,6 +53,7 @@ export class JavaHashMap {
       }
     }
     bin.push({ hash, key, value });
+    if (bin.length >= 9) this.treeifyBin(); // Java: binCount >= TREEIFY_THRESHOLD - 1
     if (++this.size_ > this.threshold) this.resize();
     return null;
   }

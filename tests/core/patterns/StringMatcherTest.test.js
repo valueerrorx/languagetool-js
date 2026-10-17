@@ -1,5 +1,6 @@
-// Ported from StringMatcherTest (languagetool-core); sequence matcher fast paths arrive with F26 (consistency test already covers the fallback)
+// Ported from StringMatcherTest (languagetool-core) plus null-pattern NPE
 import { describe, it, expect } from 'vitest';
+import { NullPointerException } from '../../../src/lib/java/errors.js';
 import { Pattern } from '../../../src/lib/java/regex/index.js';
 import { javaMatches } from '../../../src/lib/java/regex/index.js';
 import { StringMatcher } from '../../../src/core/patterns/StringMatcher.js';
@@ -164,4 +165,10 @@ describe('StringMatcherTest', () => {
       }
     }
   }, 120000);
+
+  // Java: StringMatcher#create(null,..) -> StringInterner.intern(null) / Pattern.compile(null) NPE
+  it('nullPatternThrowsNpe', () => {
+    expect(() => StringMatcher.create(null, true, true)).toThrow(NullPointerException);
+    expect(() => StringMatcher.create(null, false, true)).toThrow(NullPointerException);
+  });
 });

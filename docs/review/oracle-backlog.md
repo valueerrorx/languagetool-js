@@ -7,3 +7,4 @@
 - F04 gaps: dynamic regex sites (AbstractUnitConversionRule, HunspellRule wordchars, Soros, containsRegexToTheLeft callers) need fixtures in their own steps; StringMatcher fast paths (CORE-0390) need own check vs Pattern.matches.
 - Never run `npm run oracle -- --all` casually (regenerates everything).
 - [ ] json-serialize comparator skips per-case notPorted sub-cases (languages without port) silently inside a PASS; parity.mjs should count/report them (F19).
+- X-PROBE-COLLECTIONS: 13/17 cases notPorted (LinkedHashMap, TreeMap, PriorityQueue, ...). Decision F26: JDK helpers are ported only when LT code needs them; wire the probe case in the step that introduces the helper.
