@@ -20,3 +20,9 @@ export function listSet(list, i, v) {
   list[i] = v;
   return old;
 }
+
+// Java: a[i] = v (array write)
+export function arraySet(a, i, v) {
+  if (i < 0 || i >= a.length) throw new ArrayIndexOutOfBoundsException(`Index ${i} out of bounds for length ${a.length}`);
+  a[i] = v;
+}

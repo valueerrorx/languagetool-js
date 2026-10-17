@@ -1,7 +1,8 @@
-// JS twin of harness op "match-state" (RuleMatchOps#matchState): Match/MatchState direct; MatchState is F29, until then every request is notPorted.
+// JS twin of harness op "match-state" (RuleMatchOps#matchState): Match/MatchState direct; 
 import { lang, sentences } from './_unify-common.mjs';
 import { err } from './rule-match.mjs';
 import { Match, CaseConversion, IncludeRange } from '../../src/core/patterns/Match.js';
+import { arrayGet } from '../../src/lib/java/arrays.js';
 import { IllegalArgumentException } from '../../src/lib/java/errors.js';
 
 // Java: RuleMatchOps#buildMatch(JsonNode)
@@ -30,7 +31,7 @@ function readings(r) {
 // Java: RuleMatchOps#callOne(Match,Synthesizer,Language,AnalyzedSentence,JsonNode,String,int,int,boolean)
 function callOne(m, synth, lg, sent, method, idx, next, single) {
   const toks = sent.getTokensWithoutWhitespace();
-  const st = single ? m.createState(synth, toks[idx]) : m.createState(synth, toks, idx, next);
+  const st = single ? m.createState(synth, arrayGet(toks, idx)) : m.createState(synth, toks, idx, next);
   try {
     switch (method) {
       case 'toFinalString': return [...st.toFinalString(lg)];

@@ -1,9 +1,11 @@
-// Ported from PatternRuleMatcherTest (languagetool-core); F27 level: positions come from the raw doMatch hits (createRuleMatch/RuleMatch are F29), longest-match filter mirrors RuleWithMaxFilter
+// Ported from PatternRuleMatcherTest (languagetool-core); analysis adapted to en-US (Demo tagger not ported), matches via PatternRuleMatcher#match
 import { describe, it, expect, beforeAll } from 'vitest';
 import '../../../src/lang/register.js';
 import { Languages } from '../../../src/core/Languages.js';
 import { PatternToken } from '../../../src/core/patterns/PatternToken.js';
 import { PatternRule } from '../../../src/core/patterns/PatternRule.js';
+import { Match, CaseConversion, IncludeRange } from '../../../src/core/patterns/Match.js';
+import { RuleMatch } from '../../../src/core/rules/model/RuleMatch.js';
 import { PatternRuleMatcher } from '../../../src/core/patterns/PatternRuleMatcher.js';
 import { getDemoLanguage } from '../../support/DemoLanguage.js';
 import { newTool, withNoopAnalysis } from '../../../oracle/adapters/_check-pipe-common.mjs';
@@ -11,52 +13,23 @@ import { newTool, withNoopAnalysis } from '../../../oracle/adapters/_check-pipe-
 let lt;
 let en;
 
-// hit collector over the F27 sequence matcher; stands in for PatternRuleMatcher#match until createRuleMatch exists
-class HitMatcher extends PatternRuleMatcher {
-  // Java: PatternRuleMatcher#match(AnalyzedSentence) up to the doMatch consumer
-  hits(sentence) {
-    const tokens = sentence.getTokensWithoutWhitespace();
-    const res = [];
-    this.doMatch(sentence, tokens, (tp, first, last, fm, lm) => {
-      const from = tokens[fm >= 0 ? fm : first].getStartPos();
-      const to = tokens[lm >= 0 ? lm : last].getEndPos();
-      res.push({ fromPos: from, toPos: to });
-    });
-    // Java: RuleWithMaxFilter#filter (all hits belong to the same rule)
-    res.sort((a, b) => a.fromPos - b.fromPos || a.toPos - b.toPos);
-    const filtered = [];
-    for (let i = 0; i < res.length; i++) {
-      const m = res[i];
-      if (i < res.length - 1) {
-        let next = res[i + 1];
-        while (m.fromPos <= next.fromPos && m.toPos >= next.toPos && i < res.length) {
-          i++;
-          if (i < res.length - 1) next = res[i + 1];
-        }
-      }
-      filtered.push(m);
-    }
-    return filtered;
-  }
-}
-
-const getMatches = (input, matcher) => matcher.hits(withNoopAnalysis(en, true, () => lt.getAnalyzedSentence(input)));
-const getMatcher = (...tokens) => new HitMatcher(getPatternRule(tokens), false);
+const getMatches = (input, matcher) => matcher.match(withNoopAnalysis(en, true, () => lt.getAnalyzedSentence(input)));
+const getMatcher = (...tokens) => new PatternRuleMatcher(getPatternRule(tokens), false);
 const assertPosition = (match, from, to) => {
-  expect(match.fromPos, 'Wrong start position').toBe(from);
-  expect(match.toPos, 'Wrong end position').toBe(to);
+  expect(match.getFromPos(), 'Wrong start position').toBe(from);
+  expect(match.getToPos(), 'Wrong end position').toBe(to);
 };
 const assertNoMatch = (input, matcher) => { expect(getMatches(input, matcher).length).toBe(0); };
 const assertPartialMatch = (input, matcher) => {
   const matches = getMatches(input, matcher);
   expect(matches.length).toBe(1);
-  expect(matches[0].fromPos > 0 || matches[0].toPos < input.length).toBe(true);
+  expect(matches[0].getFromPos() > 0 || matches[0].getToPos() < input.length).toBe(true);
 };
 const assertCompleteMatch = (input, matcher) => {
   const matches = getMatches(input, matcher);
-  expect(matches.length, `Got matches: ${JSON.stringify(matches)}`).toBe(1);
-  expect(matches[0].fromPos, 'Wrong start position').toBe(0);
-  expect(matches[0].toPos, 'Wrong end position').toBe(input.length);
+  expect(matches.length, `Got matches: [${matches.join(', ')}]`).toBe(1);
+  expect(matches[0].getFromPos(), 'Wrong start position').toBe(0);
+  expect(matches[0].getToPos(), 'Wrong end position').toBe(input.length);
 };
 const makeElement = (token) => new PatternToken(token, false, false, false);
 // Java: PatternRuleMatcherTest#getPatternRule(String) / (List)
@@ -73,7 +46,7 @@ describe('PatternRuleMatcherTest', () => {
 
   // Java: PatternRuleMatcherTest#testMatch
   it('testMatch', () => {
-    const matcher = new HitMatcher(getPatternRule("my test"), false);
+    const matcher = new PatternRuleMatcher(getPatternRule("my test"), false);
     assertPartialMatch("This is my test.", matcher);
     assertNoMatch("This is no test.", matcher);
   });
@@ -189,7 +162,23 @@ describe('PatternRuleMatcherTest', () => {
   });
 
   // Java: PatternRuleMatcherTest#testZeroMinOccurrencesWithSuggestion
-  it.skip('testZeroMinOccurrencesWithSuggestion', () => { /* needs createRuleMatch suggestions (F29); PLAN F29 */ });
+  it('testZeroMinOccurrencesWithSuggestion', () => {
+    const patternTokenB = makeElement("b");
+    patternTokenB.setMinOccurrence(0);
+
+    const patternTokens = [makeElement("a"), patternTokenB, makeElement("c")];   // regex: a b? c
+    const rule = new PatternRule("", getDemoLanguage(), patternTokens, "my description", "<suggestion>\\1 \\2 \\3</suggestion>", "short message");
+    const matcher = new PatternRuleMatcher(rule, false);
+
+    // we need to add this line to trigger proper replacement but I am not sure why :(
+    rule.addSuggestionMatch(new Match(null, null, false, null, null, CaseConversion.NONE, false, false, IncludeRange.NONE));
+
+    const matches = getMatches("a b c", matcher);
+    expect([...matches[0].getSuggestedReplacements()]).toEqual(["a b c"]);
+
+    const matches2 = getMatches("a c", matcher);
+    expect([...matches2[0].getSuggestedReplacements()]).toEqual(["a c"]);
+  });
 
   // Java: PatternRuleMatcherTest#testTwoMinOccurrences
   it.skip('testTwoMinOccurrences', () => { /* @Ignore: min can only be 0 or 1 so far */ });
@@ -414,11 +403,62 @@ describe('PatternRuleMatcherTest', () => {
   });
 
   // Java: PatternRuleMatcherTest#testInfiniteSkipWithMatchReference
-  it.skip('testInfiniteSkipWithMatchReference', () => { /* needs MatchState for match references (F29); PLAN F29 */ });
+  it('testInfiniteSkipWithMatchReference', () => {
+    const patternTokenAB = new PatternToken("a|b", false, true, false);
+    patternTokenAB.setSkipNext(-1);
+    const patternTokenC = makeElement("\\0");
+    const match = new Match(null, null, false, null, null, CaseConversion.NONE, false, false, IncludeRange.NONE);
+    match.setTokenRef(0);
+    match.setInMessageOnly(true);
+    patternTokenC.setMatch(match);
+    const matcher = getMatcher(patternTokenAB, patternTokenC);
+    assertCompleteMatch("a a", matcher);
+    assertCompleteMatch("b b", matcher);
+    assertCompleteMatch("a x a", matcher);
+    assertCompleteMatch("b x b", matcher);
+    assertCompleteMatch("a x x a", matcher);
+    assertCompleteMatch("b x x b", matcher);
+
+    assertNoMatch("a b", matcher);
+    assertNoMatch("b a", matcher);
+    assertNoMatch("b x a", matcher);
+    assertNoMatch("b x a", matcher);
+    assertNoMatch("a x x b", matcher);
+    assertNoMatch("b x x a", matcher);
+
+    const matches = getMatches("a foo a and b foo b", matcher);
+    expect(matches.length).toBe(2);
+    assertPosition(matches[0], 0, 7);
+    assertPosition(matches[1], 12, 19);
+
+    const matches2 = getMatches("xx a b x x x b a", matcher);
+    expect(matches2.length).toBe(1);
+    assertPosition(matches2[0], 3, 16);
+  });
 
   // Java: PatternRuleMatcherTest#testNoMatchReferenceRecursion
-  it.skip('testNoMatchReferenceRecursion', () => { /* needs createRuleMatch message formatting (F29); PLAN F29 */ });
+  it('testNoMatchReferenceRecursion', () => {
+    // \n in rule messages refers to matches, but if match text contains \n this should not be resolved
+    const rule = new PatternRule("MATCH_REFERENCERE_CURSION_DEMO", getDemoLanguage(),
+      [new PatternToken("\\p{Punct}", false, true, false), new PatternToken("\\d+", false, true, false)],
+      "", "Here come the match references: \\1\\2. This is the end", "");
+    const matcher = new PatternRuleMatcher(rule, false);
+    const matches = getMatches(":42", matcher);
+    expect(matches.length).toBe(1);
+    expect(matches[0].getMessage()).toBe("Here come the match references: :42. This is the end");
+    const matches2 = getMatches("\\42", matcher);
+    expect(matches2.length).toBe(1);
+    expect(matches2[0].getMessage()).toBe("Here come the match references: \\42. This is the end");
+  });
 
   // Java: PatternRuleMatcherTest#testEquals
-  it.skip('testEquals', () => { /* needs RuleMatch with xx language rules (F29/F30); PLAN F29 */ });
+  it('testEquals', () => {
+    const patternRule1 = new PatternRule("id1", getDemoLanguage(), [], "desc1", "msg1", "short1");
+    const ruleMatch1 = new RuleMatch(patternRule1, null, 0, 1, "message");
+    const ruleMatch2 = new RuleMatch(patternRule1, null, 0, 1, "message");
+    expect(ruleMatch1.equals(ruleMatch2)).toBe(true);
+    const ruleMatch3 = new RuleMatch(patternRule1, null, 0, 9, "message");
+    expect(ruleMatch1.equals(ruleMatch3)).toBe(false);
+    expect(ruleMatch2.equals(ruleMatch3)).toBe(false);
+  });
 });

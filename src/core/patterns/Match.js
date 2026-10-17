@@ -1,8 +1,8 @@
-// org.languagetool.rules.patterns.Match (configuration of a <match/> element; MatchState comes with F29)
+// org.languagetool.rules.patterns.Match (configuration of a <match/> element)
 import { JavaEnum } from '../../lib/java/JavaEnum.js';
 import { Pattern } from '../../lib/java/regex/index.js';
 import { isEmpty } from '../text/StringTools.js';
-import { notPortedYet } from '../language/components.js';
+import { MatchState } from './MatchState.js';
 
 // Java: Match.CaseConversion
 export class CaseConversion extends JavaEnum {
@@ -45,8 +45,14 @@ export class Match {
   }
 
   // Java: Match#createState(Synthesizer,AnalyzedTokenReadings) / createState(Synthesizer,AnalyzedTokenReadings[],int,int)
-  createState() {
-    throw notPortedYet('MatchState (F29)');
+  createState(synthesizer, tokens, index, next) {
+    const state = new MatchState(this, synthesizer);
+    if (index === undefined) {
+      state.setToken(tokens);
+    } else {
+      state.setToken(tokens, index, next);
+    }
+    return state;
   }
 
   // Java: Match#setsPos()

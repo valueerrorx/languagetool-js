@@ -1,13 +1,9 @@
-// JS twin of harness op "rule-match" (RuleMatchOps#ruleMatch): createRuleMatch hits before RuleWithMaxFilter + kept indices; createRuleMatch/RuleWithMaxFilter are F29, until then notPorted per request.
-import { existsSync } from 'node:fs';
-import { pathToFileURL } from 'node:url';
-import path from 'node:path';
+// JS twin of harness op "rule-match" (RuleMatchOps#ruleMatch): createRuleMatch hits before RuleWithMaxFilter + kept indices; createRuleMatch with <filter> is notPorted until F30.
 import { resetState, lang, loadFile, inline, sentences } from './_unify-common.mjs';
-import { notPortedYet } from '../../src/core/language/components.js';
+import { listGet } from '../../src/lib/java/arrays.js';
+import { RuleWithMaxFilter } from '../../src/core/rules/RuleWithMaxFilter.js';
 import { PatternRuleMatcher } from '../../src/core/patterns/PatternRuleMatcher.js';
 import { PatternRule } from '../../src/core/patterns/PatternRule.js';
-
-const MAXF = path.resolve(import.meta.dirname, '../../src/core/rules/RuleWithMaxFilter.js');
 
 export function beginCase() { resetState(); }
 
@@ -55,7 +51,7 @@ export async function run(a) {
   const resolve = (src) => {
     let rules;
     if (src.file === undefined) { inlineRules ??= inline(l, a.xml); rules = inlineRules; } else rules = loadFile(l, l.getRuleFileNames()[src.file]);
-    return rules[src.rule ?? 0];
+    return listGet(rules, src.rule ?? 0);
   };
   const jobs = [];
   for (const job of a.jobs) {
@@ -68,8 +64,6 @@ export async function run(a) {
         try {
           const nulls = [0];
           const raw = rawMatches(rule, s, nulls);
-          if (!existsSync(MAXF)) throw notPortedYet('RuleWithMaxFilter (F29)');
-          const { RuleWithMaxFilter } = await import(pathToFileURL(MAXF).href);
           const kept = new RuleWithMaxFilter().filter([...raw]);
           per.push({ raw: raw.map(dump), nulls: nulls[0], kept: kept.map((m) => raw.indexOf(m)), sugMatches: rule.getSuggestionMatches().length });
         } catch (t) { per.push(err(t)); }

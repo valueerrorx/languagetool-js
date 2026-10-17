@@ -1,4 +1,5 @@
 // org.languagetool.rules.patterns.PatternTokenMatcher (matches one PatternToken against tokens, resolves match references, and-groups)
+import { arrayGet } from '../../lib/java/arrays.js';
 
 // Java: PatternTokenMatcher
 export class PatternTokenMatcher {
@@ -24,7 +25,7 @@ export class PatternTokenMatcher {
     if (this.basePatternToken.isReferenceElement()) {
       const refPos = firstMatchToken + this.basePatternToken.getMatch().getTokenRef();
       if (refPos < tokens.length) {
-        this.patternToken = this.basePatternToken.compile(tokens[refPos], language.getSynthesizer());
+        this.patternToken = this.basePatternToken.compile(arrayGet(tokens, refPos), language.getSynthesizer());
       }
     }
   }

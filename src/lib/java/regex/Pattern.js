@@ -514,6 +514,7 @@ export class Matcher {
 
   // Java: Matcher#appendExpandedReplacement(String,StringBuilder)
   appendExpandedReplacement(replacement) {
+    if (replacement === null || replacement === undefined) throw new NullPointerException();
     let result = '';
     let cursor = 0;
     const len = replacement.length;
