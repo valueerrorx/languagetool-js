@@ -98,6 +98,9 @@ public class Harness {
       case "synth": return SynthOps.synth(a);
       case "rule-load": return RuleLoadOps.ruleLoad(a);
       case "ruleset-hints": return RuleLoadOps.rulesetHints(a);
+      case "string-matcher": return TokMatchOps.stringMatcher(a);
+      case "token-match": return TokMatchOps.tokenMatch(a);
+      case "tokmatch-harvest": return TokMatchOps.harvest(a);
       case "manual-tagger": return TagOps.manualTagger(a);
       case "lang-lookup": return LangOps.lookup(a);
       case "lang-describe": return LangOps.describeOp(a);
