@@ -17,3 +17,9 @@
 | F16 | GermanWordRepeatRule.ANTI_PATTERNS lazy notPorted | de-DE notPorted until German tagger; port with PatternToken (F25/F34) |
 | F22 | ManualSynthesizer returns null instead of [] when two keys share a hash | unreachable with shipped data |
 | F24 | ManualSynthesizer: >255 forms per lemma/tag hash - which group throws first follows Int2ObjectOpenHashMap order, port uses insertion order | unreachable with shipped data |
+| F25 | tests: Demo language is a test stand-in (tests/support/DemoLanguage.js, no-op disambiguator/chunker instead of DemoDisambiguator2/DemoChunker) | only used by ported JUnit tests |
+| F25b | JavaConcurrentHashMap: tree bins (table >= 64 with a bin of 8+ nodes) throw instead of modelling TreeBin order | UnifierConfiguration holds a few features/types per language |
+| F25b | PatternRuleXmlCreator toXML: rule ids that inject valid XPath ("A' or 'x", operators, "[", "/", "]" after the closing quote, ":" tokens) throw notPorted instead of evaluating the XPath | ids are identifiers; only the Xalan lexer/predicate errors are modelled (probed against JDK 17) |
+| F25b | URL: relative-path normalisation of URLStreamHandler#parseURL (needs a context URL), jar handler context parsing (always NPE without context) | the port only builds URL(String) |
+| F25b | StringMatcher#parseCharClass: range ending at U+FFFF loops forever in Java (char overflow), JS terminates | pattern with a class range up to ￿ in a postag regexp |
+| F25b | filterRegistry: filter="<existing non-filter Java class>" (e.g. java.util.HashMap) gives "Could not find filter class" instead of Java constructor/cast message; only stubs for fixture-named classes | only reachable via user --rulefile with a non-filter JDK/LT class; JS cannot enumerate the Java classpath |

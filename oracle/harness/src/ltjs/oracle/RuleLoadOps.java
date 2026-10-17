@@ -538,7 +538,9 @@ final class RuleLoadOps {
     boolean relaxed = a.has("relaxed") && a.get("relaxed").asBoolean();
     boolean detail = !a.has("detail") || a.get("detail").asBoolean();
     String via = a.has("via") ? a.get("via").asText() : "stream";
+    boolean unifier = a.has("unifier") && a.get("unifier").asBoolean();
     Map<String, Object> w = new LinkedHashMap<>();
+    if (unifier) resetUnifierConfig(l);
     try {
       PatternRuleLoader loader = new PatternRuleLoader();
       loader.setRelaxedMode(relaxed);
@@ -560,10 +562,85 @@ final class RuleLoadOps {
         out.add(d);
       }
       w.put("rules", out);
+      if (a.has("posDetail") && a.get("posDetail").asBoolean()) {
+        List<Object> pd = new ArrayList<>();
+        for (AbstractPatternRule r : rules) pd.add(r.getPatternTokens() == null ? null : posDetailList(r.getPatternTokens()));
+        w.put("posDetail", pd);
+      }
     } catch (Throwable t) {
       w.put("error", err(t).get("error"));
     }
+    if (unifier) w.put("unifier", unifierDump(l));
     return w;
+  }
+
+  private static final String[] POS_PROBES = {"NN", "UNKNOWN", "N|B", "N", "B", "A", "VB", "NNS", "", "N\\", "unknown", "A|UNKNOWN", "x"};
+
+  // option "posDetail": per pattern token PosToken.posUnknown and POS matcher possible values / probe results
+  private static List<Object> posDetailList(List<PatternToken> toks) {
+    List<Object> l = new ArrayList<>();
+    for (PatternToken t : toks) l.add(posDetail(t));
+    return l;
+  }
+
+  private static Object posDetail(PatternToken t) {
+    Map<String, Object> o = new LinkedHashMap<>();
+    Object pt = fld(t, PatternToken.class, "posToken");
+    if (pt == null) { o.put("posToken", null); }
+    else {
+      Class<?> c = pt.getClass();
+      o.put("tag", fld(pt, c, "posTag"));
+      o.put("posUnknown", fld(pt, c, "posUnknown"));
+      o.put("negation", fld(pt, c, "negation"));
+      StringMatcher m = (StringMatcher) fld(pt, c, "posPattern");
+      if (m == null) { o.put("matcher", null); }
+      else {
+        Map<String, Object> md = new LinkedHashMap<>();
+        md.put("possibleValues", vals(m.getPossibleValues()));
+        Map<String, Object> pr = new LinkedHashMap<>();
+        for (String s : POS_PROBES) {
+          try { pr.put(s, m.matches(s)); } catch (Throwable e) { pr.put(s, "ERR " + e.getClass().getName()); }
+        }
+        md.put("probe", pr);
+        o.put("matcher", md);
+      }
+    }
+    List<Object> ex = new ArrayList<>();
+    for (PatternToken e : t.getExceptionList()) ex.add(posDetail(e));
+    o.put("exceptions", ex);
+    return o;
+  }
+
+  // option "unifier": fresh UnifierConfiguration per request (shared Language instance), dumped after loading
+  private static void resetUnifierConfig(Language l) {
+    try {
+      Field f = Language.class.getDeclaredField("unifierConfig");
+      f.setAccessible(true);
+      f.set(l, new org.languagetool.rules.patterns.UnifierConfiguration());
+    } catch (Exception e) { throw new RuntimeException(e); }
+  }
+
+  private static Object unifierDump(Language l) {
+    org.languagetool.rules.patterns.UnifierConfiguration c = l.getUnifierConfiguration();
+    Map<String, Object> o = new LinkedHashMap<>();
+    List<Object> feats = new ArrayList<>();
+    for (Map.Entry<String, List<String>> e : c.getEquivalenceFeatures().entrySet()) {
+      List<Object> en = new ArrayList<>();
+      en.add(e.getKey());
+      en.add(new ArrayList<>(e.getValue()));
+      feats.add(en);
+    }
+    o.put("features", feats);
+    List<Object> types = new ArrayList<>();
+    for (Map.Entry<?, PatternToken> e : c.getEquivalenceTypes().entrySet()) {
+      Map<String, Object> m = new LinkedHashMap<>();
+      m.put("feature", fld(e.getKey(), e.getKey().getClass(), "feature"));
+      m.put("type", fld(e.getKey(), e.getKey().getClass(), "type"));
+      m.put("token", tokenDump(e.getValue()));
+      types.add(m);
+    }
+    o.put("types", types);
+    return o;
   }
 
   static PatternToken buildToken(JsonNode calls) {

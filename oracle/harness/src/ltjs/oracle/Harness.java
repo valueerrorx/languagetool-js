@@ -16,7 +16,16 @@ public class Harness {
   private static final ObjectMapper PROBE_MAPPER = new ObjectMapper()
       .configure(com.fasterxml.jackson.core.JsonGenerator.Feature.ESCAPE_NON_ASCII, true);
 
+  private static void nullKeys(ObjectMapper m) {
+    m.getSerializerProvider().setNullKeySerializer(new com.fasterxml.jackson.databind.JsonSerializer<Object>() {
+      @Override public void serialize(Object v, com.fasterxml.jackson.core.JsonGenerator g, com.fasterxml.jackson.databind.SerializerProvider p) throws IOException {
+        g.writeFieldName("null"); // null Map key -> "null" (same as JS Object.fromEntries)
+      }
+    });
+  }
+
   public static void main(String[] args) throws Exception {
+    nullKeys(MAPPER); nullKeys(PROBE_MAPPER);
     PrintStream out = new PrintStream(new FileOutputStream(FileDescriptor.out), false, "UTF-8");
     System.setOut(System.err); // stray prints must not corrupt the protocol
     BufferedReader in = new BufferedReader(new InputStreamReader(System.in, StandardCharsets.UTF_8));
@@ -38,7 +47,17 @@ public class Harness {
         resp.put("ok", false);
         resp.put("error", error(t));
       }
-      out.print(writer.writeValueAsString(resp));
+      String json;
+      try {
+        json = writer.writeValueAsString(resp);
+      } catch (Throwable t) { // serialization failure -> error response, never a truncated file
+        Map<String, Object> er = new LinkedHashMap<>();
+        if (resp.containsKey("id")) er.put("id", resp.get("id"));
+        er.put("ok", false);
+        er.put("error", error(t));
+        json = writer.writeValueAsString(er);
+      }
+      out.print(json);
       out.print('\n');
       out.flush();
     }

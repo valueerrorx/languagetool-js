@@ -1,6 +1,7 @@
 // org.languagetool.rules.patterns.RegexPatternRule (matches 'regexp' elements from XML rules against sentences)
 import { Pattern } from '../../lib/java/regex/index.js';
 import { Exception, IndexOutOfBoundsException, RuntimeException } from '../../lib/java/errors.js';
+import { listGet } from '../../lib/java/arrays.js';
 import { Integer } from '../../lib/java/int.js';
 import { Character } from '../../lib/java/Character.js';
 import { StringBuilder, charAt, javaSplit, substring } from '../../lib/java/strings.js';
@@ -15,12 +16,6 @@ const matchPattern = Pattern.compile('\\\\\\d');
 
 // in suggestions tokens are numbered from 1, anywhere else tokens are numbered from 0.
 const MATCHES_IN_SUGGESTIONS_NUMBERED_FROM = 0;
-
-// Java: List#get(int)
-function listGet(list, i) {
-  if (i < 0 || i >= list.length) throw new IndexOutOfBoundsException(`Index ${i} out of bounds for length ${list.length}`);
-  return list[i];
-}
 
 // Java: RegexPatternRule
 export class RegexPatternRule extends AbstractPatternRule {

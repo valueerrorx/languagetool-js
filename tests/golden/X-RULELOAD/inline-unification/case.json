@@ -1,0 +1,369 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "unification/equivalence definitions: attrs missing, many features/types, order, duplicates, unify in rules; dump of UnifierConfiguration (ConcurrentHashMap order) and errors",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"numberX\"><equivalence type=\"sg\"><token postag=\"NN\"/></equivalence></unification><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"numberX\"><equivalence><token postag=\"NN\"/></equivalence></unification><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification ><equivalence type=\"sg\"><token postag=\"NN\"/></equivalence></unification><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"\"><equivalence type=\"sg\"><token postag=\"NN\"/></equivalence></unification><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"numberX\"><equivalence type=\"\"><token postag=\"NN\"/></equivalence></unification><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"numberX\"><equivalence type=\"sg\"><token postag=\"NN\"/></equivalence><equivalence type=\"pl\"><token postag=\"NN\"/></equivalence><equivalence type=\"mf\"><token postag=\"NN\"/></equivalence></unification><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"numberX\"><equivalence type=\"sg\"><token postag=\"NN\"/></equivalence><equivalence type=\"sg\"><token postag=\"NNS\"/></equivalence></unification><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"numberX\"><equivalence type=\"sg\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"genderX\"><equivalence type=\"sg\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"numberX\"><equivalence type=\"pl\"><token>x</token></equivalence></unification><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"number\"><equivalence type=\"t1\"><token postag=\"NN\"/></equivalence><equivalence type=\"t2\"><token postag_regexp=\"yes\" postag=\"N.*\"/></equivalence><equivalence type=\"t3\"><token regexp=\"yes\">a|b</token></equivalence><equivalence type=\"Ünï\"><token negate=\"yes\">x</token></equivalence></unification><unification feature=\"gender\"><equivalence type=\"t1\"><token postag=\"NN\"/></equivalence><equivalence type=\"t2\"><token postag_regexp=\"yes\" postag=\"N.*\"/></equivalence><equivalence type=\"t3\"><token regexp=\"yes\">a|b</token></equivalence><equivalence type=\"Ünï\"><token negate=\"yes\">x</token></equivalence></unification><unification feature=\"case\"><equivalence type=\"t1\"><token postag=\"NN\"/></equivalence><equivalence type=\"t2\"><token postag_regexp=\"yes\" postag=\"N.*\"/></equivalence><equivalence type=\"t3\"><token regexp=\"yes\">a|b</token></equivalence><equivalence type=\"Ünï\"><token negate=\"yes\">x</token></equivalence></unification><unification feature=\"person\"><equivalence type=\"t1\"><token postag=\"NN\"/></equivalence><equivalence type=\"t2\"><token postag_regexp=\"yes\" postag=\"N.*\"/></equivalence><equivalence type=\"t3\"><token regexp=\"yes\">a|b</token></equivalence><equivalence type=\"Ünï\"><token negate=\"yes\">x</token></equivalence></unification><unification feature=\"tense\"><equivalence type=\"t1\"><token postag=\"NN\"/></equivalence><equivalence type=\"t2\"><token postag_regexp=\"yes\" postag=\"N.*\"/></equivalence><equivalence type=\"t3\"><token regexp=\"yes\">a|b</token></equivalence><equivalence type=\"Ünï\"><token negate=\"yes\">x</token></equivalence></unification><unification feature=\"mood\"><equivalence type=\"t1\"><token postag=\"NN\"/></equivalence><equivalence type=\"t2\"><token postag_regexp=\"yes\" postag=\"N.*\"/></equivalence><equivalence type=\"t3\"><token regexp=\"yes\">a|b</token></equivalence><equivalence type=\"Ünï\"><token negate=\"yes\">x</token></equivalence></unification><unification feature=\"voice\"><equivalence type=\"t1\"><token postag=\"NN\"/></equivalence><equivalence type=\"t2\"><token postag_regexp=\"yes\" postag=\"N.*\"/></equivalence><equivalence type=\"t3\"><token regexp=\"yes\">a|b</token></equivalence><equivalence type=\"Ünï\"><token negate=\"yes\">x</token></equivalence></unification><unification feature=\"degree\"><equivalence type=\"t1\"><token postag=\"NN\"/></equivalence><equivalence type=\"t2\"><token postag_regexp=\"yes\" postag=\"N.*\"/></equivalence><equivalence type=\"t3\"><token regexp=\"yes\">a|b</token></equivalence><equivalence type=\"Ünï\"><token negate=\"yes\">x</token></equivalence></unification><unification feature=\"definiteness\"><equivalence type=\"t1\"><token postag=\"NN\"/></equivalence><equivalence type=\"t2\"><token postag_regexp=\"yes\" postag=\"N.*\"/></equivalence><equivalence type=\"t3\"><token regexp=\"yes\">a|b</token></equivalence><equivalence type=\"Ünï\"><token negate=\"yes\">x</token></equivalence></unification><unification feature=\"animacy\"><equivalence type=\"t1\"><token postag=\"NN\"/></equivalence><equivalence type=\"t2\"><token postag_regexp=\"yes\" postag=\"N.*\"/></equivalence><equivalence type=\"t3\"><token regexp=\"yes\">a|b</token></equivalence><equivalence type=\"Ünï\"><token negate=\"yes\">x</token></equivalence></unification><unification feature=\"aspect\"><equivalence type=\"t1\"><token postag=\"NN\"/></equivalence><equivalence type=\"t2\"><token postag_regexp=\"yes\" postag=\"N.*\"/></equivalence><equivalence type=\"t3\"><token regexp=\"yes\">a|b</token></equivalence><equivalence type=\"Ünï\"><token negate=\"yes\">x</token></equivalence></unification><unification feature=\"polarity\"><equivalence type=\"t1\"><token postag=\"NN\"/></equivalence><equivalence type=\"t2\"><token postag_regexp=\"yes\" postag=\"N.*\"/></equivalence><equivalence type=\"t3\"><token regexp=\"yes\">a|b</token></equivalence><equivalence type=\"Ünï\"><token negate=\"yes\">x</token></equivalence></unification><unification feature=\"a\"><equivalence type=\"t1\"><token postag=\"NN\"/></equivalence><equivalence type=\"t2\"><token postag_regexp=\"yes\" postag=\"N.*\"/></equivalence><equivalence type=\"t3\"><token regexp=\"yes\">a|b</token></equivalence><equivalence type=\"Ünï\"><token negate=\"yes\">x</token></equivalence></unification><unification feature=\"b\"><equivalence type=\"t1\"><token postag=\"NN\"/></equivalence><equivalence type=\"t2\"><token postag_regexp=\"yes\" postag=\"N.*\"/></equivalence><equivalence type=\"t3\"><token regexp=\"yes\">a|b</token></equivalence><equivalence type=\"Ünï\"><token negate=\"yes\">x</token></equivalence></unification><unification feature=\"c\"><equivalence type=\"t1\"><token postag=\"NN\"/></equivalence><equivalence type=\"t2\"><token postag_regexp=\"yes\" postag=\"N.*\"/></equivalence><equivalence type=\"t3\"><token regexp=\"yes\">a|b</token></equivalence><equivalence type=\"Ünï\"><token negate=\"yes\">x</token></equivalence></unification><unification feature=\"Aa\"><equivalence type=\"t1\"><token postag=\"NN\"/></equivalence><equivalence type=\"t2\"><token postag_regexp=\"yes\" postag=\"N.*\"/></equivalence><equivalence type=\"t3\"><token regexp=\"yes\">a|b</token></equivalence><equivalence type=\"Ünï\"><token negate=\"yes\">x</token></equivalence></unification><unification feature=\"BB\"><equivalence type=\"t1\"><token postag=\"NN\"/></equivalence><equivalence type=\"t2\"><token postag_regexp=\"yes\" postag=\"N.*\"/></equivalence><equivalence type=\"t3\"><token regexp=\"yes\">a|b</token></equivalence><equivalence type=\"Ünï\"><token negate=\"yes\">x</token></equivalence></unification><unification feature=\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\"><equivalence type=\"t1\"><token postag=\"NN\"/></equivalence><equivalence type=\"t2\"><token postag_regexp=\"yes\" postag=\"N.*\"/></equivalence><equivalence type=\"t3\"><token regexp=\"yes\">a|b</token></equivalence><equivalence type=\"Ünï\"><token negate=\"yes\">x</token></equivalence></unification><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"f0\"><equivalence type=\"t0\"><token postag=\"NN\"/></equivalence><equivalence type=\"u0\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f1\"><equivalence type=\"t1\"><token postag=\"NN\"/></equivalence><equivalence type=\"u1\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f2\"><equivalence type=\"t2\"><token postag=\"NN\"/></equivalence><equivalence type=\"u2\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f3\"><equivalence type=\"t3\"><token postag=\"NN\"/></equivalence><equivalence type=\"u3\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f4\"><equivalence type=\"t4\"><token postag=\"NN\"/></equivalence><equivalence type=\"u4\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f5\"><equivalence type=\"t5\"><token postag=\"NN\"/></equivalence><equivalence type=\"u5\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f6\"><equivalence type=\"t6\"><token postag=\"NN\"/></equivalence><equivalence type=\"u6\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f7\"><equivalence type=\"t0\"><token postag=\"NN\"/></equivalence><equivalence type=\"u7\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f8\"><equivalence type=\"t1\"><token postag=\"NN\"/></equivalence><equivalence type=\"u8\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f9\"><equivalence type=\"t2\"><token postag=\"NN\"/></equivalence><equivalence type=\"u9\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f10\"><equivalence type=\"t3\"><token postag=\"NN\"/></equivalence><equivalence type=\"u10\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f11\"><equivalence type=\"t4\"><token postag=\"NN\"/></equivalence><equivalence type=\"u11\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f12\"><equivalence type=\"t5\"><token postag=\"NN\"/></equivalence><equivalence type=\"u12\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f13\"><equivalence type=\"t6\"><token postag=\"NN\"/></equivalence><equivalence type=\"u13\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f14\"><equivalence type=\"t0\"><token postag=\"NN\"/></equivalence><equivalence type=\"u14\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f15\"><equivalence type=\"t1\"><token postag=\"NN\"/></equivalence><equivalence type=\"u15\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f16\"><equivalence type=\"t2\"><token postag=\"NN\"/></equivalence><equivalence type=\"u16\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f17\"><equivalence type=\"t3\"><token postag=\"NN\"/></equivalence><equivalence type=\"u17\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f18\"><equivalence type=\"t4\"><token postag=\"NN\"/></equivalence><equivalence type=\"u18\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f19\"><equivalence type=\"t5\"><token postag=\"NN\"/></equivalence><equivalence type=\"u19\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f20\"><equivalence type=\"t6\"><token postag=\"NN\"/></equivalence><equivalence type=\"u20\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f21\"><equivalence type=\"t0\"><token postag=\"NN\"/></equivalence><equivalence type=\"u21\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f22\"><equivalence type=\"t1\"><token postag=\"NN\"/></equivalence><equivalence type=\"u22\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f23\"><equivalence type=\"t2\"><token postag=\"NN\"/></equivalence><equivalence type=\"u23\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f24\"><equivalence type=\"t3\"><token postag=\"NN\"/></equivalence><equivalence type=\"u24\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f25\"><equivalence type=\"t4\"><token postag=\"NN\"/></equivalence><equivalence type=\"u25\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f26\"><equivalence type=\"t5\"><token postag=\"NN\"/></equivalence><equivalence type=\"u26\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f27\"><equivalence type=\"t6\"><token postag=\"NN\"/></equivalence><equivalence type=\"u27\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f28\"><equivalence type=\"t0\"><token postag=\"NN\"/></equivalence><equivalence type=\"u28\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f29\"><equivalence type=\"t1\"><token postag=\"NN\"/></equivalence><equivalence type=\"u29\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f30\"><equivalence type=\"t2\"><token postag=\"NN\"/></equivalence><equivalence type=\"u30\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f31\"><equivalence type=\"t3\"><token postag=\"NN\"/></equivalence><equivalence type=\"u31\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f32\"><equivalence type=\"t4\"><token postag=\"NN\"/></equivalence><equivalence type=\"u32\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f33\"><equivalence type=\"t5\"><token postag=\"NN\"/></equivalence><equivalence type=\"u33\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f34\"><equivalence type=\"t6\"><token postag=\"NN\"/></equivalence><equivalence type=\"u34\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f35\"><equivalence type=\"t0\"><token postag=\"NN\"/></equivalence><equivalence type=\"u35\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f36\"><equivalence type=\"t1\"><token postag=\"NN\"/></equivalence><equivalence type=\"u36\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f37\"><equivalence type=\"t2\"><token postag=\"NN\"/></equivalence><equivalence type=\"u37\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f38\"><equivalence type=\"t3\"><token postag=\"NN\"/></equivalence><equivalence type=\"u38\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f39\"><equivalence type=\"t4\"><token postag=\"NN\"/></equivalence><equivalence type=\"u39\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f40\"><equivalence type=\"t5\"><token postag=\"NN\"/></equivalence><equivalence type=\"u40\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f41\"><equivalence type=\"t6\"><token postag=\"NN\"/></equivalence><equivalence type=\"u41\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f42\"><equivalence type=\"t0\"><token postag=\"NN\"/></equivalence><equivalence type=\"u42\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f43\"><equivalence type=\"t1\"><token postag=\"NN\"/></equivalence><equivalence type=\"u43\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f44\"><equivalence type=\"t2\"><token postag=\"NN\"/></equivalence><equivalence type=\"u44\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f45\"><equivalence type=\"t3\"><token postag=\"NN\"/></equivalence><equivalence type=\"u45\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f46\"><equivalence type=\"t4\"><token postag=\"NN\"/></equivalence><equivalence type=\"u46\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f47\"><equivalence type=\"t5\"><token postag=\"NN\"/></equivalence><equivalence type=\"u47\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f48\"><equivalence type=\"t6\"><token postag=\"NN\"/></equivalence><equivalence type=\"u48\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f49\"><equivalence type=\"t0\"><token postag=\"NN\"/></equivalence><equivalence type=\"u49\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f50\"><equivalence type=\"t1\"><token postag=\"NN\"/></equivalence><equivalence type=\"u50\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f51\"><equivalence type=\"t2\"><token postag=\"NN\"/></equivalence><equivalence type=\"u51\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f52\"><equivalence type=\"t3\"><token postag=\"NN\"/></equivalence><equivalence type=\"u52\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f53\"><equivalence type=\"t4\"><token postag=\"NN\"/></equivalence><equivalence type=\"u53\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f54\"><equivalence type=\"t5\"><token postag=\"NN\"/></equivalence><equivalence type=\"u54\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f55\"><equivalence type=\"t6\"><token postag=\"NN\"/></equivalence><equivalence type=\"u55\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f56\"><equivalence type=\"t0\"><token postag=\"NN\"/></equivalence><equivalence type=\"u56\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f57\"><equivalence type=\"t1\"><token postag=\"NN\"/></equivalence><equivalence type=\"u57\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f58\"><equivalence type=\"t2\"><token postag=\"NN\"/></equivalence><equivalence type=\"u58\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"f59\"><equivalence type=\"t3\"><token postag=\"NN\"/></equivalence><equivalence type=\"u59\"><token postag=\"NN\"/></equivalence></unification><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"numberX\"></unification><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"numberX\"><equivalence type=\"sg\"/></unification><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"numberX\"><equivalence type=\"sg\"><token postag=\"NN\"/><token postag=\"VB\"/></equivalence></unification><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"numberX\"><equivalence type=\"sg\"><token postag=\"NN\"><exception postag=\"X\"/></token></equivalence></unification><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"numberX\"><equivalence type=\"sg\"><marker><token postag=\"NN\"/></marker></equivalence></unification><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"numberX\"><equivalence type=\"sg\"><and><token postag=\"NN\"/><token>a</token></and></equivalence></unification><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"numberX\"><equivalence type=\"sg\"><unify><feature id=\"x\"/></unify></equivalence></unification><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"n\" feature=\"m\"><equivalence type=\"sg\"><token postag=\"NN\"/></equivalence></unification><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"n\"><equivalence type=\"sg\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"n\"><equivalence type=\"sg\"><token postag=\"XX\"/></equivalence><equivalence type=\"pl\"><token postag=\"YY\"/></equivalence></unification><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"n\"><equivalence type=\"sg\"><token postag=\"NN\"/></equivalence></unification><unification-wrong feature=\"n\"/><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"n\"><equivalence type=\"sg\"><token postag=\"NN\"/></equivalence><unification feature=\"m\"><equivalence type=\"x\"><token>a</token></equivalence></unification></unification><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<equivalence type=\"sg\"><token postag=\"NN\"/></equivalence><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"numberX\"><equivalence type=\"sg\"><token postag=\"NN\"/></equivalence><equivalence type=\"pl\"><token postag=\"NNS\"/></equivalence></unification><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><unify><feature id=\"numberX\"><type id=\"sg\"/></feature><token postag=\"NN\"/><token postag=\"VB\"/></unify></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"numberX\"><equivalence type=\"sg\"><token postag=\"NN\"/></equivalence><equivalence type=\"pl\"><token postag=\"NNS\"/></equivalence></unification><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><unify><feature id=\"numberX\"><type id=\"sg\"/><type id=\"pl\"/></feature><token postag=\"NN\"/><token postag=\"VB\"/></unify></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"numberX\"><equivalence type=\"sg\"><token postag=\"NN\"/></equivalence></unification><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><unify><feature id=\"undefinedX\"><type id=\"sg\"/></feature><token postag=\"NN\"/></unify></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"numberX\"><equivalence type=\"sg\"><token postag=\"NN\"/></equivalence></unification><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><unify><feature id=\"numberX\"><type id=\"undefinedType\"/></feature><token postag=\"NN\"/></unify></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"numberX\"><equivalence type=\"sg\"><token postag=\"NN\"/></equivalence></unification><unification feature=\"genderX\"><equivalence type=\"m\"><token postag=\"NN\"/></equivalence><equivalence type=\"f\"><token postag=\"NN\"/></equivalence></unification><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><unify><feature id=\"numberX\"><type id=\"sg\"/></feature><feature id=\"genderX\"><type id=\"m\"/><type id=\"f\"/></feature><token postag=\"NN\"/><unify-ignore><token>of</token></unify-ignore><token postag=\"JJ\"/></unify></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"numberX\"><equivalence type=\"sg\"><token postag=\"NN\"/></equivalence></unification><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><unify negate=\"yes\"><feature id=\"numberX\"><type id=\"sg\"/></feature><token postag=\"NN\"/></unify></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"numberX\"><equivalence type=\"sg\"><token postag=\"NN\"/></equivalence></unification><category id=\"CAT\" name=\"Category\">\n<rulegroup id=\"G\" name=\"Gr\"><rule><pattern><unify><feature id=\"numberX\"><type id=\"sg\"/></feature><token postag=\"NN\"/></unify></pattern><message>m</message></rule><rule><pattern><token>b</token></pattern><message>m</message></rule></rulegroup>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"numberX\"><equivalence type=\"sg\"><token postag=\"NN\"/></equivalence></unification><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><antipattern><unify><feature id=\"numberX\"><type id=\"sg\"/></feature><token postag=\"NN\"/></unify></antipattern><pattern><token>foo</token></pattern><message>Msg</message><example correction=\"bar\"><marker>foo</marker></example></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><unify><feature id=\"numberX\"><type id=\"sg\"/></feature><token postag=\"NN\"/></unify></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<unification feature=\"numberX\"><equivalence type=\"sg\"><token postag=\"NN\"/></equivalence></unification><category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><unify><feature id=\"numberX\"/><token postag=\"NN\"/></unify></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\"><category id=\"CAT\" name=\"C\"><rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule></category><unification feature=\"numberX\"><equivalence type=\"sg\"><token postag=\"NN\"/></equivalence></unification></rules>",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\"><category id=\"CAT\" name=\"C\"><unification feature=\"numberX\"><equivalence type=\"sg\"><token postag=\"NN\"/></equivalence></unification><rule id=\"R1\" name=\"Rule one\"><pattern><token>foo</token></pattern><message>Msg</message></rule></category></rules>",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\"><category id=\"CAT\" name=\"C\"><rule id=\"R1\" name=\"n\"><unification feature=\"numberX\"><equivalence type=\"sg\"><token postag=\"NN\"/></equivalence></unification><pattern><token>a</token></pattern><message>m</message></rule></category></rules>",
+    "filename": "inline.xml",
+    "unifier": true
+   }
+  }
+ ]
+}

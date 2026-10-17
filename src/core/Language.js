@@ -12,6 +12,7 @@ import { CUSTOM_PATTERN_FILE, PATTERN_FILE, STYLE_FILE } from './JLanguageToolCo
 import { LanguageMaintainedState } from './LanguageMaintainedState.js';
 import { createComponent, sharedComponent } from './language/components.js';
 import { languages } from './languagesRef.js';
+import './patterns/UnifierConfiguration.js';
 
 const INSIDE_SUGGESTION = Pattern.compile('<suggestion>(.+?)</suggestion>');
 const APOSTROPHE = Pattern.compile("([\\p{L}\\d-])'([\\p{L}«])", Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
@@ -425,7 +426,7 @@ export class Language {
         }
       }
       if (!ignore) {
-        rules.push(...ruleLoader.getRules(is, fileName, this));
+        for (const r of ruleLoader.getRules(is, fileName, this)) rules.push(r);
       }
     }
     return Object.freeze(rules);

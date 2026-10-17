@@ -153,6 +153,7 @@ export const NoSuchElementException = defineThrowable('NoSuchElementException', 
 export const InterruptedException = defineThrowable('InterruptedException', Exception, 'java.lang.InterruptedException');
 export const CloneNotSupportedException = defineThrowable('CloneNotSupportedException', Exception, 'java.lang.CloneNotSupportedException');
 export const ReflectiveOperationException = defineThrowable('ReflectiveOperationException', Exception, 'java.lang.ReflectiveOperationException');
+export const InstantiationException = defineThrowable('InstantiationException', ReflectiveOperationException, 'java.lang.InstantiationException');
 export const ClassNotFoundException = defineThrowable('ClassNotFoundException', ReflectiveOperationException, 'java.lang.ClassNotFoundException');
 export const IOException = defineThrowable('IOException', Exception, 'java.io.IOException');
 export const FileNotFoundException = defineThrowable('FileNotFoundException', IOException, 'java.io.FileNotFoundException');
@@ -224,6 +225,34 @@ export class SAXException extends Exception {
   toString() {
     if (this.exception !== null) return `${super.toString()}\n${this.exception.toString()}`;
     return super.toString();
+  }
+}
+
+// Java: javax.xml.transform.TransformerException (message)
+export const TransformerException = defineThrowable('TransformerException', Exception, 'javax.xml.transform.TransformerException');
+// Java: javax.xml.xpath.XPathExpressionException (cause)
+export const XPathExpressionException = defineThrowable('XPathExpressionException', Exception, 'javax.xml.xpath.XPathExpressionException');
+
+// Java: java.lang.reflect.InvocationTargetException (constructor (Throwable): message null, getCause() = target)
+export class InvocationTargetException extends ReflectiveOperationException {
+  static FQCN = 'java.lang.reflect.InvocationTargetException';
+
+  // Java: InvocationTargetException#InvocationTargetException(Throwable)
+  constructor(target) {
+    super();
+    Object.defineProperty(this, 'target', { value: target ?? null, writable: true, configurable: true, enumerable: false });
+    this._cause = this.target;
+    this._causeSet = true;
+  }
+
+  // Java: InvocationTargetException#getTargetException()
+  getTargetException() {
+    return this.target;
+  }
+
+  // Java: InvocationTargetException#getCause()
+  getCause() {
+    return this.target;
   }
 }
 

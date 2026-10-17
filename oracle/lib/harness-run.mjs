@@ -24,6 +24,8 @@ export async function runHarness(cs) {
   const exit = new Promise((res) => child.on('close', (code) => res(code)));
   child.stdin.end(requests);
   const exitCode = await exit;
+  const nResp = Buffer.concat(out).toString('utf8').split('\n').filter((l) => l.length > 0).length;
+  if (nResp !== ops.length) throw new Error(`harness truncated: ${nResp} responses for ${ops.length} requests (exit ${exitCode})`);
   return {
     workDir, tmpDir: path.join(workDir, 'tmp'), requests,
     responses: Buffer.concat(out).toString('utf8'), stderr: Buffer.concat(err), exitCode,

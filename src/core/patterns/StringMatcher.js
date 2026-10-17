@@ -1,5 +1,5 @@
 // org.languagetool.rules.patterns.StringMatcher (text pattern + matching mode); sequence/postag fast paths come with F26
-import { Pattern } from '../../lib/java/regex/index.js';
+import { Pattern, PatternSyntaxException } from '../../lib/java/regex/index.js';
 import { AssertionError, RuntimeException } from '../../lib/java/errors.js';
 import {
   getType, charCount, isLetterOrDigit, DASH_PUNCTUATION, OTHER_PUNCTUATION, INITIAL_QUOTE_PUNCTUATION, FINAL_QUOTE_PUNCTUATION,
@@ -134,6 +134,30 @@ export class StringMatcher {
     return m;
   }
 
+  // Java: StringMatcher#createWithKnownValues(String,boolean,boolean,Supplier)
+  static createWithKnownValues(pattern, isRegExp, caseSensitive, possibleValuesUniverseSupplier) {
+    if (isRegExp) {
+      if (possibleValuesUniverseSupplier !== null && possibleValuesUniverseSupplier !== undefined) {
+        const universe = possibleValuesUniverseSupplier();
+        if (universe !== null && universe !== undefined && universe.size !== 0) {
+          const matching = intersectWithUniverse(pattern, caseSensitive, universe);
+          if (matching !== null) {
+            return enumeratedSetMatcher(pattern, caseSensitive, matching);
+          }
+        }
+      }
+      const postagTemplateMatcher = tryCreatePostagTemplateMatcher(pattern, caseSensitive);
+      if (postagTemplateMatcher !== null) {
+        return postagTemplateMatcher;
+      }
+      const hybrid = tryCreateHybridPostagMatcher(pattern, caseSensitive, possibleValuesUniverseSupplier);
+      if (hybrid !== null) {
+        return hybrid;
+      }
+    }
+    return StringMatcher.create(pattern, isRegExp, caseSensitive);
+  }
+
   // Java: StringMatcher#getRequiredSubstrings(String)
   static getRequiredSubstrings(regexp) {
     const UNKNOWN = new Substrings(false, false, []);
@@ -194,6 +218,292 @@ export class StringMatcher {
 // Java: StringMatcher#tryCreateSequenceMatcher(String,boolean,Pattern); notPorted (PLAN.md F26): RunSequenceMatcher not built, null = Java's "unsupported" result, regex path matches the same strings
 function tryCreateSequenceMatcher() {
   return null;
+}
+
+// Java: StringMatcher#tryCreatePostagTemplateMatcher(String,boolean)
+function tryCreatePostagTemplateMatcher(pattern, caseSensitive) {
+  const alt = parsePostagAlternatives(pattern);
+  if (alt === null) {
+    return null;
+  }
+  const m = new StringMatcher(pattern, true, caseSensitive);
+  m.getPossibleValues = () => null;
+  m.matches = (s) => {
+    if (s.length > MAX_MATCH_LENGTH) {
+      return false;
+    }
+    return alt.matches(s);
+  };
+  return m;
+}
+
+// Java: StringMatcher#parsePostagAlternatives(String)
+function parsePostagAlternatives(regexp) {
+  if (regexp.indexOf('(') >= 0 || regexp.indexOf(')') >= 0) {
+    return null;
+  }
+  const parts = splitTopLevelAlternatives(regexp);
+  if (parts === null) {
+    return null;
+  }
+  const templates = new Array(parts.length);
+  for (let i = 0; i < parts.length; i++) {
+    const t = parseSingleTemplate(parts[i]);
+    if (t === null) {
+      return null;
+    }
+    templates[i] = t;
+  }
+  return { matches: (s) => templates.some((t) => t.matches(s)) }; // PostagAlternatives
+}
+
+// Java: StringMatcher#splitTopLevelAlternatives(String)
+function splitTopLevelAlternatives(regexp) {
+  const parts = [];
+  let start = 0;
+  let bracketDepth = 0;
+  for (let i = 0; i < regexp.length; i++) {
+    const c = regexp.charAt(i);
+    if (c === '[') {
+      bracketDepth++;
+    } else if (c === ']') {
+      if (bracketDepth === 0) return null; // malformed class
+      bracketDepth--;
+    } else if (c === '|' && bracketDepth === 0) {
+      parts.push(regexp.substring(start, i));
+      start = i + 1;
+    }
+  }
+  if (bracketDepth !== 0) return null;
+  parts.push(regexp.substring(start));
+  return parts;
+}
+
+// Java: StringMatcher$PositionMatcher (allowed = array of UTF-16 units, null = any char)
+class PositionMatcher {
+  // Java: PositionMatcher#PositionMatcher(char[])
+  constructor(allowed) {
+    this.allowed = allowed;
+  }
+
+  // Java: PositionMatcher#test(char)
+  test(c) {
+    if (this.allowed === null) return true;
+    for (const a of this.allowed) if (a === c) return true;
+    return false;
+  }
+}
+PositionMatcher.WILDCARD = new PositionMatcher(null);
+
+// Java: StringMatcher#parseSingleTemplate(String)
+function parseSingleTemplate(s) {
+  const positions = [];
+  let pos = 0;
+  const len = s.length;
+  let anyTail = false;
+
+  while (pos < len) {
+    const c = s.charAt(pos);
+
+    if (c === '.' && pos + 1 < len && s.charAt(pos + 1) === '*' && pos + 2 === len) {
+      anyTail = true;
+      break; // ".*" must be the very end of the alternative
+    }
+    if (c === '.') {
+      positions.push(PositionMatcher.WILDCARD);
+      pos++;
+      continue;
+    }
+    if (c === '[') {
+      const close = s.indexOf(']', pos + 1);
+      if (close < 0) return null;
+      const options = parseCharClass(s, pos + 1, close);
+      if (options === null) return null;
+      positions.push(new PositionMatcher(options));
+      pos = close + 1;
+      continue;
+    }
+    if ('\\^${}*+?'.indexOf(c) >= 0) {
+      return null; // outside our grammar -> fall back to full regex
+    }
+    positions.push(new PositionMatcher([c]));
+    pos++;
+  }
+
+  if (positions.length === 0) {
+    return null;
+  }
+  // PostagTemplate: anyTail true = "...*" (length >= positions.length), false = exact length
+  return {
+    matches: (str) => {
+      const n = positions.length;
+      if (anyTail ? str.length < n : str.length !== n) {
+        return false;
+      }
+      for (let i = 0; i < n; i++) {
+        if (!positions[i].test(str.charAt(i))) return false;
+      }
+      return true;
+    },
+  };
+}
+
+const MAX_CLASS_RANGE_WIDTH = 64;
+
+// Java: StringMatcher#parseCharClass(String,int,int)
+function parseCharClass(s, start, end) {
+  if (start >= end || s.charAt(start) === '^') {
+    return null; // empty or negated class -> unsupported
+  }
+  const options = [];
+  let i = start;
+  while (i < end) {
+    const c1 = s.charAt(i);
+    if (c1 === '-' && i !== start && i + 1 < end) {
+      const last = options[options.length - 1].charCodeAt(0);
+      const next = s.charCodeAt(i + 1);
+      if (next < last || next - last > MAX_CLASS_RANGE_WIDTH) return null;
+      for (let c = last + 1; c <= next; c++) options.push(String.fromCharCode(c));
+      i += 2;
+      continue;
+    }
+    options.push(c1);
+    i++;
+  }
+  return options;
+}
+
+// Java: StringMatcher#MAX_ENUMERATED_POSTAGS
+const MAX_ENUMERATED_POSTAGS = 30;
+
+// Java: StringMatcher#enumeratedSetMatcher(String,boolean,Set)
+function enumeratedSetMatcher(pattern, caseSensitive, set) {
+  const interned = new JavaHashSet();
+  for (const s of set) {
+    interned.add(s);
+  }
+  const m = new StringMatcher(pattern, true, caseSensitive);
+  m.getPossibleValues = () => unmodifiableSet(interned);
+  m.matches = (s) => {
+    if (s.length > MAX_MATCH_LENGTH) {
+      return false;
+    }
+    return interned.contains(s);
+  };
+  return m;
+}
+
+// Java: StringMatcher#intersectWithUniverse(String,boolean,Set)
+function intersectWithUniverse(pattern, caseSensitive, universe) {
+  let compiled;
+  try {
+    compiled = Pattern.compile(pattern, caseSensitive ? 0 : Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
+  } catch (e) {
+    if (e instanceof PatternSyntaxException) return null;
+    throw e;
+  }
+  const matching = new JavaHashSet();
+  for (const candidate of universe) {
+    if (compiled.matcher(candidate).matches()) {
+      matching.add(candidate);
+      if (matching.size() > MAX_ENUMERATED_POSTAGS) {
+        return null; // too generic to enumerate
+      }
+    }
+  }
+  return matching.isEmpty() ? null : matching;
+}
+
+// Java: StringMatcher#tryCreateHybridPostagMatcher(String,boolean,Supplier)
+function tryCreateHybridPostagMatcher(pattern, caseSensitive, universeSupplier) {
+  if (pattern.indexOf('(') >= 0 || pattern.indexOf(')') >= 0) {
+    return null;
+  }
+  const parts = splitTopLevelAlternatives(pattern);
+  if (parts === null) {
+    return null;
+  }
+
+  const templates = [];
+  const literals = new Set();
+  const unresolved = [];
+
+  for (const part of parts) {
+    if (isPlainLiteral(part)) {
+      literals.add(part);
+      continue;
+    }
+    const t = parseSingleTemplate(part);
+    if (t !== null) {
+      templates.push(t);
+    } else {
+      unresolved.push(part);
+    }
+  }
+
+  if (templates.length === 0 && literals.size === 0 && unresolved.length === 0) {
+    return null;
+  }
+
+  const unresolvedJoined = unresolved.length === 0 ? null : unresolved.join('|');
+  return hybridPostagMatcher(pattern, caseSensitive, literals, templates, unresolvedJoined, universeSupplier);
+}
+
+// Java: StringMatcher#isPlainLiteral(String)
+function isPlainLiteral(s) {
+  if (s.length === 0) return false;
+  for (let i = 0; i < s.length; i++) {
+    if ('.[]{}*+?^$\\'.indexOf(s.charAt(i)) >= 0) return false;
+  }
+  return true;
+}
+
+// Java: StringMatcher.HybridPostagMatcher
+function hybridPostagMatcher(pattern, caseSensitive, literals, templates, unresolvedRegexp, universeSupplier) {
+  let unresolvedResolved = null; // Set (enumerated) or Pattern (fallback), computed once
+  const m = new StringMatcher(pattern, true, caseSensitive);
+  m.getPossibleValues = () => null;
+  // Java: HybridPostagMatcher#resolveUnresolved()
+  const resolveUnresolved = () => {
+    if (universeSupplier !== null && universeSupplier !== undefined) {
+      const universe = universeSupplier();
+      if (universe !== null && universe !== undefined && universe.size !== 0) {
+        const intersected = intersectWithUniverse(unresolvedRegexp, caseSensitive, universe);
+        if (intersected !== null) {
+          return intersected;
+        }
+      }
+    }
+    return Pattern.compile(unresolvedRegexp, caseSensitive ? 0 : Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
+  };
+  // Java: HybridPostagMatcher#matchesUnresolved(String)
+  const matchesUnresolved = (s) => {
+    let resolved = unresolvedResolved;
+    if (resolved === null) {
+      resolved = resolveUnresolved();
+      unresolvedResolved = resolved;
+    }
+    if (resolved instanceof JavaHashSet) {
+      return resolved.contains(s);
+    }
+    return resolved.matcher(s).matches();
+  };
+  // Java: HybridPostagMatcher#matches(String)
+  m.matches = (s) => {
+    if (s.length > MAX_MATCH_LENGTH) {
+      return false;
+    }
+    if (literals.has(s)) {
+      return true;
+    }
+    for (const t of templates) {
+      if (t.matches(s)) {
+        return true;
+      }
+    }
+    return unresolvedRegexp !== null && matchesUnresolved(s);
+  };
+  return m;
 }
 
 // Java: StringMatcher#stringEquals(String,boolean,boolean)

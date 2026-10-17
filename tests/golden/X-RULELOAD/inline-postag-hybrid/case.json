@@ -1,0 +1,1909 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "postag_regexp matcher creation at load (createWithKnownValues/hybrid/template/regex fallback), PosToken.posUnknown, getPossibleValues, probe matches, errors; per-language universes",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"N\\|B\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"A\\|UNKNOWN\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"A|UNKNOWN\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"UNKNOWN\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"UNK.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"UNKNOWN|UNKNOWN\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\".*UNKNOWN\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"UNKNOW[N]\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"UNKNOWN?\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"(UNKNOWN)\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN|VB\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN.*|VB.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"N.*|V.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\".*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\".+\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\".\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"|\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN|\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"|NN\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN||VB\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN|VB|\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"N+\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN?\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NNS?\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN[SP]\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN[^S]\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN[A-Z]*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"N[NP]S?|VB[DGNPZ]?\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"VB[A-Z]?|MD|UNKNOWN\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"^NN$\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"^NN\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN$\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"\\bNN\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN\\b\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN.{1,3}\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"P0.{6}\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN.{2}|VB.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN\\.\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN\\.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"N\\\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"\\\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"\\|\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"\\|\\|\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"A\\\\|B\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"A\\\\\\|B\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"[A-Z\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN(\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN)\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"(NN|VB)\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"(?i)nn\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"(?:NN|VB)\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN{\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN{1\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN{2,1}\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"*NN\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"+\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN**\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN++\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"Ü.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"ÄÖÜ|UNKNOWN\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN/VB\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN-VB\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN_VB\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN:VB\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN$1\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN#\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN\\p{L}\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN\\d\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN\\w+\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN\\s\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN\\Q|\\E\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"\\QNN\\E\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"LOC_ADV\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"_GV_\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"SENT_END|SENT_START\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"PCT|UNKNOWN|NN\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"N.*B\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"N\\.B\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"A.*|B.*|C.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN[SP]|VB[DG]\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NC[MF][SP]000|NP.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"V.[SI]3S.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"V.IP3S0\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"[NV].*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"D[AI].*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"A.*|UNKNOWN\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN\" postag_regexp=\"yes\" negate_pos=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN\" negate_pos=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo<exception postag=\"NN\" postag_regexp=\"yes\"/></token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN\" postag_regexp=\"yes\">foo<exception postag=\"NN\" postag_regexp=\"yes\" negate_pos=\"yes\"/></token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN\" postag_regexp=\"yes\"><and><token postag=\"NN\" postag_regexp=\"yes\"/></and></token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN\" postag_regexp=\"yes\">a</token><token postag=\"NN\" postag_regexp=\"yes\">b</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN|UNKNOWN\" postag_regexp=\"yes\" negate_pos=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN|UNKNOWN\" negate_pos=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN|UNKNOWN\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo<exception postag=\"NN|UNKNOWN\" postag_regexp=\"yes\"/></token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN|UNKNOWN\" postag_regexp=\"yes\">foo<exception postag=\"NN|UNKNOWN\" postag_regexp=\"yes\" negate_pos=\"yes\"/></token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN|UNKNOWN\" postag_regexp=\"yes\"><and><token postag=\"NN|UNKNOWN\" postag_regexp=\"yes\"/></and></token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN|UNKNOWN\" postag_regexp=\"yes\">a</token><token postag=\"NN|UNKNOWN\" postag_regexp=\"yes\">b</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"UNKNOWN\" postag_regexp=\"yes\" negate_pos=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"UNKNOWN\" negate_pos=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"UNKNOWN\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo<exception postag=\"UNKNOWN\" postag_regexp=\"yes\"/></token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"UNKNOWN\" postag_regexp=\"yes\">foo<exception postag=\"UNKNOWN\" postag_regexp=\"yes\" negate_pos=\"yes\"/></token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"UNKNOWN\" postag_regexp=\"yes\"><and><token postag=\"UNKNOWN\" postag_regexp=\"yes\"/></and></token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"UNKNOWN\" postag_regexp=\"yes\">a</token><token postag=\"UNKNOWN\" postag_regexp=\"yes\">b</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"N\\|B\" postag_regexp=\"yes\" negate_pos=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"N\\|B\" negate_pos=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"N\\|B\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo<exception postag=\"N\\|B\" postag_regexp=\"yes\"/></token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"N\\|B\" postag_regexp=\"yes\">foo<exception postag=\"N\\|B\" postag_regexp=\"yes\" negate_pos=\"yes\"/></token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"N\\|B\" postag_regexp=\"yes\"><and><token postag=\"N\\|B\" postag_regexp=\"yes\"/></and></token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"N\\|B\" postag_regexp=\"yes\">a</token><token postag=\"N\\|B\" postag_regexp=\"yes\">b</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN.*\" postag_regexp=\"yes\" negate_pos=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN.*\" negate_pos=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN.*\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo<exception postag=\"NN.*\" postag_regexp=\"yes\"/></token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN.*\" postag_regexp=\"yes\">foo<exception postag=\"NN.*\" postag_regexp=\"yes\" negate_pos=\"yes\"/></token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN.*\" postag_regexp=\"yes\"><and><token postag=\"NN.*\" postag_regexp=\"yes\"/></and></token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN.*\" postag_regexp=\"yes\">a</token><token postag=\"NN.*\" postag_regexp=\"yes\">b</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"[A\" postag_regexp=\"yes\" negate_pos=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"[A\" negate_pos=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"[A\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo<exception postag=\"[A\" postag_regexp=\"yes\"/></token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"[A\" postag_regexp=\"yes\">foo<exception postag=\"[A\" postag_regexp=\"yes\" negate_pos=\"yes\"/></token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"[A\" postag_regexp=\"yes\"><and><token postag=\"[A\" postag_regexp=\"yes\"/></and></token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"[A\" postag_regexp=\"yes\">a</token><token postag=\"[A\" postag_regexp=\"yes\">b</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\".*\" postag_regexp=\"yes\" negate_pos=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\".*\" negate_pos=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\".*\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token>foo<exception postag=\".*\" postag_regexp=\"yes\"/></token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\".*\" postag_regexp=\"yes\">foo<exception postag=\".*\" postag_regexp=\"yes\" negate_pos=\"yes\"/></token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\".*\" postag_regexp=\"yes\"><and><token postag=\".*\" postag_regexp=\"yes\"/></and></token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\".*\" postag_regexp=\"yes\">a</token><token postag=\".*\" postag_regexp=\"yes\">b</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"A|UNKNOWN\" postag_regexp=\"yes\">a</token><token postag=\"A|UNKNOWN\" postag_regexp=\"yes\" negate_pos=\"yes\">b</token><token postag=\"A|UNKNOWN\">c</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "de-DE",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"N\\|B\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "de-DE",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"A|UNKNOWN\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "de-DE",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"UNKNOWN\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "de-DE",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"UNK.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "de-DE",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "de-DE",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"SUB:.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "de-DE",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"VER:.*|UNKNOWN\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "de-DE",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"N.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "de-DE",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"V.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "de-DE",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NC[MF][SP]000|NP.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "de-DE",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"PRO:PER:.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "de-DE",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"JJ[RS]?\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "de-DE",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\".*:NOM:.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "de-DE",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"ADJ:PRD.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "de-DE",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"A.*|B.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "de-DE",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"[NV].*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-GB",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"N\\|B\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-GB",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"A|UNKNOWN\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-GB",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"UNKNOWN\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-GB",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"UNK.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-GB",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-GB",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"SUB:.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-GB",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"VER:.*|UNKNOWN\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-GB",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"N.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-GB",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"V.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-GB",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NC[MF][SP]000|NP.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-GB",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"PRO:PER:.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-GB",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"JJ[RS]?\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-GB",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\".*:NOM:.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-GB",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"ADJ:PRD.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-GB",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"A.*|B.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-GB",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"[NV].*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "fr",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"N\\|B\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "fr",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"A|UNKNOWN\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "fr",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"UNKNOWN\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "fr",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"UNK.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "fr",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NN.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "fr",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"SUB:.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "fr",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"VER:.*|UNKNOWN\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "fr",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"N.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "fr",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"V.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "fr",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"NC[MF][SP]000|NP.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "fr",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"PRO:PER:.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "fr",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"JJ[RS]?\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "fr",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\".*:NOM:.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "fr",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"ADJ:PRD.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "fr",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"A.*|B.*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "fr",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"[NV].*\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "de-DE",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"(UNK)\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"(UNK)\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "fr",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"Rule one\"><pattern><token postag=\"(UNK)\" postag_regexp=\"yes\">foo</token></pattern><message>Msg</message></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml",
+    "posDetail": true
+   }
+  }
+ ]
+}

@@ -24,5 +24,5 @@ describe('SwissGermanTaggerTest', () => {
 
     expect(swissTagger.lookup('die').equals(germanTagger.lookup('die'))).toBe(true);
     expect(swissTagger.lookup('Auto').equals(germanTagger.lookup('Auto'))).toBe(true);
-  });
+  }, 60000); // loading the German dictionary exceeds the 5s default in a full parallel run
 });

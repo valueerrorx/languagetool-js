@@ -537,6 +537,196 @@ add('misc-big', 'many rules in one file, order, duplicates, long text', [
   W(C(`<rulegroup id="G" name="Gr">${Array.from({ length: 30 }, (_, i) => `<rule><pattern><token>a${i}</token></pattern><message>m${i}</message></rule>`).join('')}</rulegroup>`)),
   W(C(`<rule id="R1" name="n"><pattern><token>a</token></pattern><message>m</message></rule>`) + C(`<rule id="R1" name="n"><pattern><token>b</token></pattern><message>m</message></rule>`, 'id="CAT2" name="Cat2"')),
 ]);
+// ---- F25b review additions: unification, url, errors, toXML quoting (inline-unification/-url/-errors/-toxml-quote) ----
+const U = (body, defs = '') => `<?xml version="1.0" encoding="UTF-8"?>\n<rules lang="en">\n${defs}<category id="CAT" name="Category">\n${body}\n</category>\n</rules>\n`;
+const UN = (inner, attrs = 'feature="numberX"') => `<unification ${attrs}>${inner}</unification>`;
+const EQ = (type, tok = '<token postag="NN"/>') => `<equivalence${type === null ? '' : ` type="${type}"`}>${tok}</equivalence>`;
+const unif = (xml) => inl(xml, { unifier: true });
+add('unification', 'unification/equivalence definitions: attrs missing, many features/types, order, duplicates, unify in rules; dump of UnifierConfiguration (ConcurrentHashMap order) and errors', [
+  U(RP(T), UN(EQ('sg'))),
+  U(RP(T), UN(EQ(null))),
+  U(RP(T), UN(EQ('sg'), '')),
+  U(RP(T), UN(EQ('sg'), 'feature=""')),
+  U(RP(T), UN(EQ('', '<token postag="NN"/>'))),
+  U(RP(T), UN(EQ('sg') + EQ('pl') + EQ('mf'))),
+  U(RP(T), UN(EQ('sg') + EQ('sg', '<token postag="NNS"/>'))),
+  U(RP(T), UN(EQ('sg')) + UN(EQ('sg'), 'feature="genderX"') + UN(EQ('pl', '<token>x</token>'), 'feature="numberX"')),
+  U(RP(T), ['number', 'gender', 'case', 'person', 'tense', 'mood', 'voice', 'degree', 'definiteness', 'animacy', 'aspect', 'polarity', 'a', 'b', 'c', 'Aa', 'BB', 'x'.repeat(40)].map((f) => UN(EQ('t1') + EQ('t2', '<token postag_regexp="yes" postag="N.*"/>') + EQ('t3', '<token regexp="yes">a|b</token>') + EQ('Ünï', '<token negate="yes">x</token>'), `feature="${f}"`)).join('')),
+  U(RP(T), Array.from({ length: 60 }, (_, i) => UN(EQ('t' + (i % 7)) + EQ('u' + i), `feature="f${i}"`)).join('')),
+  U(RP(T), UN('')),
+  U(RP(T), UN('<equivalence type="sg"/>')),
+  U(RP(T), UN('<equivalence type="sg"><token postag="NN"/><token postag="VB"/></equivalence>')),
+  U(RP(T), UN('<equivalence type="sg"><token postag="NN"><exception postag="X"/></token></equivalence>')),
+  U(RP(T), UN('<equivalence type="sg"><marker><token postag="NN"/></marker></equivalence>')),
+  U(RP(T), UN('<equivalence type="sg"><and><token postag="NN"/><token>a</token></and></equivalence>')),
+  U(RP(T), UN('<equivalence type="sg"><unify><feature id="x"/></unify></equivalence>')),
+  U(RP(T), UN(EQ('sg'), 'feature="n" feature="m"')),
+  U(RP(T), `<unification feature="n"><equivalence type="sg"><token postag="NN"/></equivalence></unification><unification feature="n"><equivalence type="sg"><token postag="XX"/></equivalence><equivalence type="pl"><token postag="YY"/></equivalence></unification>`),
+  U(RP(T), `<unification feature="n"><equivalence type="sg"><token postag="NN"/></equivalence></unification><unification-wrong feature="n"/>`),
+  U(RP(T), `<unification feature="n"><equivalence type="sg"><token postag="NN"/></equivalence><unification feature="m"><equivalence type="x"><token>a</token></equivalence></unification></unification>`),
+  U(RP(T), `<equivalence type="sg"><token postag="NN"/></equivalence>`),
+  U(RP(T), '', ),
+  // unify inside rules
+  U(RP('<unify><feature id="numberX"><type id="sg"/></feature><token postag="NN"/><token postag="VB"/></unify>'), UN(EQ('sg') + EQ('pl', '<token postag="NNS"/>'))),
+  U(RP('<unify><feature id="numberX"><type id="sg"/><type id="pl"/></feature><token postag="NN"/><token postag="VB"/></unify>'), UN(EQ('sg') + EQ('pl', '<token postag="NNS"/>'))),
+  U(RP('<unify><feature id="undefinedX"><type id="sg"/></feature><token postag="NN"/></unify>'), UN(EQ('sg'))),
+  U(RP('<unify><feature id="numberX"><type id="undefinedType"/></feature><token postag="NN"/></unify>'), UN(EQ('sg'))),
+  U(RP('<unify><feature id="numberX"><type id="sg"/></feature><feature id="genderX"><type id="m"/><type id="f"/></feature><token postag="NN"/><unify-ignore><token>of</token></unify-ignore><token postag="JJ"/></unify>'), UN(EQ('sg')) + UN(EQ('m') + EQ('f'), 'feature="genderX"')),
+  U(RP('<unify negate="yes"><feature id="numberX"><type id="sg"/></feature><token postag="NN"/></unify>'), UN(EQ('sg'))),
+  U(`<rulegroup id="G" name="Gr"><rule><pattern><unify><feature id="numberX"><type id="sg"/></feature><token postag="NN"/></unify></pattern><message>m</message></rule><rule><pattern><token>b</token></pattern><message>m</message></rule></rulegroup>`, UN(EQ('sg'))),
+  U(RA('<antipattern><unify><feature id="numberX"><type id="sg"/></feature><token postag="NN"/></unify></antipattern>'), UN(EQ('sg'))),
+  U(RP('<unify><feature id="numberX"><type id="sg"/></feature><token postag="NN"/></unify>')),
+  U(RP('<unify><feature id="numberX"/><token postag="NN"/></unify>'), UN(EQ('sg'))),
+  // definition after the rules and inside a category
+  `<?xml version="1.0" encoding="UTF-8"?>\n<rules lang="en"><category id="CAT" name="C">${RP(T)}</category>${UN(EQ('sg'))}</rules>`,
+  `<?xml version="1.0" encoding="UTF-8"?>\n<rules lang="en"><category id="CAT" name="C">${UN(EQ('sg'))}${RP(T)}</category></rules>`,
+  `<?xml version="1.0" encoding="UTF-8"?>\n<rules lang="en"><category id="CAT" name="C"><rule id="R1" name="n">${UN(EQ('sg'))}<pattern><token>a</token></pattern><message>m</message></rule></category></rules>`,
+].map((x) => (typeof x === 'string' ? unif(x) : x)));
+
+const urlRule = (u, raw) => U(RP(T, 'id="R1" name="n"', `<message>m</message>${raw ? u : `<url>${u}</url>`}`));
+const URLS = [
+  'http://example.com', 'https://example.com/a/b?x=1&amp;y=2#frag', 'HTTP://EXAMPLE.COM/', 'ftp://ftp.example.com/file.txt', 'ftp://user:pw@host:21/dir;type=a',
+  'file:///etc/hostname', 'file:/tmp/x', 'file://host/share/x', 'file:', 'jar:file:/tmp/a.jar!/x.xml', 'jar:foo!/x', 'jar:http://h/a.jar!/', 'jar:', 'jmod:foo', 'jmod:foo.jmod!/x', 'jrt:/java.base/x',
+  'mailto:', 'mailto:a@b.c', 'mailto:a@b.c#ref', 'mailto:a@b.c?subject=x', 'mailto:a@b.c,d@e.f',
+  'http://[::1]/', 'http://[2001:db8::1]:8080/p', 'http://[::1/', 'http://[::1]x/', 'http://[zzz]/', 'http://[::ffff:1.2.3.4]/', 'http://[]/',
+  'http://h:80/', 'http://h:-5/', 'http://h:-1/', 'http://h:65536/', 'http://h:99999999999/', 'http://h:/', 'http://h:0/', 'http://h:abc/', 'http://:80/', 'http://h:80:90/',
+  '\u00e9:foo', '\u00e9\u00e9://h/', 'x\u00e9://h/', 'a+b.c-d://h/', '1http://h/', '+http://h/', 'http-x://h/', 'unknown://h/', 'unknown:x', 'javascript:alert(1)', 'data:text/plain,hi', 'gopher://h/', 'netdoc:/x',
+  '/relative/path', 'relative', '../x', '//host/path', '?q=1', '#frag', ':foo', ':', 'http:', 'http:/', 'http://', 'http:///x', 'http:x',
+  'http://exa mple.com/', 'http://example.com/a b', ' http://example.com ', 'http://example.com/\u00e4\u00f6\u00fc', 'http://b\u00fccher.de/', 'http://\u4f8b\u3048.jp/', 'http://example.com/%zz', 'http://example.com/%41', 'http://user@host/', 'http://user:pw@host/', 'http://@host/', 'http://host\\path',
+  'http://h/?', 'http://h/#', 'http://h/#a#b', 'http://h/a?b?c', 'http://h?x', 'http://h#x', 'http://h/%', 'http://h/\u0000', 'http://h/' + 'a'.repeat(5000),
+  'http://example.com/<tag>', 'http://example.com/"q"', 'http://example.com/{x}', 'http://example.com/|', 'http://example.com/^', 'http://example.com/`',
+  '', ' ', 'null', 'not a url', 'HTTP', '\u00e9',
+];
+add('url', 'rule <url> variants: getUrl().toString() or exception chain (URL.<init>)', URLS.map((u) => urlRule(u.replace(/&(?!amp;)/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'))));
+add('url-places', '<url> in rulegroup / rule, repeated, in categories, whitespace and CDATA', [
+  U(`<rulegroup id="G" name="Gr"><url>http://example.com/g</url><rule><pattern><token>a</token></pattern><message>m</message><url>jmod:foo</url></rule><rule><pattern><token>b</token></pattern><message>m</message></rule></rulegroup>`),
+  U(`<rulegroup id="G" name="Gr"><url>mailto:</url><rule><pattern><token>a</token></pattern><message>m</message></rule></rulegroup>`),
+  U(RP(T, 'id="R1" name="n"', '<message>m</message><url>http://a/</url><url>http://b/</url>')),
+  U(RP(T, 'id="R1" name="n"', '<message>m</message><url><![CDATA[http://example.com/?a=1&b=2]]></url>')),
+  U(RP(T, 'id="R1" name="n"', '<message>m</message><url>http://exam\nple.com/</url>')),
+  U(RP(T, 'id="R1" name="n"', '<message>m</message><url>\n  http://example.com/\n</url>')),
+  U(RP(T, 'id="R1" name="n"', '<message>m</message><url>http://a/<b>x</b></url>')),
+  U(RP(T, 'id="R1" name="n"', '<url>http://example.com/</url><message>m</message>')),
+  U(RP(T, 'id="R1" name="n"', '<message>m <url>http://example.com/</url></message>')),
+  U(RP(T, 'id="R1" name="n"', '<message>m</message><url/>')),
+  U(RP(T, 'id="R1" name="n"', '<message>m</message><url>http://example.com/</url><url/>')),
+]);
+
+const FC = (cls, args) => U(RP(T, 'id="R1" name="n"', `<filter class="${cls}"${args === undefined ? '' : ` args="${args}"`}/><message>m</message>`));
+add('errors', 'loader error paths: wrapping (IOException cause chains), filter creation failures, SAX/IO errors, NPE paths', [
+  // XML level
+  '', ' ', '<', '<rules', '<rules lang="en">', '<rules lang="en"></rules', '<rules lang="en"></rules>', '<?xml version="1.0"?>', '<?xml version="2.0"?><rules lang="en"/>', '<?xml version="1.0" encoding="BOGUS"?><rules lang="en"/>',
+  '<?xml version="1.0" encoding="UTF-16"?><rules lang="en"/>', '\u0000', '<rules lang="en">&amp;&bogus;</rules>', '<!DOCTYPE rules SYSTEM "http://127.0.0.1:1/x.dtd"><rules lang="en"/>', '<!DOCTYPE rules SYSTEM "nonexistent.dtd"><rules lang="en"/>',
+  '<rules lang="en"><category id="A" name="B"><rule id="R1" name="n"><pattern><token>a</pattern></token></rule></category></rules>',
+  '<other/>', '<rules/>', '<rules lang="en"/>', '<rules lang="en"><foo/></rules>',
+  // handler-level SAXExceptions / RuntimeExceptions
+  U('<rule id="R1" name="n"><pattern><token>a</token></pattern></rule>'),
+  U('<rule id="R1" name="n"><message>m</message></rule>'),
+  U('<rule id="R1" name="n"><pattern/><message>m</message></rule>'),
+  U('<rule id="R1" name="n"><pattern><token>a</token></pattern><message>m</message><pattern><token>b</token></pattern></rule>'),
+  U(RP(T, 'id="R1" name="n"', '<message>m <match no="1"/></message>')),
+  U(RP(T, 'id="R1" name="n"', '<message>m <match no="x"/></message>')),
+  U(RP(T, 'id="R1" name="n"', '<message>m <match/></message>')),
+  U(RP(T, 'id="R1" name="n"', '<message>m <suggestion><match/></suggestion></message>')),
+  U(RP(T, 'id="R1" name="n"', '<message>m \\9</message>')),
+  U(RP('<token>a</token><token>\\1</token>')),
+  U(RP('<token regexp="yes">(</token>')),
+  U(RP('<token postag="(" postag_regexp="yes"/>')),
+  U(RP('<token regexp="yes">a</token><token regexp="yes">[</token>')),
+  U(RP('<token inflected="maybe">a</token>')),
+  U(RP('<token min="x">a</token>')),
+  U(RP('<token max="x">a</token>')),
+  U(RP('<token skip="x">a</token>')),
+  U(RP('<token><match no="1"/></token>')),
+  U(RP('<token><match no="x"/></token>')),
+  U(RP('<token><match/></token>')),
+  U(RP('<phraseref idref="nope"/>')),
+  U(RP('<phraseref/>')),
+  U(`<phrases><phrase id="P1"><token>a</token></phrase></phrases>${RP('<phraseref idref="P1"/>')}`),
+  U(`<phrases><phrase><token>a</token></phrase></phrases>${RP(T)}`),
+  U(`<phrases><phrase id="P1"><token>a</token></phrase><phrase id="P1"><token>b</token></phrase></phrases>${RP('<phraseref idref="P1"/>')}`),
+  U(RP('<marker><token>a</token></marker><marker><token>b</token></marker>')),
+  U(RP('<token>a</token>', 'id="R1" name="n" default="bogus"')),
+  U(RP('<token>a</token>', 'id="R1" name="n" tags="bogus"')),
+  U(RP('<token>a</token>', 'id="R1" name="n" tone_tags="bogus"')),
+  U(RP('<token>a</token>', 'id="R1" name="n" prio="x"')),
+  U(RP('<token>a</token>', 'id="R1" name="n" distance_tokens="x"')),
+  U(RP('<token>a</token>', 'id="R1" name="n" min_prev_matches="x"')),
+  U(RP('<token>a</token>', 'id="R1" name="n" type="bogus"')),
+  U(RP('<token>a</token>', 'id="R1" name="n" minprevmatches="-1"')),
+  U('<rule id="R1" name="n"><regexp>(</regexp><message>m</message></rule>'),
+  U('<rule id="R1" name="n"><regexp mark="x">a</regexp><message>m</message></rule>'),
+  U('<rule id="R1" name="n"><regexp mark="9">a</regexp><message>m</message></rule>'),
+  U('<rule id="R1" name="n"><regexp case_sensitive="bogus">a</regexp><message>m</message></rule>'),
+  U('<rule id="R1" name="n"><regexp></regexp><message>m</message></rule>'),
+  U('<rule id="R1" name="n"><regexp>a</regexp><pattern><token>b</token></pattern><message>m</message></rule>'),
+  U('<rulegroup id="G" name="g"></rulegroup>'),
+  U('<rulegroup id="G"><rule><pattern><token>a</token></pattern><message>m</message></rule></rulegroup>'),
+  U('<rulegroup name="g"><rule><pattern><token>a</token></pattern><message>m</message></rule></rulegroup>'),
+  U('<category name="C2"><rule id="R1" name="n"><pattern><token>a</token></pattern><message>m</message></rule></category>'),
+  `<?xml version="1.0"?><rules lang="en"><category id="C"><rule id="R1" name="n"><pattern><token>a</token></pattern><message>m</message></rule></category></rules>`,
+  `<?xml version="1.0"?><rules lang="en"><rule id="R1" name="n"><pattern><token>a</token></pattern><message>m</message></rule></rules>`,
+  `<?xml version="1.0"?><rules lang="xx"><category id="C" name="C">${RP(T)}</category></rules>`,
+  `<?xml version="1.0"?><rules lang="en" premium="x"><category id="C" name="C">${RP(T)}</category></rules>`,
+  `<?xml version="1.0"?><rules lang="en"><category id="C" name="C" type="bogus">${RP(T)}</category></rules>`,
+  `<?xml version="1.0"?><rules lang="en"><category id="C" name="C" default="bogus">${RP(T)}</category></rules>`,
+  `<?xml version="1.0"?><rules lang="en"><category id="C" name="C" tags="bogus">${RP(T)}</category></rules>`,
+  `<?xml version="1.0"?><rules lang="en"><category id="C" name="C" tone_tags="bogus">${RP(T)}</category></rules>`,
+  `<?xml version="1.0"?><rules lang="en"><category id="C" name="C" priority="x">${RP(T)}</category></rules>`,
+  `<?xml version="1.0"?><rules lang="en"><category id="C" name="C" tabName="T">${RP(T)}</category></rules>`,
+  `<?xml version="1.0"?><rules lang="en"><category id="C" name="C" default="temp_off">${RP(T)}</category></rules>`,
+  // examples
+  U(RP(T, 'id="R1" name="n"', '<message>m</message><example>no marker</example>')),
+  U(RP(T, 'id="R1" name="n"', '<message>m</message><example type="bogus">a</example>')),
+  U(RP(T, 'id="R1" name="n"', '<message>m</message><example correction="x|y"><marker>a</marker></example>')),
+  U(RP(T, 'id="R1" name="n"', '<message>m</message><example><marker>a</marker><marker>b</marker></example>')),
+  // filters (RuleFilterCreator: RuntimeException, cause chain)
+  FC('org.languagetool.rules.DoesNotExist', 'a:b'), FC('', 'a:b'), FC('java.lang.Object', ''), FC('java.lang.String', ''), FC('java.lang.Integer', ''), FC('java.util.ArrayList', ''), FC('java.lang.Runnable', ''), FC('java.lang.Thread', ''),
+  FC('org.languagetool.rules.RuleFilter', ''), FC('org.languagetool.rules.patterns.RuleFilter', ''), FC('org.languagetool.rules.patterns.RegexRuleFilter', ''), FC('org.languagetool.rules.patterns.RegexAntiPatternFilter', 'a:b'),
+  FC('org.languagetool.rules.AbstractDateCheckFilter', ''), FC('org.languagetool.rules.AbstractFutureDateFilter', ''), FC('org.languagetool.rules.AbstractNumberInWordFilter', ''), FC('org.languagetool.rules.AbstractSuppressMisspelledSuggestionsFilter', ''),
+  FC('org.languagetool.rules.AbstractAdvancedSynthesizerFilter', ''), FC('org.languagetool.rules.AbstractTextToNumberFilter', ''), FC('org.languagetool.rules.AbstractMakeContractionsFilter', ''), FC('org.languagetool.rules.AbstractNewYearDateFilter', ''),
+  FC('org.languagetool.rules.AbstractFindSuggestionsFilter', ''), FC('org.languagetool.rules.AbstractDateCheckWithSuggestionsFilter', ''),
+  FC('org.languagetool.rules.de.GermanSuppressMisspelledSuggestionsFilter', ''), FC('org.languagetool.rules.en.EnglishNumberInWordFilter', ''), FC('org.languagetool.rules.fr.InterrogativeVerbFilter', ''),
+  FC('org.languagetool.rules.ca.CatalanSuppressMisspelledSuggestionsFilter', ''), FC('org.languagetool.rules.nl.DutchNumberInWordFilter', ''), FC('org.languagetool.rules.es.FindSuggestionsFilter', ''), FC('org.languagetool.rules.ru.RussianSuppressMisspelledSuggestionsFilter', ''),
+  FC('org.languagetool.rules.spelling.multitoken.MultitokenSpellerFilter', ''), FC('org.languagetool.rules.PartialPosTagFilter', ''), FC('org.languagetool.rules.CheckPostagsInSuggestionFilter', ''),
+  FC('org.languagetool.rules.ConvertToSentenceCaseFilter', ''), FC('org.languagetool.rules.AddCommasFilter', ''), FC('org.languagetool.rules.AdaptSuggestionsFilter', ''), FC('org.languagetool.rules.patterns.ApostropheTypeFilter', ''),
+  FC('org.languagetool.JLanguageTool', ''), FC('org.languagetool.language.AmericanEnglish', ''), FC('org.languagetool.rules.Rule', ''), FC('org.languagetool.rules.patterns.PatternRule', ''), FC('org.languagetool.rules.patterns.UnifierConfiguration', ''),
+  FC('org.languagetool.rules.UnderlineSpacesFilter', 'noColon'), FC('org.languagetool.rules.UnderlineSpacesFilter', 'a:b:c'), FC('org.languagetool.rules.UnderlineSpacesFilter', ':'), FC('org.languagetool.rules.UnderlineSpacesFilter', 'a: b'), FC('org.languagetool.rules.UnderlineSpacesFilter', 'a:\\9'),
+  U(RP(T, 'id="R1" name="n"', '<message>m</message><filter class="org.languagetool.rules.UnderlineSpacesFilter" args="a:b"/><filter class="org.languagetool.rules.UnderlineSpacesFilter" args="c:d"/>')),
+  U(RP(T, 'id="R1" name="n"', '<filter args="a:b"/><message>m</message>')),
+  U(`<regexp>a</regexp>`.replace(/^/, '<rule id="R1" name="n">') + '<message>m</message><filter class="org.languagetool.rules.UnderlineSpacesFilter" args="a:b"/></rule>'),
+  U(`<rule id="R1" name="n"><regexp>ab</regexp><message>m</message><filter class="org.languagetool.rules.patterns.RegexAntiPatternFilter" args="a:b"/></rule>`),
+  U(`<rule id="R1" name="n"><regexp>ab</regexp><message>m</message><filter class="org.languagetool.rules.patterns.RegexAntiPatternFilter"/></rule>`),
+  U(`<rule id="R1" name="n"><regexp>ab</regexp><message>m</message><filter class="org.languagetool.rules.UnderlineSpacesFilter" args="a:b"/></rule>`),
+  U(`<rule id="R1" name="n"><regexp>ab</regexp><message>m</message><filter class="org.languagetool.rules.DoesNotExist" args="a:b"/></rule>`),
+  U(`<rule id="R1" name="n"><regexp>ab</regexp><message>m</message><filter class="java.lang.Object" args="a:b"/></rule>`),
+  U(`<rule id="R1" name="n"><regexp>ab</regexp><message>m</message><filter class="org.languagetool.rules.AbstractDateCheckFilter" args="a:b"/></rule>`),
+  // via file
+  { ...inl('<rules lang="en"', { via: 'file' }) },
+  { ...inl('', { via: 'file' }) },
+  { ...inl(U(RP(T, 'id="R1" name="n"', '<message>m</message><url>jmod:foo</url>')), { via: 'file' }) },
+  { ...inl(UN(EQ('sg')), { via: 'file' }) },
+  // language variants for the same erroring input
+  ...['de-DE', 'fr'].map((lang) => inl(U(RP(T, 'id="R1" name="n"', '<filter class="org.languagetool.rules.DoesNotExist"/><message>m</message>')), { lang })),
+  { ...inl(U(RP(T, 'id="R1" name="n"', '<message>m <match no="1"/></message>')), { relaxed: true }) },
+  { ...inl('<rules lang="en"><category name="C"><rule><pattern><token>a</token></pattern><message>m</message></rule></category></rules>', { relaxed: true }) },
+  { ...inl('<rules lang="en"><category name="C"><rule><pattern><token>a</token></pattern><message>m</message></rule></category></rules>', { relaxed: false }) },
+  // unknown language code / filename edge cases
+  { ...inl(U(RP(T)), { lang: 'xx' }) },
+  { ...inl(U(RP(T)), { lang: 'zz-ZZ' }) },
+]);
+
+const Q = (id, extra = '') => U(`<rule id="${id}" name="n"${extra}><pattern><token>a</token></pattern><message>m</message></rule>`);
+const idq = (c) => c; 
+add('toxml-quote', 'PatternRule#toXML for rule ids/subIds containing quotes (XPath literal); toXML error as {class,message,causes}', [
+  Q("A'B"), Q('A&quot;B'), Q("A&apos;B&quot;C"), Q("'"), Q('&quot;'), Q("&apos;&quot;"), Q("&quot;&apos;"), Q("''"), Q('&quot;&quot;'), Q("a&apos;b&apos;c&quot;d"), Q("A_B"), Q('A B'), Q('A\u00e4\u00f6\u00fc'), Q('A&amp;B'), Q('A&lt;B'), Q('A]B'), Q('A[1]'), Q("A'[1]"), Q('A\\B'), Q('A/B'), Q('A:B'), Q('A*'),
+  U(`<rulegroup id="G'1" name="g"><rule><pattern><token>a</token></pattern><message>m</message></rule><rule><pattern><token>b</token></pattern><message>m</message></rule></rulegroup>`),
+  U(`<rulegroup id="G&quot;1" name="g"><rule><pattern><token>a</token></pattern><message>m</message></rule><rule><pattern><token>b</token></pattern><message>m</message></rule></rulegroup>`),
+  U(`<rulegroup id="G&apos;&quot;" name="g"><rule><pattern><token>a</token></pattern><message>m</message></rule></rulegroup>`),
+  U(`<rulegroup id="G" name="g"><rule id="S'1"><pattern><token>a</token></pattern><message>m</message></rule><rule id="S&quot;2"><pattern><token>b</token></pattern><message>m</message></rule></rulegroup>`),
+  U(`<rule id="A'B" name="n"><pattern><token>a</token></pattern><message>m</message></rule><rule id="A&quot;B" name="n"><pattern><token>a</token></pattern><message>m</message></rule><rule id="A'B" name="n"><pattern><token>b</token></pattern><message>m</message></rule>`),
+].map((x) => (typeof x === 'string' ? inl(x) : x)));
+
 for (const [name, [desc, ops]] of cases) write(`inline-${name}`, desc, ops);
 
 // ---- toXML / PatternRuleXmlCreator on real rules: covered in tokens-* cases (toXML field) ----
@@ -658,5 +848,38 @@ write('ruleset-hints', 'RuleSet.plain/textHinted/textLemmaHinted rulesForSentenc
     }
   }
   write('ruleset-hints-order', 'StringMatcher/PatternToken possible values and AbstractTokenBasedRule.tokenHints iteration order; RuleSet hinted rulesForSentence', ordOps);
+}
+
+// ---- inline-postag-hybrid: StringMatcher.createWithKnownValues / tryCreateHybridPostagMatcher / template matcher at load (F25b review round 2) ----
+{
+  const pv = [
+    'N\\|B', 'A\\|UNKNOWN', 'A|UNKNOWN', 'UNKNOWN', 'UNK.*', 'UNKNOWN|UNKNOWN', '.*UNKNOWN', 'UNKNOW[N]', 'UNKNOWN?', '(UNKNOWN)',
+    'NN', 'NN|VB', 'NN.*', 'NN.*|VB.*', 'N.*|V.*', '.*', '.+', '.', '', '|', 'NN|', '|NN', 'NN||VB', 'NN|VB|', 'N+', 'NN?', 'NNS?', 'NN[SP]', 'NN[^S]', 'NN[A-Z]*',
+    'N[NP]S?|VB[DGNPZ]?', 'VB[A-Z]?|MD|UNKNOWN', '^NN$', '^NN', 'NN$', '\\bNN', 'NN\\b', 'NN.{1,3}', 'P0.{6}', 'NN.{2}|VB.*', 'NN\\.', 'NN\\.*', 'N\\', '\\', '\\|', '\\|\\|', 'A\\\\|B', 'A\\\\\\|B',
+    '[A-Z', 'NN(', 'NN)', '(NN|VB)', '(?i)nn', '(?:NN|VB)', 'NN{', 'NN{1', 'NN{2,1}', '*NN', '+', 'NN**', 'NN++', 'Ü.*', 'ÄÖÜ|UNKNOWN', 'NN/VB', 'NN-VB', 'NN_VB', 'NN:VB', 'NN$1', 'NN#', 'NN\\p{L}', 'NN\\d', 'NN\\w+', 'NN\\s', 'NN\\Q|\\E', '\\QNN\\E', 'LOC_ADV', '_GV_', 'SENT_END|SENT_START', 'PCT|UNKNOWN|NN',
+    'N.*B', 'N\\.B', 'A.*|B.*|C.*', 'NN[SP]|VB[DG]', 'NC[MF][SP]000|NP.*', 'V.[SI]3S.*', 'V.IP3S0', '[NV].*', 'D[AI].*', 'A.*|UNKNOWN',
+  ];
+  const wrap = (posAttrs, rest = '') => U(RP(`<token postag="${posAttrs}" postag_regexp="yes">foo</token>${rest}`));
+  const esc = (x) => x.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+  const pd = (xml, lang = 'en-US') => inl(xml, { lang, posDetail: true });
+  const ops = pv.map((x) => pd(wrap(esc(x))));
+  // negate_pos, without postag_regexp, exceptions, and/or, multiple tokens
+  for (const x of ['NN', 'NN|UNKNOWN', 'UNKNOWN', 'N\\|B', 'NN.*', '[A', '.*']) {
+    ops.push(pd(U(RP(`<token postag="${esc(x)}" postag_regexp="yes" negate_pos="yes">foo</token>`))));
+    ops.push(pd(U(RP(`<token postag="${esc(x)}" negate_pos="yes">foo</token>`))));
+    ops.push(pd(U(RP(`<token postag="${esc(x)}">foo</token>`))));
+    ops.push(pd(U(RP(`<token>foo<exception postag="${esc(x)}" postag_regexp="yes"/></token>`))));
+    ops.push(pd(U(RP(`<token postag="${esc(x)}" postag_regexp="yes">foo<exception postag="${esc(x)}" postag_regexp="yes" negate_pos="yes"/></token>`))));
+    ops.push(pd(U(RP(`<token postag="${esc(x)}" postag_regexp="yes"><and><token postag="${esc(x)}" postag_regexp="yes"/></and></token>`))));
+    ops.push(pd(U(RP(`<token postag="${esc(x)}" postag_regexp="yes">a</token><token postag="${esc(x)}" postag_regexp="yes">b</token>`))));
+  }
+  // same postag repeated (obtainPosToken interning) with different flags
+  ops.push(pd(U(RP('<token postag="A|UNKNOWN" postag_regexp="yes">a</token><token postag="A|UNKNOWN" postag_regexp="yes" negate_pos="yes">b</token><token postag="A|UNKNOWN">c</token>'))));
+  // language universes
+  const langs = ['de-DE', 'en-US', 'fr'];
+  const lv = ['N\\|B', 'A|UNKNOWN', 'UNKNOWN', 'UNK.*', 'NN.*', 'SUB:.*', 'VER:.*|UNKNOWN', 'N.*', 'V.*', 'NC[MF][SP]000|NP.*', 'PRO:PER:.*', 'JJ[RS]?', '.*:NOM:.*', 'ADJ:PRD.*', 'A.*|B.*', '[NV].*'];
+  for (const lg of ['de-DE', 'en-GB', 'fr']) for (const x of lv) ops.push(pd(wrap(esc(x)), lg));
+  for (const lg of langs) ops.push(pd(wrap('(UNK)'), lg));
+  write('inline-postag-hybrid', 'postag_regexp matcher creation at load (createWithKnownValues/hybrid/template/regex fallback), PosToken.posUnknown, getPossibleValues, probe matches, errors; per-language universes', ops);
 }
 console.log('cases written:', readdirSync(DIR).length);

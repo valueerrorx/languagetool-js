@@ -4,6 +4,8 @@ const impl = {
     let t = text;
     if (ctx.tmpDir) t = t.split(ctx.tmpDir).join('<TMP>');
     if (ctx.workDir) t = t.split(ctx.workDir).join('<CASE>');
+    // File.createTempFile("ruleload", ".xml") (X-RULELOAD via=file): random digits, directory differs between runs
+    t = t.replace(/(?:<TMP>|\/[^\s"']*)\/ruleload\d+\.xml/g, '<TMP>/ruleload<N>.xml');
     return t;
   },
   // build timestamp: JSON "buildDate" values and the --version line "(2026-10-12 18:33:54 +0200, 9b0be9d)"

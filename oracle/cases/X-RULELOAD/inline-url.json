@@ -1,0 +1,882 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "rule <url> variants: getUrl().toString() or exception chain (URL.<init>)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://example.com</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>https://example.com/a/b?x=1&amp;y=2#frag</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>HTTP://EXAMPLE.COM/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>ftp://ftp.example.com/file.txt</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>ftp://user:pw@host:21/dir;type=a</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>file:///etc/hostname</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>file:/tmp/x</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>file://host/share/x</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>file:</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>jar:file:/tmp/a.jar!/x.xml</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>jar:foo!/x</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>jar:http://h/a.jar!/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>jar:</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>jmod:foo</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>jmod:foo.jmod!/x</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>jrt:/java.base/x</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>mailto:</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>mailto:a@b.c</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>mailto:a@b.c#ref</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>mailto:a@b.c?subject=x</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>mailto:a@b.c,d@e.f</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://[::1]/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://[2001:db8::1]:8080/p</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://[::1/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://[::1]x/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://[zzz]/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://[::ffff:1.2.3.4]/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://[]/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://h:80/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://h:-5/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://h:-1/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://h:65536/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://h:99999999999/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://h:/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://h:0/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://h:abc/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://:80/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://h:80:90/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>é:foo</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>éé://h/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>xé://h/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>a+b.c-d://h/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>1http://h/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>+http://h/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http-x://h/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>unknown://h/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>unknown:x</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>javascript:alert(1)</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>data:text/plain,hi</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>gopher://h/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>netdoc:/x</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>/relative/path</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>relative</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>../x</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>//host/path</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>?q=1</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>#frag</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>:foo</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>:</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http:</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http:/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http:///x</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http:x</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://exa mple.com/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://example.com/a b</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url> http://example.com </url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://example.com/äöü</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://bücher.de/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://例え.jp/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://example.com/%zz</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://example.com/%41</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://user@host/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://user:pw@host/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://@host/</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://host\\path</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://h/?</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://h/#</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://h/#a#b</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://h/a?b?c</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://h?x</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://h#x</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://h/%</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://h/\u0000</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://h/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://example.com/&lt;tag&gt;</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://example.com/\"q\"</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://example.com/{x}</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://example.com/|</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://example.com/^</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>http://example.com/`</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url></url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url> </url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>null</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>not a url</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>HTTP</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  },
+  {
+   "op": "rule-load",
+   "args": {
+    "mode": "inline",
+    "lang": "en-US",
+    "xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT\" name=\"Category\">\n<rule id=\"R1\" name=\"n\"><pattern><token>foo</token></pattern><message>m</message><url>é</url></rule>\n</category>\n</rules>\n",
+    "filename": "inline.xml"
+   }
+  }
+ ]
+}
