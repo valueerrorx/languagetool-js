@@ -103,6 +103,11 @@ public class Harness {
       case "tokmatch-harvest": return TokMatchOps.harvest(a);
       case "seq-match": return SeqMatchOps.seqMatch(a);
       case "seqmatch-harvest": return SeqMatchOps.harvest(a);
+      case "unify-harvest": return UnifyOps.harvest(a);
+      case "unify-config": return UnifyOps.config(a);
+      case "unify-match": return UnifyOps.match(a);
+      case "unify-seq": return UnifyOps.seq(a);
+      case "unify-tokens": return UnifyOps.tokens(a);
       case "manual-tagger": return TagOps.manualTagger(a);
       case "lang-lookup": return LangOps.lookup(a);
       case "lang-describe": return LangOps.describeOp(a);

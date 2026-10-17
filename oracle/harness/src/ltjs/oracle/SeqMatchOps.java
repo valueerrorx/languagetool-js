@@ -40,7 +40,7 @@ final class SeqMatchOps {
     }
   }
 
-  private static final Chunker NOOP = tokens -> { };
+  static final Chunker NOOP = tokens -> { };
   private static final Map<String, List<AbstractPatternRule>> INLINE = new HashMap<>();
 
   private static AbstractTokenBasedRule resolve(JsonNode src, JsonNode a) throws Exception {
@@ -62,12 +62,12 @@ final class SeqMatchOps {
 
   private static final Map<String, JLanguageTool> TOOLS = new HashMap<>();
 
-  private static JLanguageTool tool(Language l) {
+  static JLanguageTool tool(Language l) {
     return TOOLS.computeIfAbsent(l.getShortCodeWithCountryAndVariant(),
         k -> new JLanguageTool(l, Collections.emptyList(), null, null, null, null, true, false, Collections.emptyList()) {});
   }
 
-  private static AnalyzedTokenReadings synth(JsonNode s, int startPos) {
+  static AnalyzedTokenReadings synth(JsonNode s, int startPos) {
     List<AnalyzedToken> rd = new ArrayList<>();
     for (JsonNode r : s.get("readings")) {
       rd.add(new AnalyzedToken(r.get(0).isNull() ? null : r.get(0).asText(), r.get(1).isNull() ? null : r.get(1).asText(), r.get(2).isNull() ? null : r.get(2).asText()));
