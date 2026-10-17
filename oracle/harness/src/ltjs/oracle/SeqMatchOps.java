@@ -43,7 +43,7 @@ final class SeqMatchOps {
   static final Chunker NOOP = tokens -> { };
   private static final Map<String, List<AbstractPatternRule>> INLINE = new HashMap<>();
 
-  private static AbstractTokenBasedRule resolve(JsonNode src, JsonNode a) throws Exception {
+  static AbstractTokenBasedRule resolve(JsonNode src, JsonNode a) throws Exception {
     Language l = RuleLoadOps.lang(a.get("lang").asText());
     List<AbstractPatternRule> rules;
     if (!src.has("file")) {
