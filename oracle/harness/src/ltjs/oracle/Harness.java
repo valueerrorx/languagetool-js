@@ -101,6 +101,8 @@ public class Harness {
       case "string-matcher": return TokMatchOps.stringMatcher(a);
       case "token-match": return TokMatchOps.tokenMatch(a);
       case "tokmatch-harvest": return TokMatchOps.harvest(a);
+      case "seq-match": return SeqMatchOps.seqMatch(a);
+      case "seqmatch-harvest": return SeqMatchOps.harvest(a);
       case "manual-tagger": return TagOps.manualTagger(a);
       case "lang-lookup": return LangOps.lookup(a);
       case "lang-describe": return LangOps.describeOp(a);
