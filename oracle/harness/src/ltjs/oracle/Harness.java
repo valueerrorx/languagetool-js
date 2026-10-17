@@ -110,6 +110,12 @@ public class Harness {
       case "rule-match": return RuleMatchOps.ruleMatch(a);
       case "match-state": return RuleMatchOps.matchState(a);
       case "rulematch-harvest": return RuleMatchOps.harvest(a);
+      case "infra-harvest": return RuleInfraOps.harvest(a);
+      case "regex-match": return RuleInfraOps.regexMatch(a);
+      case "rule-transform": return RuleInfraOps.ruleTransform(a);
+      case "rule-text-match": return RuleInfraOps.ruleTextMatch(a);
+      case "rule-filter": return RuleInfraOps.ruleFilter(a);
+      case "hints-real": return RuleInfraOps.hintsReal(a);
       case "unify-tokens": return UnifyOps.tokens(a);
       case "manual-tagger": return TagOps.manualTagger(a);
       case "lang-lookup": return LangOps.lookup(a);

@@ -49,7 +49,7 @@ final class RuleMatchOps {
   }
 
   // ---- rule-match ----
-  private static Object dump(RuleMatch m) {
+  static Object dump(RuleMatch m) {
     Map<String, Object> o = new LinkedHashMap<>();
     o.put("from", m.getFromPos());
     o.put("to", m.getToPos());
@@ -99,7 +99,7 @@ final class RuleMatchOps {
   }
 
   /** Runs PatternRuleMatcher's own doMatch + createRuleMatch (private, reflective); returns RuleMatches before RuleWithMaxFilter. */
-  private static List<RuleMatch> rawMatches(AbstractTokenBasedRule rule, AnalyzedSentence sentence, int[] nulls) throws Throwable {
+  static List<RuleMatch> rawMatches(AbstractTokenBasedRule rule, AnalyzedSentence sentence, int[] nulls) throws Throwable {
     boolean useList = rule instanceof PatternRule && USELIST.getBoolean(rule);
     PatternRuleMatcher matcher = new PatternRuleMatcher(rule, useList);
     AnalyzedTokenReadings[] tokens = (rule instanceof PatternRule && (boolean) PRE.invoke(rule)) ? sentence.getPreDisambigTokensWithoutWhitespace() : sentence.getTokensWithoutWhitespace();
@@ -277,7 +277,7 @@ final class RuleMatchOps {
     return r;
   }
 
-  private static String clean(String s) { return s.replaceAll("<[^>]*>", ""); }
+  static String clean(String s) { return s.replaceAll("<[^>]*>", ""); }
 
   // ---- rulematch-harvest: {lang} -> {files, rules:[[f,r,id,subId,feat{},correct[],incorrect[],specs[]]]} ----
   private static Map<String, Object> spec(Match m) {

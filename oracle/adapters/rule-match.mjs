@@ -15,7 +15,7 @@ export function err(t) {
 }
 
 // Java: RuleMatchOps#dump(RuleMatch)
-function dump(m) {
+export function dump(m) {
   const url = (u) => (u === null || u === undefined ? null : u.toString());
   return {
     from: m.getFromPos(), to: m.getToPos(), patFrom: m.getPatternFromPos(), patTo: m.getPatternToPos(),
