@@ -121,6 +121,8 @@ public class Harness {
       case "disamb-examples": return DisambOps.examples(a);
       case "rule-match-disamb": return DisambOps.ruleMatchDisamb(a);
       case "disamb-harvest": return DisambOps.harvest(a);
+      case "chunk-run": return ChunkOps.run(a);
+      case "chunk-tag": return ChunkOps.chunkTag(a);
       case "manual-tagger": return TagOps.manualTagger(a);
       case "lang-lookup": return LangOps.lookup(a);
       case "lang-describe": return LangOps.describeOp(a);
