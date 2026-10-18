@@ -1,6 +1,6 @@
 // org.languagetool.chunking.ChunkTag
 import { Pattern } from '../../lib/java/regex/index.js';
-import { IllegalArgumentException } from '../../lib/java/errors.js';
+import { IllegalArgumentException, NullPointerException } from '../../lib/java/errors.js';
 import { javaTrim, stringHashCode as stringHash } from '../../lib/java/strings.js';
 
 export class ChunkTag {
@@ -28,6 +28,7 @@ export class ChunkTag {
 
   // Java: ChunkTag#matches(ChunkTag)
   matches(tag) {
+    if (tag === null || tag === undefined) throw new NullPointerException();
     return this.pattern !== null ? this.pattern.matcher(tag.getChunkTag()).matches() : this.chunkTag === tag.getChunkTag();
   }
 

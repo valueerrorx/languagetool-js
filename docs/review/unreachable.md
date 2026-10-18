@@ -25,3 +25,4 @@
 | F25b | filterRegistry: filter="<existing non-filter Java class>" (e.g. java.util.HashMap) gives "Could not find filter class" instead of Java constructor/cast message; only stubs for fixture-named classes | only reachable via user --rulefile with a non-filter JDK/LT class; JS cannot enumerate the Java classpath |
 | F26 | JavaHashMap: tree bins (>8 collisions in one bucket, table >= 64) not modelled - iteration order may differ (flag treeBinsNeeded) | needs >8 String keys with identical (hash & (n-1)) in one bucket; not seen in LT data |
 | F32 | DisambiguationPatternRuleReplacer: null disAction -> Java NPE, JS no-op | handler always defaults to REPLACE |
+| F33 | MultiWordChunker.getInstance(""): resource dir listing order (Java: first classpath entry containing the dir, e.g. "ar"; JS: merged tree) - X-CHUNK/inline-errors job 3 message differs | empty/dir filename; never reachable from language wiring |
