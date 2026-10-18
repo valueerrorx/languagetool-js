@@ -1,4 +1,4 @@
-// Ported from DemoPatternRuleTest (languagetool-core); analysis adapted to en-US (Demo tagger not ported); testRules (runTestForLanguage) belongs to F31
+// Ported from DemoPatternRuleTest (languagetool-core); analysis adapted to en-US (Demo tagger not ported); testRules runs the F31 PatternRuleTest infrastructure (tests/support/PatternRuleTest.js)
 import { describe, it, expect, beforeAll } from 'vitest';
 import '../../../src/lang/register.js';
 import { javaSplit } from '../../../src/lib/java/strings.js';
@@ -6,7 +6,8 @@ import { Languages } from '../../../src/core/Languages.js';
 import { PatternToken, PosToken } from '../../../src/core/patterns/PatternToken.js';
 import { PatternRule } from '../../../src/core/patterns/PatternRule.js';
 import { PatternRuleMatcher } from '../../../src/core/patterns/PatternRuleMatcher.js';
-import { getDemoLanguage } from '../../support/DemoLanguage.js';
+import { getDemoLanguage, DemoLanguage, useXxTestResources } from '../../support/DemoLanguage.js';
+import { PatternRuleTest } from '../../support/PatternRuleTest.js';
 import { newTool, withNoopAnalysis } from '../../../oracle/adapters/_check-pipe-common.mjs';
 import { SENTENCE_START_TAGNAME } from '../../../src/core/JLanguageToolConstants.js';
 
@@ -40,6 +41,8 @@ const makePatternRule = (s, caseSensitive = false, regex = false) => {
 };
 
 describe('DemoPatternRuleTest', () => {
+  useXxTestResources();
+
   beforeAll(() => {
     en = Languages.getLanguageForShortCode('en-US');
     lt = newTool(en);
@@ -136,6 +139,11 @@ describe('DemoPatternRuleTest', () => {
       .toBe('This is how you should write: <suggestion>test</suggestion>, <suggestion> </suggestion>.');
   });
 
-  // Java: DemoPatternRuleTest#testRules
-  it.skip('testRules', () => { /* runTestForLanguage(new Demo()): PatternRuleTest infrastructure, F31 */ });
+  // Java: DemoPatternRuleTest#testRules; runnable infrastructure: tests/support/PatternRuleTest.js (see DemoRulesExamplesTest)
+  it.skip('testRules', () => {
+    // needs F32 (DemoDisambiguator2/XmlRuleDisambiguator + DisambiguationPatternRuleReplacer for <antipattern>) and F34 (PartialPosTagFilter for DemoPartialPosTagFilter)
+    const test = new PatternRuleTest();
+    test.runTestForLanguage(new DemoLanguage());
+    test.ruleErrors.check(); // Java: PatternRuleErrorCollector rule verifies after the test
+  });
 });
