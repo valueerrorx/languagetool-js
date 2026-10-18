@@ -14,6 +14,7 @@ import { createComponent, sharedComponent } from './language/components.js';
 import { languages } from './languagesRef.js';
 import './patterns/UnifierConfiguration.js';
 import './tagging/xx/DemoTagger.js';
+import './tagging/disambiguation/xx/DemoDisambiguator.js';
 
 const INSIDE_SUGGESTION = Pattern.compile('<suggestion>(.+?)</suggestion>');
 const APOSTROPHE = Pattern.compile("([\\p{L}\\d-])'([\\p{L}«])", Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);

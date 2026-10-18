@@ -1,4 +1,4 @@
-// Java: org.languagetool.tagging.disambiguation.rules.DisambiguationRuleTest (loading part active, example replay skipped until F32)
+// Java: org.languagetool.tagging.disambiguation.rules.DisambiguationRuleTest (xx examples replayed; real languages need their hybrid disambiguators F45/F51/F60)
 import { describe, it, expect } from 'vitest';
 import '../../../src/lang/register.js';
 import { DisambiguationRuleLoader } from '../../../src/core/disambiguation/DisambiguationRuleLoader.js';
@@ -6,6 +6,8 @@ import { AnalyzedSentence } from '../../../src/core/AnalyzedSentence.js';
 import { Languages } from '../../../src/core/Languages.js';
 import { JLanguageTool } from '../../../src/core/JLanguageTool.js';
 import { getDataBroker } from '../../../src/core/resources/LtStatics.js';
+import { javaSplit, javaReplaceAll, javaTrim, javaCompare } from '../../../src/lib/java/strings.js';
+import { useXxTestResources } from '../../support/DemoLanguage.js';
 
 // Java: DisambiguationRuleTest#sortForms(String)
 function sortForms(wordForms) {
@@ -13,14 +15,14 @@ function sortForms(wordForms) {
   if (wordForms.length === 0) return wordForms;
   const word = wordForms.substring(0, wordForms.indexOf('[') + 1);
   const forms = wordForms.substring(wordForms.indexOf('[') + 1, wordForms.length - 1);
-  const formToSort = forms.split(',');
-  formToSort.sort();
+  const formToSort = javaSplit(forms, ',');
+  formToSort.sort(javaCompare); // Java: Arrays.sort(String[])
   return `${word}${formToSort.join(',')}]`;
 }
 
 // Java: DisambiguationRuleTest#cleanXML(String)
 function cleanXML(str) {
-  return str.replace(/<.*?>/g, '');
+  return javaReplaceAll(str, '<.*?>', '');
 }
 
 // Java: DisambiguationRuleTest#disambiguateUntil(Language,List,String,AnalyzedSentence)
@@ -40,9 +42,9 @@ function testDisambiguationRulesFromXMLExamples(rules, lt, lang) {
     const id = rule.getId();
     if (rule.getUntouchedExamples() !== null) {
       for (let goodSentence of rule.getUntouchedExamples()) {
-        goodSentence = goodSentence.replace(/[\n\t]+/g, '');
+        goodSentence = javaReplaceAll(goodSentence, '[\\n\\t]+', '');
         goodSentence = cleanXML(goodSentence);
-        expect(goodSentence.trim().length > 0).toBe(true);
+        expect(javaTrim(goodSentence).length > 0).toBe(true);
         const sent = disambiguateUntil(lang, rules, id, lt.getRawAnalyzedSentence(goodSentence));
         const sentToReplace = disambiguateUntil(lang, rules, id, lt.getRawAnalyzedSentence(goodSentence));
         expect(rule.replace(sentToReplace).toString(), `The untouched example (${goodSentence}) for ${lang.getName()} rule ${rule}] was touched!`).toBe(sent.toString());
@@ -53,7 +55,7 @@ function testDisambiguationRulesFromXMLExamples(rules, lt, lang) {
       for (const example of examples) {
         const outputForms = example.getDisambiguated();
         expect(outputForms !== null, `No output form found for: ${id}`).toBe(true);
-        expect(outputForms.trim().length > 0, 'Output form must not be empty').toBe(true);
+        expect(javaTrim(outputForms).length > 0, 'Output form must not be empty').toBe(true);
         const expectedMatchStart = example.getExample().indexOf('<marker>');
         const expectedMatchEnd = example.getExample().indexOf('</marker>') - '<marker>'.length;
         if (expectedMatchStart === -1 || expectedMatchEnd === -1) {
@@ -61,7 +63,7 @@ function testDisambiguationRulesFromXMLExamples(rules, lt, lang) {
         }
         const inputForms = example.getAmbiguous();
         expect(inputForms !== null, `No input form found for: ${id}`).toBe(true);
-        expect(inputForms.trim().length > 0).toBe(true);
+        expect(javaTrim(inputForms).length > 0).toBe(true);
         expect(outputForms !== inputForms, `Input and output forms for rule ${id} are the same!`).toBe(true);
         const cleanInput = lt.getRawAnalyzedSentence(cleanXML(example.getExample()));
         const sent = disambiguateUntil(lang, rules, id, lt.getRawAnalyzedSentence(cleanXML(example.getExample())));
@@ -98,8 +100,11 @@ function testDisambiguationRulesFromXMLExamples(rules, lt, lang) {
 }
 
 describe('DisambiguationRuleTest', () => {
+  useXxTestResources();
+
   // Java: DisambiguationRuleTest#testDisambiguationRulesFromXML()
   it('testDisambiguationRulesFromXML', () => {
+    let tested = 0;
     for (const lang of Languages.getWithDemoLanguage()) {
       if (lang.isVariant()) continue;
       if (lang.getShortCode() !== 'xx') continue; // Java core module only sees the demo language; new JLanguageTool(real language) needs F17 (see next test for real files)
@@ -112,8 +117,11 @@ describe('DisambiguationRuleTest', () => {
         const rules = ruleLoader.getRules(getDataBroker().getAsStream(nameInResourceDir), lang, nameWithLocale);
         expect(rules.length).toBeGreaterThan(0);
         // PatternTestTools.warnIfRegexpSyntaxNotKosher is a test-jar helper that only logs (not ported)
+        testDisambiguationRulesFromXMLExamples(rules, lt, lang);
+        tested++;
       }
     }
+    expect(tested).toBe(1); // only the demo language xx (DemoDisambiguator2) is not skipped
   });
 
   // Java: DisambiguationRuleTest#testDisambiguationRulesFromXML(Set) loading part for the languages that ship disambiguation.xml
@@ -135,8 +143,8 @@ describe('DisambiguationRuleTest', () => {
     expect(loaded).toBeGreaterThan(0);
   });
 
-  // Java: DisambiguationRuleTest#testDisambiguationRulesFromXML(List,JLanguageTool,Language) example replay needs DisambiguationPatternRule#replace
-  it.skip('F32: disambiguation examples replay', () => {
+  // Java: DisambiguationRuleTest#testDisambiguationRulesFromXML(Set) for de/en/fr: SKIPPED, the examples need the hybrid disambiguators (multiword preDisambiguate) of F45 (en), F51 (de), F60 (fr)
+  it.skip('F45/F51/F60: disambiguation examples replay of real languages', () => {
     for (const lang of Languages.get()) {
       if (lang.isVariant()) continue;
       const nameWithLocale = `${lang.getShortCode()}/disambiguation.xml`;

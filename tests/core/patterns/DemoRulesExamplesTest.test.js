@@ -38,8 +38,7 @@ describe('DemoRulesExamplesTest', () => {
     }
     expect(tested).toBeGreaterThan(50);
     expect(skipped).toBeLessThan(10);
-    // RAW_POS1 needs the CD tag from xx/disambiguation.xml (F32)
-    const msgs = test.ruleErrors.errors.map((e) => e.getMessage()).filter((m) => !m.startsWith('Test failure for rule RAW_POS1['));
+    const msgs = test.ruleErrors.errors.map((e) => e.getMessage());
     expect(msgs).toEqual([]);
   }, 60000);
 });

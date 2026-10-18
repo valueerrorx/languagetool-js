@@ -5,6 +5,17 @@ import { AnalyzedToken } from './AnalyzedToken.js';
 import { AnalyzedTokenReadings } from './AnalyzedTokenReadings.js';
 import { SENTENCE_END_TAGNAME, PARAGRAPH_END_TAGNAME } from './JLanguageToolConstants.js';
 
+// Java: Map#keySet() view (size, contains, iteration) without copying
+class MapKeySet {
+  constructor(map) { this.map = map; }
+
+  get size() { return this.map.size; }
+
+  has(key) { return this.map.has(key); }
+
+  [Symbol.iterator]() { return this.map.keys(); }
+}
+
 export class AnalyzedSentence {
   static FQCN = 'org.languagetool.AnalyzedSentence';
 
@@ -294,12 +305,12 @@ export class AnalyzedSentence {
 
   // Java: AnalyzedSentence#getTokenSet()
   getTokenSet() {
-    return new Set(this.tokenOffsets.keys());
+    return new MapKeySet(this.tokenOffsets);
   }
 
   // Java: AnalyzedSentence#getLemmaSet()
   getLemmaSet() {
-    return new Set(this.lemmaOffsets.keys());
+    return new MapKeySet(this.lemmaOffsets);
   }
 
   // Java: AnalyzedSentence#getPosTagSet()

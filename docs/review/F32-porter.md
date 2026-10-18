@@ -1,0 +1,6 @@
+Status: started F32 porter; read Java replacer/XmlRuleDisambiguator + JS infra (AbstractPatternRulePerformer, PatternRuleMatcher, Match/MatchState exist). Next: write DisambiguationPatternRuleReplacer.js, XmlRuleDisambiguator.js, AbstractDisambiguator, DemoDisambiguator2/Filter, then tests/parity.
+Status: wrote DisambiguationPatternRuleReplacer.js, XmlRuleDisambiguator.js, AbstractDisambiguator, DemoDisambiguator (registered in Language.js), DPR.replace wired. Next: lint, run parity X-DISAMB, tests.
+Status: parity X-DISAMB 79 pass 0 fail 48 NP (all IsEnglishWordFilter 26 / NoDisambiguationEnglishPartialPosTagFilter 22 -> F34/EN-0106); DemoLanguage now DemoDisambiguator2 + xx disambiguation.xml in tests/resources/resource/xx; DisambiguationRuleTest xx replay green. Next: DemoPatternRuleTest#testRules, DemoRulesExamplesTest RAW_POS1, in-place disambiguator test, X-RULEINFRA textmatch/hints-real, perf, plan.
+Status: tests added (InPlaceDisambiguatorTest, XmlRuleDisambiguatorTest), DisambiguationRuleTest xx replay, DemoPatternRuleTest#testRules stays skipped (F34 PartialPosTagFilter). Next: full lint/test/parity, perf-watch, PLAN/INVENTORY.
+Status: all code/tests/docs done (PLAN, inventory, perf-watch). Final full parity running -> scratchpad/parity-f32.txt; then report.
+DONE: parity 1660 pass/0 fail/17 skip/179 NP; npm test green; lint clean.

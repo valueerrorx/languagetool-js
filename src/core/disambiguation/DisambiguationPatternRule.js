@@ -1,11 +1,11 @@
-// org.languagetool.tagging.disambiguation.rules.DisambiguationPatternRule (rule model only; replace() comes with F32)
+// org.languagetool.tagging.disambiguation.rules.DisambiguationPatternRule (rule model, replace() via DisambiguationPatternRuleReplacer)
 import { JavaEnum } from '../../lib/java/JavaEnum.js';
 import { NullPointerException } from '../../lib/java/errors.js';
 import { Objects } from '../../lib/java/Objects.js';
 import { unmodifiableList } from '../../lib/java/collections/Collections.js';
-import { notPortedYet } from '../language/components.js';
 import { AbstractTokenBasedRule } from '../patterns/AbstractTokenBasedRule.js';
 import { Rule } from '../rules/model/Rule.js';
+import { DisambiguationPatternRuleReplacer } from './DisambiguationPatternRuleReplacer.js';
 
 // Java: DisambiguationPatternRule.DisambiguatorAction
 export class DisambiguatorAction extends JavaEnum {
@@ -53,8 +53,7 @@ export class DisambiguationPatternRule extends AbstractTokenBasedRule {
 
   // Java: DisambiguationPatternRule#replace(AnalyzedSentence)
   replace(sentence) {
-    if (this.canBeIgnoredFor(sentence)) return sentence;
-    throw notPortedYet('DisambiguationPatternRuleReplacer (F32)');
+    return this.canBeIgnoredFor(sentence) ? sentence : new DisambiguationPatternRuleReplacer(this).replace(sentence);
   }
 
   // Java: DisambiguationPatternRule#setExamples(List)

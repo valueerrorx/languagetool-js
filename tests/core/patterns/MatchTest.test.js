@@ -5,7 +5,7 @@ import { AnalyzedTokenReadings } from '../../../src/core/AnalyzedTokenReadings.j
 import { Match, CaseConversion, IncludeRange } from '../../../src/core/patterns/Match.js';
 import { ManualTagger } from '../../../src/core/tagging/ManualTagger.js';
 import { ManualSynthesizer } from '../../../src/core/tagging/synthesis/ManualSynthesizer.js';
-import { DemoLanguage } from '../../support/DemoLanguage.js';
+import { DemoLanguage, useXxTestResources } from '../../support/DemoLanguage.js';
 import { ManualSynthesizerAdapter, ManualTaggerAdapter } from '../../support/ManualAdapters.js';
 import { newTool } from '../../../oracle/adapters/_check-pipe-common.mjs';
 
@@ -20,6 +20,8 @@ const TEST_DATA = '# some test data\n'
 const arrToString = (a) => `[${a.join(', ')}]`;
 
 describe('MatchTest', () => {
+  useXxTestResources();
+
   let languageTool;
   let synthesizer;
   let tagger;
