@@ -30,3 +30,6 @@ Ops check2, active-rules, lt-api, analyze-raw (CheckPipeOps.java, synthetic rule
 
 ## XML disambiguator oracle (F32, X-DISAMB)
 Ops (DisambOps.java): `disamb-run`, `disamb-examples`, `rule-match-disamb`, `disamb-harvest` (generator only). Generator `node oracle/scripts/gen-cases-xdisamb.mjs` (wipes and rewrites oracle/cases/X-DISAMB; seeded/deterministic), adapters oracle/adapters/{disamb-run,disamb-examples,rule-match-disamb}.mjs + `_disamb-common.mjs`. Format and contract: docs/review/F32-oracle.md. The xx (Demo) cases set `extraCp` (core tests jar, appended to the harness classpath; it registers Demo through its language-module.properties) in the case file.
+
+## Generic rule filters oracle (F34, X-FILTERS)
+Ops (FilterOps.java): `filter-run`, `filter-cfg`, `filter-helper`; real-rule cases use `rule-match-disamb` (DisambOps). Generator `node oracle/scripts/gen-cases-filters.mjs` (wipes and rewrites oracle/cases/X-FILTERS; token positions come from a Java tokenisation phase), adapters oracle/adapters/{filter-run,filter-cfg,filter-helper}.mjs + `_filters-common.mjs`. Format and port contract: docs/review/F34-oracle.md. Case files may override the Java clock via `env.FAKETIME`; every request then carries `clockAt` (ISO instant) which the adapter puts into LTJS_FIXED_TIME for the JS side.

@@ -1,0 +1,36 @@
+2028-02-29 12:00:01.095 WARN  o.l.rules.AbstractDateCheckFilter - Skipping potential match for FILTER_RULE[1]
+java.lang.RuntimeException: Could not find month 'abc'
+	at ltjs.oracle.FilterOps$DateCfg.month(FilterOps.java:60)
+	at ltjs.oracle.FilterOps$DateCheck.getMonth(FilterOps.java:78)
+	at org.languagetool.rules.AbstractDateCheckFilter.getMonthFromArguments(AbstractDateCheckFilter.java:164)
+	at org.languagetool.rules.AbstractDateCheckFilter.getDate(AbstractDateCheckFilter.java:132)
+	at org.languagetool.rules.AbstractDateCheckFilter.acceptRuleMatch(AbstractDateCheckFilter.java:84)
+	at ltjs.oracle.FilterOps.filterRun(FilterOps.java:296)
+	at ltjs.oracle.Harness.dispatch(Harness.java:120)
+	at ltjs.oracle.Harness.main(Harness.java:43)
+2028-02-29 12:00:01.098 WARN  o.l.rules.AbstractDateCheckFilter - Skipping potential match for FILTER_RULE[1]
+java.lang.RuntimeException: Could not find month ''
+	at ltjs.oracle.FilterOps$DateCfg.month(FilterOps.java:60)
+	at ltjs.oracle.FilterOps$DateCheck.getMonth(FilterOps.java:78)
+	at org.languagetool.rules.AbstractDateCheckFilter.getMonthFromArguments(AbstractDateCheckFilter.java:164)
+	at org.languagetool.rules.AbstractDateCheckFilter.getDate(AbstractDateCheckFilter.java:132)
+	at org.languagetool.rules.AbstractDateCheckFilter.acceptRuleMatch(AbstractDateCheckFilter.java:84)
+	at ltjs.oracle.FilterOps.filterRun(FilterOps.java:296)
+	at ltjs.oracle.Harness.dispatch(Harness.java:120)
+	at ltjs.oracle.Harness.main(Harness.java:43)
+2028-02-29 12:00:01.105 WARN  o.l.rules.AbstractDateCheckFilter - Skipping potential match for FILTER_RULE[1]
+java.lang.RuntimeException: Could not find day of week for 'Xyz'
+	at ltjs.oracle.FilterOps$DateCfg.dayOfWeek(FilterOps.java:52)
+	at ltjs.oracle.FilterOps$DateCheck.getDayOfWeek(FilterOps.java:75)
+	at org.languagetool.rules.AbstractDateCheckFilter.acceptRuleMatch(AbstractDateCheckFilter.java:83)
+	at ltjs.oracle.FilterOps.filterRun(FilterOps.java:296)
+	at ltjs.oracle.Harness.dispatch(Harness.java:120)
+	at ltjs.oracle.Harness.main(Harness.java:43)
+2028-02-29 12:00:01.105 WARN  o.l.rules.AbstractDateCheckFilter - Skipping potential match for FILTER_RULE[1]
+java.lang.RuntimeException: Could not find day of week for ''
+	at ltjs.oracle.FilterOps$DateCfg.dayOfWeek(FilterOps.java:52)
+	at ltjs.oracle.FilterOps$DateCheck.getDayOfWeek(FilterOps.java:75)
+	at org.languagetool.rules.AbstractDateCheckFilter.acceptRuleMatch(AbstractDateCheckFilter.java:83)
+	at ltjs.oracle.FilterOps.filterRun(FilterOps.java:296)
+	at ltjs.oracle.Harness.dispatch(Harness.java:120)
+	at ltjs.oracle.Harness.main(Harness.java:43)

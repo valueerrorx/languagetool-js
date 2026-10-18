@@ -116,6 +116,9 @@ public class Harness {
       case "rule-text-match": return RuleInfraOps.ruleTextMatch(a);
       case "rule-filter": return RuleInfraOps.ruleFilter(a);
       case "hints-real": return RuleInfraOps.hintsReal(a);
+      case "filter-cfg": return FilterOps.filterCfg(a);
+      case "filter-run": return FilterOps.filterRun(a);
+      case "filter-helper": return FilterOps.filterHelper(a);
       case "unify-tokens": return UnifyOps.tokens(a);
       case "disamb-run": return DisambOps.run(a);
       case "disamb-examples": return DisambOps.examples(a);
