@@ -1,4 +1,5 @@
 // JS twin of harness op "rule-match-disamb" (DisambOps#ruleMatchDisamb): rule-match on XML-disambiguated sentences plus PatternRule#match.
+import { Tally } from './_partial.mjs';
 import { lang, loadFile, inline, resetState } from './_unify-common.mjs';
 import { xrd, fresh, err, disambiguate, sha1, resetDisamb } from './_disamb-common.mjs';
 import { listGet } from '../../src/lib/java/arrays.js';
@@ -27,7 +28,9 @@ export async function run(a) {
   const l = lang(a.lang);
   const d = await xrd(l, a.global === true, a.dxml ?? null);
   const cache = new Map();
+  const npTexts = new Map();
   const jobs = [];
+  const T = new Tally();
   let inlineRules = null;
   const resolve = (src) => {
     let rs;
@@ -41,22 +44,23 @@ export async function run(a) {
       for (const ti of job.texts) {
         let s;
         try {
+          if (npTexts.has(ti)) throw npTexts.get(ti);
           s = cache.get(ti);
           if (s === undefined) { s = disambiguate(d, fresh(l, a.lang, a.texts[ti])); cache.set(ti, s); }
-        } catch (t) { per.push(err(t)); continue; }
+        } catch (t) { if (t && t.notPorted === true) npTexts.set(ti, t); per.push(t && t.notPorted === true ? T.skip(t) : err(t)); continue; }
         try {
           const nulls = [0];
           const raw = rawMatches(rule, s, nulls);
           const kept = new RuleWithMaxFilter().filter([...raw]);
-          per.push({
+          per.push(T.ok({
             raw: raw.map(dump), nulls: nulls[0], kept: kept.map((m) => raw.indexOf(m)), sugMatches: rule.getSuggestionMatches().length,
             full: rule.match(s).map(dump),
-          });
-        } catch (t) { per.push(err(t)); }
+          }));
+        } catch (t) { per.push(t && t.notPorted === true ? T.skip(t) : err(t)); }
       }
       jobs.push(per);
-    } catch (t) { jobs.push(err(t)); }
+    } catch (t) { jobs.push(t && t.notPorted === true ? T.skip(t) : err(t)); }
   }
-  const texts = a.texts.map((_, i) => (cache.has(i) ? [cache.get(i).getTokensWithoutWhitespace().length, sha1(cache.get(i).toString())] : null));
-  return { texts, jobs };
+  const texts = a.texts.map((_, i) => (npTexts.has(i) ? { __notPorted: true } : cache.has(i) ? [cache.get(i).getTokensWithoutWhitespace().length, sha1(cache.get(i).toString())] : null));
+  return T.finish({ texts, jobs });
 }

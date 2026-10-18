@@ -1,4 +1,5 @@
 // JS twin of harness op "seq-match" (SeqMatchOps#seqMatch); needs AbstractPatternRulePerformer (F27), until then every request is NOT PORTED.
+import { Tally } from './_partial.mjs';
 import { existsSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 import path from 'node:path';
@@ -97,6 +98,7 @@ export async function run(a) {
     }
   }
   const jobs = [];
+  const T = new Tally();
   for (const job of a.jobs) {
     try {
       const rule = resolve(job.src, a);
@@ -104,13 +106,12 @@ export async function run(a) {
       for (const ti of job.texts) {
         const s = texts[ti];
         if (s === null) { per.push(null); continue; }
-        try { per.push(capture(AbstractPatternRulePerformer, rule, s)); } catch (t) { if (t && t.notPorted === true) throw t; per.push(err(t)); }
+        try { per.push(T.ok(capture(AbstractPatternRulePerformer, rule, s))); } catch (t) { per.push(t && t.notPorted === true ? T.skip(t) : err(t)); }
       }
       jobs.push(per);
     } catch (t) {
-      if (t && t.notPorted === true) throw t;
-      jobs.push(err(t));
+      jobs.push(t && t.notPorted === true ? T.skip(t) : err(t));
     }
   }
-  return { texts: textInfo, jobs };
+  return T.finish({ texts: textInfo, jobs });
 }

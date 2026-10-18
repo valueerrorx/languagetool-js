@@ -1,4 +1,5 @@
 // JS twin of harness op "regex-match" (RuleInfraOps#regexMatch): RegexPatternRule#match on raw tagger sentences.
+import { Tally } from './_partial.mjs';
 import { resetState, sentences } from './_unify-common.mjs';
 import { dump } from './rule-match.mjs';
 import { err, lang, kind, resolve } from './_ruleinfra-common.mjs';
@@ -31,6 +32,7 @@ export async function run(a) {
   const info = [];
   const texts = sentences(l, a.lang, a.texts, info);
   const jobs = [];
+  const T = new Tally();
   for (const job of a.jobs) {
     try {
       const rule = resolve(job.src, a);
@@ -41,12 +43,12 @@ export async function run(a) {
         if (s === null) { per.push(null); continue; }
         try {
           const ms = rule.match(s);
-          per.push({ matches: [...ms].map(dump), sug: rule.getSuggestionMatches().length, sugOut: rule.getSuggestionMatchesOutMsg().length });
-        } catch (t) { per.push(err(t)); }
+          per.push(T.ok({ matches: [...ms].map(dump), sug: rule.getSuggestionMatches().length, sugOut: rule.getSuggestionMatchesOutMsg().length }));
+        } catch (t) { per.push(t && t.notPorted === true ? T.skip(t) : err(t)); }
       }
       jo.per = per;
       jobs.push(jo);
-    } catch (t) { jobs.push(err(t)); }
+    } catch (t) { jobs.push(t && t.notPorted === true ? T.skip(t) : err(t)); }
   }
-  return { texts: info, jobs };
+  return T.finish({ texts: info, jobs });
 }

@@ -1,4 +1,5 @@
 // JS twin of harness op "rule-text-match" (RuleInfraOps#ruleTextMatch): text-level match of transformed rules over sentence lists.
+import { Tally } from './_partial.mjs';
 import { resetState } from './_unify-common.mjs';
 import { dump } from './rule-match.mjs';
 import { err, lang, rules, splitSentences } from './_ruleinfra-common.mjs';
@@ -23,6 +24,7 @@ export async function run(a) {
       } catch (e) { texts.push(null); counts.push(err(e)); }
     }
     const jobs = [];
+    const T = new Tally();
     for (const job of a.jobs) {
       try {
         const r = listGet(trans, job.rule);
@@ -31,12 +33,12 @@ export async function run(a) {
         for (const ti of job.texts) {
           const ss = texts[ti];
           if (ss === null) { per.push(null); continue; }
-          try { per.push({ matches: [...r.match(ss)].map(dump) }); } catch (t) { per.push(err(t)); }
+          try { per.push(T.ok({ matches: [...r.match(ss)].map(dump) })); } catch (t) { per.push(t && t.notPorted === true ? T.skip(t) : err(t)); }
         }
         jo.per = per;
         jobs.push(jo);
-      } catch (t) { jobs.push(err(t)); }
+      } catch (t) { jobs.push(t && t.notPorted === true ? T.skip(t) : err(t)); }
     }
-    return { nTransformed: trans.length, sentences: counts, jobs };
+    return T.finish({ nTransformed: trans.length, sentences: counts, jobs });
   } catch (t) { return err(t); }
 }

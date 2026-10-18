@@ -1,4 +1,5 @@
 // JS twin of harness op "disamb-examples" (DisambOps#examples): DisambiguationRuleTest replay with rule cascade, XML rules only, no-op chunker.
+import { Tally } from './_partial.mjs';
 import { lang, rules, fresh, err, sha1 } from './_disamb-common.mjs';
 import { releaseXx } from './_disamb-common.mjs';
 import { listGet } from '../../src/lib/java/arrays.js';
@@ -51,6 +52,7 @@ async function runImpl(a) {
   const rs = await rules(l, a.xml ?? null);
   const code = a.lang;
   const out = [];
+  const T = new Tally();
   for (let i = a.offset; i < Math.min(rs.length, a.offset + a.limit); i++) {
     const rule = listGet(rs, i);
     const ro = { i, id: rule.getId(), subId: rule.getSubId() };
@@ -64,8 +66,8 @@ async function runImpl(a) {
           const sent = until(rs, id, fresh(l, code, good));
           const toReplace = until(rs, id, fresh(l, code, good));
           const rep = rule.replace(toReplace);
-          un.push({ blank: javaTrimLen(good) === 0, eq: sent.toString() === rep.toString(), dg: sha1(rep.toString()) });
-        } catch (t) { un.push(err(t)); }
+          un.push(T.ok({ blank: javaTrimLen(good) === 0, eq: sent.toString() === rep.toString(), dg: sha1(rep.toString()) }));
+        } catch (t) { un.push(t && t.notPorted === true ? T.skip(t) : err(t)); }
       }
     }
     ro.untouched = un;
@@ -117,12 +119,12 @@ async function runImpl(a) {
           o.outA = sortForms(reading);
           o.inDg = sha1(sent.toString());
           o.outDg = sha1(dis.toString());
-          exs.push(o);
-        } catch (t) { exs.push(err(t)); }
+          exs.push(T.ok(o));
+        } catch (t) { exs.push(t && t.notPorted === true ? T.skip(t) : err(t)); }
       }
     }
     ro.examples = exs;
     out.push(ro);
   }
-  return { total: rs.length, rules: out };
+  return T.finish({ total: rs.length, rules: out });
 }

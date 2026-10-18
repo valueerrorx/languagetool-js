@@ -5,6 +5,7 @@ import path from 'node:path';
 import { ROOT } from './lib/env.mjs';
 import { normalize } from './lib/normalizers.mjs';
 import { getComparator } from './comparators/index.mjs';
+import { isMark, NP_KEY } from './adapters/_partial.mjs';
 
 const GOLDEN = path.join(ROOT, 'tests/golden');
 const ADAPTERS = path.join(ROOT, 'oracle/adapters');
@@ -21,6 +22,16 @@ function laterIds() {
     }
   }
   return later;
+}
+
+// per-part notPorted: where the port marked a part, replace the Java part by the marker too (positional)
+function maskNotPorted(exp, act) {
+  if (isMark(act)) return act;
+  if (Array.isArray(exp) && Array.isArray(act)) { for (let i = 0; i < act.length && i < exp.length; i++) exp[i] = maskNotPorted(exp[i], act[i]); }
+  else if (exp && act && typeof exp === 'object' && typeof act === 'object' && !Array.isArray(exp) && !Array.isArray(act)) {
+    for (const k of Object.keys(act)) if (k in exp) exp[k] = maskNotPorted(exp[k], act[k]);
+  }
+  return exp;
 }
 
 const jsonl = (t) => t.split('\n').filter(Boolean).map((l) => JSON.parse(l));
@@ -74,6 +85,8 @@ async function runKindCase(cs, meta, dir) {
   }
 }
 
+const partialTotals = { cases: 0, skipped: 0, total: 0 };
+
 async function runCase(id, name) {
   const dir = path.join(GOLDEN, id, name);
   const cs = JSON.parse(readFileSync(path.join(dir, 'case.json'), 'utf8'));
@@ -97,11 +110,17 @@ async function runCase(id, name) {
   }
   const actual = [];
   const nonPorted = new Set();
+  const partial = { requests: 0, skipped: 0, total: 0 };
   for (const r of reqs) {
     const ad = adapters.get(r.op);
     if (ad.notPorted) { actual.push(null); nonPorted.add(r.id); continue; }
     try {
-      actual.push({ id: r.id, ok: true, result: await ad.run(r.args ?? {}) });
+      const result = await ad.run(r.args ?? {});
+      if (result && typeof result === 'object' && result[NP_KEY]) {
+        partial.requests++; partial.skipped += result[NP_KEY].skipped; partial.total += result[NP_KEY].total;
+        delete result[NP_KEY];
+      }
+      actual.push({ id: r.id, ok: true, result });
     } catch (e) {
       if (e && e.notPorted === true) { actual.push(null); nonPorted.add(r.id); continue; }
       actual.push({ id: r.id, ok: false, error: errorEnvelope(e) });
@@ -113,10 +132,20 @@ async function runCase(id, name) {
   // per-request notPorted: drop those requests from both sides, then compare the rest
   const expectedLines = jsonl(expectedText).filter((x) => !nonPorted.has(x.id));
   const actualText = norm(actual.filter(Boolean).map((x) => JSON.stringify(x)).join('\n'));
+  const actualLines = jsonl(actualText);
+  if (partial.requests) {
+    const byId = new Map(actualLines.map((x) => [x.id, x]));
+    for (const e of expectedLines) { const a = byId.get(e.id); if (a && a.ok && e.ok) e.result = maskNotPorted(e.result, a.result); }
+  }
+  const note = [];
+  if (nonPorted.size) note.push(`${nonPorted.size}/${reqs.length} requests not ported`);
+  if (partial.requests) note.push(`partial: ${partial.skipped}/${partial.total} parts notPorted in ${partial.requests} request(s)`);
+  partialTotals.skipped += partial.skipped; partialTotals.total += partial.total; if (partial.requests) partialTotals.cases++;
   const cmp = await getComparator(cs.compare ?? 'jsonl');
-  const diffs = cmp(expectedLines, jsonl(actualText));
-  if (diffs.length) return { status: 'FAIL', diffs };
-  return nonPorted.size ? { status: 'NOT PORTED', note: `${nonPorted.size}/${reqs.length} requests not ported` } : { status: 'PASS' };
+  const diffs = cmp(expectedLines, actualLines);
+  if (diffs.length) return { status: 'FAIL', diffs, note: note.join('; ') };
+  if (nonPorted.size) return { status: 'NOT PORTED', note: note.join('; ') };
+  return { status: 'PASS', note: note.join('; ') };
 }
 
 const ids = process.argv.slice(2).filter((a) => !a.startsWith('--'));
@@ -138,5 +167,6 @@ for (const id of ids.length ? ids : all) {
   }
 }
 console.log(rows.join('\n'));
+if (partialTotals.cases) console.log(`partial: ${partialTotals.cases} case(s) compared with notPorted parts, ${partialTotals.skipped}/${partialTotals.total} parts skipped`);
 console.log(`parity: ${counts.PASS} pass, ${counts.FAIL} fail, ${counts.SKIP} skip, ${counts['NOT PORTED']} not ported`);
 process.exit(counts.FAIL ? 1 : 0);

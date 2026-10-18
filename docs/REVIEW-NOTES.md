@@ -25,3 +25,4 @@
 - No local copies of src/lib/java helpers (e.g. listGet); import the shared one.
 - Java string semantics (javaSplit, Java regex) apply also in test code that mirrors Java test helpers.
 - Status verified only when every class named in the inventory row exists in src/ and is exercised by a fixture or test.
+- A "PASS (partial: N notPorted)" is not done: a step whose PLAN note names a fixture must bring its partial count to 0.

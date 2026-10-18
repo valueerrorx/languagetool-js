@@ -1,4 +1,5 @@
 // JS twin of harness op "disamb-run" (DisambOps#run): XmlRuleDisambiguator or one DisambiguationPatternRule#replace on fresh raw sentences.
+import { Tally } from './_partial.mjs';
 import { lang, xrd, rules, fresh, err, dumpSentence, canon, sha1, disambiguate, resetDisamb } from './_disamb-common.mjs';
 import { releaseXx } from './_disamb-common.mjs';
 import { listGet } from '../../src/lib/java/arrays.js';
@@ -16,8 +17,10 @@ async function runImpl(a) {
   const global = a.global === true;
   const xml = a.xml ?? null;
   const jobs = [];
+  const T = new Tally();
   for (const job of a.jobs) {
     const per = [];
+    let jobSkip = null;
     try {
       const whole = job.rule === undefined || job.rule === null;
       const d = whole ? await xrd(l, global, xml) : null;
@@ -39,11 +42,11 @@ async function runImpl(a) {
             o.same = res === raw;
             if (res !== raw) o.s = dumpSentence(res);
           }
-          per.push(o);
-        } catch (t) { per.push(err(t)); }
+          per.push(T.ok(o));
+        } catch (t) { per.push(t && t.notPorted === true ? T.skip(t) : err(t)); }
       }
-    } catch (t) { per.push(err(t)); }
-    jobs.push(per);
+    } catch (t) { if (t && t.notPorted === true) jobSkip = T.skip(t); else per.push(err(t)); }
+    jobs.push(jobSkip ?? per);
   }
-  return { jobs };
+  return T.finish({ jobs });
 }

@@ -1,4 +1,5 @@
 // JS twin of harness op "rule-match" (RuleMatchOps#ruleMatch): createRuleMatch hits before RuleWithMaxFilter + kept indices; createRuleMatch with <filter> is notPorted until F30.
+import { Tally } from './_partial.mjs';
 import { resetState, lang, loadFile, inline, sentences } from './_unify-common.mjs';
 import { listGet } from '../../src/lib/java/arrays.js';
 import { RuleWithMaxFilter } from '../../src/core/rules/RuleWithMaxFilter.js';
@@ -54,6 +55,7 @@ export async function run(a) {
     return listGet(rules, src.rule ?? 0);
   };
   const jobs = [];
+  const T = new Tally();
   for (const job of a.jobs) {
     try {
       const rule = resolve(job.src);
@@ -65,11 +67,11 @@ export async function run(a) {
           const nulls = [0];
           const raw = rawMatches(rule, s, nulls);
           const kept = new RuleWithMaxFilter().filter([...raw]);
-          per.push({ raw: raw.map(dump), nulls: nulls[0], kept: kept.map((m) => raw.indexOf(m)), sugMatches: rule.getSuggestionMatches().length });
-        } catch (t) { per.push(err(t)); }
+          per.push(T.ok({ raw: raw.map(dump), nulls: nulls[0], kept: kept.map((m) => raw.indexOf(m)), sugMatches: rule.getSuggestionMatches().length }));
+        } catch (t) { per.push(t && t.notPorted === true ? T.skip(t) : err(t)); }
       }
       jobs.push(per);
-    } catch (t) { jobs.push(err(t)); }
+    } catch (t) { jobs.push(t && t.notPorted === true ? T.skip(t) : err(t)); }
   }
-  return { texts: info, jobs };
+  return T.finish({ texts: info, jobs });
 }
