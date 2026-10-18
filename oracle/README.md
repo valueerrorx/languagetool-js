@@ -27,3 +27,6 @@ Spec: docs/ORACLE.md. Commands: `npm run oracle -- <ID> [<case>] | --all | --sel
 
 ## Check-pipeline oracle (F15, X-CHECK-PIPE)
 Ops check2, active-rules, lt-api, analyze-raw (CheckPipeOps.java, synthetic rules in SynthRules.java); cases by `node oracle/scripts/gen-cases-checkpipe.mjs`; comparator `check-pipe` (honours languageFilterChanged / disambChanged flags). Full definition: docs/review/F15-oracle.md.
+
+## XML disambiguator oracle (F32, X-DISAMB)
+Ops (DisambOps.java): `disamb-run`, `disamb-examples`, `rule-match-disamb`, `disamb-harvest` (generator only). Generator `node oracle/scripts/gen-cases-xdisamb.mjs` (wipes and rewrites oracle/cases/X-DISAMB; seeded/deterministic), adapters oracle/adapters/{disamb-run,disamb-examples,rule-match-disamb}.mjs + `_disamb-common.mjs`. Format and contract: docs/review/F32-oracle.md. The xx (Demo) cases set `extraCp` (core tests jar, appended to the harness classpath; it registers Demo through its language-module.properties) in the case file.

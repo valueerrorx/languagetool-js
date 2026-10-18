@@ -117,6 +117,10 @@ public class Harness {
       case "rule-filter": return RuleInfraOps.ruleFilter(a);
       case "hints-real": return RuleInfraOps.hintsReal(a);
       case "unify-tokens": return UnifyOps.tokens(a);
+      case "disamb-run": return DisambOps.run(a);
+      case "disamb-examples": return DisambOps.examples(a);
+      case "rule-match-disamb": return DisambOps.ruleMatchDisamb(a);
+      case "disamb-harvest": return DisambOps.harvest(a);
       case "manual-tagger": return TagOps.manualTagger(a);
       case "lang-lookup": return LangOps.lookup(a);
       case "lang-describe": return LangOps.describeOp(a);
