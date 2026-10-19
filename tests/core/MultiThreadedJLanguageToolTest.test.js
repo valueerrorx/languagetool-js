@@ -3,6 +3,7 @@ import { describe, it, expect } from 'vitest';
 import { EN, englishMessages, useNoopAnalysis } from '../support/ruleTestSupport.js';
 import { JLanguageTool } from '../../src/core/JLanguageTool.js';
 import { MultiThreadedJLanguageTool } from '../../src/core/MultiThreadedJLanguageTool.js';
+import { ExecutionException, IllegalStateException, RejectedExecutionException, RuntimeException } from '../../src/lib/java/errors.js';
 import { Rule } from '../../src/core/rules/model/Rule.js';
 import { RuleMatch } from '../../src/core/rules/model/RuleMatch.js';
 import { UppercaseSentenceStartRule } from '../../src/core/rules/UppercaseSentenceStartRule.js';
@@ -76,5 +77,29 @@ describe('MultiThreadedJLanguageToolTest', () => {
     lt.analyzeText('Baz.');
     expect(lt.unknownWords.has('stale')).toBe(false);
   });
+
+  // Java: MultiThreadedJLanguageToolTest#testShutdownException
+  it('testShutdownException', () => {
+    const tool = newMt([]);
+    tool.shutdown();
+    expect(() => tool.check('a test')).toThrow(RejectedExecutionException);
+    const tool2 = newMt([]);
+    tool2.shutdownWhenDone();
+    expect(() => tool2.check('a test. b test.')).toThrow(RejectedExecutionException);
+  });
+
+  // Java: MultiThreadedJLanguageTool#performCheck: rule failures surface as RuntimeException(ExecutionException(re-created RuntimeException(original)))
+  it('rule errors are wrapped in ExecutionException', () => {
+    class Boom extends WordRule {
+      match() { throw new IllegalStateException('boom'); }
+    }
+    const lt = newMt([new Boom('R_BOOM', 'go')]);
+    let err;
+    try { lt.check('Foo go bar.'); } catch (e) { err = e; }
+    expect(err).toBeInstanceOf(RuntimeException);
+    expect(err.getMessage()).toMatch(/^java\.util\.concurrent\.ExecutionException: java\.lang\.RuntimeException: java\.lang\.RuntimeException: Could not check sentence/);
+    expect(err.getCause()).toBeInstanceOf(ExecutionException);
+    lt.shutdown();
+  });
 });
-// skipped: testShutdownException (needs a thread pool / RejectedExecutionException), testConfigurableThreadPoolSize (getThreadPoolSize not ported, sequential S9)
+// skipped: testConfigurableThreadPoolSize (getThreadPoolSize not ported, sequential S9)

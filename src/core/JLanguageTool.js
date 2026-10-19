@@ -8,7 +8,8 @@ import { Objects } from '../lib/java/Objects.js';
 import { Pattern, javaMatches } from '../lib/java/regex/index.js';
 import { javaCompare, javaTrim, stripLeading, substring } from '../lib/java/strings.js';
 import { abbreviate } from '../lib/java/StringUtils.js';
-import { fdiv, fsub } from '../lib/java/float.js';
+import { fdiv, fmul, fsub } from '../lib/java/float.js';
+import { formatFixed } from '../lib/java/Formatter.js';
 import { floatToString } from '../lib/java/toString.js';
 import { File } from '../lib/java/io/File.js';
 import { JavaHashMap } from '../lib/java/collections/JavaHashMap.js';
@@ -1403,8 +1404,10 @@ export class TextCheckCallable {
           tmpErrorsPerWord = errorsPerWord;
         }
         if (lt.maxErrorsPerWordRate > 0 && errorsPerWord > lt.maxErrorsPerWordRate && wordCounter > 25) {
-          // errorRateLog lines are logged at INFO [BAD_REQUEST] (logger: F71); message needs String.format("%.0f") (F35, CORE-0085)
-          throw notPortedYet('ErrorRateTooHighException message String.format("%.0f") (F35, CORE-0085)');
+          // errorRateLog lines are logged at INFO [BAD_REQUEST] (logger: F71)
+          throw new ErrorRateTooHighException(`Text checking was stopped due to too many errors (more than ${formatFixed(fmul(lt.maxErrorsPerWordRate, 100), 0)}`
+            + '% of words seem to have an error). Are you sure you have set the correct text language? Language set: '
+            + `${lt.language.getName()}, text length: ${this.annotatedText.getPlainText().length}`);
         }
       } catch (e) {
         if (e instanceof ErrorRateTooHighException) throw e;

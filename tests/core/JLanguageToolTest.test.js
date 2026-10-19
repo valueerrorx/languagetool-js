@@ -6,6 +6,8 @@ import { Languages } from '../../src/core/Languages.js';
 import { JLanguageTool, Level, Mode, ParagraphHandling } from '../../src/core/JLanguageTool.js';
 import { selectRules } from '../../src/core/Tools.js';
 import { AnnotatedTextBuilder } from '../../src/core/text/AnnotatedTextBuilder.js';
+import { NullPointerException } from '../../src/lib/java/errors.js';
+import { LanguageDependentRuleMatchFilter } from '../../src/core/rules/LanguageDependentRuleMatchFilter.js';
 import { Rule } from '../../src/core/rules/model/Rule.js';
 import { TextLevelRule } from '../../src/core/rules/model/TextLevelRule.js';
 import { RuleMatch } from '../../src/core/rules/model/RuleMatch.js';
@@ -307,5 +309,30 @@ describe('JLanguageTool block tests', () => {
     expect(activeIds(lt)).toEqual(['A', 'B']);
     lt.disableRule('B');
     expect(activeIds(lt)).toEqual(['A']);
+  });
+});
+
+describe('F35 pipeline breadth', () => {
+  // Java: JLanguageTool#setConfigValues(Map) -> UserConfig#insertConfigValues: null map
+  it('setConfigValues(null) throws NullPointerException', () => {
+    const lt = custom([]);
+    expect(() => lt.setConfigValues(null)).toThrow(NullPointerException);
+  });
+
+  // Java: JLanguageTool.TextCheckCallable#call: error-rate message uses String.format("%.0f", rate * 100)
+  it('ErrorRateTooHighException message', () => {
+    const lt = custom([new WordRule('A', 'x')]);
+    lt.setMaxErrorsPerWordRate(0.1);
+    const text = 'Go x now. '.repeat(30);
+    expect(() => lt.check(text)).toThrow(/Text checking was stopped due to too many errors \(more than 10% of words seem to have an error\)\. Are you sure you have set the correct text language\? Language set: English \(US\), text length: \d+$/);
+  });
+
+  // Java: LanguageDependentRuleMatchFilter#filter(List,AnnotatedText)
+  it('LanguageDependentRuleMatchFilter delegates to Language#filterRuleMatches', () => {
+    const calls = [];
+    const language = { filterRuleMatches: (m, t, ids) => { calls.push(ids); return m; } };
+    const f = new LanguageDependentRuleMatchFilter(language, { allRuleIds: () => new Set(['A']) });
+    expect(f.filter([1], null)).toEqual([1]);
+    expect([...calls[0]]).toEqual(['A']);
   });
 });

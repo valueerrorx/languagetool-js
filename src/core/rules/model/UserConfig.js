@@ -1,5 +1,6 @@
 // org.languagetool.UserConfig and org.languagetool.LinguServices (null path: no LinguServices in CLI/server)
 import { JavaEnum } from '../../../lib/java/JavaEnum.js';
+import { NullPointerException } from '../../../lib/java/errors.js';
 import { Objects } from '../../../lib/java/Objects.js';
 import { Long } from '../../../lib/java/long.js';
 import { javaCompare, javaSplit } from '../../../lib/java/strings.js';
@@ -145,6 +146,7 @@ export class UserConfig {
 
   // Java: UserConfig#insertConfigValues(Map)
   insertConfigValues(ruleValues) {
+    if (ruleValues === null || ruleValues === undefined) throw new NullPointerException('Cannot invoke "java.util.Map.entrySet()" because "ruleValues" is null');
     for (const [k, v] of ruleValues) {
       this.configurableRuleValues.set(k, v);
     }
