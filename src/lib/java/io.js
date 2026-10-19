@@ -67,6 +67,21 @@ export class StringReader {
   close() {}
 }
 
+// Java: java.io.BufferedReader over already decoded text (readLine() line rules of readerLines; null at the end; stateful)
+export class BufferedReader {
+  // Java: BufferedReader#BufferedReader(Reader)
+  constructor(text) {
+    if (text === null || text === undefined) throw new NullPointerException();
+    this.lines = readerLines(text);
+    this.next = 0;
+  }
+
+  // Java: BufferedReader#readLine()
+  readLine() {
+    return this.next < this.lines.length ? this.lines[this.next++] : null;
+  }
+}
+
 // Java: sun.nio.cs.UTF_32 decoding (REPLACE): out-of-range or surrogate code points and a trailing partial unit -> U+FFFD, BOM kept
 function decodeUtf32(bytes, start, le) {
   let out = '';

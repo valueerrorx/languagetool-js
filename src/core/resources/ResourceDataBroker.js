@@ -174,6 +174,7 @@ export class DefaultResourceDataBroker {
 
   // Java: DefaultResourceDataBroker#appendPath(String,String) (tests this.rulesDir for both dirs, as Java does)
   appendPath(baseDir, p) {
+    if (p === null || p === undefined) throw new NullPointerException('Cannot invoke "String.startsWith(String)" because "path" is null');
     let completePath = baseDir;
     if (!this.rulesDir.endsWith('/') && !p.startsWith('/')) completePath += '/';
     if (this.rulesDir.endsWith('/') && p.startsWith('/') && p.length > 1) completePath += p.substring(1);

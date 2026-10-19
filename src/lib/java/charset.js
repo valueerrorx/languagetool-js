@@ -75,3 +75,29 @@ export function decodeUtf8Java(bytes) {
   for (let i = 0; i < out.length; i += 8192) s += String.fromCharCode(...out.slice(i, i + 8192));
   return s;
 }
+
+// Java: String#getBytes(StandardCharsets.UTF_8) (unpaired surrogates -> '?')
+export function getBytesUtf8(s) {
+  const out = [];
+  const n = s.length;
+  for (let i = 0; i < n; i++) {
+    let c = s.charCodeAt(i);
+    if (c < 0x80) {
+      out.push(c);
+    } else if (c < 0x800) {
+      out.push(0xc0 | (c >> 6), 0x80 | (c & 0x3f));
+    } else if (c >= 0xd800 && c <= 0xdfff) {
+      const d = i + 1 < n ? s.charCodeAt(i + 1) : 0;
+      if (c <= 0xdbff && d >= 0xdc00 && d <= 0xdfff) {
+        c = 0x10000 + ((c - 0xd800) << 10) + (d - 0xdc00);
+        i++;
+        out.push(0xf0 | (c >> 18), 0x80 | ((c >> 12) & 0x3f), 0x80 | ((c >> 6) & 0x3f), 0x80 | (c & 0x3f));
+      } else {
+        out.push(0x3f);
+      }
+    } else {
+      out.push(0xe0 | (c >> 12), 0x80 | ((c >> 6) & 0x3f), 0x80 | (c & 0x3f));
+    }
+  }
+  return Uint8Array.from(out);
+}

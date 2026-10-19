@@ -7,9 +7,16 @@ for (const opt of (process.env.LTJS_JAVA_OPTS ?? '').split(/\s+/)) {
 
 // Java: java.lang.System
 export class System {
-  // Java: System#getProperty(String)
-  static getProperty(key) {
-    return props.has(key) ? props.get(key) : null;
+  // Java: System#getProperty(String) / getProperty(String,String)
+  static getProperty(key, def = null) {
+    return props.has(key) ? props.get(key) : def;
+  }
+
+  // Java: System#clearProperty(String)
+  static clearProperty(key) {
+    const old = props.has(key) ? props.get(key) : null;
+    props.delete(key);
+    return old;
   }
 
   // Java: System#setProperty(String,String)

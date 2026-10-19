@@ -11,4 +11,4 @@ Java: oracle/harness/src/ltjs/oracle/SpellOps.java (ops `spell-speller`, `spell-
 - SuggestionsOrderer/SuggestionsRanker (interfaces), SuggestionsChanges/SuggestionChangesExperiment (need an ML model / experiment config, not reachable without model files), SuggestionsOrdererConfig.getNgramsPath (package-private): UNORACLED; manual check via the ported DetailedDamerauLevenstheinDistanceTest and constructor smoke tests.
 - Unseeded EditOperation()/randomEdit() are random by design: only the seeded behaviour is fixtured.
 ## Parity state
-All 10 cases NOT PORTED. JS must reproduce: Speller candidate order (distance, then dict order), the weight values, and the cache traps in MorfologikMultiSpeller (dictCache and dicPathToDict keyed by path).
+Adapters oracle/adapters/spell-{speller,multi,rank}.mjs (+ _spell-common.mjs). 9 cases PASS; speller-errors NOT PORTED for request 9 (dict "" = Java class path root URL, message holds the Java jar directory); rank masks the `track-anon` error message (identity hash of the harness' anonymous class).
