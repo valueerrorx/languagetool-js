@@ -160,3 +160,22 @@ export function substringBefore(str, separator) {
   const pos = str.indexOf(separator);
   return pos === -1 ? str : str.substring(0, pos);
 }
+
+// Java: StringUtils#getDigits(String)
+export function getDigits(str) {
+  if (str === null || str === undefined || str.length === 0) return str;
+  let out = '';
+  for (let i = 0; i < str.length; i++) {
+    if (Character.isDigit(str.charCodeAt(i))) out += str.charAt(i);
+  }
+  return out;
+}
+
+// Java: StringUtils#uncapitalize(String)
+export function uncapitalize(str) {
+  if (str === null || str === undefined || str.length === 0) return str;
+  const first = str.codePointAt(0);
+  const newCodePoint = Character.toLowerCase(first);
+  if (first === newCodePoint) return str; // same result
+  return String.fromCodePoint(newCodePoint) + str.substring(first > 0xffff ? 2 : 1);
+}

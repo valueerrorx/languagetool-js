@@ -18,7 +18,7 @@ import { ReadabilityRule } from '../../src/core/rules/ReadabilityRule.js';
 import { NoopChunker } from '../../src/core/noop/NoopChunker.js';
 import { JLanguageTool } from '../../src/core/JLanguageTool.js';
 import { errorOf, languageFor, withNoopAnalysis } from './_check-pipe-common.mjs';
-import { runCase } from './check2.mjs';
+import { recordPreLanguageFilter, runCase } from './check2.mjs';
 import { notPorted } from './_pipe-common.mjs';
 
 const EXTRA = {
@@ -45,7 +45,7 @@ function nativeRules(code, l, m, uc) {
 }
 
 // Java: StyleOps#check(JsonNode); disambiguator/chunker of the languages are not ported (F32/F44): no-op analysis (R4), see docs/review/F36-porter.md
-export function run(a) {
+export function run(a, hook = null) {
   let l;
   try {
     l = languageFor(a.lang);
@@ -56,14 +56,14 @@ export function run(a) {
   const savedPost = l.postDisambiguationChunker;
   l.postDisambiguationChunker = new NoopChunker();
   try {
-    return withNoopAnalysis(l, true, () => check(a, l));
+    return withNoopAnalysis(l, true, () => check(a, l, hook));
   } finally {
     l.postDisambiguationChunker = savedPost;
   }
 }
 
 // Java: StyleOps#check(JsonNode)
-function check(a, l) {
+function check(a, l, hook) {
   const res = {};
   let lt;
   let natives;
@@ -76,6 +76,7 @@ function check(a, l) {
       uc = new UserConfig(cv);
     }
     natives = nativeRules(l.getShortCode(), l, m, uc);
+    if (hook !== null) natives = hook(l, m, uc, natives); // F37 rules (replace-check.mjs) merged into the list
     lt = new JLanguageTool(l, [], null, null, null, uc, true, false, []);
   } catch (t) {
     if (t && t.notPorted === true) throw t;
@@ -83,10 +84,12 @@ function check(a, l) {
     return res;
   }
   lt.setCleanOverlappingMatches(false);
+  if (hook !== null) recordPreLanguageFilter(lt);
   const rules = natives.filter((r) => r.np === undefined);
   for (const r of rules) lt.addRule(r);
   const enabled = new Set(a.ids);
-  for (const id of a.ids) if (!rules.some((r) => r.getId() === id)) throw notPorted(`style-check: ${id} (rule class not ported)`);
+  // with the F37 hook the rule lists of en/de are complete for the requested ids: ids without a rule are absent in Java too (e.g. variant rules of other variants)
+  if (hook === null) for (const id of a.ids) if (!rules.some((r) => r.getId() === id)) throw notPorted(`style-check: ${id} (rule class not ported)`);
   const selected = [];
   for (const n of a.extra ?? []) {
     const k = EXTRA[n];
