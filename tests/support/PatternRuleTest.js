@@ -13,6 +13,7 @@ import { parseXml, parserOptions } from '../../src/core/resources/xml.js';
 import { AbstractPatternRule } from '../../src/core/patterns/AbstractPatternRule.js';
 import { PatternRule } from '../../src/core/patterns/PatternRule.js';
 import { RegexPatternRule } from '../../src/core/patterns/RegexPatternRule.js';
+import { TestHackHelper } from '../../src/core/rules/TestHackHelper.js';
 import { ExampleSentence } from '../../src/core/rules/model/Examples.js';
 import { fail, warnIfRegexpSyntaxNotKosher } from './PatternTestTools.js';
 import { RuleIdValidator } from './RuleIdValidator.js';
@@ -247,8 +248,18 @@ export class PatternRuleTest {
     }
   }
 
-  // Java: PatternRuleTest#runTestForLanguage(Language)
+  // Java: PatternRuleTest#runTestForLanguage(Language) (TestHackHelper.isJUnitTest() is true inside PatternRuleTest)
   runTestForLanguage(lang) {
+    TestHackHelper.setJUnitTest(true);
+    try {
+      this.runTestForLanguageImpl(lang);
+    } finally {
+      TestHackHelper.setJUnitTest(false);
+    }
+  }
+
+  // Java: PatternRuleTest#runTestForLanguage(Language) (body)
+  runTestForLanguageImpl(lang) {
     this.validatePatternFile(lang);
     this.validateRemoteRulesFile(lang);
     console.log(`Running pattern rule tests for ${lang.getName()} (${lang.constructor.FQCN})... `);

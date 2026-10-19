@@ -140,8 +140,7 @@ describe('DemoPatternRuleTest', () => {
   });
 
   // Java: DemoPatternRuleTest#testRules; runnable infrastructure: tests/support/PatternRuleTest.js (see DemoRulesExamplesTest)
-  it.skip('testRules', () => {
-    // SKIPPED until F34: DemoPartialPosTagFilter needs PartialPosTagFilter (CORE-0180); with DemoDisambiguator2 (F32) everything else runs
+  it('testRules', () => {
     const test = new PatternRuleTest();
     test.runTestForLanguage(new DemoLanguage());
     test.ruleErrors.check(); // Java: PatternRuleErrorCollector rule verifies after the test

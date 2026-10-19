@@ -1,5 +1,5 @@
-# Resume point (2026-10-16)
-- Done + committed: F01-F20 (177 IDs verified). Parity: all green, rest notPorted.
-- Done: F21 CLI. Next: F22 German tagger (see PLAN notes on F22).
-- Loop per step: oracle (fixtures) -> porter (sonnet; opus for complex) -> reviewer where D-050 requires -> PLAN/INVENTORY update -> commit. Agents write checkpoints docs/review/Fxx-*.md.
-- Open backlog: docs/review/oracle-backlog.md, perf: docs/review/perf-watch.md, unreachable: docs/review/unreachable.md. PLAN notes carry follow-ups per step.
+# Resume (lead)
+State 2026-10-19: F01-F33 verified/committed. F34 ported (uncommitted), review interrupted by budget -> rerun reviewer (sonnet) on uncommitted F34 diff, then commit "F34: generic rule filters [CORE-0180..0184,CORE-0402..0416]" and set IDs verified.
+Next: F35, F36, then STOP and wait for the user (user request).
+Rules: D-052 token budget (sonnet only, short prompts). Loop: oracle -> porter -> reviewer (if needed) -> PLAN/INVENTORY -> commit (exclude oracle/cases/X-CLI-BASIC.bak).
+Status cmds: python3 docs/tools/plan_check.py ; cat docs/inventory/*.md | grep -cE '\| verified \|\s*$'

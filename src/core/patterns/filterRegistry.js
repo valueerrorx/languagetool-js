@@ -4,6 +4,29 @@ import { notPortedYet } from '../language/components.js';
 import { RuleFilter } from './RuleFilter.js';
 import { RegexRuleFilter } from './RegexRuleFilter.js';
 import { RegexAntiPatternFilter } from './RegexAntiPatternFilter.js';
+import { AbstractAdvancedSynthesizerFilter } from '../rules/AbstractAdvancedSynthesizerFilter.js';
+import { AbstractDateCheckFilter } from '../rules/AbstractDateCheckFilter.js';
+import { AbstractDateCheckWithSuggestionsFilter } from '../rules/AbstractDateCheckWithSuggestionsFilter.js';
+import { AbstractFindSuggestionsFilter } from '../rules/AbstractFindSuggestionsFilter.js';
+import { AbstractFutureDateFilter } from '../rules/AbstractFutureDateFilter.js';
+import { AbstractMakeContractionsFilter } from '../rules/AbstractMakeContractionsFilter.js';
+import { AbstractNewYearDateFilter } from '../rules/AbstractNewYearDateFilter.js';
+import { AbstractNumberInWordFilter } from '../rules/AbstractNumberInWordFilter.js';
+import { AbstractSuppressMisspelledSuggestionsFilter } from '../rules/AbstractSuppressMisspelledSuggestionsFilter.js';
+import { AbstractTextToNumberFilter } from '../rules/AbstractTextToNumberFilter.js';
+import { AddCommasFilter } from '../rules/AddCommasFilter.js';
+import { AdaptSuggestionsFilter } from '../rules/AdaptSuggestionsFilter.js';
+import { CheckPostagsInSuggestionFilter } from '../rules/CheckPostagsInSuggestionFilter.js';
+import { ConvertToSentenceCaseFilter } from '../rules/ConvertToSentenceCaseFilter.js';
+import { DateRangeChecker } from '../rules/DateRangeChecker.js';
+import { IsEnglishWordFilter } from '../rules/IsEnglishWordFilter.js';
+import { PartialPosTagFilter } from '../rules/PartialPosTagFilter.js';
+import { ShortenedYearRangeChecker } from '../rules/ShortenedYearRangeChecker.js';
+import { SuppressIfAnyRuleMatchesFilter } from '../rules/SuppressIfAnyRuleMatchesFilter.js';
+import { UnderlineSpacesFilter } from '../rules/UnderlineSpacesFilter.js';
+import { WhitespaceCheckFilter } from '../rules/WhitespaceCheckFilter.js';
+import { MultitokenSpellerFilter } from '../rules/spelling/multitoken/MultitokenSpellerFilter.js';
+import { ApostropheTypeFilter } from './ApostropheTypeFilter.js';
 
 RuleFilter.JAVA_ABSTRACT = true;
 RegexRuleFilter.JAVA_ABSTRACT = true;
@@ -11,13 +34,17 @@ registerClass(RuleFilter.FQCN, RuleFilter);
 registerClass(RegexRuleFilter.FQCN, RegexRuleFilter);
 registerClass(RegexAntiPatternFilter.FQCN, RegexAntiPatternFilter);
 
+// core filters of F34 (abstract bases carry JAVA_ABSTRACT/JAVA_CONSTRUCTORS themselves)
+for (const cls of [AbstractAdvancedSynthesizerFilter, AbstractDateCheckFilter, AbstractDateCheckWithSuggestionsFilter, AbstractFindSuggestionsFilter,
+  AbstractFutureDateFilter, AbstractMakeContractionsFilter, AbstractNewYearDateFilter, AbstractNumberInWordFilter, AbstractSuppressMisspelledSuggestionsFilter,
+  AbstractTextToNumberFilter, PartialPosTagFilter, AddCommasFilter, AdaptSuggestionsFilter, CheckPostagsInSuggestionFilter, ConvertToSentenceCaseFilter,
+  DateRangeChecker, IsEnglishWordFilter, ShortenedYearRangeChecker, SuppressIfAnyRuleMatchesFilter, UnderlineSpacesFilter, WhitespaceCheckFilter,
+  MultitokenSpellerFilter, ApostropheTypeFilter]) {
+  registerClass(cls.FQCN, cls);
+}
+
 // filter classes referenced by the de/en/fr/core rule files (grep of <filter class=...>)
 const PENDING_RULE_FILTERS = [
-  'org.languagetool.rules.DateRangeChecker',
-  'org.languagetool.rules.IsEnglishWordFilter',
-  'org.languagetool.rules.SuppressIfAnyRuleMatchesFilter',
-  'org.languagetool.rules.UnderlineSpacesFilter',
-  'org.languagetool.rules.WhitespaceCheckFilter',
   'org.languagetool.rules.de.AdvancedSynthesizerFilter',
   'org.languagetool.rules.de.CompoundCheckFilter',
   'org.languagetool.rules.de.DateCheckFilter',
@@ -33,6 +60,7 @@ const PENDING_RULE_FILTERS = [
   'org.languagetool.rules.en.AdverbFilter',
   'org.languagetool.rules.en.DateCheckFilter',
   'org.languagetool.rules.en.EnglishNumberInWordFilter',
+  'org.languagetool.rules.en.EnglishPartialPosTagFilter',
   'org.languagetool.rules.en.EnglishSuppressMisspelledSuggestionsFilter',
   'org.languagetool.rules.en.FindSuggestionsFilter',
   'org.languagetool.rules.en.FutureDateFilter',
@@ -52,17 +80,11 @@ const PENDING_RULE_FILTERS = [
   'org.languagetool.rules.fr.PostponedAdjectiveConcordanceFilter',
   'org.languagetool.rules.fr.SuggestionsFilter',
   'org.languagetool.rules.fr.WordWithDeterminerFilter',
-  'org.languagetool.rules.patterns.ApostropheTypeFilter',
-  'org.languagetool.rules.AddCommasFilter',
-  'org.languagetool.rules.AdaptSuggestionsFilter',
-  'org.languagetool.rules.CheckPostagsInSuggestionFilter',
-  'org.languagetool.rules.ConvertToSentenceCaseFilter',
   'org.languagetool.rules.ca.CatalanSuppressMisspelledSuggestionsFilter',
   'org.languagetool.rules.de.GermanSuppressMisspelledSuggestionsFilter',
   'org.languagetool.rules.es.FindSuggestionsFilter',
   'org.languagetool.rules.nl.DutchNumberInWordFilter',
   'org.languagetool.rules.ru.RussianSuppressMisspelledSuggestionsFilter',
-  'org.languagetool.rules.spelling.multitoken.MultitokenSpellerFilter',
 ];
 
 // class that loads and instantiates like the Java filter but throws notPorted when the filter runs
@@ -80,28 +102,6 @@ function pendingFilterClass(fqcn, Base, method) {
 // a later step that ports the class calls registerClass(fqcn, cls), which replaces the placeholder
 for (const fqcn of PENDING_RULE_FILTERS) {
   if (!hasClass(fqcn)) registerClass(fqcn, pendingFilterClass(fqcn, RuleFilter, 'acceptRuleMatch'));
-}
-
-// abstract filter base classes: class -> public constructors (Class#getConstructors(), JDK 17 reflection of the pinned jars); newInstance throws InstantiationException
-const ABSTRACT_RULE_FILTERS = {
-  'org.languagetool.rules.AbstractAdvancedSynthesizerFilter': [[]],
-  'org.languagetool.rules.AbstractDateCheckFilter': [[]],
-  'org.languagetool.rules.AbstractDateCheckWithSuggestionsFilter': [[]],
-  'org.languagetool.rules.AbstractFindSuggestionsFilter': [[]],
-  'org.languagetool.rules.AbstractFutureDateFilter': [[]],
-  'org.languagetool.rules.AbstractMakeContractionsFilter': [[]],
-  'org.languagetool.rules.AbstractNewYearDateFilter': [[]],
-  'org.languagetool.rules.AbstractNumberInWordFilter': [],
-  'org.languagetool.rules.AbstractSuppressMisspelledSuggestionsFilter': [],
-  'org.languagetool.rules.AbstractTextToNumberFilter': [[]],
-  'org.languagetool.rules.PartialPosTagFilter': [[]],
-};
-for (const [fqcn, ctors] of Object.entries(ABSTRACT_RULE_FILTERS)) {
-  if (hasClass(fqcn)) continue;
-  const C = pendingFilterClass(fqcn, RuleFilter, 'acceptRuleMatch');
-  C.JAVA_ABSTRACT = true;
-  C.JAVA_CONSTRUCTORS = ctors.map((params) => ({ params, text: `public ${fqcn}(${params.join(',')})` }));
-  registerClass(fqcn, C);
 }
 
 // classes that exist in Java (JDK or other LT classes) but are no rule filters: only Class.forName and getConstructors() are modelled

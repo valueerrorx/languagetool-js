@@ -8,7 +8,9 @@ import { ResourceUrl } from '../../src/core/resources/ResourceDataBroker.js';
 import { registerClass } from '../../src/core/resources/ClassBroker.js';
 import { Languages, resetDynamicLanguages } from '../../src/core/Languages.js';
 import { RuleFilter } from '../../src/core/patterns/RuleFilter.js';
-import { notPortedYet } from '../../src/core/language/components.js';
+import { PartialPosTagFilter } from '../../src/core/rules/PartialPosTagFilter.js';
+import { AnalyzedToken } from '../../src/core/AnalyzedToken.js';
+import { AnalyzedTokenReadings } from '../../src/core/AnalyzedTokenReadings.js';
 import { Locale } from '../../src/lib/java/Locale.js';
 import { Language } from '../../src/core/Language.js';
 import { sharedComponent } from '../../src/core/language/components.js';
@@ -111,13 +113,20 @@ export class DemoWithGrammarFile extends DemoLanguage {
   }
 }
 
-// Java: org.languagetool.rules.DemoPartialPosTagFilter (core test class; PartialPosTagFilter not ported yet, so it only loads)
-class DemoPartialPosTagFilter extends RuleFilter {
+// Java: org.languagetool.rules.DemoPartialPosTagFilter (core test class)
+class DemoPartialPosTagFilter extends PartialPosTagFilter {
   static FQCN = 'org.languagetool.rules.DemoPartialPosTagFilter';
 
-  // Java: DemoPartialPosTagFilter (PartialPosTagFilter#acceptRuleMatch)
-  acceptRuleMatch() {
-    throw notPortedYet('PartialPosTagFilter#acceptRuleMatch');
+  // Java: DemoPartialPosTagFilter#tag(String)
+  tag(token) {
+    if ('accurate' === token) {
+      const resultToken = new AnalyzedToken(token, 'JJ', 'fake');
+      const resultTokens = [resultToken];
+      const result = [];
+      result.push(new AnalyzedTokenReadings(resultTokens, 0));
+      return result;
+    }
+    return null;
   }
 }
 

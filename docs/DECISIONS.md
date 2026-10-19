@@ -53,3 +53,10 @@ Format: D-nnn | date | decision
 - D-049 | 2026-10-15 | Lead: F07 uses an own Xerces-faithful SAX scanner instead of npm `sax` (sax cannot reproduce entity/attribute normalisation and error positions that X-XML pins); perf ok (en grammar.xml 8.3 MB in 162 ms).
 - D-050 | 2026-10-15 | Lead (token economy, extends D-047): steps whose whole output is pinned by corpus-wide oracle fixtures (tokenizers, taggers, synthesizers, data loaders) are accepted on green parity + ported JUnit without a reviewer run. Reviewer stays mandatory for rule engine, rules, spelling, JLanguageTool/check pipeline, server, CLI, and any step that changes shared helpers in src/lib/ in non-trivial ways.
 - D-051 | 2026-10-16 | User: language detection uses ALL Java languages (full profile/common-words set) so detectedLanguage equals Java full distribution; if a not-ported language is detected, the port returns 0 matches + Java-identical detectedLanguage (DEV-008). Supersedes the detection part of DEV-006.
+
+## D-052 Token budget (2026-10-19, user: daily budget burned in 1h)
+- All subagents run on sonnet (oracle, porter, tester, reviewer); opus only on explicit user request.
+- Reviewer only for steps not pinned by broad fixtures (D-050 tightened): one round, re-review only on CRITICAL.
+- Oracle fixture scope: targeted, ~1-3k requests per step, < 10 MB; no corpus-wide dumps unless the step is a data loader.
+- Prompts short; agents read docs/review/<step>-*.md checkpoints instead of long inline briefs.
+- Lead session restarts often (fresh context via docs/review/RESUME.md) instead of one long conversation.
