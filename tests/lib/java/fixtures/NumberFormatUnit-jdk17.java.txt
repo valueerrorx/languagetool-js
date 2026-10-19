@@ -1,0 +1,23 @@
+import java.text.*; import java.util.*; import java.math.*; import java.net.*;
+public class P3 {
+  public static void main(String[] a) throws Exception {
+    double[] ds = {0.005, 0.015, 0.025, 1.005, 2.675, 1.115, 0.125, 1234567.891, -0.004, -0.005, 0.0, -0.0, 1e-7, 99.995, 999.995, 10000.75, 4.535923, 1e21, 123456789012.345, Double.NaN, Double.POSITIVE_INFINITY, 0.1+0.2, 160.9344, 5.0E-324};
+    for (Locale l : new Locale[]{Locale.ENGLISH, Locale.US, Locale.UK, Locale.GERMANY}) {
+      NumberFormat f = NumberFormat.getNumberInstance(l); f.setMaximumFractionDigits(2); f.setRoundingMode(RoundingMode.HALF_UP);
+      StringBuilder sb = new StringBuilder(l.toString()+" F:");
+      for (double d : ds) sb.append(" [").append(f.format(d)).append("]");
+      sb.append(" L:"); for (long x : new long[]{0, 5, -5, 1234, 1000000, Long.MAX_VALUE, Long.MIN_VALUE}) sb.append(" [").append(f.format(x)).append("]");
+      System.out.println(sb);
+      String[] ps = {"6","10,000.75","10.000,75","1,83","1.83","-5","-0","0","0.5",".5","1,2,3","1..2","12abc","abc","","-","1e5","００７","1,","1.","3.14159","123456789012345678901234567890","0.000000000001", "1,000", "1.000", "1 000"};
+      sb = new StringBuilder(l.toString()+" P:");
+      for (String p : ps) { try { sb.append(" [").append(Double.toString(f.parse(p).doubleValue())).append("]"); } catch (ParseException e) { sb.append(" [ERR]"); } }
+      System.out.println(sb);
+    }
+    StringBuilder sb = new StringBuilder("ENC:");
+    for (String s : new String[]{"convert 100 °F to metric","a b*c-d.e_f~g/h?i","ß€😀","\uD800x","x\uDC00","5'6\"","1⁄4 cup"}) sb.append(" [").append(URLEncoder.encode(s, "utf-8")).append("]");
+    System.out.println(sb);
+    sb = new StringBuilder("RND:");
+    for (double d : new double[]{0.5, 1.5, 2.5, -0.5, -1.5, -2.5, 0.49999999999999994, 4503599627370497.0, 1e19, -1e19, Double.NaN, 37.78, 2.4999, -0.0, 9.223372036854776E18}) sb.append(" [").append(Math.round(d)).append("]");
+    System.out.println(sb);
+  }
+}

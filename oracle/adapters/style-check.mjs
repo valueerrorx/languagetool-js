@@ -20,10 +20,17 @@ import { JLanguageTool } from '../../src/core/JLanguageTool.js';
 import { errorOf, languageFor, withNoopAnalysis } from './_check-pipe-common.mjs';
 import { recordPreLanguageFilter, runCase } from './check2.mjs';
 import { notPorted } from './_pipe-common.mjs';
+import { UnitConversionRule as EnUnitConversionRule } from '../../src/lang/en/rules/UnitConversionRule.js';
+import { UnitConversionRuleUS } from '../../src/lang/en/rules/UnitConversionRuleUS.js';
+import { UnitConversionRuleImperial } from '../../src/lang/en/rules/UnitConversionRuleImperial.js';
 
 const EXTRA = {
   EmptyLineRule, PunctuationMarkAtParagraphEnd, PunctuationMarkAtParagraphEnd2, WhiteSpaceAtBeginOfParagraph,
   WhiteSpaceBeforeParagraphEnd, ParagraphRepeatBeginningRule, WordRepeatBeginningRule, PhraseRepeatRule,
+  // fully qualified names (StyleOps `extra` accepts them; F38 unit conversion rules)
+  'org.languagetool.rules.en.UnitConversionRule': EnUnitConversionRule,
+  'org.languagetool.rules.en.UnitConversionRuleUS': UnitConversionRuleUS,
+  'org.languagetool.rules.en.UnitConversionRuleImperial': UnitConversionRuleImperial,
 };
 
 // Java: English#getRelevantRules / German#getRelevantRules / French#getRelevantRules (F36 rules only, list order kept; np = shadow instance for config errors only)

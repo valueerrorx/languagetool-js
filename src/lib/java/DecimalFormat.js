@@ -1,5 +1,6 @@
-// java.text.DecimalFormat for the en_US symbols (as used by MessageFormat): HALF_EVEN, no exponent patterns.
-import { IllegalArgumentException } from './errors.js';
+// java.text.DecimalFormat for en_US symbols (MessageFormat) plus NumberFormat.getNumberInstance(Locale) for en/de, HALF_EVEN/HALF_UP, parse; no exponent patterns.
+import { IllegalArgumentException, ParseException } from './errors.js';
+import { digit as characterDigit } from './Character.js';
 import { doubleDigits } from './toString.js';
 import { BigDecimal, BigInteger } from './boxed.js';
 
@@ -8,11 +9,19 @@ const MAXIMUM_FRACTION_DIGITS = 2147483647; // Java: DecimalFormat#MAXIMUM_FRACT
 const DOUBLE_INTEGER_DIGITS = 309; // Java: DecimalFormat#DOUBLE_INTEGER_DIGITS
 const DOUBLE_FRACTION_DIGITS = 340; // Java: DecimalFormat#DOUBLE_FRACTION_DIGITS
 
-// Java: DigitList#shouldRoundUp(int,boolean,boolean) for RoundingMode.HALF_EVEN
-function shouldRoundUp(dl, maximumDigits, alreadyRounded, valueExactAsDecimal) {
+// Java: DigitList#shouldRoundUp(int,boolean,boolean) for RoundingMode.HALF_EVEN and HALF_UP
+function shouldRoundUp(dl, maximumDigits, alreadyRounded, valueExactAsDecimal, mode = 'HALF_EVEN') {
   const { digits, count } = dl;
   if (maximumDigits < count) {
     const d = digits.charCodeAt(maximumDigits);
+    if (mode === 'HALF_UP') {
+      if (d > 0x35) return true;
+      if (d === 0x35) {
+        if (maximumDigits !== count - 1) return true;
+        return valueExactAsDecimal ? true : !alreadyRounded;
+      }
+      return false;
+    }
     if (d === 0x35) {
       if (maximumDigits === count - 1) {
         if (alreadyRounded) return false;
@@ -29,9 +38,9 @@ function shouldRoundUp(dl, maximumDigits, alreadyRounded, valueExactAsDecimal) {
 }
 
 // Java: DigitList#round(int,boolean,boolean)
-function round(dl, maximumDigits, alreadyRounded, valueExactAsDecimal) {
+function round(dl, maximumDigits, alreadyRounded, valueExactAsDecimal, mode) {
   if (maximumDigits >= 0 && maximumDigits < dl.count) {
-    if (shouldRoundUp(dl, maximumDigits, alreadyRounded, valueExactAsDecimal)) {
+    if (shouldRoundUp(dl, maximumDigits, alreadyRounded, valueExactAsDecimal, mode)) {
       const arr = dl.digits.split('');
       for (;;) {
         --maximumDigits;
@@ -53,7 +62,7 @@ function round(dl, maximumDigits, alreadyRounded, valueExactAsDecimal) {
 }
 
 // Java: DigitList#set(boolean,String,boolean,boolean,int,boolean) on a Java-format number string
-function digitListFromString(str, roundedUp, valueExactAsDecimal, maximumDigits, fixedPoint) {
+function digitListFromString(str, roundedUp, valueExactAsDecimal, maximumDigits, fixedPoint, mode) {
   const dl = { digits: '', count: 0, decimalAt: 0 };
   let decimalAt = -1;
   let exponent = 0;
@@ -87,7 +96,7 @@ function digitListFromString(str, roundedUp, valueExactAsDecimal, maximumDigits,
       dl.count = 0;
       return dl;
     } else if (-dl.decimalAt === maximumDigits) {
-      if (shouldRoundUp(dl, 0, roundedUp, valueExactAsDecimal)) {
+      if (shouldRoundUp(dl, 0, roundedUp, valueExactAsDecimal, mode)) {
         dl.count = 1;
         ++dl.decimalAt;
         dl.digits = '1';
@@ -98,7 +107,7 @@ function digitListFromString(str, roundedUp, valueExactAsDecimal, maximumDigits,
     }
   }
   while (dl.count > 1 && dl.digits[dl.count - 1] === '0') --dl.count;
-  round(dl, fixedPoint ? maximumDigits + dl.decimalAt : maximumDigits, roundedUp, valueExactAsDecimal);
+  round(dl, fixedPoint ? maximumDigits + dl.decimalAt : maximumDigits, roundedUp, valueExactAsDecimal, mode);
   return dl;
 }
 
@@ -136,7 +145,94 @@ export class DecimalFormat {
     this.maxInt = MAXIMUM_INTEGER_DIGITS;
     this.minFra = 0;
     this.maxFra = 3;
+    this.roundingMode = 'HALF_EVEN';
+    this.groupSep = ',';
+    this.decimalSep = '.';
     this.applyPattern(pattern);
+  }
+
+  // Java: NumberFormat#getNumberInstance(Locale) (CLDR 39: en, en_US, en_GB use ',' '.'; de, de_DE use '.' ','; other locales not ported)
+  static getNumberInstance(locale) {
+    const f = new DecimalFormat('#,##0.###');
+    const lang = locale.getLanguage();
+    if (lang === 'de') {
+      f.groupSep = '.';
+      f.decimalSep = ',';
+    } else if (lang !== 'en') {
+      throw new Error(`NOT PORTED: NumberFormat.getNumberInstance(${locale})`);
+    }
+    return f;
+  }
+
+  // Java: NumberFormat#setMaximumFractionDigits(int)
+  setMaximumFractionDigits(newValue) {
+    this.maxFra = Math.min(Math.max(0, newValue), MAXIMUM_FRACTION_DIGITS);
+    if (this.minFra > this.maxFra) this.minFra = this.maxFra;
+  }
+
+  // Java: DecimalFormat#setRoundingMode(RoundingMode); mode is the constant name (HALF_EVEN, HALF_UP)
+  setRoundingMode(mode) {
+    if (mode !== 'HALF_EVEN' && mode !== 'HALF_UP') throw new Error(`NOT PORTED: RoundingMode ${mode}`);
+    this.roundingMode = mode;
+  }
+
+  // Java: NumberFormat#parse(String) then Number#doubleValue (multiplier 1, empty suffixes, no exponent or infinity/NaN handling)
+  parse(text) {
+    const pp = this.positivePrefix;
+    const np = this.negativePrefix;
+    let gotPositive = text.startsWith(pp);
+    let gotNegative = text.startsWith(np);
+    if (gotPositive && gotNegative) {
+      if (pp.length > np.length) gotNegative = false;
+      else if (pp.length < np.length) gotPositive = false;
+    }
+    let position;
+    if (gotPositive) position = pp.length;
+    else if (gotNegative) position = np.length;
+    else throw new ParseException(`Unparseable number: "${text}"`, 0);
+    return this.subparse(text, position, gotPositive, text);
+  }
+
+  // Java: DecimalFormat#subparse(String,ParsePosition,...) digit loop and DigitList#getDouble (suffix checks omitted: affix suffixes are empty)
+  subparse(text, start, positive, original) {
+    let digits = '';
+    let decimalAt = 0;
+    let sawDecimal = false;
+    let sawDigit = false;
+    let digitCount = 0;
+    for (let position = start; position < text.length; ++position) {
+      const ch = text[position];
+      let digit = ch.charCodeAt(0) - 0x30;
+      if (digit < 0 || digit > 9) digit = characterDigit(ch.charCodeAt(0), 10);
+      if (digit === 0) {
+        sawDigit = true;
+        if (digits.length === 0) {
+          if (!sawDecimal) continue;
+          --decimalAt;
+        } else {
+          ++digitCount;
+          digits += '0';
+        }
+      } else if (digit > 0 && digit <= 9) {
+        sawDigit = true;
+        ++digitCount;
+        digits += String.fromCharCode(digit + 0x30);
+      } else if (ch === this.decimalSep) {
+        if (sawDecimal) break;
+        decimalAt = digitCount;
+        sawDecimal = true;
+      } else if (ch === this.groupSep && this.groupingUsed) {
+        if (sawDecimal) break;
+      } else {
+        break;
+      }
+    }
+    if (!sawDecimal) decimalAt = digitCount;
+    if (!sawDigit && digitCount === 0) throw new ParseException(`Unparseable number: "${original}"`, 0);
+    let end = digits.length;
+    while (end > 0 && digits[end - 1] === '0') --end;
+    const d = end === 0 ? 0 : Number(`0.${digits.substring(0, end)}E${decimalAt}`);
+    return positive ? d : -d;
   }
 
   // Java: NumberFormat#getInstance(Locale) for en_US
@@ -381,7 +477,7 @@ export class DecimalFormat {
     const maxInt = Math.min(this.maxInt, DOUBLE_INTEGER_DIGITS);
     const maxFra = Math.min(this.maxFra, DOUBLE_FRACTION_DIGITS);
     const buf = doubleDigits(number);
-    const dl = digitListFromString(buf.toJavaFormatString(), buf.decimalDigitsRoundedUp, buf.exactDecimalConversion, maxFra, true);
+    const dl = digitListFromString(buf.toJavaFormatString(), buf.decimalDigitsRoundedUp, buf.exactDecimalConversion, maxFra, true, this.roundingMode);
     return this.subformat(dl, isNegative, false, maxInt, this.minInt, maxFra, this.minFra);
   }
 
@@ -411,7 +507,7 @@ export class DecimalFormat {
     let unscaled = number.unscaled < 0n ? -number.unscaled : number.unscaled;
     if (this.multiplier !== 1) unscaled *= BigInt(this.multiplier);
     if (this.multiplier < 0 && unscaled !== 0n) isNegative = !isNegative;
-    const dl = digitListFromString(bigDecimalPlain(unscaled, number.scale), false, true, this.maxFra, true);
+    const dl = digitListFromString(bigDecimalPlain(unscaled, number.scale), false, true, this.maxFra, true, this.roundingMode);
     return this.subformat(dl, isNegative, false, this.maxInt, this.minInt, this.maxFra, this.minFra);
   }
 
@@ -429,11 +525,11 @@ export class DecimalFormat {
     for (let i = count - 1; i >= 0; --i) {
       if (i < dl.decimalAt && digitIndex < dl.count) result += dl.digits[digitIndex++];
       else result += '0';
-      if (this.groupingUsed && i > 0 && this.groupingSize !== 0 && i % this.groupingSize === 0) result += ',';
+      if (this.groupingUsed && i > 0 && this.groupingSize !== 0 && i % this.groupingSize === 0) result += this.groupSep;
     }
     const fractionPresent = minFraDigits > 0 || (!isInteger && digitIndex < dl.count);
     if (!fractionPresent && result.length === sizeBeforeIntegerPart) result += '0';
-    if (this.decimalSeparatorAlwaysShown || fractionPresent) result += '.';
+    if (this.decimalSeparatorAlwaysShown || fractionPresent) result += this.decimalSep;
     for (let i = 0; i < maxFraDigits; ++i) {
       if (i >= minFraDigits && (isInteger || digitIndex >= dl.count)) break;
       if (-1 - i > dl.decimalAt - 1) {

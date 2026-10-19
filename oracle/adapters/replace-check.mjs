@@ -120,7 +120,7 @@ function confusion(a) {
 }
 
 // Java: English#getRelevantRules / German#getRelevantRules and the variant classes' getRelevantRules (F37 rules merged into the F36 list, Java order)
-function f37Rules(l, m, uc, natives) {
+export function f37Rules(l, m, uc, natives) {
   const code = l.getShortCode();
   const full = l.getShortCodeWithCountryAndVariant();
   const at = (pred) => natives.findIndex(pred);

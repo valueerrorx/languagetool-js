@@ -111,6 +111,35 @@ export function decodeUrl(s, enc = 'UTF-8') {
 // Java: URLDecoder (static decode)
 export const URLDecoder = { decode: decodeUrl };
 
+// Java: URLEncoder#encode(String,String) for UTF-8: [a-zA-Z0-9.-*_] kept, space -> '+', other chars %XX of the UTF-8 bytes; unpaired surrogates become '?'
+export function encodeUrl(s, enc = 'UTF-8') {
+  if (enc.toUpperCase() !== 'UTF-8' && enc.toUpperCase() !== 'UTF8') throw new UnsupportedEncodingException(enc);
+  let out = '';
+  for (let i = 0; i < s.length; i++) {
+    const c = s.charCodeAt(i);
+    if (ALPHA(c) || DIGIT(c) || c === 0x2e || c === 0x2d || c === 0x2a || c === 0x5f) {
+      out += s[i];
+    } else if (c === 0x20) {
+      out += '+';
+    } else {
+      let bytes;
+      if (c >= 0xd800 && c <= 0xdbff && i + 1 < s.length && s.charCodeAt(i + 1) >= 0xdc00 && s.charCodeAt(i + 1) <= 0xdfff) {
+        bytes = Buffer.from(s.substring(i, i + 2), 'utf8');
+        i++;
+      } else if (c >= 0xd800 && c <= 0xdfff) {
+        bytes = Buffer.from('?', 'utf8');
+      } else {
+        bytes = Buffer.from(s[i], 'utf8');
+      }
+      for (const b of bytes) out += `%${b.toString(16).toUpperCase().padStart(2, '0')}`;
+    }
+  }
+  return out;
+}
+
+// Java: URLEncoder (static encode)
+export const URLEncoder = { encode: encodeUrl };
+
 const ALPHA = (c) => (c >= 0x41 && c <= 0x5a) || (c >= 0x61 && c <= 0x7a);
 const DIGIT = (c) => c >= 0x30 && c <= 0x39;
 const HEX = (c) => DIGIT(c) || (c >= 0x41 && c <= 0x46) || (c >= 0x61 && c <= 0x66);

@@ -157,3 +157,12 @@ export const FloatMath = {
     return f === 0 || f !== f ? f : Math.sign(f);
   },
 };
+
+// Java: Math#round(double) -> long (BigInt): round half up of the exact value, NaN -> 0, saturating at Long.MIN/MAX_VALUE
+export function mathRoundDouble(a) {
+  if (a !== a) return 0n;
+  if (a >= 9.223372036854776e18) return 9223372036854775807n;
+  if (a <= -9.223372036854776e18) return -9223372036854775808n;
+  const f = Math.floor(a);
+  return BigInt(a - f >= 0.5 ? f + 1 : f);
+}

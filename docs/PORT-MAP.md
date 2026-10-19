@@ -58,7 +58,7 @@ Java package/feature -> JS module, plus library decisions. Per-ID ownership live
 | Guava cache, Caffeine | `lru-cache` 11.x | caches never change results; size/TTL semantics configurable |
 | Guava misc, fastutil collections | JS `Map`/`Set`/arrays | lookup-only sites; iteration-order sites use `src/lib/java/collections/` helpers (SEMANTICS S5) |
 | java-diff-utils | own minimal Myers port (DiffsAsMatches) | not reachable from API/CLI in wave 1 (only ca/http-client use it); JUnit parity only |
-| indriya / javax.measure | own `src/lib/units/` (used units, exact rational converters with BigInt, then double) | suggestion numbers depend on exact arithmetic; UnitConversion fixtures |
+| indriya / javax.measure | own `src/lib/units/` (indriya 1.3 subset: double converters, rationals as in 1.3, Simplifier) | suggestion numbers depend on exact arithmetic; UnitConversion fixtures |
 | com.sun.net.httpserver | `express` 5.x | D-044: framing not compared; status/body content are |
 | java.util.Properties | `dot-properties` 1.1.x on bytes decoded ISO-8859-1 (Properties.load) or UTF-8 (ResourceBundle) | spec-conformant escapes, continuations, separators |
 | ThreadPoolExecutor (server) | own pool on `worker_threads` `src/server/worker/` | queue limits, cooperative cancel flag; `piscina` terminates workers on abort |

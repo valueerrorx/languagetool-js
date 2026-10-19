@@ -1,0 +1,81 @@
+import java.lang.reflect.*;
+import java.util.*;
+import javax.measure.*;
+import org.languagetool.*;
+import tech.units.indriya.*;
+
+public class Probe2 {
+  static String q(String s){ return "\"" + s.replace("\\","\\\\").replace("\"","\\\"") + "\""; }
+  static String steps(UnitConverter c) {
+    List<String> l = new ArrayList<>();
+    for (UnitConverter s : c.getConversionSteps()) {
+      String cn = s.getClass().getSimpleName();
+      if (s.isIdentity()) l.add("[\"I\"]");
+      else if (s instanceof tech.units.indriya.function.MultiplyConverter) l.add("[\"M\"," + ((tech.units.indriya.function.MultiplyConverter)s).getFactor() + "]");
+      else if (s instanceof tech.units.indriya.function.RationalConverter) l.add("[\"R\"," + ((tech.units.indriya.function.RationalConverter)s).getDividend() + "," + ((tech.units.indriya.function.RationalConverter)s).getDivisor() + "]");
+      else if (s instanceof tech.units.indriya.function.AddConverter) l.add("[\"A\"," + ((tech.units.indriya.function.AddConverter)s).getOffset() + "]");
+      else l.add("[\"?" + cn + "\"]");
+    }
+    return "[" + String.join(",", l) + "]";
+  }
+  static Object get(Object o, String n) throws Exception {
+    Class<?> c = o.getClass();
+    while (c != null) { try { Field f = c.getDeclaredField(n); f.setAccessible(true); return f.get(o);} catch (NoSuchFieldException e) { c = c.getSuperclass(); } }
+    throw new RuntimeException(n);
+  }
+  public static void main(String[] a) throws Exception {
+    Locale.setDefault(Locale.US);
+    ResourceBundle mb = JLanguageTool.getMessageBundle();
+    List<Object> rules = new ArrayList<>();
+    rules.add(new org.languagetool.rules.en.UnitConversionRuleUS(mb));
+    rules.add(new org.languagetool.rules.en.UnitConversionRuleImperial(mb));
+    rules.add(new org.languagetool.rules.en.UnitConversionRule(mb));
+    rules.add(new org.languagetool.rules.de.UnitConversionRule(mb));
+    double[] vals = {1, 0.3, 123.456, 1e10, -5, 7.77, 1e-7, 3.5, 100, 0.5};
+    StringBuilder out = new StringBuilder("[");
+    boolean firstRule = true;
+    for (Object r : rules) {
+      if (!firstRule) out.append(","); firstRule = false;
+      out.append("{\"cls\":" + q(r.getClass().getName()) + ",\"units\":[");
+      Map<Object,Object> up = (Map) get(r, "unitPatterns");
+      List<Unit> metric = (List) get(r, "metricUnits");
+      Map<Unit,List<String>> syms = (Map) get(r, "unitSymbols");
+      List<Unit> units = new ArrayList<>();
+      for (Object u : up.values()) units.add((Unit) u);
+      int i = 0; boolean fu = true;
+      for (Map.Entry<Object,Object> e : up.entrySet()) {
+        Unit u = (Unit) e.getValue();
+        if (!fu) out.append(","); fu = false;
+        int eqc = -1; for (int j = 0; j < units.size(); j++) if (units.get(j).equals(u)) { eqc = j; break; }
+        out.append("{\"pat\":" + q(e.getKey().toString()) + ",\"cls\":" + q(u.getClass().getSimpleName()) + ",\"dim\":" + q(String.valueOf(u.getDimension())) + ",\"sys\":" + steps(((AbstractUnit)u).getSystemConverter()) + ",\"mi\":" + metric.indexOf(u) + ",\"eq\":" + eqc);
+        out.append(",\"syms\":" + (syms.get(u)==null ? "null" : "[" + String.join(",", syms.get(u).stream().map(Probe2::q).toArray(String[]::new)) + "]"));
+        out.append(",\"to\":[");
+        boolean ft = true;
+        for (int k = 0; k < metric.size(); k++) {
+          Unit m = metric.get(k);
+          if (!u.isCompatible(m)) continue;
+          if (!ft) out.append(","); ft = false;
+          UnitConverter c = u.getConverterTo(m);
+          StringBuilder vs = new StringBuilder("[");
+          for (int v = 0; v < vals.length; v++) { if (v>0) vs.append(","); vs.append(q(Double.toString(c.convert(vals[v])))); }
+          vs.append("]");
+          out.append("{\"k\":" + k + ",\"steps\":" + steps(c) + ",\"v\":" + vs + "}");
+        }
+        out.append("],\"incompat\":[");
+        boolean fi = true;
+        for (int j = 0; j < units.size(); j++) {
+          Unit o = units.get(j);
+          if (!u.isCompatible(o)) { continue; }
+          if (!fi) out.append(","); fi = false;
+          UnitConverter c = u.getConverterTo(o);
+          out.append("{\"j\":" + j + ",\"steps\":" + steps(c) + ",\"v\":" + q(Double.toString(c.convert(12.34))) + "}");
+        }
+        out.append("]}");
+        i++;
+      }
+      out.append("]}");
+    }
+    out.append("]");
+    System.out.println(out);
+  }
+}

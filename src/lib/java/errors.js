@@ -136,6 +136,21 @@ function defineThrowable(name, Parent, fqcn) {
 export const Exception = defineThrowable('Exception', Throwable, 'java.lang.Exception');
 export const RuntimeException = defineThrowable('RuntimeException', Exception, 'java.lang.RuntimeException');
 export const JavaError = defineThrowable('Error', Throwable, 'java.lang.Error');
+// Java: java.text.ParseException(String,int)
+export class ParseException extends Exception {
+  static FQCN = 'java.text.ParseException';
+
+  constructor(message, errorOffset) {
+    super(message);
+    this.errorOffset = errorOffset;
+  }
+
+  // Java: ParseException#getErrorOffset()
+  getErrorOffset() {
+    return this.errorOffset;
+  }
+}
+
 export const IllegalArgumentException = defineThrowable('IllegalArgumentException', RuntimeException, 'java.lang.IllegalArgumentException');
 export const IllegalStateException = defineThrowable('IllegalStateException', RuntimeException, 'java.lang.IllegalStateException');
 export const NullPointerException = defineThrowable('NullPointerException', RuntimeException, 'java.lang.NullPointerException');

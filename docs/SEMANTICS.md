@@ -49,7 +49,7 @@ All Java patterns (XML `regexp`, `postag_regexp`, `<regexp>`, SRX, disambiguatio
 - `long` beyond 2^53 (textSessionId from SHA-256, SRV-0118, used for A/B buckets). -> `long.js` BigInt.
 - `StrictMath.exp/log` (OpenNLP GIS eval, BeamSearch, `Random.nextGaussian`) -> `StrictMath.js` (fdlibm, D-029). `Math.log/log10/pow` at result sites (readability formulas, text-to-number `Math.pow(10, n)`) -> `libm.js` (D-041).
 - Keep Java evaluation order and types in double arithmetic (Flesch DE-0059/EN readability, optimaize probabilities, priority arithmetic with `Integer.MIN_VALUE + 10000`). No algebraic simplification.
-- Unit conversion (indriya) uses exact rational converters then `doubleValue()`. -> `src/lib/units/` with BigInt rationals.
+- Unit conversion (indriya 1.3, pinned jar) uses double-multiplying converters (BigInt-rational only where indriya 1.3 does), operation order as in 1.3. -> `src/lib/units/`, verified against JDK17 probe (F38).
 
 ## S5 Collections and ordering (was P5)
 - `Languages.get()` order: Java order of the full distribution filtered to registered languages (X-LANGUAGES); never sort. `/v2/languages` array order and "Supported language codes" lists follow it (DEV-006 filter).
