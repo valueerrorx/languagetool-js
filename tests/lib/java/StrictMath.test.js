@@ -54,3 +54,14 @@ describe('Math intrinsics model (S04)', () => {
     expect(bits(libm.log(-1))).toBe('fff8000000000000');
   });
 });
+
+describe('StrictMath.expm1 (F44, X-MATH)', () => {
+  it('matches Java StrictMath values', () => {
+    expect(bits(StrictMath.expm1(1))).toBe('3ffb7e151628aed2');
+    expect(StrictMath.expm1(0)).toBe(0);
+    expect(Object.is(StrictMath.expm1(-0), -0)).toBe(true);
+    expect(StrictMath.expm1(-Infinity)).toBe(-1);
+    expect(StrictMath.expm1(710)).toBe(Infinity);
+    expect(StrictMath.expm1(-100)).toBe(-1);
+  });
+});

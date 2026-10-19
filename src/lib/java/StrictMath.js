@@ -999,11 +999,102 @@ function hypot(x, y) {
   return w;
 }
 
+const invln2_e = 1.44269504088896338700e+00;
+const Q1 = -3.33333333333331316428e-02;
+const Q2 = 1.58730158725481460165e-03;
+const Q3 = -7.93650757867487942473e-05;
+const Q4 = 4.00821782732936239552e-06;
+const Q5 = -2.01099218183624371326e-07;
+
+// Java: FdLibm.Expm1#compute(double) / s_expm1.c
+function expm1(x) {
+  let y;
+  let hi;
+  let lo;
+  let c = 0.0;
+  let t;
+  let e;
+  let k;
+  let hx = HI(x);
+  const xsb = hx & 0x80000000;
+  if (xsb === 0) y = x;
+  else y = -x;
+  hx &= 0x7fffffff;
+  if (hx >= 0x4043687a) {
+    if (hx >= 0x40862e42) {
+      if (hx >= 0x7ff00000) {
+        if (((hx & 0xfffff) | LO(x)) !== 0) return x + x;
+        return xsb === 0 ? x : -1.0;
+      }
+      if (x > o_threshold) return huge * huge;
+    }
+    if (xsb !== 0) {
+      if (x + tiny < 0.0) return tiny - one;
+    }
+  }
+  if (hx > 0x3fd62e42) {
+    if (hx < 0x3ff0a2b2) {
+      if (xsb === 0) {
+        hi = x - ln2_hi;
+        lo = ln2_lo;
+        k = 1;
+      } else {
+        hi = x + ln2_hi;
+        lo = -ln2_lo;
+        k = -1;
+      }
+    } else {
+      k = Math.trunc(invln2_e * x + (xsb === 0 ? 0.5 : -0.5));
+      t = k;
+      hi = x - t * ln2_hi;
+      lo = t * ln2_lo;
+    }
+    x = hi - lo;
+    c = (hi - x) - lo;
+  } else if (hx < 0x3c900000) {
+    t = huge + x;
+    return x - (t - (huge + x));
+  } else {
+    k = 0;
+  }
+  const hfx = 0.5 * x;
+  const hxs = x * hfx;
+  const r1 = one + hxs * (Q1 + hxs * (Q2 + hxs * (Q3 + hxs * (Q4 + hxs * Q5))));
+  t = 3.0 - r1 * hfx;
+  e = hxs * ((r1 - t) / (6.0 - x * t));
+  if (k === 0) return x - (x * e - hxs);
+  e = x * (e - c) - c;
+  e -= hxs;
+  if (k === -1) return 0.5 * (x - e) - 0.5;
+  if (k === 1) {
+    if (x < -0.25) return -2.0 * (e - (x + 0.5));
+    return one + 2.0 * (x - e);
+  }
+  if (k <= -2 || k > 56) {
+    y = one - (e - x);
+    y = withHi(y, HI(y) + (k << 20));
+    return y - one;
+  }
+  t = one;
+  if (k < 20) {
+    t = withHi(t, 0x3ff00000 - (0x200000 >> k));
+    y = t - (e - x);
+    y = withHi(y, HI(y) + (k << 20));
+  } else {
+    t = withHi(t, (0x3ff - k) << 20);
+    y = x - (e + t);
+    y += one;
+    y = withHi(y, HI(y) + (k << 20));
+  }
+  return y;
+}
+
 // Java: java.lang.StrictMath (fdlibm ports; sqrt is the IEEE operation)
 export const StrictMath = {
   exp,
   log,
   log10,
+  expm1,
   pow,
   sin,
   cos,
