@@ -1,0 +1,1873 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "MultiThreadedJLanguageTool vs JLanguageTool fr (threads null = single-threaded reference)",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "opts": {
+     "threads": null,
+     "listUnknownWords": true
+    },
+    "cases": [
+     {
+      "text": "This is bad. That is worse than foo. Third bad sentence. The end.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Para one bad.\n\nPara two bad very.\n\nThe end",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "bad",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Das ist schlecht. Das ist sehr schlecht. Noch ein Satz mit color.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "C'est mauvais. Il est très mauvais, la couleur. Salut.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "a. b. c. bad. d. e. f. color. g. h.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Il y avait en Vestphalie, dans le château de M. le baron de Thunder-ten-tronckh, un jeune garçon à qui la nature avait donné les moeurs les plus douces. Sa physionomie annonçait son âme. Il avait le jugement assez droit, avec l’esprit le plus simple; c’est, je crois, pour cette raison qu’on le nommait Candide. Les anciens domestiques de la maison soupçonnaient qu’il était fils de la soeur de monsieur le baron et d’un bon et honnête gentilhomme du voisinage, que cette demoiselle ne voulut jamais épouser parce qu’il n’avait pu prouver que soixante et onze quartiers, et que le reste de son arbre  bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Monsieur le baron était un des plus puissants seigneurs de la Westphalie, car son château avait une porte et des fenêtres. Sa grande salle même était ornée d’une tapisserie. Tous les chiens de ses basses-cours composaient une meute dans le besoin; ses palefreniers étaient ses piqueurs; le vicaire du village était son grand-aumônier. Ils l’appelaient tous monseigneur, et ils riaient quand il fesait des contes. bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Rien n’était si beau, si leste, si brillant, si bien ordonné que les deux armées. Les trompettes, les fifres, les hautbois, les tambours, les canons; formaient une harmonie telle qu’il n’y en eut jamais en enfer. Les canons renversèrent d’abord à peu près six mille hommes de chaque côté; ensuite la mousqueterie ôta du meilleur des mondes environ neuf à dix mille coquins qui en infectaient la surface. La baïonnette fut aussi la raison suffisante de la mort de quelques milliers d’hommes. Le tout pouvait bien se monter à une trentaine de mille âmes. Candide, qui tremblait comme un philosophe, se  bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Enfin, tandis que les deux rois fesaient chanter des _Te Deum_, chacun dans son camp, il prit le parti d’aller raisonner ailleurs des effets et des causes. Il passa par-dessus des tas de morts et de mourants, et gagna d’abord un village voisin; il était en cendres: c’était un village abare que les Bulgares avaient brûlé, selon les lois du droit public. Ici des vieillards criblés de coups regardaient mourir leurs femmes égorgées, qui tenaient leurs enfants à leurs mamelles sanglantes; là des filles éventrées après avoir assouvi les besoins naturels de quelques héros, rendaient les derniers soup bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Candide s’enfuit au plus vite dans un autre village: il appartenait à des Bulgares, et les héros abares l’avaient traité de même. Candide, toujours marchant sur des membres palpitants ou à travers des ruines, arriva enfin hors du théâtre de la guerre, portant quelques petites provisions dans son bissac, et n’oubliant jamais mademoiselle Cunégonde. Ses provisions lui manquèrent quand il fut en Hollande; mais ayant entendu dire que tout le monde était riche dans ce pays-là, et qu’on y était chrétien, il ne douta pas qu’on ne le traitât aussi bien qu’il l’avait été dans le château de M. le baron, bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "A ce discours, Candide s’évanouit encore; mais revenu à soi, et ayant dit tout ce qu’il devait dire, il s’enquit de la cause et de l’effet, et de la raison suffisante qui avait mis Pangloss dans un si piteux état. Hélas! dit l’autre, c’est l’amour: l’amour, le consolateur du genre humain, le conservateur de l’univers, l’âme de tous les êtres sensibles, le tendre amour. Hélas! dit Candide, je l’ai connu cet amour, ce souverain des coeurs, cette âme de notre âme; il ne m’a jamais valu qu’un baiser et vingt coups de pied au cul. Comment cette belle cause a-t-elle pu produire en vous un effet si a bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "opts": {
+     "threads": -1,
+     "listUnknownWords": true
+    },
+    "cases": [
+     {
+      "text": "This is bad. That is worse than foo. Third bad sentence. The end.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Para one bad.\n\nPara two bad very.\n\nThe end",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "bad",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Das ist schlecht. Das ist sehr schlecht. Noch ein Satz mit color.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "C'est mauvais. Il est très mauvais, la couleur. Salut.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "a. b. c. bad. d. e. f. color. g. h.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Il y avait en Vestphalie, dans le château de M. le baron de Thunder-ten-tronckh, un jeune garçon à qui la nature avait donné les moeurs les plus douces. Sa physionomie annonçait son âme. Il avait le jugement assez droit, avec l’esprit le plus simple; c’est, je crois, pour cette raison qu’on le nommait Candide. Les anciens domestiques de la maison soupçonnaient qu’il était fils de la soeur de monsieur le baron et d’un bon et honnête gentilhomme du voisinage, que cette demoiselle ne voulut jamais épouser parce qu’il n’avait pu prouver que soixante et onze quartiers, et que le reste de son arbre  bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Monsieur le baron était un des plus puissants seigneurs de la Westphalie, car son château avait une porte et des fenêtres. Sa grande salle même était ornée d’une tapisserie. Tous les chiens de ses basses-cours composaient une meute dans le besoin; ses palefreniers étaient ses piqueurs; le vicaire du village était son grand-aumônier. Ils l’appelaient tous monseigneur, et ils riaient quand il fesait des contes. bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Rien n’était si beau, si leste, si brillant, si bien ordonné que les deux armées. Les trompettes, les fifres, les hautbois, les tambours, les canons; formaient une harmonie telle qu’il n’y en eut jamais en enfer. Les canons renversèrent d’abord à peu près six mille hommes de chaque côté; ensuite la mousqueterie ôta du meilleur des mondes environ neuf à dix mille coquins qui en infectaient la surface. La baïonnette fut aussi la raison suffisante de la mort de quelques milliers d’hommes. Le tout pouvait bien se monter à une trentaine de mille âmes. Candide, qui tremblait comme un philosophe, se  bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Enfin, tandis que les deux rois fesaient chanter des _Te Deum_, chacun dans son camp, il prit le parti d’aller raisonner ailleurs des effets et des causes. Il passa par-dessus des tas de morts et de mourants, et gagna d’abord un village voisin; il était en cendres: c’était un village abare que les Bulgares avaient brûlé, selon les lois du droit public. Ici des vieillards criblés de coups regardaient mourir leurs femmes égorgées, qui tenaient leurs enfants à leurs mamelles sanglantes; là des filles éventrées après avoir assouvi les besoins naturels de quelques héros, rendaient les derniers soup bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Candide s’enfuit au plus vite dans un autre village: il appartenait à des Bulgares, et les héros abares l’avaient traité de même. Candide, toujours marchant sur des membres palpitants ou à travers des ruines, arriva enfin hors du théâtre de la guerre, portant quelques petites provisions dans son bissac, et n’oubliant jamais mademoiselle Cunégonde. Ses provisions lui manquèrent quand il fut en Hollande; mais ayant entendu dire que tout le monde était riche dans ce pays-là, et qu’on y était chrétien, il ne douta pas qu’on ne le traitât aussi bien qu’il l’avait été dans le château de M. le baron, bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "A ce discours, Candide s’évanouit encore; mais revenu à soi, et ayant dit tout ce qu’il devait dire, il s’enquit de la cause et de l’effet, et de la raison suffisante qui avait mis Pangloss dans un si piteux état. Hélas! dit l’autre, c’est l’amour: l’amour, le consolateur du genre humain, le conservateur de l’univers, l’âme de tous les êtres sensibles, le tendre amour. Hélas! dit Candide, je l’ai connu cet amour, ce souverain des coeurs, cette âme de notre âme; il ne m’a jamais valu qu’un baiser et vingt coups de pied au cul. Comment cette belle cause a-t-elle pu produire en vous un effet si a bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "opts": {
+     "threads": 0,
+     "listUnknownWords": true
+    },
+    "cases": [
+     {
+      "text": "This is bad. That is worse than foo. Third bad sentence. The end.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Para one bad.\n\nPara two bad very.\n\nThe end",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "bad",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Das ist schlecht. Das ist sehr schlecht. Noch ein Satz mit color.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "C'est mauvais. Il est très mauvais, la couleur. Salut.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "a. b. c. bad. d. e. f. color. g. h.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Il y avait en Vestphalie, dans le château de M. le baron de Thunder-ten-tronckh, un jeune garçon à qui la nature avait donné les moeurs les plus douces. Sa physionomie annonçait son âme. Il avait le jugement assez droit, avec l’esprit le plus simple; c’est, je crois, pour cette raison qu’on le nommait Candide. Les anciens domestiques de la maison soupçonnaient qu’il était fils de la soeur de monsieur le baron et d’un bon et honnête gentilhomme du voisinage, que cette demoiselle ne voulut jamais épouser parce qu’il n’avait pu prouver que soixante et onze quartiers, et que le reste de son arbre  bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Monsieur le baron était un des plus puissants seigneurs de la Westphalie, car son château avait une porte et des fenêtres. Sa grande salle même était ornée d’une tapisserie. Tous les chiens de ses basses-cours composaient une meute dans le besoin; ses palefreniers étaient ses piqueurs; le vicaire du village était son grand-aumônier. Ils l’appelaient tous monseigneur, et ils riaient quand il fesait des contes. bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Rien n’était si beau, si leste, si brillant, si bien ordonné que les deux armées. Les trompettes, les fifres, les hautbois, les tambours, les canons; formaient une harmonie telle qu’il n’y en eut jamais en enfer. Les canons renversèrent d’abord à peu près six mille hommes de chaque côté; ensuite la mousqueterie ôta du meilleur des mondes environ neuf à dix mille coquins qui en infectaient la surface. La baïonnette fut aussi la raison suffisante de la mort de quelques milliers d’hommes. Le tout pouvait bien se monter à une trentaine de mille âmes. Candide, qui tremblait comme un philosophe, se  bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Enfin, tandis que les deux rois fesaient chanter des _Te Deum_, chacun dans son camp, il prit le parti d’aller raisonner ailleurs des effets et des causes. Il passa par-dessus des tas de morts et de mourants, et gagna d’abord un village voisin; il était en cendres: c’était un village abare que les Bulgares avaient brûlé, selon les lois du droit public. Ici des vieillards criblés de coups regardaient mourir leurs femmes égorgées, qui tenaient leurs enfants à leurs mamelles sanglantes; là des filles éventrées après avoir assouvi les besoins naturels de quelques héros, rendaient les derniers soup bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Candide s’enfuit au plus vite dans un autre village: il appartenait à des Bulgares, et les héros abares l’avaient traité de même. Candide, toujours marchant sur des membres palpitants ou à travers des ruines, arriva enfin hors du théâtre de la guerre, portant quelques petites provisions dans son bissac, et n’oubliant jamais mademoiselle Cunégonde. Ses provisions lui manquèrent quand il fut en Hollande; mais ayant entendu dire que tout le monde était riche dans ce pays-là, et qu’on y était chrétien, il ne douta pas qu’on ne le traitât aussi bien qu’il l’avait été dans le château de M. le baron, bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "A ce discours, Candide s’évanouit encore; mais revenu à soi, et ayant dit tout ce qu’il devait dire, il s’enquit de la cause et de l’effet, et de la raison suffisante qui avait mis Pangloss dans un si piteux état. Hélas! dit l’autre, c’est l’amour: l’amour, le consolateur du genre humain, le conservateur de l’univers, l’âme de tous les êtres sensibles, le tendre amour. Hélas! dit Candide, je l’ai connu cet amour, ce souverain des coeurs, cette âme de notre âme; il ne m’a jamais valu qu’un baiser et vingt coups de pied au cul. Comment cette belle cause a-t-elle pu produire en vous un effet si a bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "opts": {
+     "threads": 1,
+     "listUnknownWords": true
+    },
+    "cases": [
+     {
+      "text": "This is bad. That is worse than foo. Third bad sentence. The end.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Para one bad.\n\nPara two bad very.\n\nThe end",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "bad",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Das ist schlecht. Das ist sehr schlecht. Noch ein Satz mit color.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "C'est mauvais. Il est très mauvais, la couleur. Salut.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "a. b. c. bad. d. e. f. color. g. h.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Il y avait en Vestphalie, dans le château de M. le baron de Thunder-ten-tronckh, un jeune garçon à qui la nature avait donné les moeurs les plus douces. Sa physionomie annonçait son âme. Il avait le jugement assez droit, avec l’esprit le plus simple; c’est, je crois, pour cette raison qu’on le nommait Candide. Les anciens domestiques de la maison soupçonnaient qu’il était fils de la soeur de monsieur le baron et d’un bon et honnête gentilhomme du voisinage, que cette demoiselle ne voulut jamais épouser parce qu’il n’avait pu prouver que soixante et onze quartiers, et que le reste de son arbre  bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Monsieur le baron était un des plus puissants seigneurs de la Westphalie, car son château avait une porte et des fenêtres. Sa grande salle même était ornée d’une tapisserie. Tous les chiens de ses basses-cours composaient une meute dans le besoin; ses palefreniers étaient ses piqueurs; le vicaire du village était son grand-aumônier. Ils l’appelaient tous monseigneur, et ils riaient quand il fesait des contes. bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Rien n’était si beau, si leste, si brillant, si bien ordonné que les deux armées. Les trompettes, les fifres, les hautbois, les tambours, les canons; formaient une harmonie telle qu’il n’y en eut jamais en enfer. Les canons renversèrent d’abord à peu près six mille hommes de chaque côté; ensuite la mousqueterie ôta du meilleur des mondes environ neuf à dix mille coquins qui en infectaient la surface. La baïonnette fut aussi la raison suffisante de la mort de quelques milliers d’hommes. Le tout pouvait bien se monter à une trentaine de mille âmes. Candide, qui tremblait comme un philosophe, se  bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Enfin, tandis que les deux rois fesaient chanter des _Te Deum_, chacun dans son camp, il prit le parti d’aller raisonner ailleurs des effets et des causes. Il passa par-dessus des tas de morts et de mourants, et gagna d’abord un village voisin; il était en cendres: c’était un village abare que les Bulgares avaient brûlé, selon les lois du droit public. Ici des vieillards criblés de coups regardaient mourir leurs femmes égorgées, qui tenaient leurs enfants à leurs mamelles sanglantes; là des filles éventrées après avoir assouvi les besoins naturels de quelques héros, rendaient les derniers soup bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Candide s’enfuit au plus vite dans un autre village: il appartenait à des Bulgares, et les héros abares l’avaient traité de même. Candide, toujours marchant sur des membres palpitants ou à travers des ruines, arriva enfin hors du théâtre de la guerre, portant quelques petites provisions dans son bissac, et n’oubliant jamais mademoiselle Cunégonde. Ses provisions lui manquèrent quand il fut en Hollande; mais ayant entendu dire que tout le monde était riche dans ce pays-là, et qu’on y était chrétien, il ne douta pas qu’on ne le traitât aussi bien qu’il l’avait été dans le château de M. le baron, bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "A ce discours, Candide s’évanouit encore; mais revenu à soi, et ayant dit tout ce qu’il devait dire, il s’enquit de la cause et de l’effet, et de la raison suffisante qui avait mis Pangloss dans un si piteux état. Hélas! dit l’autre, c’est l’amour: l’amour, le consolateur du genre humain, le conservateur de l’univers, l’âme de tous les êtres sensibles, le tendre amour. Hélas! dit Candide, je l’ai connu cet amour, ce souverain des coeurs, cette âme de notre âme; il ne m’a jamais valu qu’un baiser et vingt coups de pied au cul. Comment cette belle cause a-t-elle pu produire en vous un effet si a bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "opts": {
+     "threads": 2,
+     "listUnknownWords": true
+    },
+    "cases": [
+     {
+      "text": "This is bad. That is worse than foo. Third bad sentence. The end.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Para one bad.\n\nPara two bad very.\n\nThe end",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "bad",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Das ist schlecht. Das ist sehr schlecht. Noch ein Satz mit color.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "C'est mauvais. Il est très mauvais, la couleur. Salut.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "a. b. c. bad. d. e. f. color. g. h.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Il y avait en Vestphalie, dans le château de M. le baron de Thunder-ten-tronckh, un jeune garçon à qui la nature avait donné les moeurs les plus douces. Sa physionomie annonçait son âme. Il avait le jugement assez droit, avec l’esprit le plus simple; c’est, je crois, pour cette raison qu’on le nommait Candide. Les anciens domestiques de la maison soupçonnaient qu’il était fils de la soeur de monsieur le baron et d’un bon et honnête gentilhomme du voisinage, que cette demoiselle ne voulut jamais épouser parce qu’il n’avait pu prouver que soixante et onze quartiers, et que le reste de son arbre  bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Monsieur le baron était un des plus puissants seigneurs de la Westphalie, car son château avait une porte et des fenêtres. Sa grande salle même était ornée d’une tapisserie. Tous les chiens de ses basses-cours composaient une meute dans le besoin; ses palefreniers étaient ses piqueurs; le vicaire du village était son grand-aumônier. Ils l’appelaient tous monseigneur, et ils riaient quand il fesait des contes. bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Rien n’était si beau, si leste, si brillant, si bien ordonné que les deux armées. Les trompettes, les fifres, les hautbois, les tambours, les canons; formaient une harmonie telle qu’il n’y en eut jamais en enfer. Les canons renversèrent d’abord à peu près six mille hommes de chaque côté; ensuite la mousqueterie ôta du meilleur des mondes environ neuf à dix mille coquins qui en infectaient la surface. La baïonnette fut aussi la raison suffisante de la mort de quelques milliers d’hommes. Le tout pouvait bien se monter à une trentaine de mille âmes. Candide, qui tremblait comme un philosophe, se  bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Enfin, tandis que les deux rois fesaient chanter des _Te Deum_, chacun dans son camp, il prit le parti d’aller raisonner ailleurs des effets et des causes. Il passa par-dessus des tas de morts et de mourants, et gagna d’abord un village voisin; il était en cendres: c’était un village abare que les Bulgares avaient brûlé, selon les lois du droit public. Ici des vieillards criblés de coups regardaient mourir leurs femmes égorgées, qui tenaient leurs enfants à leurs mamelles sanglantes; là des filles éventrées après avoir assouvi les besoins naturels de quelques héros, rendaient les derniers soup bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Candide s’enfuit au plus vite dans un autre village: il appartenait à des Bulgares, et les héros abares l’avaient traité de même. Candide, toujours marchant sur des membres palpitants ou à travers des ruines, arriva enfin hors du théâtre de la guerre, portant quelques petites provisions dans son bissac, et n’oubliant jamais mademoiselle Cunégonde. Ses provisions lui manquèrent quand il fut en Hollande; mais ayant entendu dire que tout le monde était riche dans ce pays-là, et qu’on y était chrétien, il ne douta pas qu’on ne le traitât aussi bien qu’il l’avait été dans le château de M. le baron, bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "A ce discours, Candide s’évanouit encore; mais revenu à soi, et ayant dit tout ce qu’il devait dire, il s’enquit de la cause et de l’effet, et de la raison suffisante qui avait mis Pangloss dans un si piteux état. Hélas! dit l’autre, c’est l’amour: l’amour, le consolateur du genre humain, le conservateur de l’univers, l’âme de tous les êtres sensibles, le tendre amour. Hélas! dit Candide, je l’ai connu cet amour, ce souverain des coeurs, cette âme de notre âme; il ne m’a jamais valu qu’un baiser et vingt coups de pied au cul. Comment cette belle cause a-t-elle pu produire en vous un effet si a bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "opts": {
+     "threads": 3,
+     "listUnknownWords": true
+    },
+    "cases": [
+     {
+      "text": "This is bad. That is worse than foo. Third bad sentence. The end.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Para one bad.\n\nPara two bad very.\n\nThe end",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "bad",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Das ist schlecht. Das ist sehr schlecht. Noch ein Satz mit color.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "C'est mauvais. Il est très mauvais, la couleur. Salut.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "a. b. c. bad. d. e. f. color. g. h.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Il y avait en Vestphalie, dans le château de M. le baron de Thunder-ten-tronckh, un jeune garçon à qui la nature avait donné les moeurs les plus douces. Sa physionomie annonçait son âme. Il avait le jugement assez droit, avec l’esprit le plus simple; c’est, je crois, pour cette raison qu’on le nommait Candide. Les anciens domestiques de la maison soupçonnaient qu’il était fils de la soeur de monsieur le baron et d’un bon et honnête gentilhomme du voisinage, que cette demoiselle ne voulut jamais épouser parce qu’il n’avait pu prouver que soixante et onze quartiers, et que le reste de son arbre  bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Monsieur le baron était un des plus puissants seigneurs de la Westphalie, car son château avait une porte et des fenêtres. Sa grande salle même était ornée d’une tapisserie. Tous les chiens de ses basses-cours composaient une meute dans le besoin; ses palefreniers étaient ses piqueurs; le vicaire du village était son grand-aumônier. Ils l’appelaient tous monseigneur, et ils riaient quand il fesait des contes. bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Rien n’était si beau, si leste, si brillant, si bien ordonné que les deux armées. Les trompettes, les fifres, les hautbois, les tambours, les canons; formaient une harmonie telle qu’il n’y en eut jamais en enfer. Les canons renversèrent d’abord à peu près six mille hommes de chaque côté; ensuite la mousqueterie ôta du meilleur des mondes environ neuf à dix mille coquins qui en infectaient la surface. La baïonnette fut aussi la raison suffisante de la mort de quelques milliers d’hommes. Le tout pouvait bien se monter à une trentaine de mille âmes. Candide, qui tremblait comme un philosophe, se  bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Enfin, tandis que les deux rois fesaient chanter des _Te Deum_, chacun dans son camp, il prit le parti d’aller raisonner ailleurs des effets et des causes. Il passa par-dessus des tas de morts et de mourants, et gagna d’abord un village voisin; il était en cendres: c’était un village abare que les Bulgares avaient brûlé, selon les lois du droit public. Ici des vieillards criblés de coups regardaient mourir leurs femmes égorgées, qui tenaient leurs enfants à leurs mamelles sanglantes; là des filles éventrées après avoir assouvi les besoins naturels de quelques héros, rendaient les derniers soup bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Candide s’enfuit au plus vite dans un autre village: il appartenait à des Bulgares, et les héros abares l’avaient traité de même. Candide, toujours marchant sur des membres palpitants ou à travers des ruines, arriva enfin hors du théâtre de la guerre, portant quelques petites provisions dans son bissac, et n’oubliant jamais mademoiselle Cunégonde. Ses provisions lui manquèrent quand il fut en Hollande; mais ayant entendu dire que tout le monde était riche dans ce pays-là, et qu’on y était chrétien, il ne douta pas qu’on ne le traitât aussi bien qu’il l’avait été dans le château de M. le baron, bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "A ce discours, Candide s’évanouit encore; mais revenu à soi, et ayant dit tout ce qu’il devait dire, il s’enquit de la cause et de l’effet, et de la raison suffisante qui avait mis Pangloss dans un si piteux état. Hélas! dit l’autre, c’est l’amour: l’amour, le consolateur du genre humain, le conservateur de l’univers, l’âme de tous les êtres sensibles, le tendre amour. Hélas! dit Candide, je l’ai connu cet amour, ce souverain des coeurs, cette âme de notre âme; il ne m’a jamais valu qu’un baiser et vingt coups de pied au cul. Comment cette belle cause a-t-elle pu produire en vous un effet si a bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "opts": {
+     "threads": 8,
+     "listUnknownWords": true
+    },
+    "cases": [
+     {
+      "text": "This is bad. That is worse than foo. Third bad sentence. The end.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Para one bad.\n\nPara two bad very.\n\nThe end",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "bad",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Das ist schlecht. Das ist sehr schlecht. Noch ein Satz mit color.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "C'est mauvais. Il est très mauvais, la couleur. Salut.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "a. b. c. bad. d. e. f. color. g. h.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Il y avait en Vestphalie, dans le château de M. le baron de Thunder-ten-tronckh, un jeune garçon à qui la nature avait donné les moeurs les plus douces. Sa physionomie annonçait son âme. Il avait le jugement assez droit, avec l’esprit le plus simple; c’est, je crois, pour cette raison qu’on le nommait Candide. Les anciens domestiques de la maison soupçonnaient qu’il était fils de la soeur de monsieur le baron et d’un bon et honnête gentilhomme du voisinage, que cette demoiselle ne voulut jamais épouser parce qu’il n’avait pu prouver que soixante et onze quartiers, et que le reste de son arbre  bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Monsieur le baron était un des plus puissants seigneurs de la Westphalie, car son château avait une porte et des fenêtres. Sa grande salle même était ornée d’une tapisserie. Tous les chiens de ses basses-cours composaient une meute dans le besoin; ses palefreniers étaient ses piqueurs; le vicaire du village était son grand-aumônier. Ils l’appelaient tous monseigneur, et ils riaient quand il fesait des contes. bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Rien n’était si beau, si leste, si brillant, si bien ordonné que les deux armées. Les trompettes, les fifres, les hautbois, les tambours, les canons; formaient une harmonie telle qu’il n’y en eut jamais en enfer. Les canons renversèrent d’abord à peu près six mille hommes de chaque côté; ensuite la mousqueterie ôta du meilleur des mondes environ neuf à dix mille coquins qui en infectaient la surface. La baïonnette fut aussi la raison suffisante de la mort de quelques milliers d’hommes. Le tout pouvait bien se monter à une trentaine de mille âmes. Candide, qui tremblait comme un philosophe, se  bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Enfin, tandis que les deux rois fesaient chanter des _Te Deum_, chacun dans son camp, il prit le parti d’aller raisonner ailleurs des effets et des causes. Il passa par-dessus des tas de morts et de mourants, et gagna d’abord un village voisin; il était en cendres: c’était un village abare que les Bulgares avaient brûlé, selon les lois du droit public. Ici des vieillards criblés de coups regardaient mourir leurs femmes égorgées, qui tenaient leurs enfants à leurs mamelles sanglantes; là des filles éventrées après avoir assouvi les besoins naturels de quelques héros, rendaient les derniers soup bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Candide s’enfuit au plus vite dans un autre village: il appartenait à des Bulgares, et les héros abares l’avaient traité de même. Candide, toujours marchant sur des membres palpitants ou à travers des ruines, arriva enfin hors du théâtre de la guerre, portant quelques petites provisions dans son bissac, et n’oubliant jamais mademoiselle Cunégonde. Ses provisions lui manquèrent quand il fut en Hollande; mais ayant entendu dire que tout le monde était riche dans ce pays-là, et qu’on y était chrétien, il ne douta pas qu’on ne le traitât aussi bien qu’il l’avait été dans le château de M. le baron, bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "A ce discours, Candide s’évanouit encore; mais revenu à soi, et ayant dit tout ce qu’il devait dire, il s’enquit de la cause et de l’effet, et de la raison suffisante qui avait mis Pangloss dans un si piteux état. Hélas! dit l’autre, c’est l’amour: l’amour, le consolateur du genre humain, le conservateur de l’univers, l’âme de tous les êtres sensibles, le tendre amour. Hélas! dit Candide, je l’ai connu cet amour, ce souverain des coeurs, cette âme de notre âme; il ne m’a jamais valu qu’un baiser et vingt coups de pied au cul. Comment cette belle cause a-t-elle pu produire en vous un effet si a bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "opts": {
+     "threads": 64,
+     "listUnknownWords": true
+    },
+    "cases": [
+     {
+      "text": "This is bad. That is worse than foo. Third bad sentence. The end.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Para one bad.\n\nPara two bad very.\n\nThe end",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "bad",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Das ist schlecht. Das ist sehr schlecht. Noch ein Satz mit color.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "C'est mauvais. Il est très mauvais, la couleur. Salut.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "a. b. c. bad. d. e. f. color. g. h.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Il y avait en Vestphalie, dans le château de M. le baron de Thunder-ten-tronckh, un jeune garçon à qui la nature avait donné les moeurs les plus douces. Sa physionomie annonçait son âme. Il avait le jugement assez droit, avec l’esprit le plus simple; c’est, je crois, pour cette raison qu’on le nommait Candide. Les anciens domestiques de la maison soupçonnaient qu’il était fils de la soeur de monsieur le baron et d’un bon et honnête gentilhomme du voisinage, que cette demoiselle ne voulut jamais épouser parce qu’il n’avait pu prouver que soixante et onze quartiers, et que le reste de son arbre  bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Monsieur le baron était un des plus puissants seigneurs de la Westphalie, car son château avait une porte et des fenêtres. Sa grande salle même était ornée d’une tapisserie. Tous les chiens de ses basses-cours composaient une meute dans le besoin; ses palefreniers étaient ses piqueurs; le vicaire du village était son grand-aumônier. Ils l’appelaient tous monseigneur, et ils riaient quand il fesait des contes. bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Rien n’était si beau, si leste, si brillant, si bien ordonné que les deux armées. Les trompettes, les fifres, les hautbois, les tambours, les canons; formaient une harmonie telle qu’il n’y en eut jamais en enfer. Les canons renversèrent d’abord à peu près six mille hommes de chaque côté; ensuite la mousqueterie ôta du meilleur des mondes environ neuf à dix mille coquins qui en infectaient la surface. La baïonnette fut aussi la raison suffisante de la mort de quelques milliers d’hommes. Le tout pouvait bien se monter à une trentaine de mille âmes. Candide, qui tremblait comme un philosophe, se  bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Enfin, tandis que les deux rois fesaient chanter des _Te Deum_, chacun dans son camp, il prit le parti d’aller raisonner ailleurs des effets et des causes. Il passa par-dessus des tas de morts et de mourants, et gagna d’abord un village voisin; il était en cendres: c’était un village abare que les Bulgares avaient brûlé, selon les lois du droit public. Ici des vieillards criblés de coups regardaient mourir leurs femmes égorgées, qui tenaient leurs enfants à leurs mamelles sanglantes; là des filles éventrées après avoir assouvi les besoins naturels de quelques héros, rendaient les derniers soup bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "Candide s’enfuit au plus vite dans un autre village: il appartenait à des Bulgares, et les héros abares l’avaient traité de même. Candide, toujours marchant sur des membres palpitants ou à travers des ruines, arriva enfin hors du théâtre de la guerre, portant quelques petites provisions dans son bissac, et n’oubliant jamais mademoiselle Cunégonde. Ses provisions lui manquèrent quand il fut en Hollande; mais ayant entendu dire que tout le monde était riche dans ce pays-là, et qu’on y était chrétien, il ne douta pas qu’on ne le traitât aussi bien qu’il l’avait été dans le château de M. le baron, bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     },
+     {
+      "text": "A ce discours, Candide s’évanouit encore; mais revenu à soi, et ayant dit tout ce qu’il devait dire, il s’enquit de la cause et de l’effet, et de la raison suffisante qui avait mis Pangloss dans un si piteux état. Hélas! dit l’autre, c’est l’amour: l’amour, le consolateur du genre humain, le conservateur de l’univers, l’âme de tous les êtres sensibles, le tendre amour. Hélas! dit Candide, je l’ai connu cet amour, ce souverain des coeurs, cette âme de notre âme; il ne m’a jamais valu qu’un baiser et vingt coups de pied au cul. Comment cette belle cause a-t-elle pu produire en vous un effet si a bad foo very.",
+      "level": "PICKY",
+      "unknown": true
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "opts": {
+     "threads": 2
+    },
+    "cases": [
+     {
+      "text": "bad. worse."
+     },
+     {
+      "text": "bad. worse.",
+      "shutdownBefore": true
+     },
+     {
+      "text": "bad"
+     },
+     {
+      "text": ""
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "opts": {
+     "threads": 2
+    },
+    "cases": [
+     {
+      "text": "bad. worse."
+     },
+     {
+      "text": "bad. worse.",
+      "shutdownWhenDoneBefore": true
+     },
+     {
+      "text": "bad. worse. foo."
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "opts": {
+     "threads": 3,
+     "cleanOverlapping": true
+    },
+    "cases": [
+     {
+      "text": "This is bad. That is worse than foo. Third bad sentence. The end.",
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "Para one bad.\n\nPara two bad very.\n\nThe end",
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "bad",
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "",
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "Das ist schlecht. Das ist sehr schlecht. Noch ein Satz mit color.",
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "C'est mauvais. Il est très mauvais, la couleur. Salut.",
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "a. b. c. bad. d. e. f. color. g. h.",
+      "mode": "TEXTLEVEL_ONLY"
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_OV1",
+      "regex": "alpha",
+      "message": "ov1 {t}",
+      "suggestions": [
+       "x"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_OV1",
+      "subId": "b",
+      "regex": "alpha|beta",
+      "message": "ov1b {t}",
+      "suggestions": [
+       "y"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_OV2",
+      "regex": "beta|gamma",
+      "message": "ov2 {t}",
+      "suggestions": [
+       "y",
+       "z"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_OV3",
+      "regex": "gamma",
+      "message": "ov3 {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      },
+      "tags": [
+       "picky"
+      ]
+     },
+     {
+      "id": "SYN_OVTXT",
+      "kind": "text",
+      "regex": "alpha beta|beta gamma",
+      "message": "ovtxt {t}",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_OVTXT2",
+      "kind": "text",
+      "regex": "alpha beta gamma",
+      "message": "ovtxt2 {t}",
+      "suggestions": [
+       "alpha, beta"
+      ],
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_BOOM_RUNTIME",
+      "kind": "boom",
+      "throw": "runtime",
+      "regex": "boom",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     }
+    ],
+    "opts": {
+     "threads": 3,
+     "cleanOverlapping": true
+    },
+    "cases": [
+     {
+      "text": "alpha beta gamma"
+     },
+     {
+      "text": "alpha"
+     },
+     {
+      "text": "beta"
+     },
+     {
+      "text": "gamma delta"
+     },
+     {
+      "text": "alpha beta"
+     },
+     {
+      "text": "xx alpha, beta gamma. beta gamma alpha"
+     },
+     {
+      "text": "alpha boom"
+     }
+    ]
+   }
+  }
+ ]
+}

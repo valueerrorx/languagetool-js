@@ -1,0 +1,1459 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "ResultCache effects en-US",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "en-US",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "opts": {
+     "cache": null
+    },
+    "cases": [
+     {
+      "text": "This is bad. That is worse."
+     },
+     {
+      "text": "This is bad. That is worse."
+     },
+     {
+      "text": "This is bad. Something new bad."
+     },
+     {
+      "text": "bad foo very color"
+     },
+     {
+      "text": "bad foo very color"
+     },
+     {
+      "text": "The end.\n\nbad"
+     },
+     {
+      "text": "bad"
+     },
+     {
+      "text": "“Pride,” observed Mary, who piqued herself upon the solidity of her reflections, “is a very common failing, I believe. By all that I have ever read, I am convinced that it is very common indeed; that human nature is particularly prone to it, and that there are very few of us who do not cherish a feeling of self-complacency on the score of some quality or other, real or imaginary. Vanity and pride "
+     },
+     {
+      "text": "“It may, perhaps, be pleasant,” replied Charlotte, “to be able to impose on the public in such a case; but it is sometimes a disadvantage to be so very guarded. If a woman conceals her affection with the same skill from the object of it, she may lose the opportunity of fixing him; and it will then be but poor consolation to believe the world equally in the dark. There is so much of gratitude or va"
+     },
+     {
+      "text": "“Perhaps he must, if he sees enough of her. But though Bingley and Jane meet tolerably often, it is never for many hours together; and as they always see each other in large mixed parties, it is impossible that every moment should be employed in conversing together. Jane should therefore make the most of every half hour in which she can command his attention. When she is secure of him, there will "
+     },
+     {
+      "text": "“Well,” said Charlotte, “I wish Jane success with all my heart; and if she were married to him to-morrow, I should think she had as good a chance of happiness as if she were to be studying his character for a twelvemonth. Happiness in marriage is entirely a matter of chance. If the dispositions of the parties are ever so well known to each other, or ever so similar beforehand, it does not advance "
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "en-US",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "opts": {
+     "cache": 1000
+    },
+    "cases": [
+     {
+      "text": "This is bad. That is worse."
+     },
+     {
+      "text": "This is bad. That is worse."
+     },
+     {
+      "text": "This is bad. Something new bad."
+     },
+     {
+      "text": "bad foo very color"
+     },
+     {
+      "text": "bad foo very color"
+     },
+     {
+      "text": "The end.\n\nbad"
+     },
+     {
+      "text": "bad"
+     },
+     {
+      "text": "“Pride,” observed Mary, who piqued herself upon the solidity of her reflections, “is a very common failing, I believe. By all that I have ever read, I am convinced that it is very common indeed; that human nature is particularly prone to it, and that there are very few of us who do not cherish a feeling of self-complacency on the score of some quality or other, real or imaginary. Vanity and pride "
+     },
+     {
+      "text": "“It may, perhaps, be pleasant,” replied Charlotte, “to be able to impose on the public in such a case; but it is sometimes a disadvantage to be so very guarded. If a woman conceals her affection with the same skill from the object of it, she may lose the opportunity of fixing him; and it will then be but poor consolation to believe the world equally in the dark. There is so much of gratitude or va"
+     },
+     {
+      "text": "“Perhaps he must, if he sees enough of her. But though Bingley and Jane meet tolerably often, it is never for many hours together; and as they always see each other in large mixed parties, it is impossible that every moment should be employed in conversing together. Jane should therefore make the most of every half hour in which she can command his attention. When she is secure of him, there will "
+     },
+     {
+      "text": "“Well,” said Charlotte, “I wish Jane success with all my heart; and if she were married to him to-morrow, I should think she had as good a chance of happiness as if she were to be studying his character for a twelvemonth. Happiness in marriage is entirely a matter of chance. If the dispositions of the parties are ever so well known to each other, or ever so similar beforehand, it does not advance "
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "en-US",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "opts": {
+     "cache": 1000
+    },
+    "cases": [
+     {
+      "text": "This is bad. That is worse."
+     },
+     {
+      "text": "This is bad. That is worse.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is bad. That is worse.",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "text": "This is bad. That is worse.",
+      "mode": "ALL_BUT_TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "This is bad. That is worse."
+     },
+     {
+      "text": "This is bad. That is worse.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is bad. That is worse.",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "text": "This is bad. That is worse.",
+      "mode": "ALL_BUT_TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "This is bad. Something new bad."
+     },
+     {
+      "text": "This is bad. Something new bad.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is bad. Something new bad.",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "text": "This is bad. Something new bad.",
+      "mode": "ALL_BUT_TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "bad foo very color"
+     },
+     {
+      "text": "bad foo very color",
+      "level": "PICKY"
+     },
+     {
+      "text": "bad foo very color",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "text": "bad foo very color",
+      "mode": "ALL_BUT_TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "bad foo very color"
+     },
+     {
+      "text": "bad foo very color",
+      "level": "PICKY"
+     },
+     {
+      "text": "bad foo very color",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "text": "bad foo very color",
+      "mode": "ALL_BUT_TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "The end.\n\nbad"
+     },
+     {
+      "text": "The end.\n\nbad",
+      "level": "PICKY"
+     },
+     {
+      "text": "The end.\n\nbad",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "text": "The end.\n\nbad",
+      "mode": "ALL_BUT_TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "bad"
+     },
+     {
+      "text": "bad",
+      "level": "PICKY"
+     },
+     {
+      "text": "bad",
+      "toneTags": [
+       "formal"
+      ]
+     },
+     {
+      "text": "bad",
+      "mode": "ALL_BUT_TEXTLEVEL_ONLY"
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "en-US",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "opts": {
+     "cache": 1,
+     "listener": true
+    },
+    "cases": [
+     {
+      "text": "This is bad. That is worse."
+     },
+     {
+      "text": "This is bad. That is worse."
+     },
+     {
+      "text": "This is bad. Something new bad."
+     },
+     {
+      "text": "bad foo very color"
+     },
+     {
+      "text": "bad foo very color"
+     },
+     {
+      "text": "The end.\n\nbad"
+     },
+     {
+      "text": "bad"
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "en-US",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "opts": {
+     "cache": 0
+    },
+    "cases": [
+     {
+      "text": "This is bad. That is worse."
+     },
+     {
+      "text": "This is bad. That is worse."
+     },
+     {
+      "text": "This is bad. Something new bad."
+     },
+     {
+      "text": "bad foo very color"
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "en-US",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "opts": {
+     "cache": 1000,
+     "cleanOverlapping": true
+    },
+    "cases": [
+     {
+      "text": "This is bad. That is worse.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is bad. That is worse.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is bad. Something new bad.",
+      "level": "PICKY"
+     },
+     {
+      "text": "bad foo very color",
+      "level": "PICKY"
+     },
+     {
+      "text": "bad foo very color",
+      "level": "PICKY"
+     },
+     {
+      "text": "The end.\n\nbad",
+      "level": "PICKY"
+     },
+     {
+      "text": "bad",
+      "level": "PICKY"
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "en-US",
+    "rules": [
+     {
+      "id": "SYN_OV1",
+      "regex": "alpha",
+      "message": "ov1 {t}",
+      "suggestions": [
+       "x"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_OV1",
+      "subId": "b",
+      "regex": "alpha|beta",
+      "message": "ov1b {t}",
+      "suggestions": [
+       "y"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_OV2",
+      "regex": "beta|gamma",
+      "message": "ov2 {t}",
+      "suggestions": [
+       "y",
+       "z"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_OV3",
+      "regex": "gamma",
+      "message": "ov3 {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      },
+      "tags": [
+       "picky"
+      ]
+     },
+     {
+      "id": "SYN_OVTXT",
+      "kind": "text",
+      "regex": "alpha beta|beta gamma",
+      "message": "ovtxt {t}",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_OVTXT2",
+      "kind": "text",
+      "regex": "alpha beta gamma",
+      "message": "ovtxt2 {t}",
+      "suggestions": [
+       "alpha, beta"
+      ],
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_DUP",
+      "regex": "foo",
+      "message": "Dup {t}",
+      "suggestions": [
+       "bar",
+       "bar",
+       "{t}"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_APOS",
+      "regex": "foo|'bar|n't|l'|'s|'em",
+      "message": "contraction {t}",
+      "suggestions": [
+       "xyz",
+       "'xyz",
+       " xyz",
+       "n't"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_APOS2",
+      "regex": "n't|'.*",
+      "message": "contraction {t}",
+      "suggestions": [
+       "xyz",
+       "n’t"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     }
+    ],
+    "opts": {
+     "cache": 1000,
+     "cleanOverlapping": true,
+     "listener": true
+    },
+    "cases": [
+     {
+      "text": "alpha beta gamma"
+     },
+     {
+      "text": "alpha"
+     },
+     {
+      "text": "beta"
+     },
+     {
+      "text": "gamma delta"
+     },
+     {
+      "text": "alpha beta"
+     },
+     {
+      "text": "xx alpha, beta gamma. beta gamma alpha"
+     },
+     {
+      "text": "alpha.\nbeta gamma"
+     },
+     {
+      "text": "alpha alpha alpha"
+     },
+     {
+      "text": ""
+     },
+     {
+      "text": "foo don't"
+     },
+     {
+      "text": "foo don't"
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "en-US",
+    "rules": [
+     {
+      "id": "SYN_NL1",
+      "kind": "newlang",
+      "regex": "bonjour|hallo",
+      "newLanguages": {
+       "fr": 0.9
+      },
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_NL2",
+      "kind": "newlang",
+      "regex": "ciao",
+      "newLanguages": {
+       "it": 0.6,
+       "es": 0.3
+      },
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_NL3",
+      "kind": "newlang",
+      "regex": "empty",
+      "newLanguages": {},
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "opts": {
+     "cache": 1000
+    },
+    "cases": [
+     {
+      "text": "Hello. bonjour. Hallo."
+     },
+     {
+      "text": "Hello. bonjour. Hallo."
+     },
+     {
+      "text": "bonjour"
+     },
+     {
+      "text": "ciao ciao"
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "en-US",
+    "rules": [
+     {
+      "id": "SYN_BOOM_RUNTIME",
+      "kind": "boom",
+      "throw": "runtime",
+      "regex": "boom",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "opts": {
+     "cache": 1000
+    },
+    "cases": [
+     {
+      "text": "bad"
+     },
+     {
+      "text": "boom"
+     },
+     {
+      "text": "bad"
+     },
+     {
+      "text": "boom"
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "en-US",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "opts": {
+     "cache": 1000,
+     "maxErrorsPerWordRate": 0.5,
+     "listUnknownWords": true
+    },
+    "cases": [
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29"
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29"
+     },
+     {
+      "text": "bad bad bad",
+      "unknown": true
+     },
+     {
+      "text": "bad bad bad",
+      "unknown": true
+     }
+    ]
+   }
+  }
+ ]
+}

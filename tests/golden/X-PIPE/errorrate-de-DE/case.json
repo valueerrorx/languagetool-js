@@ -1,0 +1,1164 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "maxErrorsPerWordRate / ErrorRateTooHighException de-DE",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_ALL",
+      "regex": ".+",
+      "message": "all {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     }
+    ],
+    "opts": {
+     "maxErrorsPerWordRate": 0.1
+    },
+    "cases": [
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8."
+     },
+     {
+      "text": "Ein ä0 ä1 ä2 ä3 ä4 ä5 ä6 ä7 ä8 ä9 ä10 ä11 ä12 ä13 ä14 ä15 ä16 ä17 ä18 ä19 ä20 ä21 ä22 ä23 ä24 ä25 ä26 ä27 ä28 ä29"
+     },
+     {
+      "text": "😀 w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29"
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25. ok ok ok."
+     },
+     {
+      "text": ""
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_ALL",
+      "regex": ".+",
+      "message": "all {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     }
+    ],
+    "opts": {
+     "maxErrorsPerWordRate": 0.5
+    },
+    "cases": [
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8."
+     },
+     {
+      "text": "Ein ä0 ä1 ä2 ä3 ä4 ä5 ä6 ä7 ä8 ä9 ä10 ä11 ä12 ä13 ä14 ä15 ä16 ä17 ä18 ä19 ä20 ä21 ä22 ä23 ä24 ä25 ä26 ä27 ä28 ä29"
+     },
+     {
+      "text": "😀 w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29"
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25. ok ok ok."
+     },
+     {
+      "text": ""
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_ALL",
+      "regex": ".+",
+      "message": "all {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     }
+    ],
+    "opts": {
+     "maxErrorsPerWordRate": 0
+    },
+    "cases": [
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8."
+     },
+     {
+      "text": "Ein ä0 ä1 ä2 ä3 ä4 ä5 ä6 ä7 ä8 ä9 ä10 ä11 ä12 ä13 ä14 ä15 ä16 ä17 ä18 ä19 ä20 ä21 ä22 ä23 ä24 ä25 ä26 ä27 ä28 ä29"
+     },
+     {
+      "text": "😀 w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29"
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25. ok ok ok."
+     },
+     {
+      "text": ""
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_ALL",
+      "regex": ".+",
+      "message": "all {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     }
+    ],
+    "opts": {
+     "maxErrorsPerWordRate": -1
+    },
+    "cases": [
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8."
+     },
+     {
+      "text": "Ein ä0 ä1 ä2 ä3 ä4 ä5 ä6 ä7 ä8 ä9 ä10 ä11 ä12 ä13 ä14 ä15 ä16 ä17 ä18 ä19 ä20 ä21 ä22 ä23 ä24 ä25 ä26 ä27 ä28 ä29"
+     },
+     {
+      "text": "😀 w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29"
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25. ok ok ok."
+     },
+     {
+      "text": ""
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_ALL",
+      "regex": ".+",
+      "message": "all {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     }
+    ],
+    "opts": {
+     "maxErrorsPerWordRate": 0.333
+    },
+    "cases": [
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8."
+     },
+     {
+      "text": "Ein ä0 ä1 ä2 ä3 ä4 ä5 ä6 ä7 ä8 ä9 ä10 ä11 ä12 ä13 ä14 ä15 ä16 ä17 ä18 ä19 ä20 ä21 ä22 ä23 ä24 ä25 ä26 ä27 ä28 ä29"
+     },
+     {
+      "text": "😀 w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29"
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25. ok ok ok."
+     },
+     {
+      "text": ""
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_ALL",
+      "regex": ".+",
+      "message": "all {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     }
+    ],
+    "opts": {
+     "maxErrorsPerWordRate": 0.005
+    },
+    "cases": [
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8."
+     },
+     {
+      "text": "Ein ä0 ä1 ä2 ä3 ä4 ä5 ä6 ä7 ä8 ä9 ä10 ä11 ä12 ä13 ä14 ä15 ä16 ä17 ä18 ä19 ä20 ä21 ä22 ä23 ä24 ä25 ä26 ä27 ä28 ä29"
+     },
+     {
+      "text": "😀 w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29"
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25. ok ok ok."
+     },
+     {
+      "text": ""
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_ALL",
+      "regex": ".+",
+      "message": "all {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     }
+    ],
+    "opts": {
+     "maxErrorsPerWordRate": 1
+    },
+    "cases": [
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8."
+     },
+     {
+      "text": "Ein ä0 ä1 ä2 ä3 ä4 ä5 ä6 ä7 ä8 ä9 ä10 ä11 ä12 ä13 ä14 ä15 ä16 ä17 ä18 ä19 ä20 ä21 ä22 ä23 ä24 ä25 ä26 ä27 ä28 ä29"
+     },
+     {
+      "text": "😀 w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29"
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25. ok ok ok."
+     },
+     {
+      "text": ""
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_ALL",
+      "regex": ".+",
+      "message": "all {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     }
+    ],
+    "opts": {
+     "maxErrorsPerWordRate": 2.5
+    },
+    "cases": [
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8."
+     },
+     {
+      "text": "Ein ä0 ä1 ä2 ä3 ä4 ä5 ä6 ä7 ä8 ä9 ä10 ä11 ä12 ä13 ä14 ä15 ä16 ä17 ä18 ä19 ä20 ä21 ä22 ä23 ä24 ä25 ä26 ä27 ä28 ä29"
+     },
+     {
+      "text": "😀 w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29"
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25. ok ok ok."
+     },
+     {
+      "text": ""
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_ALL",
+      "regex": ".+",
+      "message": "all {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     }
+    ],
+    "opts": {
+     "maxErrorsPerWordRate": 0.125
+    },
+    "cases": [
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8."
+     },
+     {
+      "text": "Ein ä0 ä1 ä2 ä3 ä4 ä5 ä6 ä7 ä8 ä9 ä10 ä11 ä12 ä13 ä14 ä15 ä16 ä17 ä18 ä19 ä20 ä21 ä22 ä23 ä24 ä25 ä26 ä27 ä28 ä29"
+     },
+     {
+      "text": "😀 w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29"
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25. ok ok ok."
+     },
+     {
+      "text": ""
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_ALL",
+      "regex": ".+",
+      "message": "all {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     }
+    ],
+    "opts": {
+     "maxErrorsPerWordRate": 0.995
+    },
+    "cases": [
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8."
+     },
+     {
+      "text": "Ein ä0 ä1 ä2 ä3 ä4 ä5 ä6 ä7 ä8 ä9 ä10 ä11 ä12 ä13 ä14 ä15 ä16 ä17 ä18 ä19 ä20 ä21 ä22 ä23 ä24 ä25 ä26 ä27 ä28 ä29"
+     },
+     {
+      "text": "😀 w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29"
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25. ok ok ok."
+     },
+     {
+      "text": ""
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_ALL",
+      "regex": ".+",
+      "message": "all {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     }
+    ],
+    "opts": {
+     "maxErrorsPerWordRate": 0.045
+    },
+    "cases": [
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8."
+     },
+     {
+      "text": "Ein ä0 ä1 ä2 ä3 ä4 ä5 ä6 ä7 ä8 ä9 ä10 ä11 ä12 ä13 ä14 ä15 ä16 ä17 ä18 ä19 ä20 ä21 ä22 ä23 ä24 ä25 ä26 ä27 ä28 ä29"
+     },
+     {
+      "text": "😀 w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29"
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25. ok ok ok."
+     },
+     {
+      "text": ""
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_ALL",
+      "regex": ".+",
+      "message": "all {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     }
+    ],
+    "opts": {
+     "maxErrorsPerWordRate": 0.74999
+    },
+    "cases": [
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8."
+     },
+     {
+      "text": "Ein ä0 ä1 ä2 ä3 ä4 ä5 ä6 ä7 ä8 ä9 ä10 ä11 ä12 ä13 ä14 ä15 ä16 ä17 ä18 ä19 ä20 ä21 ä22 ä23 ä24 ä25 ä26 ä27 ä28 ä29"
+     },
+     {
+      "text": "😀 w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29"
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25. ok ok ok."
+     },
+     {
+      "text": ""
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_ALL",
+      "regex": ".+",
+      "message": "all {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     }
+    ],
+    "opts": {
+     "maxErrorsPerWordRate": 0.25
+    },
+    "cases": [
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8."
+     },
+     {
+      "text": "Ein ä0 ä1 ä2 ä3 ä4 ä5 ä6 ä7 ä8 ä9 ä10 ä11 ä12 ä13 ä14 ä15 ä16 ä17 ä18 ä19 ä20 ä21 ä22 ä23 ä24 ä25 ä26 ä27 ä28 ä29"
+     },
+     {
+      "text": "😀 w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29"
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25. ok ok ok."
+     },
+     {
+      "text": ""
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_ALL",
+      "regex": "[A-Za-z]+",
+      "message": "all {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_ALL2",
+      "regex": "[a-z]+",
+      "message": "two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_ALL3",
+      "regex": "w1",
+      "message": "three {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     }
+    ],
+    "opts": {
+     "maxErrorsPerWordRate": 0.1
+    },
+    "cases": [
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8."
+     },
+     {
+      "text": "Ein ä0 ä1 ä2 ä3 ä4 ä5 ä6 ä7 ä8 ä9 ä10 ä11 ä12 ä13 ä14 ä15 ä16 ä17 ä18 ä19 ä20 ä21 ä22 ä23 ä24 ä25 ä26 ä27 ä28 ä29"
+     },
+     {
+      "text": "😀 w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29"
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_ALL",
+      "regex": "[A-Za-z]+",
+      "message": "all {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_ALL2",
+      "regex": "[a-z]+",
+      "message": "two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_ALL3",
+      "regex": "w1",
+      "message": "three {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     }
+    ],
+    "opts": {
+     "maxErrorsPerWordRate": 0.5
+    },
+    "cases": [
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8."
+     },
+     {
+      "text": "Ein ä0 ä1 ä2 ä3 ä4 ä5 ä6 ä7 ä8 ä9 ä10 ä11 ä12 ä13 ä14 ä15 ä16 ä17 ä18 ä19 ä20 ä21 ä22 ä23 ä24 ä25 ä26 ä27 ä28 ä29"
+     },
+     {
+      "text": "😀 w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29"
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_ALL",
+      "regex": "[A-Za-z]+",
+      "message": "all {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_ALL2",
+      "regex": "[a-z]+",
+      "message": "two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_ALL3",
+      "regex": "w1",
+      "message": "three {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     }
+    ],
+    "opts": {
+     "maxErrorsPerWordRate": 0.02
+    },
+    "cases": [
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8."
+     },
+     {
+      "text": "Ein ä0 ä1 ä2 ä3 ä4 ä5 ä6 ä7 ä8 ä9 ä10 ä11 ä12 ä13 ä14 ä15 ä16 ä17 ä18 ä19 ä20 ä21 ä22 ä23 ä24 ä25 ä26 ä27 ä28 ä29"
+     },
+     {
+      "text": "😀 w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29"
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_ALL",
+      "regex": "[A-Za-z]+",
+      "message": "all {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_ALL2",
+      "regex": "[a-z]+",
+      "message": "two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_ALL3",
+      "regex": "w1",
+      "message": "three {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     }
+    ],
+    "opts": {
+     "maxErrorsPerWordRate": 1
+    },
+    "cases": [
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25."
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19."
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8."
+     },
+     {
+      "text": "Ein ä0 ä1 ä2 ä3 ä4 ä5 ä6 ä7 ä8 ä9 ä10 ä11 ä12 ä13 ä14 ä15 ä16 ä17 ä18 ä19 ä20 ä21 ä22 ä23 ä24 ä25 ä26 ä27 ä28 ä29"
+     },
+     {
+      "text": "😀 w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29"
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_ALL",
+      "regex": ".+",
+      "message": "all {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "opts": {
+     "maxErrorsPerWordRate": 0.3
+    },
+    "cases": [
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24.",
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25.",
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29.",
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19. v0 v1 v2 v3 v4 v5 v6 v7 v8 v9 v10 v11 v12 v13 v14 v15 v16 v17 v18 v19.",
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8. v0 v1 v2 v3 v4 v5 v6 v7 v8.",
+      "mode": "TEXTLEVEL_ONLY"
+     },
+     {
+      "text": "Ein ä0 ä1 ä2 ä3 ä4 ä5 ä6 ä7 ä8 ä9 ä10 ä11 ä12 ä13 ä14 ä15 ä16 ä17 ä18 ä19 ä20 ä21 ä22 ä23 ä24 ä25 ä26 ä27 ä28 ä29",
+      "mode": "TEXTLEVEL_ONLY"
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "de-DE",
+    "rules": [
+     {
+      "id": "SYN_ALL",
+      "regex": ".+",
+      "message": "all {t}",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     }
+    ],
+    "opts": {
+     "maxErrorsPerWordRate": 0.2
+    },
+    "cases": [
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29"
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29",
+      "level": "PICKY"
+     },
+     {
+      "text": "w0 w1 w2 w3 w4 w5 w6 w7 w8 w9 w10 w11 w12 w13 w14 w15 w16 w17 w18 w19 w20 w21 w22 w23 w24 w25 w26 w27 w28 w29",
+      "paraMode": "ONLYPARA"
+     }
+    ]
+   }
+  }
+ ]
+}

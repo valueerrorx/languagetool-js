@@ -1,0 +1,1509 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "getAllActiveOfficeRules fr: officeDefaultOn/Off combos and state mutation",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "pipe-office",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_A",
+      "regex": "a",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_B_OFF",
+      "regex": "b",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_C_OOFF",
+      "regex": "c",
+      "officeDefaultOff": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_D_OOFF_ON",
+      "regex": "d",
+      "officeDefaultOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_E_OON",
+      "regex": "e",
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_F_OFF_OON",
+      "regex": "f",
+      "defaultOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_G_CATOFF_OON",
+      "regex": "g",
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_H_CATOFF",
+      "regex": "h",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "i",
+      "officeDefaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "j",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TMP",
+      "regex": "k",
+      "defaultTempOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     }
+    ],
+    "steps": [
+     {
+      "do": "state"
+     },
+     {
+      "do": "office"
+     },
+     {
+      "do": "state"
+     },
+     {
+      "do": "active"
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-office",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_A",
+      "regex": "a",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_B_OFF",
+      "regex": "b",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_C_OOFF",
+      "regex": "c",
+      "officeDefaultOff": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_D_OOFF_ON",
+      "regex": "d",
+      "officeDefaultOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_E_OON",
+      "regex": "e",
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_F_OFF_OON",
+      "regex": "f",
+      "defaultOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_G_CATOFF_OON",
+      "regex": "g",
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_H_CATOFF",
+      "regex": "h",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "i",
+      "officeDefaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "j",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TMP",
+      "regex": "k",
+      "defaultTempOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     }
+    ],
+    "steps": [
+     {
+      "do": "office"
+     },
+     {
+      "do": "office"
+     },
+     {
+      "do": "state"
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-office",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_A",
+      "regex": "a",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_B_OFF",
+      "regex": "b",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_C_OOFF",
+      "regex": "c",
+      "officeDefaultOff": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_D_OOFF_ON",
+      "regex": "d",
+      "officeDefaultOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_E_OON",
+      "regex": "e",
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_F_OFF_OON",
+      "regex": "f",
+      "defaultOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_G_CATOFF_OON",
+      "regex": "g",
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_H_CATOFF",
+      "regex": "h",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "i",
+      "officeDefaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "j",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TMP",
+      "regex": "k",
+      "defaultTempOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     }
+    ],
+    "steps": [
+     {
+      "do": "active"
+     },
+     {
+      "do": "office"
+     },
+     {
+      "do": "active"
+     },
+     {
+      "do": "state"
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-office",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_A",
+      "regex": "a",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_B_OFF",
+      "regex": "b",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_C_OOFF",
+      "regex": "c",
+      "officeDefaultOff": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_D_OOFF_ON",
+      "regex": "d",
+      "officeDefaultOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_E_OON",
+      "regex": "e",
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_F_OFF_OON",
+      "regex": "f",
+      "defaultOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_G_CATOFF_OON",
+      "regex": "g",
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_H_CATOFF",
+      "regex": "h",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "i",
+      "officeDefaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "j",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TMP",
+      "regex": "k",
+      "defaultTempOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     }
+    ],
+    "steps": [
+     {
+      "do": "disable",
+      "id": "SYN_D_OOFF_ON"
+     },
+     {
+      "do": "office"
+     },
+     {
+      "do": "state"
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-office",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_A",
+      "regex": "a",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_B_OFF",
+      "regex": "b",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_C_OOFF",
+      "regex": "c",
+      "officeDefaultOff": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_D_OOFF_ON",
+      "regex": "d",
+      "officeDefaultOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_E_OON",
+      "regex": "e",
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_F_OFF_OON",
+      "regex": "f",
+      "defaultOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_G_CATOFF_OON",
+      "regex": "g",
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_H_CATOFF",
+      "regex": "h",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "i",
+      "officeDefaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "j",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TMP",
+      "regex": "k",
+      "defaultTempOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     }
+    ],
+    "steps": [
+     {
+      "do": "disable",
+      "id": "SYN_E_OON"
+     },
+     {
+      "do": "disable",
+      "id": "SYN_F_OFF_OON"
+     },
+     {
+      "do": "office"
+     },
+     {
+      "do": "state"
+     },
+     {
+      "do": "active"
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-office",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_A",
+      "regex": "a",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_B_OFF",
+      "regex": "b",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_C_OOFF",
+      "regex": "c",
+      "officeDefaultOff": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_D_OOFF_ON",
+      "regex": "d",
+      "officeDefaultOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_E_OON",
+      "regex": "e",
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_F_OFF_OON",
+      "regex": "f",
+      "defaultOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_G_CATOFF_OON",
+      "regex": "g",
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_H_CATOFF",
+      "regex": "h",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "i",
+      "officeDefaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "j",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TMP",
+      "regex": "k",
+      "defaultTempOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     }
+    ],
+    "steps": [
+     {
+      "do": "enable",
+      "id": "SYN_C_OOFF"
+     },
+     {
+      "do": "office"
+     },
+     {
+      "do": "state"
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-office",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_A",
+      "regex": "a",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_B_OFF",
+      "regex": "b",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_C_OOFF",
+      "regex": "c",
+      "officeDefaultOff": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_D_OOFF_ON",
+      "regex": "d",
+      "officeDefaultOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_E_OON",
+      "regex": "e",
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_F_OFF_OON",
+      "regex": "f",
+      "defaultOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_G_CATOFF_OON",
+      "regex": "g",
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_H_CATOFF",
+      "regex": "h",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "i",
+      "officeDefaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "j",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TMP",
+      "regex": "k",
+      "defaultTempOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     }
+    ],
+    "steps": [
+     {
+      "do": "enable",
+      "id": "SYN_B_OFF"
+     },
+     {
+      "do": "enable",
+      "id": "SYN_SUB"
+     },
+     {
+      "do": "office"
+     },
+     {
+      "do": "state"
+     },
+     {
+      "do": "active"
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-office",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_A",
+      "regex": "a",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_B_OFF",
+      "regex": "b",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_C_OOFF",
+      "regex": "c",
+      "officeDefaultOff": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_D_OOFF_ON",
+      "regex": "d",
+      "officeDefaultOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_E_OON",
+      "regex": "e",
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_F_OFF_OON",
+      "regex": "f",
+      "defaultOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_G_CATOFF_OON",
+      "regex": "g",
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_H_CATOFF",
+      "regex": "h",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "i",
+      "officeDefaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "j",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TMP",
+      "regex": "k",
+      "defaultTempOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     }
+    ],
+    "steps": [
+     {
+      "do": "disable",
+      "id": "SYN_A"
+     },
+     {
+      "do": "office"
+     },
+     {
+      "do": "state"
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-office",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_A",
+      "regex": "a",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_B_OFF",
+      "regex": "b",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_C_OOFF",
+      "regex": "c",
+      "officeDefaultOff": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_D_OOFF_ON",
+      "regex": "d",
+      "officeDefaultOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_E_OON",
+      "regex": "e",
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_F_OFF_OON",
+      "regex": "f",
+      "defaultOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_G_CATOFF_OON",
+      "regex": "g",
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_H_CATOFF",
+      "regex": "h",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "i",
+      "officeDefaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "j",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TMP",
+      "regex": "k",
+      "defaultTempOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     }
+    ],
+    "steps": [
+     {
+      "do": "disable",
+      "id": "SYN_SUB"
+     },
+     {
+      "do": "office"
+     },
+     {
+      "do": "state"
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-office",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_A",
+      "regex": "a",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_B_OFF",
+      "regex": "b",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_C_OOFF",
+      "regex": "c",
+      "officeDefaultOff": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_D_OOFF_ON",
+      "regex": "d",
+      "officeDefaultOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_E_OON",
+      "regex": "e",
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_F_OFF_OON",
+      "regex": "f",
+      "defaultOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_G_CATOFF_OON",
+      "regex": "g",
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_H_CATOFF",
+      "regex": "h",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "i",
+      "officeDefaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "j",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TMP",
+      "regex": "k",
+      "defaultTempOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     }
+    ],
+    "steps": [
+     {
+      "do": "disableCategory",
+      "id": "SYN_CAT_A"
+     },
+     {
+      "do": "office"
+     },
+     {
+      "do": "state"
+     },
+     {
+      "do": "active"
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-office",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_A",
+      "regex": "a",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_B_OFF",
+      "regex": "b",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_C_OOFF",
+      "regex": "c",
+      "officeDefaultOff": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_D_OOFF_ON",
+      "regex": "d",
+      "officeDefaultOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_E_OON",
+      "regex": "e",
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_F_OFF_OON",
+      "regex": "f",
+      "defaultOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_G_CATOFF_OON",
+      "regex": "g",
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_H_CATOFF",
+      "regex": "h",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "i",
+      "officeDefaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "j",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TMP",
+      "regex": "k",
+      "defaultTempOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     }
+    ],
+    "steps": [
+     {
+      "do": "disableCategory",
+      "id": "SYN_CAT_C"
+     },
+     {
+      "do": "office"
+     },
+     {
+      "do": "state"
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-office",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_A",
+      "regex": "a",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_B_OFF",
+      "regex": "b",
+      "defaultOff": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_C_OOFF",
+      "regex": "c",
+      "officeDefaultOff": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_D_OOFF_ON",
+      "regex": "d",
+      "officeDefaultOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_E_OON",
+      "regex": "e",
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_F_OFF_OON",
+      "regex": "f",
+      "defaultOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_G_CATOFF_OON",
+      "regex": "g",
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_H_CATOFF",
+      "regex": "h",
+      "category": {
+       "id": "SYN_CAT_C",
+       "name": "Synthetic C (default off)",
+       "defaultOff": true
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "i",
+      "officeDefaultOff": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "j",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TMP",
+      "regex": "k",
+      "defaultTempOff": true,
+      "officeDefaultOn": true,
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     }
+    ],
+    "steps": [
+     {
+      "do": "disable",
+      "id": "NOPE"
+     },
+     {
+      "do": "enable",
+      "id": "NOPE2"
+     },
+     {
+      "do": "office"
+     },
+     {
+      "do": "state"
+     }
+    ]
+   }
+  }
+ ]
+}

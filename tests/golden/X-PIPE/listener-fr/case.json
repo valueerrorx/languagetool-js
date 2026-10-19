@@ -1,0 +1,612 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "RuleMatchListener call order fr",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "opts": {
+     "listener": true
+    },
+    "cases": [
+     {
+      "text": "This is bad. That is worse than foo.",
+      "level": "PICKY"
+     },
+     {
+      "text": "bad foo very color colour",
+      "level": "PICKY"
+     },
+     {
+      "text": "Para one bad.\n\nPara two bad very.\n\nThe end",
+      "level": "PICKY"
+     },
+     {
+      "text": "The end is bad and worse. The end.",
+      "level": "PICKY"
+     },
+     {
+      "text": "",
+      "level": "PICKY"
+     },
+     {
+      "text": "color\n\ncolour bad",
+      "level": "PICKY"
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "opts": {
+     "listener": true
+    },
+    "cases": [
+     {
+      "text": "bad worse. The end.\n\nbad",
+      "mode": "ALL",
+      "paraMode": "NORMAL",
+      "level": "PICKY"
+     },
+     {
+      "text": "bad worse. The end.\n\nbad",
+      "mode": "ALL",
+      "paraMode": "ONLYPARA",
+      "level": "PICKY"
+     },
+     {
+      "text": "bad worse. The end.\n\nbad",
+      "mode": "ALL",
+      "paraMode": "ONLYNONPARA",
+      "level": "PICKY"
+     },
+     {
+      "text": "bad worse. The end.\n\nbad",
+      "mode": "ALL_BUT_TEXTLEVEL_ONLY",
+      "paraMode": "NORMAL",
+      "level": "PICKY"
+     },
+     {
+      "text": "bad worse. The end.\n\nbad",
+      "mode": "ALL_BUT_TEXTLEVEL_ONLY",
+      "paraMode": "ONLYPARA",
+      "level": "PICKY"
+     },
+     {
+      "text": "bad worse. The end.\n\nbad",
+      "mode": "ALL_BUT_TEXTLEVEL_ONLY",
+      "paraMode": "ONLYNONPARA",
+      "level": "PICKY"
+     },
+     {
+      "text": "bad worse. The end.\n\nbad",
+      "mode": "TEXTLEVEL_ONLY",
+      "paraMode": "NORMAL",
+      "level": "PICKY"
+     },
+     {
+      "text": "bad worse. The end.\n\nbad",
+      "mode": "TEXTLEVEL_ONLY",
+      "paraMode": "ONLYPARA",
+      "level": "PICKY"
+     },
+     {
+      "text": "bad worse. The end.\n\nbad",
+      "mode": "TEXTLEVEL_ONLY",
+      "paraMode": "ONLYNONPARA",
+      "level": "PICKY"
+     },
+     {
+      "text": "The end bad",
+      "mode": "ALL",
+      "paraMode": "NORMAL",
+      "level": "PICKY"
+     },
+     {
+      "text": "The end bad",
+      "mode": "ALL",
+      "paraMode": "ONLYPARA",
+      "level": "PICKY"
+     },
+     {
+      "text": "The end bad",
+      "mode": "ALL",
+      "paraMode": "ONLYNONPARA",
+      "level": "PICKY"
+     },
+     {
+      "text": "The end bad",
+      "mode": "ALL_BUT_TEXTLEVEL_ONLY",
+      "paraMode": "NORMAL",
+      "level": "PICKY"
+     },
+     {
+      "text": "The end bad",
+      "mode": "ALL_BUT_TEXTLEVEL_ONLY",
+      "paraMode": "ONLYPARA",
+      "level": "PICKY"
+     },
+     {
+      "text": "The end bad",
+      "mode": "ALL_BUT_TEXTLEVEL_ONLY",
+      "paraMode": "ONLYNONPARA",
+      "level": "PICKY"
+     },
+     {
+      "text": "The end bad",
+      "mode": "TEXTLEVEL_ONLY",
+      "paraMode": "NORMAL",
+      "level": "PICKY"
+     },
+     {
+      "text": "The end bad",
+      "mode": "TEXTLEVEL_ONLY",
+      "paraMode": "ONLYPARA",
+      "level": "PICKY"
+     },
+     {
+      "text": "The end bad",
+      "mode": "TEXTLEVEL_ONLY",
+      "paraMode": "ONLYNONPARA",
+      "level": "PICKY"
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_OV1",
+      "regex": "alpha",
+      "message": "ov1 {t}",
+      "suggestions": [
+       "x"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_OV1",
+      "subId": "b",
+      "regex": "alpha|beta",
+      "message": "ov1b {t}",
+      "suggestions": [
+       "y"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_OV2",
+      "regex": "beta|gamma",
+      "message": "ov2 {t}",
+      "suggestions": [
+       "y",
+       "z"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_OV3",
+      "regex": "gamma",
+      "message": "ov3 {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      },
+      "tags": [
+       "picky"
+      ]
+     },
+     {
+      "id": "SYN_OVTXT",
+      "kind": "text",
+      "regex": "alpha beta|beta gamma",
+      "message": "ovtxt {t}",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_OVTXT2",
+      "kind": "text",
+      "regex": "alpha beta gamma",
+      "message": "ovtxt2 {t}",
+      "suggestions": [
+       "alpha, beta"
+      ],
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     }
+    ],
+    "opts": {
+     "listener": true,
+     "cleanOverlapping": true
+    },
+    "cases": [
+     {
+      "text": "alpha beta gamma"
+     },
+     {
+      "text": "alpha"
+     },
+     {
+      "text": "beta"
+     },
+     {
+      "text": "gamma delta"
+     },
+     {
+      "text": "alpha beta"
+     },
+     {
+      "text": "xx alpha, beta gamma. beta gamma alpha"
+     }
+    ]
+   }
+  },
+  {
+   "op": "pipe-check",
+   "args": {
+    "lang": "fr",
+    "rules": [
+     {
+      "id": "SYN_BAD",
+      "regex": "(?i)bad|worse|schlecht|mauvais",
+      "message": "Bad word {t}",
+      "shortMessage": "bad",
+      "suggestions": [
+       "good",
+       "{t}ly"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      },
+      "description": "bad words"
+     },
+     {
+      "id": "SYN_PICKY",
+      "regex": "very|très|sehr",
+      "message": "Picky {t}",
+      "tags": [
+       "picky"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "1",
+      "regex": "colou?r",
+      "message": "Sub one {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_SUB",
+      "subId": "2",
+      "regex": "color|colour|couleur",
+      "message": "Sub two {t}",
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     },
+     {
+      "id": "SYN_TONE",
+      "regex": "gonna|hey|salut",
+      "message": "Tone {t}",
+      "toneTags": [
+       "formal"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_URL",
+      "regex": "link",
+      "message": "Url {t}",
+      "url": "https://example.org/x?a=1&b=2",
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_TXT",
+      "kind": "text",
+      "regex": "(?i)the end|\\bbad\\b[^.]{0,30}\\bworse\\b|fin\\.",
+      "message": "Text-level {t}",
+      "suggestions": [
+       "END"
+      ],
+      "minToCheckParagraph": 2,
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_TXTPARA",
+      "kind": "text",
+      "regex": "\\n\\n|\\r\\n\\r\\n",
+      "message": "Para break",
+      "category": {
+       "id": "SYN_CAT_D",
+       "name": "Synthetic D"
+      }
+     },
+     {
+      "id": "SYN_DUP",
+      "regex": "foo",
+      "message": "Dup {t}",
+      "suggestions": [
+       "bar",
+       "bar",
+       "{t}"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_APOS",
+      "regex": "foo|'bar|n't|l'|'s|'em",
+      "message": "contraction {t}",
+      "suggestions": [
+       "xyz",
+       "'xyz",
+       " xyz",
+       "n't"
+      ],
+      "category": {
+       "id": "SYN_CAT_A",
+       "name": "Synthetic A"
+      }
+     },
+     {
+      "id": "SYN_APOS2",
+      "regex": "n't|'.*",
+      "message": "contraction {t}",
+      "suggestions": [
+       "xyz",
+       "n’t"
+      ],
+      "category": {
+       "id": "SYN_CAT_B",
+       "name": "Synthetic B"
+      }
+     }
+    ],
+    "opts": {
+     "listener": true
+    },
+    "cases": [
+     {
+      "text": "foo don't bad"
+     },
+     {
+      "text": "it's 'em"
+     }
+    ]
+   }
+  }
+ ]
+}

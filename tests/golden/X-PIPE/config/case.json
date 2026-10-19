@@ -1,0 +1,172 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "setConfigValues / UserConfig.getConfigValueByID",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "pipe-config",
+   "args": {
+    "lang": "en-US",
+    "steps": [
+     {
+      "do": "get",
+      "id": "R1"
+     },
+     {
+      "do": "set",
+      "map": {
+       "R1": [
+        {
+         "t": "Integer",
+         "v": "5"
+        },
+        {
+         "t": "String",
+         "v": "x"
+        },
+        {
+         "t": "Boolean",
+         "v": "true"
+        },
+        {
+         "t": "Double",
+         "v": "0.5"
+        },
+        {
+         "t": "Long",
+         "v": "9007199254740992"
+        },
+        {
+         "t": "Float",
+         "v": "1.1"
+        }
+       ]
+      }
+     },
+     {
+      "do": "get",
+      "id": "R1"
+     },
+     {
+      "do": "get",
+      "id": "R2"
+     },
+     {
+      "do": "set",
+      "map": {
+       "R1": [
+        {
+         "t": "Integer",
+         "v": "-1"
+        }
+       ],
+       "R2": [],
+       "R3": [
+        null
+       ]
+      }
+     },
+     {
+      "do": "get",
+      "id": "R1"
+     },
+     {
+      "do": "get",
+      "id": "R2"
+     },
+     {
+      "do": "get",
+      "id": "R3"
+     },
+     {
+      "do": "set",
+      "map": {}
+     },
+     {
+      "do": "get",
+      "id": "R1"
+     },
+     {
+      "do": "set",
+      "map": {
+       "R4": null
+      }
+     },
+     {
+      "do": "get",
+      "id": "R4"
+     },
+     {
+      "do": "setNull"
+     },
+     {
+      "do": "get",
+      "id": "R1"
+     },
+     {
+      "do": "set",
+      "map": {
+       "": [
+        {
+         "t": "String",
+         "v": ""
+        }
+       ],
+       "ü": [
+        {
+         "t": "String",
+         "v": "ä😀"
+        }
+       ]
+      }
+     },
+     {
+      "do": "get",
+      "id": ""
+     },
+     {
+      "do": "get",
+      "id": "ü"
+     },
+     {
+      "do": "set",
+      "map": {
+       "BIG": [
+        {
+         "t": "Integer",
+         "v": "2147483647"
+        },
+        {
+         "t": "Integer",
+         "v": "-2147483648"
+        },
+        {
+         "t": "Long",
+         "v": "-9223372036854775808"
+        },
+        {
+         "t": "Double",
+         "v": "1e+300"
+        },
+        {
+         "t": "Double",
+         "v": "0"
+        },
+        {
+         "t": "Float",
+         "v": "3.4028235e+38"
+        }
+       ]
+      }
+     },
+     {
+      "do": "get",
+      "id": "BIG"
+     }
+    ]
+   }
+  }
+ ]
+}
