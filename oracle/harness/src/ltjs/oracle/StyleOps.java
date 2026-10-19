@@ -39,7 +39,7 @@ final class StyleOps {
     if (a.has("extra")) {
       java.util.ResourceBundle mb = JLanguageTool.getMessageBundle(l);
       for (JsonNode n : a.get("extra")) {
-        Class<?> k = Class.forName("org.languagetool.rules." + n.asText());
+        Class<?> k = Class.forName(n.asText().contains(".") ? n.asText() : "org.languagetool.rules." + n.asText());
         Rule r;
         try { r = (Rule) k.getConstructor(java.util.ResourceBundle.class, Language.class).newInstance(mb, l); }
         catch (NoSuchMethodException e) { r = (Rule) k.getConstructor(java.util.ResourceBundle.class).newInstance(mb); }

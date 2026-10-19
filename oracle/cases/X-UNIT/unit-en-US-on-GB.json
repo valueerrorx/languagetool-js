@@ -1,0 +1,67 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "CORE-0278 US rule class on en-GB",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "unit-check",
+   "args": {
+    "lang": "en-GB",
+    "ids": [
+     "METRIC_UNITS_EN_US"
+    ],
+    "extra": [
+     "org.languagetool.rules.en.UnitConversionRuleUS"
+    ],
+    "cases": [
+     {
+      "text": "I am 6 feet tall.",
+      "level": "PICKY"
+     },
+     {
+      "text": "I am 6 feet (2.02 m) tall.",
+      "level": "PICKY"
+     },
+     {
+      "text": "The shipment weighs 10,000.75 pounds.",
+      "level": "PICKY"
+     },
+     {
+      "text": "I just drank 3 pints.",
+      "level": "PICKY"
+     },
+     {
+      "text": "It is 100 °F outside.",
+      "level": "PICKY"
+     },
+     {
+      "text": "The path is 100 miles (160.93 km) long.",
+      "level": "PICKY"
+     },
+     {
+      "text": "She is 5'6\".",
+      "level": "PICKY"
+     },
+     {
+      "text": "16 km (9.94 mi)",
+      "level": "PICKY"
+     },
+     {
+      "text": "Rounding: 1,234.5 miles",
+      "level": "PICKY"
+     },
+     {
+      "text": "1.234,5 miles",
+      "level": "PICKY"
+     },
+     {
+      "text": "He drove 1 000 miles",
+      "level": "PICKY"
+     }
+    ]
+   }
+  }
+ ]
+}

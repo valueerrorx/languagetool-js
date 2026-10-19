@@ -1,0 +1,84 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "CORE-0278 levels and other rules",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "unit-check",
+   "args": {
+    "lang": "en-US",
+    "ids": [
+     "METRIC_UNITS_EN_US"
+    ],
+    "cases": [
+     {
+      "text": "I am 6 feet tall.",
+      "level": "PICKY"
+     },
+     {
+      "text": "It is 100 °F outside.",
+      "level": "PICKY"
+     },
+     {
+      "text": "The path is 100 miles (160.93 km) long.",
+      "level": "PICKY"
+     },
+     {
+      "text": "I am 6 feet tall.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "It is 100 °F outside.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "The path is 100 miles (160.93 km) long.",
+      "level": "DEFAULT"
+     }
+    ]
+   }
+  },
+  {
+   "op": "unit-check",
+   "args": {
+    "lang": "en-US",
+    "ids": [
+     "METRIC_UNITS_EN_US",
+     "EN_UNPAIRED_BRACKETS",
+     "UPPERCASE_SENTENCE_START"
+    ],
+    "cases": [
+     {
+      "text": "it is 100 °F (37.78 °C. outside",
+      "level": "PICKY"
+     },
+     {
+      "text": "I am 6 feet (2.02 m tall. And 5 miles.",
+      "level": "DEFAULT"
+     }
+    ]
+   }
+  },
+  {
+   "op": "unit-check",
+   "args": {
+    "lang": "de-DE",
+    "ids": [
+     "EINHEITEN_METRISCH"
+    ],
+    "cases": [
+     {
+      "text": "Ich bin 6 Fuß groß.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Ich bin 6 Fuß groß.",
+      "level": "DEFAULT"
+     }
+    ]
+   }
+  }
+ ]
+}

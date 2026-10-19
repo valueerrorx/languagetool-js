@@ -38,7 +38,7 @@ public class Harness {
         JsonNode req = MAPPER.readTree(line);
         if (req.has("id")) resp.put("id", MAPPER.treeToValue(req.get("id"), Object.class));
         String op = req.get("op").asText();
-        if (op.startsWith("probe-") || op.startsWith("pipe-") || op.startsWith("style-") || op.startsWith("replace-") || op.equals("unicode-dump") || op.equals("locale-dump") || op.startsWith("regex") || op.startsWith("i18n-") || op.equals("sax-dump") || op.equals("xml-validate") || op.startsWith("fsa-") || op.equals("annotated-text") || op.equals("string-tools") || op.equals("context-tools") || op.equals("analyzed-token") || op.startsWith("lang-") || op.startsWith("srx-") || op.equals("sentence-tokenize") || op.equals("word-tokenize") || op.equals("wordtok-static") || op.equals("tag") || op.equals("wordsplit") || op.equals("synth") || op.equals("rule-load") || op.equals("ruleset-hints") || op.equals("manual-tagger") || op.equals("check2") || op.equals("active-rules") || op.equals("lt-api") || op.equals("analyze-raw") || op.equals("check-rules") || op.equals("json-serialize") || op.startsWith("lang-detect")) writer = PROBE_MAPPER;
+        if (op.startsWith("probe-") || op.startsWith("pipe-") || op.startsWith("style-") || op.startsWith("replace-") || op.startsWith("unit-") || op.equals("unicode-dump") || op.equals("locale-dump") || op.startsWith("regex") || op.startsWith("i18n-") || op.equals("sax-dump") || op.equals("xml-validate") || op.startsWith("fsa-") || op.equals("annotated-text") || op.equals("string-tools") || op.equals("context-tools") || op.equals("analyzed-token") || op.startsWith("lang-") || op.startsWith("srx-") || op.equals("sentence-tokenize") || op.equals("word-tokenize") || op.equals("wordtok-static") || op.equals("tag") || op.equals("wordsplit") || op.equals("synth") || op.equals("rule-load") || op.equals("ruleset-hints") || op.equals("manual-tagger") || op.equals("check2") || op.equals("active-rules") || op.equals("lt-api") || op.equals("analyze-raw") || op.equals("check-rules") || op.equals("json-serialize") || op.startsWith("lang-detect")) writer = PROBE_MAPPER;
         JsonNode a = req.has("args") ? req.get("args") : MAPPER.createObjectNode();
         Object result = dispatch(op, a);
         resp.put("ok", true);
@@ -132,6 +132,7 @@ public class Harness {
       case "lang-dynamic": return LangOps.dynamic(a);
       case "style-check": return StyleOps.check(a);
       case "replace-check": return ReplaceOps.check(a);
+      case "unit-check": return StyleOps.check(a);
       case "pipe-check": return PipeOps.check(a);
       case "pipe-office": return PipeOps.office(a);
       case "pipe-config": return PipeOps.config(a);
