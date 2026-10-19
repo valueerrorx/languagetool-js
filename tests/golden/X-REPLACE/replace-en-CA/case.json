@@ -1,0 +1,47 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "CORE-0271 en-CA variant replace",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "replace-check",
+   "args": {
+    "mode": "rules",
+    "lang": "en-CA",
+    "ids": [
+     "EN_GB_SIMPLE_REPLACE",
+     "EN_US_SIMPLE_REPLACE",
+     "EN_NZ_SIMPLE_REPLACE",
+     "EN_SIMPLE_REPLACE",
+     "EN_AU_SIMPLE_REPLACE",
+     "EN_CA_SIMPLE_REPLACE",
+     "EN_ZA_SIMPLE_REPLACE"
+    ],
+    "cases": [
+     {
+      "text": "The colour of the centre was nice.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "The color of the center was nice.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "I realise my favourite organisation, but the organization is grey/gray.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "The program and the programme; tyre and tire; the cheque and check.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Aluminium and aluminum. Licence and license.",
+      "level": "DEFAULT"
+     }
+    ]
+   }
+  }
+ ]
+}

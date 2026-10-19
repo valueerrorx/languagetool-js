@@ -1,0 +1,173 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "CORE-0265 de",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "replace-check",
+   "args": {
+    "mode": "rules",
+    "lang": "de-DE",
+    "ids": [
+     "GERMAN_WRONG_WORD_IN_CONTEXT"
+    ],
+    "cases": [
+     {
+      "text": "Der Laib Brot liegt auf dem Tisch.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Der Leib Brot liegt auf dem Tisch.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Der Leib und die Seele sind eins.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Der Laib und die Seele sind eins.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Der Laib Käse wiegt viel.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Der Laich der Fische liegt im Wasser.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Die Leichen der Fische liegen im Wasser.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Die Laichen sind gestorben.",
+      "level": "DEFAULT"
+     }
+    ]
+   }
+  },
+  {
+   "op": "replace-check",
+   "args": {
+    "mode": "rules",
+    "lang": "de-DE",
+    "ids": [
+     "GERMAN_WRONG_WORD_IN_CONTEXT"
+    ],
+    "cases": [
+     {
+      "text": "Die Leichen sind gestorben.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Die Mine explodierte unterirdisch.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Die Miene explodierte unterirdisch.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Sie verzog die Mine.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Sie verzog die Miene.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Eine neue Mine im Kugelschreiber.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Die Sole ist eine Lösung mit Salz.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Die Sohle ist eine Lösung mit Salz.",
+      "level": "DEFAULT"
+     }
+    ]
+   }
+  },
+  {
+   "op": "replace-check",
+   "args": {
+    "mode": "rules",
+    "lang": "de-DE",
+    "ids": [
+     "GERMAN_WRONG_WORD_IN_CONTEXT"
+    ],
+    "cases": [
+     {
+      "text": "Die Sole des Schuhs ist ruhig.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Die Sohle des Schuhs ist ruhig.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Der Vers verletzt den Fuß.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Die Fersen des Gedichts.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Das Neutron und das Proton im Atomkern.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Das Neuron und das Proton im Atomkern.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Das Neuron und das Axon im Cortex.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Das Neutron und das Axon im Cortex.",
+      "level": "DEFAULT"
+     }
+    ]
+   }
+  },
+  {
+   "op": "replace-check",
+   "args": {
+    "mode": "rules",
+    "lang": "de-DE",
+    "ids": [
+     "GERMAN_WRONG_WORD_IN_CONTEXT"
+    ],
+    "cases": [
+     {
+      "text": "",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Laib",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "LAIB Brot",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Minen ... Mienen. Der Laib Brot.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Überschrift: Käse und Laibe, Leibe und Blut.",
+      "level": "DEFAULT"
+     }
+    ]
+   }
+  }
+ ]
+}

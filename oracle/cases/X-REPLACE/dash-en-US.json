@@ -1,0 +1,1185 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "CORE-0273/0449 EN_DASH_RULE",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "replace-check",
+   "args": {
+    "mode": "rules",
+    "lang": "en-US",
+    "ids": [
+     "EN_DASH_RULE"
+    ],
+    "cases": [
+     {
+      "text": "This is home – grown here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is home–grown here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is home — grown here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is home—grown here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is home - grown here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is home -- grown here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is chain – smokes here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is chain–smokes here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is chain — smokes here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is chain—smokes here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is chain - smokes here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is chain -- smokes here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is die – cast here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is die–cast here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is die — cast here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is die—cast here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is die - cast here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is die -- cast here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is free – falling here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is free–falling here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is free — falling here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is free—falling here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is free - falling here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is free -- falling here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is hollow – eyed here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is hollow–eyed here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is hollow — eyed here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is hollow—eyed here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is hollow - eyed here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is hollow -- eyed here.",
+      "level": "PICKY"
+     }
+    ]
+   }
+  },
+  {
+   "op": "replace-check",
+   "args": {
+    "mode": "rules",
+    "lang": "en-US",
+    "ids": [
+     "EN_DASH_RULE"
+    ],
+    "cases": [
+     {
+      "text": "This is loss – leader here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is loss–leader here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is loss — leader here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is loss—leader here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is loss - leader here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is loss -- leader here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non – inclusive here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non–inclusive here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non — inclusive here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non—inclusive here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non - inclusive here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non -- inclusive here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is post – entry here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is post–entry here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is post — entry here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is post—entry here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is post - entry here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is post -- entry here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is right – winger here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is right–winger here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is right — winger here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is right—winger here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is right - winger here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is right -- winger here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is self – parody here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is self–parody here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is self — parody here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is self—parody here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is self - parody here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is self -- parody here.",
+      "level": "PICKY"
+     }
+    ]
+   }
+  },
+  {
+   "op": "replace-check",
+   "args": {
+    "mode": "rules",
+    "lang": "en-US",
+    "ids": [
+     "EN_DASH_RULE"
+    ],
+    "cases": [
+     {
+      "text": "This is speed – ups here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is speed–ups here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is speed — ups here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is speed—ups here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is speed - ups here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is speed -- ups here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is trade – ins here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is trade–ins here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is trade — ins here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is trade—ins here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is trade - ins here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is trade -- ins here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is x – raying here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is x–raying here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is x — raying here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is x—raying here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is x - raying here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is x -- raying here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is sixty – fourfold here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is sixty–fourfold here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is sixty — fourfold here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is sixty—fourfold here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is sixty - fourfold here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is sixty -- fourfold here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is co – operativeness here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is co–operativeness here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is co — operativeness here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is co—operativeness here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is co - operativeness here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is co -- operativeness here.",
+      "level": "PICKY"
+     }
+    ]
+   }
+  },
+  {
+   "op": "replace-check",
+   "args": {
+    "mode": "rules",
+    "lang": "en-US",
+    "ids": [
+     "EN_DASH_RULE"
+    ],
+    "cases": [
+     {
+      "text": "This is non – athletic here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non–athletic here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non — athletic here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non—athletic here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non - athletic here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non -- athletic here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non – intuitive here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non–intuitive here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non — intuitive here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non—intuitive here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non - intuitive here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non -- intuitive here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non – terminal here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non–terminal here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non — terminal here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non—terminal here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non - terminal here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non -- terminal here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is re – elect here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is re–elect here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is re — elect here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is re—elect here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is re - elect here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is re -- elect here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is torch – bearer here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is torch–bearer here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is torch — bearer here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is torch—bearer here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is torch - bearer here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is torch -- bearer here.",
+      "level": "PICKY"
+     }
+    ]
+   }
+  },
+  {
+   "op": "replace-check",
+   "args": {
+    "mode": "rules",
+    "lang": "en-US",
+    "ids": [
+     "EN_DASH_RULE"
+    ],
+    "cases": [
+     {
+      "text": "This is live – streamed here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is live–streamed here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is live — streamed here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is live—streamed here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is live - streamed here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is live -- streamed here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is half – marathon here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is half–marathon here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is half — marathon here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is half—marathon here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is half - marathon here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is half -- marathon here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is pre – serving$ # changed ?  – >  here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is pre–serving$ # changed ? –>  here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is pre — serving$ # changed ?  — >  here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is pre—serving$ # changed ? —>  here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is pre - serving$ # changed ?  - >  here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is pre -- serving$ # changed ?  -- >  here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is self – publishing here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is self–publishing here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is self — publishing here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is self—publishing here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is self - publishing here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is self -- publishing here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is co – locates here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is co–locates here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is co — locates here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is co—locates here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is co - locates here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is co -- locates here.",
+      "level": "PICKY"
+     }
+    ]
+   }
+  },
+  {
+   "op": "replace-check",
+   "args": {
+    "mode": "rules",
+    "lang": "en-US",
+    "ids": [
+     "EN_DASH_RULE"
+    ],
+    "cases": [
+     {
+      "text": "This is re – fuels$ # changed ?  – >  here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is re–fuels$ # changed ? –>  here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is re — fuels$ # changed ?  — >  here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is re—fuels$ # changed ? —>  here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is re - fuels$ # changed ?  - >  here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is re -- fuels$ # changed ?  -- >  here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non – fluent here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non–fluent here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non — fluent here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non—fluent here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non - fluent here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non -- fluent here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is double – decker here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is double–decker here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is double — decker here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is double—decker here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is double - decker here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is double -- decker here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is re – mapping$ # changed ?  – >  here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is re–mapping$ # changed ? –>  here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is re — mapping$ # changed ?  — >  here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is re—mapping$ # changed ? —>  here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is re - mapping$ # changed ?  - >  here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is re -- mapping$ # changed ?  -- >  here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is Indo – Pacific here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is Indo–Pacific here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is Indo — Pacific here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is Indo—Pacific here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is Indo - Pacific here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is Indo -- Pacific here.",
+      "level": "PICKY"
+     }
+    ]
+   }
+  },
+  {
+   "op": "replace-check",
+   "args": {
+    "mode": "rules",
+    "lang": "en-US",
+    "ids": [
+     "EN_DASH_RULE"
+    ],
+    "cases": [
+     {
+      "text": "This is mega – billion here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is mega–billion here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is mega — billion here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is mega—billion here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is mega - billion here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is mega -- billion here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is Afro – Indians here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is Afro–Indians here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is Afro — Indians here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is Afro—Indians here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is Afro - Indians here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is Afro -- Indians here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is re – creating$ # changed ?  – >  here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is re–creating$ # changed ? –>  here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is re — creating$ # changed ?  — >  here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is re—creating$ # changed ? —>  here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is re - creating$ # changed ?  - >  here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is re -- creating$ # changed ?  -- >  here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is johnny – come – latelies here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is johnny–come–latelies here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is johnny — come — latelies here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is johnny—come—latelies here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is johnny - come - latelies here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is johnny -- come -- latelies here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non – canonical here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non–canonical here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non — canonical here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non—canonical here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non - canonical here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is non -- canonical here.",
+      "level": "PICKY"
+     }
+    ]
+   }
+  },
+  {
+   "op": "replace-check",
+   "args": {
+    "mode": "rules",
+    "lang": "en-US",
+    "ids": [
+     "EN_DASH_RULE"
+    ],
+    "cases": [
+     {
+      "text": "This is all – nighter here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is all–nighter here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is all — nighter here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is all—nighter here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is all - nighter here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is all -- nighter here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is Nutri – scores here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is Nutri–scores here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is Nutri — scores here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is Nutri—scores here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is Nutri - scores here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is Nutri -- scores here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is self – deluders here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is self–deluders here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is self — deluders here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is self—deluders here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is self - deluders here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is self -- deluders here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is self – hostable here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is self–hostable here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is self — hostable here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is self—hostable here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is self - hostable here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is self -- hostable here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is one – liner here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is one–liner here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is one — liner here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is one—liner here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is one - liner here.",
+      "level": "PICKY"
+     },
+     {
+      "text": "This is one -- liner here.",
+      "level": "PICKY"
+     }
+    ]
+   }
+  },
+  {
+   "op": "replace-check",
+   "args": {
+    "mode": "rules",
+    "lang": "en-US",
+    "ids": [
+     "EN_DASH_RULE"
+    ],
+    "cases": [
+     {
+      "text": "",
+      "level": "PICKY"
+     },
+     {
+      "text": "T — shirt",
+      "level": "PICKY"
+     },
+     {
+      "text": "T – shirt",
+      "level": "PICKY"
+     },
+     {
+      "text": "T—shirt",
+      "level": "PICKY"
+     },
+     {
+      "text": "T-shirt",
+      "level": "PICKY"
+     },
+     {
+      "text": "T – shirt and T — shirt",
+      "level": "PICKY"
+     },
+     {
+      "text": "x-ray x – ray X – ray",
+      "level": "PICKY"
+     },
+     {
+      "text": "—T–shirt",
+      "level": "PICKY"
+     },
+     {
+      "text": "back – fire – fired",
+      "level": "PICKY"
+     },
+     {
+      "text": "back–fire–s",
+      "level": "PICKY"
+     },
+     {
+      "text": "pre–  empt",
+      "level": "PICKY"
+     },
+     {
+      "text": "e – mail, e–mail, e — mail",
+      "level": "PICKY"
+     }
+    ]
+   }
+  },
+  {
+   "op": "replace-check",
+   "args": {
+    "mode": "rules",
+    "lang": "en-US",
+    "ids": [
+     "EN_DASH_RULE"
+    ],
+    "cases": [
+     {
+      "text": "This is home – grown here.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "This is home–grown here.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "This is home — grown here.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "This is home—grown here.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "This is home - grown here.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "This is home -- grown here.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "This is chain – smokes here.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "This is chain–smokes here.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "This is chain — smokes here.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "This is chain—smokes here.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "This is chain - smokes here.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "This is chain -- smokes here.",
+      "level": "DEFAULT"
+     }
+    ]
+   }
+  }
+ ]
+}

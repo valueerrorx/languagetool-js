@@ -1,0 +1,40 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "CORE-0275 paraMode/levels",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "replace-check",
+   "args": {
+    "mode": "rules",
+    "lang": "en-US",
+    "ids": [
+     "EN_WORD_COHERENCY"
+    ],
+    "cases": [
+     {
+      "text": "We organise.\n\nWe organize.",
+      "level": "DEFAULT",
+      "paraMode": "NORMAL"
+     },
+     {
+      "text": "We organise.\n\nWe organize.",
+      "level": "DEFAULT",
+      "paraMode": "ONLYPARA"
+     },
+     {
+      "text": "We organise. We organize.",
+      "level": "PICKY"
+     },
+     {
+      "text": "We organise.\n\nWe organize.",
+      "level": "DEFAULT",
+      "paraMode": "ONLYNONPARA"
+     }
+    ]
+   }
+  }
+ ]
+}

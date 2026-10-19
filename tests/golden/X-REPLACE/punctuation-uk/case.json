@@ -1,0 +1,158 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "CORE-0423 uk PUNCTUATION_GENERIC_CHECK",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "replace-check",
+   "args": {
+    "mode": "rules",
+    "lang": "uk",
+    "ids": [],
+    "extra": [
+     "uk.PunctuationCheckRule"
+    ],
+    "cases": [
+     {
+      "text": "",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Привіт, світ.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Привіт,, світ.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Привіт.. світ.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Привіт... світ.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Привіт!!! Як справи???",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Привіт ?! ",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Що?!! Ні.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Привіт , , світ.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Привіт ,. світ",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Привіт: - світ",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Привіт, - світ",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Привіт,- світ",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Привіт - - світ",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Привіт??? ... світ",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Привіт ?? світ",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Привіт.!",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Привіт?..",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Привіт!..",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Привіт !!!",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Ну... ну?!! Та...",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "А ,, б. В;; г.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": ".",
+      "level": "DEFAULT"
+     },
+     {
+      "text": ",",
+      "level": "DEFAULT"
+     },
+     {
+      "text": ",,",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "..",
+      "level": "DEFAULT"
+     },
+     {
+      "text": ". .",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "!?",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "?!!",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "?.. ",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "!!! ",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Раз, два;; три. Чотири  ,  п'ять.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": " ,,",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Слово .. слово",
+      "level": "DEFAULT"
+     }
+    ]
+   }
+  }
+ ]
+}
