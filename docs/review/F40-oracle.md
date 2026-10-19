@@ -1,0 +1,15 @@
+# F40 oracle (X-TOOLS)
+Status: DONE (6 cases, 114 requests, golden 308K). `npm run oracle -- X-TOOLS`; `node oracle/parity.mjs X-TOOLS`. Generator `node oracle/scripts/gen-cases-tools.mjs` (wipes oracle/cases/X-TOOLS only). Compare: jsonl, normalize `paths`. Env: pinned oracle env.
+Java: oracle/harness/src/ltjs/oracle/ToolsOps.java (ops `tools-correct`, `tools-misc`, `tools-diffs`, `tools-util`, `tools-lmwarn`, `tools-rules`; shares ruleInfo with BitextOps). No adapters: parity NOT PORTED for all.
+- correct (6 ops, CORE-0327): correctTextFromMatches with 25 synthetic match sets (ToolsTest case, offsets after length-changing replacements, overlapping/duplicate/out-of-range/negative positions, empty suggestions, several suggestions, surrogate pairs, 5000 chars); correctText with full en-US (21 texts) and de-DE (12 texts) rule sets plus restricted id sets en/fr.
+- misc (53, CORE-0328): getFullStackTrace (shape only: first line, "\tat", "Caused by"; frames are harness specific), getStream with/without checksum (match via hash computed by Java SELF, uppercase hash, wrong/empty hash, missing, empty/relative path), getUrl (15 inputs), isParagraphEnd (en/de/fr/es/uk/ja/zh/ru on a mixed line-break text and explicit sentence lists, out-of-range indices), profileRulesOnLine (text-level rule -> RuntimeException, null rule), linguistic services hook defaults, Tools.i18n.
+- diffs (1 op, 52 pairs, CORE-0331): DiffsAsMatchesTest inputs plus apostrophe filtering, joins, whitespace, empty, unicode, getJoinedMatch ranges.
+- util (35, CORE-0332 / CORE-0345): MultiKeyProperties (comments, repeated keys, `=` in values, CRLF, umlauts), MostlySingularMultiMap, UnsyncStack (incl. EmptyStackException), StringInterner, LoggingTools markers, JnaTools property, TestHackHelper, InterruptibleCharSequence (charAt/subSequence bounds, regex, pre-set interrupt flag -> RuntimeException(InterruptedException), flag cleared), TranslationEntry/TranslationData (toString, equals, hashCode, null check).
+- lm-warning (12, CORE-0450): stderr of LanguageWithModel#getLanguageModel for Dutch/Russian/French/Chinese (once per instance, new instance warns again, relative/odd/empty dirs), non-model languages (English, German: no warning), existing empty `nl` subdir -> RuntimeException from the Lucene loader. Portuguese cannot be re-instantiated (Java singleton guard) so it is not used.
+- rules (8, CORE-0266): DemoRule (stdout "Token:/ Lemma:/ POS:" lines + matches, en/de/fr, long input), FakeRule (ids, tag, bad tag), SpecificIdRule (category required, tags, issue type, premium, invalid enum values).
+## Gaps / UNORACLED
+- Pure interfaces not fixtured: Translator, DataSource (CORE-0345; only the value classes TranslationEntry/TranslationData are observable).
+- TestRemoteRule (CORE-0266): needs the RemoteRule runtime; observable only through remote-rule tests -> UNORACLED, manual check via RemoteRule JUnit when that step is ported.
+- StackTrace frames in getFullStackTrace and the real JNA/LoggingTools backends are not byte-comparable; only shapes/properties are fixtured.
+## Parity state
+All 6 cases NOT PORTED.

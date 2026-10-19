@@ -1,0 +1,173 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "CORE-0450 LanguageWithModel no-LM warning",
+ "normalize": [
+  "paths"
+ ],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "tools-lmwarn",
+   "args": {
+    "class": "org.languagetool.language.Dutch",
+    "dir": "lm-dir",
+    "instances": [
+     {
+      "calls": 1
+     }
+    ]
+   }
+  },
+  {
+   "op": "tools-lmwarn",
+   "args": {
+    "class": "org.languagetool.language.Dutch",
+    "dir": "lm-dir",
+    "instances": [
+     {
+      "calls": 3
+     }
+    ]
+   }
+  },
+  {
+   "op": "tools-lmwarn",
+   "args": {
+    "class": "org.languagetool.language.Dutch",
+    "dir": "lm-dir",
+    "instances": [
+     {
+      "calls": 2
+     },
+     {
+      "calls": 2
+     }
+    ]
+   }
+  },
+  {
+   "op": "tools-lmwarn",
+   "args": {
+    "class": "org.languagetool.language.Russian",
+    "dir": "lm-dir",
+    "instances": [
+     {
+      "calls": 2
+     }
+    ]
+   }
+  },
+  {
+   "op": "tools-lmwarn",
+   "args": {
+    "class": "org.languagetool.language.French",
+    "dir": "lm-dir",
+    "instances": [
+     {
+      "calls": 2
+     }
+    ]
+   }
+  },
+  {
+   "op": "tools-lmwarn",
+   "args": {
+    "class": "org.languagetool.language.Dutch",
+    "dir": "lm-dir",
+    "instances": [
+     {
+      "calls": 1,
+      "dir": "other/lm"
+     },
+     {
+      "calls": 1,
+      "dir": "ünï cödé"
+     },
+     {
+      "calls": 1,
+      "dir": ""
+     }
+    ]
+   }
+  },
+  {
+   "op": "tools-lmwarn",
+   "args": {
+    "class": "org.languagetool.language.Dutch",
+    "dir": "lm-dir",
+    "instances": [
+     {
+      "calls": 1,
+      "dir": "lm-dir/"
+     }
+    ]
+   }
+  },
+  {
+   "op": "tools-lmwarn",
+   "args": {
+    "class": "org.languagetool.language.Chinese",
+    "dir": "lm-dir",
+    "instances": [
+     {
+      "calls": 2
+     }
+    ]
+   }
+  },
+  {
+   "op": "tools-lmwarn",
+   "args": {
+    "class": "org.languagetool.language.English",
+    "dir": "lm-dir",
+    "instances": [
+     {
+      "calls": 2
+     }
+    ]
+   }
+  },
+  {
+   "op": "tools-lmwarn",
+   "args": {
+    "class": "org.languagetool.language.GermanyGerman",
+    "dir": "lm-dir",
+    "instances": [
+     {
+      "calls": 2
+     }
+    ]
+   }
+  },
+  {
+   "op": "tools-lmwarn",
+   "args": {
+    "class": "org.languagetool.language.Dutch",
+    "dir": "lm-dir",
+    "instances": [
+     {
+      "calls": 1
+     }
+    ],
+    "makeSub": "nl"
+   }
+  },
+  {
+   "op": "tools-lmwarn",
+   "args": {
+    "class": "org.languagetool.language.Dutch",
+    "dir": "lm-dir",
+    "instances": [
+     {
+      "calls": 1
+     },
+     {
+      "calls": 1
+     }
+    ],
+    "makeSub": "other"
+   }
+  }
+ ]
+}

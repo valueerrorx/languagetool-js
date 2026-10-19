@@ -1,0 +1,510 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "CORE-0327 Tools.correctText / correctTextFromMatches",
+ "normalize": [
+  "paths"
+ ],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "tools-correct",
+   "args": {
+    "matchSets": [
+     {
+      "contents": "I've have",
+      "matches": [
+       {
+        "from": 0,
+        "to": 9,
+        "replacements": [
+         "I've had"
+        ]
+       },
+       {
+        "from": 0,
+        "to": 9,
+        "replacements": [
+         "I have"
+        ]
+       }
+      ]
+     },
+     {
+      "contents": "abcdef",
+      "matches": [
+       {
+        "from": 1,
+        "to": 3,
+        "replacements": [
+         "XYZ"
+        ]
+       },
+       {
+        "from": 4,
+        "to": 5,
+        "replacements": [
+         "Q"
+        ]
+       }
+      ]
+     },
+     {
+      "contents": "abcdef",
+      "matches": [
+       {
+        "from": 1,
+        "to": 3,
+        "replacements": [
+         "X"
+        ]
+       },
+       {
+        "from": 4,
+        "to": 5,
+        "replacements": [
+         "QQQ"
+        ]
+       },
+       {
+        "from": 5,
+        "to": 6,
+        "replacements": [
+         "R"
+        ]
+       }
+      ]
+     },
+     {
+      "contents": "abcdef",
+      "matches": [
+       {
+        "from": 0,
+        "to": 6,
+        "replacements": [
+         "one",
+         "two",
+         "three"
+        ]
+       }
+      ]
+     },
+     {
+      "contents": "abcdef",
+      "matches": [
+       {
+        "from": 0,
+        "to": 6,
+        "replacements": []
+       }
+      ]
+     },
+     {
+      "contents": "abcdef",
+      "matches": []
+     },
+     {
+      "contents": "",
+      "matches": []
+     },
+     {
+      "contents": "",
+      "matches": [
+       {
+        "from": 0,
+        "to": 0,
+        "replacements": [
+         "x"
+        ]
+       }
+      ]
+     },
+     {
+      "contents": "abc",
+      "matches": [
+       {
+        "from": 1,
+        "to": 1,
+        "replacements": [
+         "X"
+        ]
+       }
+      ]
+     },
+     {
+      "contents": "abc",
+      "matches": [
+       {
+        "from": 0,
+        "to": 3,
+        "replacements": [
+         ""
+        ]
+       }
+      ]
+     },
+     {
+      "contents": "abc",
+      "matches": [
+       {
+        "from": 0,
+        "to": 1,
+        "replacements": [
+         ""
+        ]
+       },
+       {
+        "from": 1,
+        "to": 2,
+        "replacements": [
+         ""
+        ]
+       },
+       {
+        "from": 2,
+        "to": 3,
+        "replacements": [
+         ""
+        ]
+       }
+      ]
+     },
+     {
+      "contents": "abc",
+      "matches": [
+       {
+        "from": 2,
+        "to": 1,
+        "replacements": [
+         "x"
+        ]
+       }
+      ]
+     },
+     {
+      "contents": "abc",
+      "matches": [
+       {
+        "from": 0,
+        "to": 5,
+        "replacements": [
+         "x"
+        ]
+       }
+      ]
+     },
+     {
+      "contents": "abc",
+      "matches": [
+       {
+        "from": 5,
+        "to": 6,
+        "replacements": [
+         "x"
+        ]
+       }
+      ]
+     },
+     {
+      "contents": "abc",
+      "matches": [
+       {
+        "from": -1,
+        "to": 1,
+        "replacements": [
+         "x"
+        ]
+       }
+      ]
+     },
+     {
+      "contents": "abc",
+      "matches": [
+       {
+        "from": 0,
+        "to": 1,
+        "replacements": [
+         "x"
+        ]
+       },
+       {
+        "from": 0,
+        "to": 1,
+        "replacements": [
+         "y"
+        ]
+       }
+      ]
+     },
+     {
+      "contents": "abc",
+      "matches": [
+       {
+        "from": 0,
+        "to": 2,
+        "replacements": [
+         "x"
+        ]
+       },
+       {
+        "from": 1,
+        "to": 3,
+        "replacements": [
+         "y"
+        ]
+       }
+      ]
+     },
+     {
+      "contents": "abc abc",
+      "matches": [
+       {
+        "from": 0,
+        "to": 3,
+        "replacements": [
+         "abcd"
+        ]
+       },
+       {
+        "from": 4,
+        "to": 7,
+        "replacements": [
+         "xy"
+        ]
+       }
+      ]
+     },
+     {
+      "contents": "aaa",
+      "matches": [
+       {
+        "from": 0,
+        "to": 1,
+        "replacements": [
+         "bb"
+        ]
+       },
+       {
+        "from": 1,
+        "to": 2,
+        "replacements": [
+         "bb"
+        ]
+       },
+       {
+        "from": 2,
+        "to": 3,
+        "replacements": [
+         "bb"
+        ]
+       }
+      ]
+     },
+     {
+      "contents": "Größe überprüfen 😀 ok",
+      "matches": [
+       {
+        "from": 0,
+        "to": 5,
+        "replacements": [
+         "Grösse"
+        ]
+       },
+       {
+        "from": 6,
+        "to": 16,
+        "replacements": [
+         "prüfen"
+        ]
+       },
+       {
+        "from": 17,
+        "to": 19,
+        "replacements": [
+         "X"
+        ]
+       }
+      ]
+     },
+     {
+      "contents": "a😀b",
+      "matches": [
+       {
+        "from": 1,
+        "to": 3,
+        "replacements": [
+         "x"
+        ]
+       }
+      ]
+     },
+     {
+      "contents": "a😀b",
+      "matches": [
+       {
+        "from": 1,
+        "to": 2,
+        "replacements": [
+         "x"
+        ]
+       }
+      ]
+     },
+     {
+      "contents": "line1\nline2\r\nline3",
+      "matches": [
+       {
+        "from": 5,
+        "to": 6,
+        "replacements": [
+         " "
+        ]
+       },
+       {
+        "from": 11,
+        "to": 13,
+        "replacements": [
+         " "
+        ]
+       }
+      ]
+     },
+     {
+      "contents": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "matches": [
+       {
+        "from": 0,
+        "to": 2500,
+        "replacements": [
+         "y"
+        ]
+       },
+       {
+        "from": 2500,
+        "to": 5000,
+        "replacements": [
+         "z"
+        ]
+       }
+      ]
+     },
+     {
+      "contents": "abcdef",
+      "matches": [
+       {
+        "from": 2,
+        "to": 4,
+        "replacements": [
+         "X"
+        ]
+       },
+       {
+        "from": 0,
+        "to": 1,
+        "replacements": [
+         "Y"
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "op": "tools-correct",
+   "args": {
+    "lang": "en-US",
+    "texts": [
+     "This is an test.",
+     "He go to school every day.",
+     "I have a apple and a orange.",
+     "Their is a problem.",
+     "This sentence is fine.",
+     "",
+     " ",
+     "it is lower case. and another one",
+     "Hello  world , how are you ?",
+     "i am here",
+     "The the cat sat on on the mat.",
+     "He said ,\"hello\".",
+     "A sentence with a mispeled word.",
+     "Two  spaces.",
+     "Wrong( brackets ).",
+     "It's 5 o'clock .",
+     "We was there.",
+     "She dont know.",
+     "Alot of people.",
+     "Where is you?",
+     "This is correct. This are not."
+    ]
+   }
+  },
+  {
+   "op": "tools-correct",
+   "args": {
+    "lang": "de-DE",
+    "texts": [
+     "Das ist ein Test .",
+     "Ich habe ein Haus,das ist groß.",
+     "Dies ist ein ein Fehler.",
+     "das ist klein geschrieben.",
+     "Ein Satz  mit Leerzeichen.",
+     "Er sagte ,dass es geht.",
+     "Wir sind zu hause.",
+     "Das ist richtig.",
+     "",
+     "Größe überprüfen äöü ß.",
+     "Ich bin müde,aber glücklich !",
+     "Der Der Hund."
+    ]
+   }
+  },
+  {
+   "op": "tools-correct",
+   "args": {
+    "lang": "en-US",
+    "ids": [
+     "UPPERCASE_SENTENCE_START",
+     "COMMA_PARENTHESIS_WHITESPACE",
+     "WHITESPACE_RULE",
+     "EN_A_VS_AN"
+    ],
+    "texts": [
+     "this is lower. and this. a apple",
+     "Hello ,world",
+     "Two  spaces and a apple.",
+     "a unique item and an hour",
+     "ok"
+    ]
+   }
+  },
+  {
+   "op": "tools-correct",
+   "args": {
+    "lang": "fr",
+    "ids": [
+     "UPPERCASE_SENTENCE_START",
+     "FRENCH_WHITESPACE"
+    ],
+    "texts": [
+     "bonjour. comment ça va?",
+     "Quoi ?",
+     "Quoi?"
+    ]
+   }
+  },
+  {
+   "op": "tools-correct",
+   "args": {
+    "lang": "en-US",
+    "ids": [
+     "UPPERCASE_SENTENCE_START"
+    ],
+    "texts": [
+     "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx. y",
+     "a. b. c. d. e. f."
+    ]
+   }
+  }
+ ]
+}

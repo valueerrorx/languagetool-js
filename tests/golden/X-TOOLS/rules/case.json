@@ -1,0 +1,183 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "CORE-0266 DemoRule, FakeRule, SpecificIdRule",
+ "normalize": [
+  "paths"
+ ],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "tools-rules",
+   "args": {
+    "what": "demo",
+    "lang": "en",
+    "texts": [
+     "This is a demo.",
+     "demo",
+     "Demo demo demo",
+     "",
+     "Nothing special here.",
+     "He gave a demo. Then a second sentence.",
+     "Größe über demo 😀."
+    ]
+   }
+  },
+  {
+   "op": "tools-rules",
+   "args": {
+    "what": "demo",
+    "lang": "de",
+    "texts": [
+     "Das ist ein demo.",
+     "Wir gehen nach Hause.",
+     "Der Hunde laufen."
+    ]
+   }
+  },
+  {
+   "op": "tools-rules",
+   "args": {
+    "what": "demo",
+    "lang": "fr",
+    "texts": [
+     "Une démo demo."
+    ]
+   }
+  },
+  {
+   "op": "tools-rules",
+   "args": {
+    "what": "demo",
+    "lang": "en",
+    "texts": [
+     "x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x demo"
+    ]
+   }
+  },
+  {
+   "op": "tools-rules",
+   "args": {
+    "what": "fake",
+    "ids": [
+     null,
+     "MY_ID",
+     "",
+     "Größe"
+    ]
+   }
+  },
+  {
+   "op": "tools-rules",
+   "args": {
+    "what": "fake",
+    "ids": [
+     "TAGGED"
+    ],
+    "tag": "picky"
+   }
+  },
+  {
+   "op": "tools-rules",
+   "args": {
+    "what": "fake",
+    "ids": [
+     "TAGGED"
+    ],
+    "tag": "nosuchtag"
+   }
+  },
+  {
+   "op": "tools-rules",
+   "args": {
+    "what": "specific",
+    "specs": [
+     {
+      "id": "A",
+      "desc": "Desc A",
+      "tags": []
+     },
+     {
+      "id": "A2",
+      "desc": "Desc A2",
+      "tags": [],
+      "category": "CAT_ID",
+      "categoryName": "Cat name"
+     },
+     {
+      "id": "B",
+      "desc": "Desc B",
+      "tags": [
+       "picky"
+      ],
+      "premium": true,
+      "category": "CAT_ID",
+      "categoryName": "Cat name"
+     },
+     {
+      "id": "C",
+      "desc": "Desc C",
+      "tags": [
+       "picky",
+       "academic"
+      ],
+      "category": "CAT_ID",
+      "categoryName": "Cat name",
+      "issueType": "misspelling"
+     },
+     {
+      "id": "D",
+      "desc": "Desc D",
+      "tags": [],
+      "issueType": "nonsense-type",
+      "category": "CAT_ID",
+      "categoryName": "Cat name"
+     },
+     {
+      "id": "E",
+      "desc": "Größe",
+      "tags": [],
+      "category": "STYLE",
+      "categoryName": "Stil"
+     },
+     {
+      "desc": "no id",
+      "tags": []
+     },
+     {
+      "id": "F",
+      "tags": [],
+      "category": "CAT_ID",
+      "categoryName": "Cat name"
+     },
+     {
+      "id": "",
+      "desc": "",
+      "tags": [],
+      "category": "CAT_ID",
+      "categoryName": "Cat name"
+     },
+     {
+      "id": "G",
+      "desc": "bad tag",
+      "tags": [
+       "nosuch"
+      ],
+      "category": "CAT_ID",
+      "categoryName": "Cat name"
+     },
+     {
+      "id": "H",
+      "desc": "nullcat",
+      "tags": [
+       "picky"
+      ],
+      "category": "CAT_ID",
+      "categoryName": "Cat name",
+      "issueType": "style"
+     }
+    ]
+   }
+  }
+ ]
+}

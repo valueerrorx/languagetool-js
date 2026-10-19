@@ -1,0 +1,316 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "CORE-0331 DiffsAsMatches / PseudoMatch",
+ "normalize": [
+  "paths"
+ ],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "tools-diffs",
+   "args": {
+    "pairs": [
+     {
+      "orig": "This is a \"thing\". This is.",
+      "rev": "This is a \"thing.\" This is."
+     },
+     {
+      "orig": "This are a sentence with too mistakes.",
+      "rev": "This is a sentence with two mistakes.",
+      "joins": [
+       [
+        0,
+        4
+       ],
+       [
+        5,
+        8
+       ],
+       [
+        25,
+        28
+       ],
+       [
+        0,
+        100
+       ],
+       [
+        9,
+        10
+       ],
+       [
+        -1,
+        0
+       ]
+      ]
+     },
+     {
+      "orig": "I am going to er remove one word.",
+      "rev": "I am going to remove one word."
+     },
+     {
+      "orig": "And I am going to remove one word.",
+      "rev": "I am going to remove one word."
+     },
+     {
+      "orig": "I am going to add word.",
+      "rev": "I am going to add one word."
+     },
+     {
+      "orig": "a word at the start.",
+      "rev": "Add a word at the start."
+     },
+     {
+      "orig": "Add word at position 1.",
+      "rev": "Add a word at position 1."
+     },
+     {
+      "orig": "Esta serealiza cada semana.",
+      "rev": "Esta se realiza cada semana."
+     },
+     {
+      "orig": "Una cosa,una altra.",
+      "rev": "Una cosa, una altra."
+     },
+     {
+      "orig": "Que el año nuevo empezó.",
+      "rev": "El año nuevo empezó."
+     },
+     {
+      "orig": "¡Holà ! Estamos aquí.",
+      "rev": "¡Hola! Estamos aquí."
+     },
+     {
+      "orig": "I truely reserve.",
+      "rev": "I truly deserve.",
+      "joins": [
+       [
+        0,
+        17
+       ],
+       [
+        2,
+        8
+       ]
+      ]
+     },
+     {
+      "orig": "}Describes how plants are important",
+      "rev": "It describes how plants are important"
+     },
+     {
+      "orig": "(Calle)Hace falta tener en cuenta una economía estable, un trabajo bueno.",
+      "rev": "Hace falta tener en cuenta una economía estable, un trabajo bueno."
+     },
+     {
+      "orig": "(Calle)Hace falta tener en cuenta una economía estable, un trabajo bueno.",
+      "rev": "(Calle) Hace falta tener en cuenta una economía estable, un trabajo bueno."
+     },
+     {
+      "orig": "Joan Caprí fou un actor humorista i monologuista català.",
+      "rev": "Joan Caprí fou un actor, humorista i monologuista català."
+     },
+     {
+      "orig": "Ei he vist el teu amic!",
+      "rev": "Ei, he vist el teu amic!"
+     },
+     {
+      "orig": "Va arribar tard a l'examen, perdent així després tota oportunitat d'aprovar l'assignatura.",
+      "rev": "Va arribar tard a l'examen i, per això, va perdre tota oportunitat d'aprovar l'assignatura.",
+      "joins": [
+       [
+        0,
+        200
+       ],
+       [
+        20,
+        60
+       ]
+      ]
+     },
+     {
+      "orig": "",
+      "rev": ""
+     },
+     {
+      "orig": "",
+      "rev": "Added."
+     },
+     {
+      "orig": "Removed.",
+      "rev": ""
+     },
+     {
+      "orig": "Same text.",
+      "rev": "Same text."
+     },
+     {
+      "orig": "a",
+      "rev": "b"
+     },
+     {
+      "orig": "a b",
+      "rev": "a  b"
+     },
+     {
+      "orig": "don’t go",
+      "rev": "don't go"
+     },
+     {
+      "orig": "don't go",
+      "rev": "don’t go"
+     },
+     {
+      "orig": "It's fine",
+      "rev": "It’s fine"
+     },
+     {
+      "orig": "It's fine",
+      "rev": "It’s good"
+     },
+     {
+      "orig": "Größe überprüfen",
+      "rev": "Grösse überprüfen"
+     },
+     {
+      "orig": "Emoji 😀 here",
+      "rev": "Emoji 😁 here"
+     },
+     {
+      "orig": "one two three four five six",
+      "rev": "one 2 three 4 five 6"
+     },
+     {
+      "orig": "one two three four five six",
+      "rev": "one two3 four five six"
+     },
+     {
+      "orig": "a,b,c,d",
+      "rev": "a, b, c, d"
+     },
+     {
+      "orig": "a ,b",
+      "rev": "a, b"
+     },
+     {
+      "orig": "Hello world",
+      "rev": "Hello, world!"
+     },
+     {
+      "orig": "Hello world.",
+      "rev": "Hello world"
+     },
+     {
+      "orig": "line1\nline2",
+      "rev": "line1 line2"
+     },
+     {
+      "orig": "tab\tsep",
+      "rev": "tab sep"
+     },
+     {
+      "orig": "  leading",
+      "rev": "leading"
+     },
+     {
+      "orig": "trailing  ",
+      "rev": "trailing"
+     },
+     {
+      "orig": "x x x x x",
+      "rev": "x x x x"
+     },
+     {
+      "orig": "a b c",
+      "rev": "c b a"
+     },
+     {
+      "orig": "The quick brown fox jumps over the lazy dog.",
+      "rev": "The quick brown cat jumps over the lazy dogs."
+     },
+     {
+      "orig": "This is is a test",
+      "rev": "This is a test"
+     },
+     {
+      "orig": "Ths is a tst",
+      "rev": "This is a test",
+      "joins": [
+       [
+        0,
+        3
+       ],
+       [
+        10,
+        13
+       ]
+      ]
+     },
+     {
+      "orig": "la casa blanca",
+      "rev": "la casa blanca grande"
+     },
+     {
+      "orig": "Wrong wrong wrong",
+      "rev": "Right right right"
+     },
+     {
+      "orig": "a-b",
+      "rev": "a – b"
+     },
+     {
+      "orig": "1+1=2",
+      "rev": "1 + 1 = 2"
+     },
+     {
+      "orig": "...",
+      "rev": "…"
+     },
+     {
+      "orig": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx y",
+      "rev": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx z"
+     },
+     {
+      "orig": "Eins zwei drei vier fünf sechs sieben acht neun zehn",
+      "rev": "Eins zwei drei vier fünf sechs sieben acht neun"
+     },
+     {
+      "orig": "Eins zwei drei vier fünf sechs sieben acht neun zehn",
+      "rev": "Null Eins zwei drei vier fünf sechs sieben acht neun zehn elf"
+     },
+     {
+      "orig": "A B C D E F G H",
+      "rev": "A X C Y E Z G W",
+      "joins": [
+       [
+        0,
+        15
+       ],
+       [
+        2,
+        4
+       ]
+      ]
+     },
+     {
+      "orig": "A B C D E F G H",
+      "rev": "A X Y C D E F G"
+     },
+     {
+      "orig": "Hello (world)",
+      "rev": "Hello(world)"
+     },
+     {
+      "orig": "a. b",
+      "rev": "a . b"
+     },
+     {
+      "orig": "a b",
+      "rev": "a b"
+     }
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,53 @@
+{"id":1,"ok":true,"result":{"firstLine":"java.lang.IllegalStateException: boom","hasAtLines":true,"hasCausedBy":false,"endsWithNewline":true}}
+{"id":2,"ok":true,"result":{"firstLine":"java.lang.IllegalStateException: ","hasAtLines":true,"hasCausedBy":false,"endsWithNewline":true}}
+{"id":3,"ok":true,"result":{"firstLine":"java.lang.RuntimeException: Gr\u00F6\u00DFe \uD83D\uDE00","hasAtLines":true,"hasCausedBy":true,"endsWithNewline":true}}
+{"id":4,"ok":true,"result":{"length":499731,"sha256":"9eba8dc5041577b83faa2097c2b4658bef6104edaf3000600f7755f1d1b7a92e"}}
+{"id":5,"ok":true,"result":{"selfHashLength":64,"length":499731,"sha256":"9eba8dc5041577b83faa2097c2b4658bef6104edaf3000600f7755f1d1b7a92e"}}
+{"id":6,"ok":true,"result":{"selfHashLength":64,"error":{"error":{"class":"java.io.IOException","message":"Checksum mismatch for the file '/org/languagetool/rules/false-friends.xml': expected 9EBA8DC5041577B83FAA2097C2B4658BEF6104EDAF3000600F7755F1D1B7A92E, got 9eba8dc5041577b83faa2097c2b4658bef6104edaf3000600f7755f1d1b7a92e","causes":[]}}}}
+{"id":7,"ok":true,"result":{"error":{"error":{"class":"java.io.IOException","message":"Checksum mismatch for the file '/org/languagetool/rules/false-friends.xml': expected deadbeef, got 9eba8dc5041577b83faa2097c2b4658bef6104edaf3000600f7755f1d1b7a92e","causes":[]}}}}
+{"id":8,"ok":true,"result":{"error":{"error":{"class":"java.io.IOException","message":"Checksum mismatch for the file '/org/languagetool/rules/false-friends.xml': expected , got 9eba8dc5041577b83faa2097c2b4658bef6104edaf3000600f7755f1d1b7a92e","causes":[]}}}}
+{"id":9,"ok":true,"result":{"length":2044,"sha256":"3294509580a1b26701e5c7663237124bfdb9034dd710febc30f13b4b8053797b"}}
+{"id":10,"ok":true,"result":{"selfHashLength":64,"length":8278883,"sha256":"525966679e4dac23d70b5f7c09092b67b9aa20fcfbe70327b858e3fd06b63974"}}
+{"id":11,"ok":true,"result":{"error":{"error":{"class":"java.io.IOException","message":"Could not load file from classpath: '/org/languagetool/nonexistent.txt'","causes":[]}}}}
+{"id":12,"ok":true,"result":{"error":{"error":{"class":"java.io.IOException","message":"Could not load file from classpath: '/org/languagetool/nonexistent.txt'","causes":[]}}}}
+{"id":13,"ok":true,"result":{"length":0,"sha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"}}
+{"id":14,"ok":true,"result":{"error":{"error":{"class":"java.io.IOException","message":"Could not load file from classpath: 'rules/false-friends.xml'","causes":[]}}}}
+{"id":15,"ok":true,"result":{"length":14268,"sha256":"ae2951dc5a2c13819f3761133df2072095fa64b0be2f3eed88e4a12943128414"}}
+{"id":16,"ok":true,"result":{"selfHashLength":64,"length":16446,"sha256":"ade1be0b2454f540ed43d5b526adce940a7d9c9cdfa9f36abdf068dea902d51b"}}
+{"id":17,"ok":true,"result":{"url":"https://languagetool.org/","protocol":"https","host":"languagetool.org","path":"/"}}
+{"id":18,"ok":true,"result":{"url":"http://example.com:8081/a/b?c=d#e","protocol":"http","host":"example.com","path":"/a/b"}}
+{"id":19,"ok":true,"result":{"url":"ftp://host/file","protocol":"ftp","host":"host","path":"/file"}}
+{"id":20,"ok":true,"result":{"url":"file:/tmp/x","protocol":"file","host":"","path":"/tmp/x"}}
+{"id":21,"ok":true,"result":{"url":"jar:file:/a.jar!/b","protocol":"jar","host":"","path":"file:/a.jar!/b"}}
+{"id":22,"ok":true,"result":{"error":{"error":{"class":"java.lang.RuntimeException","message":"java.net.MalformedURLException: no protocol: not a url","causes":[{"class":"java.net.MalformedURLException","message":"no protocol: not a url"}]}}}}
+{"id":23,"ok":true,"result":{"error":{"error":{"class":"java.lang.RuntimeException","message":"java.net.MalformedURLException: no protocol: ","causes":[{"class":"java.net.MalformedURLException","message":"no protocol: "}]}}}}
+{"id":24,"ok":true,"result":{"url":"http:","protocol":"http","host":"","path":""}}
+{"id":25,"ok":true,"result":{"error":{"error":{"class":"java.lang.RuntimeException","message":"java.net.MalformedURLException: no protocol: ://x","causes":[{"class":"java.net.MalformedURLException","message":"no protocol: ://x"}]}}}}
+{"id":26,"ok":true,"result":{"url":"mailto:a@b.c","protocol":"mailto","host":"","path":"a@b.c"}}
+{"id":27,"ok":true,"result":{"url":"https://languagetool.org/insights/post/spelling-capital-letters/","protocol":"https","host":"languagetool.org","path":"/insights/post/spelling-capital-letters/"}}
+{"id":28,"ok":true,"result":{"url":"http://UPPER.CASE/Path","protocol":"http","host":"UPPER.CASE","path":"/Path"}}
+{"id":29,"ok":true,"result":{"url":"http://ex\u00E4mple.de/\u00F6","protocol":"http","host":"ex\u00E4mple.de","path":"/\u00F6"}}
+{"id":30,"ok":true,"result":{"url":"http://a b.c/","protocol":"http","host":"a b.c","path":"/"}}
+{"id":31,"ok":true,"result":{"url":"https://user:pw@host/p","protocol":"https","host":"host","path":"/p"}}
+{"id":32,"ok":true,"result":{"sentences":["First sentence. ","Second sentence.\n\n","Third after blank. ","Fourth one.\n","Fifth after single break. ","Sixth.\r\n\r\n","Seventh crlf. ","Eighth.\n","\r\n\rNinth. ","Tenth"],"singleLineBreaksMarksPara":false,"lo":0,"results":[false,true,false,false,false,true,false,true,false,true,true,true]}}
+{"id":33,"ok":true,"result":{"sentences":["First sentence. ","Second sentence.\n\n","Third after blank. ","Fourth one.\n","Fifth after single break. ","Sixth.\r\n\r\n","Seventh crlf. ","Eighth.\n\r\n","\rNinth. ","Tenth"],"singleLineBreaksMarksPara":false,"lo":0,"results":[false,true,false,false,false,true,false,false,false,true,true,true]}}
+{"id":34,"ok":true,"result":{"sentences":["First sentence. ","Second sentence.\n\n","Third after blank. ","Fourth one.\n","Fifth after single break. ","Sixth.\r\n\r\n","Seventh crlf. ","Eighth.\n\r\n","\rNinth. ","Tenth"],"singleLineBreaksMarksPara":false,"lo":0,"results":[false,true,false,false,false,true,false,false,false,true,true,true]}}
+{"id":35,"ok":true,"result":{"sentences":["First sentence. ","Second sentence.\n","\nThird after blank. ","Fourth one.\n","Fifth after single break. ","Sixth.\r","\n\r\n","Seventh crlf. ","Eighth.\n","\r\n\rNinth. ","Tenth"],"singleLineBreaksMarksPara":false,"lo":0,"results":[false,true,false,false,false,true,false,false,true,false,true,true,true]}}
+{"id":36,"ok":true,"result":{"sentences":["First sentence. ","Second sentence.\n\n","Third after blank. ","Fourth one.\n","Fifth after single break. ","Sixth.\r\n\r\n","Seventh crlf. ","Eighth.\n\r\n","\rNinth. ","Tenth"],"singleLineBreaksMarksPara":false,"lo":0,"results":[false,true,false,false,false,true,false,false,false,true,true,true]}}
+{"id":37,"ok":true,"result":{"sentences":["\u3053\u308C\u306F\u6587\u3067\u3059\u3002","\u6B21\u306E\u6587\u3067\u3059\u3002\n\n","\u4E09\u756A\u76EE\u3002"],"singleLineBreaksMarksPara":false,"lo":0,"results":[false,false,true,true,true]}}
+{"id":38,"ok":true,"result":{"sentences":["\u8FD9\u662F\u4E00\u4E2A\u53E5\u5B50\u3002","\u8FD9\u662F\u53E6\u4E00\u4E2A\u3002","\n\n","\u7B2C\u4E09\u4E2A\u3002"],"singleLineBreaksMarksPara":false,"lo":0,"results":[false,true,true,true,true,true]}}
+{"id":39,"ok":true,"result":{"sentences":[],"singleLineBreaksMarksPara":false,"lo":0,"results":[true,true]}}
+{"id":40,"ok":true,"result":{"sentences":["Single."],"singleLineBreaksMarksPara":false,"lo":0,"results":[true,true,true]}}
+{"id":41,"ok":true,"result":{"sentences":["A.\n","B.","C.\n\n","D.","E.\r\n\r\n","F.","G.\n\r\n\r","H.","I.\n\r","J.","K.","\nL.","M.","\r\nN.","O."," \nP."],"singleLineBreaksMarksPara":false,"lo":0,"results":[false,false,true,false,true,false,true,false,false,false,true,false,true,false,false,true,true,true]}}
+{"id":42,"ok":true,"result":{"sentences":["A.\n","B.","C.\n\n","D.","E.\r\n\r\n","F.","G.\n\r\n\r","H.","I.\n\r","J.","K.","\nL.","M.","\r\nN.","O."],"singleLineBreaksMarksPara":false,"lo":0,"results":[false,false,true,false,true,false,true,false,false,false,true,false,true,false,true,true,true]}}
+{"id":43,"ok":true,"result":{"sentences":["A.\n","B.","C."],"singleLineBreaksMarksPara":false,"error":{"error":{"class":"java.lang.IndexOutOfBoundsException","message":"Index -3 out of bounds for length 3","causes":[]}}}}
+{"id":44,"ok":true,"result":{"ruleFound":true,"error":{"error":{"class":"java.lang.RuntimeException","message":"Not implemented for a text-level rule","causes":[]}}}}
+{"id":45,"ok":true,"result":{"ruleFound":true,"count":0}}
+{"id":46,"ok":true,"result":{"ruleFound":true,"count":3}}
+{"id":47,"ok":true,"result":{"ruleFound":true,"count":1}}
+{"id":48,"ok":true,"result":{"ruleFound":false,"error":{"error":{"class":"java.lang.NullPointerException","message":"Cannot invoke \"org.languagetool.rules.Rule.match(org.languagetool.AnalyzedSentence)\" because \"rule\" is null","causes":[]}}}}
+{"id":49,"ok":true,"result":{"isExternSpeller":false,"services":null,"afterSetNull":false}}
+{"id":50,"ok":true,"result":{"text":"Word repetition (e.g. will will)"}}
+{"id":51,"ok":true,"result":{"text":"Wortwiederholung (z. B. als als)"}}
+{"id":52,"ok":true,"result":{"error":{"error":{"class":"java.util.MissingResourceException","message":"Can't find resource for bundle java.util.PropertyResourceBundle, key no_such_key_xyz","causes":[]}}}}
+{"id":53,"ok":true,"result":{"text":"Use of whitespace before comma and before/after parentheses"}}

@@ -1,0 +1,462 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "CORE-0328 Tools misc",
+ "normalize": [
+  "paths"
+ ],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "stacktrace",
+    "message": "boom"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "stacktrace",
+    "message": ""
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "stacktrace",
+    "message": "Größe 😀",
+    "cause": "inner"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "getStream",
+    "path": "/org/languagetool/rules/false-friends.xml"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "getStream",
+    "path": "/org/languagetool/rules/false-friends.xml",
+    "hash": "SELF"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "getStream",
+    "path": "/org/languagetool/rules/false-friends.xml",
+    "hash": "SELF",
+    "upper": true
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "getStream",
+    "path": "/org/languagetool/rules/false-friends.xml",
+    "hash": "deadbeef"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "getStream",
+    "path": "/org/languagetool/rules/false-friends.xml",
+    "hash": ""
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "getStream",
+    "path": "/org/languagetool/rules/false-friends.dtd"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "getStream",
+    "path": "/org/languagetool/rules/en/grammar.xml",
+    "hash": "SELF"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "getStream",
+    "path": "/org/languagetool/nonexistent.txt"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "getStream",
+    "path": "/org/languagetool/nonexistent.txt",
+    "hash": "abc"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "getStream",
+    "path": ""
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "getStream",
+    "path": "rules/false-friends.xml"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "getStream",
+    "path": "/org/languagetool/MessagesBundle.properties"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "getStream",
+    "path": "/org/languagetool/MessagesBundle_de.properties",
+    "hash": "SELF"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "getUrl",
+    "url": "https://languagetool.org/"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "getUrl",
+    "url": "http://example.com:8081/a/b?c=d#e"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "getUrl",
+    "url": "ftp://host/file"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "getUrl",
+    "url": "file:///tmp/x"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "getUrl",
+    "url": "jar:file:/a.jar!/b"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "getUrl",
+    "url": "not a url"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "getUrl",
+    "url": ""
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "getUrl",
+    "url": "http://"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "getUrl",
+    "url": "://x"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "getUrl",
+    "url": "mailto:a@b.c"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "getUrl",
+    "url": "https://languagetool.org/insights/post/spelling-capital-letters/"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "getUrl",
+    "url": "HTTP://UPPER.CASE/Path"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "getUrl",
+    "url": "http://exämple.de/ö"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "getUrl",
+    "url": "http://a b.c/"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "getUrl",
+    "url": "https://user:pw@host/p"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "paragraphEnd",
+    "lang": "en",
+    "text": "First sentence. Second sentence.\n\nThird after blank. Fourth one.\nFifth after single break. Sixth.\r\n\r\nSeventh crlf. Eighth.\n\r\n\rNinth. Tenth"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "paragraphEnd",
+    "lang": "de",
+    "text": "First sentence. Second sentence.\n\nThird after blank. Fourth one.\nFifth after single break. Sixth.\r\n\r\nSeventh crlf. Eighth.\n\r\n\rNinth. Tenth"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "paragraphEnd",
+    "lang": "fr",
+    "text": "First sentence. Second sentence.\n\nThird after blank. Fourth one.\nFifth after single break. Sixth.\r\n\r\nSeventh crlf. Eighth.\n\r\n\rNinth. Tenth"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "paragraphEnd",
+    "lang": "es",
+    "text": "First sentence. Second sentence.\n\nThird after blank. Fourth one.\nFifth after single break. Sixth.\r\n\r\nSeventh crlf. Eighth.\n\r\n\rNinth. Tenth"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "paragraphEnd",
+    "lang": "uk",
+    "text": "First sentence. Second sentence.\n\nThird after blank. Fourth one.\nFifth after single break. Sixth.\r\n\r\nSeventh crlf. Eighth.\n\r\n\rNinth. Tenth"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "paragraphEnd",
+    "lang": "ja",
+    "text": "これは文です。次の文です。\n\n三番目。"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "paragraphEnd",
+    "lang": "zh",
+    "text": "这是一个句子。这是另一个。\n\n第三个。"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "paragraphEnd",
+    "lang": "en",
+    "text": ""
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "paragraphEnd",
+    "lang": "en",
+    "text": "Single."
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "paragraphEnd",
+    "lang": "en",
+    "sentences": [
+     "A.\n",
+     "B.",
+     "C.\n\n",
+     "D.",
+     "E.\r\n\r\n",
+     "F.",
+     "G.\n\r\n\r",
+     "H.",
+     "I.\n\r",
+     "J.",
+     "K.",
+     "\nL.",
+     "M.",
+     "\r\nN.",
+     "O.",
+     " \nP."
+    ]
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "paragraphEnd",
+    "lang": "ru",
+    "sentences": [
+     "A.\n",
+     "B.",
+     "C.\n\n",
+     "D.",
+     "E.\r\n\r\n",
+     "F.",
+     "G.\n\r\n\r",
+     "H.",
+     "I.\n\r",
+     "J.",
+     "K.",
+     "\nL.",
+     "M.",
+     "\r\nN.",
+     "O."
+    ]
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "paragraphEnd",
+    "lang": "en",
+    "sentences": [
+     "A.\n",
+     "B.",
+     "C."
+    ],
+    "lo": -3,
+    "hi": 8
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "profile",
+    "lang": "en",
+    "ruleId": "UPPERCASE_SENTENCE_START",
+    "text": "this. that. The other. and more."
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "profile",
+    "lang": "en",
+    "ruleId": "UPPERCASE_SENTENCE_START",
+    "text": ""
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "profile",
+    "lang": "en",
+    "ruleId": "EN_A_VS_AN",
+    "text": "a apple. an orange. a pear.\nA hour. And an dog."
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "profile",
+    "lang": "de",
+    "ruleId": "DE_DOUBLE_PUNCTUATION",
+    "text": "Ja.. Nein!! Doch."
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "profile",
+    "lang": "en",
+    "ruleId": "NO_SUCH_RULE",
+    "text": "Hello."
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "linguServices"
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "i18n",
+    "lang": "en",
+    "key": "desc_repetition",
+    "args": []
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "i18n",
+    "lang": "de",
+    "key": "desc_repetition",
+    "args": []
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "i18n",
+    "lang": "en",
+    "key": "no_such_key_xyz",
+    "args": []
+   }
+  },
+  {
+   "op": "tools-misc",
+   "args": {
+    "fn": "i18n",
+    "lang": "en",
+    "key": "desc_comma_whitespace",
+    "args": [
+     "a",
+     2
+    ]
+   }
+  }
+ ]
+}
