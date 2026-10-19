@@ -1,0 +1,238 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "CORE-0300 FalseFriendRuleLoader on small inline files",
+ "normalize": [
+  "paths"
+ ],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": "de",
+    "kind": "falsefriends",
+    "filename": "inline-ff.xml",
+    "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"GIFT\"><rule><pattern lang=\"en\"><token>gift</token></pattern><translation lang=\"de\">Gift</translation></rule><rule><pattern lang=\"de\"><token>Gift</token></pattern><translation lang=\"en\">gift</translation></rule></rulegroup></rules>\n",
+    "texts": [
+     "A gift for you.",
+     "Gifts for you.",
+     "Nothing."
+    ]
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": "de",
+    "kind": "falsefriends",
+    "filename": "inline-ff.xml",
+    "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"GIFT\"><rule><pattern lang=\"en\"><token>gift</token></pattern><translation lang=\"de\">Gift</translation></rule><rule><pattern lang=\"de\"><token>Gift</token></pattern><translation lang=\"en\">gift</translation></rule></rulegroup><rulegroup id=\"MULTI\"><rule><pattern lang=\"en\"><token>actual</token></pattern><translation lang=\"de\">aktuell; derzeit, gegenwärtig</translation></rule><rule><pattern lang=\"de\"><token>aktuell; derzeit, gegenwärtig</token></pattern><translation lang=\"en\">actual</translation></rule></rulegroup></rules>\n",
+    "texts": [
+     "The actual value.",
+     "a gift"
+    ]
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": "de",
+    "kind": "falsefriends",
+    "filename": "inline-ff.xml",
+    "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"UMLAUT\"><rule><pattern lang=\"en\"><token>house</token></pattern><translation lang=\"de\">Haus, Häuser, Größe</translation></rule><rule><pattern lang=\"de\"><token>Haus, Häuser, Größe</token></pattern><translation lang=\"en\">house</translation></rule></rulegroup></rules>\n",
+    "texts": [
+     "A house."
+    ]
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": "de",
+    "kind": "falsefriends",
+    "filename": "inline-ff.xml",
+    "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules></rules>\n"
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": "de",
+    "kind": "falsefriends",
+    "filename": "inline-ff.xml",
+    "content": ""
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": "de",
+    "kind": "falsefriends",
+    "filename": "inline-ff.xml",
+    "content": "garbage"
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": "de",
+    "kind": "falsefriends",
+    "filename": "inline-ff.xml",
+    "content": "<rules><rulegroup id=\"X\"><rule><pattern lang=\"en\"><token>a</token></pattern>"
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": "de",
+    "kind": "falsefriends",
+    "filename": "inline-ff.xml",
+    "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"NOTR\"><rule><pattern lang=\"en\"><token>a</token></pattern></rule></rulegroup></rules>\n"
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": "de",
+    "kind": "falsefriends",
+    "filename": "inline-ff.xml",
+    "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"NOPAT\"><rule><translation lang=\"de\">x</translation></rule></rulegroup></rules>\n"
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": "de",
+    "kind": "falsefriends",
+    "filename": "inline-ff.xml",
+    "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"ONLYDE\"><rule><pattern lang=\"de\"><token>Gift</token></pattern><translation lang=\"en\">poison</translation></rule></rulegroup></rules>\n",
+    "texts": [
+     "Gift."
+    ]
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": "de",
+    "kind": "falsefriends",
+    "filename": "inline-ff.xml",
+    "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"REGEXP\"><rule><pattern lang=\"en\"><token regexp=\"yes\">gift(s|ed)</token></pattern><translation lang=\"de\">Gabe</translation></rule></rulegroup></rules>\n",
+    "texts": [
+     "gifts",
+     "gifted",
+     "gift"
+    ]
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": "de",
+    "kind": "falsefriends",
+    "filename": "inline-ff.xml",
+    "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"INFL\"><rule><pattern lang=\"en\"><token inflected=\"yes\">give</token></pattern><translation lang=\"de\">geben</translation></rule></rulegroup></rules>\n",
+    "texts": [
+     "He gave it.",
+     "gives"
+    ]
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": "de",
+    "kind": "falsefriends",
+    "filename": "inline-ff.xml",
+    "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"PHR\"><rule><pattern lang=\"en\"><token>new</token><token>york</token></pattern><translation lang=\"de\">Neu York</translation></rule></rulegroup></rules>\n",
+    "texts": [
+     "In New York.",
+     "new"
+    ]
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": "de",
+    "kind": "falsefriends",
+    "filename": "inline-ff.xml",
+    "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"BADRX\"><rule><pattern lang=\"en\"><token regexp=\"yes\">(</token></pattern><translation lang=\"de\">x</translation></rule></rulegroup></rules>\n"
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": "de",
+    "kind": "falsefriends",
+    "filename": "inline-ff.xml",
+    "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"MSG\"><rule><pattern lang=\"en\"><token>gift</token></pattern><translation lang=\"de\">Gift</translation></rule><message>custom</message></rulegroup></rules>\n"
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": "de",
+    "kind": "falsefriends",
+    "filename": "inline-ff.xml",
+    "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"A1\"><rule><pattern lang=\"en\"><token>x</token></pattern><translation lang=\"de\">y</translation></rule><rule><pattern lang=\"de\"><token>y</token></pattern><translation lang=\"en\">x</translation></rule></rulegroup><rulegroup id=\"A1\"><rule><pattern lang=\"en\"><token>z</token></pattern><translation lang=\"de\">w</translation></rule><rule><pattern lang=\"de\"><token>w</token></pattern><translation lang=\"en\">z</translation></rule></rulegroup></rules>\n",
+    "texts": [
+     "x z"
+    ]
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": "de",
+    "kind": "falsefriends",
+    "filename": "inline-ff.xml",
+    "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"EX\"><rule><pattern lang=\"en\"><token>gift</token></pattern><translation lang=\"de\">Gift</translation><example type=\"incorrect\" correction=\"present\"><marker>gift</marker></example></rule></rulegroup></rules>\n"
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": "de",
+    "kind": "falsefriends",
+    "filename": "dir/sub/ff-nested.xml",
+    "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"GIFT\"><rule><pattern lang=\"en\"><token>gift</token></pattern><translation lang=\"de\">Gift</translation></rule><rule><pattern lang=\"de\"><token>Gift</token></pattern><translation lang=\"en\">gift</translation></rule></rulegroup></rules>\n",
+    "texts": [
+     "gift"
+    ]
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "de",
+    "motherTongue": "en",
+    "kind": "falsefriends",
+    "filename": "inline-ff.xml",
+    "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules><rulegroup id=\"GIFT\"><rule><pattern lang=\"en\"><token>gift</token></pattern><translation lang=\"de\">Gift</translation></rule><rule><pattern lang=\"de\"><token>Gift</token></pattern><translation lang=\"en\">gift</translation></rule></rulegroup></rules>\n",
+    "texts": [
+     "Das Gift."
+    ]
+   }
+  }
+ ]
+}

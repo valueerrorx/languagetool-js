@@ -1,0 +1,461 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "CORE-0291 DifferentPunctuationRule",
+ "normalize": [
+  "paths"
+ ],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "bitext-rule",
+   "args": {
+    "rule": "DifferentPunctuationRule",
+    "srcLang": "en",
+    "trgLang": "de",
+    "pairs": [
+     [
+      "Hello.",
+      "Hallo."
+     ],
+     [
+      "Hello.",
+      "Hallo!"
+     ],
+     [
+      "Hello!",
+      "Hallo."
+     ],
+     [
+      "Hello?",
+      "Hallo."
+     ],
+     [
+      "Hello?",
+      "Hallo?"
+     ],
+     [
+      "Hello",
+      "Hallo."
+     ],
+     [
+      "Hello.",
+      "Hallo"
+     ],
+     [
+      "Hello",
+      "Hallo"
+     ],
+     [
+      "Hello…",
+      "Hallo."
+     ],
+     [
+      "Hello.",
+      "Hallo…"
+     ],
+     [
+      "Hello,",
+      "Hallo."
+     ],
+     [
+      "Hello:",
+      "Hallo!"
+     ],
+     [
+      "Hello!",
+      "Hallo?"
+     ],
+     [
+      "Hello.",
+      "Hallo. "
+     ],
+     [
+      "Hello. ",
+      "Hallo."
+     ],
+     [
+      "Hello.",
+      "Hallo .."
+     ],
+     [
+      "Hello \"quoted.\"",
+      "Hallo \"zitiert\"."
+     ],
+     [
+      "Hello.",
+      "\"Hallo.\""
+     ],
+     [
+      "What?!",
+      "Was?!"
+     ],
+     [
+      "What?!",
+      "Was?"
+     ],
+     [
+      "What?",
+      "Was?!"
+     ],
+     [
+      "",
+      "Hallo."
+     ],
+     [
+      "Hello.",
+      "."
+     ],
+     [
+      ".",
+      "Hallo."
+     ],
+     [
+      ".",
+      "."
+     ],
+     [
+      "。",
+      "."
+     ],
+     [
+      "Hello。",
+      "Hallo."
+     ],
+     [
+      "Größe!",
+      "Größe."
+     ],
+     [
+      "Ein Satz. Noch einer!",
+      "One sentence. Another."
+     ],
+     [
+      "Dots...",
+      "Punkte."
+     ],
+     [
+      "Hello.\n",
+      "Hallo."
+     ],
+     [
+      "Hello.",
+      "Hallo.\n"
+     ]
+    ]
+   }
+  },
+  {
+   "op": "bitext-rule",
+   "args": {
+    "rule": "DifferentPunctuationRule",
+    "srcLang": "de",
+    "trgLang": "en",
+    "pairs": [
+     [
+      "Hallo.",
+      "Hello."
+     ],
+     [
+      "Hallo!",
+      "Hello."
+     ],
+     [
+      "Hallo.",
+      "Hello!"
+     ],
+     [
+      "Hallo.",
+      "Hello?"
+     ],
+     [
+      "Hallo?",
+      "Hello?"
+     ],
+     [
+      "Hallo.",
+      "Hello"
+     ],
+     [
+      "Hallo",
+      "Hello."
+     ],
+     [
+      "Hallo",
+      "Hello"
+     ],
+     [
+      "Hallo.",
+      "Hello…"
+     ],
+     [
+      "Hallo…",
+      "Hello."
+     ],
+     [
+      "Hallo.",
+      "Hello,"
+     ],
+     [
+      "Hallo!",
+      "Hello:"
+     ],
+     [
+      "Hallo?",
+      "Hello!"
+     ],
+     [
+      "Hallo. ",
+      "Hello."
+     ],
+     [
+      "Hallo.",
+      "Hello. "
+     ],
+     [
+      "Hallo ..",
+      "Hello."
+     ],
+     [
+      "Hallo \"zitiert\".",
+      "Hello \"quoted.\""
+     ],
+     [
+      "\"Hallo.\"",
+      "Hello."
+     ],
+     [
+      "Was?!",
+      "What?!"
+     ],
+     [
+      "Was?",
+      "What?!"
+     ],
+     [
+      "Was?!",
+      "What?"
+     ],
+     [
+      "Hallo.",
+      ""
+     ],
+     [
+      ".",
+      "Hello."
+     ],
+     [
+      "Hallo.",
+      "."
+     ],
+     [
+      ".",
+      "."
+     ],
+     [
+      ".",
+      "。"
+     ],
+     [
+      "Hallo.",
+      "Hello。"
+     ],
+     [
+      "Größe.",
+      "Größe!"
+     ],
+     [
+      "One sentence. Another.",
+      "Ein Satz. Noch einer!"
+     ],
+     [
+      "Punkte.",
+      "Dots..."
+     ],
+     [
+      "Hallo.",
+      "Hello.\n"
+     ],
+     [
+      "Hallo.\n",
+      "Hello."
+     ]
+    ]
+   }
+  },
+  {
+   "op": "bitext-rule",
+   "args": {
+    "rule": "DifferentPunctuationRule",
+    "srcLang": "en",
+    "trgLang": "pl",
+    "pairs": [
+     [
+      "Hello.",
+      "Hallo."
+     ],
+     [
+      "Hello.",
+      "Hallo!"
+     ],
+     [
+      "Hello!",
+      "Hallo."
+     ],
+     [
+      "Hello?",
+      "Hallo."
+     ],
+     [
+      "Hello?",
+      "Hallo?"
+     ],
+     [
+      "Hello",
+      "Hallo."
+     ],
+     [
+      "Hello.",
+      "Hallo"
+     ],
+     [
+      "Hello",
+      "Hallo"
+     ],
+     [
+      "Hello…",
+      "Hallo."
+     ],
+     [
+      "Hello.",
+      "Hallo…"
+     ],
+     [
+      "Hello,",
+      "Hallo."
+     ],
+     [
+      "Hello:",
+      "Hallo!"
+     ]
+    ]
+   }
+  },
+  {
+   "op": "bitext-rule",
+   "args": {
+    "rule": "DifferentPunctuationRule",
+    "srcLang": "fr",
+    "trgLang": "en",
+    "pairs": [
+     [
+      "Hello.",
+      "Hallo."
+     ],
+     [
+      "Hello.",
+      "Hallo!"
+     ],
+     [
+      "Hello!",
+      "Hallo."
+     ],
+     [
+      "Hello?",
+      "Hallo."
+     ],
+     [
+      "Hello?",
+      "Hallo?"
+     ],
+     [
+      "Hello",
+      "Hallo."
+     ],
+     [
+      "Hello.",
+      "Hallo"
+     ],
+     [
+      "Hello",
+      "Hallo"
+     ],
+     [
+      "Hello…",
+      "Hallo."
+     ],
+     [
+      "Hello.",
+      "Hallo…"
+     ],
+     [
+      "Hello,",
+      "Hallo."
+     ],
+     [
+      "Hello:",
+      "Hallo!"
+     ]
+    ]
+   }
+  },
+  {
+   "op": "bitext-rule",
+   "args": {
+    "rule": "DifferentPunctuationRule",
+    "srcLang": "en",
+    "trgLang": "en",
+    "pairs": [
+     [
+      "Hello.",
+      "Hallo."
+     ],
+     [
+      "Hello.",
+      "Hallo!"
+     ],
+     [
+      "Hello!",
+      "Hallo."
+     ],
+     [
+      "Hello?",
+      "Hallo."
+     ],
+     [
+      "Hello?",
+      "Hallo?"
+     ],
+     [
+      "Hello",
+      "Hallo."
+     ],
+     [
+      "Hello.",
+      "Hallo"
+     ],
+     [
+      "Hello",
+      "Hallo"
+     ],
+     [
+      "Hello…",
+      "Hallo."
+     ],
+     [
+      "Hello.",
+      "Hallo…"
+     ],
+     [
+      "Hello,",
+      "Hallo."
+     ],
+     [
+      "Hello:",
+      "Hallo!"
+     ]
+    ]
+   }
+  }
+ ]
+}

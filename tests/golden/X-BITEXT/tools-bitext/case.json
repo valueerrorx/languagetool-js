@@ -1,0 +1,431 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "CORE-0293 Tools.getBitextRules/checkBitext/selectBitextRules",
+ "normalize": [
+  "paths"
+ ],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "bitext-tools",
+   "args": {
+    "srcLang": "en",
+    "trgLang": "de",
+    "pairs": [
+     [
+      "This is a test.",
+      "Das ist ein Test."
+     ],
+     [
+      "Hello.",
+      "Hallo!"
+     ],
+     [
+      "Hello world today.",
+      "Hello world today."
+     ],
+     [
+      "Hi.",
+      "Das ist ein sehr langer Satz mit vielen Wörtern."
+     ],
+     [
+      "Is this correct?",
+      "Ist das korrekt?"
+     ],
+     [
+      "I have a gift.",
+      "Ich habe ein Gift."
+     ],
+     [
+      "He is a gymnasium.",
+      "Er ist ein Gymnasium."
+     ],
+     [
+      "",
+      "Leer."
+     ],
+     [
+      "Der Test",
+      "The test"
+     ],
+     [
+      "This are wrong.",
+      "Das sind falsch geschrieben Wörter"
+     ]
+    ],
+    "brief": true
+   }
+  },
+  {
+   "op": "bitext-tools",
+   "args": {
+    "srcLang": "de",
+    "trgLang": "en",
+    "pairs": [
+     [
+      "Das ist ein Test.",
+      "This is a test."
+     ],
+     [
+      "Hallo!",
+      "Hello."
+     ],
+     [
+      "Hello world today.",
+      "Hello world today."
+     ],
+     [
+      "Das ist ein sehr langer Satz mit vielen Wörtern.",
+      "Hi."
+     ],
+     [
+      "Ist das korrekt?",
+      "Is this correct?"
+     ],
+     [
+      "Ich habe ein Gift.",
+      "I have a gift."
+     ],
+     [
+      "Er ist ein Gymnasium.",
+      "He is a gymnasium."
+     ],
+     [
+      "Leer.",
+      ""
+     ],
+     [
+      "The test",
+      "Der Test"
+     ],
+     [
+      "Das sind falsch geschrieben Wörter",
+      "This are wrong."
+     ]
+    ]
+   }
+  },
+  {
+   "op": "bitext-tools",
+   "args": {
+    "srcLang": "en",
+    "trgLang": "pl",
+    "pairs": [
+     [
+      "There is a dog.",
+      "Nie ma psa."
+     ],
+     [
+      "Hello.",
+      "Cześć!"
+     ],
+     [
+      "I like actually.",
+      "Aktualnie lubię."
+     ]
+    ],
+    "detail": true
+   }
+  },
+  {
+   "op": "bitext-tools",
+   "args": {
+    "srcLang": "en",
+    "trgLang": "ru",
+    "pairs": [
+     [
+      "I like it.",
+      "Мне нравится."
+     ]
+    ]
+   }
+  },
+  {
+   "op": "bitext-tools",
+   "args": {
+    "srcLang": "en",
+    "trgLang": "gl",
+    "pairs": [
+     [
+      "I like it.",
+      "Gústame."
+     ]
+    ]
+   }
+  },
+  {
+   "op": "bitext-tools",
+   "args": {
+    "srcLang": "en",
+    "trgLang": "fr",
+    "pairs": [
+     [
+      "I am actually here.",
+      "Je suis actuellement ici."
+     ],
+     [
+      "Hello.",
+      "Bonjour!"
+     ]
+    ]
+   }
+  },
+  {
+   "op": "bitext-tools",
+   "args": {
+    "srcLang": "fr",
+    "trgLang": "en",
+    "pairs": [
+     [
+      "Je suis actuellement ici.",
+      "I am actually here."
+     ]
+    ]
+   }
+  },
+  {
+   "op": "bitext-tools",
+   "args": {
+    "srcLang": "en",
+    "trgLang": "es",
+    "pairs": [
+     [
+      "Hello.",
+      "Hola!"
+     ]
+    ]
+   }
+  },
+  {
+   "op": "bitext-tools",
+   "args": {
+    "srcLang": "en",
+    "trgLang": "en",
+    "pairs": [
+     [
+      "Hello.",
+      "Hello."
+     ]
+    ]
+   }
+  },
+  {
+   "op": "bitext-tools",
+   "args": {
+    "srcLang": "xx",
+    "trgLang": "de"
+   }
+  },
+  {
+   "op": "bitext-tools",
+   "args": {
+    "srcLang": "en",
+    "trgLang": "de",
+    "select": {
+     "disabled": [
+      "TRANSLATION_LENGTH"
+     ],
+     "enabled": [],
+     "enabledOnly": false
+    },
+    "pairs": [
+     [
+      "This is a test.",
+      "Das ist ein Test."
+     ],
+     [
+      "Hello.",
+      "Hallo!"
+     ],
+     [
+      "Hello world today.",
+      "Hello world today."
+     ],
+     [
+      "Hi.",
+      "Das ist ein sehr langer Satz mit vielen Wörtern."
+     ],
+     [
+      "Is this correct?",
+      "Ist das korrekt?"
+     ]
+    ]
+   }
+  },
+  {
+   "op": "bitext-tools",
+   "args": {
+    "srcLang": "en",
+    "trgLang": "de",
+    "select": {
+     "disabled": [
+      "TRANSLATION_LENGTH",
+      "SAME_TRANSLATION",
+      "NOPE"
+     ],
+     "enabled": [],
+     "enabledOnly": false
+    },
+    "pairs": [
+     [
+      "This is a test.",
+      "Das ist ein Test."
+     ],
+     [
+      "Hello.",
+      "Hallo!"
+     ],
+     [
+      "Hello world today.",
+      "Hello world today."
+     ],
+     [
+      "Hi.",
+      "Das ist ein sehr langer Satz mit vielen Wörtern."
+     ],
+     [
+      "Is this correct?",
+      "Ist das korrekt?"
+     ]
+    ]
+   }
+  },
+  {
+   "op": "bitext-tools",
+   "args": {
+    "srcLang": "en",
+    "trgLang": "de",
+    "select": {
+     "disabled": [],
+     "enabled": [
+      "SAME_TRANSLATION"
+     ],
+     "enabledOnly": true
+    },
+    "pairs": [
+     [
+      "This is a test.",
+      "Das ist ein Test."
+     ],
+     [
+      "Hello.",
+      "Hallo!"
+     ],
+     [
+      "Hello world today.",
+      "Hello world today."
+     ],
+     [
+      "Hi.",
+      "Das ist ein sehr langer Satz mit vielen Wörtern."
+     ],
+     [
+      "Is this correct?",
+      "Ist das korrekt?"
+     ]
+    ]
+   }
+  },
+  {
+   "op": "bitext-tools",
+   "args": {
+    "srcLang": "en",
+    "trgLang": "de",
+    "select": {
+     "disabled": [],
+     "enabled": [
+      "SAME_TRANSLATION",
+      "DIFFERENT_PUNCTUATION"
+     ],
+     "enabledOnly": true
+    },
+    "pairs": [
+     [
+      "This is a test.",
+      "Das ist ein Test."
+     ],
+     [
+      "Hello.",
+      "Hallo!"
+     ],
+     [
+      "Hello world today.",
+      "Hello world today."
+     ],
+     [
+      "Hi.",
+      "Das ist ein sehr langer Satz mit vielen Wörtern."
+     ],
+     [
+      "Is this correct?",
+      "Ist das korrekt?"
+     ]
+    ]
+   }
+  },
+  {
+   "op": "bitext-tools",
+   "args": {
+    "srcLang": "en",
+    "trgLang": "de",
+    "select": {
+     "disabled": [],
+     "enabled": [],
+     "enabledOnly": true
+    }
+   }
+  },
+  {
+   "op": "bitext-tools",
+   "args": {
+    "srcLang": "en",
+    "trgLang": "de",
+    "select": {
+     "disabled": [
+      "X"
+     ],
+     "enabled": [
+      "SAME_TRANSLATION"
+     ],
+     "enabledOnly": false
+    }
+   }
+  },
+  {
+   "op": "bitext-tools",
+   "args": {
+    "srcLang": "en",
+    "trgLang": "de",
+    "extContent": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules targetLang=\"de\">\n<category id=\"C1\" name=\"Cat one\"><rule lang=\"de\" id=\"THERE_IS\" name=\"Name THERE_IS\"><pattern><source lang=\"en\"><token>there</token><token>is</token></source><target><marker><token>da</token><token>ist</token></marker><token/></target></pattern><message>Meinten Sie <suggestion>es gibt</suggestion>?</message><example type=\"correct\"><srcExample>There is a dog.</srcExample><trgExample>Es gibt einen Hund.</trgExample></example><example type=\"incorrect\"><srcExample><marker>There is a</marker> dog.</srcExample><trgExample><marker>Da ist ein</marker> Hund.</trgExample></example></rule></category>\n</rules>\n",
+    "pairs": [
+     [
+      "There is a dog.",
+      "Da ist ein Hund."
+     ],
+     [
+      "Hello.",
+      "Hallo."
+     ]
+    ]
+   }
+  },
+  {
+   "op": "bitext-tools",
+   "args": {
+    "srcLang": "en",
+    "trgLang": "de",
+    "extContent": "broken",
+    "pairs": []
+   }
+  },
+  {
+   "op": "bitext-tools",
+   "args": {
+    "srcLang": "en",
+    "trgLang": "de",
+    "extMissing": "no-such-file.xml"
+   }
+  }
+ ]
+}

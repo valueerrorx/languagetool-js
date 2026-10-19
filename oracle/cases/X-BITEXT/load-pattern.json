@@ -1,0 +1,173 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "CORE-0057 JLanguageTool#loadPatternRules (classpath first, then file system)",
+ "normalize": [
+  "paths"
+ ],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": null,
+    "kind": "pattern",
+    "filename": "inline-rules.xml",
+    "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\"><category id=\"CAT\" name=\"Cat\"><rule id=\"R1\" name=\"r1\"><pattern><token>foo</token></pattern><message>bad foo</message><example correction=\"bar\"><marker>foo</marker></example></rule></category></rules>\n",
+    "texts": [
+     "a foo here",
+     "bar"
+    ]
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": null,
+    "kind": "pattern",
+    "filename": "inline-rules.xml",
+    "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\"><category id=\"CAT\" name=\"Cat\"><rule id=\"R1\" name=\"r1\"><pattern><token>foo</token></pattern><message>bad foo</message></rule></category></rules>\n",
+    "texts": [
+     "a foo here"
+    ]
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": null,
+    "kind": "pattern",
+    "filename": "inline-rules.xml",
+    "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\"><category id=\"CAT\" name=\"Cat\"></category></rules>\n"
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": null,
+    "kind": "pattern",
+    "filename": "inline-rules.xml",
+    "content": ""
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": null,
+    "kind": "pattern",
+    "filename": "inline-rules.xml",
+    "content": "<rules>"
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": "de",
+    "kind": "pattern",
+    "filename": "inline-rules.xml",
+    "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\"><category id=\"CAT\" name=\"Cat\"><rule id=\"R2\" name=\"r2\"><pattern><token>foo</token></pattern><message>m</message></rule></category></rules>\n",
+    "brief": true
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": null,
+    "kind": "pattern",
+    "filename": "x-test-rules.xml",
+    "brief": true
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": null,
+    "kind": "pattern",
+    "filename": "x-test-rules.xml",
+    "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\"><category id=\"CAT\" name=\"Cat\"><rule id=\"R3\" name=\"r3\"><pattern><token>foo</token></pattern><message>m</message></rule></category></rules>\n",
+    "brief": true
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": null,
+    "kind": "pattern",
+    "filename": "missing-rules.xml",
+    "brief": true
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": null,
+    "kind": "pattern",
+    "filename": "/org/languagetool/rules/en/grammar.xml",
+    "brief": true
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "de",
+    "motherTongue": null,
+    "kind": "pattern",
+    "filename": "/org/languagetool/rules/de/grammar.xml",
+    "brief": true
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": null,
+    "kind": "pattern",
+    "filename": "/org/languagetool/rules/false-friends.xml",
+    "brief": true
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": null,
+    "kind": "pattern",
+    "filename": "/org/languagetool/rules/en/",
+    "brief": true
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": null,
+    "kind": "pattern",
+    "filename": "",
+    "brief": true
+   }
+  },
+  {
+   "op": "ff-load",
+   "args": {
+    "lang": "en",
+    "motherTongue": null,
+    "kind": "pattern",
+    "filename": "ünïcödé-rules.xml",
+    "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\"><category id=\"CAT\" name=\"Cat\"><rule id=\"R4\" name=\"r4\"><pattern><token>über</token></pattern><message>m</message></rule></category></rules>\n",
+    "texts": [
+     "über"
+    ]
+   }
+  }
+ ]
+}
