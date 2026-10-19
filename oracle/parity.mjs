@@ -85,6 +85,7 @@ async function runKindCase(cs, meta, dir) {
   }
 }
 
+let dev009Exempt = 0;
 const partialTotals = { cases: 0, skipped: 0, total: 0 };
 
 async function runCase(id, name) {
@@ -141,6 +142,20 @@ async function runCase(id, name) {
   if (nonPorted.size) note.push(`${nonPorted.size}/${reqs.length} requests not ported`);
   if (partial.requests) note.push(`partial: ${partial.skipped}/${partial.total} parts notPorted in ${partial.requests} request(s)`);
   partialTotals.skipped += partial.skipped; partialTotals.total += partial.total; if (partial.requests) partialTotals.cases++;
+  // DEV-009: words whose Java suggestions vary between runs (unstable.json): spell result exact, suggestions exempt
+  const uf = path.join(dir, 'unstable.json');
+  if (existsSync(uf)) {
+    const ex = new Map();
+    for (const u of JSON.parse(readFileSync(uf, 'utf8')).unstable) (ex.get(u.id) ?? ex.set(u.id, new Set()).get(u.id)).add(u.w);
+    let n = 0;
+    for (const side of [expectedLines, actualLines]) for (const l of side) {
+      const ws = ex.get(l.id);
+      if (!ws || !l.ok || !Array.isArray(l.result?.results)) continue;
+      for (const e of l.result.results) if (ws.has(e.w)) for (const f of ['suggest', 'suggestions']) if (f in e) { e[f] = 'dev009-exempt'; if (side === expectedLines) n++; }
+    }
+    dev009Exempt += n;
+    if (n) note.push(`${n} dev009-exempt`);
+  }
   const cmp = await getComparator(cs.compare ?? 'jsonl');
   const diffs = cmp(expectedLines, actualLines);
   if (diffs.length) return { status: 'FAIL', diffs, note: note.join('; ') };
@@ -168,5 +183,6 @@ for (const id of ids.length ? ids : all) {
 }
 console.log(rows.join('\n'));
 if (partialTotals.cases) console.log(`partial: ${partialTotals.cases} case(s) compared with notPorted parts, ${partialTotals.skipped}/${partialTotals.total} parts skipped`);
+if (dev009Exempt) console.log(`dev009-exempt: ${dev009Exempt} word suggestion list(s) not compared (DEV-009)`);
 console.log(`parity: ${counts.PASS} pass, ${counts.FAIL} fail, ${counts.SKIP} skip, ${counts['NOT PORTED']} not ported`);
 process.exit(counts.FAIL ? 1 : 0);

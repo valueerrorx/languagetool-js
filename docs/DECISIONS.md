@@ -60,3 +60,8 @@ Format: D-nnn | date | decision
 - Oracle fixture scope: targeted, ~1-3k requests per step, < 10 MB; no corpus-wide dumps unless the step is a data loader.
 - Prompts short; agents read docs/review/<step>-*.md checkpoints instead of long inline briefs.
 - Lead session restarts often (fresh context via docs/review/RESUME.md) instead of one long conversation.
+
+## D-053 Clearly better solution allowed (2026-10-19, user)
+- User: where the Java original is broken/poor and a clear, safe, better solution exists, the port may use it instead of bug-compatibility.
+- Still logged: each case gets a DEV entry in DEVIATIONS.md citing D-053 (lead decides "clearly better"; doubtful cases -> ask user).
+- First use: Hunspell suggest() wall-clock limits (DEV-009).
