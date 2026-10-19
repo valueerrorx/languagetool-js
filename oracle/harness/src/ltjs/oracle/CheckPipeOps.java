@@ -42,6 +42,7 @@ final class CheckPipeOps {
   static final class HarnessLT extends JLanguageTool {
     List<Object> preLanguageFilter;
     HarnessLT(Language l, Language mt) { super(l, mt); }
+    HarnessLT(Language l, org.languagetool.UserConfig uc) { super(l, (Language) null, (org.languagetool.ResultCache) null, uc); }
     HarnessLT(Language l, List<Rule> custom) { super(l, Collections.emptyList(), null, null, null, null, true, false, custom); }
 
     @Override

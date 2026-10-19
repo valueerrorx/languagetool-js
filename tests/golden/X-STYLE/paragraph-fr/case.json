@@ -1,0 +1,2778 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "paragraph-level rules fr",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "style-check",
+   "args": {
+    "lang": "fr",
+    "ids": [],
+    "extra": [
+     "EmptyLineRule"
+    ],
+    "cases": [
+     {
+      "text": "",
+      "level": "PICKY"
+     },
+     {
+      "text": "\n",
+      "level": "PICKY"
+     },
+     {
+      "text": "\n\n",
+      "level": "PICKY"
+     },
+     {
+      "text": "x",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.\n\n\n\nMaison verte arbre court vite et.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\r\n\r\n\r\n\r\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\r\n\r\n\r\n\rMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court.\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.\n\nMaison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "\"Maison verte arbre court.\"\n\n\"Maison verte arbre court vite.\"",
+      "level": "PICKY"
+     },
+     {
+      "text": "The Maison verte arbre court.\n\nThe Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Le Maison verte arbre court.\n\nLe Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Der Maison verte arbre court.\n\nDer Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "(Maison verte arbre court.)\n\n(Maison verte arbre court vite.)",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court vite et. Maison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.   \n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. \n\nMaison verte arbre court vite. ",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. \n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "  Maison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "\tMaison verte arbre court.\n\n   Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": " Maison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "​Maison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "\n Maison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.​ \n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": " \n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. maison verte arbre court vite et le grand maison verte arbre\n\nMaison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre court!",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre:\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre…\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre ?\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre\n\nMaison verte arbre court. Maison verte arbre court vite. http://example.org/a/b",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre ftp://example.org/x\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.: https://example.org/very/long/path/to/something/that/is/long/enough\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. 2.2.2.\n\nMaison verte arbre court vite. Maison verte arbre court vite et. maison verte arbre court vite et le grand maison verte arbre",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre\"\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre\nMaison verte arbre court vite. Maison verte arbre court vite et. maison verte arbre court vite et le grand maison verte arbre",
+      "level": "PICKY"
+     },
+     {
+      "text": "1. Maison verte arbre court.\n\n2. Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.\n\n",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Il y avait en Vestphalie, dans le château de M. le baron de Thunder-ten-tronckh, un jeune garçon à qui la nature avait donné les moeurs les plus douces. Sa physionomie annonçait son âme. Il avait le jugement assez droit, avec l’esprit le plus simple; c’est, je crois, pour cette raison qu’on le nommait Candide. Les anciens domestiques de la maison soupçonnaient qu’il était fils de la soeur de monsieur le baron et d’un bon et honnête gentilhomme du voisinage, que cette demoiselle ne voulut jamais épouser parce qu’il n’avait pu prouver que soixante et onze quartiers, et que le reste de son arbre généalogique avait été perdu par l’injure du temps.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Monsieur le baron était un des plus puissants seigneurs de la Westphalie, car son château avait une porte et des fenêtres. Sa grande salle même était ornée d’une tapisserie. Tous les chiens de ses basses-cours composaient une meute dans le besoin; ses palefreniers étaient ses piqueurs; le vicaire du village était son grand-aumônier. Ils l’appelaient tous monseigneur, et ils riaient quand il fesait des contes.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Rien n’était si beau, si leste, si brillant, si bien ordonné que les deux armées. Les trompettes, les fifres, les hautbois, les tambours, les canons; formaient une harmonie telle qu’il n’y en eut jamais en enfer. Les canons renversèrent d’abord à peu près six mille hommes de chaque côté; ensuite la mousqueterie ôta du meilleur des mondes environ neuf à dix mille coquins qui en infectaient la surface. La baïonnette fut aussi la raison suffisante de la mort de quelques milliers d’hommes. Le tout pouvait bien se monter à une trentaine de mille âmes. Candide, qui tremblait comme un philosophe, se cacha du mieux qu’il put pendant cette boucherie héroïque.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Enfin, tandis que les deux rois fesaient chanter des _Te Deum_, chacun dans son camp, il prit le parti d’aller raisonner ailleurs des effets et des causes. Il passa par-dessus des tas de morts et de mourants, et gagna d’abord un village voisin; il était en cendres: c’était un village abare que les Bulgares avaient brûlé, selon les lois du droit public. Ici des vieillards criblés de coups regardaient mourir leurs femmes égorgées, qui tenaient leurs enfants à leurs mamelles sanglantes; là des filles éventrées après avoir assouvi les besoins naturels de quelques héros, rendaient les derniers soupirs; d’autres à demi brûlées criaient qu’on achevât de leur donner la mort. Des cervelles étaient répandues sur la terre à côté de bras et de jambes coupés.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Candide s’enfuit au plus vite dans un autre village: il appartenait à des Bulgares, et les héros abares l’avaient traité de même. Candide, toujours marchant sur des membres palpitants ou à travers des ruines, arriva enfin hors du théâtre de la guerre, portant quelques petites provisions dans son bissac, et n’oubliant jamais mademoiselle Cunégonde. Ses provisions lui manquèrent quand il fut en Hollande; mais ayant entendu dire que tout le monde était riche dans ce pays-là, et qu’on y était chrétien, il ne douta pas qu’on ne le traitât aussi bien qu’il l’avait été dans le château de M. le baron, avant qu’il en eût été chassé pour les beaux yeux de mademoiselle Cunégonde.",
+      "level": "PICKY"
+     },
+     {
+      "text": "A ce discours, Candide s’évanouit encore; mais revenu à soi, et ayant dit tout ce qu’il devait dire, il s’enquit de la cause et de l’effet, et de la raison suffisante qui avait mis Pangloss dans un si piteux état. Hélas! dit l’autre, c’est l’amour: l’amour, le consolateur du genre humain, le conservateur de l’univers, l’âme de tous les êtres sensibles, le tendre amour. Hélas! dit Candide, je l’ai connu cet amour, ce souverain des coeurs, cette âme de notre âme; il ne m’a jamais valu qu’un baiser et vingt coups de pied au cul. Comment cette belle cause a-t-elle pu produire en vous un effet si abominable?",
+      "level": "PICKY"
+     }
+    ]
+   }
+  },
+  {
+   "op": "style-check",
+   "args": {
+    "lang": "fr",
+    "ids": [],
+    "extra": [
+     "EmptyLineRule"
+    ],
+    "cases": [
+     {
+      "text": "",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "\n",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "\n\n",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "x",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.\n\n\n\nMaison verte arbre court vite et.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n\n\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\r\n\r\n\r\n\r\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\r\n\r\n\r\n\rMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court.\n\nMaison verte arbre court.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.\n\nMaison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "\"Maison verte arbre court.\"\n\n\"Maison verte arbre court vite.\"",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "The Maison verte arbre court.\n\nThe Maison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Le Maison verte arbre court.\n\nLe Maison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Der Maison verte arbre court.\n\nDer Maison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "(Maison verte arbre court.)\n\n(Maison verte arbre court vite.)",
+      "level": "DEFAULT"
+     }
+    ]
+   }
+  },
+  {
+   "op": "style-check",
+   "args": {
+    "lang": "fr",
+    "ids": [],
+    "extra": [
+     "EmptyLineRule"
+    ],
+    "cases": [
+     {
+      "text": "",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "\n",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "\n\n",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "x",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.\n\n\n\nMaison verte arbre court vite et.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n\n\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\r\n\r\n\r\n\r\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\r\n\r\n\r\n\rMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court.\n\nMaison verte arbre court.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.\n\nMaison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "\"Maison verte arbre court.\"\n\n\"Maison verte arbre court vite.\"",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "The Maison verte arbre court.\n\nThe Maison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Le Maison verte arbre court.\n\nLe Maison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Der Maison verte arbre court.\n\nDer Maison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "(Maison verte arbre court.)\n\n(Maison verte arbre court vite.)",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     }
+    ]
+   }
+  },
+  {
+   "op": "style-check",
+   "args": {
+    "lang": "fr",
+    "ids": [],
+    "extra": [
+     "PunctuationMarkAtParagraphEnd"
+    ],
+    "cases": [
+     {
+      "text": "",
+      "level": "PICKY"
+     },
+     {
+      "text": "\n",
+      "level": "PICKY"
+     },
+     {
+      "text": "\n\n",
+      "level": "PICKY"
+     },
+     {
+      "text": "x",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.\n\n\n\nMaison verte arbre court vite et.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\r\n\r\n\r\n\r\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\r\n\r\n\r\n\rMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court.\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.\n\nMaison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "\"Maison verte arbre court.\"\n\n\"Maison verte arbre court vite.\"",
+      "level": "PICKY"
+     },
+     {
+      "text": "The Maison verte arbre court.\n\nThe Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Le Maison verte arbre court.\n\nLe Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Der Maison verte arbre court.\n\nDer Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "(Maison verte arbre court.)\n\n(Maison verte arbre court vite.)",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court vite et. Maison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.   \n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. \n\nMaison verte arbre court vite. ",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. \n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "  Maison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "\tMaison verte arbre court.\n\n   Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": " Maison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "​Maison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "\n Maison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.​ \n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": " \n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. maison verte arbre court vite et le grand maison verte arbre\n\nMaison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre court!",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre:\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre…\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre ?\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre\n\nMaison verte arbre court. Maison verte arbre court vite. http://example.org/a/b",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre ftp://example.org/x\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.: https://example.org/very/long/path/to/something/that/is/long/enough\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. 2.2.2.\n\nMaison verte arbre court vite. Maison verte arbre court vite et. maison verte arbre court vite et le grand maison verte arbre",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre\"\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre\nMaison verte arbre court vite. Maison verte arbre court vite et. maison verte arbre court vite et le grand maison verte arbre",
+      "level": "PICKY"
+     },
+     {
+      "text": "1. Maison verte arbre court.\n\n2. Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.\n\n",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Il y avait en Vestphalie, dans le château de M. le baron de Thunder-ten-tronckh, un jeune garçon à qui la nature avait donné les moeurs les plus douces. Sa physionomie annonçait son âme. Il avait le jugement assez droit, avec l’esprit le plus simple; c’est, je crois, pour cette raison qu’on le nommait Candide. Les anciens domestiques de la maison soupçonnaient qu’il était fils de la soeur de monsieur le baron et d’un bon et honnête gentilhomme du voisinage, que cette demoiselle ne voulut jamais épouser parce qu’il n’avait pu prouver que soixante et onze quartiers, et que le reste de son arbre généalogique avait été perdu par l’injure du temps.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Monsieur le baron était un des plus puissants seigneurs de la Westphalie, car son château avait une porte et des fenêtres. Sa grande salle même était ornée d’une tapisserie. Tous les chiens de ses basses-cours composaient une meute dans le besoin; ses palefreniers étaient ses piqueurs; le vicaire du village était son grand-aumônier. Ils l’appelaient tous monseigneur, et ils riaient quand il fesait des contes.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Rien n’était si beau, si leste, si brillant, si bien ordonné que les deux armées. Les trompettes, les fifres, les hautbois, les tambours, les canons; formaient une harmonie telle qu’il n’y en eut jamais en enfer. Les canons renversèrent d’abord à peu près six mille hommes de chaque côté; ensuite la mousqueterie ôta du meilleur des mondes environ neuf à dix mille coquins qui en infectaient la surface. La baïonnette fut aussi la raison suffisante de la mort de quelques milliers d’hommes. Le tout pouvait bien se monter à une trentaine de mille âmes. Candide, qui tremblait comme un philosophe, se cacha du mieux qu’il put pendant cette boucherie héroïque.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Enfin, tandis que les deux rois fesaient chanter des _Te Deum_, chacun dans son camp, il prit le parti d’aller raisonner ailleurs des effets et des causes. Il passa par-dessus des tas de morts et de mourants, et gagna d’abord un village voisin; il était en cendres: c’était un village abare que les Bulgares avaient brûlé, selon les lois du droit public. Ici des vieillards criblés de coups regardaient mourir leurs femmes égorgées, qui tenaient leurs enfants à leurs mamelles sanglantes; là des filles éventrées après avoir assouvi les besoins naturels de quelques héros, rendaient les derniers soupirs; d’autres à demi brûlées criaient qu’on achevât de leur donner la mort. Des cervelles étaient répandues sur la terre à côté de bras et de jambes coupés.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Candide s’enfuit au plus vite dans un autre village: il appartenait à des Bulgares, et les héros abares l’avaient traité de même. Candide, toujours marchant sur des membres palpitants ou à travers des ruines, arriva enfin hors du théâtre de la guerre, portant quelques petites provisions dans son bissac, et n’oubliant jamais mademoiselle Cunégonde. Ses provisions lui manquèrent quand il fut en Hollande; mais ayant entendu dire que tout le monde était riche dans ce pays-là, et qu’on y était chrétien, il ne douta pas qu’on ne le traitât aussi bien qu’il l’avait été dans le château de M. le baron, avant qu’il en eût été chassé pour les beaux yeux de mademoiselle Cunégonde.",
+      "level": "PICKY"
+     },
+     {
+      "text": "A ce discours, Candide s’évanouit encore; mais revenu à soi, et ayant dit tout ce qu’il devait dire, il s’enquit de la cause et de l’effet, et de la raison suffisante qui avait mis Pangloss dans un si piteux état. Hélas! dit l’autre, c’est l’amour: l’amour, le consolateur du genre humain, le conservateur de l’univers, l’âme de tous les êtres sensibles, le tendre amour. Hélas! dit Candide, je l’ai connu cet amour, ce souverain des coeurs, cette âme de notre âme; il ne m’a jamais valu qu’un baiser et vingt coups de pied au cul. Comment cette belle cause a-t-elle pu produire en vous un effet si abominable?",
+      "level": "PICKY"
+     }
+    ]
+   }
+  },
+  {
+   "op": "style-check",
+   "args": {
+    "lang": "fr",
+    "ids": [],
+    "extra": [
+     "PunctuationMarkAtParagraphEnd"
+    ],
+    "cases": [
+     {
+      "text": "",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "\n",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "\n\n",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "x",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.\n\n\n\nMaison verte arbre court vite et.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n\n\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\r\n\r\n\r\n\r\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\r\n\r\n\r\n\rMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court.\n\nMaison verte arbre court.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.\n\nMaison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "\"Maison verte arbre court.\"\n\n\"Maison verte arbre court vite.\"",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "The Maison verte arbre court.\n\nThe Maison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Le Maison verte arbre court.\n\nLe Maison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Der Maison verte arbre court.\n\nDer Maison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "(Maison verte arbre court.)\n\n(Maison verte arbre court vite.)",
+      "level": "DEFAULT"
+     }
+    ]
+   }
+  },
+  {
+   "op": "style-check",
+   "args": {
+    "lang": "fr",
+    "ids": [],
+    "extra": [
+     "PunctuationMarkAtParagraphEnd"
+    ],
+    "cases": [
+     {
+      "text": "",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "\n",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "\n\n",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "x",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.\n\n\n\nMaison verte arbre court vite et.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n\n\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\r\n\r\n\r\n\r\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\r\n\r\n\r\n\rMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court.\n\nMaison verte arbre court.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.\n\nMaison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "\"Maison verte arbre court.\"\n\n\"Maison verte arbre court vite.\"",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "The Maison verte arbre court.\n\nThe Maison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Le Maison verte arbre court.\n\nLe Maison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Der Maison verte arbre court.\n\nDer Maison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "(Maison verte arbre court.)\n\n(Maison verte arbre court vite.)",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     }
+    ]
+   }
+  },
+  {
+   "op": "style-check",
+   "args": {
+    "lang": "fr",
+    "ids": [],
+    "extra": [
+     "PunctuationMarkAtParagraphEnd2"
+    ],
+    "cases": [
+     {
+      "text": "",
+      "level": "PICKY"
+     },
+     {
+      "text": "\n",
+      "level": "PICKY"
+     },
+     {
+      "text": "\n\n",
+      "level": "PICKY"
+     },
+     {
+      "text": "x",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.\n\n\n\nMaison verte arbre court vite et.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\r\n\r\n\r\n\r\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\r\n\r\n\r\n\rMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court.\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.\n\nMaison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "\"Maison verte arbre court.\"\n\n\"Maison verte arbre court vite.\"",
+      "level": "PICKY"
+     },
+     {
+      "text": "The Maison verte arbre court.\n\nThe Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Le Maison verte arbre court.\n\nLe Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Der Maison verte arbre court.\n\nDer Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "(Maison verte arbre court.)\n\n(Maison verte arbre court vite.)",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court vite et. Maison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.   \n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. \n\nMaison verte arbre court vite. ",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. \n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "  Maison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "\tMaison verte arbre court.\n\n   Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": " Maison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "​Maison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "\n Maison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.​ \n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": " \n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. maison verte arbre court vite et le grand maison verte arbre\n\nMaison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre court!",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre:\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre…\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre ?\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre\n\nMaison verte arbre court. Maison verte arbre court vite. http://example.org/a/b",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre ftp://example.org/x\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.: https://example.org/very/long/path/to/something/that/is/long/enough\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. 2.2.2.\n\nMaison verte arbre court vite. Maison verte arbre court vite et. maison verte arbre court vite et le grand maison verte arbre",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre\"\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre\nMaison verte arbre court vite. Maison verte arbre court vite et. maison verte arbre court vite et le grand maison verte arbre",
+      "level": "PICKY"
+     },
+     {
+      "text": "1. Maison verte arbre court.\n\n2. Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.\n\n",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Il y avait en Vestphalie, dans le château de M. le baron de Thunder-ten-tronckh, un jeune garçon à qui la nature avait donné les moeurs les plus douces. Sa physionomie annonçait son âme. Il avait le jugement assez droit, avec l’esprit le plus simple; c’est, je crois, pour cette raison qu’on le nommait Candide. Les anciens domestiques de la maison soupçonnaient qu’il était fils de la soeur de monsieur le baron et d’un bon et honnête gentilhomme du voisinage, que cette demoiselle ne voulut jamais épouser parce qu’il n’avait pu prouver que soixante et onze quartiers, et que le reste de son arbre généalogique avait été perdu par l’injure du temps.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Monsieur le baron était un des plus puissants seigneurs de la Westphalie, car son château avait une porte et des fenêtres. Sa grande salle même était ornée d’une tapisserie. Tous les chiens de ses basses-cours composaient une meute dans le besoin; ses palefreniers étaient ses piqueurs; le vicaire du village était son grand-aumônier. Ils l’appelaient tous monseigneur, et ils riaient quand il fesait des contes.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Rien n’était si beau, si leste, si brillant, si bien ordonné que les deux armées. Les trompettes, les fifres, les hautbois, les tambours, les canons; formaient une harmonie telle qu’il n’y en eut jamais en enfer. Les canons renversèrent d’abord à peu près six mille hommes de chaque côté; ensuite la mousqueterie ôta du meilleur des mondes environ neuf à dix mille coquins qui en infectaient la surface. La baïonnette fut aussi la raison suffisante de la mort de quelques milliers d’hommes. Le tout pouvait bien se monter à une trentaine de mille âmes. Candide, qui tremblait comme un philosophe, se cacha du mieux qu’il put pendant cette boucherie héroïque.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Enfin, tandis que les deux rois fesaient chanter des _Te Deum_, chacun dans son camp, il prit le parti d’aller raisonner ailleurs des effets et des causes. Il passa par-dessus des tas de morts et de mourants, et gagna d’abord un village voisin; il était en cendres: c’était un village abare que les Bulgares avaient brûlé, selon les lois du droit public. Ici des vieillards criblés de coups regardaient mourir leurs femmes égorgées, qui tenaient leurs enfants à leurs mamelles sanglantes; là des filles éventrées après avoir assouvi les besoins naturels de quelques héros, rendaient les derniers soupirs; d’autres à demi brûlées criaient qu’on achevât de leur donner la mort. Des cervelles étaient répandues sur la terre à côté de bras et de jambes coupés.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Candide s’enfuit au plus vite dans un autre village: il appartenait à des Bulgares, et les héros abares l’avaient traité de même. Candide, toujours marchant sur des membres palpitants ou à travers des ruines, arriva enfin hors du théâtre de la guerre, portant quelques petites provisions dans son bissac, et n’oubliant jamais mademoiselle Cunégonde. Ses provisions lui manquèrent quand il fut en Hollande; mais ayant entendu dire que tout le monde était riche dans ce pays-là, et qu’on y était chrétien, il ne douta pas qu’on ne le traitât aussi bien qu’il l’avait été dans le château de M. le baron, avant qu’il en eût été chassé pour les beaux yeux de mademoiselle Cunégonde.",
+      "level": "PICKY"
+     },
+     {
+      "text": "A ce discours, Candide s’évanouit encore; mais revenu à soi, et ayant dit tout ce qu’il devait dire, il s’enquit de la cause et de l’effet, et de la raison suffisante qui avait mis Pangloss dans un si piteux état. Hélas! dit l’autre, c’est l’amour: l’amour, le consolateur du genre humain, le conservateur de l’univers, l’âme de tous les êtres sensibles, le tendre amour. Hélas! dit Candide, je l’ai connu cet amour, ce souverain des coeurs, cette âme de notre âme; il ne m’a jamais valu qu’un baiser et vingt coups de pied au cul. Comment cette belle cause a-t-elle pu produire en vous un effet si abominable?",
+      "level": "PICKY"
+     }
+    ]
+   }
+  },
+  {
+   "op": "style-check",
+   "args": {
+    "lang": "fr",
+    "ids": [],
+    "extra": [
+     "PunctuationMarkAtParagraphEnd2"
+    ],
+    "cases": [
+     {
+      "text": "",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "\n",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "\n\n",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "x",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.\n\n\n\nMaison verte arbre court vite et.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n\n\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\r\n\r\n\r\n\r\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\r\n\r\n\r\n\rMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court.\n\nMaison verte arbre court.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.\n\nMaison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "\"Maison verte arbre court.\"\n\n\"Maison verte arbre court vite.\"",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "The Maison verte arbre court.\n\nThe Maison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Le Maison verte arbre court.\n\nLe Maison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Der Maison verte arbre court.\n\nDer Maison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "(Maison verte arbre court.)\n\n(Maison verte arbre court vite.)",
+      "level": "DEFAULT"
+     }
+    ]
+   }
+  },
+  {
+   "op": "style-check",
+   "args": {
+    "lang": "fr",
+    "ids": [],
+    "extra": [
+     "PunctuationMarkAtParagraphEnd2"
+    ],
+    "cases": [
+     {
+      "text": "",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "\n",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "\n\n",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "x",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.\n\n\n\nMaison verte arbre court vite et.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n\n\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\r\n\r\n\r\n\r\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\r\n\r\n\r\n\rMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court.\n\nMaison verte arbre court.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.\n\nMaison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "\"Maison verte arbre court.\"\n\n\"Maison verte arbre court vite.\"",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "The Maison verte arbre court.\n\nThe Maison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Le Maison verte arbre court.\n\nLe Maison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Der Maison verte arbre court.\n\nDer Maison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "(Maison verte arbre court.)\n\n(Maison verte arbre court vite.)",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     }
+    ]
+   }
+  },
+  {
+   "op": "style-check",
+   "args": {
+    "lang": "fr",
+    "ids": [],
+    "extra": [
+     "WhiteSpaceAtBeginOfParagraph"
+    ],
+    "cases": [
+     {
+      "text": "",
+      "level": "PICKY"
+     },
+     {
+      "text": "\n",
+      "level": "PICKY"
+     },
+     {
+      "text": "\n\n",
+      "level": "PICKY"
+     },
+     {
+      "text": "x",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.\n\n\n\nMaison verte arbre court vite et.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\r\n\r\n\r\n\r\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\r\n\r\n\r\n\rMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court.\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.\n\nMaison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "\"Maison verte arbre court.\"\n\n\"Maison verte arbre court vite.\"",
+      "level": "PICKY"
+     },
+     {
+      "text": "The Maison verte arbre court.\n\nThe Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Le Maison verte arbre court.\n\nLe Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Der Maison verte arbre court.\n\nDer Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "(Maison verte arbre court.)\n\n(Maison verte arbre court vite.)",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court vite et. Maison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.   \n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. \n\nMaison verte arbre court vite. ",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. \n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "  Maison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "\tMaison verte arbre court.\n\n   Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": " Maison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "​Maison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "\n Maison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.​ \n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": " \n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. maison verte arbre court vite et le grand maison verte arbre\n\nMaison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre court!",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre:\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre…\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre ?\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre\n\nMaison verte arbre court. Maison verte arbre court vite. http://example.org/a/b",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre ftp://example.org/x\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.: https://example.org/very/long/path/to/something/that/is/long/enough\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. 2.2.2.\n\nMaison verte arbre court vite. Maison verte arbre court vite et. maison verte arbre court vite et le grand maison verte arbre",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre\"\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre\nMaison verte arbre court vite. Maison verte arbre court vite et. maison verte arbre court vite et le grand maison verte arbre",
+      "level": "PICKY"
+     },
+     {
+      "text": "1. Maison verte arbre court.\n\n2. Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.\n\n",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Il y avait en Vestphalie, dans le château de M. le baron de Thunder-ten-tronckh, un jeune garçon à qui la nature avait donné les moeurs les plus douces. Sa physionomie annonçait son âme. Il avait le jugement assez droit, avec l’esprit le plus simple; c’est, je crois, pour cette raison qu’on le nommait Candide. Les anciens domestiques de la maison soupçonnaient qu’il était fils de la soeur de monsieur le baron et d’un bon et honnête gentilhomme du voisinage, que cette demoiselle ne voulut jamais épouser parce qu’il n’avait pu prouver que soixante et onze quartiers, et que le reste de son arbre généalogique avait été perdu par l’injure du temps.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Monsieur le baron était un des plus puissants seigneurs de la Westphalie, car son château avait une porte et des fenêtres. Sa grande salle même était ornée d’une tapisserie. Tous les chiens de ses basses-cours composaient une meute dans le besoin; ses palefreniers étaient ses piqueurs; le vicaire du village était son grand-aumônier. Ils l’appelaient tous monseigneur, et ils riaient quand il fesait des contes.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Rien n’était si beau, si leste, si brillant, si bien ordonné que les deux armées. Les trompettes, les fifres, les hautbois, les tambours, les canons; formaient une harmonie telle qu’il n’y en eut jamais en enfer. Les canons renversèrent d’abord à peu près six mille hommes de chaque côté; ensuite la mousqueterie ôta du meilleur des mondes environ neuf à dix mille coquins qui en infectaient la surface. La baïonnette fut aussi la raison suffisante de la mort de quelques milliers d’hommes. Le tout pouvait bien se monter à une trentaine de mille âmes. Candide, qui tremblait comme un philosophe, se cacha du mieux qu’il put pendant cette boucherie héroïque.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Enfin, tandis que les deux rois fesaient chanter des _Te Deum_, chacun dans son camp, il prit le parti d’aller raisonner ailleurs des effets et des causes. Il passa par-dessus des tas de morts et de mourants, et gagna d’abord un village voisin; il était en cendres: c’était un village abare que les Bulgares avaient brûlé, selon les lois du droit public. Ici des vieillards criblés de coups regardaient mourir leurs femmes égorgées, qui tenaient leurs enfants à leurs mamelles sanglantes; là des filles éventrées après avoir assouvi les besoins naturels de quelques héros, rendaient les derniers soupirs; d’autres à demi brûlées criaient qu’on achevât de leur donner la mort. Des cervelles étaient répandues sur la terre à côté de bras et de jambes coupés.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Candide s’enfuit au plus vite dans un autre village: il appartenait à des Bulgares, et les héros abares l’avaient traité de même. Candide, toujours marchant sur des membres palpitants ou à travers des ruines, arriva enfin hors du théâtre de la guerre, portant quelques petites provisions dans son bissac, et n’oubliant jamais mademoiselle Cunégonde. Ses provisions lui manquèrent quand il fut en Hollande; mais ayant entendu dire que tout le monde était riche dans ce pays-là, et qu’on y était chrétien, il ne douta pas qu’on ne le traitât aussi bien qu’il l’avait été dans le château de M. le baron, avant qu’il en eût été chassé pour les beaux yeux de mademoiselle Cunégonde.",
+      "level": "PICKY"
+     },
+     {
+      "text": "A ce discours, Candide s’évanouit encore; mais revenu à soi, et ayant dit tout ce qu’il devait dire, il s’enquit de la cause et de l’effet, et de la raison suffisante qui avait mis Pangloss dans un si piteux état. Hélas! dit l’autre, c’est l’amour: l’amour, le consolateur du genre humain, le conservateur de l’univers, l’âme de tous les êtres sensibles, le tendre amour. Hélas! dit Candide, je l’ai connu cet amour, ce souverain des coeurs, cette âme de notre âme; il ne m’a jamais valu qu’un baiser et vingt coups de pied au cul. Comment cette belle cause a-t-elle pu produire en vous un effet si abominable?",
+      "level": "PICKY"
+     }
+    ]
+   }
+  },
+  {
+   "op": "style-check",
+   "args": {
+    "lang": "fr",
+    "ids": [],
+    "extra": [
+     "WhiteSpaceAtBeginOfParagraph"
+    ],
+    "cases": [
+     {
+      "text": "",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "\n",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "\n\n",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "x",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.\n\n\n\nMaison verte arbre court vite et.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n\n\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\r\n\r\n\r\n\r\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\r\n\r\n\r\n\rMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court.\n\nMaison verte arbre court.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.\n\nMaison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "\"Maison verte arbre court.\"\n\n\"Maison verte arbre court vite.\"",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "The Maison verte arbre court.\n\nThe Maison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Le Maison verte arbre court.\n\nLe Maison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Der Maison verte arbre court.\n\nDer Maison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "(Maison verte arbre court.)\n\n(Maison verte arbre court vite.)",
+      "level": "DEFAULT"
+     }
+    ]
+   }
+  },
+  {
+   "op": "style-check",
+   "args": {
+    "lang": "fr",
+    "ids": [],
+    "extra": [
+     "WhiteSpaceAtBeginOfParagraph"
+    ],
+    "cases": [
+     {
+      "text": "",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "\n",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "\n\n",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "x",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.\n\n\n\nMaison verte arbre court vite et.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n\n\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\r\n\r\n\r\n\r\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\r\n\r\n\r\n\rMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court.\n\nMaison verte arbre court.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.\n\nMaison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "\"Maison verte arbre court.\"\n\n\"Maison verte arbre court vite.\"",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "The Maison verte arbre court.\n\nThe Maison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Le Maison verte arbre court.\n\nLe Maison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Der Maison verte arbre court.\n\nDer Maison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "(Maison verte arbre court.)\n\n(Maison verte arbre court vite.)",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     }
+    ]
+   }
+  },
+  {
+   "op": "style-check",
+   "args": {
+    "lang": "fr",
+    "ids": [],
+    "extra": [
+     "WhiteSpaceBeforeParagraphEnd"
+    ],
+    "cases": [
+     {
+      "text": "",
+      "level": "PICKY"
+     },
+     {
+      "text": "\n",
+      "level": "PICKY"
+     },
+     {
+      "text": "\n\n",
+      "level": "PICKY"
+     },
+     {
+      "text": "x",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.\n\n\n\nMaison verte arbre court vite et.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\r\n\r\n\r\n\r\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\r\n\r\n\r\n\rMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court.\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.\n\nMaison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "\"Maison verte arbre court.\"\n\n\"Maison verte arbre court vite.\"",
+      "level": "PICKY"
+     },
+     {
+      "text": "The Maison verte arbre court.\n\nThe Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Le Maison verte arbre court.\n\nLe Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Der Maison verte arbre court.\n\nDer Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "(Maison verte arbre court.)\n\n(Maison verte arbre court vite.)",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court vite et. Maison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.   \n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. \n\nMaison verte arbre court vite. ",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. \n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "  Maison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "\tMaison verte arbre court.\n\n   Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": " Maison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "​Maison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "\n Maison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.​ \n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": " \n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. maison verte arbre court vite et le grand maison verte arbre\n\nMaison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre court!",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre:\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre…\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre ?\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre\n\nMaison verte arbre court. Maison verte arbre court vite. http://example.org/a/b",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre ftp://example.org/x\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.: https://example.org/very/long/path/to/something/that/is/long/enough\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. 2.2.2.\n\nMaison verte arbre court vite. Maison verte arbre court vite et. maison verte arbre court vite et le grand maison verte arbre",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre\"\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre\nMaison verte arbre court vite. Maison verte arbre court vite et. maison verte arbre court vite et le grand maison verte arbre",
+      "level": "PICKY"
+     },
+     {
+      "text": "1. Maison verte arbre court.\n\n2. Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.\n\n",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Il y avait en Vestphalie, dans le château de M. le baron de Thunder-ten-tronckh, un jeune garçon à qui la nature avait donné les moeurs les plus douces. Sa physionomie annonçait son âme. Il avait le jugement assez droit, avec l’esprit le plus simple; c’est, je crois, pour cette raison qu’on le nommait Candide. Les anciens domestiques de la maison soupçonnaient qu’il était fils de la soeur de monsieur le baron et d’un bon et honnête gentilhomme du voisinage, que cette demoiselle ne voulut jamais épouser parce qu’il n’avait pu prouver que soixante et onze quartiers, et que le reste de son arbre généalogique avait été perdu par l’injure du temps.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Monsieur le baron était un des plus puissants seigneurs de la Westphalie, car son château avait une porte et des fenêtres. Sa grande salle même était ornée d’une tapisserie. Tous les chiens de ses basses-cours composaient une meute dans le besoin; ses palefreniers étaient ses piqueurs; le vicaire du village était son grand-aumônier. Ils l’appelaient tous monseigneur, et ils riaient quand il fesait des contes.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Rien n’était si beau, si leste, si brillant, si bien ordonné que les deux armées. Les trompettes, les fifres, les hautbois, les tambours, les canons; formaient une harmonie telle qu’il n’y en eut jamais en enfer. Les canons renversèrent d’abord à peu près six mille hommes de chaque côté; ensuite la mousqueterie ôta du meilleur des mondes environ neuf à dix mille coquins qui en infectaient la surface. La baïonnette fut aussi la raison suffisante de la mort de quelques milliers d’hommes. Le tout pouvait bien se monter à une trentaine de mille âmes. Candide, qui tremblait comme un philosophe, se cacha du mieux qu’il put pendant cette boucherie héroïque.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Enfin, tandis que les deux rois fesaient chanter des _Te Deum_, chacun dans son camp, il prit le parti d’aller raisonner ailleurs des effets et des causes. Il passa par-dessus des tas de morts et de mourants, et gagna d’abord un village voisin; il était en cendres: c’était un village abare que les Bulgares avaient brûlé, selon les lois du droit public. Ici des vieillards criblés de coups regardaient mourir leurs femmes égorgées, qui tenaient leurs enfants à leurs mamelles sanglantes; là des filles éventrées après avoir assouvi les besoins naturels de quelques héros, rendaient les derniers soupirs; d’autres à demi brûlées criaient qu’on achevât de leur donner la mort. Des cervelles étaient répandues sur la terre à côté de bras et de jambes coupés.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Candide s’enfuit au plus vite dans un autre village: il appartenait à des Bulgares, et les héros abares l’avaient traité de même. Candide, toujours marchant sur des membres palpitants ou à travers des ruines, arriva enfin hors du théâtre de la guerre, portant quelques petites provisions dans son bissac, et n’oubliant jamais mademoiselle Cunégonde. Ses provisions lui manquèrent quand il fut en Hollande; mais ayant entendu dire que tout le monde était riche dans ce pays-là, et qu’on y était chrétien, il ne douta pas qu’on ne le traitât aussi bien qu’il l’avait été dans le château de M. le baron, avant qu’il en eût été chassé pour les beaux yeux de mademoiselle Cunégonde.",
+      "level": "PICKY"
+     },
+     {
+      "text": "A ce discours, Candide s’évanouit encore; mais revenu à soi, et ayant dit tout ce qu’il devait dire, il s’enquit de la cause et de l’effet, et de la raison suffisante qui avait mis Pangloss dans un si piteux état. Hélas! dit l’autre, c’est l’amour: l’amour, le consolateur du genre humain, le conservateur de l’univers, l’âme de tous les êtres sensibles, le tendre amour. Hélas! dit Candide, je l’ai connu cet amour, ce souverain des coeurs, cette âme de notre âme; il ne m’a jamais valu qu’un baiser et vingt coups de pied au cul. Comment cette belle cause a-t-elle pu produire en vous un effet si abominable?",
+      "level": "PICKY"
+     }
+    ]
+   }
+  },
+  {
+   "op": "style-check",
+   "args": {
+    "lang": "fr",
+    "ids": [],
+    "extra": [
+     "WhiteSpaceBeforeParagraphEnd"
+    ],
+    "cases": [
+     {
+      "text": "",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "\n",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "\n\n",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "x",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.\n\n\n\nMaison verte arbre court vite et.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n\n\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\r\n\r\n\r\n\r\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\r\n\r\n\r\n\rMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court.\n\nMaison verte arbre court.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.\n\nMaison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "\"Maison verte arbre court.\"\n\n\"Maison verte arbre court vite.\"",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "The Maison verte arbre court.\n\nThe Maison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Le Maison verte arbre court.\n\nLe Maison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Der Maison verte arbre court.\n\nDer Maison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "(Maison verte arbre court.)\n\n(Maison verte arbre court vite.)",
+      "level": "DEFAULT"
+     }
+    ]
+   }
+  },
+  {
+   "op": "style-check",
+   "args": {
+    "lang": "fr",
+    "ids": [],
+    "extra": [
+     "WhiteSpaceBeforeParagraphEnd"
+    ],
+    "cases": [
+     {
+      "text": "",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "\n",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "\n\n",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "x",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.\n\n\n\nMaison verte arbre court vite et.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n\n\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\r\n\r\n\r\n\r\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\r\n\r\n\r\n\rMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court.\n\nMaison verte arbre court.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.\n\nMaison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "\"Maison verte arbre court.\"\n\n\"Maison verte arbre court vite.\"",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "The Maison verte arbre court.\n\nThe Maison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Le Maison verte arbre court.\n\nLe Maison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Der Maison verte arbre court.\n\nDer Maison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "(Maison verte arbre court.)\n\n(Maison verte arbre court vite.)",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     }
+    ]
+   }
+  },
+  {
+   "op": "style-check",
+   "args": {
+    "lang": "fr",
+    "ids": [],
+    "extra": [
+     "ParagraphRepeatBeginningRule"
+    ],
+    "cases": [
+     {
+      "text": "",
+      "level": "PICKY"
+     },
+     {
+      "text": "\n",
+      "level": "PICKY"
+     },
+     {
+      "text": "\n\n",
+      "level": "PICKY"
+     },
+     {
+      "text": "x",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.\n\n\n\nMaison verte arbre court vite et.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\r\n\r\n\r\n\r\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\r\n\r\n\r\n\rMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court.\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.\n\nMaison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "\"Maison verte arbre court.\"\n\n\"Maison verte arbre court vite.\"",
+      "level": "PICKY"
+     },
+     {
+      "text": "The Maison verte arbre court.\n\nThe Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Le Maison verte arbre court.\n\nLe Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Der Maison verte arbre court.\n\nDer Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "(Maison verte arbre court.)\n\n(Maison verte arbre court vite.)",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court vite et. Maison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.   \n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. \n\nMaison verte arbre court vite. ",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. \n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "  Maison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "\tMaison verte arbre court.\n\n   Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": " Maison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "​Maison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "\n Maison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.​ \n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": " \n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. maison verte arbre court vite et le grand maison verte arbre\n\nMaison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre court!",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre:\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre…\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre ?\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre\n\nMaison verte arbre court. Maison verte arbre court vite. http://example.org/a/b",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre ftp://example.org/x\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.: https://example.org/very/long/path/to/something/that/is/long/enough\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. 2.2.2.\n\nMaison verte arbre court vite. Maison verte arbre court vite et. maison verte arbre court vite et le grand maison verte arbre",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre\"\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre\nMaison verte arbre court vite. Maison verte arbre court vite et. maison verte arbre court vite et le grand maison verte arbre",
+      "level": "PICKY"
+     },
+     {
+      "text": "1. Maison verte arbre court.\n\n2. Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.\n\n",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Il y avait en Vestphalie, dans le château de M. le baron de Thunder-ten-tronckh, un jeune garçon à qui la nature avait donné les moeurs les plus douces. Sa physionomie annonçait son âme. Il avait le jugement assez droit, avec l’esprit le plus simple; c’est, je crois, pour cette raison qu’on le nommait Candide. Les anciens domestiques de la maison soupçonnaient qu’il était fils de la soeur de monsieur le baron et d’un bon et honnête gentilhomme du voisinage, que cette demoiselle ne voulut jamais épouser parce qu’il n’avait pu prouver que soixante et onze quartiers, et que le reste de son arbre généalogique avait été perdu par l’injure du temps.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Monsieur le baron était un des plus puissants seigneurs de la Westphalie, car son château avait une porte et des fenêtres. Sa grande salle même était ornée d’une tapisserie. Tous les chiens de ses basses-cours composaient une meute dans le besoin; ses palefreniers étaient ses piqueurs; le vicaire du village était son grand-aumônier. Ils l’appelaient tous monseigneur, et ils riaient quand il fesait des contes.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Rien n’était si beau, si leste, si brillant, si bien ordonné que les deux armées. Les trompettes, les fifres, les hautbois, les tambours, les canons; formaient une harmonie telle qu’il n’y en eut jamais en enfer. Les canons renversèrent d’abord à peu près six mille hommes de chaque côté; ensuite la mousqueterie ôta du meilleur des mondes environ neuf à dix mille coquins qui en infectaient la surface. La baïonnette fut aussi la raison suffisante de la mort de quelques milliers d’hommes. Le tout pouvait bien se monter à une trentaine de mille âmes. Candide, qui tremblait comme un philosophe, se cacha du mieux qu’il put pendant cette boucherie héroïque.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Enfin, tandis que les deux rois fesaient chanter des _Te Deum_, chacun dans son camp, il prit le parti d’aller raisonner ailleurs des effets et des causes. Il passa par-dessus des tas de morts et de mourants, et gagna d’abord un village voisin; il était en cendres: c’était un village abare que les Bulgares avaient brûlé, selon les lois du droit public. Ici des vieillards criblés de coups regardaient mourir leurs femmes égorgées, qui tenaient leurs enfants à leurs mamelles sanglantes; là des filles éventrées après avoir assouvi les besoins naturels de quelques héros, rendaient les derniers soupirs; d’autres à demi brûlées criaient qu’on achevât de leur donner la mort. Des cervelles étaient répandues sur la terre à côté de bras et de jambes coupés.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Candide s’enfuit au plus vite dans un autre village: il appartenait à des Bulgares, et les héros abares l’avaient traité de même. Candide, toujours marchant sur des membres palpitants ou à travers des ruines, arriva enfin hors du théâtre de la guerre, portant quelques petites provisions dans son bissac, et n’oubliant jamais mademoiselle Cunégonde. Ses provisions lui manquèrent quand il fut en Hollande; mais ayant entendu dire que tout le monde était riche dans ce pays-là, et qu’on y était chrétien, il ne douta pas qu’on ne le traitât aussi bien qu’il l’avait été dans le château de M. le baron, avant qu’il en eût été chassé pour les beaux yeux de mademoiselle Cunégonde.",
+      "level": "PICKY"
+     },
+     {
+      "text": "A ce discours, Candide s’évanouit encore; mais revenu à soi, et ayant dit tout ce qu’il devait dire, il s’enquit de la cause et de l’effet, et de la raison suffisante qui avait mis Pangloss dans un si piteux état. Hélas! dit l’autre, c’est l’amour: l’amour, le consolateur du genre humain, le conservateur de l’univers, l’âme de tous les êtres sensibles, le tendre amour. Hélas! dit Candide, je l’ai connu cet amour, ce souverain des coeurs, cette âme de notre âme; il ne m’a jamais valu qu’un baiser et vingt coups de pied au cul. Comment cette belle cause a-t-elle pu produire en vous un effet si abominable?",
+      "level": "PICKY"
+     }
+    ]
+   }
+  },
+  {
+   "op": "style-check",
+   "args": {
+    "lang": "fr",
+    "ids": [],
+    "extra": [
+     "ParagraphRepeatBeginningRule"
+    ],
+    "cases": [
+     {
+      "text": "",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "\n",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "\n\n",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "x",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.\n\n\n\nMaison verte arbre court vite et.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n\n\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\r\n\r\n\r\n\r\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\r\n\r\n\r\n\rMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court.\n\nMaison verte arbre court.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.\n\nMaison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "\"Maison verte arbre court.\"\n\n\"Maison verte arbre court vite.\"",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "The Maison verte arbre court.\n\nThe Maison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Le Maison verte arbre court.\n\nLe Maison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "Der Maison verte arbre court.\n\nDer Maison verte arbre court vite.",
+      "level": "DEFAULT"
+     },
+     {
+      "text": "(Maison verte arbre court.)\n\n(Maison verte arbre court vite.)",
+      "level": "DEFAULT"
+     }
+    ]
+   }
+  },
+  {
+   "op": "style-check",
+   "args": {
+    "lang": "fr",
+    "ids": [],
+    "extra": [
+     "ParagraphRepeatBeginningRule"
+    ],
+    "cases": [
+     {
+      "text": "",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "\n",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "\n\n",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "x",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.\n\n\n\nMaison verte arbre court vite et.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n\n\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\r\n\r\n\r\n\r\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\r\n\r\n\r\n\rMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court.\n\nMaison verte arbre court.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.\n\nMaison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "\"Maison verte arbre court.\"\n\n\"Maison verte arbre court vite.\"",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "The Maison verte arbre court.\n\nThe Maison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Le Maison verte arbre court.\n\nLe Maison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "Der Maison verte arbre court.\n\nDer Maison verte arbre court vite.",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     },
+     {
+      "text": "(Maison verte arbre court.)\n\n(Maison verte arbre court vite.)",
+      "level": "PICKY",
+      "paraMode": "ONLYNONPARA"
+     }
+    ]
+   }
+  },
+  {
+   "op": "style-check",
+   "args": {
+    "lang": "fr",
+    "ids": [],
+    "extra": [
+     "EmptyLineRule",
+     "PunctuationMarkAtParagraphEnd",
+     "PunctuationMarkAtParagraphEnd2",
+     "WhiteSpaceAtBeginOfParagraph",
+     "WhiteSpaceBeforeParagraphEnd",
+     "ParagraphRepeatBeginningRule"
+    ],
+    "cases": [
+     {
+      "text": "",
+      "level": "PICKY"
+     },
+     {
+      "text": "\n",
+      "level": "PICKY"
+     },
+     {
+      "text": "\n\n",
+      "level": "PICKY"
+     },
+     {
+      "text": "x",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court vite.\n\n\n\nMaison verte arbre court vite et.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\n\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\r\n\r\n\r\n\r\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\r\n\r\n\r\n\rMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\n\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court.\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.\n\nMaison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "\"Maison verte arbre court.\"\n\n\"Maison verte arbre court vite.\"",
+      "level": "PICKY"
+     },
+     {
+      "text": "The Maison verte arbre court.\n\nThe Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Le Maison verte arbre court.\n\nLe Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Der Maison verte arbre court.\n\nDer Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "(Maison verte arbre court.)\n\n(Maison verte arbre court vite.)",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court vite et. Maison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.   \n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. \n\nMaison verte arbre court vite. ",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. \n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "  Maison verte arbre court.\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "\tMaison verte arbre court.\n\n   Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": " Maison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "​Maison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "\n Maison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.​ \n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": " \n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. maison verte arbre court vite et le grand maison verte arbre\n\nMaison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre court!",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre:\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre…\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre ?\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre\n\nMaison verte arbre court. Maison verte arbre court vite. http://example.org/a/b",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre ftp://example.org/x\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.: https://example.org/very/long/path/to/something/that/is/long/enough\n\nMaison verte arbre court. Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. 2.2.2.\n\nMaison verte arbre court vite. Maison verte arbre court vite et. maison verte arbre court vite et le grand maison verte arbre",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre\"\n\nMaison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite. maison verte arbre court vite et le grand maison verte arbre\nMaison verte arbre court vite. Maison verte arbre court vite et. maison verte arbre court vite et le grand maison verte arbre",
+      "level": "PICKY"
+     },
+     {
+      "text": "1. Maison verte arbre court.\n\n2. Maison verte arbre court vite.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court.\n\nMaison verte arbre court vite.\n\n",
+      "level": "PICKY"
+     },
+     {
+      "text": "Maison verte arbre court. Maison verte arbre court vite.\n\nMaison verte arbre court.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Il y avait en Vestphalie, dans le château de M. le baron de Thunder-ten-tronckh, un jeune garçon à qui la nature avait donné les moeurs les plus douces. Sa physionomie annonçait son âme. Il avait le jugement assez droit, avec l’esprit le plus simple; c’est, je crois, pour cette raison qu’on le nommait Candide. Les anciens domestiques de la maison soupçonnaient qu’il était fils de la soeur de monsieur le baron et d’un bon et honnête gentilhomme du voisinage, que cette demoiselle ne voulut jamais épouser parce qu’il n’avait pu prouver que soixante et onze quartiers, et que le reste de son arbre généalogique avait été perdu par l’injure du temps.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Monsieur le baron était un des plus puissants seigneurs de la Westphalie, car son château avait une porte et des fenêtres. Sa grande salle même était ornée d’une tapisserie. Tous les chiens de ses basses-cours composaient une meute dans le besoin; ses palefreniers étaient ses piqueurs; le vicaire du village était son grand-aumônier. Ils l’appelaient tous monseigneur, et ils riaient quand il fesait des contes.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Rien n’était si beau, si leste, si brillant, si bien ordonné que les deux armées. Les trompettes, les fifres, les hautbois, les tambours, les canons; formaient une harmonie telle qu’il n’y en eut jamais en enfer. Les canons renversèrent d’abord à peu près six mille hommes de chaque côté; ensuite la mousqueterie ôta du meilleur des mondes environ neuf à dix mille coquins qui en infectaient la surface. La baïonnette fut aussi la raison suffisante de la mort de quelques milliers d’hommes. Le tout pouvait bien se monter à une trentaine de mille âmes. Candide, qui tremblait comme un philosophe, se cacha du mieux qu’il put pendant cette boucherie héroïque.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Enfin, tandis que les deux rois fesaient chanter des _Te Deum_, chacun dans son camp, il prit le parti d’aller raisonner ailleurs des effets et des causes. Il passa par-dessus des tas de morts et de mourants, et gagna d’abord un village voisin; il était en cendres: c’était un village abare que les Bulgares avaient brûlé, selon les lois du droit public. Ici des vieillards criblés de coups regardaient mourir leurs femmes égorgées, qui tenaient leurs enfants à leurs mamelles sanglantes; là des filles éventrées après avoir assouvi les besoins naturels de quelques héros, rendaient les derniers soupirs; d’autres à demi brûlées criaient qu’on achevât de leur donner la mort. Des cervelles étaient répandues sur la terre à côté de bras et de jambes coupés.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Candide s’enfuit au plus vite dans un autre village: il appartenait à des Bulgares, et les héros abares l’avaient traité de même. Candide, toujours marchant sur des membres palpitants ou à travers des ruines, arriva enfin hors du théâtre de la guerre, portant quelques petites provisions dans son bissac, et n’oubliant jamais mademoiselle Cunégonde. Ses provisions lui manquèrent quand il fut en Hollande; mais ayant entendu dire que tout le monde était riche dans ce pays-là, et qu’on y était chrétien, il ne douta pas qu’on ne le traitât aussi bien qu’il l’avait été dans le château de M. le baron, avant qu’il en eût été chassé pour les beaux yeux de mademoiselle Cunégonde.",
+      "level": "PICKY"
+     },
+     {
+      "text": "A ce discours, Candide s’évanouit encore; mais revenu à soi, et ayant dit tout ce qu’il devait dire, il s’enquit de la cause et de l’effet, et de la raison suffisante qui avait mis Pangloss dans un si piteux état. Hélas! dit l’autre, c’est l’amour: l’amour, le consolateur du genre humain, le conservateur de l’univers, l’âme de tous les êtres sensibles, le tendre amour. Hélas! dit Candide, je l’ai connu cet amour, ce souverain des coeurs, cette âme de notre âme; il ne m’a jamais valu qu’un baiser et vingt coups de pied au cul. Comment cette belle cause a-t-elle pu produire en vous un effet si abominable?",
+      "level": "PICKY"
+     }
+    ]
+   }
+  }
+ ]
+}

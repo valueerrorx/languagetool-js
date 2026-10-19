@@ -1,0 +1,102 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "AdvancedWordRepeatRule / AbstractFillerWordsRule via pl/ru",
+ "normalize": [],
+ "compare": "jsonl",
+ "ops": [
+  {
+   "op": "style-check",
+   "args": {
+    "lang": "pl-PL",
+    "ids": [
+     "PL_WORD_REPEAT"
+    ],
+    "cases": [
+     {
+      "text": "",
+      "level": "PICKY"
+     },
+     {
+      "text": "Ala ma kota. Ala ma psa i kota.",
+      "level": "PICKY"
+     },
+     {
+      "text": "To jest to samo to samo słowo w zdaniu, które jest w zdaniu.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Dom jest duży, a dom jest mały. Dom.",
+      "level": "PICKY"
+     }
+    ]
+   }
+  },
+  {
+   "op": "style-check",
+   "args": {
+    "lang": "ru-RU",
+    "ids": [
+     "RU_WORD_REPEAT"
+    ],
+    "cases": [
+     {
+      "text": "",
+      "level": "PICKY"
+     },
+     {
+      "text": "Мама мыла раму. Мама мыла раму и маму.",
+      "level": "PICKY"
+     },
+     {
+      "text": "Это дом, и это дом, который стоит в доме.",
+      "level": "PICKY"
+     }
+    ]
+   }
+  },
+  {
+   "op": "style-check",
+   "args": {
+    "lang": "ru-RU",
+    "ids": [
+     "FILLER_WORDS_RU"
+    ],
+    "cases": [
+     {
+      "text": "",
+      "level": "PICKY"
+     },
+     {
+      "text": "Ах, это очень хорошо. Однако, вау, эээ, ох, всё э ух. Ну вот, всё.",
+      "level": "PICKY"
+     }
+    ]
+   }
+  },
+  {
+   "op": "style-check",
+   "args": {
+    "lang": "ru-RU",
+    "ids": [
+     "FILLER_WORDS_RU"
+    ],
+    "config": {
+     "FILLER_WORDS_RU": [
+      1
+     ]
+    },
+    "cases": [
+     {
+      "text": "",
+      "level": "PICKY"
+     },
+     {
+      "text": "Ах, это очень хорошо. Однако, вау, эээ, ох, всё э ух. Ну вот, всё.",
+      "level": "PICKY"
+     }
+    ]
+   }
+  }
+ ]
+}
