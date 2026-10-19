@@ -1,0 +1,14 @@
+# F42 oracle (X-SPELLRULE)
+Status: DONE (34 cases, golden 4.8M, ~330 requests). `npm run oracle -- X-SPELLRULE`; `npm run parity -- X-SPELLRULE`. Generator `node oracle/scripts/gen-cases-spellrule.mjs` (also writes X-HUNSPELL; wipes both case dirs; seeded PRNG, sha-ordered corpus picks; rerun the whole ID after regenerating). Compare: jsonl, normalize `paths`. Env: pinned oracle env.
+Java: oracle/harness/src/ltjs/oracle/SpellRuleOps.java (ops `sr-check`, `sr-word`, `sr-misc`; Harness.java dispatch + probe mapper prefix `sr-`/`hs-`). Protected SpellingCheckRule members are called reflectively.
+- sr-check {lang, ids, userWords?, userCache?, userName?, ignoreTokens?, acceptPhrases?, considerIgnore?, cases:[{text,level?,mode?,paraMode?}]}: full JLanguageTool run with only the speller rule enabled; matches via CheckPipeOps.runCase (CORE-0436..0439).
+- sr-word {lang, id, words, sugg?, lists?, expand?, filter?, ignoreTokens?, acceptPhrases?, considerIgnore?, userWords?}: rule meta (file names), per word ignoreWord, isProhibited, isInIgnoredSet, isIgnoredNoCase, ignorePotentiallyMisspelledWord, startsWithIgnoredWord (cs/ci), isUrl, isEMail, isMisspelled, spelling suggestions; ignoreWord(List,idx) for idx -1..size; expandLine; filterSuggestions/filterNoSuggestWords (CORE-0433..0435).
+- sr-misc kinds: filetypes (CommonFileTypes pattern, CORE-0240), vague (VagueSpellChecker), multitoken (Language#getMultitokenSpeller, de has the list; other languages incl. unknown `xx` record Java errors), symspell (inline dictionary, lookup 3 verbosities, lookupCompound, wordSegmentation, bad term/count index, maxDist -1), foreign (ForeignLanguageChecker thresholds).
+Cases: words-{en-US,en-GB,en-AU,en-CA,en-NZ,en-ZA,fr}, words-opts-en-US (ignoreTokens, acceptPhrases, considerIgnore=false, user words, unknown rule id), filter-en-US, check-{en-US,en-GB}-00..03, check-{en-AU,CA,NZ,ZA}, check-fr-00..01, check-special-{en-US,en-GB,fr}, check-user-{en-US,en-GB}, fr-probe, misc-{filetypes,vague,multitoken,symspell,foreign}.
+Findings: the fr speller exists in the build (MorfologikFrenchSpellerRule, FR_SPELLING_RULE; contradicts the F41 note), so fr is oracled. IDs `FR_SPELLING_RULE` only; `MORFOLOGIK_RULE_FR_FR` does not exist (noRule).
+## UNORACLED
+- ForeignLanguageChecker with a real language identifier: no ngram/fasttext model in the build, LanguageIdentifierService returns null so check() is `{}` for all inputs; manual check once a model is available.
+- MultitokenSpeller for en/fr/es/pt/ca/nl: lists absent or empty in this build (all suggestions empty); only de has data. SymSpellRule (rule wrapper needing dictionary files) not driven, only SymSpell.
+- MultitokenSpeller on empty/short input throws StringIndexOutOfBounds wrapped in UncheckedExecutionException (recorded as Java quirk).
+## Parity state
+No adapters (src not ported): all 34 cases NOT PORTED.
