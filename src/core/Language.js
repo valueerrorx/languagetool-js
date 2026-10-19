@@ -35,6 +35,11 @@ const TYPOGRAPHY_PATTERN_5 = Pattern.compile('"([\\u202f\\u00a0 !\\?,\\.;:\\)])'
 
 const spellingRules = new Map(); // Java: Language#spellingRules (keyed by class)
 
+// test/oracle support: a fresh JVM starts with an empty Language#spellingRules
+export function clearDefaultSpellingRules() {
+  spellingRules.clear();
+}
+
 // Java: Class#isAssignableFrom(Class) (a.isAssignableFrom(b))
 export function isAssignableFrom(a, b) {
   return a === b || b.prototype instanceof a;

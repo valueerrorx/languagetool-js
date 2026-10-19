@@ -8,7 +8,7 @@ import { isAllUppercase, isMixedCase, startsWithUppercase, uppercaseFirstChar } 
 import { getDataBroker } from '../../../resources/LtStatics.js';
 import { WeightedSuggestion } from './WeightedSuggestion.js';
 
-// Java: SpellingCheckRule#LANGUAGETOOL (SpellingCheckRule itself is ported in F42)
+// Java: SpellingCheckRule#LANGUAGETOOL (same value as the export of SpellingCheckRule.js; kept local so this module stays free of the rule/JLanguageTool imports)
 export const LANGUAGETOOL = 'LanguageTool';
 // Java: SpellingCheckRule#LANGUAGETOOLER
 export const LANGUAGETOOLER = 'LanguageTooler';

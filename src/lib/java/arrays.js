@@ -36,3 +36,17 @@ export function copyOfRange(a, from, to) {
   for (let i = 0; i < Math.min(newLength, a.length - from); i++) out[i] = a[from + i];
   return out;
 }
+
+// Java: Arrays#binarySearch(T[],T,Comparator)
+export function binarySearch(a, key, c) {
+  let low = 0;
+  let high = a.length - 1;
+  while (low <= high) {
+    const mid = (low + high) >>> 1;
+    const cmp = c(a[mid], key);
+    if (cmp < 0) low = mid + 1;
+    else if (cmp > 0) high = mid - 1;
+    else return mid;
+  }
+  return -(low + 1);
+}
