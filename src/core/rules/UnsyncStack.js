@@ -1,5 +1,6 @@
 // org.languagetool.rules.UnsyncStack (ArrayList based stack)
 import { RuntimeException } from '../../lib/java/errors.js';
+import { abstractCollectionToString } from '../../lib/java/toString.js';
 
 // Java: java.util.EmptyStackException
 export class EmptyStackException extends RuntimeException {
@@ -64,5 +65,10 @@ export class UnsyncStack {
       return this.size() - i;
     }
     return -1;
+  }
+
+  // Java: AbstractCollection#toString()
+  toString() {
+    return abstractCollectionToString(this.list);
   }
 }
