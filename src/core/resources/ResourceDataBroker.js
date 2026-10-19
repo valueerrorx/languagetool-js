@@ -56,7 +56,9 @@ function resolveName(name) {
 
 // Java: ResourceDataBroker.class.getResourceAsStream(String)
 export function getResourceAsStream(name) {
-  const f = locate(resolveName(name));
+  const resolved = resolveName(name);
+  if (resolved === 'org/languagetool/broker/') return Buffer.alloc(0); // the package directory entry of the core jar: empty stream (name "")
+  const f = locate(resolved);
   return f === null ? null : readResourceFile(f);
 }
 

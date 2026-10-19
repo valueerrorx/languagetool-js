@@ -25,3 +25,4 @@ import './fr/synthesis/FrenchSynthesizer.js';
 import './en/tokenizers/EnglishWordTokenizer.js';
 import './fr/tokenizers/FrenchWordTokenizer.js';
 import '../core/patterns/PatternRuleLoader.js';
+import '../core/patterns/FalseFriendRuleLoader.js';
