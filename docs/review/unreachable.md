@@ -26,3 +26,4 @@
 | F26 | JavaHashMap: tree bins (>8 collisions in one bucket, table >= 64) not modelled - iteration order may differ (flag treeBinsNeeded) | needs >8 String keys with identical (hash & (n-1)) in one bucket; not seen in LT data |
 | F32 | DisambiguationPatternRuleReplacer: null disAction -> Java NPE, JS no-op | handler always defaults to REPLACE |
 | F33 | MultiWordChunker.getInstance(""): resource dir listing order (Java: first classpath entry containing the dir, e.g. "ar"; JS: merged tree) - X-CHUNK/inline-errors job 3 message differs | empty/dir filename; never reachable from language wiring |
+| F36 | casts#castToIntAt: NullPointerException text for a null config element is a fixed helpful-NPE text (Java names the local variable) | null element in a UserConfig value array (harness inputs are int/bool/str) |

@@ -1,5 +1,6 @@
 // Java primitive conversions (JLS 5.1.2/5.1.3): double/float->int/long saturation, narrowing wrap, long->float.
 import { roundToFloat } from './floatingDecimal.js';
+import { ArrayIndexOutOfBoundsException, ClassCastException, NullPointerException } from './errors.js';
 
 // Java: (int) double
 export function d2i(d) {
@@ -44,4 +45,19 @@ export const l2d = (l) => Number(l);
 export function l2f(l) {
   const neg = l < 0n;
   return roundToFloat(neg, neg ? -l : l, 0);
+}
+
+// Java: (int) objs[i] on an Object[] holding boxed values (number = Integer, boolean, string, bigint = Long, boxes with .kind):
+// ArrayIndexOutOfBoundsException for a bad index, NullPointerException for null, ClassCastException unless Integer
+export function castToIntAt(objs, i) {
+  if (i < 0 || i >= objs.length) throw new ArrayIndexOutOfBoundsException(`Index ${i} out of bounds for length ${objs.length}`);
+  const o = objs[i];
+  if (o === null || o === undefined) throw new NullPointerException('Cannot invoke "java.lang.Integer.intValue()" because "cf[0]" is null');
+  if (typeof o === 'number') return o;
+  let name;
+  if (typeof o === 'boolean') name = 'java.lang.Boolean';
+  else if (typeof o === 'bigint') name = 'java.lang.Long';
+  else if (typeof o === 'string') name = 'java.lang.String';
+  else name = `java.lang.${o.kind ?? 'Object'}`;
+  throw new ClassCastException(`class ${name} cannot be cast to class java.lang.Integer (${name} and java.lang.Integer are in module java.base of loader 'bootstrap')`);
 }

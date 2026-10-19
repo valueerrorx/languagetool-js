@@ -96,3 +96,21 @@ export function selectRules(lt, disabledCategories, enabledCategories, disabledR
     }
   }
 }
+
+// Java: Tools#isParagraphEnd(List,int,Language)
+export function isParagraphEnd(sentences, nTest, lang) {
+  if (nTest >= sentences.length - 1) {
+    return true;
+  }
+  if (lang.getSentenceTokenizer().singleLineBreaksMarksPara()) {
+    if (sentences[nTest].getText().endsWith('\n') || sentences[nTest].getText().endsWith('\n\r')) {
+      return true;
+    }
+  } else if (sentences[nTest].getText().endsWith('\n\n') || sentences[nTest].getText().endsWith('\n\r\n\r') || sentences[nTest].getText().endsWith('\r\n\r\n')) {
+    return true;
+  }
+  if (sentences[nTest + 1].getText().startsWith('\n') || sentences[nTest + 1].getText().startsWith('\r\n')) {
+    return true;
+  }
+  return false;
+}
