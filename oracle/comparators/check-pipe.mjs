@@ -26,9 +26,9 @@ function analyzeRawText(e, a, p, out) {
     const t = a.sentences[i];
     deepDiff(s.text, t.text, `${p}.sentences[${i}].text`, [], out);
     deepDiff(s.raw, t.raw, `${p}.sentences[${i}].raw`, [], out);
-    if (!s.disambChanged) { deepDiff(s.post, t.post, `${p}.sentences[${i}].post`, [], out); deepDiff(s.pre, t.pre, `${p}.sentences[${i}].pre`, [], out); }
+    if (!s.disambChanged || t.realDisamb) { deepDiff(s.post, t.post, `${p}.sentences[${i}].post`, [], out); deepDiff(s.pre, t.pre, `${p}.sentences[${i}].pre`, [], out); }
   });
-  if (!e.disambChanged) deepDiff(e.analyzeText, a.analyzeText, `${p}.analyzeText`, [], out);
+  if (!e.disambChanged || a.realDisamb) deepDiff(e.analyzeText, a.analyzeText, `${p}.analyzeText`, [], out);
 }
 
 function ltApi(e, a, p, out) {

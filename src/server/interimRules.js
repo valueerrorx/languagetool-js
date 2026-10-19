@@ -73,6 +73,7 @@ export function interimRules(l) {
 
 // Interim analysis (disambiguation/chunking of the language steps are not ported yet): runs fn with the no-op disambiguator and chunker (shared by server and CLI)
 export function withInterimAnalysis(lang, fn) {
+  if (lang.getShortCode() === 'en') return fn(); // English: real EnglishHybridDisambiguator and EnglishChunker (F45)
   const d = lang.getDisambiguator();
   const c = lang.getChunker();
   const pc = lang.postDisambiguationChunker; // raw field: the getter would create the unported default

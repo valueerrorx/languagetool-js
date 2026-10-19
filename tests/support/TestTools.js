@@ -3,6 +3,10 @@ import { expect } from 'vitest';
 import { DictionaryLookup } from '../../src/lib/fsa/DictionaryLookup.js';
 import { Dictionary } from '../../src/lib/fsa/DictionaryLookup.js';
 import { getDataBroker } from '../../src/core/resources/LtStatics.js';
+import { AnalyzedSentence } from '../../src/core/AnalyzedSentence.js';
+import { AnalyzedToken } from '../../src/core/AnalyzedToken.js';
+import { AnalyzedTokenReadings } from '../../src/core/AnalyzedTokenReadings.js';
+import { SENTENCE_START_TAGNAME } from '../../src/core/JLanguageToolConstants.js';
 
 // Java: TestTools#isWord(String)
 export function isWord(token) {
@@ -48,4 +52,34 @@ export function testDictionary(tagger) {
     if (wordData.getTag() === null || wordData.getTag().length === 0) missing++;
   }
   return missing;
+}
+
+// Java: TestTools#myAssert(String,String,Tokenizer,SentenceTokenizer,Tagger,Disambiguator)
+export function myAssertDisambiguated(input, expected, tokenizer, sentenceTokenizer, tagger, disambiguator) {
+  let outputStr = '';
+  for (const sentence of sentenceTokenizer.tokenize(input)) {
+    const tokens = tokenizer.tokenize(sentence);
+    const aTokens = tagger.tag(getNoWhitespaceTokens(tokens));
+    const tokenArray = [new AnalyzedTokenReadings([new AnalyzedToken('', SENTENCE_START_TAGNAME, null)], 0)];
+    let startPos = 0;
+    let noWhitespaceCount = 0;
+    for (const tokenStr of tokens) {
+      let posTag;
+      if (isWord(tokenStr)) {
+        posTag = aTokens[noWhitespaceCount];
+        posTag.setStartPos(startPos);
+        noWhitespaceCount++;
+      } else {
+        posTag = tagger.createNullToken(tokenStr, startPos);
+      }
+      tokenArray.push(posTag);
+      startPos += tokenStr.length;
+    }
+    const output = disambiguator.disambiguate(new AnalyzedSentence(tokenArray)).getTokens();
+    for (let i = 0; i < output.length; i++) {
+      outputStr += getAsStrings(output[i]).join('|');
+      if (i < output.length - 1) outputStr += ' ';
+    }
+  }
+  expect(outputStr).toBe(expected);
 }

@@ -19,7 +19,8 @@ const toks = (a) => a.map(tok);
 // Java: CheckPipeOps#analyzeRaw(JsonNode)
 export function run(a) {
   const l = languageFor(a.lang);
-  return withNoopAnalysis(l, false, () => {
+  const real = l.getShortCode() === 'en'; // EnglishHybridDisambiguator ported (F45): real post-disambiguation
+  return (real ? (f) => f() : (f) => withNoopAnalysis(l, false, f))(() => {
     const lt = newTool(l);
     lt.setCleanOverlappingMatches(false);
     const results = a.texts.map((tn) => {
@@ -34,10 +35,10 @@ export function run(a) {
           const pd = toks(post.getTokens());
           const changed = JSON.stringify(rd) !== JSON.stringify(pd);
           any ||= changed;
-          ss.push({ text: s, raw: rd, post: pd, pre: toks(post.getPreDisambigTokens()), disambChanged: changed });
+          ss.push({ text: s, raw: rd, post: pd, pre: toks(post.getPreDisambigTokens()), disambChanged: changed, realDisamb: real });
         }
         const at = lt.analyzeText(text).map((s) => ({ text: s.getText(), tokens: toks(s.getTokens()), pre: toks(s.getPreDisambigTokens()) }));
-        return { sentences: ss, analyzeText: at, disambChanged: any };
+        return { sentences: ss, analyzeText: at, disambChanged: any, realDisamb: real };
       } catch (t) {
         return errorOf(t);
       }

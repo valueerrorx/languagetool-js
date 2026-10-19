@@ -7,6 +7,7 @@ import { Languages } from '../../../src/core/Languages.js';
 import { JLanguageTool } from '../../../src/core/JLanguageTool.js';
 import { getDataBroker } from '../../../src/core/resources/LtStatics.js';
 import { javaSplit, javaReplaceAll, javaTrim, javaCompare } from '../../../src/lib/java/strings.js';
+import { newLt } from '../../support/ruleTestSupport.js';
 import { useXxTestResources } from '../../support/DemoLanguage.js';
 
 // Java: DisambiguationRuleTest#sortForms(String)
@@ -143,8 +144,17 @@ describe('DisambiguationRuleTest', () => {
     expect(loaded).toBeGreaterThan(0);
   });
 
-  // Java: DisambiguationRuleTest#testDisambiguationRulesFromXML(Set) for de/en/fr: SKIPPED, the examples need the hybrid disambiguators (multiword preDisambiguate) of F45 (en), F51 (de), F60 (fr)
-  it.skip('F45/F51/F60: disambiguation examples replay of real languages', () => {
+  // Java: DisambiguationRuleTest#testDisambiguationRulesFromXML(Set) for en (EnglishHybridDisambiguator, F45); built-in rules are not needed for the replay
+  it('replays the disambiguation examples of en', () => {
+    const lang = Languages.getLanguageForShortCode('en');
+    const nameWithLocale = 'en/disambiguation.xml';
+    const stream = getDataBroker().getAsStream(`${getDataBroker().getResourceDir()}/${nameWithLocale}`);
+    const rules = new DisambiguationRuleLoader().getRules(stream, lang, nameWithLocale);
+    testDisambiguationRulesFromXMLExamples(rules, newLt(lang), lang);
+  }, 120000);
+
+  // Java: DisambiguationRuleTest#testDisambiguationRulesFromXML(Set) for de/fr: SKIPPED, the examples need the hybrid disambiguators (multiword preDisambiguate) of F45 (en), F51 (de), F60 (fr)
+  it.skip('F51/F60: disambiguation examples replay of de/fr', () => {
     for (const lang of Languages.get()) {
       if (lang.isVariant()) continue;
       const nameWithLocale = `${lang.getShortCode()}/disambiguation.xml`;
