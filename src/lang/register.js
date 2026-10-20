@@ -40,3 +40,4 @@ import './en/rules/EnglishMultitokenSpeller.js';
 import './fr/rules/MorfologikFrenchSpellerRule.js';
 import './fr/rules/FrenchMultitokenSpeller.js';
 import './de/rules/GermanMultitokenSpeller.js';
+import '../core/rules/spelling/morfologik/DynamicMorfologikSpellerRule.js';

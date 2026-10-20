@@ -5,7 +5,7 @@ import { Languages } from '../../../../src/core/Languages.js';
 import { SpellingCheckRule } from '../../../../src/core/rules/spelling/SpellingCheckRule.js';
 import { RuntimeException } from '../../../../src/lib/java/errors.js';
 import { MorfologikAmericanSpellerRule } from '../../../../src/lang/en/rules/MorfologikAmericanSpellerRule.js';
-import { englishMessages, newLt, useNoopAnalysis } from '../../../support/ruleTestSupport.js';
+import { englishMessages, newLt, useNoopAnalysis, withRealAnalysis } from '../../../support/ruleTestSupport.js';
 
 describe('SpellingCheckRuleTest', () => {
   const language = Languages.getLanguageForShortCode('en-US');
@@ -26,10 +26,10 @@ describe('SpellingCheckRuleTest', () => {
     expect(String(lt.check('This is Microsofts new product.')[0].getSuggestedReplacements())).toBe("Microsoft's,Microsoft");
   });
 
-  // Java: SpellingCheckRuleTest#testIgnoreSuggestionsWithMorfologik (the multi-word entry "Al Jazeera" of spelling.txt is accepted through the EnglishHybridDisambiguator, F45)
-  it.skip('testIgnoreSuggestionsWithMorfologik (Al Jazeera)', () => {
+  // Java: SpellingCheckRuleTest#testIgnoreSuggestionsWithMorfologik (the multi-word entry "Al Jazeera" of spelling.txt is accepted through the EnglishHybridDisambiguator: run with the real analysis)
+  it('testIgnoreSuggestionsWithMorfologik (Al Jazeera)', () => withRealAnalysis(language, () => {
     expect(lt.check('It was shown on Al Jazeera.').length).toBe(0);
-  });
+  }));
 
   // Java: SpellingCheckRuleTest#testIgnorePhrases; adapted like the test above (the tool holds only the speller rule, so no other rule has to be disabled)
   it('testIgnorePhrases', () => {

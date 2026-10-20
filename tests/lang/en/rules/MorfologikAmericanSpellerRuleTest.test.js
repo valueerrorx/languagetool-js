@@ -6,7 +6,7 @@ import { Languages } from '../../../../src/core/Languages.js';
 import { MorfologikAmericanSpellerRule } from '../../../../src/lang/en/rules/MorfologikAmericanSpellerRule.js';
 import { MorfologikCanadianSpellerRule } from '../../../../src/lang/en/rules/MorfologikCanadianSpellerRule.js';
 import { AbstractEnglishSpellerRuleTest } from '../../../support/AbstractEnglishSpellerRuleTest.js';
-import { englishMessages as enMessages, newLt, useNoopAnalysis } from '../../../support/ruleTestSupport.js';
+import { englishMessages as enMessages, newLt, useNoopAnalysis, withRealAnalysis } from '../../../support/ruleTestSupport.js';
 
 describe('MorfologikAmericanSpellerRuleTest', () => {
   const language = Languages.getLanguageForShortCode('en-US');
@@ -175,8 +175,8 @@ describe('MorfologikAmericanSpellerRuleTest', () => {
     base.assertAllMatches(lt, rule, "robinson", "Robinson", "robin son", "robins on", "Robson", "Robeson", "robins", "Roberson", "Robins");
   });
 
-  // Java: MorfologikAmericanSpellerRuleTest#testMorfologikSpeller (assertions that need multiwords.txt accepted through the EnglishHybridDisambiguator, F45)
-  it.skip('testMorfologikSpeller (multiwords)', () => {
+  // Java: MorfologikAmericanSpellerRuleTest#testMorfologikSpeller (assertions that need multiwords.txt accepted through the EnglishHybridDisambiguator: run with the real analysis)
+  it('testMorfologikSpeller (multiwords)', () => withRealAnalysis(language, () => {
     expect(rule.match(lt.getAnalyzedSentence("Qur'an")).length).toBe(0);
     expect(rule.match(lt.getAnalyzedSentence("viva voce, a fortiori, in vitro")).length).toBe(0);
     expect(rule.match(lt.getAnalyzedSentence("C'est la vie.")).length).toBe(0);
@@ -194,7 +194,7 @@ describe('MorfologikAmericanSpellerRuleTest', () => {
     
     expect(rule.match(lt.getAnalyzedSentence("wrongwordin'")).length).toBe(1);
     expect(rule.match(lt.getAnalyzedSentence("wrongwordin’")).length).toBe(1);
-  });
+  }));
 
   // Java: MorfologikAmericanSpellerRuleTest#testIgnoredChars
   it('testIgnoredChars', () => {

@@ -33,6 +33,20 @@ export function useNoopAnalysis(...langs) {
   });
 }
 
+// runs fn with the default (real) disambiguator and chunker of the language, then puts the previous ones back
+export function withRealAnalysis(language, fn) {
+  const d = language.disambiguator ?? null;
+  const c = language.chunker ?? null;
+  language.setDisambiguator(null);
+  language.setChunker(null);
+  try {
+    return fn();
+  } finally {
+    language.setDisambiguator(d);
+    language.setChunker(c);
+  }
+}
+
 // new JLanguageTool(language) without built-in rules (stands in for "disable all rules, add one")
 export function newLt(language = EN, ...rules) {
   const lt = new JLanguageTool(language, [], null, null, null, null, true, false, []);

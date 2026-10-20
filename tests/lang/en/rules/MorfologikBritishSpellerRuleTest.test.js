@@ -4,7 +4,7 @@ import '../../../../src/lang/register.js';
 import { Languages } from '../../../../src/core/Languages.js';
 import { MorfologikBritishSpellerRule } from '../../../../src/lang/en/rules/MorfologikBritishSpellerRule.js';
 import { AbstractEnglishSpellerRuleTest } from '../../../support/AbstractEnglishSpellerRuleTest.js';
-import { englishMessages as enMessages, newLt, useNoopAnalysis } from '../../../support/ruleTestSupport.js';
+import { englishMessages as enMessages, newLt, useNoopAnalysis, withRealAnalysis } from '../../../support/ruleTestSupport.js';
 
 describe('MorfologikBritishSpellerRuleTest', () => {
   useNoopAnalysis(Languages.getLanguageForShortCode('en-GB'));
@@ -94,8 +94,8 @@ describe('MorfologikBritishSpellerRuleTest', () => {
     
   });
 
-  // Java: MorfologikBritishSpellerRuleTest#testMorfologikSpeller (multiwords part); multiwords.txt entries are accepted through the EnglishHybridDisambiguator (F45), not ported yet
-  it.skip('testMorfologikSpeller (multiwords)', () => {
+  // Java: MorfologikBritishSpellerRuleTest#testMorfologikSpeller (multiwords part); multiwords.txt entries are accepted through the EnglishHybridDisambiguator: run with the real analysis
+  it('testMorfologikSpeller (multiwords)', () => withRealAnalysis(Languages.getLanguageForShortCode('en-GB'), () => {
     const language = Languages.getLanguageForShortCode("en-GB");
     const rule = new MorfologikBritishSpellerRule(enMessages(), language, null, []);
     const lt = newLt(language);
@@ -103,5 +103,5 @@ describe('MorfologikBritishSpellerRuleTest', () => {
     expect(rule.match(lt.getAnalyzedSentence("Ménage à trois")).length).toBe(0);
     expect(rule.match(lt.getAnalyzedSentence("ménage à trois")).length).toBe(0);
     expect(rule.match(lt.getAnalyzedSentence("The quid pro quo")).length).toBe(0);
-  });
+  }));
 });

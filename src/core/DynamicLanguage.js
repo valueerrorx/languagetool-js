@@ -3,7 +3,9 @@ import { File } from '../lib/java/io/File.js';
 import { Objects } from '../lib/java/Objects.js';
 import { Pattern } from '../lib/java/regex/index.js';
 import { Language } from './Language.js';
-import { notPortedYet } from './language/components.js';
+import { languages } from './languagesRef.js';
+import { createComponent, notPortedYet } from './language/components.js';
+import { getMessageBundleForLanguage } from './resources/ResourceBundleTools.js';
 
 const DASH = Pattern.compile('-.*');
 
@@ -76,6 +78,8 @@ export class DynamicMorfologikLanguage extends DynamicLanguage {
 
   // Java: DynamicMorfologikLanguage#getRelevantRules(ResourceBundle,UserConfig,Language,List)
   getRelevantRules() {
-    throw notPortedYet('DynamicMorfologikLanguage#getRelevantRules (MorfologikSpellerRule, F41)');
+    // Java: new MorfologikSpellerRule(JLanguageTool.getMessageBundle(Languages.getLanguageForShortCode("en-US")), this) {..}; the component is registered by src/lang/register.js
+    const r = createComponent('org.languagetool.DynamicMorfologikLanguage$1', getMessageBundleForLanguage(languages().getLanguageForShortCode('en-US')), this);
+    return [r];
   }
 }

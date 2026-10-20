@@ -148,16 +148,26 @@ export class MultitokenSpeller {
     this.suggestionsMap = null; // Java: HashMap<Character,HashMap<String,List<String>>>
     this.suggestionsMapNoSpacesKey = null;
     this.candidatePartsByKey = null;
+    this.suggestionsCache = new Map(); // Java: CacheBuilder.newBuilder().maximumSize(20000).build(), keyed by the word only (the accepted flag of the first call wins)
     this.initMultitokenSpeller(filePaths);
   }
 
-  // Java: MultitokenSpeller#getSuggestions(String) / getSuggestions(String,boolean); the Guava cache (maximumSize 20000) returns what a fresh computation returns
+  // Java: MultitokenSpeller#getSuggestions(String) / getSuggestions(String,boolean); the Guava cache is keyed by the normalized word only, so a later call with another flag gets the first result (LRU eviction approximated)
   getSuggestions(originalWord, areTokensAcceptedBySpeller = false) {
     originalWord = WHITESPACE_AND_SEP.matcher(originalWord).replaceAll(' ');
     const normalizedWord = originalWord;
     const accepted = areTokensAcceptedBySpeller;
     try {
-      return this.computeSuggestions(normalizedWord, accepted);
+      if (this.suggestionsCache.has(normalizedWord)) {
+        const hit = this.suggestionsCache.get(normalizedWord);
+        this.suggestionsCache.delete(normalizedWord);
+        this.suggestionsCache.set(normalizedWord, hit);
+        return hit;
+      }
+      const computed = this.computeSuggestions(normalizedWord, accepted);
+      this.suggestionsCache.set(normalizedWord, computed);
+      if (this.suggestionsCache.size > 20000) this.suggestionsCache.delete(this.suggestionsCache.keys().next().value);
+      return computed;
     } catch (e) {
       // Cache#get(K,Callable): checked exceptions -> ExecutionException (rethrown as RuntimeException), unchecked -> UncheckedExecutionException
       if (e instanceof IOException) throw new RuntimeException(`Error generating suggestions for: ${normalizedWord}`, e);

@@ -15,6 +15,7 @@ import { EnglishDashRule } from '../../src/lang/en/rules/EnglishDashRule.js';
 import { WordCoherencyRule as EnWordCoherencyRule } from '../../src/lang/en/rules/WordCoherencyRule.js';
 import { EnglishDiacriticsRule } from '../../src/lang/en/rules/EnglishDiacriticsRule.js';
 import { EnglishPlainEnglishRule } from '../../src/lang/en/rules/EnglishPlainEnglishRule.js';
+import { EnglishRedundancyRule } from '../../src/lang/en/rules/EnglishRedundancyRule.js';
 import { SimpleReplaceRule as EnSimpleReplaceRule } from '../../src/lang/en/rules/SimpleReplaceRule.js';
 import { SimpleReplaceProfanityRule } from '../../src/lang/en/rules/SimpleReplaceProfanityRule.js';
 import { AmericanReplaceRule } from '../../src/lang/en/rules/AmericanReplaceRule.js';
@@ -130,7 +131,7 @@ export function f37Rules(l, m, uc, natives) {
     const specific = new EnglishSpecificCaseRule(m);
     const rest = [
       new CompoundRule(m, l, uc), new ContractionSpellingRule(m, l), new EnglishWrongWordInContextRule(m, l), new EnglishDashRule(m),
-      new EnWordCoherencyRule(m), new EnglishDiacriticsRule(m), new EnglishPlainEnglishRule(m), new EnSimpleReplaceRule(m, l),
+      new EnWordCoherencyRule(m), new EnglishDiacriticsRule(m), new EnglishPlainEnglishRule(m), new EnglishRedundancyRule(m), new EnSimpleReplaceRule(m, l),
       new SimpleReplaceProfanityRule(m, l),
     ];
     const i = Math.max(0, at(isReadability));

@@ -7,7 +7,7 @@ import { AnalyzedToken } from '../../../core/AnalyzedToken.js';
 import { getDataBroker } from '../../../core/resources/LtStatics.js';
 import { getUrl } from '../../../core/Tools.js';
 import { startsWithUppercase, uppercaseFirstChar } from '../../../core/text/StringTools.js';
-import { notPortedYet } from '../../../core/language/components.js';
+import { BeoLingusTranslator } from './translation/BeoLingusTranslator.js';
 import { Pattern } from '../../../lib/java/regex/index.js';
 import { IOException, RuntimeException, IllegalArgumentException } from '../../../lib/java/errors.js';
 import { Objects } from '../../../lib/java/Objects.js';
@@ -157,11 +157,7 @@ export class AbstractEnglishSpellerRule extends MorfologikSpellerRule {
     for (const ignoreWord of this.wordListLoader.loadWords(languageSpecificIgnoreFile)) {
       this.addIgnoreWords(ignoreWord);
     }
-    // Java: translator = BeoLingusTranslator.getInstance(globalConfig) (null without a beolingus file, D-019; EN-0120 is F46)
-    if (globalConfig !== null && globalConfig !== undefined && globalConfig.getBeolingusFile() !== null) {
-      throw notPortedYet('BeoLingusTranslator (EN-0120)');
-    }
-    this.translator = null;
+    this.translator = BeoLingusTranslator.getInstance(globalConfig);
     this.topSuggestions = getTopSuggestions();
     this.topSuggestionsIgnoreCase = getTopSuggestionsIgnoreCase();
     // Java: nerPipe = new NERService(globalConfig.getNerUrl()) is only used together with a BaseLanguageModel (EN-0080, LM not ported)
