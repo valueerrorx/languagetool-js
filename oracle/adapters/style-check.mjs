@@ -44,7 +44,7 @@ function nativeRules(code, l, m, uc) {
   }
 }
 
-// Java: StyleOps#check(JsonNode); disambiguator/chunker of the languages are not ported (F32/F44): no-op analysis (R4), see docs/review/F36-porter.md
+// Java: StyleOps#check(JsonNode); fr disambiguator/chunker are not ported (F60): no-op analysis (R4), see docs/review/F36-porter.md
 export function run(a, hook = null) {
   let l;
   try {
@@ -52,8 +52,9 @@ export function run(a, hook = null) {
   } catch (e) {
     throw notPorted(`style-check: language ${a.lang}`);
   }
-  // German post-disambiguation chunker (GermanChunker, F44) is replaced too; the F36 rules read no chunk tags
   if (l.getShortCode() === 'en') return check(a, l, hook); // English: real rule list, analysis complete since F45/F50
+  if (l.getShortCode() === 'de') return check(a, l, hook); // German: native rule instances, real GermanRuleDisambiguator + GermanChunker since F51
+  // French post-disambiguation chunker is replaced too (until F60); the F36 rules read no chunk tags
   const savedPost = l.postDisambiguationChunker;
   l.postDisambiguationChunker = new NoopChunker();
   try {

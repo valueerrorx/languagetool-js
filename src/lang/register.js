@@ -20,6 +20,8 @@ import './de/tokenizers/GermanWordTokenizer.js';
 import './de/tagging/GermanTagger.js';
 import './de/tagging/SwissGermanTagger.js';
 import './de/synthesis/GermanSynthesizer.js';
+import './de/chunking/GermanChunker.js';
+import './de/tagging/GermanRuleDisambiguator.js';
 import './en/synthesis/EnglishSynthesizer.js';
 import './en/chunking/EnglishChunker.js';
 import './en/rules/NoDisambiguationEnglishPartialPosTagFilter.js';

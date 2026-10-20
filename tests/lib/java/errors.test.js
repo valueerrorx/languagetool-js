@@ -139,3 +139,13 @@ describe('errors (X-ERRORS)', () => {
       '\tSuppressed: java.lang.Error: sup', '\t\tat S.m(S.java:9)', '\t\t... 1 more'].join('\n'));
   });
 });
+
+describe('EmptyStackException (F51)', () => {
+  it('has the java.util name and RuntimeException parent', async () => {
+    const { EmptyStackException, RuntimeException } = await import('../../../src/lib/java/errors.js');
+    const e = new EmptyStackException();
+    expect(e.javaClass).toBe('java.util.EmptyStackException');
+    expect(e).toBeInstanceOf(RuntimeException);
+    expect(e.toString()).toBe('java.util.EmptyStackException');
+  });
+});

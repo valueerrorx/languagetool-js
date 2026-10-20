@@ -144,24 +144,23 @@ describe('DisambiguationRuleTest', () => {
     expect(loaded).toBeGreaterThan(0);
   });
 
-  // Java: DisambiguationRuleTest#testDisambiguationRulesFromXML(Set) for en (EnglishHybridDisambiguator, F45); built-in rules are not needed for the replay
-  it('replays the disambiguation examples of en', () => {
-    const lang = Languages.getLanguageForShortCode('en');
-    const nameWithLocale = 'en/disambiguation.xml';
+  // Java: DisambiguationRuleTest#testDisambiguationRulesFromXML(Set) for en (EnglishHybridDisambiguator, F45) and de (GermanRuleDisambiguator, F51); built-in rules are not needed for the replay
+  for (const code of ['en', 'de']) {
+    it(`replays the disambiguation examples of ${code}`, () => {
+      const lang = Languages.getLanguageForShortCode(code);
+      const nameWithLocale = `${code}/disambiguation.xml`;
+      const stream = getDataBroker().getAsStream(`${getDataBroker().getResourceDir()}/${nameWithLocale}`);
+      const rules = new DisambiguationRuleLoader().getRules(stream, lang, nameWithLocale);
+      testDisambiguationRulesFromXMLExamples(rules, newLt(lang), lang);
+    }, 120000);
+  }
+
+  // Java: DisambiguationRuleTest#testDisambiguationRulesFromXML(Set) for fr: SKIPPED, the examples need the hybrid disambiguator (multiword preDisambiguate) of F60
+  it.skip('F60: disambiguation examples replay of fr', () => {
+    const lang = Languages.getLanguageForShortCode('fr');
+    const nameWithLocale = 'fr/disambiguation.xml';
     const stream = getDataBroker().getAsStream(`${getDataBroker().getResourceDir()}/${nameWithLocale}`);
     const rules = new DisambiguationRuleLoader().getRules(stream, lang, nameWithLocale);
-    testDisambiguationRulesFromXMLExamples(rules, newLt(lang), lang);
-  }, 120000);
-
-  // Java: DisambiguationRuleTest#testDisambiguationRulesFromXML(Set) for de/fr: SKIPPED, the examples need the hybrid disambiguators (multiword preDisambiguate) of F45 (en), F51 (de), F60 (fr)
-  it.skip('F51/F60: disambiguation examples replay of de/fr', () => {
-    for (const lang of Languages.get()) {
-      if (lang.isVariant()) continue;
-      const nameWithLocale = `${lang.getShortCode()}/disambiguation.xml`;
-      const stream = getDataBroker().getAsStream(`${getDataBroker().getResourceDir()}/${nameWithLocale}`);
-      if (stream === null) continue;
-      const rules = new DisambiguationRuleLoader().getRules(stream, lang, nameWithLocale);
-      testDisambiguationRulesFromXMLExamples(rules, new JLanguageTool(lang), lang);
-    }
+    testDisambiguationRulesFromXMLExamples(rules, new JLanguageTool(lang), lang);
   });
 });

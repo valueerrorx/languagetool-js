@@ -1,0 +1,11 @@
+# F53 oracle (X-DESPELL, b-* cases)
+Same ID, generator and ops as F52-oracle.md (ops de-gsr, sr-check, sr-misc multitoken, de-morfologik). Suggestion order is part of the expectation (lists compared in order).
+New op: sr-misc kind de-morfologik {lang,words,cases} (DeSpellOps): `new MorfologikGermanyGermanSpellerRule(messages, lang, null, [])` (DE-0067, not registered), isMisspelled/getSuggestions per word, id/file/description/examples, plus matches via a JLanguageTool with only this rule.
+Cases (b-*): b-sugg-<de-DE|de-AT|de-CH>-NN (typos of corpus tokens, double typos, case variants, compound typos: getSuggestions, sortSuggestionByQuality, getMessage, getOnlySuggestions); b-addsugg-<v>-NN (words sampled from the regex keys of the 1488 put/putRepl entries of ADDITIONAL_SUGGESTIONS plus capitalised/upper-case variants; DE-0101; keys are read from the original source only to derive inputs, never expected values); b-onlysugg (getOnlySuggestions branches, Büffet de-AT/CH, filterNoSuggestWords); b-oldspelling (alt_neu.csv, DE-0173); b-datatypos (typos from spelling.txt/ignore.txt/variant lists); b-regression-inputs (left column of src/test/resources/suggestions.txt, DE-0220: inputs only, the @Ignore'd expectations in that file are not used); b-check-<v> and b-check-special (matches with suggestions, ss/ß, gender, S-Bahn, Büffet, de-AT/de-CH vocabulary); b-multitoken (GermanMultitokenSpeller via MultitokenSpeller for de/de-AT/de-CH); b-morfologik-de (DE-0067, de_DE.dict DE-0202).
+de_AT.dict/de_CH.dict (DE-0203/0204) are exercised through the Austrian/Swiss speller suggestion cases (the rules' MorfologikMultiSpeller), spelling-de-AT/CH.txt through the variant lists.
+Findings: see summary in the step report.
+## UNORACLED
+- Direct Morfologik speller calls with de_AT/de_CH dicts outside GermanSpellerRule (no standalone rule class exists); covered through the speller rules only.
+- SuggestionRegressionTest expectations (test @Ignore'd; file is not treated as oracle).
+- ML/SuggestionsOrderer re-ranking (not initialised in the pinned build, see F46).
+- Timing-dependent native Hunspell suggestions (DEV-009): words exempt in unstable.json are not known for new inputs; a flaky word would surface at parity time.

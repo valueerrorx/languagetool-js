@@ -14,6 +14,7 @@ import { PREFIX } from './_synth-rules.mjs';
 
 // Java: Languages#getLanguageForShortCode(String) (German variants enabled since F22)
 export function languageFor(code) {
+  if (/-x-simple-language/.test(code)) throw Object.assign(new Error(`language ${code} is out of scope (DEV-006)`), { notPorted: true });
   return Languages.getLanguageForShortCode(code);
 }
 

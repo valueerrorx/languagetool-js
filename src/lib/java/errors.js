@@ -165,6 +165,7 @@ export const NegativeArraySizeException = defineThrowable('NegativeArraySizeExce
 export const ConcurrentModificationException = defineThrowable('ConcurrentModificationException', RuntimeException, 'java.util.ConcurrentModificationException');
 export const DateTimeParseException = defineThrowable('DateTimeParseException', RuntimeException, 'java.time.format.DateTimeParseException');
 export const NoSuchElementException = defineThrowable('NoSuchElementException', RuntimeException, 'java.util.NoSuchElementException');
+export const EmptyStackException = defineThrowable('EmptyStackException', RuntimeException, 'java.util.EmptyStackException');
 export const InterruptedException = defineThrowable('InterruptedException', Exception, 'java.lang.InterruptedException');
 export const CloneNotSupportedException = defineThrowable('CloneNotSupportedException', Exception, 'java.lang.CloneNotSupportedException');
 export const ReflectiveOperationException = defineThrowable('ReflectiveOperationException', Exception, 'java.lang.ReflectiveOperationException');

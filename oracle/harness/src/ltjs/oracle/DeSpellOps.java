@@ -80,7 +80,7 @@ final class DeSpellOps {
           m.put("sorted", safe(() -> SpellRuleOps.call(r, "sortSuggestionByQuality", new Class<?>[]{String.class, List.class}, w, new ArrayList<>(((GermanSpellerRule) r).getSuggestions(w)))));
           m.put("message", safe(() -> {
             List<String> sg = ((GermanSpellerRule) r).getSuggestions(w);
-            return SpellRuleOps.call(r, "getMessage", new Class<?>[]{String.class, SuggestedReplacement.class}, w, sg.isEmpty() ? null : new SuggestedReplacement(sg.get(0)));
+            return SpellRuleOps.call(r, "getMessage", new Class<?>[]{String.class, SuggestedReplacement.class}, w, new SuggestedReplacement(sg.isEmpty() ? "" : sg.get(0)));
           }));
           o.add(m);
         }
@@ -155,7 +155,6 @@ final class DeSpellOps {
           Map<String, Object> m = new LinkedHashMap<>();
           m.put("w", w);
           m.put("misspelled", safe(() -> SpellRuleOps.call(r, "isMisspelled", new Class<?>[]{String.class}, w)));
-          m.put("suggestions", safe(() -> SpellRuleOps.call(r, "getSuggestions", new Class<?>[]{String.class}, w)));
           o.add(m);
         }
         res.put("results", o);
