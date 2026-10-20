@@ -3,9 +3,12 @@ import { RuntimeException, Throwable } from '../../../lib/java/errors.js';
 import { Objects } from '../../../lib/java/Objects.js';
 import { JavaHashMap } from '../../../lib/java/collections/JavaHashMap.js';
 import { Languages } from '../../../core/Languages.js';
-import { createComponent, notPortedYet } from '../../../core/language/components.js';
+import { createComponent } from '../../../core/language/components.js';
 import { registerClass } from '../../../core/resources/ClassBroker.js';
 import { English } from './English.js';
+import { MorfologikBritishSpellerRule } from '../rules/MorfologikBritishSpellerRule.js';
+import { BritishReplaceRule } from '../rules/BritishReplaceRule.js';
+import { UnitConversionRuleImperial } from '../rules/UnitConversionRuleImperial.js';
 import { ID2PRIO_ENTRIES } from './id2prioBritishEnglish.js';
 
 const LANGUAGE_SHORT_CODE = 'en-GB';
@@ -42,8 +45,11 @@ export class BritishEnglish extends English {
   }
 
   // Java: BritishEnglish#getRelevantRules(ResourceBundle,UserConfig,Language,List)
-  getRelevantRules() {
-    throw notPortedYet('BritishEnglish#getRelevantRules (F17)');
+  getRelevantRules(messages, userConfig, motherTongue, altLanguages) {
+    const rules = [...super.getRelevantRules(messages, userConfig, motherTongue, altLanguages)];
+    rules.push(new BritishReplaceRule(messages, '/en/en-GB/replace.txt'));
+    rules.push(new UnitConversionRuleImperial(messages));
+    return rules;
   }
 
   // Java: BritishEnglish#createDefaultSpellingRule(ResourceBundle)
@@ -52,8 +58,10 @@ export class BritishEnglish extends English {
   }
 
   // Java: BritishEnglish#getRelevantLanguageModelCapableRules(ResourceBundle,LanguageModel,GlobalConfig,UserConfig,Language,List)
-  getRelevantLanguageModelCapableRules() {
-    throw notPortedYet('BritishEnglish#getRelevantLanguageModelCapableRules (F17)');
+  getRelevantLanguageModelCapableRules(messages, lm, globalConfig, userConfig, motherTongue, altLanguages) {
+    const rules = [...super.getRelevantLanguageModelCapableRules(messages, lm, globalConfig, userConfig, motherTongue, altLanguages)];
+    rules.push(new MorfologikBritishSpellerRule(messages, this, globalConfig, userConfig, altLanguages, lm, motherTongue));
+    return rules;
   }
 
   // Java: BritishEnglish#getPriorityMap()

@@ -19,6 +19,10 @@ export function compareCheck(e, a, ignore = []) {
 export function compareEnvelope(e, a, resultCmp) {
   if (!e || !a) return [`envelope missing: ${!e ? 'expected' : 'actual'}`];
   if (e.ok !== a.ok) return [`ok ${e.ok} != ${a.ok}${a.error ? ` (${a.error.class}: ${a.error.message})` : ''}`];
-  if (!e.ok) return deepDiff(e.error, a.error, 'error');
+  if (!e.ok) {
+    // DEV-006: the list of supported language codes names only the in-scope languages on the JS side
+    const norm = (x) => (x && typeof x.message === 'string' ? { ...x, message: x.message.replace(/Supported language codes are: [^]*?\. The list of languages is read/, 'Supported language codes are: <LIST> The list of languages is read') } : x);
+    return deepDiff(norm(e.error), norm(a.error), 'error');
+  }
   return resultCmp(e.result, a.result);
 }

@@ -9,14 +9,69 @@ import { LanguageMaintainedState } from '../../../core/LanguageMaintainedState.j
 import { Contributor } from '../../../core/language/Contributor.js';
 import { DANIEL_NABER, MARCIN_MILKOWSKI } from '../../../core/language/Contributors.js';
 import { createComponent, notPortedYet, sharedComponent } from '../../../core/language/components.js';
-import { getClassBroker } from '../../../core/resources/LtStatics.js';
+import { getClassBroker, getDataBroker } from '../../../core/resources/LtStatics.js';
 import { registerClass } from '../../../core/resources/ClassBroker.js';
 import { RuleMatch } from '../../../core/rules/model/RuleMatch.js';
 import { SuggestedReplacement } from '../../../core/rules/model/SuggestedReplacement.js';
 import { ITSIssueType } from '../../../core/rules/model/ITSIssueType.js';
 import { ID2PRIO_ENTRIES } from './id2prioEnglish.js';
+import { NullPointerException } from '../../../lib/java/errors.js';
+import { currentTimeMillis } from '../../../lib/java/clock.js';
+import { Example } from '../../../core/rules/model/Examples.js';
+import { getUrl } from '../../../core/Tools.js';
+import { CommaWhitespaceRule } from '../../../core/rules/CommaWhitespaceRule.js';
+import { DoublePunctuationRule } from '../../../core/rules/DoublePunctuationRule.js';
+import { UppercaseSentenceStartRule } from '../../../core/rules/UppercaseSentenceStartRule.js';
+import { MultipleWhitespaceRule } from '../../../core/rules/MultipleWhitespaceRule.js';
+import { SentenceWhitespaceRule } from '../../../core/rules/SentenceWhitespaceRule.js';
+import { WhiteSpaceBeforeParagraphEnd } from '../../../core/rules/WhiteSpaceBeforeParagraphEnd.js';
+import { WhiteSpaceAtBeginOfParagraph } from '../../../core/rules/WhiteSpaceAtBeginOfParagraph.js';
+import { EmptyLineRule } from '../../../core/rules/EmptyLineRule.js';
+import { LongParagraphRule } from '../../../core/rules/LongParagraphRule.js';
+import { ParagraphRepeatBeginningRule } from '../../../core/rules/ParagraphRepeatBeginningRule.js';
+import { PunctuationMarkAtParagraphEnd } from '../../../core/rules/PunctuationMarkAtParagraphEnd.js';
+import { PunctuationMarkAtParagraphEnd2 } from '../../../core/rules/PunctuationMarkAtParagraphEnd2.js';
+import { ReadabilityRule } from '../../../core/rules/ReadabilityRule.js';
+import { LongSentenceRule } from '../rules/LongSentenceRule.js';
+import { ConsistentApostrophesRule } from '../rules/ConsistentApostrophesRule.js';
+import { EnglishSpecificCaseRule } from '../rules/EnglishSpecificCaseRule.js';
+import { EnglishUnpairedBracketsRule } from '../rules/EnglishUnpairedBracketsRule.js';
+import { EnglishUnpairedQuotesRule } from '../rules/EnglishUnpairedQuotesRule.js';
+import { EnglishWordRepeatRule } from '../rules/EnglishWordRepeatRule.js';
+import { AvsAnRule } from '../rules/AvsAnRule.js';
+import { EnglishWordRepeatBeginningRule } from '../rules/EnglishWordRepeatBeginningRule.js';
+import { CompoundRule } from '../rules/CompoundRule.js';
+import { ContractionSpellingRule } from '../rules/ContractionSpellingRule.js';
+import { EnglishWrongWordInContextRule } from '../rules/EnglishWrongWordInContextRule.js';
+import { EnglishDashRule } from '../rules/EnglishDashRule.js';
+import { WordCoherencyRule } from '../rules/WordCoherencyRule.js';
+import { EnglishDiacriticsRule } from '../rules/EnglishDiacriticsRule.js';
+import { EnglishPlainEnglishRule } from '../rules/EnglishPlainEnglishRule.js';
+import { EnglishRedundancyRule } from '../rules/EnglishRedundancyRule.js';
+import { SimpleReplaceRule } from '../rules/SimpleReplaceRule.js';
+import { SimpleReplaceProfanityRule } from '../rules/SimpleReplaceProfanityRule.js';
+import { EnglishRepeatedWordsRule } from '../rules/EnglishRepeatedWordsRule.js';
+import { StyleTooOftenUsedVerbRule } from '../rules/StyleTooOftenUsedVerbRule.js';
+import { StyleTooOftenUsedNounRule } from '../rules/StyleTooOftenUsedNounRule.js';
+import { StyleTooOftenUsedAdjectiveRule } from '../rules/StyleTooOftenUsedAdjectiveRule.js';
 
 const FALSE_FRIENDS_PATTERN = Pattern.compile('EN_FOR_[A-Z]+_SPEAKERS_FALSE_FRIENDS.*');
+
+const L2_CACHE_MILLIS = 30 * 60 * 1000;
+const cache = new Map(); // Java: English#cache (Guava LoadingCache, expireAfterWrite 30 min): path -> {rules, writtenAt}
+
+// Java: English#cache.getUnchecked(String) / CacheLoader#load(String)
+function cacheGetUnchecked(path) {
+  const now = currentTimeMillis();
+  const e = cache.get(path);
+  if (e !== undefined && now - e.writtenAt < L2_CACHE_MILLIS) return e.rules;
+  const rules = [];
+  const loader = createComponent('org.languagetool.rules.patterns.PatternRuleLoader');
+  const is = getDataBroker().getAsStream(path);
+  rules.push(...loader.getRules(is, path, null));
+  cache.set(path, { rules, writtenAt: now });
+  return rules;
+}
 
 const id2prio = new JavaHashMap(); // Java: English#id2prio
 for (const [k, v] of ID2PRIO_ENTRIES) id2prio.put(k, v);
@@ -86,12 +141,66 @@ export class English extends LanguageWithModel {
   }
 
   // Java: English#getRelevantRules(ResourceBundle,UserConfig,Language,List)
-  getRelevantRules() {
-    throw notPortedYet('English#getRelevantRules (F17)');
+  getRelevantRules(messages, userConfig, motherTongue) {
+    const allRules = [];
+    if (motherTongue !== null && motherTongue !== undefined) {
+      if (motherTongue.getShortCode() === 'de') {
+        allRules.push(...cacheGetUnchecked('/org/languagetool/rules/en/grammar-l2-de.xml'));
+      } else if (motherTongue.getShortCode() === 'fr') {
+        allRules.push(...cacheGetUnchecked('/org/languagetool/rules/en/grammar-l2-fr.xml'));
+      }
+    }
+    allRules.push(
+      new CommaWhitespaceRule(messages,
+        Example.wrong('We had coffee<marker> ,</marker> cheese and crackers and grapes.'),
+        Example.fixed('We had coffee<marker>,</marker> cheese and crackers and grapes.')),
+      new DoublePunctuationRule(messages, getUrl('https://languagetool.org/insights/post/punctuation-guide/#what-are-periods')),
+      new UppercaseSentenceStartRule(messages, this,
+        Example.wrong('This house is old. <marker>it</marker> was built in 1950.'),
+        Example.fixed('This house is old. <marker>It</marker> was built in 1950.'),
+        getUrl('https://languagetool.org/insights/post/spelling-capital-letters/')),
+      new MultipleWhitespaceRule(messages, this),
+      new SentenceWhitespaceRule(messages, 2),
+      new WhiteSpaceBeforeParagraphEnd(messages, this),
+      new WhiteSpaceAtBeginOfParagraph(messages),
+      new EmptyLineRule(messages, this),
+      new LongSentenceRule(messages, userConfig, 40),
+      new LongParagraphRule(messages, this, userConfig),
+      // new OpenNMTRule() commented out because of #903
+      new ParagraphRepeatBeginningRule(messages, this),
+      new PunctuationMarkAtParagraphEnd(messages, this),
+      new PunctuationMarkAtParagraphEnd2(messages, this),
+      // specific to English:
+      new ConsistentApostrophesRule(messages),
+      new EnglishSpecificCaseRule(messages),
+      new EnglishUnpairedBracketsRule(messages, this),
+      new EnglishUnpairedQuotesRule(messages, this),
+      new EnglishWordRepeatRule(messages, this),
+      new AvsAnRule(messages),
+      new EnglishWordRepeatBeginningRule(messages, this),
+      new CompoundRule(messages, this, userConfig),
+      new ContractionSpellingRule(messages, this),
+      new EnglishWrongWordInContextRule(messages, this),
+      new EnglishDashRule(messages),
+      new WordCoherencyRule(messages),
+      new EnglishDiacriticsRule(messages),
+      new EnglishPlainEnglishRule(messages),
+      new EnglishRedundancyRule(messages),
+      new SimpleReplaceRule(messages, this),
+      new SimpleReplaceProfanityRule(messages, this),
+      new ReadabilityRule(messages, this, userConfig, false),
+      new ReadabilityRule(messages, this, userConfig, true),
+      new EnglishRepeatedWordsRule(messages),
+      new StyleTooOftenUsedVerbRule(messages, this, userConfig),
+      new StyleTooOftenUsedNounRule(messages, this, userConfig),
+      new StyleTooOftenUsedAdjectiveRule(messages, this, userConfig));
+    return allRules;
   }
 
   // Java: English#getRelevantLanguageModelRules(ResourceBundle,LanguageModel,UserConfig)
-  getRelevantLanguageModelRules() {
+  getRelevantLanguageModelRules(messages, languageModel) {
+    // UpperCaseNgramRule, EnglishConfusionProbabilityRule, EnglishNgramProbabilityRule: constructors dereference the language model
+    if (languageModel === null || languageModel === undefined) throw new NullPointerException();
     throw notPortedYet('English#getRelevantLanguageModelRules (ngram rules, DEV-001)');
   }
 

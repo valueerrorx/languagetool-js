@@ -6,7 +6,7 @@ import { PatternTokenBuilder } from '../../../core/patterns/PatternTokenBuilder.
 import { token, tokenRegex, posRegex, pos } from '../../../core/patterns/PatternRuleBuilderHelper.js';
 import '../../../core/disambiguation/DisambiguationPatternRule.js';
 import { getUrl } from '../../../core/Tools.js';
-import { AmericanEnglish } from '../language/AmericanEnglish.js';
+import { getClassBroker } from '../../../core/resources/LtStatics.js';
 import { EnglishSynthesizer } from '../synthesis/EnglishSynthesizer.js';
 
 let wordsToCheck = null; // Java: static wordsToCheck = loadWords("/en/synonyms.txt")
@@ -163,10 +163,10 @@ export class EnglishRepeatedWordsRule extends AbstractRepeatedWordsRule {
 
   // Java: EnglishRepeatedWordsRule(ResourceBundle)
   constructor(messages) {
-    super(messages, AmericanEnglish.getInstance());
+    super(messages, getClassBroker().forName('org.languagetool.language.AmericanEnglish').getInstance());
     if (wordsToCheck === null) wordsToCheck = AbstractRepeatedWordsRule.loadWords('/en/synonyms.txt');
     this.setTags([Tag.picky]);
-    this.antiPatterns = Rule.cacheAntiPatterns(AmericanEnglish.getInstance(), antiPatternList());
+    this.antiPatterns = Rule.cacheAntiPatterns(getClassBroker().forName('org.languagetool.language.AmericanEnglish').getInstance(), antiPatternList());
     const id = this.getId();
     if (id === 'EN_REPEATEDWORDS_DEFINITELY') {
       this.setUrl(getUrl('https://languagetool.org/insights/post/i-agree-synonyms/'));

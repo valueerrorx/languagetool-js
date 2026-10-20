@@ -1,7 +1,8 @@
 // Java: org.languagetool.language.SouthAfricanEnglish
-import { createComponent, notPortedYet } from '../../../core/language/components.js';
+import { createComponent } from '../../../core/language/components.js';
 import { registerClass } from '../../../core/resources/ClassBroker.js';
 import { English } from './English.js';
+import { MorfologikSouthAfricanSpellerRule } from '../rules/MorfologikSouthAfricanSpellerRule.js';
 
 // Java: SouthAfricanEnglish
 export class SouthAfricanEnglish extends English {
@@ -23,13 +24,16 @@ export class SouthAfricanEnglish extends English {
   }
 
   // Java: SouthAfricanEnglish#getRelevantRules(ResourceBundle,UserConfig,Language,List)
-  getRelevantRules() {
-    throw notPortedYet('SouthAfricanEnglish#getRelevantRules (F17)');
+  getRelevantRules(messages, userConfig, motherTongue, altLanguages) {
+    const rules = [...super.getRelevantRules(messages, userConfig, motherTongue, altLanguages)];
+    return rules;
   }
 
   // Java: SouthAfricanEnglish#getRelevantLanguageModelCapableRules(ResourceBundle,LanguageModel,GlobalConfig,UserConfig,Language,List)
-  getRelevantLanguageModelCapableRules() {
-    throw notPortedYet('SouthAfricanEnglish#getRelevantLanguageModelCapableRules (F17)');
+  getRelevantLanguageModelCapableRules(messages, lm, globalConfig, userConfig, motherTongue, altLanguages) {
+    const rules = [...super.getRelevantLanguageModelCapableRules(messages, lm, globalConfig, userConfig, motherTongue, altLanguages)];
+    rules.push(new MorfologikSouthAfricanSpellerRule(messages, this, globalConfig, userConfig, altLanguages, lm, motherTongue));
+    return rules;
   }
 }
 

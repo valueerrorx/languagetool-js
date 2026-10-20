@@ -83,3 +83,13 @@ export function myAssertDisambiguated(input, expected, tokenizer, sentenceTokeni
   }
   expect(outputStr).toBe(expected);
 }
+
+// Java: TestTools#disableAllRulesExcept(JLanguageTool,String...)
+export function disableAllRulesExcept(lt, ...ruleIdsToActivate) {
+  for (const rule of lt.getAllRules()) {
+    lt.disableRule(rule.getId());
+  }
+  for (const id of ruleIdsToActivate) {
+    lt.enableRule(id);
+  }
+}

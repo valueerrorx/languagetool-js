@@ -2,9 +2,11 @@
 import { RuntimeException, Throwable } from '../../../lib/java/errors.js';
 import { Objects } from '../../../lib/java/Objects.js';
 import { Languages } from '../../../core/Languages.js';
-import { createComponent, notPortedYet } from '../../../core/language/components.js';
+import { createComponent } from '../../../core/language/components.js';
 import { registerClass } from '../../../core/resources/ClassBroker.js';
 import { English } from './English.js';
+import { MorfologikCanadianSpellerRule } from '../rules/MorfologikCanadianSpellerRule.js';
+import { UnitConversionRuleImperial } from '../rules/UnitConversionRuleImperial.js';
 
 const LANGUAGE_SHORT_CODE = 'en-CA';
 
@@ -42,13 +44,17 @@ export class CanadianEnglish extends English {
   }
 
   // Java: CanadianEnglish#getRelevantRules(ResourceBundle,UserConfig,Language,List)
-  getRelevantRules() {
-    throw notPortedYet('CanadianEnglish#getRelevantRules (F17)');
+  getRelevantRules(messages, userConfig, motherTongue, altLanguages) {
+    const rules = [...super.getRelevantRules(messages, userConfig, motherTongue, altLanguages)];
+    rules.push(new UnitConversionRuleImperial(messages));
+    return rules;
   }
 
   // Java: CanadianEnglish#getRelevantLanguageModelCapableRules(ResourceBundle,LanguageModel,GlobalConfig,UserConfig,Language,List)
-  getRelevantLanguageModelCapableRules() {
-    throw notPortedYet('CanadianEnglish#getRelevantLanguageModelCapableRules (F17)');
+  getRelevantLanguageModelCapableRules(messages, lm, globalConfig, userConfig, motherTongue, altLanguages) {
+    const rules = [...super.getRelevantLanguageModelCapableRules(messages, lm, globalConfig, userConfig, motherTongue, altLanguages)];
+    rules.push(new MorfologikCanadianSpellerRule(messages, this, globalConfig, userConfig, altLanguages, lm, motherTongue));
+    return rules;
   }
 
   // Java: CanadianEnglish#getInstance()

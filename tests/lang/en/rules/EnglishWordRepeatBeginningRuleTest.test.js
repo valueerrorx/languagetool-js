@@ -1,15 +1,14 @@
-// Ported from EnglishWordRepeatBeginningRuleTest (en module); lt.check is replaced by the rule alone (Language#getRelevantRules is not ported yet, F17)
+// Ported from EnglishWordRepeatBeginningRuleTest (en module)
 import { describe, it, expect } from 'vitest';
+import '../../../../src/lang/register.js';
 import { Languages } from '../../../../src/core/Languages.js';
-import { EnglishWordRepeatBeginningRule } from '../../../../src/lang/en/rules/EnglishWordRepeatBeginningRule.js';
-import { englishMessages, newLt } from '../../../support/ruleTestSupport.js';
+import { JLanguageTool } from '../../../../src/core/JLanguageTool.js';
 
 describe('EnglishWordRepeatBeginningRuleTest', () => {
-  const language = Languages.getLanguageForShortCode('en-US');
-  const lt = newLt(language, new EnglishWordRepeatBeginningRule(englishMessages(), language));
-
   // Java: EnglishWordRepeatBeginningRuleTest#testRule
   it('testRule', () => {
+    const lt = new JLanguageTool(Languages.getLanguageForShortCode('en-US'));
+
     // ================== correct sentences ===================
     // two successive sentences that start with the same non-adverb word.
     expect(lt.check('This is good. This is good, too.').length).toBe(0);

@@ -1,13 +1,73 @@
-// Ported from EnglishPatternRuleTest (en module); skipped until the en rule list exists (F50)
+// Ported from EnglishPatternRuleTest (en module); testRules runs the English variants only (Java also runs the core test language xx, covered by DemoPatternRuleTest)
 import { describe, it } from 'vitest';
+import '../../../src/lang/register.js';
+import { Languages } from '../../../src/core/Languages.js';
+import { JLanguageTool } from '../../../src/core/JLanguageTool.js';
+import { AmericanEnglish } from '../../../src/lang/en/language/AmericanEnglish.js';
+import { PatternRuleTest } from '../../support/PatternRuleTest.js';
+
+const LONG = 3600000;
+
+// Java: EnglishPatternRuleTest.L2GermanRulesOnlyEnglish
+class L2GermanRulesOnlyEnglish extends AmericanEnglish {
+  // Java: L2GermanRulesOnlyEnglish() (super(true))
+  constructor() {
+    super(true);
+  }
+
+  // Java: L2GermanRulesOnlyEnglish#getRelevantRules(ResourceBundle,UserConfig,Language,List)
+  getRelevantRules() {
+    return [];
+  }
+
+  // Java: L2GermanRulesOnlyEnglish#getRuleFileNames()
+  getRuleFileNames() {
+    return ['/org/languagetool/rules/en/grammar-l2-de.xml'];
+  }
+}
+
+// Java: EnglishPatternRuleTest.L2FrenchRulesOnlyEnglish
+class L2FrenchRulesOnlyEnglish extends AmericanEnglish {
+  // Java: L2FrenchRulesOnlyEnglish() (super(true))
+  constructor() {
+    super(true);
+  }
+
+  // Java: L2FrenchRulesOnlyEnglish#getRelevantRules(ResourceBundle,UserConfig,Language,List)
+  getRelevantRules() {
+    return [];
+  }
+
+  // Java: L2FrenchRulesOnlyEnglish#getRuleFileNames()
+  getRuleFileNames() {
+    return ['/org/languagetool/rules/en/grammar-l2-fr.xml'];
+  }
+}
 
 describe('EnglishPatternRuleTest', () => {
-  // Java: EnglishPatternRuleTest#testRules
-  it.skip('testRules', () => { /* runGrammarRulesFromXmlTest(): needs Language#getRelevantRules + XML rules of en (F50), un-skip EnglishPatternRuleTest */ });
+  // Java: EnglishPatternRuleTest#testRules (PatternRuleTest#runGrammarRulesFromXmlTest restricted to the English languages)
+  it('testRules', async () => {
+    const t = new PatternRuleTest();
+    for (const lang of Languages.get()) {
+      if (lang.getShortCode() === 'en') t.runGrammarRuleForLanguage(lang);
+      await new Promise((resolve) => setImmediate(resolve)); // lets the vitest worker answer its RPC calls between the long synchronous runs
+    }
+    t.ruleErrors.verify();
+  }, LONG);
 
   // Java: EnglishPatternRuleTest#testL2Languages
-  it.skip('testL2Languages', () => { /* validatePatternFile + runTestForLanguage(L2GermanRulesOnlyEnglish/L2FrenchRulesOnlyEnglish): needs en AmericanEnglish(true) and grammar-l2-*.xml (F50) */ });
+  it('testL2Languages', () => {
+    const t = new PatternRuleTest();
+    t.validatePatternFileNames(['en/grammar-l2-de.xml']);
+    t.validatePatternFileNames(['en/grammar-l2-fr.xml']);
+    t.runTestForLanguage(new L2GermanRulesOnlyEnglish());
+    t.runTestForLanguage(new L2FrenchRulesOnlyEnglish());
+    t.ruleErrors.verify();
+  }, LONG);
 
-  // Java: EnglishPatternRuleTest#testBug
-  it.skip('testBug', () => { /* new JLanguageTool(en).check(...): needs the en rule list (F50) */ });
+  // Java: EnglishPatternRuleTest#testBug; used to cause an ArrayIndexOutOfBoundsException in MatchState.setToken()
+  it('testBug', () => {
+    const lt = new JLanguageTool(Languages.getLanguageForShortCode('en'));
+    lt.check('Alexander between 369 and 358 BC\n\nAlexander');
+  }, LONG);
 });

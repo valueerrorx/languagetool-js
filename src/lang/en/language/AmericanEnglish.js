@@ -2,9 +2,12 @@
 import { RuntimeException, Throwable } from '../../../lib/java/errors.js';
 import { Objects } from '../../../lib/java/Objects.js';
 import { Languages } from '../../../core/Languages.js';
-import { createComponent, notPortedYet } from '../../../core/language/components.js';
+import { createComponent } from '../../../core/language/components.js';
 import { registerClass } from '../../../core/resources/ClassBroker.js';
 import { English } from './English.js';
+import { MorfologikAmericanSpellerRule } from '../rules/MorfologikAmericanSpellerRule.js';
+import { AmericanReplaceRule } from '../rules/AmericanReplaceRule.js';
+import { UnitConversionRuleUS } from '../rules/UnitConversionRuleUS.js';
 
 const LANGUAGE_SHORT_CODE = 'en-US';
 
@@ -37,8 +40,11 @@ export class AmericanEnglish extends English {
   }
 
   // Java: AmericanEnglish#getRelevantRules(ResourceBundle,UserConfig,Language,List)
-  getRelevantRules() {
-    throw notPortedYet('AmericanEnglish#getRelevantRules (F17)');
+  getRelevantRules(messages, userConfig, motherTongue, altLanguages) {
+    const rules = [...super.getRelevantRules(messages, userConfig, motherTongue, altLanguages)];
+    rules.push(new AmericanReplaceRule(messages, '/en/en-US/replace.txt'));
+    rules.push(new UnitConversionRuleUS(messages));
+    return rules;
   }
 
   // Java: AmericanEnglish#createDefaultSpellingRule(ResourceBundle)
@@ -47,8 +53,11 @@ export class AmericanEnglish extends English {
   }
 
   // Java: AmericanEnglish#getRelevantLanguageModelCapableRules(ResourceBundle,LanguageModel,GlobalConfig,UserConfig,Language,List)
-  getRelevantLanguageModelCapableRules() {
-    throw notPortedYet('AmericanEnglish#getRelevantLanguageModelCapableRules (F17)');
+  getRelevantLanguageModelCapableRules(messages, lm, globalConfig, userConfig, motherTongue, altLanguages) {
+    const rules = [...super.getRelevantLanguageModelCapableRules(messages, lm, globalConfig, userConfig, motherTongue, altLanguages)];
+    // SuggestionsChanges.isRunningExperiment(SymSpell) is never true (experiments are not configured)
+    rules.push(new MorfologikAmericanSpellerRule(messages, this, globalConfig, userConfig, altLanguages, lm, motherTongue));
+    return rules;
   }
 
   // Java: AmericanEnglish#getInstance()

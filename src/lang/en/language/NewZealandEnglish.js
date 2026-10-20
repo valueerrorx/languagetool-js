@@ -1,7 +1,10 @@
 // Java: org.languagetool.language.NewZealandEnglish
-import { createComponent, notPortedYet } from '../../../core/language/components.js';
+import { createComponent } from '../../../core/language/components.js';
 import { registerClass } from '../../../core/resources/ClassBroker.js';
 import { English } from './English.js';
+import { MorfologikNewZealandSpellerRule } from '../rules/MorfologikNewZealandSpellerRule.js';
+import { NewZealandReplaceRule } from '../rules/NewZealandReplaceRule.js';
+import { UnitConversionRuleImperial } from '../rules/UnitConversionRuleImperial.js';
 
 // Java: NewZealandEnglish
 export class NewZealandEnglish extends English {
@@ -23,13 +26,18 @@ export class NewZealandEnglish extends English {
   }
 
   // Java: NewZealandEnglish#getRelevantRules(ResourceBundle,UserConfig,Language,List)
-  getRelevantRules() {
-    throw notPortedYet('NewZealandEnglish#getRelevantRules (F17)');
+  getRelevantRules(messages, userConfig, motherTongue, altLanguages) {
+    const rules = [...super.getRelevantRules(messages, userConfig, motherTongue, altLanguages)];
+    rules.push(new NewZealandReplaceRule(messages, '/en/en-NZ/replace.txt'));
+    rules.push(new UnitConversionRuleImperial(messages));
+    return rules;
   }
 
   // Java: NewZealandEnglish#getRelevantLanguageModelCapableRules(ResourceBundle,LanguageModel,GlobalConfig,UserConfig,Language,List)
-  getRelevantLanguageModelCapableRules() {
-    throw notPortedYet('NewZealandEnglish#getRelevantLanguageModelCapableRules (F17)');
+  getRelevantLanguageModelCapableRules(messages, lm, globalConfig, userConfig, motherTongue, altLanguages) {
+    const rules = [...super.getRelevantLanguageModelCapableRules(messages, lm, globalConfig, userConfig, motherTongue, altLanguages)];
+    rules.push(new MorfologikNewZealandSpellerRule(messages, this, globalConfig, userConfig, altLanguages, lm, motherTongue));
+    return rules;
   }
 }
 

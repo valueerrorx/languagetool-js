@@ -47,9 +47,16 @@ function harnessOps() {
   return new Set([...src.matchAll(/case "([^"]+)":/g)].map((m) => m[1]));
 }
 
+// portLater cli cases whose language is en have the full rule list since F50 (de/fr stay skipped until F59/F63; -adl = unknown language)
+function englishRuleListPorted(cs) {
+  const args = cs.args ?? [];
+  const i = args.indexOf('-l');
+  return i >= 0 && !args.includes('-adl') && /^en(-|$)/.test(String(args[i + 1]));
+}
+
 // cli/http: the JS side is oracle/adapters/<kind>.mjs; run(cs, {workDir, port?}) returns the same shape as the Java side.
 async function runKindCase(cs, meta, dir) {
-  if (cs.kind === 'cli' && cs.portLater) return { status: 'SKIP', note: 'portLater (needs rules/language not ported)' };
+  if (cs.kind === 'cli' && cs.portLater && !englishRuleListPorted(cs)) return { status: 'SKIP', note: 'portLater (needs rules/language not ported)' };
   const f = path.join(ADAPTERS, `${cs.kind}.mjs`);
   const ad = existsSync(f) ? await import(f) : { notPorted: true };
   if (ad.notPorted) return { status: 'NOT PORTED', note: `${cs.kind} adapter not ported` };
@@ -195,6 +202,7 @@ const rows = [];
 for (const id of ids.length ? ids : all) {
   const cases = existsSync(path.join(GOLDEN, id)) ? readdirSync(path.join(GOLDEN, id)).filter((c) => !c.startsWith('.')).sort() : [];
   for (const c of cases) {
+    if (process.env.LTJS_CASE && !new RegExp(process.env.LTJS_CASE).test(c)) continue; // optional case-name filter (regex)
     let r;
     if (later.has(id)) r = { status: 'SKIP', note: 'inventory status later' };
     else {

@@ -1,4 +1,4 @@
-// Interim rule lists of English and French (the ported F16 core rules); replaced by Language#getRelevantRules when the language rule steps land.
+// Interim rule lists of French and German (the ported F16 core rules); replaced by Language#getRelevantRules when the language rule steps land (English done in F50).
 import { getMessageBundleForLanguage } from '../core/resources/ResourceBundleTools.js';
 import { NoopDisambiguator } from '../core/noop/NoopDisambiguator.js';
 import { NoopChunker } from '../core/noop/NoopChunker.js';
@@ -10,36 +10,17 @@ import { GenericUnpairedBracketsRule } from '../core/rules/GenericUnpairedBracke
 import { UppercaseSentenceStartRule } from '../core/rules/UppercaseSentenceStartRule.js';
 import { MultipleWhitespaceRule } from '../core/rules/MultipleWhitespaceRule.js';
 import { SentenceWhitespaceRule } from '../core/rules/SentenceWhitespaceRule.js';
-import { EnglishUnpairedBracketsRule } from '../lang/en/rules/EnglishUnpairedBracketsRule.js';
-import { EnglishUnpairedQuotesRule } from '../lang/en/rules/EnglishUnpairedQuotesRule.js';
 import { GermanCommaWhitespaceRule } from '../lang/de/rules/GermanCommaWhitespaceRule.js';
 import { GermanDoublePunctuationRule } from '../lang/de/rules/GermanDoublePunctuationRule.js';
 import { GermanUnpairedBracketsRule } from '../lang/de/rules/GermanUnpairedBracketsRule.js';
 import { GermanUnpairedQuotesRule } from '../lang/de/rules/GermanUnpairedQuotesRule.js';
 import { SentenceWhitespaceRule as GermanSentenceWhitespaceRule } from '../lang/de/rules/SentenceWhitespaceRule.js';
-import { EnglishWordRepeatRule } from '../lang/en/rules/EnglishWordRepeatRule.js';
 
-// Java: English#getRelevantRules / French#getRelevantRules (the entries of the F16 rule classes, list order); other languages: no rules yet
+// Java: French#getRelevantRules / German#getRelevantRules (the entries of the F16 rule classes, list order); null = use the language's real rule list (en)
 export function interimRules(l) {
   const messages = getMessageBundleForLanguage(l);
   const code = l.getShortCode();
-  if (code === 'en') {
-    return [
-      new CommaWhitespaceRule(messages,
-        Example.wrong('We had coffee<marker> ,</marker> cheese and crackers and grapes.'),
-        Example.fixed('We had coffee<marker>,</marker> cheese and crackers and grapes.')),
-      new DoublePunctuationRule(messages, getUrl('https://languagetool.org/insights/post/punctuation-guide/#what-are-periods')),
-      new UppercaseSentenceStartRule(messages, l,
-        Example.wrong('This house is old. <marker>it</marker> was built in 1950.'),
-        Example.fixed('This house is old. <marker>It</marker> was built in 1950.'),
-        getUrl('https://languagetool.org/insights/post/spelling-capital-letters/')),
-      new MultipleWhitespaceRule(messages, l),
-      new SentenceWhitespaceRule(messages, 2),
-      new EnglishUnpairedBracketsRule(messages, l),
-      new EnglishUnpairedQuotesRule(messages, l),
-      new EnglishWordRepeatRule(messages, l),
-    ];
-  }
+  if (code === 'en') return null; // English: real Language#getRelevantRules + XML pattern rules + speller (F50)
   if (code === 'fr') {
     return [
       new CommaWhitespaceRule(messages, false),

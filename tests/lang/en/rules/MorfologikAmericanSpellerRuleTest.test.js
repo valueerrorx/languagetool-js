@@ -1,6 +1,7 @@
 // Ported from MorfologikAmericanSpellerRuleTest (en module); no-op disambiguator/chunker (F32/F44 pending, F45 disambiguation.xml)
 import { describe, it, expect, beforeAll } from 'vitest';
 import '../../../../src/lang/register.js';
+import { JLanguageTool } from '../../../../src/core/JLanguageTool.js';
 import { UserConfig } from '../../../../src/core/rules/model/UserConfig.js';
 import { Languages } from '../../../../src/core/Languages.js';
 import { MorfologikAmericanSpellerRule } from '../../../../src/lang/en/rules/MorfologikAmericanSpellerRule.js';
@@ -205,8 +206,9 @@ describe('MorfologikAmericanSpellerRuleTest', () => {
     expect(rule.match(lt.getAnalyzedSentence("A soft\u00ADware")).length).toBe(0);
   });
 
-  // Java: MorfologikAmericanSpellerRuleTest#testIgnoredChars (lt.check part); needs Language#getRelevantRules of en (F50) and the English analysis chain (F44/F45)
-  it.skip('testIgnoredChars (lt.check)', () => {
+  // Java: MorfologikAmericanSpellerRuleTest#testIgnoredChars (lt.check part, real rule list and analysis)
+  it('testIgnoredChars (lt.check)', () => withRealAnalysis(language, () => {
+    const lt = new JLanguageTool(language);
     const ruleMatchesWithoutMerge = lt.check("sux\u00AD tainability");
     expect(ruleMatchesWithoutMerge.length).toBe(2);
     // make sure we offset correctly for ignored characters
@@ -219,7 +221,7 @@ describe('MorfologikAmericanSpellerRuleTest', () => {
     expect(ruleMatches.length).toBe(1);
     // make sure we offset correctly for ignored characters
     expect([ruleMatches[0].getFromPos(), ruleMatches[0].getToPos()]).toEqual([4, 20]);
-  });
+  }));
 
   // Java: MorfologikAmericanSpellerRuleTest#testRuleWithWrongSplit
   it('testRuleWithWrongSplit', () => {
