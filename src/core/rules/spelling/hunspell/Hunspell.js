@@ -1,9 +1,11 @@
 // Java: org.languagetool.rules.spelling.hunspell.Hunspell (cache + resource loading; always the stream path, as for JAR resources)
+import { readFileSync } from 'node:fs';
 import { RuntimeException } from '../../../../lib/java/errors.js';
 import { getDataBroker } from '../../../resources/LtStatics.js';
 import { DumontsHunspellDictionary } from './DumontsHunspellDictionary.js';
 
 const resourceCache = new Map(); // Java: Hunspell#resourceCache (key dicPath + affPath)
+const pathCache = new Map(); // Java: Hunspell#pathCache (key dictionary path + affix path)
 
 export class Hunspell {
   static FQCN = 'org.languagetool.rules.spelling.hunspell.Hunspell';
@@ -11,6 +13,23 @@ export class Hunspell {
   // test hook: each oracle case file is its own JVM
   static clearCaches() {
     resourceCache.clear();
+    pathCache.clear();
+  }
+
+  // Java: Hunspell#getDictionary(Path,Path) (files on disk, e.g. dynamic languages)
+  static getDictionary(dictionary, affix) {
+    const key = `${dictionary}\u0000${affix}`;
+    const cached = pathCache.get(key);
+    if (cached !== undefined && !cached.isClosed()) return cached;
+    let dict;
+    try {
+      dict = new DumontsHunspellDictionary(readFileSync(dictionary), readFileSync(affix), false);
+    } catch (e) {
+      if (e && e.code !== undefined && typeof e.syscall === 'string') throw new RuntimeException(e.message); // Java: IOException wrapped
+      throw e;
+    }
+    pathCache.set(key, dict);
+    return dict;
   }
 
   // Java: Hunspell#forDictionaryInResources(String,String) / (String,String,String) / (String)

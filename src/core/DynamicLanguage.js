@@ -4,7 +4,7 @@ import { Objects } from '../lib/java/Objects.js';
 import { Pattern } from '../lib/java/regex/index.js';
 import { Language } from './Language.js';
 import { languages } from './languagesRef.js';
-import { createComponent, notPortedYet } from './language/components.js';
+import { createComponent } from './language/components.js';
 import { getMessageBundleForLanguage } from './resources/ResourceBundleTools.js';
 
 const DASH = Pattern.compile('-.*');
@@ -67,8 +67,10 @@ export class DynamicHunspellLanguage extends DynamicLanguage {
   static FQCN = 'org.languagetool.DynamicHunspellLanguage';
 
   // Java: DynamicHunspellLanguage#getRelevantRules(ResourceBundle,UserConfig,Language,List)
-  getRelevantRules() {
-    throw notPortedYet('DynamicHunspellLanguage#getRelevantRules (HunspellRule, F43)');
+  getRelevantRules(messages, userConfig) {
+    // Java: new HunspellRule(bundle(en-US), this, userConfig) {..}; the component is registered by src/lang/register.js
+    const r = createComponent('org.languagetool.DynamicHunspellLanguage$1', getMessageBundleForLanguage(languages().getLanguageForShortCode('en-US')), this, userConfig ?? null);
+    return [r];
   }
 }
 

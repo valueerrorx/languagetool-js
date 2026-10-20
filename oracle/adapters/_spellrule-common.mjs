@@ -9,6 +9,11 @@ import { MorfologikCanadianSpellerRule } from '../../src/lang/en/rules/Morfologi
 import { MorfologikNewZealandSpellerRule } from '../../src/lang/en/rules/MorfologikNewZealandSpellerRule.js';
 import { MorfologikSouthAfricanSpellerRule } from '../../src/lang/en/rules/MorfologikSouthAfricanSpellerRule.js';
 import { MorfologikFrenchSpellerRule } from '../../src/lang/fr/rules/MorfologikFrenchSpellerRule.js';
+import { GermanSpellerRule } from '../../src/lang/de/rules/GermanSpellerRule.js';
+import { AustrianGermanSpellerRule } from '../../src/lang/de/rules/AustrianGermanSpellerRule.js';
+import { SwissGermanSpellerRule } from '../../src/lang/de/rules/SwissGermanSpellerRule.js';
+import { Hunspell } from '../../src/core/rules/spelling/hunspell/Hunspell.js';
+import { HunspellRule } from '../../src/core/rules/spelling/hunspell/HunspellRule.js';
 import { notPorted } from './_pipe-common.mjs';
 import { clearDefaultSpellingRules } from '../../src/core/Language.js';
 import { MorfologikMultiSpeller } from '../../src/core/rules/spelling/morfologik/MorfologikMultiSpeller.js';
@@ -16,6 +21,8 @@ import { MorfologikMultiSpeller } from '../../src/core/rules/spelling/morfologik
 // each case file is its own JVM in the oracle: the static caches start empty
 export function beginCase() {
   MorfologikMultiSpeller.clearStaticCaches();
+  HunspellRule.clearStaticCaches();
+  Hunspell.clearCaches();
   clearDefaultSpellingRules();
 }
 
@@ -56,6 +63,10 @@ export function spellingRules(l, uc) {
     'en-CA': MorfologikCanadianSpellerRule, 'en-NZ': MorfologikNewZealandSpellerRule, 'en-ZA': MorfologikSouthAfricanSpellerRule,
   };
   if (en[full] !== undefined) return [new en[full](m, l, null, uc, [], null, null)];
+  // Java: GermanyGerman/AustrianGerman/SwissGerman#getRelevantLanguageModelCapableRules (JLanguageTool passes its field userConfig = new UserConfig() when none is given, so GermanyGerman never takes the default rule)
+  if (full === 'de-DE') return [new GermanSpellerRule(m, l, uc ?? new UserConfig(), null, [], null)];
+  if (full === 'de-AT') return [new AustrianGermanSpellerRule(m, l, uc ?? new UserConfig(), null)];
+  if (full === 'de-CH') return [new SwissGermanSpellerRule(m, l, uc ?? new UserConfig(), null)];
   if (full === 'fr') return [uc === null ? l.getDefaultSpellingRule() : new MorfologikFrenchSpellerRule(m, l, uc, [])];
   throw notPorted(`spellrule: rule list of ${full}`);
 }

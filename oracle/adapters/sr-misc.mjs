@@ -7,6 +7,7 @@ import { BufferedReader } from '../../src/lib/java/io.js';
 import { floatToString } from '../../src/lib/java/toString.js';
 import { getLanguageForShortCodeGuarded as languageFor } from '../../src/core/language/javaLanguages.js';
 import { beginCase, safe, strs } from './_spellrule-common.mjs';
+import { run as runDe } from './_despell.mjs';
 
 export { beginCase };
 
@@ -82,7 +83,9 @@ export function run(a) {
       res.results = o;
       break;
     }
-    default: throw new Error(`kind ${kind}`);
+    default:
+      if (kind.startsWith('de-')) return runDe(a); // Java: SpellRuleOps#misc default branch -> DeSpellOps#misc
+      throw new Error(`kind ${kind}`);
   }
   return res;
 }
