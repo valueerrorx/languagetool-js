@@ -280,7 +280,8 @@ public class ContentOps {
 
   /** args: {lang, ruleIds?:[...], offset?, limit?, unrestricted?:bool(default true), level?} (offset/limit count rules) */
   public static Object ruleExamples(JsonNode a) throws Exception {
-    JLanguageTool lt = new JLanguageTool(lang(a.get("lang").asText()));
+    JLanguageTool lt = a.has("motherTongue") && !a.get("motherTongue").isNull()
+        ? new JLanguageTool(lang(a.get("lang").asText()), lang(a.get("motherTongue").asText())) : new JLanguageTool(lang(a.get("lang").asText()));
     JLanguageTool full = tool(a);
     Set<String> ids = new HashSet<>(strs(a, "ruleIds"));
     int offset = a.has("offset") ? a.get("offset").asInt() : 0;

@@ -1,7 +1,7 @@
 // java.util.Calendar / GregorianCalendar subset: fields, set/get, non-lenient validation, Julian/Gregorian cutover 1582, default zone from process TZ.
 import { currentTimeMillis } from './clock.js';
 import { Locale } from './Locale.js';
-import { IllegalArgumentException, NullPointerException } from './errors.js';
+import { IllegalArgumentException, NullPointerException, UnsupportedOperationException } from './errors.js';
 
 const ERA = 0; const YEAR = 1; const MONTH = 2; const WEEK_OF_YEAR = 3; const WEEK_OF_MONTH = 4; const DAY_OF_MONTH = 5; const DAY_OF_YEAR = 6;
 const DAY_OF_WEEK = 7; const DAY_OF_WEEK_IN_MONTH = 8; const AM_PM = 9; const HOUR = 10; const HOUR_OF_DAY = 11; const MINUTE = 12; const SECOND = 13;
@@ -18,6 +18,12 @@ const EPOCH_OFFSET = 719163; // fixed date of 1970-01-01
 const CUTOVER_FIXED = 577736; // fixed date of 1582-10-15 (Gregorian)
 const CUTOVER_YEAR = 1582;
 const CE = 1; const BCE = 0;
+
+const EN_DAYS_LONG = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const EN_DAYS_SHORT = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const EN_MONTHS_LONG = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const EN_MONTHS_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const EN_GB_MONTHS_SHORT = EN_MONTHS_SHORT.map((m) => (m === 'Sep' ? 'Sept' : m));
 
 const floorDiv = (a, b) => Math.floor(a / b);
 const mod = (a, b) => a - Math.floor(a / b) * b;
@@ -167,6 +173,13 @@ export class Calendar {
   static OCTOBER = 9;
   static NOVEMBER = 10;
   static DECEMBER = 11;
+  static SHORT = 1;
+  static LONG = 2;
+  static NARROW_FORMAT = 4;
+  static SHORT_FORMAT = 1;
+  static LONG_FORMAT = 2;
+  static SHORT_STANDALONE = 0x8001;
+  static LONG_STANDALONE = 0x8002;
   static AM = 0;
   static PM = 1;
 
@@ -319,6 +332,31 @@ export class Calendar {
   // Java: Calendar#equals(Object) (time only)
   equals(other) {
     return other instanceof Calendar && this.getTimeBig() === other.getTimeBig();
+  }
+
+  // Java: Calendar#getDisplayName(int,int,Locale) (DAY_OF_WEEK/MONTH with style SHORT/LONG, JDK 17 CLDR names of the locales en, en_US, en_GB; probe-verified)
+  getDisplayName(field, style, locale) {
+    if (locale === null || locale === undefined) throw new NullPointerException();
+    const base = style & ~0x8000; // standalone flag
+    if (field < 0 || field >= FIELD_COUNT || (base !== 0 && base !== 1 && base !== 2 && base !== 4)) {
+      throw new IllegalArgumentException();
+    }
+    if (style !== 1 && style !== 2 && style !== 0x8001 && style !== 0x8002) {
+      throw new UnsupportedOperationException(`Calendar#getDisplayName style ${style} not ported`);
+    }
+    if (field !== DAY_OF_WEEK && field !== MONTH) {
+      if (field === ERA || field === AM_PM) throw new UnsupportedOperationException(`Calendar#getDisplayName field ${FIELD_NAMES[field]} not ported`);
+      this.get(field);
+      return null;
+    }
+    const country = locale.getCountry();
+    if (locale.getLanguage() !== 'en' || locale.getVariant() !== '' || (country !== '' && country !== 'US' && country !== 'GB')) {
+      throw new UnsupportedOperationException(`Calendar#getDisplayName locale ${locale} not ported`);
+    }
+    const value = this.get(field);
+    const long = (style & 0x7fff) === 2;
+    if (field === DAY_OF_WEEK) return (long ? EN_DAYS_LONG : EN_DAYS_SHORT)[value - 1];
+    return (long ? EN_MONTHS_LONG : country === 'GB' ? EN_GB_MONTHS_SHORT : EN_MONTHS_SHORT)[value];
   }
 
   // Java: Calendar#getActualMaximum(int) for fields with fixed range

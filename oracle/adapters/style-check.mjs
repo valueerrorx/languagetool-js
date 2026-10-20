@@ -1,6 +1,6 @@
 // JS twin of harness op "style-check" (StyleOps#check, docs/review/F36-oracle.md).
 // JS has no Language#getRelevantRules lists yet (F17): the native rule instances of en/de/fr are rebuilt here for the F36 rules;
-// rules whose classes are not ported (en/de LongSentenceRule, German*/StyleTooOften*/EnglishRepeatedWords..., pl/ru subclasses) make the request notPorted.
+// rules whose classes are not ported (de LongSentenceRule, German*/StyleTooOften*, pl/ru subclasses) make the request notPorted.
 import { UserConfig } from '../../src/core/rules/model/UserConfig.js';
 import { selectRules } from '../../src/core/Tools.js';
 import { getMessageBundleForLanguage } from '../../src/core/resources/ResourceBundleTools.js';
@@ -20,6 +20,12 @@ import { JLanguageTool } from '../../src/core/JLanguageTool.js';
 import { errorOf, languageFor, withNoopAnalysis } from './_check-pipe-common.mjs';
 import { recordPreLanguageFilter, runCase } from './check2.mjs';
 import { notPorted } from './_pipe-common.mjs';
+import { LongSentenceRule as EnLongSentenceRule } from '../../src/lang/en/rules/LongSentenceRule.js';
+import { EnglishWordRepeatBeginningRule } from '../../src/lang/en/rules/EnglishWordRepeatBeginningRule.js';
+import { EnglishRepeatedWordsRule } from '../../src/lang/en/rules/EnglishRepeatedWordsRule.js';
+import { StyleTooOftenUsedVerbRule } from '../../src/lang/en/rules/StyleTooOftenUsedVerbRule.js';
+import { StyleTooOftenUsedNounRule } from '../../src/lang/en/rules/StyleTooOftenUsedNounRule.js';
+import { StyleTooOftenUsedAdjectiveRule } from '../../src/lang/en/rules/StyleTooOftenUsedAdjectiveRule.js';
 import { UnitConversionRule as EnUnitConversionRule } from '../../src/lang/en/rules/UnitConversionRule.js';
 import { UnitConversionRuleUS } from '../../src/lang/en/rules/UnitConversionRuleUS.js';
 import { UnitConversionRuleImperial } from '../../src/lang/en/rules/UnitConversionRuleImperial.js';
@@ -38,9 +44,11 @@ function nativeRules(code, l, m, uc) {
   switch (code) {
     case 'en': return [
       new WhiteSpaceBeforeParagraphEnd(m, l), new WhiteSpaceAtBeginOfParagraph(m), new EmptyLineRule(m, l),
-      { np: new LongSentenceRule(m, uc, 40) }, // en.LongSentenceRule (EN-0071) not ported
+      new EnLongSentenceRule(m, uc, 40),
       new LongParagraphRule(m, l, uc), new ParagraphRepeatBeginningRule(m, l), new PunctuationMarkAtParagraphEnd(m, l),
-      new PunctuationMarkAtParagraphEnd2(m, l), new ReadabilityRule(m, l, uc, false), new ReadabilityRule(m, l, uc, true),
+      new PunctuationMarkAtParagraphEnd2(m, l), new EnglishWordRepeatBeginningRule(m, l), new ReadabilityRule(m, l, uc, false), new ReadabilityRule(m, l, uc, true),
+      new EnglishRepeatedWordsRule(m), new StyleTooOftenUsedVerbRule(m, l, uc), new StyleTooOftenUsedNounRule(m, l, uc),
+      new StyleTooOftenUsedAdjectiveRule(m, l, uc),
     ];
     case 'de': return [
       new WhiteSpaceBeforeParagraphEnd(m, l), new WhiteSpaceAtBeginOfParagraph(m), new EmptyLineRule(m, l),
@@ -52,7 +60,7 @@ function nativeRules(code, l, m, uc) {
 }
 
 // Java: StyleOps#check(JsonNode); disambiguator/chunker of the languages are not ported (F32/F44): no-op analysis (R4), see docs/review/F36-porter.md
-export function run(a, hook = null) {
+export function run(a, hook = null, xmlRules = false) {
   let l;
   try {
     l = languageFor(a.lang);
@@ -60,17 +68,19 @@ export function run(a, hook = null) {
     throw notPorted(`style-check: language ${a.lang}`);
   }
   // German post-disambiguation chunker (GermanChunker, F44) is replaced too; the F36 rules read no chunk tags
+  // xmlRules (F49, en): the XML pattern rules of the language are loaded like in the Java HarnessLT
+  if (l.getShortCode() === 'en') return check(a, l, hook, xmlRules); // English analysis is complete since F45
   const savedPost = l.postDisambiguationChunker;
   l.postDisambiguationChunker = new NoopChunker();
   try {
-    return withNoopAnalysis(l, true, () => check(a, l, hook));
+    return withNoopAnalysis(l, true, () => check(a, l, hook, false));
   } finally {
     l.postDisambiguationChunker = savedPost;
   }
 }
 
 // Java: StyleOps#check(JsonNode)
-function check(a, l, hook) {
+function check(a, l, hook, xmlRules) {
   const res = {};
   let lt;
   let natives;
@@ -92,6 +102,7 @@ function check(a, l, hook) {
   }
   lt.setCleanOverlappingMatches(false);
   if (hook !== null) recordPreLanguageFilter(lt);
+  if (xmlRules) lt.activateDefaultPatternRules();
   const rules = natives.filter((r) => r.np === undefined);
   for (const r of rules) lt.addRule(r);
   const enabled = new Set(a.ids);

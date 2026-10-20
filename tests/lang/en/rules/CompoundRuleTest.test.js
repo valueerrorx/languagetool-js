@@ -4,11 +4,10 @@ import '../../../../src/lang/register.js';
 import { Languages } from '../../../../src/core/Languages.js';
 import { CompoundRule } from '../../../../src/lang/en/rules/CompoundRule.js';
 import { AbstractCompoundRuleTest } from '../../../support/AbstractCompoundRuleTest.js';
-import { englishMessages, newLt, useNoopAnalysis } from '../../../support/ruleTestSupport.js';
+import { englishMessages, newLt } from '../../../support/ruleTestSupport.js';
 
 describe('CompoundRuleTest (en)', () => {
   const language = Languages.getLanguageForShortCode('en-US');
-  useNoopAnalysis(language);
   const t = new AbstractCompoundRuleTest();
 
   // Java: CompoundRuleTest#setUp (@Before)

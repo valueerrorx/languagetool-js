@@ -4,11 +4,10 @@ import { Languages } from '../../../src/core/Languages.js';
 import { AnalyzedToken } from '../../../src/core/AnalyzedToken.js';
 import { AnalyzedTokenReadings } from '../../../src/core/AnalyzedTokenReadings.js';
 import { AvsAnRule, Determiner } from '../../../src/lang/en/rules/AvsAnRule.js';
-import { englishMessages, newLt, useNoopAnalysis } from '../../support/ruleTestSupport.js';
+import { englishMessages, newLt } from '../../support/ruleTestSupport.js';
 
 describe('AvsAnRuleTest', () => {
   const english = Languages.getLanguageForShortCode('en');
-  useNoopAnalysis(english);
   const rule = new AvsAnRule(englishMessages());
   const lt = newLt(english);
   const assertCorrect = (sentence) => expect(rule.match(lt.getAnalyzedSentence(sentence)).length).toBe(0);
@@ -39,11 +38,14 @@ describe('AvsAnRuleTest', () => {
     assertCorrect('...asked a UN member.');
     assertCorrect('In an un-united Germany...');
     // fixed false alarms:
+    assertCorrect('Here, a and b are supplementary angles.');
+    assertCorrect("The Qur'an was translated into Polish.");
     assertCorrect('See an:Grammatica');
     assertCorrect('See http://www.an.com');
     assertCorrect('Station A equals station B.');
     assertCorrect('e.g., the case endings -a -i -u and mood endings -u -a');
     assertCorrect("A'ight, y'all.");
+    assertCorrect("He also wrote the comic strips Abbie an' Slats.");
     assertCorrect('Do an ngram tokenization fix.');
     assertCorrect('A car with a unibody construction.');
     assertCorrect('Given a Userset, create and return a matching PrincipalModel.');
@@ -83,6 +85,7 @@ describe('AvsAnRuleTest', () => {
     assertCorrect('A. R.J. Turgot');
 
     // list items
+    assertCorrect('Make sure that 3.a as well as 3.b are correct.');
 
     // mixed case as dictionary-based exception
     assertCorrect('Anyone for an MSc?');
@@ -96,14 +99,6 @@ describe('AvsAnRuleTest', () => {
     // Both are correct according to Merriam Webster
     assertCorrect('An historic event');
     assertCorrect('A historic event');
-  });
-
-  // SKIPPED: these sentences of testRule need the English disambiguator (disambiguation.xml, F45/F48); no-op disambiguator used here
-  it.skip('testRule (disambiguation dependent sentences)', () => {
-    assertCorrect('Here, a and b are supplementary angles.');
-    assertCorrect("The Qur'an was translated into Polish.");
-    assertCorrect("He also wrote the comic strips Abbie an' Slats.");
-    assertCorrect('Make sure that 3.a as well as 3.b are correct.');
   });
 
   // Java: AvsAnRuleTest#testSuggestions()

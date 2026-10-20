@@ -84,3 +84,17 @@ describe('Calendar compare of invalid non-lenient dates', () => {
     expect(strict(2026, 0, 32).after(now)).toBe(false);
   });
 });
+
+describe('Calendar#getDisplayName (probe-verified vs JDK 17)', () => {
+  it('en_GB day and month names', () => {
+    const c = Calendar.getInstance(new Locale('en', 'GB'));
+    c.set(2026, 8, 15, 0, 0, 0);
+    expect(c.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.UK)).toBe('Tuesday');
+    expect(c.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.SHORT, Locale.UK)).toBe('Tue');
+    expect(c.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.UK)).toBe('Sept');
+    expect(c.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.UK)).toBe('September');
+    expect(c.getDisplayName(Calendar.MONTH, Calendar.SHORT, new Locale('en', 'US'))).toBe('Sep');
+    expect(c.getDisplayName(Calendar.YEAR, Calendar.LONG, Locale.UK)).toBe(null);
+    expect(() => c.getDisplayName(Calendar.DAY_OF_WEEK, 3, Locale.UK)).toThrow();
+  });
+});

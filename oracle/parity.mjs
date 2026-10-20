@@ -109,6 +109,30 @@ async function runCase(id, name) {
     else if (!javaOps.has(r.op)) adapters.set(r.op, { run: () => { throw Object.assign(new Error(`unknown op: ${r.op}`), { javaClass: 'java.lang.IllegalArgumentException' }); } });
     else adapters.set(r.op, { notPorted: true });
   }
+  // fixed clock of the case (Java: libfaketime, case env FAKETIME "@yyyy-MM-dd HH:mm:ss" in Europe/Vienna); read lazily by src/lib/java/clock.js
+  const prevClock = process.env.LTJS_FIXED_TIME;
+  const ft = cs.env?.FAKETIME;
+  if (typeof ft === 'string' && /^@\d{4}-\d\d-\d\d \d\d:\d\d:\d\d$/.test(ft)) process.env.LTJS_FIXED_TIME = viennaIso(ft.slice(1));
+  else if (cs.clock === 'fixed') process.env.LTJS_FIXED_TIME = viennaIso('2026-03-15 10:00:00');
+  try {
+    return await runHarnessOps(cs, meta, dir, reqs, adapters);
+  } finally {
+    if (prevClock === undefined) delete process.env.LTJS_FIXED_TIME; else process.env.LTJS_FIXED_TIME = prevClock;
+  }
+}
+
+// "yyyy-MM-dd HH:mm:ss" wall time in Europe/Vienna -> ISO instant with the zone offset of that date
+function viennaIso(wall) {
+  const [d, t] = wall.split(' ');
+  const guess = Date.parse(`${d}T${t}Z`);
+  const offsetOf = (ms) => {
+    const p = new Intl.DateTimeFormat('en-US', { timeZone: 'Europe/Vienna', timeZoneName: 'shortOffset' }).formatToParts(new Date(ms)).find((x) => x.type === 'timeZoneName').value;
+    return Number(p.slice(3).split(':')[0] || 0) * 60;
+  };
+  return new Date(guess - offsetOf(guess - 3600000) * 60000).toISOString();
+}
+
+async function runHarnessOps(cs, meta, dir, reqs, adapters) {
   const actual = [];
   const nonPorted = new Set();
   const partial = { requests: 0, skipped: 0, total: 0 };

@@ -2,11 +2,10 @@
 import { describe, it, expect } from 'vitest';
 import { EnglishWordRepeatRule } from '../../../src/lang/en/rules/EnglishWordRepeatRule.js';
 import { Languages } from '../../../src/core/Languages.js';
-import { EN, englishMessages, newLt, useNoopAnalysis } from '../../support/ruleTestSupport.js';
+import { EN, englishMessages, newLt } from '../../support/ruleTestSupport.js';
 
 describe('EnglishWordRepeatRuleTest', () => {
   const english = Languages.getLanguageForShortCode('en');
-  useNoopAnalysis(english);
   const rule = new EnglishWordRepeatRule(englishMessages(), english);
   const lt = newLt(english);
   const assertMatches = (sentence, expectedMatches) => expect(rule.match(lt.getAnalyzedSentence(sentence)).length).toBe(expectedMatches);

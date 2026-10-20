@@ -2,11 +2,10 @@
 import { describe, it, expect } from 'vitest';
 import { Languages } from '../../../src/core/Languages.js';
 import { EnglishWrongWordInContextRule } from '../../../src/lang/en/rules/EnglishWrongWordInContextRule.js';
-import { newLt, useNoopAnalysis } from '../../support/ruleTestSupport.js';
+import { newLt } from '../../support/ruleTestSupport.js';
 
 describe('EnglishWrongWordInContextRuleTest', () => {
   const lang = Languages.getLanguageForShortCode('en-US');
-  useNoopAnalysis(lang);
   const lt = newLt(lang);
   const rule = new EnglishWrongWordInContextRule(null, lang);
   const assertGood = (sentence) => expect(rule.match(lt.getAnalyzedSentence(sentence)).length).toBe(0);

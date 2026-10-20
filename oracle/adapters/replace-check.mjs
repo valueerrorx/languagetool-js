@@ -7,6 +7,15 @@ import { ConfusionSetLoader } from '../../src/core/rules/ConfusionSetLoader.js';
 import { errorOf, languageFor } from './_check-pipe-common.mjs';
 import { run as styleRun } from './style-check.mjs';
 import { notPorted } from './_pipe-common.mjs';
+import { UppercaseSentenceStartRule } from '../../src/core/rules/UppercaseSentenceStartRule.js';
+import { Example } from '../../src/core/rules/model/Examples.js';
+import { getUrl } from '../../src/core/Tools.js';
+import { ConsistentApostrophesRule } from '../../src/lang/en/rules/ConsistentApostrophesRule.js';
+import { EnglishUnpairedBracketsRule } from '../../src/lang/en/rules/EnglishUnpairedBracketsRule.js';
+import { EnglishUnpairedQuotesRule } from '../../src/lang/en/rules/EnglishUnpairedQuotesRule.js';
+import { EnglishWordRepeatRule } from '../../src/lang/en/rules/EnglishWordRepeatRule.js';
+import { AvsAnRule } from '../../src/lang/en/rules/AvsAnRule.js';
+import { EnglishWordRepeatBeginningRule } from '../../src/lang/en/rules/EnglishWordRepeatBeginningRule.js';
 import { EnglishSpecificCaseRule } from '../../src/lang/en/rules/EnglishSpecificCaseRule.js';
 import { CompoundRule } from '../../src/lang/en/rules/CompoundRule.js';
 import { ContractionSpellingRule } from '../../src/lang/en/rules/ContractionSpellingRule.js';
@@ -18,6 +27,8 @@ import { EnglishPlainEnglishRule } from '../../src/lang/en/rules/EnglishPlainEng
 import { EnglishRedundancyRule } from '../../src/lang/en/rules/EnglishRedundancyRule.js';
 import { SimpleReplaceRule as EnSimpleReplaceRule } from '../../src/lang/en/rules/SimpleReplaceRule.js';
 import { SimpleReplaceProfanityRule } from '../../src/lang/en/rules/SimpleReplaceProfanityRule.js';
+import { UnitConversionRuleUS } from '../../src/lang/en/rules/UnitConversionRuleUS.js';
+import { UnitConversionRuleImperial } from '../../src/lang/en/rules/UnitConversionRuleImperial.js';
 import { AmericanReplaceRule } from '../../src/lang/en/rules/AmericanReplaceRule.js';
 import { BritishReplaceRule } from '../../src/lang/en/rules/BritishReplaceRule.js';
 import { NewZealandReplaceRule } from '../../src/lang/en/rules/NewZealandReplaceRule.js';
@@ -30,7 +41,7 @@ import { WordCoherencyRule as DeWordCoherencyRule } from '../../src/lang/de/rule
 export function run(a) {
   const mode = a.mode ?? 'rules';
   switch (mode) {
-    case 'rules': return styleRun(a, f37Rules);
+    case 'rules': return styleRun(a, f37Rules, a.lang !== undefined && a.lang.startsWith('en'));
     case 'aho': return aho(a);
     case 'confusion': return confusion(a);
     case 'shortdesc': return shortdesc(a);
@@ -128,17 +139,23 @@ export function f37Rules(l, m, uc, natives) {
   const isReadability = (r) => r.constructor?.name === 'ReadabilityRule';
   const out = natives.slice();
   if (code === 'en') {
-    const specific = new EnglishSpecificCaseRule(m);
+    out.splice(0, out.length, ...out.filter((r) => !(r instanceof EnglishWordRepeatBeginningRule))); // re-inserted at its Java position below
     const rest = [
-      new CompoundRule(m, l, uc), new ContractionSpellingRule(m, l), new EnglishWrongWordInContextRule(m, l), new EnglishDashRule(m),
+      new ConsistentApostrophesRule(m), new EnglishSpecificCaseRule(m), new EnglishUnpairedBracketsRule(m, l), new EnglishUnpairedQuotesRule(m, l),
+      new EnglishWordRepeatRule(m, l), new AvsAnRule(m), new EnglishWordRepeatBeginningRule(m, l), new CompoundRule(m, l, uc), new ContractionSpellingRule(m, l), new EnglishWrongWordInContextRule(m, l), new EnglishDashRule(m),
       new EnWordCoherencyRule(m), new EnglishDiacriticsRule(m), new EnglishPlainEnglishRule(m), new EnglishRedundancyRule(m), new EnSimpleReplaceRule(m, l),
       new SimpleReplaceProfanityRule(m, l),
     ];
-    const i = Math.max(0, at(isReadability));
-    out.splice(i, 0, specific, ...rest);
-    if (full === 'en-US') out.push(new AmericanReplaceRule(m, '/en/en-US/replace.txt'));
-    else if (full === 'en-GB') out.push(new BritishReplaceRule(m, '/en/en-GB/replace.txt'));
-    else if (full === 'en-NZ') out.push(new NewZealandReplaceRule(m, '/en/en-NZ/replace.txt'));
+    const i = Math.max(0, out.findIndex(isReadability));
+    out.splice(i, 0, ...rest);
+    out.unshift(new UppercaseSentenceStartRule(m, l,
+      Example.wrong('This house is old. <marker>it</marker> was built in 1950.'),
+      Example.fixed('This house is old. <marker>It</marker> was built in 1950.'),
+      getUrl('https://languagetool.org/insights/post/spelling-capital-letters/')));
+    if (full === 'en-US') out.push(new AmericanReplaceRule(m, '/en/en-US/replace.txt'), new UnitConversionRuleUS(m));
+    else if (full === 'en-GB') out.push(new BritishReplaceRule(m, '/en/en-GB/replace.txt'), new UnitConversionRuleImperial(m));
+    else if (full === 'en-NZ') out.push(new NewZealandReplaceRule(m, '/en/en-NZ/replace.txt'), new UnitConversionRuleImperial(m));
+    else if (full === 'en-CA' || full === 'en-AU') out.push(new UnitConversionRuleImperial(m));
     return out;
   }
   if (code === 'de') {

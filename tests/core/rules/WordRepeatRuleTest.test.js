@@ -1,10 +1,9 @@
 // Ported from WordRepeatRuleTest (languagetool-core); Demo language replaced by en-US
 import { describe, it, expect } from 'vitest';
 import { WordRepeatRule } from '../../../src/core/rules/WordRepeatRule.js';
-import { EN, englishMessages, newLt, useNoopAnalysis } from '../../support/ruleTestSupport.js';
+import { EN, englishMessages, newLt } from '../../support/ruleTestSupport.js';
 
 describe('WordRepeatRuleTest', () => {
-  useNoopAnalysis(EN);
   const lt = newLt(EN);
   const rule = new WordRepeatRule(englishMessages(), EN);
   const assertGood = (s) => expect(rule.match(lt.getAnalyzedSentence(s)).length).toBe(0);
