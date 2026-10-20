@@ -45,10 +45,10 @@ final class DeAgreeOps {
         for (AnalyzedTokenReadings x : t) toks.add(x.getToken());
         r.put("tokens", toks);
         Object type = null;
-        if (c.has("type") && !c.get("type").isNull()) type = rt.getField(c.get("type").asText()).get(null);
+        if (c.has("type") && !c.get("type").isNull()) type = Enum.valueOf((Class) rt, c.get("type").asText());
         Object s = ctor.newInstance(l.getSynthesizer(), tok(t, c, "det"), tok(t, c, "adj1"), tok(t, c, "adj2"), tok(t, c, "noun"), type);
         if (c.has("prep")) sp.invoke(s, tok(t, c, "prep"));
-        if (c.has("skipped")) sc.getMethod("setSkipped", String.class).invoke(s, c.get("skipped").asText());
+        if (c.has("skipped")) { Method ss = sc.getMethod("setSkipped", String.class); ss.setAccessible(true); ss.invoke(s, c.get("skipped").asText()); }
         r.put("suggestions", gs.invoke(s, false));
         r.put("suggestionsFiltered", gs.invoke(s, true));
       } catch (Throwable e) { r.put("error", CheckPipeOps.errorOf(e)); }
