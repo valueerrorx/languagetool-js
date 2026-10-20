@@ -66,8 +66,8 @@ Notes valid for the whole file:
 | DE-0042 | `AgreementRule2` DE_AGREEMENT2 (GRAMMAR): SENT_START ADJ NOUN agreement ("Wirtschaftlicher Wachstum"), description "Kongruenz von Adjektiv und Nomen (unvollständig!), z.B. 'kleiner (kleines) Haus'" | JD:rules/de/AgreementRule2.java | AgreementRule2Test | - | verified |
 | DE-0043 | `AgreementSuggestor2`: generates corrected determiner/adjective/noun phrases via synthesizer and PrepositionToCases | JD:rules/de/AgreementSuggestor2.java | AgreementSuggestor2Test | - | verified |
 | DE-0044 | `AgreementTools` / `PrepositionToCases`: helper tables (determiner categories, preposition -> grammatical cases) | JD:rules/de/AgreementTools.java; JD:rules/de/PrepositionToCases.java | AgreementSuggestor2Test | - | verified |
-| DE-0045 | `CaseRule` DE_CASE (CASING): wrongly capitalized adjectives/verbs and lowercase substantivated verbs ("Das laufen fällt mir leicht"); uses LanguageNames, CaseRuleExceptions; description "Großschreibung von Nomen und substantivierten Verben" | JD:rules/de/CaseRule.java | CaseRuleTest | - | todo |
-| DE-0046 | `CaseRuleAntiPatterns` (static antipatterns, incl. LanguageNames regex) and `CaseRuleExceptions` (loads `/de/eigennamen_gross.txt`, `/de/case_rule_exceptions.txt`, patterns) | JD:rules/de/CaseRuleAntiPatterns.java; JD:rules/de/CaseRuleExceptions.java | CaseRuleTest | - | todo |
+| DE-0045 | `CaseRule` DE_CASE (CASING): wrongly capitalized adjectives/verbs and lowercase substantivated verbs ("Das laufen fällt mir leicht"); uses LanguageNames, CaseRuleExceptions; description "Großschreibung von Nomen und substantivierten Verben" | JD:rules/de/CaseRule.java | CaseRuleTest | - | verified |
+| DE-0046 | `CaseRuleAntiPatterns` (static antipatterns, incl. LanguageNames regex) and `CaseRuleExceptions` (loads `/de/eigennamen_gross.txt`, `/de/case_rule_exceptions.txt`, patterns) | JD:rules/de/CaseRuleAntiPatterns.java; JD:rules/de/CaseRuleExceptions.java | CaseRuleTest | - | verified |
 | DE-0047 | `CompoundCoherencyRule` DE_COMPOUND_COHERENCY (STYLE, text-level): same compound with and without hyphen in one text, description "Einheitliche Schreibweise bei Komposita (mit oder ohne Bindestrich)" | JD:rules/de/CompoundCoherencyRule.java | CompoundCoherencyRuleTest | - | todo |
 | DE-0048 | `CompoundInfinitivRule` COMPOUND_INFINITIV_RULE (COMPOUNDING, Misspelling): "erweiterter Infinitiv mit zu" written apart; uses morfologik speller on `/de/hunspell/de_DE.dict` | JD:rules/de/CompoundInfinitivRule.java | CompoundInfinitivRuleTest | - | todo |
 | DE-0049 | `ConjunctionAtBeginOfSentenceRule` SENTENCE_BEGINNING_WITH_CONJUNCTION_DE (CREATIVE_WRITING, off, min 10%): messages "Eine Konjunktion sollte nur in Ausnahmefällen am Satzanfang verwendet werden. ..." / "Mehr als N% Sätze beginnen mit einer Konjunktion {P%} gefunden. ..." with `(int)(percent+0.5)`; semantics: Java double arithmetic + `(int)` truncation toward zero (not Math.round) | JD:rules/de/ConjunctionAtBeginOfSentenceRule.java | GermanTest (examples) | - | todo |
@@ -149,7 +149,7 @@ Notes valid for the whole file:
 |---|---|---|---|---|---|
 | DE-0130 | `GermanHelper`: POS-tag helpers (determiner/noun case/number/gender extraction) | JD:rules/de/GermanHelper.java | GermanHelperTest | - | verified |
 | DE-0131 | `GermanTools.isVowel(c)`: "aeiouyAEIOUYäöüÄÖÜ" | JD:rules/de/GermanTools.java | GermanToolsTest | - | verified |
-| DE-0132 | `LanguageNames`: list of language adjectives and `getAsRegex()` for CaseRule | JD:rules/de/LanguageNames.java | CaseRuleTest | - | todo |
+| DE-0132 | `LanguageNames`: list of language adjectives and `getAsRegex()` for CaseRule | JD:rules/de/LanguageNames.java | CaseRuleTest | - | verified |
 | DE-0133 | `LineExpander`: expands spelling lines by suffix flags (`foo/S` -> foo, foos; /E /N /A etc., `_in` gender forms) | JD:rules/de/LineExpander.java | LineExpanderTest | - | todo |
 
 ## XML rule resources
@@ -172,7 +172,7 @@ Notes valid for the whole file:
 | DE-0172 | `resource/de/do-not-synthesize.txt`: forms excluded from synthesis | RD:resource/de/do-not-synthesize.txt; core:synthesis/BaseSynthesizer.java | GermanSynthesizerTest | - | verified |
 | DE-0173 | `resource/de/alt_neu.csv`: old;new spelling pairs (OldSpellingRule, GermanSpellerRule) | RD:resource/de/alt_neu.csv | OldSpellingRuleTest | - | todo |
 | DE-0174 | `resource/de/ambiguous_case.txt`: UpperCaseNgramRule word list | RD:resource/de/ambiguous_case.txt | UpperCaseNgramRuleTest | - | later |
-| DE-0175 | `resource/de/case_rule_exceptions.txt`, `eigennamen_gross.txt`: CaseRule exceptions | RD:resource/de/case_rule_exceptions.txt | CaseRuleTest | - | todo |
+| DE-0175 | `resource/de/case_rule_exceptions.txt`, `eigennamen_gross.txt`: CaseRule exceptions | RD:resource/de/case_rule_exceptions.txt | CaseRuleTest | - | verified |
 | DE-0176 | `resource/de/common_words.txt`: most common words for core language identifier (CommonWordsDetector) | RD:resource/de/common_words.txt; core:Language#getCommonWordsPath | - | - | verified |
 | DE-0177 | `resource/de/compounds.txt`, `compound-cities.txt`: GermanCompoundRule/SwissCompoundRule data | RD:resource/de/compounds.txt | GermanCompoundRuleTest | - | todo |
 | DE-0178 | `resource/de/compound_exceptions.txt`, `confusion_sets.txt`: ProhibitedCompoundRule / ngram confusion data (also loaded by GermanTest confusion-set check) | RD:resource/de/confusion_sets.txt | ProhibitedCompoundRuleTest, GermanTest | - | later |
