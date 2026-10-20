@@ -49,8 +49,10 @@ const usIds = idsOf(lists['en-US'], () => true);
 const sampleIds = pick(usIds, 40);
 for (const v of VARS.filter((x) => x !== 'en-US')) {
   const ids = variantIds(v);
+  if (ids.length) { // en-ZA has no own XML (empty ruleIds would mean all rules)
   w(DX, `examples-${v}-variant`, `EN-0155..0158 rule-examples of ${v}-specific rules (${ids.length} ids), default level`, 'rule-examples', [{ op: 'rule-examples', args: { lang: v, ruleIds: ids } }]);
   w(DX, `examples-${v}-variant-picky`, `EN-0155..0158 rule-examples of ${v}-specific rules, unrestricted check at PICKY`, 'rule-examples', [{ op: 'rule-examples', args: { lang: v, ruleIds: ids, level: 'PICKY' } }]);
+  }
   w(DX, `examples-${v}-sample`, `rule-examples of 40 sampled en-US rule ids run under ${v}`, 'rule-examples', [{ op: 'rule-examples', args: { lang: v, ruleIds: sampleIds } }]);
 }
 {

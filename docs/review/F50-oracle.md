@@ -1,0 +1,13 @@
+# F50 oracle (X-ENRULES-XML, X-ENCHECK)
+Status: DONE (X-ENRULES-XML 90 cases, ~100M; X-ENCHECK 59 cases, 6M; all 1600 harness responses ok). `npm run oracle -- X-ENRULES-XML|X-ENCHECK`; generator `node oracle/scripts/gen-cases-enxml.mjs` (probes the harness for counts and variant rule ids). Env: pinned oracle env (D-018), fixed clock.
+Ops: new `en-rulelist` (EnRuleListOps.java, registered in Harness.java) kind `direct` (Language#getRelevantRules/-LanguageModelRules/-CapableRules/-RemoteRules with null LM, hasNGramFalseFriendRule; rows [fullId,class,categoryId,defaultOff,defaultTempOff,categoryDefaultOff,premium,priority]) and kind `lt` (JLanguageTool#getAllRules in order + activeByDefault, active at DEFAULT/PICKY, sourceFile, isPatternRule, activeCount, disabledRules). Additive: `rule-examples` now honours `motherTongue`. Reused: rules-list, rule-examples, check, analyze, tools-correct, replace-check mode shortdesc.
+## Cases
+- X-ENRULES-XML: rulelist-direct-<v> (6 variants x no/de/fr/es/nl mother tongue), rulelist-all-<v>, rulelist-all-en-US-mt-<de|fr|es|nl>, rulelist-contentop; examples-en-US-000..N (120 rules each, all grammar/style/variant XML rules, restricted + unrestricted check, ~99k examples, ~30k with matches), examples-<v>-variant(+picky) for GB/AU/CA/NZ (en-ZA has no own XML), examples-<v>-sample (40 en-US ids under each variant), examples-en-US-variant-picky, examples-l2-de/fr (+ -nomt), examples-en-US-off, -tempoff, -tempoff-sample.
+- X-ENCHECK: corpus-<v>-<default|picky>-<0..2> (all default rules, ids [], 75 paragraphs, 6 variants), edge-<v>, modes-en-US, tones-en-US, tempoff-en-US, selection-en-US, mothertongue-<de|fr|es|nl>, analyze-en, tools-correct-en, annotated-text-en (markup-like plain text), shortdesc-NN (all word_definitions.txt words + case/space variants, EN-0178), shortdesc-variants.
+- Covered elsewhere: AnnotatedText fake markup/empty (X-TEXT annotated-text), *-full-* requests of X-ENREPLACE are superseded by corpus-* here (same ids [] semantics).
+## Notes
+- JS adapters for ops rules-list, rule-examples, check, analyze (ContentOps) and en-rulelist do not exist yet: parity reports NOT PORTED until a porter adds oracle/adapters/{en-rulelist,rule-examples,check,...}.mjs.
+## UNORACLED
+- Language-model rules with a real LM (UpperCaseNgramRule, EnglishConfusionProbabilityRule, EnglishNgramProbabilityRule, L2 false-friend rules): no n-gram data in the distribution; only the null-LM behaviour is recorded (rulelist-direct-*).
+- Remote rules / premium rules, OpenOffice (getAllActiveOfficeRules), thesaurus/LinguServices, language-detection fallback: not covered.
+- EN-0222 @Ignore'd JLanguageToolTest cases and text-level rules under ONLYPARA only partially covered (modes-en-US).
