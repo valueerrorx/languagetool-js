@@ -1,7 +1,7 @@
 # Resume (lead)
-State 2026-10-20: F01-F34, F38, F44, F45 verified; F35-F37, F39-F43 partial (see PLAN notes). 355 verified.
-User order: do F46..F50, then STOP and report (German, terse).
-Next: F46 (see PLAN.md).
+State 2026-10-20: F01-F34, F38, F44-F49 verified; F50 partial (EN-0002 es/nl only, DEV-006); F35-F37, F39-F43 partial. 436/1193 verified.
+F46-F50 done (user order fulfilled). Next: F51 (see PLAN.md), only on user request.
+Notes: npm test now long (EnglishPatternRuleTest 190 s); parity.mjs supports LTJS_CASE=<regex>; stale git stash@{0} (F48, obsolete) left for user.
 Rules:
 - D-052 token budget: sonnet only, short prompts, no reviewer unless fixtures thin, one round.
 - D-053: clearly better solution than Java allowed -> log as DEV in DEVIATIONS.md; doubtful -> ask user.
