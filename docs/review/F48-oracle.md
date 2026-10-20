@@ -1,0 +1,8 @@
+# F48 oracle (X-ENRULES-B)
+Status: DONE (74 cases, 17M golden). `npm run oracle -- X-ENRULES-B`; `npm run parity -- X-ENRULES-B`. Generator `node oracle/scripts/gen-cases-enrules-b.mjs`. Compare: jsonl, normalize `paths`. Env: pinned oracle env (D-018).
+Ops (reused, no new Java): `replace-check` mode `rules` (StyleOps#check, only the listed ids enabled; optional `config` {ruleId:[int]}). Per match: ruleId, offsets, message, shortMessage, suggestions, url. Levels DEFAULT and PICKY. No request uses ids [].
+Cases (per variant en-US/GB/AU/CA/NZ/ZA; en-US gets the full data-derived set, others a subset): avsan-<v> (EN-0053/0183, det_a/det_an + targeted), compound-<v> + dash-<v> (EN-0054/0058/0174, compounds.txt in 7 forms), contraction-<v> (EN-0056/0184), repeatedwords-<v> (EN-0064/0191, synonyms.txt) + repeatedwords-subrules, unpaired-<v> + unpaired-single (EN-0066/0067), wordrepeatbeginning-<v> (EN-0068), wordrepeat-<v> (EN-0069), wrongword-<v> (EN-0070/0192, entries x contexts), longsentence-<v> (EN-0071, boundary 39..42, config 0/-1/1/20/41/100), tooofteen-<v> + tooofteen-config (EN-0074, texts >=100 counted words, thresholds 1..100), apostrophes (EN-0055), corpus-{en-US,en-GB,en-NZ} (all F48 rules together), combined-targeted.
+Unit conversion EN-0075..0077 is reused from X-UNIT (unit-en-general/US/GB/AU/CA/NZ, GB-on-US), not duplicated; the F48 rules also run in corpus-*/combined-targeted.
+## UNORACLED
+- TOO_OFTEN_USED_VERB_EN yields no matches in any case (verb tag path); behaviour with LinguServices/thesaurus (office) not covered.
+- Rules under language-detection fallback, ONLYPARA/paragraph mode, and with ids [] (all default rules; needs F50) not covered.
