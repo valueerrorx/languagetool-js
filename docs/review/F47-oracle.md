@@ -1,0 +1,11 @@
+# F47 oracle (X-ENREPLACE)
+Status: DONE (41 cases, 120 requests, golden 4.5M). `npm run oracle -- X-ENREPLACE`; `npm run parity -- X-ENREPLACE`. Generator `node oracle/scripts/gen-cases-enspell.mjs` (shared with X-ENSPELL). Compare: jsonl, normalize `paths`. Env: pinned oracle env.
+Ops (reused, no new Java): `replace-check` mode `rules` (StyleOps#check: only the listed rule ids enabled via Tools.selectRules; per case matches with ruleId, offsets, message, shortMessage, suggestions, url, ruleUrl, categories). See F37-oracle.md. Levels DEFAULT and PICKY (PROFANITY is picky).
+Reused (not duplicated): X-REPLACE replace-en-*, profanity-en-US, specificcase-en-US, coherency-en-US/modes. This ID adds data-derived inputs from the rule data files (3 casings per entry via seeded sha-ordered picks), all variants and rule interaction.
+Cases: diacritics-en-US (EN-0059/0185), diacritics-variants; plainenglish-en-US (EN-0062/0186; also run with no explicit enable), plainenglish-variants; redundancy-en-US (EN-0063/0187), redundancy-variants; simplereplace-en-US (EN-0072/0188, replace.txt + replace_custom.txt), simplereplace-variants; profanity-en-US (EN-0073/0189, PICKY and DEFAULT), profanity-variants; variant-en-{US,GB,NZ} (EN-0050..0052/0190: phrases + replacements of the variant file, all three variant rules active), variant-<v>-in-<l> (each variant's data run in the other 5 languages), variant-targeted (6 languages); specificcase-<v> (EN-0065/0175, en-GB/CA/AU/NZ/ZA); coherency-<v> (EN-0079/0193, en-GB/AU/NZ); corpus-{en-US,en-GB,en-NZ} (all rules together on 70 corpus sentences each, DEFAULT/PICKY/multi-sentence text); combined-targeted (overlapping phrases of several data files).
+Edge inputs in each: empty, blank, one char, unicode and typographic quotes, 300-char token, newlines, tabs, digits, emoji.
+## UNORACLED
+- Rules behaviour under server-side language detection fallback, paragraph-mode (ONLYPARA) for these rules (only coherency-modes in X-REPLACE).
+- Replace rules lemma branch (AbstractSimpleReplaceRule lemma mode) is not used by these English rules.
+## Parity state
+Adapters exist (replace-check -> rules); mismatches depend on the F47 JS rule port. Run `npm run parity -- X-ENREPLACE`.
