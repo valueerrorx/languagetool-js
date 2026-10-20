@@ -1,6 +1,6 @@
 # Resume (lead)
-State 2026-10-20: F01-F34, F38, F44-F49 verified; F50 partial (EN-0002 es/nl only, DEV-006); F35-F37, F39-F43 partial. 436/1193 verified.
-F46-F50 done. User order 2: F51..F55, then STOP and report. Also: full npm test must be green (run it, fix failures via porter).
+State 2026-10-21: F01-F34, F38, F44-F49, F51, F52 verified; F50, F53-F55 partial (wait on German#getRelevantRules F59 / OldSpellingRule); F35-F37, F39-F43 partial. 477/1193 verified. Full npm test green (939 pass).
+F46-F55 done. Next: F56 (see PLAN.md), only on user request. Keep full npm test green after each batch.
 Notes: npm test now long (EnglishPatternRuleTest 190 s); parity.mjs supports LTJS_CASE=<regex>.
 Rules:
 - D-052 token budget: sonnet only, short prompts, no reviewer unless fixtures thin, one round.
