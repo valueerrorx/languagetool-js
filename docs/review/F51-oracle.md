@@ -1,0 +1,8 @@
+# F51 oracle (X-DECHUNK)
+Status: DONE (48 cases, golden 16M). `npm run oracle -- X-DECHUNK`; `npm run parity -- X-DECHUNK`. Generator `node oracle/scripts/gen-cases-dechunk.mjs`. Env: pinned oracle env. No JS adapters yet (F51 port), all cases NOT PORTED.
+Ops: `analyze-raw` (existing, compare check-pipe): raw/post/pre dumps with readings and chunk tags through the full de chain (GermanRuleDisambiguator: multitoken-ignore, multitoken-suggest, spelling_global, disambiguation.xml; GermanChunker). New `de-chunker` {lang, texts} (CheckPipeOps#deChunker, compare jsonl): per sentence [token, pos list, chunk tags] for pipeline tags, GermanChunker re-run directly on post-disambiguation tokens (tags cleared first) and on raw tokens.
+Cases: analyze-corpus-00..14 (300 de sentences, 20 each), analyze-edge-00..04 (25 hand NP/PP sentences + 40 edge inputs), analyze-multiword-ignore-00..05 / -suggest-00..05 (120 entries each as "Wir trafen X gestern. X ist hier."), analyze-multiword-global-00..01 (40 multi-word spelling_global entries), analyze-variant-{de-AT,de-CH,de-DE-x-simple-language}, chunker-00..05, chunker-edge-00..03, chunker-variant-{de-AT,de-CH}.
+Reused, not duplicated: disambiguation.xml examples and rule-match disambiguation (DE-0155) are X-DISAMB ex-de-*/rmd-de-*/rule-de-*/xml-de-*; MultiWordChunker unit behaviour is X-CHUNK.
+## UNORACLED
+- OpenRegex (DE-0207) in isolation and GermanChunker.setDebug output (stdout debug text): covered only through chunk tags; manual check via GermanChunkerTest port.
+- Other de variants (de-DE-x-... beyond simple-language), server-side language-detection fallback.

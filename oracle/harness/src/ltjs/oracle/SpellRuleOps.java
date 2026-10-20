@@ -268,7 +268,9 @@ final class SpellRuleOps {
         res.put("results", o);
         break;
       }
-      default: throw new IllegalArgumentException("kind " + kind);
+      default:
+        if (kind.startsWith("de-")) return DeSpellOps.misc(a);
+        throw new IllegalArgumentException("kind " + kind);
     }
     return res;
   }

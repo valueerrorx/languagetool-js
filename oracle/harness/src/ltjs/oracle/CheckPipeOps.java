@@ -485,4 +485,55 @@ final class CheckPipeOps {
     out.put("results", results);
     return out;
   }
+
+  private static List<Object> chunkDump(List<AnalyzedTokenReadings> l) {
+    List<Object> o = new ArrayList<>();
+    for (AnalyzedTokenReadings t : l) {
+      List<String> pos = new ArrayList<>();
+      for (AnalyzedToken r : t.getReadings()) pos.add(r.getPOSTag());
+      List<String> ch = new ArrayList<>();
+      for (ChunkTag c : t.getChunkTags()) ch.add(c.getChunkTag());
+      o.add(Arrays.asList(t.getToken(), pos, ch));
+    }
+    return o;
+  }
+
+  /** {lang, texts}: per sentence GermanChunker run directly: pipeline tags, re-run on post-disambiguation tokens, re-run on raw tokens (tags cleared first). */
+  static Object deChunker(JsonNode a) throws Exception {
+    String key = "analyze|" + a.get("lang").asText();
+    HarnessLT lt = CACHE.get(key);
+    if (lt == null) {
+      lt = new HarnessLT(Languages.getLanguageForShortCode(a.get("lang").asText()), (Language) null);
+      lt.setCleanOverlappingMatches(false);
+      CACHE.put(key, lt);
+    }
+    List<Object> results = new ArrayList<>();
+    for (JsonNode tn : a.get("texts")) {
+      Map<String, Object> r = new LinkedHashMap<>();
+      try {
+        List<Object> ss = new ArrayList<>();
+        for (String s : lt.sentenceTokenize(tn.asText())) {
+          Map<String, Object> so = new LinkedHashMap<>();
+          so.put("text", s);
+          AnalyzedSentence post = lt.getAnalyzedSentence(s);
+          List<AnalyzedTokenReadings> pl = new ArrayList<>(Arrays.asList(post.getTokens()));
+          so.put("pipeline", chunkDump(pl));
+          for (AnalyzedTokenReadings t : pl) t.setChunkTags(new ArrayList<>());
+          new org.languagetool.chunking.GermanChunker().addChunkTags(pl);
+          so.put("onPost", chunkDump(pl));
+          List<AnalyzedTokenReadings> rl = new ArrayList<>(Arrays.asList(lt.getRawAnalyzedSentence(s).getTokens()));
+          new org.languagetool.chunking.GermanChunker().addChunkTags(rl);
+          so.put("onRaw", chunkDump(rl));
+          ss.add(so);
+        }
+        r.put("sentences", ss);
+      } catch (Throwable t) {
+        r.putAll(errorOf(t));
+      }
+      results.add(r);
+    }
+    Map<String, Object> out = new LinkedHashMap<>();
+    out.put("results", results);
+    return out;
+  }
 }

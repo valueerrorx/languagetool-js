@@ -38,7 +38,7 @@ public class Harness {
         JsonNode req = MAPPER.readTree(line);
         if (req.has("id")) resp.put("id", MAPPER.treeToValue(req.get("id"), Object.class));
         String op = req.get("op").asText();
-        if (op.startsWith("probe-") || op.startsWith("pipe-") || op.startsWith("style-") || op.startsWith("replace-") || op.startsWith("unit-") || op.startsWith("bitext-") || op.startsWith("ff-") || op.startsWith("tools-") || op.startsWith("spell-") || op.startsWith("sr-") || op.startsWith("enspell-") || op.startsWith("opennlp-") || op.startsWith("hs-") || op.equals("unicode-dump") || op.equals("locale-dump") || op.startsWith("regex") || op.startsWith("i18n-") || op.equals("sax-dump") || op.equals("xml-validate") || op.startsWith("fsa-") || op.equals("annotated-text") || op.equals("string-tools") || op.equals("context-tools") || op.equals("analyzed-token") || op.startsWith("lang-") || op.startsWith("srx-") || op.equals("sentence-tokenize") || op.equals("word-tokenize") || op.equals("wordtok-static") || op.equals("tag") || op.equals("wordsplit") || op.equals("synth") || op.equals("rule-load") || op.equals("ruleset-hints") || op.equals("manual-tagger") || op.equals("check2") || op.equals("active-rules") || op.equals("lt-api") || op.equals("analyze-raw") || op.equals("check-rules") || op.equals("json-serialize") || op.startsWith("lang-detect")) writer = PROBE_MAPPER;
+        if (op.startsWith("probe-") || op.startsWith("pipe-") || op.startsWith("style-") || op.startsWith("replace-") || op.startsWith("unit-") || op.startsWith("bitext-") || op.startsWith("ff-") || op.startsWith("tools-") || op.startsWith("spell-") || op.startsWith("sr-") || op.startsWith("enspell-") || op.startsWith("opennlp-") || op.startsWith("hs-") || op.equals("unicode-dump") || op.equals("locale-dump") || op.startsWith("regex") || op.startsWith("i18n-") || op.equals("sax-dump") || op.equals("xml-validate") || op.startsWith("fsa-") || op.equals("annotated-text") || op.equals("string-tools") || op.equals("context-tools") || op.equals("analyzed-token") || op.startsWith("lang-") || op.startsWith("srx-") || op.equals("sentence-tokenize") || op.equals("word-tokenize") || op.equals("wordtok-static") || op.equals("tag") || op.equals("wordsplit") || op.equals("synth") || op.equals("rule-load") || op.equals("ruleset-hints") || op.equals("manual-tagger") || op.equals("check2") || op.equals("active-rules") || op.equals("lt-api") || op.equals("analyze-raw") || op.equals("de-chunker") || op.equals("check-rules") || op.equals("json-serialize") || op.startsWith("lang-detect")) writer = PROBE_MAPPER;
         JsonNode a = req.has("args") ? req.get("args") : MAPPER.createObjectNode();
         Object result = dispatch(op, a);
         resp.put("ok", true);
@@ -165,8 +165,10 @@ public class Harness {
       case "active-rules": return CheckPipeOps.activeRules(a);
       case "lt-api": return CheckPipeOps.ltApi(a);
       case "analyze-raw": return CheckPipeOps.analyzeRaw(a);
+      case "de-chunker": return CheckPipeOps.deChunker(a);
       case "json-serialize": return JsonOps.jsonSerialize(a);
       case "check-rules": return CheckPipeOps.checkRules(a);
+      case "lang-deagree": return DeAgreeOps.run(a);
       case "lang-priority": return MetaOps.priority(a);
       case "lang-filter": return MetaOps.filter(a);
       case "lang-typo": return MetaOps.typo(a);
