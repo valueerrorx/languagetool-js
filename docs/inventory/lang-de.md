@@ -61,11 +61,11 @@ Notes valid for the whole file:
 
 | ID | behaviour (one line) | Java source (path#member) | Java tests | fixtures | status |
 |---|---|---|---|---|---|
-| DE-0040 | `AgreementRule` DE_AGREEMENT (GRAMMAR): noun phrase agreement DET/PRO (+ADJ...) NOUN in case/number/gender, many exceptions, suggestions via AgreementSuggestor2, description "Kongruenz von Nominalphrasen (unvollständig!), z.B. 'mein kleiner (kleines) Haus'" | JD:rules/de/AgreementRule.java | AgreementRuleTest | - | todo |
-| DE-0041 | `AgreementRuleAntiPatterns1/2/3`: static antipattern token lists for AgreementRule | JD:rules/de/AgreementRuleAntiPatterns1.java, ...2.java, ...3.java | AgreementRuleTest | - | todo |
-| DE-0042 | `AgreementRule2` DE_AGREEMENT2 (GRAMMAR): SENT_START ADJ NOUN agreement ("Wirtschaftlicher Wachstum"), description "Kongruenz von Adjektiv und Nomen (unvollständig!), z.B. 'kleiner (kleines) Haus'" | JD:rules/de/AgreementRule2.java | AgreementRule2Test | - | todo |
-| DE-0043 | `AgreementSuggestor2`: generates corrected determiner/adjective/noun phrases via synthesizer and PrepositionToCases | JD:rules/de/AgreementSuggestor2.java | AgreementSuggestor2Test | - | todo |
-| DE-0044 | `AgreementTools` / `PrepositionToCases`: helper tables (determiner categories, preposition -> grammatical cases) | JD:rules/de/AgreementTools.java; JD:rules/de/PrepositionToCases.java | AgreementSuggestor2Test | - | todo |
+| DE-0040 | `AgreementRule` DE_AGREEMENT (GRAMMAR): noun phrase agreement DET/PRO (+ADJ...) NOUN in case/number/gender, many exceptions, suggestions via AgreementSuggestor2, description "Kongruenz von Nominalphrasen (unvollständig!), z.B. 'mein kleiner (kleines) Haus'" | JD:rules/de/AgreementRule.java | AgreementRuleTest | - | ported |
+| DE-0041 | `AgreementRuleAntiPatterns1/2/3`: static antipattern token lists for AgreementRule | JD:rules/de/AgreementRuleAntiPatterns1.java, ...2.java, ...3.java | AgreementRuleTest | - | ported |
+| DE-0042 | `AgreementRule2` DE_AGREEMENT2 (GRAMMAR): SENT_START ADJ NOUN agreement ("Wirtschaftlicher Wachstum"), description "Kongruenz von Adjektiv und Nomen (unvollständig!), z.B. 'kleiner (kleines) Haus'" | JD:rules/de/AgreementRule2.java | AgreementRule2Test | - | verified |
+| DE-0043 | `AgreementSuggestor2`: generates corrected determiner/adjective/noun phrases via synthesizer and PrepositionToCases | JD:rules/de/AgreementSuggestor2.java | AgreementSuggestor2Test | - | verified |
+| DE-0044 | `AgreementTools` / `PrepositionToCases`: helper tables (determiner categories, preposition -> grammatical cases) | JD:rules/de/AgreementTools.java; JD:rules/de/PrepositionToCases.java | AgreementSuggestor2Test | - | verified |
 | DE-0045 | `CaseRule` DE_CASE (CASING): wrongly capitalized adjectives/verbs and lowercase substantivated verbs ("Das laufen fällt mir leicht"); uses LanguageNames, CaseRuleExceptions; description "Großschreibung von Nomen und substantivierten Verben" | JD:rules/de/CaseRule.java | CaseRuleTest | - | todo |
 | DE-0046 | `CaseRuleAntiPatterns` (static antipatterns, incl. LanguageNames regex) and `CaseRuleExceptions` (loads `/de/eigennamen_gross.txt`, `/de/case_rule_exceptions.txt`, patterns) | JD:rules/de/CaseRuleAntiPatterns.java; JD:rules/de/CaseRuleExceptions.java | CaseRuleTest | - | todo |
 | DE-0047 | `CompoundCoherencyRule` DE_COMPOUND_COHERENCY (STYLE, text-level): same compound with and without hyphen in one text, description "Einheitliche Schreibweise bei Komposita (mit oder ohne Bindestrich)" | JD:rules/de/CompoundCoherencyRule.java | CompoundCoherencyRuleTest | - | todo |
@@ -147,8 +147,8 @@ Notes valid for the whole file:
 
 | ID | behaviour (one line) | Java source (path#member) | Java tests | fixtures | status |
 |---|---|---|---|---|---|
-| DE-0130 | `GermanHelper`: POS-tag helpers (determiner/noun case/number/gender extraction) | JD:rules/de/GermanHelper.java | GermanHelperTest | - | todo |
-| DE-0131 | `GermanTools.isVowel(c)`: "aeiouyAEIOUYäöüÄÖÜ" | JD:rules/de/GermanTools.java | GermanToolsTest | - | todo |
+| DE-0130 | `GermanHelper`: POS-tag helpers (determiner/noun case/number/gender extraction) | JD:rules/de/GermanHelper.java | GermanHelperTest | - | verified |
+| DE-0131 | `GermanTools.isVowel(c)`: "aeiouyAEIOUYäöüÄÖÜ" | JD:rules/de/GermanTools.java | GermanToolsTest | - | verified |
 | DE-0132 | `LanguageNames`: list of language adjectives and `getAsRegex()` for CaseRule | JD:rules/de/LanguageNames.java | CaseRuleTest | - | todo |
 | DE-0133 | `LineExpander`: expands spelling lines by suffix flags (`foo/S` -> foo, foos; /E /N /A etc., `_in` gender forms) | JD:rules/de/LineExpander.java | LineExpanderTest | - | todo |
 

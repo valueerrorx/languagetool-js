@@ -1,0 +1,103 @@
+// org.languagetool.rules.de.LanguageNames
+import { JavaHashSet } from '../../../lib/java/collections/JavaHashSet.js';
+
+// Java: LanguageNames#languages (HashSet, iteration order of java.util.HashSet)
+const languages = new JavaHashSet();
+for (const n of [
+  'Angelsächsisch',
+  'Afrikanisch',
+  'Albanisch',
+  'Altarabisch',
+  'Altchinesisch',
+  'Altgriechisch',
+  'Althochdeutsch',
+  'Altpersisch',
+  'Amerikanisch',
+  'Arabisch',
+  'Armenisch',
+  'Bairisch',
+  'Baskisch',
+  'Bengalisch',
+  'Bulgarisch',
+  'Chinesisch',
+  'Dänisch',
+  'Deutsch',
+  'Englisch',
+  'Estnisch',
+  'Finnisch',
+  'Französisch',
+  'Frühneuhochdeutsch',
+  'Germanisch',
+  'Georgisch',
+  'Griechisch',
+  'Hebräisch',
+  'Hocharabisch',
+  'Hochchinesisch',
+  'Hochdeutsch',
+  'Holländisch',
+  'Indonesisch',
+  'Irisch',
+  'Isländisch',
+  'Italienisch',
+  'Japanisch',
+  'Jiddisch',
+  'Jugoslawisch',
+  'Kantonesisch',
+  'Katalanisch',
+  'Klingonisch',
+  'Koreanisch',
+  'Kroatisch',
+  'Kurdisch',
+  'Lateinisch',
+  'Lettisch',
+  'Litauisch',
+  'Luxemburgisch',
+  'Mittelhochdeutsch',
+  'Mongolisch',
+  'Neuhochdeutsch',
+  'Niederländisch',
+  'Norwegisch',
+  'Persisch',
+  'Plattdeutsch',
+  'Polnisch',
+  'Portugiesisch',
+  'Rätoromanisch',
+  'Rumänisch',
+  'Russisch',
+  'Sächsisch',
+  'Schwäbisch',
+  'Schwedisch',
+  'Schweizerisch',
+  'Serbisch',
+  'Serbokroatisch',
+  'Slawisch',
+  'Slowakisch',
+  'Slowenisch',
+  'Spanisch',
+  'Syrisch',
+  'Tamilisch',
+  'Tibetisch',
+  'Tschechisch',
+  'Tschetschenisch',
+  'Türkisch',
+  'Turkmenisch',
+  'Uigurisch',
+  'Ukrainisch',
+  'Ungarisch',
+  'Usbekisch',
+  'Vietnamesisch',
+  'Walisisch',
+  'Weißrussisch',
+]) languages.add(n);
+
+// Java: LanguageNames#get()
+export function get() {
+  return languages;
+}
+
+// Java: LanguageNames#getAsRegex()
+export function getAsRegex() {
+  return [...languages].join('|');
+}
+
+export const LanguageNames = { get, getAsRegex };

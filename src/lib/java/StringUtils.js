@@ -67,6 +67,15 @@ export function endsWith(str, suffix) {
   return suffix.length <= str.length && str.endsWith(suffix);
 }
 
+// Java: StringUtils#endsWithAny(CharSequence,CharSequence...) (empty sequence -> false)
+export function endsWithAny(sequence, ...searchStrings) {
+  if (isEmptyCs(sequence) || searchStrings.length === 0) return false;
+  for (const searchString of searchStrings) {
+    if (endsWith(sequence, searchString)) return true;
+  }
+  return false;
+}
+
 // Java: StringUtils#containsAny(CharSequence,CharSequence...) (substring search; empty cs -> false)
 export function containsAny(cs, ...searchCharSequences) {
   if (isEmptyCs(cs) || searchCharSequences.length === 0) return false;
@@ -178,4 +187,46 @@ export function uncapitalize(str) {
   const newCodePoint = Character.toLowerCase(first);
   if (first === newCodePoint) return str; // same result
   return String.fromCodePoint(newCodePoint) + str.substring(first > 0xffff ? 2 : 1);
+}
+
+// Java: StringUtils#isAllUpperCase(CharSequence) (Character.isUpperCase per char; null or empty -> false)
+export function isAllUpperCase(cs) {
+  if (cs === null || cs === undefined || cs.length === 0) return false;
+  for (let i = 0; i < cs.length; i++) {
+    if (!Character.isUpperCase(cs.charCodeAt(i))) return false;
+  }
+  return true;
+}
+
+// Java: StringUtils#isAllLowerCase(CharSequence) (Character.isLowerCase per char; null or empty -> false)
+export function isAllLowerCase(cs) {
+  if (cs === null || cs === undefined || cs.length === 0) return false;
+  for (let i = 0; i < cs.length; i++) {
+    if (!Character.isLowerCase(cs.charCodeAt(i))) return false;
+  }
+  return true;
+}
+
+// Java: StringUtils#capitalize(String) (first code point to title case)
+export function capitalize(str) {
+  if (str === null || str === undefined || str.length === 0) return str;
+  const first = str.codePointAt(0);
+  const newCodePoint = Character.toTitleCase(first);
+  if (first === newCodePoint) return str; // same result
+  return String.fromCodePoint(newCodePoint) + str.substring(first > 0xffff ? 2 : 1);
+}
+
+// Java: StringUtils#remove(String,char) (null-safe)
+export function removeChar(str, ch) {
+  if (str === null || str === undefined || str.length === 0 || str.indexOf(ch) === -1) return str;
+  return str.split(ch).join('');
+}
+
+// Java: StringUtils#substringAfter(String,String) (null or empty str -> str, null separator -> "")
+export function substringAfter(str, separator) {
+  if (str === null || str === undefined || str.length === 0) return str;
+  if (separator === null || separator === undefined) return '';
+  const pos = str.indexOf(separator);
+  if (pos === -1) return '';
+  return str.substring(pos + separator.length);
 }

@@ -11,6 +11,8 @@ import { GermanCompoundRule } from '../../src/lang/de/rules/GermanCompoundRule.j
 import { SimpleReplaceRule as DeSimpleReplaceRule } from '../../src/lang/de/rules/SimpleReplaceRule.js';
 import { GermanWrongWordInContextRule } from '../../src/lang/de/rules/GermanWrongWordInContextRule.js';
 import { WordCoherencyRule as DeWordCoherencyRule } from '../../src/lang/de/rules/WordCoherencyRule.js';
+import { AgreementRule } from '../../src/lang/de/rules/AgreementRule.js';
+import { AgreementRule2 } from '../../src/lang/de/rules/AgreementRule2.js';
 
 // Java: ReplaceOps#check(JsonNode)
 export function run(a) {
@@ -114,7 +116,7 @@ export function f37Rules(l, m, uc, natives) {
   const isReadability = (r) => r.constructor?.name === 'ReadabilityRule';
   const out = natives.slice();
   if (code === 'de') {
-    out.push(new GermanCompoundRule(m, l, uc), new DeSimpleReplaceRule(m, l), new GermanWrongWordInContextRule(m, l), new DeWordCoherencyRule(m));
+    out.push(new GermanCompoundRule(m, l, uc), new DeSimpleReplaceRule(m, l), new GermanWrongWordInContextRule(m, l), new AgreementRule(m, l), new AgreementRule2(m, l), new DeWordCoherencyRule(m));
     return out;
   }
   throw notPorted(`replace-check: rule list of ${code}`);
