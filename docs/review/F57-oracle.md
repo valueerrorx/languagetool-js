@@ -1,0 +1,7 @@
+# F57 oracle (X-DERULES-B)
+Status: DONE (82 cases, 34M golden). `npm run oracle -- X-DERULES-B`; `npm run parity -- X-DERULES-B`. Generator `node oracle/scripts/gen-cases-derules-b.mjs`. Compare: jsonl, normalize `paths`. Env: pinned oracle env (D-018).
+Ops (reused, no new Java): `replace-check` mode `rules` (StyleOps#check, listed ids enabled, optional `config` {ruleId:[values]}). Per match: ruleId, offsets, message, shortMessage, suggestions, url. DEFAULT and PICKY; de-DE full, de-AT/de-CH first chunk.
+Cases: fillerwords(+config: percent/direct speech/two/many), readability(+config 0..6,-1,7), stat-<id>(+config) for NON_SIGNIFICANT_VERB/PASSIVE/SENTENCE_WITH_MAN/MODAL_VERB/UNNECESSARY_PHRASES, toooften(+config), paragraphrepeat, repeatedwords (synonyms.txt), stylerepeatedword(+config), brackets-quotes (+single), wordrepeatbeginning, wordrepeat, wrongword (wrongWordInContext.txt x contexts), longsentence (+config), redundantmodal, similarnames, simplereplace (replace*.txt), sentencebeginning, shortsentences(+config), coherency (coherency.txt), full-corpus-{DE,AT,CH} and full-targeted (all F57 rules together = *-full-* cases). Inputs: JUnit string literals of the matching tests + data-derived + targeted + corpus paragraphs.
+Unit conversion DE-0091 is reused from X-UNIT (unit-de-DE/AT/CH); EINHEITEN_METRISCH also runs in full-*. Core-level X-STYLE de cases (statistic/filler/readability/etc.) remain as before.
+## UNORACLED
+- Office/LinguServices paths, ONLYPARA mode, ids [] (all default rules) not covered.
