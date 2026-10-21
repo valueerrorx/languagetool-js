@@ -1,0 +1,23 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "DE-0227 de YMDDateCheckFilter missing date",
+ "args": [
+  "-l",
+  "de-DE",
+  "--rulefile",
+  "rules.xml",
+  "-"
+ ],
+ "stdin": "Es ist foo.",
+ "files": {
+  "rules.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"de\">\n<category id=\"CAT1\" name=\"cat\">\n<rule id=\"R1\" name=\"r\"><pattern><token>foo</token></pattern><filter class=\"org.languagetool.rules.de.YMDDateCheckFilter\" args=\"weekDay:\\1\"/><message>msg</message><example correction=\"\">Es ist foo.</example></rule>\n</category>\n</rules>\n"
+ }
+}

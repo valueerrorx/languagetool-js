@@ -1,0 +1,26 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "bitext min 2",
+ "args": [
+  "-l",
+  "de-DE",
+  "-m",
+  "en",
+  "-b2",
+  "--bitextrules",
+  "bt.xml",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "This is a test.\tDas ist ein Test.\nHello world\tHallo Welt\n",
+  "bt.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules targetLang=\"de\">\n<category id=\"CAT1\" name=\"c\">\n<rule lang=\"de\" id=\"BT1\" name=\"bt\"><pattern><source lang=\"en\"><token>is</token><token>a</token></source><target><token min=\"2\">ein</token></target></pattern><message>Meinten Sie <suggestion>x</suggestion>?</message><example type=\"incorrect\" correction=\"x\"><srcExample><marker>is a</marker></srcExample><trgExample><marker>ein</marker></trgExample></example></rule>\n</category>\n</rules>\n"
+ }
+}

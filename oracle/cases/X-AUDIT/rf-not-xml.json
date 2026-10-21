@@ -1,0 +1,23 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "rule file with plain text",
+ "args": [
+  "-l",
+  "en-US",
+  "--rulefile",
+  "rules.xml",
+  "-"
+ ],
+ "stdin": "This is foo bar and 25 more.",
+ "files": {
+  "rules.xml": "this is not xml\n"
+ }
+}

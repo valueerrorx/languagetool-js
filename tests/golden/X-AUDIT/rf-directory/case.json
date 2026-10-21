@@ -1,0 +1,23 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "--rulefile pointing to a directory",
+ "args": [
+  "-l",
+  "en-US",
+  "--rulefile",
+  "d",
+  "-"
+ ],
+ "stdin": "This is foo bar.",
+ "files": {
+  "d/x.txt": "x"
+ }
+}

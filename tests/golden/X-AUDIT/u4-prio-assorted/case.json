@@ -1,0 +1,23 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "EN-0004 prio= output of assorted rules (CLI)",
+ "args": [
+  "-l",
+  "en-US",
+  "--level",
+  "PICKY",
+  "-eo",
+  "-e",
+  "I_E,PROFANITY,MISSING_HYPHEN,UPPERCASE_SENTENCE_START,COMMA_PARENTHESIS_WHITESPACE,EN_UNPAIRED_BRACKETS,WHITESPACE_RULE,ENGLISH_WORD_REPEAT_RULE,SENTENCE_FRAGMENT",
+  "-"
+ ],
+ "stdin": "i.e. this is is a (test. Because he  said so.\n"
+}

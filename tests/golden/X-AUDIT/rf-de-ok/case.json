@@ -1,0 +1,23 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "valid de rule file with de text (control)",
+ "args": [
+  "-l",
+  "de-DE",
+  "--rulefile",
+  "rules.xml",
+  "-"
+ ],
+ "stdin": "Der Hund bellt.",
+ "files": {
+  "rules.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"de\">\n<category id=\"CAT1\" name=\"cat\">\n<rule id=\"R1\" name=\"r\"><pattern><token>Hund</token></pattern><message>msg</message><example correction=\"\">Hund</example></rule>\n</category>\n</rules>\n"
+ }
+}

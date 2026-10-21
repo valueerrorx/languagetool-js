@@ -1,0 +1,25 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CORE-0452 --bitextrules non existing path",
+ "args": [
+  "-l",
+  "de-DE",
+  "-m",
+  "en",
+  "-b2",
+  "--bitextrules",
+  "nope.xml",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "This is a test.\tDas ist ein Test.\n"
+ }
+}

@@ -1,0 +1,23 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "PatternToken skip 127 boundary ok",
+ "args": [
+  "-l",
+  "en-US",
+  "--rulefile",
+  "rules.xml",
+  "-"
+ ],
+ "stdin": "This is foo bar and 25 more.",
+ "files": {
+  "rules.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT1\" name=\"cat\">\n<rule id=\"R1\" name=\"r\"><pattern><token skip=\"127\">foo</token><token>bar</token></pattern><message>msg</message><example correction=\"\">foo bar</example></rule>\n</category>\n</rules>\n"
+ }
+}

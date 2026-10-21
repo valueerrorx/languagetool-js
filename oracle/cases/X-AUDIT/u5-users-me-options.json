@@ -1,0 +1,301 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "U-5 SRV-0105: OPTIONS/GET /v2/users/me incl. Access-Control-Request-Headers variants",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "OPTIONS",
+   "path": "/v2/users/me",
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "OPTIONS",
+   "path": "/v2/users/me",
+   "headers": {
+    "Access-Control-Request-Headers": "x-a,x-b"
+   },
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "OPTIONS",
+   "path": "/v2/users/me",
+   "headers": {
+    "Access-Control-Request-Headers": "x-a, x-b"
+   },
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "OPTIONS",
+   "path": "/v2/users/me",
+   "headers": {
+    "Access-Control-Request-Headers": ""
+   },
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "OPTIONS",
+   "path": "/v2/users/me",
+   "headers": {
+    "Access-Control-Request-Headers": "Authorization"
+   },
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "OPTIONS",
+   "path": "/v2/users/me",
+   "headers": {
+    "Access-Control-Request-Headers": "x-a,x-b",
+    "Origin": "https://example.org"
+   },
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "OPTIONS",
+   "path": "/v2/users/me",
+   "headers": {
+    "Origin": "https://example.org"
+   },
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "OPTIONS",
+   "path": "/v2/users/me",
+   "headers": {
+    "Access-Control-Request-Method": "GET"
+   },
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "OPTIONS",
+   "path": "/v2/users/me",
+   "headers": {
+    "Access-Control-Request-Headers": "x-a,x-b",
+    "Access-Control-Request-Method": "GET",
+    "Origin": "https://example.org"
+   },
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "options",
+   "path": "/v2/users/me",
+   "headers": {
+    "Access-Control-Request-Headers": "x-a,x-b"
+   },
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "OPTIONS",
+   "path": "/v2/users/me?authMethod=apiKey",
+   "headers": {
+    "Access-Control-Request-Headers": "x-a,x-b"
+   },
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "OPTIONS",
+   "path": "/v2/users/me/",
+   "headers": {
+    "Access-Control-Request-Headers": "x-a"
+   },
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "OPTIONS",
+   "path": "/v2/users/me?authMethod=bogus",
+   "headers": {
+    "Access-Control-Request-Headers": "x-a"
+   },
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic YTpi"
+   },
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me?authMethod=apiKey",
+   "headers": {
+    "Authorization": "Basic YTpi"
+   },
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Bearer abc"
+   },
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic !!!"
+   },
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic bm9jb2xvbg=="
+   },
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me?authMethod=addonToken",
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me?authMethod=bogus",
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "POST",
+   "path": "/v2/users/me",
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "PUT",
+   "path": "/v2/users/me",
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "DELETE",
+   "path": "/v2/users/me",
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "HEAD",
+   "path": "/v2/users/me",
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "PATCH",
+   "path": "/v2/users/me",
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,387 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "U-2 SRV-0120: both preferredVariants error texts and valid values",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "enGB"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "xx-YY"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "en-GB"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "en-GB,de-AT"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "en-GB, de-AT"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "de-XX"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "en-gb"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "EN-GB"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "en-"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "-GB"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "en-GB,enGB"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "en-GB,xx-YY"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "enGB,xx-YY"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": ""
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": ","
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "en-GB,"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "en_GB"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "en-GB-x"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "xx-"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "x-y"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "en-US",
+    "preferredVariants": "enGB"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "en-US",
+    "preferredVariants": "xx-YY"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "en-US",
+    "preferredVariants": "en-GB"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "en",
+    "preferredVariants": "en-GB"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "Das ist ein Test.",
+    "language": "auto",
+    "preferredVariants": "de-AT"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "Das ist ein Test.",
+    "language": "auto",
+    "preferredVariants": "de-DE,de-AT,de-CH"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "en-GB",
+    "multilingual": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "enGB",
+    "multilingual": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "xx-YY",
+    "multilingual": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "xx-YY",
+    "noopLanguages": "en"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "xx-YY",
+    "mode": "textLevelOnly"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "en-XX"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "en-ZZ,de-AT"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "en-US-x"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "en-1"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "en-GB-oed"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "en--"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "Das ist ein Test.",
+    "language": "auto",
+    "preferredVariants": "de-XX"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "Das ist ein Test.",
+    "language": "auto",
+    "preferredVariants": "de-DE-x-simple-language"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "Ceci est un test.",
+    "language": "auto",
+    "preferredVariants": "fr-XX"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "Ceci est un test.",
+    "language": "auto",
+    "preferredVariants": "fr-CA"
+   }
+  }
+ ]
+}

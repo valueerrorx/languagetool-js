@@ -1,0 +1,23 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "malformed XML (unclosed element)",
+ "args": [
+  "-l",
+  "en-US",
+  "--rulefile",
+  "rules.xml",
+  "-"
+ ],
+ "stdin": "This is foo bar and 25 more.",
+ "files": {
+  "rules.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\"><category id=\"C\" name=\"c\"><rule id=\"R1\" name=\"r\">\n</category></rules>\n"
+ }
+}

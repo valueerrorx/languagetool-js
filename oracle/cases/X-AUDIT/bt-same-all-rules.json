@@ -1,0 +1,23 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CORE-0451: all bitext rules on identical text",
+ "args": [
+  "-l",
+  "de-DE",
+  "-m",
+  "en",
+  "-b2",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "A B C\tA B C\nA B C D\tA B C D\nOne two three\tOne two three\nOne two three four\tOne two three four\nOne two three four\tone two three four\nOne two three four\tOne two three four \n"
+ }
+}

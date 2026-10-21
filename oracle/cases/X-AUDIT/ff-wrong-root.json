@@ -1,0 +1,25 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "false friends file with other root",
+ "args": [
+  "-l",
+  "en-US",
+  "-m",
+  "de",
+  "--falsefriends",
+  "ff.xml",
+  "-"
+ ],
+ "stdin": "A gift for language tool.",
+ "files": {
+  "ff.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<foo/>\n"
+ }
+}

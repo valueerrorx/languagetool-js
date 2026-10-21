@@ -1,0 +1,35 @@
+[
+  {
+    "status": 204,
+    "contentType": "",
+    "accessControlAllowOrigin": "https://allowed.example",
+    "body": "",
+    "headers": {
+      "access-control-allow-methods": "GET, OPTIONS",
+      "access-control-allow-headers": "x-a,x-b",
+      "access-control-allow-origin": "https://allowed.example"
+    }
+  },
+  {
+    "status": 204,
+    "contentType": "",
+    "accessControlAllowOrigin": "https://allowed.example",
+    "body": "",
+    "headers": {
+      "access-control-allow-methods": "GET, OPTIONS",
+      "access-control-allow-headers": null,
+      "access-control-allow-origin": "https://allowed.example"
+    }
+  },
+  {
+    "status": 403,
+    "contentType": "",
+    "accessControlAllowOrigin": "https://allowed.example",
+    "body": "Error: org.languagetool.server.AuthException: Expected Basic Authentication",
+    "headers": {
+      "access-control-allow-methods": null,
+      "access-control-allow-headers": null,
+      "access-control-allow-origin": "https://allowed.example"
+    }
+  }
+]

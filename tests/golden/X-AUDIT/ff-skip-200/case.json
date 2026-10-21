@@ -1,0 +1,25 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "false friends token skip out of range",
+ "args": [
+  "-l",
+  "en-US",
+  "-m",
+  "de",
+  "--falsefriends",
+  "ff.xml",
+  "-"
+ ],
+ "stdin": "A gift for language tool.",
+ "files": {
+  "ff.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules>\n<rulegroup id=\"FF1\"><rule><pattern lang=\"en\"><token skip=\"200\">gift</token></pattern><translation lang=\"de\">Geschenk</translation></rule></rulegroup>\n</rules>\n"
+ }
+}

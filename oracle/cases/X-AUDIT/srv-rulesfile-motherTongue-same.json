@@ -1,0 +1,29 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "server rulesFile with motherTongue equal to the text language",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "A gift for language tool."
+   }
+  }
+ ],
+ "stopAfter": true,
+ "files": {
+  "server.properties": "rulesFile={WORK}/rules.cfg\n",
+  "rules.cfg": "motherTongue=en\n"
+ }
+}

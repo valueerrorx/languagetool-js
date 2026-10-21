@@ -1,0 +1,47 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "U-5 OPTIONS /v2/users/me with allowOriginUrl configured",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [
+  "--allow-origin",
+  "https://allowed.example"
+ ],
+ "requests": [
+  {
+   "method": "OPTIONS",
+   "path": "/v2/users/me",
+   "headers": {
+    "Access-Control-Request-Headers": "x-a,x-b",
+    "Origin": "https://example.org"
+   },
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "OPTIONS",
+   "path": "/v2/users/me",
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  }
+ ]
+}

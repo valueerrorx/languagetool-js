@@ -1,0 +1,158 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "U-1: bitext empty/blank target and source, multi sentence, enabledRules",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "",
+    "sourceLanguage": "en-US",
+    "sourceText": "Hello world"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": " ",
+    "sourceLanguage": "en-US",
+    "sourceText": "Hello world"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Hallo Welt",
+    "sourceLanguage": "en-US",
+    "sourceText": ""
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Hallo Welt",
+    "sourceLanguage": "en-US",
+    "sourceText": " "
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Hallo Welt. Zweiter Satz.",
+    "sourceLanguage": "en-US",
+    "sourceText": "Hello world. Second sentence."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Hallo Welt.",
+    "sourceLanguage": "en-US",
+    "sourceText": "Hello world. Second sentence."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Hallo Welt. Zweiter Satz.",
+    "sourceLanguage": "en-US",
+    "sourceText": "Hello world."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Hallo Welt.",
+    "sourceLanguage": "en-US",
+    "sourceText": "Hello world",
+    "enabledRules": "DIFFERENT_PUNCTUATION",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Hallo Welt.",
+    "sourceLanguage": "en-US",
+    "sourceText": "Hello world",
+    "disabledRules": "DIFFERENT_PUNCTUATION"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Hallo Welt.",
+    "sourceLanguage": "en-US",
+    "sourceText": "Hello world",
+    "disabledRules": "DIFFERENT_PUNCTUATION,TRANSLATION_LENGTH,SAME_TRANSLATION"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Das ist ein Test.",
+    "sourceLanguage": "de-DE",
+    "sourceText": "Das ist ein Test."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test.",
+    "sourceLanguage": "en-GB",
+    "sourceText": "This is a test."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Das ist ein Test.",
+    "sourceLanguage": "fr",
+    "sourceText": "Ceci est un test."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "fr",
+    "text": "Ceci est un test.",
+    "sourceLanguage": "de-DE",
+    "sourceText": "Das ist ein Test.",
+    "level": "picky"
+   }
+  }
+ ]
+}

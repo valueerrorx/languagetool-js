@@ -1,0 +1,40 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "U-2 preferredVariants through GET query",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "enGB"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "xx-YY"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "text": "This is a test.",
+    "language": "auto",
+    "preferredVariants": "en-GB"
+   }
+  }
+ ]
+}

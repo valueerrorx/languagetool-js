@@ -1,0 +1,23 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "DOCTYPE referring to a missing external DTD",
+ "args": [
+  "-l",
+  "en-US",
+  "--rulefile",
+  "rules.xml",
+  "-"
+ ],
+ "stdin": "This is foo bar and 25 more.",
+ "files": {
+  "rules.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE rules SYSTEM \"does-not-exist.dtd\">\n<rules lang=\"en\"><category id=\"C\" name=\"c\"><rule id=\"R1\" name=\"r\"><pattern><token>foo</token></pattern><message>msg</message><example correction=\"\">foo bar</example></rule></category></rules>\n"
+ }
+}

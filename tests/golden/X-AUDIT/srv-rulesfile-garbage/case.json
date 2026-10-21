@@ -1,0 +1,37 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "server rulesFile with malformed cfg lines",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Das ist ein Test,, ok."
+   }
+  }
+ ],
+ "stopAfter": true,
+ "files": {
+  "server.properties": "rulesFile={WORK}/rules.cfg\n",
+  "rules.cfg": "disabledRules.en=\nenabledRules=\\\nmotherTongue=\nfoo\n=bar\ndisabledCategories.en=NOPE\n"
+ }
+}

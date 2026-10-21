@@ -1,0 +1,23 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CORE-0452 empty match no with fr",
+ "args": [
+  "-l",
+  "fr",
+  "--rulefile",
+  "rules.xml",
+  "-"
+ ],
+ "stdin": "Le chat dort.",
+ "files": {
+  "rules.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"fr\">\n<category id=\"CAT1\" name=\"cat\">\n<rule id=\"R1\" name=\"r\"><pattern><token>chat</token></pattern><message><match no=\"\"/></message><example correction=\"\">foo bar</example></rule>\n</category>\n</rules>\n"
+ }
+}

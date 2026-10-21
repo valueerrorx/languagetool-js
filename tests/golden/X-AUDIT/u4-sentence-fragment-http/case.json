@@ -1,0 +1,58 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "U-4 SENTENCE_FRAGMENT via /v2/check (match order with level picky)",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Though the dog likes to bark loudly. After we had a lovely dinner. Because I am a student of old language. When the wind howls in the trees.",
+    "level": "picky",
+    "enabledRules": "SENTENCE_FRAGMENT",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Though the the dog likes to bark loudly,, yes. Because i am a student.",
+    "level": "picky",
+    "enabledRules": "SENTENCE_FRAGMENT"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-GB",
+    "text": "Though the dog likes to bark loudly. After we had a lovely dinner. Because I am a student of old language. When the wind howls in the trees.",
+    "level": "picky",
+    "enabledRules": "SENTENCE_FRAGMENT",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Though the dog likes to bark loudly. After we had a lovely dinner. Because I am a student of old language. When the wind howls in the trees.",
+    "level": "picky",
+    "enabledRules": "SENTENCE_FRAGMENT",
+    "enabledOnly": "true",
+    "useragent": "x",
+    "enableTempOffRules": "true"
+   }
+  }
+ ]
+}

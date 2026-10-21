@@ -1,0 +1,23 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CORE-0451: DIFFERENT_PUNCTUATION with all bitext rules (order of rules)",
+ "args": [
+  "-l",
+  "de-DE",
+  "-m",
+  "en",
+  "-b2",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "Hello\tHallo.\nHello.\tHallo.\nHello?\tHallo.\nHello.\tHallo!\nHello\tHallo,\nHello\tHallo...\nHello!\tHallo?\nHello\tHallo?!\nHello\tHallo?\nHello\tHallo!\n"
+ }
+}

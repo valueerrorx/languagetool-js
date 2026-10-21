@@ -1,0 +1,23 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CORE-0452 RegexAntiPatternFilter:41 missing antipatterns",
+ "args": [
+  "-l",
+  "en-US",
+  "--rulefile",
+  "rules.xml",
+  "-"
+ ],
+ "stdin": "This is foo bar and 25 more.",
+ "files": {
+  "rules.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT1\" name=\"cat\">\n<rule id=\"RX1\" name=\"rx\"><regexp>foo</regexp><filter class=\"org.languagetool.rules.patterns.RegexAntiPatternFilter\" args=\"x:y\"/><message>msg</message><example correction=\"\">foo</example></rule>\n</category>\n</rules>\n"
+ }
+}

@@ -1,0 +1,25 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CORE-0451: SAME_TRANSLATION, source fr target en",
+ "args": [
+  "-l",
+  "en-US",
+  "-m",
+  "fr",
+  "-b2",
+  "-e",
+  "SAME_TRANSLATION",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "A\tA\nA B\tA B\nA B C\tA B C\nA B C D\tA B C D\nOne two three\tOne two three\nOne two three four\tOne two three four\nOne two three four\tone two three four\nOne two three four\tOne two three four \nOne two three four\tOne  two three four\nA, B\tA, B\nA, B, C\tA, B, C\nDas ist gut.\tDas ist gut.\nDas ist ein Test.\tDas ist ein Test.\nÜber große Äpfel sind gut.\tÜber große Äpfel sind gut.\n"
+ }
+}

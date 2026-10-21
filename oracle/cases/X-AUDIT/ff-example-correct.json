@@ -1,0 +1,25 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "false friend rule with correct and incorrect examples",
+ "args": [
+  "-l",
+  "en-US",
+  "-m",
+  "de",
+  "--falsefriends",
+  "ff.xml",
+  "-"
+ ],
+ "stdin": "A gift for language tool.",
+ "files": {
+  "ff.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules>\n<rulegroup id=\"FF1\"><rule><pattern lang=\"en\"><token>gift</token></pattern><translation lang=\"de\">Geschenk</translation><example type=\"incorrect\"><marker>gift</marker></example><example type=\"correct\">present</example></rule></rulegroup>\n</rules>\n"
+ }
+}

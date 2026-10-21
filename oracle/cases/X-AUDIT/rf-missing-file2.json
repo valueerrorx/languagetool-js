@@ -1,0 +1,20 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CORE-0452 --rulefile with non existing path",
+ "args": [
+  "-l",
+  "en-US",
+  "--rulefile",
+  "nope.xml",
+  "-"
+ ],
+ "stdin": "This is foo bar."
+}

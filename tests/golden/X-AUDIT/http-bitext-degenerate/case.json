@@ -1,0 +1,73 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "CORE-0451: bitext with single punctuation target (RuleMatch fromPos >= toPos)",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": ".",
+    "sourceLanguage": "en-US",
+    "sourceText": "Hi."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "?",
+    "sourceLanguage": "en-US",
+    "sourceText": "Hi"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": ".",
+    "sourceLanguage": "en-US",
+    "sourceText": "."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": ".",
+    "sourceLanguage": "en-US",
+    "sourceText": "!"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "!",
+    "sourceLanguage": "en-US",
+    "sourceText": "Hi"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": " .",
+    "sourceLanguage": "en-US",
+    "sourceText": "Hi"
+   }
+  }
+ ]
+}

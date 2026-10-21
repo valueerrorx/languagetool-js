@@ -1,0 +1,29 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "server rulesFile pointing to a pattern rule XML (cfg parser reads it as properties)",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is foo bar."
+   }
+  }
+ ],
+ "stopAfter": true,
+ "files": {
+  "server.properties": "rulesFile={WORK}/rules.xml\n",
+  "rules.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT1\" name=\"cat\">\n<rule id=\"R1\" name=\"r\"><pattern><token>foo</token><token>bar</token></pattern><message>msg</message><example correction=\"\">foo bar</example></rule>\n</category>\n</rules>\n"
+ }
+}

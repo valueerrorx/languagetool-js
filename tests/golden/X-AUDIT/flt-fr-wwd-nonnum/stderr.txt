@@ -1,0 +1,56 @@
+Expected text language: French
+Working on STDIN...
+Exception in thread "main" java.lang.RuntimeException: java.util.concurrent.ExecutionException: java.lang.RuntimeException: java.lang.RuntimeException: Could not check sentence (language: French): <sentcontent>Il est foo.</sentcontent>
+	at org.languagetool.MultiThreadedJLanguageTool.performCheck(MultiThreadedJLanguageTool.java:217)
+	at org.languagetool.JLanguageTool.checkInternalWithCustomRules(JLanguageTool.java:1123)
+	at org.languagetool.JLanguageTool.checkInternal(JLanguageTool.java:1085)
+	at org.languagetool.JLanguageTool.checkInternal(JLanguageTool.java:1078)
+	at org.languagetool.JLanguageTool.check(JLanguageTool.java:1021)
+	at org.languagetool.JLanguageTool.check(JLanguageTool.java:1006)
+	at org.languagetool.commandline.CommandLineTools.checkText(CommandLineTools.java:118)
+	at org.languagetool.commandline.CommandLineTools.checkText(CommandLineTools.java:94)
+	at org.languagetool.commandline.Main.runOnFile(Main.java:190)
+	at org.languagetool.commandline.Main.main(Main.java:466)
+Caused by: java.util.concurrent.ExecutionException: java.lang.RuntimeException: java.lang.RuntimeException: Could not check sentence (language: French): <sentcontent>Il est foo.</sentcontent>
+	at java.base/java.util.concurrent.ForkJoinTask.reportExecutionException(ForkJoinTask.java:605)
+	at java.base/java.util.concurrent.ForkJoinTask.get(ForkJoinTask.java:981)
+	at org.languagetool.MultiThreadedJLanguageTool.performCheck(MultiThreadedJLanguageTool.java:214)
+	... 9 more
+Caused by: java.lang.RuntimeException: java.lang.RuntimeException: Could not check sentence (language: French): <sentcontent>Il est foo.</sentcontent>
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at java.base/java.util.concurrent.ForkJoinTask.getThrowableException(ForkJoinTask.java:562)
+	at java.base/java.util.concurrent.ForkJoinTask.reportExecutionException(ForkJoinTask.java:604)
+	... 11 more
+Caused by: java.lang.RuntimeException: Could not check sentence (language: French): <sentcontent>Il est foo.</sentcontent>
+	at org.languagetool.JLanguageTool$TextCheckCallable.getOtherRuleMatches(JLanguageTool.java:2261)
+	at org.languagetool.JLanguageTool$TextCheckCallable.call(JLanguageTool.java:2111)
+	at org.languagetool.MultiThreadedJLanguageTool.lambda$performCheck$1(MultiThreadedJLanguageTool.java:200)
+	at java.base/java.util.concurrent.ForkJoinTask$AdaptedCallable.exec(ForkJoinTask.java:1428)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+Caused by: java.lang.RuntimeException: Error analyzing sentence: '<S> Il[il/R pers suj 3 m s] est[être/V etre ind pres 3 s] foo[foo/null].[./M fin,./M fin,</S><P/>]' with rule R1[1]
+	at org.languagetool.rules.patterns.PatternRuleMatcher.match(PatternRuleMatcher.java:121)
+	at org.languagetool.rules.patterns.PatternRuleMatcher.match(PatternRuleMatcher.java:82)
+	at org.languagetool.rules.patterns.PatternRule.match(PatternRule.java:218)
+	at org.languagetool.JLanguageTool.checkAnalyzedSentence(JLanguageTool.java:1603)
+	at org.languagetool.JLanguageTool$TextCheckCallable.getOtherRuleMatches(JLanguageTool.java:2216)
+	... 8 more
+Caused by: java.lang.NumberFormatException: For input string: "x"
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:67)
+	at java.base/java.lang.Integer.parseInt(Integer.java:668)
+	at java.base/java.lang.Integer.parseInt(Integer.java:786)
+	at org.languagetool.rules.fr.WordWithDeterminerFilter.acceptRuleMatch(WordWithDeterminerFilter.java:62)
+	at org.languagetool.rules.patterns.RuleFilterEvaluator.runFilter(RuleFilterEvaluator.java:46)
+	at org.languagetool.rules.patterns.PatternRuleMatcher.createRuleMatch(PatternRuleMatcher.java:213)
+	at org.languagetool.rules.patterns.PatternRuleMatcher.lambda$match$1(PatternRuleMatcher.java:104)
+	at org.languagetool.rules.patterns.AbstractPatternRulePerformer.matchFrom(AbstractPatternRulePerformer.java:172)
+	at org.languagetool.rules.patterns.AbstractPatternRulePerformer.doMatch(AbstractPatternRulePerformer.java:84)
+	at org.languagetool.rules.patterns.PatternRuleMatcher.match(PatternRuleMatcher.java:103)
+	... 12 more
