@@ -1,0 +1,14 @@
+# F63 oracle (X-FRRULES-XML, X-FRCHECK)
+Status: DONE (X-FRRULES-XML 69 cases, 76M, 94 responses; X-FRCHECK 62 cases, 11M, 1369 responses; all ok, 0 Java errors). `npm run oracle -- X-FRRULES-XML|X-FRCHECK` (X-FRRULES-XML takes ~60 min, rule-examples are heavy); generator `node oracle/scripts/gen-cases-frxml.mjs` (wipes and rewrites both dirs; inputs only). Env: pinned oracle env (D-018), fixed clock.
+Adapters: no new harness code or JS adapters; reused language-generic ops `en-rulelist` (direct/lt), `rule-examples`, `check`, `analyze`, `tools-correct`, `rules-list` (oracle/adapters/en-rulelist.mjs etc.). Parity today: NOT PORTED (French getRelevantRules missing), as expected.
+## Cases
+- X-FRRULES-XML: rulelist-direct-fr (fr-FR/BE/CA/CH/fr x mother tongue none/en/de, 15 requests), rulelist-all-<fr-FR|fr-BE|fr-CA|fr-CH|fr> (fr-FR 6858 rules), rulelist-all-fr-FR-mt-<en|de> (6952 / 6858 rules), rulelist-contentop, examples-fr-FR-000..044 (150 rules each, 6734 rules with examples, grammar+style XML, restricted + unrestricted), examples-<fr-BE|fr-CA|fr-CH>-sample (+ -sample-picky, 60 sampled fr-FR ids under the variant), examples-fr-FR-tempoff-sample (150 ids, PICKY + enableTempOff), examples-fr-short-code, examples-fr-FR-off-N (default-off XML rules, default and PICKY+tempoff+enabled), examples-fr-FR-tempoff-N (temp_off rules with/without enableTempOff).
+- X-FRCHECK: corpus-<fr-FR|fr-BE|fr-CA|fr-CH>-<default|picky>-0..4 and corpus-fr-default-0..4 (oracle/corpus/fr, 70 paragraphs, 14 per case), edge-<variant> (18 texts incl. Belgian/Swiss/Quebec vocabulary, DEFAULT+PICKY), modes-fr-FR, tones-fr-FR, tempoff-<variant>, selection-fr-FR (rule/category enable/disable), mothertongue-<en|de> (fr-FR, fr-CH), analyze-fr, tools-correct-fr, markup-like-fr.
+## Covered IDs
+FR-0002 (rulelist-*), FR-0150/FR-0151 (examples-*, rulelist-all), FR-0220 (AnnotatedText: indirectly via check offsets; the AnnotatedTextTest JUnit port is the main check, no extra French AnnotatedText fixture; markup-like-fr covers plain markup-looking text only).
+## Not oracle-able / UNORACLED
+- FR-0221: test-only disambiguator.xml + TestFrenchDisambiguator live in src/test/resources, not reachable through the shipped jar harness; checked by the JUnit port only.
+- No fr-specific variant XML exists (BE/CA/CH have no own grammar files), so no variant-id lists; variants are covered by sampled ids and corpus runs.
+- Not generated vs de: positions-de-DE (German-only DE-0226), shortdesc (no French word_definitions).
+- Mother tongues limited to en and de (others out of scope, DEV-006); N-gram LM, remote and premium rules only with null LM (rulelist-direct-fr).
+- Speller output depends on the French speller (F61) and FrenchHybridDisambiguator (F60) for corpus/edge/examples cases; those cases cannot go green before they are wired into getRelevantRules.
