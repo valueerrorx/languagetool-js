@@ -10,6 +10,9 @@ import { getUrl } from '../Tools.js';
 import { RuleFilter } from '../patterns/RuleFilter.js';
 import { RuleMatch } from './model/RuleMatch.js';
 import { TestHackHelper } from './TestHackHelper.js';
+import { LoggerFactory } from '../../lib/slf4j/Logger.js';
+
+const logger = LoggerFactory.getLogger('org.languagetool.rules.AbstractDateCheckFilter');
 
 // Java: AbstractDateCheckFilter
 export class AbstractDateCheckFilter extends RuleFilter {
@@ -68,7 +71,8 @@ export class AbstractDateCheckFilter extends RuleFilter {
       if (e instanceof TypeError) e = new NullPointerException(); // JS TypeError stands for a Java NPE
       if (e instanceof IllegalArgumentException) throw e;
       if (e instanceof RuntimeException) {
-        // special characters which the regex matches but which cannot be mapped to days: skipped (Java logs a warning "Skipping potential match for <fullId>")
+        // special characters which the regex matches but which cannot be mapped to days: skipped
+        logger.warn(`Skipping potential match for ${match.getRule().getFullId()}`, e);
         return null;
       }
       throw e;

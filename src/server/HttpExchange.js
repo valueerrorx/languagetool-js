@@ -39,7 +39,7 @@ export class Headers {
 
 // Java: com.sun.net.httpserver.HttpExchange (request/response buffered; close() sends or, without response headers, drops the connection)
 export class HttpExchange {
-  // body: Buffer of the request body; remoteAddress: Java InetAddress.getHostAddress() text
+  // body: function returning (a promise of) the Buffer of the request body; remoteAddress: Java InetAddress.getHostAddress() text
   constructor(req, res, requestUri, body, remoteAddress, localPort) {
     this.req = req;
     this.res = res;
@@ -53,6 +53,12 @@ export class HttpExchange {
     this.responseCode = -1;
     this.chunks = [];
     this.closed = false;
+  }
+
+  // Java: HttpExchange#getLocalAddress().toString() (InetSocketAddress without host name: "/addr:port")
+  getLocalAddressText() {
+    const addr = (this.req.socket.localAddress ?? '0.0.0.0').replace(/^::ffff:/i, '');
+    return `/${addr}:${this.localPort}`;
   }
 
   // Java: HttpExchange#getRequestMethod()
@@ -76,7 +82,8 @@ export class HttpExchange {
   }
 
   // Java: HttpExchange#getRequestBody() (raw bytes)
-  getRequestBody() {
+  async getRequestBody() {
+    if (typeof this.requestBody === 'function') this.requestBody = await this.requestBody();
     return this.requestBody;
   }
 
@@ -86,8 +93,9 @@ export class HttpExchange {
   }
 
   // Java: HttpExchange#sendResponseHeaders(int,long)
-  sendResponseHeaders(code) {
+  sendResponseHeaders(code, length = 0) {
     this.responseCode = code;
+    this.responseLength = length;
   }
 
   // Java: HttpExchange#getResponseBody().write(byte[])
@@ -110,6 +118,7 @@ export class HttpExchange {
     }
     const headers = {};
     for (const { name, values } of this.responseHeaders.map.values()) headers[name] = values.length === 1 ? values[0] : values;
+    if (this.responseLength > 0) headers['Content-length'] = String(this.responseLength); // Java: fixed length response
     this.res.writeHead(this.responseCode, headers);
     this.res.end(Buffer.concat(this.chunks));
   }

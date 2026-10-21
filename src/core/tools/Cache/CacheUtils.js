@@ -6,6 +6,9 @@ import { SuggestedReplacement, SuggestionType } from '../../rules/model/Suggeste
 import { MalformedURLException, URL } from '../../../lib/java/URL.js';
 import { RuleData } from '../grpc/RuleData.js';
 import { emptyAsNull, getUrl, nullAsEmpty } from '../grpc/ProtoHelper.js';
+import { LoggerFactory } from '../../../lib/slf4j/Logger.js';
+
+const log = LoggerFactory.getLogger('org.languagetool.tools.Cache.CacheUtils');
 
 // protobuf setters reject null
 const nn = (v) => {
@@ -84,7 +87,7 @@ export class CacheUtils {
         ruleMatch.setUrl(new URL(cachedResultMatch.url));
       } catch (e) {
         if (!(e instanceof MalformedURLException)) throw e;
-        // log.warn("Got invalid URL from ProtoResultCache.CachedResultMatch: {}", e) (F71)
+        log.warn('Got invalid URL from ProtoResultCache.CachedResultMatch: {}', e.toString());
       }
     }
     return ruleMatch;

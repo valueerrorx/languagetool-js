@@ -20,7 +20,8 @@ export function volatile(msg) {
     .replace(/requestParams: \{.*$/, 'requestParams: {<PARAMS>}') // HashMap order of the parameter map is not part of the contract (ARCHITECTURE 5)
     .replace(/in [\d.]+ seconds/g, 'in # seconds')
     .replace(/\(build date: [^)]*\)/g, '(build date: <BUILD>)')
-    .replace(/\d+ threads/g, '# threads');
+    .replace(/\d+ threads/g, '# threads')
+    .replace(/Supported language codes are: .*?(?=\. The list of languages)/, 'Supported language codes are: <LIST>'); // language list only covers the ported languages (DEV-006)
 }
 
 // one output line -> record or null; style 'server' (logback of the server jar + ServerTools.print), 'cli' (commandline logback) or 'auto' (all)
@@ -67,9 +68,13 @@ export function missingRecords(expRecs, actualText, ctx = {}) {
 }
 
 // http cases: server.log (stdout+stderr of the server JVM) vs the port's output
-export function compareServerLog(expectedText, actualText, ctx = {}) {
-  const recs = parseRecords(expectedText, 'server', ctx);
-  return missingRecords(recs, actualText ?? '', ctx).map((m) => `log record missing in port output: ${m}`);
+// dropLogPatterns (case flag): regex sources; matching records/lines are removed on both sides (documented per case, e.g. DEV-010)
+export function compareServerLog(expectedText, actualText, ctx = {}, dropLogPatterns = []) {
+  const res = dropLogPatterns.map((p) => new RegExp(p));
+  const drop = (t) => res.some((re) => re.test(t));
+  const recs = parseRecords(expectedText, 'server', ctx).filter((r) => !drop(r.msg));
+  const actual = (actualText ?? '').split('\n').filter((l) => !drop(l)).join('\n');
+  return missingRecords(recs, actual, ctx).map((m) => `log record missing in port output: ${m}`);
 }
 
 // cli cases with the real logback config: log records on stdout compared by presence, the rest as usual
@@ -89,7 +94,7 @@ export function compareCliLog(e, a, opts = {}) {
   };
   const se = split(e.stdout);
   const sa = split(a.stdout);
-  const diffs = compareCli({ ...e, stdout: se.rest }, { ...a, stdout: sa.rest }, opts);
+  const diffs = compareCli({ ...e, stdout: se.rest }, { ...a, stdout: sa.rest }, { ...opts, listDev006: opts.listDev006 || opts.args?.includes('--list'), listCut: true });
   diffs.push(...missingRecords(se.recs, a.stdout, opts.ctx).map((m) => `log record missing in port stdout: ${m}`));
   return diffs;
 }

@@ -17,6 +17,9 @@ import {
   LanguageIdentifier, REMOVE_EMAIL_SIGNATURE_FILTER, REMOVE_MENTION_FILTER, REMOVE_NON_BREAKING_SPACES_FILTER, REMOVE_URL_FILTER,
 } from './LanguageIdentifier.js';
 import { LanguageIdentifierService } from './LanguageIdentifierService.js';
+import { LoggerFactory } from '../../../lib/slf4j/Logger.js';
+
+const logger = LoggerFactory.getLogger('org.languagetool.language.identifier.DefaultLanguageIdentifier');
 
 const MINIMAL_CONFIDENCE = 0.9;
 const SHORT_ALGO_THRESHOLD = 50;
@@ -124,7 +127,7 @@ export class DefaultLanguageIdentifier extends LanguageIdentifier {
       this.fastTextDetector = { notPorted: true };
       return;
     }
-    // logger.warn "fastText not configured - language detection performance will be degraded. ..." (logger: F71)
+    logger.warn('fastText not configured - language detection performance will be degraded. See https://dev.languagetool.org/http-server#starting-from-command-line for instructions.');
   }
 
   // Java: DefaultLanguageIdentifier#enableNgrams(File) (DEV-001)
@@ -169,7 +172,7 @@ export class DefaultLanguageIdentifier extends LanguageIdentifier {
     const localResult = this.detectLanguageCode(text, preferredLangs, limitOnPreferredLangs);
     if (localResult !== null) scores.set(localResult[0], localResult[1]);
     if (additionalLangs.length > 0) {
-      // logger.warn "Cannot consider noopLanguages because not in fastText mode: {}" (logger: F71)
+      logger.warn('Cannot consider noopLanguages because not in fastText mode: {}', `[${additionalLangs.join(', ')}]`);
     }
     const detectedLanguages = [];
     const service = LanguageIdentifierService.INSTANCE;
@@ -205,7 +208,7 @@ export class DefaultLanguageIdentifier extends LanguageIdentifier {
       const before = lang.length;
       lang = lang.filter((l) => preferredLangs.includes(l.getLocale().getLanguage()));
       if (lang.length < before && lang.length === 0) {
-        // logger.warn "No language detected for text after remove all not preferred languages from score." (logger: F71)
+        logger.warn('No language detected for text after remove all not preferred languages from score.');
       }
     }
     if (lang.length > 0) {

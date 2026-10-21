@@ -8,6 +8,8 @@ import { UserConfig } from '../core/rules/model/UserConfig.js';
 import { DetectedLanguage } from '../core/rules/model/DetectedLanguage.js';
 import { RuleMatchesAsJsonSerializer } from '../core/RuleMatchesAsJsonSerializer.js';
 import { LanguageIdentifierService } from '../core/language/identifier/LanguageIdentifierService.js';
+import { ResultCache } from '../core/ResultCache.js';
+import { TimeUnit } from '../lib/java/TimeUnit.js';
 import { IllegalArgumentException, IOException, RuntimeException, ExecutionException, OutOfMemoryError, RejectedExecutionException, TimeoutException, isThrowable } from '../lib/java/errors.js';
 import { readFileSync, existsSync } from 'node:fs';
 import { Integer } from '../lib/java/int.js';
@@ -19,7 +21,9 @@ import { CheckResults } from '../core/rules/model/CheckResults.js';
 import { Mode } from '../core/JLanguageTool.js';
 import { DatabaseAccess } from './DatabaseAccess.js';
 import { ConfidenceMapLoader } from './ConfidenceMapLoader.js';
-import { javaSplit, isEmpty } from '../lib/java/strings.js';
+import { javaSplit, isEmpty, javaTrim } from '../lib/java/strings.js';
+import { DatabaseLogger } from './DatabaseLogger.js';
+import { LanguageToolHttpHandler } from './LanguageToolHttpHandler.js';
 import { notPortedYet } from '../core/language/components.js';
 import { BadRequestException } from './BadRequestException.js';
 import { QueryParams } from './QueryParams.js';
@@ -27,7 +31,7 @@ export { QueryParams };
 import { AuthException, TextTooLongException, TooManyRequestsException, UnavailableException } from './exceptions.js';
 import { RequestLimiter } from './RequestLimiter.js';
 import { detectLanguageOfString } from './detectLanguageOfString.js';
-import { getAuthHeader, getLevel, getMode, getUserLimits, setCommonHeaders, cleanUserTextFromMessage } from './ServerTools.js';
+import { getAuthHeader, getLevel, getLoggingInfo, getMode, getModeForLog, getUserLimits, setCommonHeaders, cleanUserTextFromMessage } from './ServerTools.js';
 import { CheckExecutor } from './CheckExecutor.js';
 import { InlineBackend, WorkerBackend } from './worker/CheckBackend.js';
 import {
@@ -37,6 +41,12 @@ import { LtThreadPoolFactory } from '../core/tools/LtThreadPoolFactory.js';
 import { Language } from '../core/Language.js';
 import { formatFixed } from '../lib/java/Formatter.js';
 import { ErrorRateTooHighException } from '../core/check/ErrorRateTooHighException.js';
+import { LoggerFactory } from '../lib/slf4j/Logger.js';
+import { valueOf } from '../lib/java/Objects.js';
+import { doubleToString } from '../lib/java/toString.js';
+import { currentTimeMillis } from '../lib/java/clock.js';
+
+const log = LoggerFactory.getLogger('org.languagetool.server.TextChecker');
 
 export const CONTEXT_SIZE = 40; // characters
 const JSON_CONTENT_TYPE = 'application/json';
@@ -121,8 +131,8 @@ export class TextChecker {
       LtThreadPoolFactory.TEXT_CHECKER_POOL,
       config.getMaxTextCheckerThreads(), config.getMaxTextCheckerThreads(),
       config.getTextCheckerQueueSize(),
-      60, false, () => {
-        // log.error("Thread: " + thread.getName() + " failed with: " + throwable.getMessage()) (F71)
+      60, false, (thread, throwable) => {
+        log.error(`Thread: ${thread.getName()} failed with: ${valueOf(throwable?.getMessage ? throwable.getMessage() : throwable?.message)}`);
       },
       false);
     // Java: RemoteRuleConfig.parse(fis).size(); an unreadable/invalid file is only logged (IOException), configured remote rules are DEV-001
@@ -136,6 +146,8 @@ export class TextChecker {
     if (remoteRuleCount > 0) {
       throw notPortedYet('TextChecker remote rules (DEV-001)');
     }
+    // Java: this.cache = new ResultCache(...) on the main thread (invalid sizes/TTL fail the startup); the used caches live in the check workers
+    if (config.getCacheSize() > 0) new ResultCache(config.getCacheSize(), config.getCacheTTLSeconds(), TimeUnit.SECONDS);
     // JS: the cache, the pipeline pool and prewarming live in the check workers (LTJS_CHECK_BACKEND=inline: in this thread)
     if ((process.env.LTJS_CHECK_BACKEND ?? 'worker') === 'inline') {
       this.localExecutor = new CheckExecutor(config, internalServer);
@@ -146,11 +158,21 @@ export class TextChecker {
     }
     this.prewarmDone = Promise.resolve();
     if (config.isPipelinePrewarmingEnabled()) {
-      // log.info("Prewarming pipelines...") (F71)
-      this.prewarmDone = this.backend.prewarm(config.preferredLanguages);
+      log.info('Prewarming pipelines...');
+      const start = currentTimeMillis();
+      this.prewarmDone = this.backend.prewarm(config.preferredLanguages).then((n) => {
+        const end = currentTimeMillis();
+        log.info('Prewarming finished in {} seconds.', doubleToString((end - start) / 1000.0));
+        return n;
+      });
       this.prewarmDone.catch(() => { });
     }
-    if (config.abTest !== null) UserConfig.enableABTests();
+    if (config.abTest !== null) {
+      UserConfig.enableABTests();
+      const abLog = () => log.info(`A/B-Test enabled: [${config.abTest.join(', ')}]`);
+      this.prewarmDone = this.prewarmDone.then((n) => { abLog(); return n; }); // Java: after the prewarming
+      this.prewarmDone.catch(() => { });
+    }
   }
 
   // Java: TextChecker#pipelinePool (package-private field, replaced by mocks in tests); only available with the inline backend
@@ -202,6 +224,7 @@ export class TextChecker {
   async checkText(aText, httpExchange, params, errorRequestLimiter, remoteAddress) { // errorRequestLimiter: only used for timeouts (worker pool step)
     const config = this.config;
     this.checkParams(params);
+    const timeStart = currentTimeMillis();
     const authHeader = getAuthHeader(httpExchange.getRequestHeaders());
     const limits = getUserLimits(params, config, authHeader);
 
@@ -229,6 +252,9 @@ export class TextChecker {
     }
 
     const length = aText.getPlainText().length;
+    if (params.get('languageChanged') === 'true') {
+      log.info(`languageChanged to ${valueOf(params.get('language'))} for text with length ${javaTrim(aText.getPlainText()).length}`);
+    }
     if (length > limits.getMaxTextLength()) {
       throw new TextTooLongException(`Your text exceeds the limit of ${limits.getMaxTextLength()} characters (it's ${length} characters). Please submit a shorter text.`);
     }
@@ -242,7 +268,21 @@ export class TextChecker {
         const bytes = Buffer.from(response, 'utf8');
         httpExchange.sendResponseHeaders(403, bytes.length);
         httpExchange.write(bytes);
-        // log.warn("Blocked request from uid:" ...) (F71)
+        const userId = DatabaseLogger.getInstance().isLogging() ? limits.getPremiumUid() : null;
+        let message = `Blocked request from uid:${valueOf(userId)} because user limit is reached: `;
+        message += `limit = ${valueOf(limits.getRequestsPerDay())}, mode = ${limits.getLimitEnforcementMode()}. `;
+        message += `Access from ${remoteAddress}, `;
+        message += `HTTP user agent: ${valueOf(httpExchange.getRequestHeaders().getFirst('User-Agent'))}, `;
+        message += `User agent param: ${valueOf(params.get('useragent'))}, `;
+        message += `Referrer: ${valueOf(httpExchange.getRequestHeaders().getFirst('Referer'))}, `;
+        message += `language: ${valueOf(params.get('language'))}, `;
+        message += `h: ${this.reqCounter.getHandleCount()}, `;
+        message += `r: ${this.reqCounter.getRequestCount()}`;
+        if (params.get('username') !== undefined) message += `, user: ${params.get('username')}`;
+        if (params.get('apiKey') !== undefined) message += `, apiKey: ${params.get('apiKey')}`;
+        const text = params.get('text');
+        if (text !== undefined) message += `, text length: ${text.length}`;
+        log.warn(message);
         return;
       }
     }
@@ -313,6 +353,8 @@ export class TextChecker {
     let disabledCategories = this.getCategoryIds('disabledCategories', params);
 
     if (this.shouldRunRestrictedRulesTest(params, agent, lang, abTest)) {
+      log.info('Running test with restricted rules for user: {}, language: {}, client: {}',
+        params.has('username') ? params.get('username') : '', lang.getShortCodeWithCountryAndVariant(), agent);
       useEnabledOnly = true;
       enabledRules = onlyTestRules;
       // need to clear these settings, leads to conflict with useEnabledOnly otherwise
@@ -340,17 +382,26 @@ export class TextChecker {
         toneTags.add(ToneTag.ALL_WITHOUT_GOAL_SPECIFIC);
       } else {
         for (const toneTagName of toneTagNames) {
-          if (toneTagNames.length > 1 && (toneTagName === 'NO_TONE_RULE' || toneTagName === 'ALL_TONE_RULES')) continue;
+          if (toneTagNames.length > 1 && (toneTagName === 'NO_TONE_RULE' || toneTagName === 'ALL_TONE_RULES')) { // &toneTags=ALL_TONE_RULES or &toneTags=NO_TONE_RULE
+            log.warn('NO_TONE_RULE and ALL_TONE_RULES will be ignored if more than one toneTag is in params.');
+            continue;
+          }
           try {
             toneTags.add(ToneTag.valueOf(toneTagName));
           } catch (ex) {
             if (!(ex instanceof IllegalArgumentException)) throw ex;
             // just ignore unsupported toneTags
+            log.warn('Unsupported toneTag found in params: {}', toneTagName);
           }
         }
       }
     } else {
       toneTags.add(ToneTag.ALL_WITHOUT_GOAL_SPECIFIC); // No toneTags param in request
+    }
+
+    const rIp = LanguageToolHttpHandler.getRealRemoteAddressOrNull(httpExchange, config);
+    if (rIp !== null && mode === Mode.ALL_BUT_TEXTLEVEL_ONLY) {
+      log.info('L-IP{}:{}', lang.getShortCodeWithCountryAndVariant(), rIp);
     }
 
     const callback = params.get('callback') ?? null;
@@ -395,7 +446,8 @@ export class TextChecker {
         future.cancel(true);
         if (e.jsCause !== undefined && e.jsCause !== null && e.jsCause.notPorted === true) throw e.jsCause; // JS: not-ported marker
         if (getRootCause(e) instanceof ErrorRateTooHighException && qParams.allowIncompleteResults) {
-          // log.warn(e.getMessage() + " - returning " + ruleMatchesSoFar.size() + " matches found so far. Detected language: ...") (F71)
+          log.warn(`${valueOf(e.getMessage())} - returning ${ruleMatchesSoFar.length} matches found so far. `
+            + `Detected language: ${detLang}, ${getLoggingInfo(remoteAddress, null, -1, httpExchange, params, currentTimeMillis() - timeStart, this.reqCounter)}`);
           res = [...ruleMatchesSoFar]; // threads might still be running, so make a copy
           incompleteResultReason = `Results are incomplete: ${getRootCause(e).getMessage()}`;
         } else if (e.getCause() !== null && e.getCause() instanceof OutOfMemoryError) {
@@ -414,7 +466,7 @@ export class TextChecker {
           + `, mode: ${mode.toString().toLowerCase()}, h: ${this.reqCounter.getHandleCount()}, r: ${this.reqCounter.getRequestCount()}`
           + `, requestId: ${requestId}, system load: ${loadInfo})`;
         if (qParams.allowIncompleteResults) {
-          // log.info(message + " - returning " + ruleMatchesSoFar.size() + " matches found so far") (F71)
+          log.info(`${message} - returning ${ruleMatchesSoFar.length} matches found so far`);
           res = [...ruleMatchesSoFar]; // threads might still be running, so make a copy
           incompleteResultReason = `Results are incomplete: text checking took longer than allowed maximum of ${formatFixed(limits.getMaxCheckTimeMillis() / 1000.0, 2)} seconds`;
         } else {
@@ -440,9 +492,57 @@ export class TextChecker {
       response = `${qParams.callback}(${response});`;
     }
     const bytes = Buffer.from(response, 'utf8');
-    httpExchange.sendResponseHeaders(200, bytes.length);
-    httpExchange.write(bytes);
+    let messageSent = 'sent';
+    let languageMessage = lang.getShortCodeWithCountryAndVariant();
+    try {
+      httpExchange.sendResponseHeaders(200, bytes.length);
+      httpExchange.write(bytes);
+    } catch (exception) {
+      if (!(exception instanceof IOException)) throw exception;
+      // the client is disconnected
+      messageSent = `notSent: ${exception.getMessage()}`;
+    }
+    if (motherTongue !== null) {
+      languageMessage += ` (mother tongue: ${motherTongue.getShortCodeWithCountryAndVariant()})`;
+    }
+    if (autoDetectLanguage) {
+      languageMessage += '[auto]';
+    }
     this.languageCheckCounts.set(key, count);
+    const computationTime = (currentTimeMillis() - timeStart) | 0;
+    // premium rules are never active (Premium.get() is PremiumOff): no premium matches
+    const premiumMatchRuleIds = [];
+    const ruleMatchCount = this.getRuleMatchCount(res);
+    const matchCount = ruleMatchCount.size;
+
+    const version = params.get('v') !== undefined ? `, version: ${params.get('v')}` : '';
+    const skipLimits = limits.getSkipLimits() ? ', skipLimits' : '';
+    log.info(`Check done: ${length} chars, ${languageMessage}`
+      + `, requestId: ${valueOf(requestId)}, #${count}, ${valueOf(httpExchange.getRequestHeaders().getFirst('Referer'))}, `
+      + `${premiumMatchRuleIds.length}/`
+      + `${matchCount} matches, `
+      + `${computationTime}ms, agent:${agent}${version}`
+      + `, ${messageSent}, q:${this.workQueue !== null && this.workQueue !== undefined ? this.workQueue.size() : '?'}`
+      + `, h:${this.reqCounter.getHandleCount()}, dH:${this.reqCounter.getDistinctIps()}`
+      + `, r:${this.reqCounter.getRequestCount()}`
+      + `, m:${getModeForLog(mode)}${skipLimits}`
+      + `, premium: ${premiumStatus}`
+      + `${limits.getPremiumUid() !== null ? `, uid:${limits.getPremiumUid()}` : ''}`);
+    for (const premiumMatchRuleId of premiumMatchRuleIds) {
+      log.info(`premium:${lang.getShortCodeWithCountryAndVariant()}:${premiumMatchRuleId}`);
+    }
+  }
+
+  // Java: TextChecker#getRuleMatchCount(List)
+  getRuleMatchCount(res) {
+    const ruleMatchCount = new Map();
+    for (const r of res) {
+      for (const ruleMatch of r.getRuleMatches()) {
+        const ruleId = ruleMatch.getRule().getId();
+        ruleMatchCount.set(ruleId, (ruleMatchCount.get(ruleId) ?? 0) + 1);
+      }
+    }
+    return ruleMatchCount;
   }
 
   // Java: TextChecker#checkerQueueAlmostFull()
@@ -451,7 +551,7 @@ export class TextChecker {
     const maxQueueSize = this.config.getTextCheckerQueueSize();
     const queuesize = threadPoolExecutor.getQueue().size();
     if (queuesize > Math.trunc(maxQueueSize / 2)) { // should not happen in normal cases (workQueue.size() == config.getTextCheckerQueueSize())
-      // log.warn("TextChecker queue is almost full requests in queue: {} active request: {}", queuesize, threadPoolExecutor.getActiveCount()) (F71)
+      log.warn('TextChecker queue is almost full requests in queue: {} active request: {}', queuesize, threadPoolExecutor.getActiveCount());
       return true;
     }
     return false;

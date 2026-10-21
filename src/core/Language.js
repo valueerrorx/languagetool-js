@@ -10,6 +10,9 @@ import { getDataBroker } from './resources/LtStatics.js';
 import { getMessageBundleForLanguage } from './resources/ResourceBundleTools.js';
 import { CUSTOM_PATTERN_FILE, PATTERN_FILE, STYLE_FILE } from './JLanguageToolConstants.js';
 import { LanguageMaintainedState } from './LanguageMaintainedState.js';
+import { LoggerFactory } from '../lib/slf4j/Logger.js';
+
+const logger = LoggerFactory.getLogger('org.languagetool.Language');
 import { createComponent, sharedComponent } from './language/components.js';
 import { languages } from './languagesRef.js';
 import './patterns/UnifierConfiguration.js';
@@ -158,7 +161,7 @@ export class Language {
         rule = this.createDefaultSpellingRule(getMessageBundleForLanguage(this));
       } catch (e) {
         if (!(e instanceof IOException)) throw e;
-        process.stderr.write(`WARN Failed to create default spelling rule ${e}\n`); // logger.warn
+        logger.warn('Failed to create default spelling rule', e);
         rule = null;
       }
       if (rule !== null && rule !== undefined) spellingRules.set(c, rule);

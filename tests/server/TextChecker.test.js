@@ -2,6 +2,7 @@
 import { describe, it, expect } from 'vitest';
 import '../../src/lang/register.js';
 import { V2TextChecker } from '../../src/server/TextChecker.js';
+import { RequestCounter } from '../../src/server/LanguageToolHttpHandler.js';
 import { HTTPServerConfig } from '../../src/server/HTTPServerConfig.js';
 import { BadRequestException } from '../../src/server/BadRequestException.js';
 import { TextTooLongException } from '../../src/server/exceptions.js';
@@ -24,7 +25,7 @@ function fakeExchange() {
   return e;
 }
 const text = (t) => new AnnotatedTextBuilder().addText(t).build();
-const newChecker = (cfg = new HTTPServerConfig(8081)) => new V2TextChecker(cfg, false, null, {});
+const newChecker = (cfg = new HTTPServerConfig(8081)) => new V2TextChecker(cfg, false, null, new RequestCounter());
 
 describe('TextChecker', () => {
   // Java: TextCheckerTest#testJSONP

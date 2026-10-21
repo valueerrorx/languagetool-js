@@ -33,7 +33,7 @@ export async function run(cs, { workDir }) {
   }
   const port = await freePort();
   const args = ['bin/lt-server.mjs', '--port', String(port), ...(cs.serverArgs ?? []).map((a) => a.split('{WORK}').join(workDir))];
-  const child = spawn(process.execPath, args, { cwd: ROOT, env: { ...process.env, LTJS_FIXED_TIME: FIXED, TZ: 'Europe/Vienna', ...(cs.env ?? {}) }, stdio: ['ignore', 'pipe', 'pipe'] });
+  const child = spawn(process.execPath, args, { cwd: ROOT, env: { ...process.env, LTJS_FIXED_TIME: FIXED, TZ: 'Europe/Vienna', ...(cs.realLogging ? {} : { LTJS_LOGBACK: 'stderr' }), ...(cs.env ?? {}) }, stdio: ['ignore', 'pipe', 'pipe'] });
   const log = [];
   child.stdout.on('data', (d) => log.push(d));
   child.stderr.on('data', (d) => log.push(d));

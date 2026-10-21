@@ -10,6 +10,9 @@ import { CategoryId } from '../core/rules/model/Category.js';
 import { realpathSync } from 'node:fs';
 import path from 'node:path';
 import { GenericKeyedObjectPool } from './KeyedObjectPool.js';
+import { LoggerFactory } from '../lib/slf4j/Logger.js';
+
+const logger = LoggerFactory.getLogger('org.languagetool.server.PipelinePool');
 
 // Java: org.languagetool.gui.Tools#configureFromRules(JLanguageTool,Configuration)
 function configureFromRules(lt, config) {
@@ -60,7 +63,7 @@ export class PipelinePool {
       return this.pool.borrowObject(settings);
     } catch (e) {
       if (!(e instanceof NoSuchElementException)) throw e;
-      // log.info("Pipeline pool capacity reached: {} active objects, {} idle", ...) (F71)
+      logger.info('Pipeline pool capacity reached: {} active objects, {} idle', this.pool.getNumActive(), this.pool.getNumIdle());
       return this.createPipeline(settings.lang, settings.motherTongue, settings.query, settings.globalConfig, settings.userConfig, this.config.getDisabledRuleIds());
     }
   }
@@ -73,7 +76,7 @@ export class PipelinePool {
     } catch (e) {
       if (!(e instanceof IllegalStateException)) throw e;
       // this might happen when pool capacity is reached and we return newly created objects that were never borrowed
-      // log.info("Exception while trying to return pipeline to pool; this is expected when pipeline capacity is reached", e) (F71)
+      logger.info('Exception while trying to return pipeline to pool; this is expected when pipeline capacity is reached', e);
     }
   }
 

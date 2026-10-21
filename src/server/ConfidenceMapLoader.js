@@ -6,6 +6,9 @@ import { IOException, MalformedInputException, NoSuchFileException, NumberFormat
 import { Float } from '../lib/java/float.js';
 import { readerLines } from '../lib/java/io.js';
 import { javaReplace, javaSplit } from '../lib/java/strings.js';
+import { LoggerFactory } from '../lib/slf4j/Logger.js';
+
+const logger = LoggerFactory.getLogger('org.languagetool.server.ConfidenceMapLoader');
 
 // Java: Files.readAllLines(Path, UTF_8) (strict decoding, BufferedReader.readLine line ends)
 function readAllLines(fileName) {
@@ -67,6 +70,7 @@ export class ConfidenceMapLoader {
           throw new RuntimeException(`Invalid line in ${fileName}, expected 'RULE_ID,float_value[,...]': ${line}`);
         }
       }
+      logger.info(`Loaded ${loadCount} mappings for ${lang} from confidence map for rules from ${fileName}`);
     }
     if (confMap.size === 0) {
       throw new RuntimeException(`No confidence values could be loaded for ${filePattern} -- please check there are actually files that match this pattern`);

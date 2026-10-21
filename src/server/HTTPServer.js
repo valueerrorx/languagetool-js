@@ -8,6 +8,7 @@ import { getMessageBundle } from '../core/resources/ResourceBundleTools.js';
 import { i18n } from '../core/Tools.js';
 import { Exception, IllegalArgumentException, IOException, RuntimeException, isThrowable } from '../lib/java/errors.js';
 import { URI, URISyntaxException } from '../lib/java/net.js';
+import { valueOf } from '../lib/java/Objects.js';
 import { DatabaseAccess } from './DatabaseAccess.js';
 import { LtThreadPoolFactory } from '../core/tools/LtThreadPoolFactory.js';
 import { RequestLimiter } from './RequestLimiter.js';
@@ -17,6 +18,10 @@ import { BindException, PortBindingException } from './exceptions.js';
 import { HttpExchange } from './HttpExchange.js';
 import { LanguageToolHttpHandler } from './LanguageToolHttpHandler.js';
 import { print } from './ServerTools.js';
+import { LoggerFactory } from '../lib/slf4j/Logger.js';
+
+const log = LoggerFactory.getLogger('org.languagetool.server.HTTPServer');
+const serverLog = LoggerFactory.getLogger('org.languagetool.server.Server');
 
 // Java: Server.DEFAULT_ALLOWED_IPS
 export const DEFAULT_ALLOWED_IPS = new Set(['0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1%0', '127.0.0.1']);
@@ -105,8 +110,8 @@ export class Server {
     // reuse = false -> this should only be called once in production, needs to be false for tests
     return LtThreadPoolFactory.createFixedThreadPoolExecutor(LtThreadPoolFactory.SERVER_POOL,
       threadPoolSize, threadPoolSize, 0, 0, false,
-      () => {
-        // log.error("Thread: " + thread.getName() + " failed with: " + throwable.getMessage()) (F71)
+      (thread, throwable) => {
+        serverLog.error(`Thread: ${thread.getName()} failed with: ${valueOf(throwable?.getMessage ? throwable.getMessage() : throwable?.message)}`);
       }, false);
   }
 }
@@ -227,8 +232,14 @@ export class HTTPServer extends Server {
   // Java: HTTPServer#getPortFromRange(int,int)
   async getPortFromRange(minPort, maxPort) {
     if (minPort > 0 && minPort < maxPort) {
+      log.info('Try to find a free Port for Server in range {}-{}', minPort, maxPort);
       for (let p = minPort; p <= maxPort; p++) {
-        if (await this.portFree(p)) return p;
+        log.info('Check port {}', p);
+        if (await this.portFree(p)) {
+          log.info('Port {} is available.', p);
+          return p;
+        }
+        log.debug('Port {} is not available.', p);
       }
       throw new IOException(`No free port in range (${minPort} - ${maxPort}) found.`);
     }
@@ -277,11 +288,14 @@ export class HTTPServer extends Server {
         res.end('<h1>400 Bad Request</h1>Bad request URI');
         return;
       }
-      let body = Buffer.alloc(0);
+      // the body is read by the handler (a pool thread blocks while the client is still sending, like the JDK input stream)
+      let body = () => Buffer.alloc(0);
       if (req.method.toLowerCase() === 'post') {
-        const chunks = [];
-        for await (const c of req) chunks.push(c);
-        body = Buffer.concat(chunks);
+        body = async () => {
+          const chunks = [];
+          for await (const c of req) chunks.push(c);
+          return Buffer.concat(chunks);
+        };
       } else {
         req.resume();
       }

@@ -421,7 +421,7 @@ const ERRS = [
   get('/v2/nothing'), get('/v2/'), get('/v2'), get('/v2/words/add'), get('/v2/admin/refreshUser'), get('/Languages'), get('/x/Languages'), get('/'), get('/v2/x/v2/check'), get('/x/v2/check'), get('/favicon.ico'), get('/robots.txt'), get('/index.html'), get('/v1/check'),
   get('/v2/check', { language: 'en-US', text: TXT, username: 'u' }), get('/v2/check', { language: 'en-US', text: TXT, apiKey: 'k' }), get('/v2/check', { language: 'en-US', text: TXT, password: 'p' }),
   { method: 'PUT', path: '/v2/check', body: 'x' }, { method: 'DELETE', path: '/v2/check' }, { method: 'HEAD', path: '/v2/check' }, { method: 'OPTIONS', path: '/v2/check' },
-  get('/v2/languages', { x: '%' }), { method: 'GET', path: '/v2/check?text=%ZZ&language=en-US' }, { method: 'GET', path: '/v2/check?language=en-US&text=%E0%A4%A' }, { method: 'POST', path: '/v2/check', body: 'language=en-US&text=%', contentType: 'application/x-www-form-urlencoded' },
+  { ...get('/v2/languages', { x: '%' }), languagesList: true }, { method: 'GET', path: '/v2/check?text=%ZZ&language=en-US' }, { method: 'GET', path: '/v2/check?language=en-US&text=%E0%A4%A' }, { method: 'POST', path: '/v2/check', body: 'language=en-US&text=%', contentType: 'application/x-www-form-urlencoded' },
 ];
 write('error-mapping', 'error status/body mapping for BadRequest, PathNotFound, old API, root, method errors (SRV-0075/0076/0078)', { requests: ERRS });
 write('error-mapping-allow-origin', 'same errors with --allow-origin: Access-Control-Allow-Origin is set on every sendError (SRV-0078)', { serverArgs: ['--allow-origin', '*'], requests: ERRS });

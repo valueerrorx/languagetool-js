@@ -39,6 +39,7 @@ import { Range } from './check/Range.js';
 import { ExtendedSentenceRange } from './check/ExtendedSentenceRange.js';
 import { ErrorRateTooHighException } from './check/ErrorRateTooHighException.js';
 import { postFilterHooks } from './check/postFilters.js';
+import { LoggerFactory } from '../lib/slf4j/Logger.js';
 import { createComponent, notPortedYet, registerComponent, sharedComponent } from './language/components.js';
 import { getMessageBundle as bundleDefault, getMessageBundleForLanguage } from './resources/ResourceBundleTools.js';
 import {
@@ -47,6 +48,8 @@ import {
 } from './resources/LtStatics.js';
 
 export * from './JLanguageToolConstants.js';
+
+const logger = LoggerFactory.getLogger('org.languagetool.JLanguageTool');
 
 const ZERO_WIDTH_NBSP = Pattern.compile('(?<=﻿)|(?=﻿)');
 
@@ -883,7 +886,10 @@ export class JLanguageTool {
           tmpErrorsPerWord = errorsPerWord;
         }
         if (this.maxErrorsPerWordRate > 0 && errorsPerWord > this.maxErrorsPerWordRate && wordCounter > 25) {
-          // errorRateLog lines and the summary are logged at INFO [BAD_REQUEST] (logger: F71)
+          errorRateLog.forEach((e) => logger.info(e));
+          logger.info(`ErrorRateTooHigh is reached by a single sentence after rule: ${rule.getFullId()}. `
+            + `The whole text contains ${wordCounter} words `
+            + ` and this sentence has ${sentenceMatches.length} matches.`);
           throw new ErrorRateTooHighException(`ErrorRateTooHigh is reached by a single sentence after rule: ${rule.getFullId()}. `
             + `The whole text contains ${wordCounter} words `
             + `and this sentence has ${sentenceMatches.length} matches.`);
@@ -1418,7 +1424,7 @@ export class TextCheckCallable {
           tmpErrorsPerWord = errorsPerWord;
         }
         if (lt.maxErrorsPerWordRate > 0 && errorsPerWord > lt.maxErrorsPerWordRate && wordCounter > 25) {
-          // errorRateLog lines are logged at INFO [BAD_REQUEST] (logger: F71)
+          errorRateLog.forEach((e) => logger.info(e));
           throw new ErrorRateTooHighException(`Text checking was stopped due to too many errors (more than ${formatFixed(fmul(lt.maxErrorsPerWordRate, 100), 0)}`
             + '% of words seem to have an error). Are you sure you have set the correct text language? Language set: '
             + `${lt.language.getName()}, text length: ${this.annotatedText.getPlainText().length}`);

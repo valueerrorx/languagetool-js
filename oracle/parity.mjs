@@ -71,12 +71,12 @@ async function runKindCase(cs, meta, dir) {
       const n = (t, c) => normalize(cs.normalize ?? [], t, c);
       exp.stdout = n(exp.stdout, ctxE); exp.stderr = n(exp.stderr, ctxE);
       actual.stdout = n(actual.stdout, ctxA); actual.stderr = n(actual.stderr, ctxA);
-      diffs = cmp(exp, actual, { normalizers: cs.normalize ?? [], streams: cs.streams, ignoreExit: cs.ignoreExit, stripTimestamp: cs.stripTimestamp, stderrExceptionOnly: cs.stderrExceptionOnly, stderrFilter: cs.stderrFilter, listDev006: cs.listDev006, listCut: cs.listCut, json: (cs.args ?? []).includes('--json') || (cs.args ?? []).includes('-json') });
+      diffs = cmp(exp, actual, { normalizers: cs.normalize ?? [], streams: cs.streams, ignoreExit: cs.ignoreExit, stripTimestamp: cs.stripTimestamp, stderrExceptionOnly: cs.stderrExceptionOnly, stderrFilter: cs.stderrFilter, listDev006: cs.listDev006, listCut: cs.listCut, args: cs.args, json: (cs.args ?? []).includes('--json') || (cs.args ?? []).includes('-json') });
     } else {
       const exp = JSON.parse(readFileSync(path.join(dir, 'responses.json'), 'utf8'));
       diffs = cmp(exp, actual.responses ?? actual, { normalizers: cs.normalize ?? [], ctx: ctxA });
       // captureLog cases (X-LOGS): server log records by message text, layout free (D-045)
-      if (cs.captureLog && existsSync(path.join(dir, 'server.log'))) diffs.push(...compareServerLog(readFileSync(path.join(dir, 'server.log'), 'utf8'), actual.log ?? '', ctxE));
+      if (cs.captureLog && existsSync(path.join(dir, 'server.log'))) diffs.push(...compareServerLog(readFileSync(path.join(dir, 'server.log'), 'utf8'), actual.log ?? '', ctxE, cs.dropLogPatterns ?? []));
     }
     return diffs.length ? { status: 'FAIL', diffs } : { status: 'PASS' };
   } catch (e) {

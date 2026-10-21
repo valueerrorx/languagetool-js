@@ -7,6 +7,10 @@ import { AuthException } from './exceptions.js';
 import { BadRequestException } from './BadRequestException.js';
 import { DatabaseLogger } from './DatabaseLogger.js';
 import { JwtContent } from './JwtContent.js';
+import { LoggerFactory } from '../lib/slf4j/Logger.js';
+import { valueOf } from '../lib/java/Objects.js';
+
+const logger = LoggerFactory.getLogger('org.languagetool.server.DatabaseAccessOpenSource');
 
 const NON_PREMIUM_MSG = 'This server does not support username/password';
 const WHITESPACE_PATTERN = Pattern.compile('.*\\s.*');
@@ -55,15 +59,18 @@ export class DatabaseAccessOpenSource extends DatabaseAccess {
     super();
     this.sqlSessionFactory = null;
     if (config.dbDriver !== null) {
+      logger.info(`Setting up database access, URL ${valueOf(config.dbUrl)}, driver: ${config.dbDriver}, user: ${valueOf(config.dbUsername)}`);
       // Properties.setProperty("url"/"username"/"password", null) -> NullPointerException (ConcurrentHashMap rejects null values)
       if (config.dbUrl === null || config.dbUsername === null || config.dbPassword === null) throw new NullPointerException();
       // MyBatis session factory: the pooled data source connects lazily (database features follow in the DB steps, D-026)
       this.sqlSessionFactory = { configured: true };
       if (!config.dbLogging) {
+        logger.info('dbLogging not set to true, turning off logging');
         DatabaseLogger.getInstance().disableLogging();
       }
+    } else {
+      logger.info('Not setting up database access, dbDriver is not configured');
     }
-    // else: INFO log "Not setting up database access, dbDriver is not configured" (logging follows with F71)
   }
 
   // Java: DatabaseAccessOpenSource#addWord(String,Long,String)

@@ -22,6 +22,9 @@ import { BadRequestException } from './BadRequestException.js';
 import { PathNotFoundException } from './exceptions.js';
 import { JsonProcessingException, readTree } from './JsonTree.js';
 import { setCommonHeaders } from './ServerTools.js';
+import { LoggerFactory } from '../lib/slf4j/Logger.js';
+import { JavaHashMap } from '../lib/java/collections/JavaHashMap.js';
+import { abstractMapToString } from '../lib/java/toString.js';
 
 export const API_DOC_URL = 'https://languagetool.org/http-api/swagger-ui/#/default'; // Java: LanguageToolHttpHandler.API_DOC_URL
 const JSON_CONTENT_TYPE = 'application/json';
@@ -214,10 +217,19 @@ export class ApiV2 {
     }
     // get from config
     if (config.logIp && javaTrim(aText.getPlainText()) === config.logIpMatchingPattern) {
-      // handleIpLogMatch only logs; no need to check text again rules
+      this.handleIpLogMatch(httpExchange, remoteAddress, parameters);
+      // no need to check text again rules
       return;
     }
     await this.textChecker.checkText(aText, httpExchange, parameters, errorRequestLimiter, remoteAddress);
+  }
+
+  // Java: ApiV2#handleIpLogMatch(HttpExchange,String,Map)
+  handleIpLogMatch(httpExchange, remoteAddress, parameters) {
+    const logger = LoggerFactory.getLogger('org.languagetool.server.ApiV2');
+    const hm = new JavaHashMap();
+    for (const [k, v] of parameters) hm.put(k, v);
+    logger.info(`Found log-my-IP text in request from: ${remoteAddress} to: ${httpExchange.getLocalAddressText()}, requestParams: ${abstractMapToString({ entries: () => hm.entrySet() })}`);
   }
 
   // Java: ApiV2#getAnnotatedTextFromString(JsonNode,String)

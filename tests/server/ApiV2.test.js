@@ -10,7 +10,7 @@ import { DatabaseAccess } from '../../src/server/DatabaseAccess.js';
 import { IllegalStateException } from '../../src/lib/java/errors.js';
 import { Headers } from '../../src/server/HttpExchange.js';
 
-const fakeExchange = { getResponseHeaders: () => ({ set() {} }), sendResponseHeaders() {}, write() {} };
+const fakeExchange = { getResponseHeaders: () => ({ set() {} }), sendResponseHeaders() {}, write() {}, getLocalAddressText: () => '/127.0.0.1:8081' };
 
 // records the response like the JDK exchange (method and request headers are settable)
 function exchange(method, requestHeaders = {}) {

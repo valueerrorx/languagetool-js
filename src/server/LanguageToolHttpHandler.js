@@ -7,10 +7,15 @@ import { BadRequestException } from './BadRequestException.js';
 import { ApiV2, API_DOC_URL } from './ApiV2.js';
 import { AuthException, PathNotFoundException, TextTooLongException, TooManyRequestsException, UnavailableException } from './exceptions.js';
 import { getRootCause, V2TextChecker } from './TextChecker.js';
-import { getUserLimits, setAllowOrigin, siteMatches } from './ServerTools.js';
+import { getHttpReferrer, getHttpUserAgent, getLevel, getLoggingInfo, getMode, cleanUserTextFromMessage, getUserLimits, print, setAllowOrigin, siteMatches } from './ServerTools.js';
 import { fdiv } from '../lib/java/float.js';
 import { floatToString } from '../lib/java/toString.js';
+import { LoggerFactory } from '../lib/slf4j/Logger.js';
+import { currentTimeMillis } from '../lib/java/clock.js';
+import { valueOf } from '../lib/java/Objects.js';
+import { abbreviate } from '../lib/java/StringUtils.js';
 
+const logger = LoggerFactory.getLogger('org.languagetool.server.LanguageToolHttpHandler');
 const ENCODING = 'utf-8';
 const HTTP_UNAVAILABLE = 503;
 const REQUEST_LIMIT_ACCESS_TOKEN_HEADER = 'X-Request-Limit-Access-Token';
@@ -20,6 +25,7 @@ const ESCAPE_XML = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace
 export class RequestCounter {
   reqCount = 0;
   handleCount = 0;
+  handleIps = new Map();
 
   // Java: RequestCounter#incrementRequestCount()
   incrementRequestCount() {
@@ -27,13 +33,20 @@ export class RequestCounter {
   }
 
   // Java: RequestCounter#incrementHandleCount(String,int)
-  incrementHandleCount() {
+  incrementHandleCount(ip, uniqueId) {
     this.handleCount++;
+    this.handleIps.set(uniqueId, ip);
   }
 
   // Java: RequestCounter#decrementHandleCount(int)
-  decrementHandleCount() {
+  decrementHandleCount(uniqueId) {
     this.handleCount--;
+    this.handleIps.delete(uniqueId);
+  }
+
+  // Java: RequestCounter#getDistinctIps()
+  getDistinctIps() {
+    return new Set(this.handleIps.values()).size;
   }
 
   // Java: RequestCounter#getHandleCount()
@@ -80,13 +93,16 @@ export class LanguageToolHttpHandler {
 
   // Java: LanguageToolHttpHandler#handle(HttpExchange)
   async handle(httpExchange) {
+    const startTime = currentTimeMillis();
     const config = this.config;
+    let remoteAddress = null;
     let parameters = new Map();
     const reqId = this.reqCounter.incrementRequestCount();
     let incrementHandleCount = false;
     try {
       const requestedUri = httpExchange.getRequestURI();
       let path = requestedUri.getRawPath();
+      logger.info('Handling {} {}', httpExchange.getRequestMethod(), path);
       if (config.getServerURL() !== null) {
         path = config.getServerURL().relativize(new URI(requestedUri.getPath())).getRawPath();
         if (!path.startsWith('/')) {
@@ -94,6 +110,7 @@ export class LanguageToolHttpHandler {
         }
       }
       if (path.startsWith('/v2/stop') && config.isStoppable()) {
+        logger.warn('Stopping server by external command');
         await this.httpServer.stop();
         return;
       }
@@ -109,10 +126,10 @@ export class LanguageToolHttpHandler {
           const requestMethod = httpExchange.getRequestMethod();
           if (requestMethod.toLowerCase() === 'head') {
             // Send HTTP 200 without content
-            httpExchange.sendResponseHeaders(200);
+            httpExchange.sendResponseHeaders(200, -1);
           } else {
             const ok = Buffer.from('OK', ENCODING);
-            httpExchange.sendResponseHeaders(200);
+            httpExchange.sendResponseHeaders(200, ok.length);
             httpExchange.write(ok);
           }
           return;
@@ -131,18 +148,19 @@ export class LanguageToolHttpHandler {
         }
         if (errorMessage !== null) {
           this.sendError(httpExchange, 403, errorMessage);
+          this.logError(errorMessage, 403, parameters, httpExchange);
           return;
         }
       }
       const origAddress = httpExchange.getRemoteHostAddress();
       const realAddressOrNull = LanguageToolHttpHandler.getRealRemoteAddressOrNull(httpExchange, config);
-      const remoteAddress = realAddressOrNull !== null ? realAddressOrNull : origAddress;
+      remoteAddress = realAddressOrNull !== null ? realAddressOrNull : origAddress;
       this.reqCounter.incrementHandleCount(remoteAddress, reqId);
       incrementHandleCount = true;
       // According to the Javadoc, "Closing an exchange without consuming all of the request body is
       // not an error but may make the underlying TCP connection unusable for following exchanges.",
       // so we consume the request now, even before checking for request limits:
-      parameters = this.getRequestQuery(httpExchange, requestedUri);
+      parameters = await this.getRequestQuery(httpExchange, requestedUri);
       if (this.requestLimiter !== null && this.limitPath(path) && !this.allowSkipRequestLimit(httpExchange.getRequestHeaders())) {
         try {
           const userLimits = getUserLimits(parameters, config);
@@ -151,6 +169,8 @@ export class LanguageToolHttpHandler {
           if (!(e instanceof TooManyRequestsException)) throw e;
           const errorMessage = `Error: Access from ${remoteAddress} denied: ${e.getMessage()}`;
           this.sendError(httpExchange, 429, errorMessage); // too many requests
+          // already logged via DatabaseAccessLimitLogEntry
+          this.logError(errorMessage, 429, parameters, httpExchange, false);
           return;
         }
       }
@@ -162,6 +182,7 @@ export class LanguageToolHttpHandler {
           + ` Allowed maximum timeouts: ${this.errorRequestLimiter.getRequestLimit()}`
           + ` per ${this.errorRequestLimiter.getRequestLimitPeriodInSeconds()} seconds`;
         this.sendError(httpExchange, 429, errorMessage); // too many requests
+        this.logError(errorMessage, 429, parameters, httpExchange);
         return;
       }
       if (this.workQueueFull(httpExchange, parameters, 'Error: There are currently too many parallel requests. Please try again later.')) {
@@ -191,17 +212,22 @@ export class LanguageToolHttpHandler {
     } catch (e) {
       let response;
       let errorCode;
+      let textLoggingAllowed = false;
+      let logStacktrace = true;
       const rootCause = getRootCause(e);
       const message = isThrowable(e) ? e.getMessage() : e?.message;
       if (e instanceof TextTooLongException || rootCause instanceof TextTooLongException) {
         errorCode = 413;
         response = message;
+        logStacktrace = false;
       } else if (e instanceof ErrorRateTooHighException || rootCause instanceof ErrorRateTooHighException) {
         errorCode = 400;
         response = getRootCause(e).getMessage();
+        logStacktrace = false;
       } else if (hasCause(e, AuthException)) {
         errorCode = 403;
         response = `${AuthException.FQCN}: ${message}`;
+        logStacktrace = false;
       } else if (e instanceof BadRequestException || rootCause instanceof BadRequestException) {
         errorCode = 400;
         response = message;
@@ -221,9 +247,13 @@ export class LanguageToolHttpHandler {
       } else {
         response = `Internal Error: ${message}`;
         errorCode = 500;
+        textLoggingAllowed = true;
       }
+      const endTime = currentTimeMillis();
+      this.logErrorEx(remoteAddress, e, errorCode, httpExchange, parameters, textLoggingAllowed, logStacktrace, endTime - startTime);
       this.sendError(httpExchange, errorCode, `Error: ${response}`);
     } finally {
+      logger.info('Handled request in {}ms; sending code {}', currentTimeMillis() - startTime, httpExchange.getResponseCode());
       httpExchange.close();
       if (incrementHandleCount) {
         this.reqCounter.decrementHandleCount(reqId);
@@ -263,10 +293,82 @@ export class LanguageToolHttpHandler {
   // Java: LanguageToolHttpHandler#workQueueFull(HttpExchange,Map,String)
   workQueueFull(httpExchange, parameters, response) {
     if (this.config.getMaxWorkQueueSize() !== 0 && this.workQueue.size() > this.config.getMaxWorkQueueSize()) {
+      const message = `${response} queue size: ${this.workQueue.size()}, maximum size: ${this.config.getMaxWorkQueueSize()}`;
+      this.logError(message, HTTP_UNAVAILABLE, parameters, httpExchange);
       this.sendError(httpExchange, HTTP_UNAVAILABLE, `Error: ${response}`);
       return true;
     }
     return false;
+  }
+
+  // Java: LanguageToolHttpHandler#logError(String,int,Map,HttpExchange[,boolean])
+  logError(errorMessage, code, params, httpExchange, logToDb = true) {
+    let message = `${errorMessage}, sending code ${code} - useragent: ${valueOf(params.get('useragent'))}`
+      + ` - HTTP UserAgent: ${valueOf(getHttpUserAgent(httpExchange))}, r:${this.reqCounter.getRequestCount()}`;
+    if (params.get('username') !== undefined) {
+      message += `, user: ${params.get('username')}`;
+    }
+    if (params.get('apiKey') !== undefined) {
+      message += `, apiKey: ${params.get('apiKey')}`;
+    }
+    // TODO: might need more than 512 chars, thus not logged to DB:
+    message += `, referrer: ${valueOf(getHttpReferrer(httpExchange))}`;
+    message += `, language: ${valueOf(params.get('language'))}`;
+    message += `, ${this.getTextOrDataSizeMessage(params)}`;
+    logger.error(message);
+  }
+
+  // Java: LanguageToolHttpHandler#logError(String,Exception,int,HttpExchange,Map,boolean,boolean,long)
+  logErrorEx(remoteAddress, e, errorCode, httpExchange, params, textLoggingAllowed, logStacktrace, runtimeMillis) {
+    let message = getLoggingInfo(remoteAddress, e, errorCode, httpExchange, params, runtimeMillis, this.reqCounter);
+    const text = params.get('text');
+    if (text !== undefined) {
+      message += `text length: ${text.length}, `;
+    }
+    try {
+      message += `m: ${getMode(params)}, `;
+    } catch (ex) {
+      if (!(ex instanceof BadRequestException)) throw ex;
+      message += 'm: invalid, ';
+    }
+    try {
+      message += `l: ${getLevel(params)}, `;
+    } catch (ex) {
+      if (!(ex instanceof BadRequestException)) throw ex;
+      message += 'l: invalid, ';
+    }
+    if (params.has('instanceId')) {
+      message += `iID: ${params.get('instanceId')}, `;
+    }
+    const eMessage = isThrowable(e) ? e.getMessage() : e?.message;
+    if (logStacktrace) {
+      message += 'Stacktrace follows:';
+      let stackTrace;
+      if (isThrowable(e)) {
+        const lines = [];
+        e.printStackTrace({ println: (l) => lines.push(l) });
+        stackTrace = `${lines.join('\n')}\n`;
+      } else {
+        stackTrace = `${e?.stack ?? e}\n`;
+      }
+      message += cleanUserTextFromMessage(stackTrace, params);
+    } else {
+      message += '(no stacktrace logged)';
+    }
+    if (errorCode < 500) {
+      logger.info(message);
+    } else if (eMessage !== null && eMessage !== undefined && eMessage.includes('took longer than')) {
+      logger.warn(message);
+    } else {
+      logger.error(message);
+    }
+
+    if (!(e instanceof TextTooLongException || e instanceof TooManyRequestsException
+        || e instanceof ErrorRateTooHighException || getRootCause(e) instanceof ErrorRateTooHighException || (isThrowable(e) && e.getCause() instanceof TimeoutException))) {
+      if (this.config.isVerbose() && text !== undefined && textLoggingAllowed) {
+        print(`Exception was caused by this text (${text.length} chars, showing up to 500):\n${abbreviate(text, 500)}`, process.stderr);
+      }
+    }
   }
 
   // Java: LanguageToolHttpHandler#textCheckerQueueFull(HttpExchange,String)
@@ -299,10 +401,10 @@ export class LanguageToolHttpHandler {
   }
 
   // Java: LanguageToolHttpHandler#getRequestQuery(HttpExchange,URI)
-  getRequestQuery(httpExchange, requestedUri) {
+  async getRequestQuery(httpExchange, requestedUri) {
     const params = new Map();
     if (httpExchange.getRequestMethod().toLowerCase() === 'post') {
-      const body = this.readerToString(decodeUtf8Java(httpExchange.getRequestBody()), this.config.getMaxTextHardLength());
+      const body = this.readerToString(await httpExchange.getRequestBody(), this.config.getMaxTextHardLength());
       for (const [k, v] of this.parseQuery(body, httpExchange)) params.set(k, v);
       for (const [k, v] of this.parseQuery(requestedUri.getRawQuery(), httpExchange)) params.set(k, v); // POST requests can have query parameters, too
       return params;
@@ -310,11 +412,13 @@ export class LanguageToolHttpHandler {
     return this.parseQuery(requestedUri.getRawQuery(), httpExchange);
   }
 
-  // Java: LanguageToolHttpHandler#readerToString(Reader,int) over the decoded body, read in chunks of 4000 chars
-  readerToString(text, maxTextLength) {
+  // Java: LanguageToolHttpHandler#readerToString(Reader,int) over the request body bytes (reader = InputStreamReader, UTF-8)
+  readerToString(body, maxTextLength) {
+    const text = decodeUtf8Java(body);
+    const chunks = LanguageToolHttpHandler.readSizes(text);
     let sb = '';
-    for (let pos = 0; pos < text.length; pos += 4000) {
-      const chunk = text.substring(pos, pos + 4000);
+    let pos = 0;
+    for (const readChars of chunks) {
       let generousMaxLength = Math.imul(maxTextLength, 10); // one character can be encoded as e.g. "%D8", plus estimated space for sending data (JSON)
       if (generousMaxLength < 0) { // might happen as it can overflow
         generousMaxLength = 2147483647;
@@ -323,9 +427,63 @@ export class LanguageToolHttpHandler {
         // don't stop at maxTextLength as that's the text length, but here also other parameters are included
         throw new TextTooLongException(`Your text's length exceeds this server's hard limit of ${generousMaxLength} characters.`);
       }
-      sb += chunk;
+      sb += text.substring(pos, pos + readChars);
+      pos += readChars;
     }
     return sb;
+  }
+
+  // Java: StreamDecoder#implRead(char[],int,int) sizes of Reader#read(chars, 0, 4000): 8192-byte decoder buffer, no blocking refill once chars were decoded
+  static readSizes(text) {
+    const n = text.length;
+    const byteLen = (i) => {
+      const c = text.charCodeAt(i);
+      if (c < 0x80) return 1;
+      if (c < 0x800) return 2;
+      if (c >= 0xd800 && c < 0xdc00 && i + 1 < n) return 4;
+      return 3;
+    };
+    let total = 0;
+    for (let i = 0; i < n; i++) {
+      const bl = byteLen(i);
+      total += bl;
+      if (bl === 4) i++;
+    }
+    const sizes = [];
+    let charPos = 0;
+    let loaded = 0;
+    let consumed = 0;
+    for (;;) {
+      let cb = 0;
+      let eof = false;
+      for (;;) {
+        // decode what is fully inside the loaded bytes
+        let overflow = false;
+        while (charPos < n) {
+          const bl = byteLen(charPos);
+          const chars = bl === 4 ? 2 : 1;
+          if (cb + chars > 4000) { overflow = true; break; }
+          if (consumed + bl > loaded) break;
+          consumed += bl;
+          charPos += chars;
+          cb += chars;
+        }
+        if (overflow) break;
+        if (eof) break;
+        if (cb === 4000) break;
+        if (cb > 0) break; // !inReady(): block at most once
+        const readN = Math.min(8192 - (loaded - consumed), total - loaded);
+        if (readN <= 0) {
+          eof = true;
+          if (cb === 0 && loaded - consumed === 0) break;
+          continue;
+        }
+        loaded += readN;
+      }
+      if (cb <= 0) break;
+      sizes.push(cb);
+    }
+    return sizes;
   }
 
   // Java: LanguageToolHttpHandler#parseQuery(String,HttpExchange)

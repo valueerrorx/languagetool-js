@@ -9,6 +9,9 @@ import { SENTENCE_START_TAGNAME } from '../JLanguageToolConstants.js';
 import { Locale } from '../../lib/java/Locale.js';
 import { javaReplace, toLowerCase, toUpperCase } from '../../lib/java/strings.js';
 import { isAllUppercase, startsWithUppercase, uppercaseFirstChar, toId } from '../text/StringTools.js';
+import { LoggerFactory } from '../../lib/slf4j/Logger.js';
+
+const logger = LoggerFactory.getLogger('org.languagetool.rules.AbstractSimpleReplaceRule');
 
 // Java: AbstractSimpleReplaceRule (abstract: getWrongWords)
 export class AbstractSimpleReplaceRule extends Rule {
@@ -129,7 +132,9 @@ export class AbstractSimpleReplaceRule extends Rule {
           if (synth !== null) {
             for (const replacementLemma of replacements) {
               for (const at of tokenReadings.getReadings()) {
-                // Java logs a warning when at.getLemma() == null (CORE-0270 WARN); logging is not compared
+                if (at.getLemma() === null) {
+                  logger.warn(`at.getLemma() == null for ${at}, replacementLemma: ${replacementLemma}`);
+                }
                 const newAt = new AnalyzedToken(at.getLemma(), at.getPOSTag(), replacementLemma);
                 const s = synth.synthesize(newAt, at.getPOSTag());
                 possibleReplacements.push(...s);

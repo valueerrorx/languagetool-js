@@ -8,6 +8,8 @@ import { ResultCache } from '../core/ResultCache.js';
 import { DictionaryMatchFilter } from '../core/rules/DictionaryMatchFilter.js';
 import { checkBitext, getBitextRules } from '../core/bitext/BitextTools.js';
 import { TimeUnit } from '../lib/java/TimeUnit.js';
+import { formatFixed } from '../lib/java/Formatter.js';
+import { LoggerFactory } from '../lib/slf4j/Logger.js';
 import { IllegalArgumentException, RuntimeException } from '../lib/java/errors.js';
 import { BadRequestException } from './BadRequestException.js';
 import { PipelinePool } from './PipelinePool.js';
@@ -17,6 +19,9 @@ import {
   annotatedTextFromDto, checkResultsToDto, languageFromDto, queryParamsFromDto, ruleMatchToDto, userConfigFromDto,
 } from './worker/transport.js';
 
+const log = LoggerFactory.getLogger('org.languagetool.server.TextChecker');
+
+const CACHE_STATS_PRINT = 500;
 const DEFAULT_PREWARM_LANGUAGES = ['de-DE', 'en-US', 'en-GB', 'pt-BR', 'ru-RU', 'es', 'it', 'fr', 'pl-PL', 'uk-UA'];
 
 // Java: TextChecker#parseLanguage(String)
@@ -52,7 +57,12 @@ export class CheckExecutor {
 
   // Java: TextChecker#getRuleMatches(AnnotatedText,Language,Language,Map,QueryParams,UserConfig,RuleMatchListener)
   getRuleMatches(aText, lang, motherTongue, parameters, params, userConfig, listener) {
-    // "Cache stats" log line every 500 cache requests: log statement follows with F71
+    if (this.cache !== null && this.cache.requestCount() > 0 && this.cache.requestCount() % CACHE_STATS_PRINT === 0) {
+      const sentenceHitPercentage = formatFixed(this.cache.getSentenceCache().stats().hitRate() * 100.0, 2);
+      const matchesHitPercentage = formatFixed(this.cache.getMatchesCache().stats().hitRate() * 100.0, 2);
+      const remoteHitPercentage = formatFixed(this.cache.getRemoteMatchesCache().stats().hitRate() * 100.0, 2);
+      log.info(`Cache stats: ${sentenceHitPercentage}% / ${matchesHitPercentage}% / ${remoteHitPercentage}% hit rate`);
+    }
     if (parameters.get('sourceText') !== undefined) {
       if (parameters.get('sourceLanguage') === undefined) {
         throw new BadRequestException("'sourceLanguage' parameter missing - must be set when 'sourceText' is set");
@@ -112,6 +122,7 @@ export class CheckExecutor {
       prewarmSettings.push(new PipelineSettings(Languages.getLanguageForShortCode('en-US'), language, params, this.config.globalConfig, user));
       prewarmSettings.push(new PipelineSettings(language, Languages.getLanguageForName('English'), params, this.config.globalConfig, user));
     }
+    log.info('Prewarming {} pipelines', prewarmSettings.length);
     for (const setting of prewarmSettings) {
       try {
         const pipeline = this.pipelinePool.getPipeline(setting);

@@ -58,3 +58,8 @@ Java ran with the jars' own logback.xml (server: `%d{yyyy-MM-dd HH:mm:ss.SSS ZZZ
 - New harness ops need adapters `oracle/adapters/exec-*.mjs` (user-limits, limit-mode, pipeline-settings, pipeline-pool, thread-pool, crash-server); until then those 6 cases are NOT PORTED. http/cli cases run through the existing `http.mjs` / `cli.mjs` adapters (`captureLog` returns the JS server's stdout+stderr).
 - `ORACLE_PORT_MIN/MAX` is honoured by the JS adapter too.
 - Parity smoke on 2026-10-21 (JS port at HEAD 5f08847a): `cfgfail-cachesize-negative` PASS, `limits-textlength` PASS, `queue-reject` and `timeout-zero` FAIL (no timeouts/queues in the JS server yet), `harness-*` NOT PORTED, `cli-adl-en`/`srv-*` log cases FAIL (no log lines yet).
+
+## X-LOGS deviation handling (srv-noop-languages, srv-pipeline-pool)
+- `srv-noop-languages`: the request with text "xx" is marked `expect: 'dev006'` (Java auto-detects Catalan, out of scope; same as X-SRV-CHECK dev006()).
+- `srv-pipeline-pool`: new case flag `dropLogPatterns` (regex sources, `compareServerLog` in `oracle/comparators/logs.mjs`, passed from `oracle/parity.mjs`) removes matching records/lines from both sides. Used for "Pipeline pool capacity reached" and "Exception while trying to return pipeline to pool" (DEV-010: pool per worker, no shared-pool capacity or return exception).
+- Both cases regenerated from real Java; parity of the two cases: 2 pass.

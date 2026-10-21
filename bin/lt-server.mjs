@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 // Launcher of the HTTP API server (Java: org.languagetool.server.HTTPServer#main).
+import { configureLogging } from '../src/lib/slf4j/Logger.js';
 import { HTTPServer } from '../src/server/HTTPServer.js';
 import { isThrowable } from '../src/lib/java/errors.js';
 
@@ -14,4 +15,5 @@ function uncaught(e) {
   process.exit(1);
 }
 
+configureLogging('server'); // logback.xml of the server jar
 HTTPServer.main(process.argv.slice(2)).catch(uncaught);

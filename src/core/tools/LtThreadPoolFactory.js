@@ -3,6 +3,9 @@
 import { TimeUnit } from '../../lib/java/TimeUnit.js';
 import { AbortPolicy, ArrayBlockingQueue, LinkedBlockingQueue, SynchronousQueue, ThreadPoolExecutor, namedThreadFactory } from '../../lib/java/concurrent/ThreadPoolExecutor.js';
 import { LtThreadPoolExecutor } from './LtThreadPoolExecutor.js';
+import { LoggerFactory } from '../../lib/slf4j/Logger.js';
+
+const log = LoggerFactory.getLogger('org.languagetool.tools.LtThreadPoolFactory');
 
 const executorServices = new Map();
 
@@ -10,7 +13,7 @@ const executorServices = new Map();
 class LtRejectedExecutionHandler extends AbortPolicy {
   // Java: LtRejectedExecutionHandler#rejectedExecution(Runnable,ThreadPoolExecutor)
   rejectedExecution(runnable, threadPoolExecutor) {
-    // log.warn("Task rejected from pool '{}' (queue full, all threads exhausted)", pool) (F71)
+    log.warn("Task rejected from pool '{}' (queue full, all threads exhausted)", threadPoolExecutor.getName());
     super.rejectedExecution(runnable, threadPoolExecutor);
   }
 }
@@ -63,7 +66,7 @@ export class LtThreadPoolFactory {
   static getFixedThreadPoolExecutor(identifier) {
     const value = executorServices.get(identifier);
     if (value === undefined) {
-      // log.debug("Request: " + identifier + " not found, returning default pool") (F71)
+      log.debug(`Request: ${identifier} not found, returning default pool`);
       return defaultPool;
     }
     return value;

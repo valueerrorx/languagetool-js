@@ -1,6 +1,7 @@
 // Java: org.languagetool.server.ServerTools
 import { Mode, Level } from '../core/JLanguageTool.js';
 import { currentTimeMillis } from '../lib/java/clock.js';
+import { valueOf } from '../lib/java/Objects.js';
 import { BadRequestException } from './BadRequestException.js';
 import { UserLimits } from './UserLimits.js';
 
@@ -133,4 +134,26 @@ export function getHttpUserAgent(httpExchange) {
 // Java: ServerTools#getHttpReferrer(HttpExchange)
 export function getHttpReferrer(httpExchange) {
   return httpExchange.getRequestHeaders().getFirst('Referer');
+}
+
+// Java: ServerTools#getLoggingInfo(String,Exception,int,HttpExchange,Map,long,RequestCounter)
+export function getLoggingInfo(remoteAddress, e, errorCode, httpExchange, params, runtimeMillis, reqCounter) {
+  let message = '';
+  if (e !== null && e !== undefined) {
+    const em = typeof e.getMessage === 'function' ? e.getMessage() : e.message;
+    message += `An error has occurred: '${cleanUserTextFromMessage(em, params)}', sending HTTP code ${errorCode}. `;
+  }
+  message += `Access from ${valueOf(remoteAddress)}, `;
+  message += `HTTP user agent: ${valueOf(getHttpUserAgent(httpExchange))}, `;
+  message += `User agent param: ${valueOf(params.get('useragent'))}, `;
+  if (params.get('v') !== undefined) message += `v: ${params.get('v')}, `;
+  message += `Referrer: ${valueOf(getHttpReferrer(httpExchange))}, `;
+  message += `language: ${valueOf(params.get('language'))}, `;
+  message += `h: ${reqCounter.getHandleCount()}, `;
+  message += `r: ${reqCounter.getRequestCount()}, `;
+  if (params.get('username') !== undefined) message += `user: ${params.get('username')}, `;
+  if (params.get('apiKey') !== undefined) message += `apiKey: ${params.get('apiKey')}, `;
+  if (params.get('tokenV2') !== undefined) message += `tokenV2: ${params.get('tokenV2')}, `;
+  message += `time: ${runtimeMillis}`;
+  return message;
 }

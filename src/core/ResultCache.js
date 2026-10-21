@@ -20,6 +20,9 @@ export class ResultCache {
     if (maxSize < 0) {
       throw new IllegalArgumentException(`Result cache size must be >= 0: ${maxSize}`);
     }
+    if (expireAfter < 0) { // Java: Guava CacheBuilder#expireAfterAccess(long,TimeUnit) checkArgument(duration >= 0)
+      throw new IllegalArgumentException(`duration cannot be negative: ${expireAfter} ${timeUnit.name()}`);
+    }
     const expireAfterAccessNanos = timeUnit.toNanos(expireAfter);
     const maximumWeight = Math.trunc(maxSize / 2);
     this.matchesCache = new LocalCache({ maximumWeight, weigher: matchesWeigher, expireAfterAccessNanos });

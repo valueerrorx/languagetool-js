@@ -82,7 +82,7 @@ write('srv-check-done-variants', '"Check done" line variants: referrer, agent, v
 write('srv-noop-languages', 'language=auto with noopLanguages: warning that fastText is not active', {
   requests: [post('/v2/check', { language: 'auto', text: 'This is a longer english sentence,, that the the detector can handle without any trouble.', noopLanguages: 'en', ...ONLY(ALL) }),
     post('/v2/check', { language: 'auto', text: 'Ceci est une phrase française assez longue,, que que le détecteur peut reconnaître.', preferredVariants: 'fr-CA', ...ONLY(ALL) }),
-    post('/v2/check', { language: 'auto', text: 'xx', ...ONLY(ALL) })],
+    { ...post('/v2/check', { language: 'auto', text: 'xx', ...ONLY(ALL) }), expect: 'dev006' }], // DEV-006: Java auto-detects Catalan (out of scope) for "xx"
 });
 write('srv-local-api-mode', 'localApiMode=true uses the SimpleLanguageIdentifier: its init and error-rate log lines', {
   ...cfg({ localApiMode: 'true', preferredLanguages: 'en-US, de-DE' }),
@@ -119,6 +119,8 @@ write('srv-work-queue', 'maxWorkQueueSize rejection: ERROR line with queue size 
   requests: [chk('Warm up.'), par([chk(SLOW), chk(MED), chk(MED), chk(MED), health()], 150), chk('After.')],
 });
 write('srv-pipeline-pool', 'pipeline pool capacity reached (INFO) and the expected return exception (INFO + stack trace)', {
+  // DEV-010: the port has one pool per worker, so Java's shared-pool capacity/return-exception lines do not occur
+  dropLogPatterns: ['Pipeline pool capacity reached', 'Exception while trying to return pipeline to pool'],
   ...cfg({ pipelineCaching: 'true', maxPipelinePoolSize: 1 }),
   requests: [chk('Warm up,, ok.'), par([chk(SLOW), chk(SENT.repeat(40) + 'Tail,, here.'), chk(SENT.repeat(30) + 'Another tail,, here.')], 400), chk('After,, ok.')],
 });

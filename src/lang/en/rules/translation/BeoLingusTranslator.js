@@ -12,6 +12,10 @@ import { readerLines } from '../../../../lib/java/io.js';
 import { Pattern, javaReplaceAll, javaReplaceFirst, javaSplit } from '../../../../lib/java/regex/index.js';
 import { javaReplace, javaTrim, toLowerCase } from '../../../../lib/java/strings.js';
 import { Inflector } from './Inflector.js';
+import { LoggerFactory } from '../../../../lib/slf4j/Logger.js';
+import { currentTimeMillis } from '../../../../lib/java/clock.js';
+
+const logger = LoggerFactory.getLogger('org.languagetool.rules.en.translation.BeoLingusTranslator');
 
 const enUsPattern = Pattern.compile('.*?\\w+ \\[(Br|Am)\\.\\] ?/ ?\\w+ \\[(Br|Am)\\.\\].*');
 
@@ -59,8 +63,11 @@ export class BeoLingusTranslator {
   // Java: BeoLingusTranslator#getInstance(GlobalConfig)
   static getInstanceFromConfig(globalConfig) {
     if (instance === null && globalConfig !== null && globalConfig !== undefined && globalConfig.getBeolingusFile() !== null) {
-      // logger.info("Init dict from <file>...") and "Init dict done (<ms>ms) - loaded <n> de -> en items." (logger: F71)
+      const t1 = currentTimeMillis();
+      logger.info(`Init dict from ${globalConfig.getBeolingusFile()}...`);
       instance = new BeoLingusTranslator(globalConfig.getBeolingusFile());
+      const t2 = currentTimeMillis();
+      logger.info(`Init dict done (${t2 - t1}ms) - loaded ${instance.getDeEnSize()} de -> en items.`);
     }
     return instance;
   }

@@ -15,6 +15,10 @@ import { SuggestionsOrdererConfig } from '../core/rules/spelling/morfologik/sugg
 import { print } from './ServerTools.js';
 import { IllegalConfigurationException } from './exceptions.js';
 import { GlobalConfig } from '../core/rules/model/GlobalConfig.js';
+import { LoggerFactory } from '../lib/slf4j/Logger.js';
+import { valueOf } from '../lib/java/Objects.js';
+
+const logger = LoggerFactory.getLogger('org.languagetool.server.HTTPServerConfig');
 
 // Java: File#isFile() / File#isDirectory()
 const isFile = (p) => { try { return statSync(p).isFile(); } catch { return false; } };
@@ -432,6 +436,7 @@ export class HTTPServerConfig {
       const nerUrl = opt('nerUrl', null);
       if (nerUrl !== null) {
         this.globalConfig.setNERUrl(nerUrl);
+        logger.info(`Using NER service: ${valueOf(this.globalConfig.getNerUrl())}`);
       }
       for (const key of keyOrder) {
         if (!KNOWN_OPTION_KEYS.includes(key) && !javaMatches(key, 'lang-[a-z]+-dictPath') && !javaMatches(key, 'lang-[a-z]+')) {

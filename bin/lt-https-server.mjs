@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 // Launcher of the deprecated HTTPS server (Java: org.languagetool.server.HTTPSServer#main).
+import { configureLogging } from '../src/lib/slf4j/Logger.js';
 import { HTTPSServer } from '../src/server/HTTPSServer.js';
 import { isThrowable } from '../src/lib/java/errors.js';
 
@@ -14,4 +15,5 @@ function uncaught(e) {
   process.exit(1);
 }
 
+configureLogging('server'); // logback.xml of the server jar
 HTTPSServer.main(process.argv.slice(2)).catch(uncaught);

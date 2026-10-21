@@ -24,6 +24,9 @@ import { IOException, IllegalArgumentException, RuntimeException } from '../../.
 import { isAllUpperCase } from '../../../../lib/java/StringUtils.js';
 import { equalsIgnoreCase, javaReplace, toLowerCase } from '../../../../lib/java/strings.js';
 import { existsSync, readFileSync } from 'node:fs';
+import { LoggerFactory } from '../../../../lib/slf4j/Logger.js';
+
+const logger = LoggerFactory.getLogger('org.languagetool.rules.spelling.hunspell.HunspellRule');
 
 const FILE_EXTENSION = '.dic'; // Java: HunspellRule#FILE_EXTENSION
 const NON_ALPHABETIC = '[^\\p{L}]'; // Java: HunspellRule#NON_ALPHABETIC
@@ -65,7 +68,7 @@ function nonWordPatternFromPath(affPath) {
       p = computeNonWordPattern(readFileSync(affPath));
     } catch (e) {
       if (!(e && e.code !== undefined && typeof e.syscall === 'string')) throw e;
-      process.stderr.write(`ERROR Could not read aff file: ${affPath}\n`); // logger.error
+      logger.error(`Could not read aff file: ${affPath}`);
       p = Pattern.compile(NON_ALPHABETIC);
     }
     nonWordPatterns.set(affPath, p);
@@ -110,7 +113,7 @@ export class HunspellRule extends SpellingCheckRule {
       en = Languages.getLanguageForShortCode('en-US');
     } catch (e) {
       if (!(e instanceof IllegalArgumentException)) throw e;
-      process.stderr.write('WARN Could not create en-US language for spell-check fallback, multi-lingual spell checking is not available\n'); // logger.warn
+      logger.warn('Could not create en-US language for spell-check fallback, multi-lingual spell checking is not available');
       return spellingRules;
     }
     let rules;
@@ -485,7 +488,7 @@ export class HunspellRule extends SpellingCheckRule {
         lines = getDataBroker().getFromResourceDirAsLines(this.getIgnoreFileName()).filter((line) => !line.startsWith('#'));
       } catch (e) {
         if (!(e instanceof IOException)) throw e;
-        process.stderr.write(`ERROR Could not read ignore file: ${ignoreUrl}\n`); // logger.error
+        logger.error(`Could not read ignore file: ${ignoreUrl}`);
         lines = [];
       }
       ignoreFileContents.set(key, lines);

@@ -14,7 +14,6 @@ import { English } from '../lang/en/language/English.js';
 import { Exception, FileNotFoundException, IllegalArgumentException, NullPointerException, RuntimeException } from '../lib/java/errors.js';
 import { BufferedReader, inputStreamReader } from '../lib/java/io.js';
 import { File } from '../lib/java/io/File.js';
-import { currentTimeMillis } from '../lib/java/clock.js';
 import { javaCompare } from '../lib/java/strings.js';
 import { CommandLineParser, UnknownParameterException, WrongParameterNumberException } from './CommandLineParser.js';
 import { TabBitextReader } from '../core/bitext/TabBitextReader.js';
@@ -69,14 +68,6 @@ function readFileBytes(filename) {
     }
     throw e;
   }
-}
-
-// Java: SLF4J WARN line of the CLI logging setup (oracle fixtures: "<yyyy-MM-dd HH:mm:ss.SSS> WARN  <logger> - <msg>" on STDERR; logger framework: F71)
-function logWarn(logger, message) {
-  const d = new Date(currentTimeMillis());
-  const p = (n, w = 2) => String(n).padStart(w, '0');
-  const ts = `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}.${p(d.getMilliseconds(), 3)}`;
-  errPrintln(`${ts} WARN  ${logger} - ${message}`);
 }
 
 // Java: Main
@@ -531,11 +522,7 @@ export class Main {
 
   // Java: Main#detectLanguageOfString(String)
   detectLanguageOfString(text) {
-    const first = LanguageIdentifierService.INSTANCE.getInitialized() === null;
     const identifier = LanguageIdentifierService.INSTANCE.getDefaultLanguageIdentifier(0, null, this.options.getFasttextBinary(), this.options.getFasttextModel());
-    if (first && this.options.getFasttextBinary() === null && this.options.getFasttextModel() === null) {
-      logWarn('o.l.l.i.DefaultLanguageIdentifier', 'fastText not configured - language detection performance will be degraded. See https://dev.languagetool.org/http-server#starting-from-command-line for instructions.');
-    }
     const language = identifier.detectLanguage(text);
     if (language !== null && !(language instanceof Language)) throw notPortedYet(`language ${language.getShortCode()} (out of scope, DEV-006)`);
     return language;

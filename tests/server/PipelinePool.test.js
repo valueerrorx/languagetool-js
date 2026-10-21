@@ -9,6 +9,7 @@ import { Level, Mode } from '../../src/core/JLanguageTool.js';
 import { AnnotatedTextBuilder } from '../../src/core/text/AnnotatedTextBuilder.js';
 import { HTTPServerConfig } from '../../src/server/HTTPServerConfig.js';
 import { V2TextChecker } from '../../src/server/TextChecker.js';
+import { RequestCounter } from '../../src/server/LanguageToolHttpHandler.js';
 import { QueryParams } from '../../src/server/QueryParams.js';
 import { PipelineSettings } from '../../src/server/PipelineSettings.js';
 import { Pipeline, IllegalPipelineMutationException } from '../../src/server/Pipeline.js';
@@ -47,7 +48,7 @@ const newChecker = (size) => {
   config1.setPipelineCaching(true);
   config1.setPipelineExpireTime(10);
   config1.setMaxPipelinePoolSize(size);
-  return new V2TextChecker(config1, false, null, {});
+  return new V2TextChecker(config1, false, null, new RequestCounter());
 };
 const check = (checker, t, params) => checker.checkText(text(t), fakeExchange(), params, null, null);
 const p = (language, extra = {}) => new Map([['text', 'not used'], ['language', language], ...Object.entries(extra)]);

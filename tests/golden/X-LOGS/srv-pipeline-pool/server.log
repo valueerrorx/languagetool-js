@@ -1,20 +1,20 @@
-2026-03-15 10:00:00.272 GMT+01:00 INFO  org.languagetool.server.DatabaseAccessOpenSource Not setting up database access, dbDriver is not configured
+2026-03-15 10:00:00.287 GMT+01:00 INFO  org.languagetool.server.DatabaseAccessOpenSource Not setting up database access, dbDriver is not configured
 2026-03-15 09:00:00 +0000 Setting up thread pool with 10 threads
-2026-03-15 10:00:00.994 GMT+01:00 WARN  org.languagetool.language.identifier.DefaultLanguageIdentifier fastText not configured - language detection performance will be degraded. See https://dev.languagetool.org/http-server#starting-from-command-line for instructions.
-2026-03-15 10:00:01.052 GMT+01:00 INFO  org.languagetool.server.TextChecker A/B-Test enabled: []
-2026-03-15 09:00:01 +0000 Starting LanguageTool 6.9-SNAPSHOT (build date: 2026-10-12 18:33:54 +0200, 9b0be9d) server on http://localhost:18300...
+2026-03-15 10:00:01.062 GMT+01:00 WARN  org.languagetool.language.identifier.DefaultLanguageIdentifier fastText not configured - language detection performance will be degraded. See https://dev.languagetool.org/http-server#starting-from-command-line for instructions.
+2026-03-15 10:00:01.132 GMT+01:00 INFO  org.languagetool.server.TextChecker A/B-Test enabled: []
+2026-03-15 09:00:01 +0000 Starting LanguageTool 6.9-SNAPSHOT (build date: 2026-10-12 18:33:54 +0200, 9b0be9d) server on http://localhost:39537...
 2026-03-15 09:00:01 +0000 Server started
-2026-03-15 10:00:01.231 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling GET /v2/healthcheck
-2026-03-15 10:00:01.249 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 26ms; sending code 200
+2026-03-15 10:00:01.233 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling GET /v2/healthcheck
+2026-03-15 10:00:01.249 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 25ms; sending code 200
 2026-03-15 10:00:01.258 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
-2026-03-15 10:00:04.276 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
-2026-03-15 10:00:04.276 GMT+01:00 INFO  org.languagetool.server.TextChecker Check done: 13 chars, en-US, requestId: null, #1, null, 0/1 matches, 2991ms, agent:-, sent, q:0, h:1, dH:1, r:2, m:all, premium: false
-2026-03-15 10:00:04.277 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 3019ms; sending code 200
-2026-03-15 10:00:04.671 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
-2026-03-15 10:00:04.678 GMT+01:00 INFO  org.languagetool.server.PipelinePool Pipeline pool capacity reached: 1 active objects, 0 idle
-2026-03-15 10:00:05.072 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
-2026-03-15 10:00:05.080 GMT+01:00 INFO  org.languagetool.server.PipelinePool Pipeline pool capacity reached: 1 active objects, 0 idle
-2026-03-15 10:00:05.266 GMT+01:00 INFO  org.languagetool.server.PipelinePool Exception while trying to return pipeline to pool; this is expected when pipeline capacity is reached
+2026-03-15 10:00:04.469 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:04.472 GMT+01:00 INFO  org.languagetool.server.TextChecker Check done: 13 chars, en-US, requestId: null, #1, null, 0/1 matches, 3188ms, agent:-, sent, q:0, h:1, dH:1, r:2, m:all, premium: false
+2026-03-15 10:00:04.473 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 3215ms; sending code 200
+2026-03-15 10:00:04.867 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:04.873 GMT+01:00 INFO  org.languagetool.server.PipelinePool Pipeline pool capacity reached: 1 active objects, 0 idle
+2026-03-15 10:00:05.268 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:05.274 GMT+01:00 INFO  org.languagetool.server.PipelinePool Pipeline pool capacity reached: 1 active objects, 0 idle
+2026-03-15 10:00:05.468 GMT+01:00 INFO  org.languagetool.server.PipelinePool Exception while trying to return pipeline to pool; this is expected when pipeline capacity is reached
 java.lang.IllegalStateException: Returned object not currently part of this pool
 	at org.apache.commons.pool2.impl.GenericKeyedObjectPool.returnObject(GenericKeyedObjectPool.java:1497)
 	at org.languagetool.server.PipelinePool.returnPipeline(PipelinePool.java:105)
@@ -25,9 +25,9 @@ java.lang.IllegalStateException: Returned object not currently part of this pool
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:840)
-2026-03-15 10:00:05.285 GMT+01:00 INFO  org.languagetool.server.TextChecker Check done: 4532 chars, en-US, requestId: null, #2, null, 0/1 matches, 612ms, agent:-, sent, q:0, h:3, dH:1, r:5, m:all, premium: false
-2026-03-15 10:00:05.285 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 614ms; sending code 200
-2026-03-15 10:00:05.481 GMT+01:00 INFO  org.languagetool.server.PipelinePool Exception while trying to return pipeline to pool; this is expected when pipeline capacity is reached
+2026-03-15 10:00:05.476 GMT+01:00 INFO  org.languagetool.server.TextChecker Check done: 4532 chars, en-US, requestId: null, #2, null, 0/1 matches, 607ms, agent:-, sent, q:0, h:3, dH:1, r:5, m:all, premium: false
+2026-03-15 10:00:05.476 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 609ms; sending code 200
+2026-03-15 10:00:05.602 GMT+01:00 INFO  org.languagetool.server.PipelinePool Exception while trying to return pipeline to pool; this is expected when pipeline capacity is reached
 java.lang.IllegalStateException: Returned object not currently part of this pool
 	at org.apache.commons.pool2.impl.GenericKeyedObjectPool.returnObject(GenericKeyedObjectPool.java:1497)
 	at org.languagetool.server.PipelinePool.returnPipeline(PipelinePool.java:105)
@@ -38,10 +38,10 @@ java.lang.IllegalStateException: Returned object not currently part of this pool
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.base/java.lang.Thread.run(Thread.java:840)
-2026-03-15 10:00:05.485 GMT+01:00 INFO  org.languagetool.server.TextChecker Check done: 3410 chars, en-US, requestId: null, #2, null, 0/1 matches, 412ms, agent:-, sent, q:0, h:2, dH:1, r:5, m:all, premium: false
-2026-03-15 10:00:05.485 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 413ms; sending code 200
-2026-03-15 10:00:06.818 GMT+01:00 INFO  org.languagetool.server.TextChecker Check done: 56500 chars, en-US, requestId: null, #2, null, 0/0 matches, 2536ms, agent:-, sent, q:0, h:1, dH:1, r:5, m:all, premium: false
-2026-03-15 10:00:06.818 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 2542ms; sending code 200
-2026-03-15 10:00:06.822 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
-2026-03-15 10:00:06.830 GMT+01:00 INFO  org.languagetool.server.TextChecker Check done: 11 chars, en-US, requestId: null, #3, null, 0/1 matches, 7ms, agent:-, sent, q:0, h:1, dH:1, r:6, m:all, premium: false
-2026-03-15 10:00:06.831 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 9ms; sending code 200
+2026-03-15 10:00:05.605 GMT+01:00 INFO  org.languagetool.server.TextChecker Check done: 3410 chars, en-US, requestId: null, #2, null, 0/1 matches, 336ms, agent:-, sent, q:0, h:2, dH:1, r:5, m:all, premium: false
+2026-03-15 10:00:05.606 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 338ms; sending code 200
+2026-03-15 10:00:07.063 GMT+01:00 INFO  org.languagetool.server.TextChecker Check done: 56500 chars, en-US, requestId: null, #2, null, 0/0 matches, 2589ms, agent:-, sent, q:0, h:1, dH:1, r:5, m:all, premium: false
+2026-03-15 10:00:07.063 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 2594ms; sending code 200
+2026-03-15 10:00:07.066 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:07.072 GMT+01:00 INFO  org.languagetool.server.TextChecker Check done: 11 chars, en-US, requestId: null, #3, null, 0/1 matches, 6ms, agent:-, sent, q:0, h:1, dH:1, r:6, m:all, premium: false
+2026-03-15 10:00:07.072 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 6ms; sending code 200

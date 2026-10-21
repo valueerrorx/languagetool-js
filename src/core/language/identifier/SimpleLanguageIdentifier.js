@@ -9,6 +9,10 @@ import {
   CONSIDER_ONLY_PREFERRED_THRESHOLD, LanguageIdentifier, NON_LATIN_CHARS_LANGUAGES, SCORE_THRESHOLD, UNICODE_BASED_LANG_IDENTIFIER, getCommonWordsLangIdentifier,
 } from './LanguageIdentifier.js';
 import { LanguageIdentifierService } from './LanguageIdentifierService.js';
+import { LoggerFactory } from '../../../lib/slf4j/Logger.js';
+import { doubleToString } from '../../../lib/java/toString.js';
+
+const log = LoggerFactory.getLogger('org.languagetool.language.identifier.SimpleLanguageIdentifier');
 
 // Java: SimpleLanguageIdentifier
 export class SimpleLanguageIdentifier extends LanguageIdentifier {
@@ -35,10 +39,12 @@ export class SimpleLanguageIdentifier extends LanguageIdentifier {
         const defaultSpellingCheckRule = spellingRuleLanguage.getDefaultSpellingRule();
         if (defaultSpellingCheckRule !== null) {
           this.spellingCheckRules.put(language.getShortCode(), defaultSpellingCheckRule);
-        } // else log.warn("Could not find default speller rule for {}") (logging: F71)
+        } else {
+          log.warn('Could not find default speller rule for {}', language.getShortCode());
+        }
       }
     } else {
-      // log.info("Init SimpleLanguageIdentifier with {}") (logging: F71)
+      log.info('Init SimpleLanguageIdentifier with {}', `[${preferredLangCodes.join(', ')}]`);
       preferredLangCodes.forEach((langCode) => {
         const language = Languages.getLanguageForShortCode(langCode);
         const defaultSpellingRule = language.getDefaultSpellingRule();
@@ -70,7 +76,7 @@ export class SimpleLanguageIdentifier extends LanguageIdentifier {
           errors += rule.isMisspelled(word) ? 1 : 0;
         }
         const errorRate = errors / words.length;
-        // log.info("Found {} errors for {} words with {} spellchecker ...") (logging: F71)
+        log.info('Found {} errors for {} words with {} spellchecker, this scores in an error rate of {}', doubleToString(errors), words.length, key, doubleToString(errorRate));
         scores.put(key, 1.0 - errorRate);
       }
     }

@@ -32,7 +32,7 @@ async function run0(cs, { workDir }) {
   }
   const before = snapshotFiles(workDir);
   const child = spawn(process.execPath, [bin, ...(cs.args ?? [])], {
-    cwd: workDir, env: { ...process.env, LTJS_FIXED_TIME: FIXED, TZ: 'Europe/Vienna', ...(cs.env ?? {}) }, stdio: ['pipe', 'pipe', 'pipe'],
+    cwd: workDir, env: { ...process.env, LTJS_FIXED_TIME: FIXED, TZ: 'Europe/Vienna', ...(cs.realLogging ? {} : { LTJS_LOGBACK: 'stderr' }), ...(cs.env ?? {}) }, stdio: ['pipe', 'pipe', 'pipe'],
   });
   const out = [];
   const err = [];

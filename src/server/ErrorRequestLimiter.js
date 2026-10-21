@@ -3,6 +3,10 @@ import { Mode } from '../core/JLanguageTool.js';
 import { currentTimeMillis } from '../lib/java/clock.js';
 import { REQUEST_QUEUE_SIZE, RequestEvent, RequestLimiter } from './RequestLimiter.js';
 import { TooManyRequestsException } from './exceptions.js';
+import { LoggerFactory } from '../lib/slf4j/Logger.js';
+import { valueOf } from '../lib/java/Objects.js';
+
+const logger = LoggerFactory.getLogger('org.languagetool.server.ErrorRequestLimiter');
 
 export class ErrorRequestLimiter extends RequestLimiter {
   static FQCN = 'org.languagetool.server.ErrorRequestLimiter';
@@ -19,7 +23,7 @@ export class ErrorRequestLimiter extends RequestLimiter {
       return true;
     } catch (e) {
       if (!(e instanceof TooManyRequestsException)) throw e;
-      // logger.info("wouldAccessBeOkay -> false: " + e.getMessage()) (F71)
+      logger.info(`wouldAccessBeOkay -> false: ${valueOf(e.getMessage())}`);
       return false;
     }
   }

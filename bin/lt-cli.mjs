@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Launcher of the command line tool (Java: org.languagetool.commandline.Main#main).
 import '../src/lang/register.js';
+import { configureLogging } from '../src/lib/slf4j/Logger.js';
 import { Main } from '../src/cli/Main.js';
 import { isThrowable } from '../src/lib/java/errors.js';
 
@@ -22,6 +23,8 @@ function uncaught(e) {
   }
   process.exit(1);
 }
+
+configureLogging('cli'); // logback.xml of the commandline jar
 
 try {
   Main.main(process.argv.slice(2));
