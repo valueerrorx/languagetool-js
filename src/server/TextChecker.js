@@ -10,6 +10,13 @@ import { RuleMatchesAsJsonSerializer } from '../core/RuleMatchesAsJsonSerializer
 import { LanguageIdentifierService } from '../core/language/identifier/LanguageIdentifierService.js';
 import { IllegalArgumentException, RuntimeException, ExecutionException, isThrowable } from '../lib/java/errors.js';
 import { Integer } from '../lib/java/int.js';
+import { arrayGet } from '../lib/java/arrays.js';
+import { RuleOption } from '../core/rules/model/RuleOption.js';
+import { Rule } from '../core/rules/model/Rule.js';
+import { RuleMatch } from '../core/rules/model/RuleMatch.js';
+import { CheckResults } from '../core/rules/model/CheckResults.js';
+import { Mode } from '../core/JLanguageTool.js';
+import { DatabaseAccess } from './DatabaseAccess.js';
 import { javaSplit, isEmpty } from '../lib/java/strings.js';
 import { notPortedYet } from '../core/language/components.js';
 import { BadRequestException } from './BadRequestException.js';
@@ -72,6 +79,18 @@ export class QueryParams {
     this.callback = callback ?? null;
     this.inputLogging = inputLogging;
   }
+}
+
+// Java: Premium#isPremiumStatusCheck(AnnotatedText)
+function isPremiumStatusCheck(text) {
+  return text.getOriginalText() === 'The languagetool testrule 8634756.' || text.getOriginalText() === 'languagetool testrule 8634756';
+}
+
+// Java: TextChecker#checkText(...) anonymous Rule "PREMIUM_FAKE_RULE"
+class PremiumFakeRule extends Rule {
+  getId() { return 'PREMIUM_FAKE_RULE'; }
+  getDescription() { return 'PREMIUM_FAKE_RULE'; }
+  match() { return RuleMatch.EMPTY_ARRAY; }
 }
 
 // Java: TextChecker#computeTextSessionID(String,String) (first 8 bytes of SHA-256 as signed long)
@@ -157,8 +176,21 @@ export class TextChecker {
     const authHeader = getAuthHeader(httpExchange.getRequestHeaders());
     const limits = getUserLimits(params, config, authHeader);
 
-    if (aText.getOriginalText() === 'languagetool testrule 8634756' || aText.getOriginalText() === 'The languagetool testrule 8634756.') {
-      throw notPortedYet('TextChecker#checkText premium status check text (PREMIUM_FAKE_RULE)');
+    if (isPremiumStatusCheck(aText)) { // Java: Premium.isPremiumStatusCheck(AnnotatedText)
+      const premiumStatusCheckLang = Languages.getLanguageForShortCode('en-US');
+      const matches = [];
+      if (limits.hasPremium() || config.premiumAlways) {
+        matches.push(new RuleMatch(new PremiumFakeRule(), null, 0, 1, ''));
+      }
+      const detectedLanguage = new DetectedLanguage(premiumStatusCheckLang, premiumStatusCheckLang, 0.99999076, 'ngram');
+      const compactMode = Integer.parseInt(params.has('c') ? params.get('c') : '0');
+      const response = this.getResponse(aText, premiumStatusCheckLang, detectedLanguage, premiumStatusCheckLang,
+        [new CheckResults(matches, [])], [], null, compactMode, !limits.hasPremium(), Mode.ALL);
+      this.setHeaders(httpExchange);
+      const bytes = Buffer.from(response, 'utf8');
+      httpExchange.sendResponseHeaders(200, bytes.length);
+      httpExchange.write(bytes);
+      return;
     }
 
     const agent = params.get('useragent') !== undefined ? params.get('useragent') : '-';
@@ -171,8 +203,10 @@ export class TextChecker {
     if (length > limits.getMaxTextLength()) {
       throw new TextTooLongException(`Your text exceeds the limit of ${limits.getMaxTextLength()} characters (it's ${length} characters). Please submit a shorter text.`);
     }
-    // RequestLimiter.checkUserLimit(referrer, userAgent, limits): needs account limits (requestsPerDay), none without accounts
-    if (limits.getPremiumUid() !== null) throw notPortedYet('TextChecker#checkText user dictionary / premium accounts');
+    // Java: RequestLimiter.checkUserLimit(referrer, userAgent, limits); requestsPerDay is only set for database accounts
+    if (limits.getPremiumUid() !== null && limits.requestsPerDay !== null && limits.limitEnforcementMode !== null) {
+      throw notPortedYet('RequestLimiter#checkUserLimit (database account request limits)');
+    }
     let dictGroups = null;
     let dictName = 'default';
     if (params.has('dicts')) {
@@ -180,7 +214,8 @@ export class TextChecker {
       dictGroups.sort((a, b) => (a < b ? -1 : a > b ? 1 : 0));
       dictName = `groups_${dictGroups.join(',')}`;
     }
-    const dictWords = [];
+    // Java: TextChecker#getUserDictWords(UserLimits,List) / DatabaseAccess#getWords: empty without database
+    const dictWords = limits.getPremiumUid() !== null ? DatabaseAccess.getInstance().getWords(limits, dictGroups, 0, Integer.MAX_VALUE) : [];
 
     const filterDictionaryMatches = (params.has('filterDictionaryMatches') ? params.get('filterDictionaryMatches') : 'true') === 'true';
 
@@ -202,7 +237,7 @@ export class TextChecker {
       (params.has('ld') ? params.get('ld') : 'control').toLowerCase() === 'test');
     const lang = detLang.getGivenLanguage();
 
-    const userRules = [];
+    const userRules = limits.getPremiumUid() !== null && DatabaseAccess.isReady() ? DatabaseAccess.getInstance().getRules(limits, lang, dictGroups) : [];
     const ltAgent = params.has('useragent') ? params.get('useragent') : 'unknown';
     const trustedSourcesPattern = config.getTrustedSources();
     const trustedSource = trustedSourcesPattern === null || (limits.hasPremium() || trustedSourcesPattern.matcher(ltAgent).matches());
@@ -332,8 +367,15 @@ export class TextChecker {
   // Java: TextChecker#getRuleValues(Map)
   getRuleValues(parameters) {
     const ruleValues = new Map();
-    if (parameters.get('ruleValues') === undefined) return ruleValues;
-    throw notPortedYet('TextChecker#getRuleValues (RuleOption.stringToObjects)');
+    const parameterString = parameters.get('ruleValues');
+    if (parameterString === undefined) return ruleValues;
+    const pairs = javaSplit(parameterString, ',');
+    for (const pair of pairs) {
+      const ruleAndValue = javaSplit(pair, ':');
+      const objects = RuleOption.stringToObjects(arrayGet(ruleAndValue, 1));
+      ruleValues.set(ruleAndValue[0], objects);
+    }
+    return ruleValues;
   }
 
   // Java: TextChecker#checkParams(Map)
