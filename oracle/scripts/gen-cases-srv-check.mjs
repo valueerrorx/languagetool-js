@@ -120,9 +120,10 @@ const LANGS = [['en-US', EN, T.en], ['de-DE', DE, T.de], ['fr', FR, T.fr]];
       post(C, { ...q, preferredVariants: 'xx', multilingual: 'true' }), post(C, { ...q, forcePreferredLanguages: 'true' }), post(C, { ...q, noopLanguages: 'en', multilingual: 'true' }));
   }
   // other languages: out-of-scope winners (DEV-008)
-  reqs.push(dev006(A(ES)), dev006(A(ES, { preferredVariants: 'es-AR' })), dev006(A('Dit is een vrij lange nederlandse zin,, die die de detector zonder problemen kan herkennen.')), dev006(A(ES, { noopLanguages: 'es' })), A(ES, { preferredLanguages: 'en' }));
+  reqs.push(dev006(A(ES)), dev006(A(ES, { preferredVariants: 'es-AR' })), dev006(A('Dit is een vrij lange nederlandse zin,, die die de detector zonder problemen kan herkennen.')), dev006(A(ES, { noopLanguages: 'es' })), dev006(A(ES, { preferredLanguages: 'en' })));
   // degenerate texts
-  for (const t of ['', ' ', 'Ok.', '1234 5678', 'a', '!!!', 'Hello', 'Bonjour', 'Hallo', 'Ünï', '日本語のテキストです。', 'http://example.org/foo', 'Hello,, wörld.', 'x'.repeat(300), 'The the. Le le. Das das.']) reqs.push(A(t));
+  const D6 = new Set(['a', 'Hello', 'Bonjour', 'Hallo', '日本語のテキストです。', 'Hello,, wörld.', 'x'.repeat(300)]);
+  for (const t of ['', ' ', 'Ok.', '1234 5678', 'a', '!!!', 'Hello', 'Bonjour', 'Hallo', 'Ünï', '日本語のテキストです。', 'http://example.org/foo', 'Hello,, wörld.', 'x'.repeat(300), 'The the. Le le. Das das.']) reqs.push(D6.has(t) ? dev006(A(t)) : A(t));
   reqs.push(get(C, { language: 'auto', text: EL, ...ONLY(ALL), preferredVariants: 'en-GB' }));
   reqs.push(post(C, { language: 'auto', text: EL, enabledRules: 'DOUBLE_PUNCTUATION', enabledOnly: 'true' }));
   reqs.push(post(C, { language: 'AUTO', text: EL, ...ONLY(ALL) }), post(C, { language: 'auto ', text: EL, ...ONLY(ALL) }));
