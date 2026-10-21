@@ -1,6 +1,7 @@
 import { deepDiff } from './deep.mjs';
 import { compareCheck } from './check.mjs';
 import { normalize } from '../lib/normalizers.mjs';
+import { portedBases } from '../lib/scope.mjs';
 
 // D-023: software version/buildDate/commit are ignored.
 const SOFTWARE_IGNORE = ['software.version', 'software.buildDate', 'software.commit', 'software.gitCommit'];
@@ -24,7 +25,7 @@ export function compareApi(expected, actual, { normalizers = [], ctx = {} } = {}
   if (expected.length !== actual.length) diffs.push(`responses: count ${expected.length} != ${actual.length}`);
   for (let i = 0; i < Math.min(expected.length, actual.length); i++) {
     const e = expected[i];
-    if (e.languagesList && Array.isArray(e.body)) e.body = e.body.filter((x) => ['de', 'en', 'fr'].includes(x.code) || !DISTRIBUTION_CODES.has(x.code)); // DEV-006: out-of-scope languages removed from the Java list, dynamic (lang-xx) languages kept
+    if (e.languagesList && Array.isArray(e.body)) e.body = e.body.filter((x) => portedBases().has(x.code) || !DISTRIBUTION_CODES.has(x.code)); // DEV-006: out-of-scope languages removed from the Java list, dynamic (lang-xx) languages kept
     const a = actual[i];
     const tag = `response[${i}]`;
     if (e.parallel) { diffs.push(...compareParallel(e, a, tag, { normalizers, ctx })); continue; } // concurrent request group (X-SRV-EXEC)

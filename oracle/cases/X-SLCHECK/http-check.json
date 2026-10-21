@@ -1,0 +1,325 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "description": "sl /v2/check: POST/GET, language variants, auto-detection, options, JSON data, empty text",
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl",
+    "text": "Tukaj vnesite svoje besedilo... Pa poglejmo primer besedila s nekaj napakami ki jih lahko razpozna orodje LanguageTool; ko opazite napake, jih lahko enostavno popiravite. ( Obenem se izvrši tudi preverjanje črkovanja črkovanja."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl-SI",
+    "text": "Tukaj vnesite svoje besedilo... Pa poglejmo primer besedila s nekaj napakami ki jih lahko razpozna orodje LanguageTool; ko opazite napake, jih lahko enostavno popiravite. ( Obenem se izvrši tudi preverjanje črkovanja črkovanja."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl",
+    "text": "Tukaj vnesite svoje besedilo... Pa poglejmo primer besedila s nekaj napakami ki jih lahko razpozna orodje LanguageTool; ko opazite napake, jih lahko enostavno popiravite. ( Obenem se izvrši tudi preverjanje črkovanja črkovanja.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl",
+    "text": "Kupil je npr. jajca, moko in mleko."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl-SI",
+    "text": "Kupil je npr. jajca, moko in mleko."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl",
+    "text": "Kupil je npr. jajca, moko in mleko.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl",
+    "text": "Bilo je vroče zatorej je odpela gumbe."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl-SI",
+    "text": "Bilo je vroče zatorej je odpela gumbe."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl",
+    "text": "Bilo je vroče zatorej je odpela gumbe.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl",
+    "text": "Bilo je tako kakor nam je opisoval ded."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl-SI",
+    "text": "Bilo je tako kakor nam je opisoval ded."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl",
+    "text": "Bilo je tako kakor nam je opisoval ded.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl",
+    "text": "Z ozirom na vse težave se je dobro končalo."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl-SI",
+    "text": "Z ozirom na vse težave se je dobro končalo."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl",
+    "text": "Z ozirom na vse težave se je dobro končalo.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl",
+    "text": "Gremo preden bo prepozno."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl-SI",
+    "text": "Gremo preden bo prepozno."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl",
+    "text": "Gremo preden bo prepozno.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl",
+    "text": "Ne le vroče, temveč tudi vlažno je bilo."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl-SI",
+    "text": "Ne le vroče, temveč tudi vlažno je bilo."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl",
+    "text": "Ne le vroče, temveč tudi vlažno je bilo.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl",
+    "text": "Ponudnik izobraževanj je znižal cene svojih storitev."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl-SI",
+    "text": "Ponudnik izobraževanj je znižal cene svojih storitev."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl",
+    "text": "Ponudnik izobraževanj je znižal cene svojih storitev.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "auto",
+    "text": "0 oseb ni manjkalo 1 oseba je manjkala 2 osebi sta manjkali 3 osebe so manjkale 4 osebe so manjkale"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "auto",
+    "text": "0 oseb ni manjkalo 1 oseba je manjkala 2 osebi sta manjkali 3 osebe so manjkale 4 osebe so manjkale",
+    "preferredVariants": "sl-SI"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl",
+    "text": "Bilo je vroče zatorej je odpela gumbe.",
+    "enabledOnly": "true",
+    "enabledRules": "WORD_REPEAT_RULE,MORFOLOGIK_RULE_SL_SI,COMMA_PARENTHESIS_WHITESPACE"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl",
+    "text": "Bilo je vroče zatorej je odpela gumbe.",
+    "disabledRules": "WORD_REPEAT_RULE,MORFOLOGIK_RULE_SL_SI,COMMA_PARENTHESIS_WHITESPACE"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl",
+    "text": "Bilo je tako kakor nam je opisoval ded.",
+    "motherTongue": "en"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl",
+    "text": "Bilo je tako kakor nam je opisoval ded.",
+    "mode": "textLevelOnly"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl",
+    "text": "Bilo je tako kakor nam je opisoval ded.",
+    "mode": "allButTextLevelOnly",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl",
+    "text": ""
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl",
+    "text": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl",
+    "data": "{\"annotation\":[{\"text\":\"Bilo je vroče zatorej je odpela gumbe.\"},{\"markup\":\"<b>\"},{\"text\":\" Bilo je tako kakor nam je opisoval ded.\"}]}"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl",
+    "text": "Bilo je vroče zatorej je odpela gumbe.",
+    "enableTempOffRules": "true",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "sl",
+    "text": "Bilo je vroče zatorej je odpela gumbe.",
+    "c": "1"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/languages",
+   "languagesList": true
+  }
+ ]
+}

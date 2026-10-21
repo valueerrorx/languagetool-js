@@ -4,6 +4,7 @@ import { RuleMatch } from '../../src/core/rules/model/RuleMatch.js';
 import { JLanguageTool } from '../../src/core/JLanguageTool.js';
 import { correctText, correctTextFromMatches } from '../../src/core/Tools.js';
 import { errorOf } from './_check-pipe-common.mjs';
+import { WAVE_CODES } from '../lib/scope.mjs';
 import { langFor, notPorted } from './_bitext-common.mjs';
 
 const LTS = new Map(); // Java: ToolsOps#LTS
@@ -32,7 +33,7 @@ export function run(a) {
     return out;
   }
   const l = langFor(a.lang);
-  if (l.getShortCode() !== 'en' && l.getShortCode() !== 'de' && l.getShortCode() !== 'fr') throw notPorted(`tools-correct: rule list of ${a.lang} (rule list not ported)`);
+  if (!WAVE_CODES.includes(l.getShortCode())) throw notPorted(`tools-correct: rule list of ${a.lang} (rule list not ported)`);
   let lt = LTS.get(a.lang);
   if (lt === undefined) LTS.set(a.lang, lt = new JLanguageTool(l)); // Java: ToolsOps#lt(String)
   if (a.ids !== undefined) {

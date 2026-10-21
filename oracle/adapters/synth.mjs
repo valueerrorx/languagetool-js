@@ -1,5 +1,6 @@
 // JS twin of harness op "synth" (SynthOps#synth).
 import '../../src/lang/register.js';
+import { getLanguageForShortCodeGuarded } from '../../src/core/language/javaLanguages.js';
 import { Languages } from '../../src/core/Languages.js';
 import { getDataBroker } from '../../src/core/resources/LtStatics.js';
 import { AnalyzedToken } from '../../src/core/AnalyzedToken.js';
@@ -46,7 +47,7 @@ export function run(a) {
     out.results = results;
     return out;
   }
-  const lang = Languages.getLanguageForShortCode(a.lang);
+  const lang = getLanguageForShortCodeGuarded(a.lang);
   const s = lang.getSynthesizer();
   out.class = s.constructor.FQCN;
   for (const c of a.calls) {

@@ -1,6 +1,7 @@
 // JS twin of harness op "i18n-bundle" (I18nOps#bundleDump). Wave-1 languages come from Languages; out-of-scope ones (DEV-006) use descriptors.
 import '../../src/lang/register.js';
 import { Languages } from '../../src/core/Languages.js';
+import { portedBases } from '../lib/scope.mjs';
 import { Locale } from '../../src/lib/java/Locale.js';
 import { getMessageBundle, getMessageBundleForLanguage, MESSAGE_BUNDLE } from '../../src/core/resources/ResourceBundleTools.js';
 import { getDataBroker } from '../../src/core/resources/LtStatics.js';
@@ -16,7 +17,7 @@ const OUT_OF_SCOPE = {
 
 // Java: Languages#getLanguageForShortCode(String); out-of-scope languages (DEV-006) get a descriptor with the observed locale data
 function languageFor(code) {
-  const e = Object.hasOwn(OUT_OF_SCOPE, code) ? OUT_OF_SCOPE[code] : null;
+  const e = Object.hasOwn(OUT_OF_SCOPE, code) && !portedBases().has(OUT_OF_SCOPE[code][0]) ? OUT_OF_SCOPE[code] : null;
   if (e === null) return Languages.getLanguageForShortCode(code);
   const [sc, countries, dvSc, dvCountries] = e;
   return {

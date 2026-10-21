@@ -1,0 +1,5651 @@
+[
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.9999969,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Pred tropičjem, ki pomeni prekinjeno poved, mora biti presledek: 1, 2,\" ...\". Če gre za prekinjeno besedo, presledka ne sme biti.",
+          "shortMessage": "Pred tropičjem manjka presledek",
+          "replacements": [
+            {
+              "value": " ..."
+            }
+          ],
+          "offset": 28,
+          "length": 3,
+          "context": {
+            "text": "Tukaj vnesite svoje besedilo... Pa poglejmo primer besedila s nekaj nap...",
+            "offset": 28,
+            "length": 3
+          },
+          "sentence": "Tukaj vnesite svoje besedilo...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "TROPIČJETRI",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Pred tropičjem mora biti presledek",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT3",
+              "name": "Napake pri postavljanju ločil"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Pred besedami, ki se ne začnejo s črko c, f, h, k, p, s, t, č ali š, morate uporabiti namesto \"s\" predlog \"z\".",
+          "shortMessage": "Predlog s namesto z",
+          "replacements": [
+            {
+              "value": "z"
+            }
+          ],
+          "offset": 60,
+          "length": 1,
+          "context": {
+            "text": "...besedilo... Pa poglejmo primer besedila s nekaj napakami ki jih lahko razpozna or...",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "Pa poglejmo primer besedila s nekaj napakami ki jih lahko razpozna orodje LanguageTool; ko opazite napake, jih lahko enostavno popiravite.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PREDLOG_S",
+            "subId": "2",
+            "sourceFile": "grammar.xml",
+            "description": "Pravopis: nepravilna raba predloga 's'",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT4",
+              "name": "Napake uporabe predlogov"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 1
+        },
+        {
+          "message": "V podredjih je pred 'ki' vejica: \", ki\"!",
+          "shortMessage": "Manjka vejica pred 'ki'",
+          "replacements": [
+            {
+              "value": ", ki"
+            }
+          ],
+          "offset": 76,
+          "length": 3,
+          "context": {
+            "text": "...oglejmo primer besedila s nekaj napakami ki jih lahko razpozna orodje LanguageTool;...",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "Pa poglejmo primer besedila s nekaj napakami ki jih lahko razpozna orodje LanguageTool; ko opazite napake, jih lahko enostavno popiravite.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "KI_BREZ_VEJICE",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Manjkajoča vejica pred 'ki'",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT3",
+              "name": "Napake pri postavljanju ločil"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Najdena morebitna napaka pri črkovanju.",
+          "shortMessage": "Napaka pri črkovanju",
+          "replacements": [
+            {
+              "value": "popravite"
+            }
+          ],
+          "offset": 159,
+          "length": 10,
+          "context": {
+            "text": "... ko opazite napake, jih lahko enostavno popiravite. ( Obenem se izvrši tudi preverjanje čr...",
+            "offset": 43,
+            "length": 10
+          },
+          "sentence": "Pa poglejmo primer besedila s nekaj napakami ki jih lahko razpozna orodje LanguageTool; ko opazite napake, jih lahko enostavno popiravite.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_SL_SI",
+            "description": "Morebitna napaka pri črkovanju",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Možna tipkarska napaka"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Ne postavljaj presledka za oklepaj",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "("
+            }
+          ],
+          "offset": 171,
+          "length": 2,
+          "context": {
+            "text": "...napake, jih lahko enostavno popiravite. ( Obenem se izvrši tudi preverjanje črkova...",
+            "offset": 43,
+            "length": 2
+          },
+          "sentence": "( Obenem se izvrši tudi preverjanje črkovanja črkovanja.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "COMMA_PARENTHESIS_WHITESPACE",
+            "description": "Uporaba presledka, tabulatorja ali preloma vrstice pred vejico in pred/po oklepaju",
+            "issueType": "whitespace",
+            "category": {
+              "id": "TYPOGRAPHY",
+              "name": "Tipografija"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Možna tipkarska napaka: ponovili ste besedo",
+          "shortMessage": "Podvojena beseda",
+          "replacements": [
+            {
+              "value": "črkovanja"
+            }
+          ],
+          "offset": 207,
+          "length": 19,
+          "context": {
+            "text": "...te. ( Obenem se izvrši tudi preverjanje črkovanja črkovanja.",
+            "offset": 43,
+            "length": 19
+          },
+          "sentence": "( Obenem se izvrši tudi preverjanje črkovanja črkovanja.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "WORD_REPEAT_RULE",
+            "description": "Podvojena beseda (npr. 'bo bo')",
+            "issueType": "duplication",
+            "category": {
+              "id": "MISC",
+              "name": "Razno"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 1
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          31
+        ],
+        [
+          32,
+          170
+        ],
+        [
+          171,
+          227
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 31,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 32,
+          "to": 170,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 171,
+          "to": 227,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.9999969,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Pred tropičjem, ki pomeni prekinjeno poved, mora biti presledek: 1, 2,\" ...\". Če gre za prekinjeno besedo, presledka ne sme biti.",
+          "shortMessage": "Pred tropičjem manjka presledek",
+          "replacements": [
+            {
+              "value": " ..."
+            }
+          ],
+          "offset": 28,
+          "length": 3,
+          "context": {
+            "text": "Tukaj vnesite svoje besedilo... Pa poglejmo primer besedila s nekaj nap...",
+            "offset": 28,
+            "length": 3
+          },
+          "sentence": "Tukaj vnesite svoje besedilo...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "TROPIČJETRI",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Pred tropičjem mora biti presledek",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT3",
+              "name": "Napake pri postavljanju ločil"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Pred besedami, ki se ne začnejo s črko c, f, h, k, p, s, t, č ali š, morate uporabiti namesto \"s\" predlog \"z\".",
+          "shortMessage": "Predlog s namesto z",
+          "replacements": [
+            {
+              "value": "z"
+            }
+          ],
+          "offset": 60,
+          "length": 1,
+          "context": {
+            "text": "...besedilo... Pa poglejmo primer besedila s nekaj napakami ki jih lahko razpozna or...",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "Pa poglejmo primer besedila s nekaj napakami ki jih lahko razpozna orodje LanguageTool; ko opazite napake, jih lahko enostavno popiravite.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PREDLOG_S",
+            "subId": "2",
+            "sourceFile": "grammar.xml",
+            "description": "Pravopis: nepravilna raba predloga 's'",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT4",
+              "name": "Napake uporabe predlogov"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 1
+        },
+        {
+          "message": "V podredjih je pred 'ki' vejica: \", ki\"!",
+          "shortMessage": "Manjka vejica pred 'ki'",
+          "replacements": [
+            {
+              "value": ", ki"
+            }
+          ],
+          "offset": 76,
+          "length": 3,
+          "context": {
+            "text": "...oglejmo primer besedila s nekaj napakami ki jih lahko razpozna orodje LanguageTool;...",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "Pa poglejmo primer besedila s nekaj napakami ki jih lahko razpozna orodje LanguageTool; ko opazite napake, jih lahko enostavno popiravite.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "KI_BREZ_VEJICE",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Manjkajoča vejica pred 'ki'",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT3",
+              "name": "Napake pri postavljanju ločil"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Najdena morebitna napaka pri črkovanju.",
+          "shortMessage": "Napaka pri črkovanju",
+          "replacements": [
+            {
+              "value": "popravite"
+            }
+          ],
+          "offset": 159,
+          "length": 10,
+          "context": {
+            "text": "... ko opazite napake, jih lahko enostavno popiravite. ( Obenem se izvrši tudi preverjanje čr...",
+            "offset": 43,
+            "length": 10
+          },
+          "sentence": "Pa poglejmo primer besedila s nekaj napakami ki jih lahko razpozna orodje LanguageTool; ko opazite napake, jih lahko enostavno popiravite.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_SL_SI",
+            "description": "Morebitna napaka pri črkovanju",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Možna tipkarska napaka"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Ne postavljaj presledka za oklepaj",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "("
+            }
+          ],
+          "offset": 171,
+          "length": 2,
+          "context": {
+            "text": "...napake, jih lahko enostavno popiravite. ( Obenem se izvrši tudi preverjanje črkova...",
+            "offset": 43,
+            "length": 2
+          },
+          "sentence": "( Obenem se izvrši tudi preverjanje črkovanja črkovanja.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "COMMA_PARENTHESIS_WHITESPACE",
+            "description": "Uporaba presledka, tabulatorja ali preloma vrstice pred vejico in pred/po oklepaju",
+            "issueType": "whitespace",
+            "category": {
+              "id": "TYPOGRAPHY",
+              "name": "Tipografija"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Možna tipkarska napaka: ponovili ste besedo",
+          "shortMessage": "Podvojena beseda",
+          "replacements": [
+            {
+              "value": "črkovanja"
+            }
+          ],
+          "offset": 207,
+          "length": 19,
+          "context": {
+            "text": "...te. ( Obenem se izvrši tudi preverjanje črkovanja črkovanja.",
+            "offset": 43,
+            "length": 19
+          },
+          "sentence": "( Obenem se izvrši tudi preverjanje črkovanja črkovanja.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "WORD_REPEAT_RULE",
+            "description": "Podvojena beseda (npr. 'bo bo')",
+            "issueType": "duplication",
+            "category": {
+              "id": "MISC",
+              "name": "Razno"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 1
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          31
+        ],
+        [
+          32,
+          170
+        ],
+        [
+          171,
+          227
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 31,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 32,
+          "to": 170,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 171,
+          "to": 227,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.9999969,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Pred tropičjem, ki pomeni prekinjeno poved, mora biti presledek: 1, 2,\" ...\". Če gre za prekinjeno besedo, presledka ne sme biti.",
+          "shortMessage": "Pred tropičjem manjka presledek",
+          "replacements": [
+            {
+              "value": " ..."
+            }
+          ],
+          "offset": 28,
+          "length": 3,
+          "context": {
+            "text": "Tukaj vnesite svoje besedilo... Pa poglejmo primer besedila s nekaj nap...",
+            "offset": 28,
+            "length": 3
+          },
+          "sentence": "Tukaj vnesite svoje besedilo...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "TROPIČJETRI",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Pred tropičjem mora biti presledek",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT3",
+              "name": "Napake pri postavljanju ločil"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Pred besedami, ki se ne začnejo s črko c, f, h, k, p, s, t, č ali š, morate uporabiti namesto \"s\" predlog \"z\".",
+          "shortMessage": "Predlog s namesto z",
+          "replacements": [
+            {
+              "value": "z"
+            }
+          ],
+          "offset": 60,
+          "length": 1,
+          "context": {
+            "text": "...besedilo... Pa poglejmo primer besedila s nekaj napakami ki jih lahko razpozna or...",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "Pa poglejmo primer besedila s nekaj napakami ki jih lahko razpozna orodje LanguageTool; ko opazite napake, jih lahko enostavno popiravite.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PREDLOG_S",
+            "subId": "2",
+            "sourceFile": "grammar.xml",
+            "description": "Pravopis: nepravilna raba predloga 's'",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT4",
+              "name": "Napake uporabe predlogov"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 1
+        },
+        {
+          "message": "V podredjih je pred 'ki' vejica: \", ki\"!",
+          "shortMessage": "Manjka vejica pred 'ki'",
+          "replacements": [
+            {
+              "value": ", ki"
+            }
+          ],
+          "offset": 76,
+          "length": 3,
+          "context": {
+            "text": "...oglejmo primer besedila s nekaj napakami ki jih lahko razpozna orodje LanguageTool;...",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "Pa poglejmo primer besedila s nekaj napakami ki jih lahko razpozna orodje LanguageTool; ko opazite napake, jih lahko enostavno popiravite.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "KI_BREZ_VEJICE",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Manjkajoča vejica pred 'ki'",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT3",
+              "name": "Napake pri postavljanju ločil"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Najdena morebitna napaka pri črkovanju.",
+          "shortMessage": "Napaka pri črkovanju",
+          "replacements": [
+            {
+              "value": "popravite"
+            }
+          ],
+          "offset": 159,
+          "length": 10,
+          "context": {
+            "text": "... ko opazite napake, jih lahko enostavno popiravite. ( Obenem se izvrši tudi preverjanje čr...",
+            "offset": 43,
+            "length": 10
+          },
+          "sentence": "Pa poglejmo primer besedila s nekaj napakami ki jih lahko razpozna orodje LanguageTool; ko opazite napake, jih lahko enostavno popiravite.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_SL_SI",
+            "description": "Morebitna napaka pri črkovanju",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Možna tipkarska napaka"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Ne postavljaj presledka za oklepaj",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "("
+            }
+          ],
+          "offset": 171,
+          "length": 2,
+          "context": {
+            "text": "...napake, jih lahko enostavno popiravite. ( Obenem se izvrši tudi preverjanje črkova...",
+            "offset": 43,
+            "length": 2
+          },
+          "sentence": "( Obenem se izvrši tudi preverjanje črkovanja črkovanja.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "COMMA_PARENTHESIS_WHITESPACE",
+            "description": "Uporaba presledka, tabulatorja ali preloma vrstice pred vejico in pred/po oklepaju",
+            "issueType": "whitespace",
+            "category": {
+              "id": "TYPOGRAPHY",
+              "name": "Tipografija"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Možna tipkarska napaka: ponovili ste besedo",
+          "shortMessage": "Podvojena beseda",
+          "replacements": [
+            {
+              "value": "črkovanja"
+            }
+          ],
+          "offset": 207,
+          "length": 19,
+          "context": {
+            "text": "...te. ( Obenem se izvrši tudi preverjanje črkovanja črkovanja.",
+            "offset": 43,
+            "length": 19
+          },
+          "sentence": "( Obenem se izvrši tudi preverjanje črkovanja črkovanja.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "WORD_REPEAT_RULE",
+            "description": "Podvojena beseda (npr. 'bo bo')",
+            "issueType": "duplication",
+            "category": {
+              "id": "MISC",
+              "name": "Razno"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 1
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          31
+        ],
+        [
+          32,
+          170
+        ],
+        [
+          171,
+          227
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 31,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 32,
+          "to": 170,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 171,
+          "to": 227,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.99999136,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Najdena morebitna napaka pri črkovanju.",
+          "shortMessage": "Napaka pri črkovanju",
+          "replacements": [
+            {
+              "value": "NPR"
+            },
+            {
+              "value": "NDR"
+            },
+            {
+              "value": "Nor"
+            },
+            {
+              "value": "nor"
+            },
+            {
+              "value": "npr."
+            },
+            {
+              "value": "NPM"
+            },
+            {
+              "value": "Bar"
+            },
+            {
+              "value": "Bur"
+            },
+            {
+              "value": "Car"
+            },
+            {
+              "value": "Cer"
+            },
+            {
+              "value": "DP"
+            },
+            {
+              "value": "DPD"
+            },
+            {
+              "value": "Dor"
+            },
+            {
+              "value": "EP"
+            },
+            {
+              "value": "EPP"
+            },
+            {
+              "value": "Epir"
+            },
+            {
+              "value": "GPG"
+            },
+            {
+              "value": "Gor"
+            },
+            {
+              "value": "JAR"
+            },
+            {
+              "value": "Jer"
+            },
+            {
+              "value": "KPJ"
+            },
+            {
+              "value": "KPS"
+            },
+            {
+              "value": "Lar"
+            },
+            {
+              "value": "Mar"
+            },
+            {
+              "value": "Mir"
+            },
+            {
+              "value": "NK"
+            },
+            {
+              "value": "NLB"
+            },
+            {
+              "value": "NLP"
+            },
+            {
+              "value": "NOB"
+            },
+            {
+              "value": "NUK"
+            },
+            {
+              "value": "Nad"
+            },
+            {
+              "value": "Nec"
+            },
+            {
+              "value": "Nej"
+            },
+            {
+              "value": "Nel"
+            },
+            {
+              "value": "Nev"
+            },
+            {
+              "value": "New"
+            },
+            {
+              "value": "Než"
+            },
+            {
+              "value": "Nik"
+            },
+            {
+              "value": "Nil"
+            },
+            {
+              "value": "Nin"
+            },
+            {
+              "value": "Niš"
+            },
+            {
+              "value": "Noe"
+            },
+            {
+              "value": "Nora"
+            },
+            {
+              "value": "Nore"
+            },
+            {
+              "value": "Nori"
+            },
+            {
+              "value": "Noro"
+            },
+            {
+              "value": "Nuš"
+            },
+            {
+              "value": "Opar"
+            },
+            {
+              "value": "PD"
+            },
+            {
+              "value": "Prš"
+            },
+            {
+              "value": "SP"
+            },
+            {
+              "value": "Sar"
+            },
+            {
+              "value": "TNP"
+            },
+            {
+              "value": "Ter"
+            },
+            {
+              "value": "Tur"
+            },
+            {
+              "value": "Ver"
+            },
+            {
+              "value": "Vir"
+            },
+            {
+              "value": "ZR"
+            },
+            {
+              "value": "Zor"
+            },
+            {
+              "value": "ar"
+            },
+            {
+              "value": "bar"
+            },
+            {
+              "value": "bor"
+            },
+            {
+              "value": "car"
+            },
+            {
+              "value": "cer"
+            },
+            {
+              "value": "dar"
+            },
+            {
+              "value": "dir"
+            },
+            {
+              "value": "dur"
+            },
+            {
+              "value": "ep"
+            },
+            {
+              "value": "epa"
+            },
+            {
+              "value": "epe"
+            },
+            {
+              "value": "epi"
+            },
+            {
+              "value": "epu"
+            },
+            {
+              "value": "er"
+            },
+            {
+              "value": "far"
+            },
+            {
+              "value": "gor"
+            },
+            {
+              "value": "kar"
+            },
+            {
+              "value": "ker"
+            },
+            {
+              "value": "kor"
+            },
+            {
+              "value": "krp"
+            },
+            {
+              "value": "kur"
+            },
+            {
+              "value": "lir"
+            },
+            {
+              "value": "mar"
+            },
+            {
+              "value": "mer"
+            },
+            {
+              "value": "mir"
+            },
+            {
+              "value": "mor"
+            },
+            {
+              "value": "na"
+            },
+            {
+              "value": "nad"
+            },
+            {
+              "value": "nag"
+            },
+            {
+              "value": "naj"
+            },
+            {
+              "value": "nam"
+            },
+            {
+              "value": "nap"
+            },
+            {
+              "value": "napa"
+            },
+            {
+              "value": "nape"
+            },
+            {
+              "value": "naper"
+            },
+            {
+              "value": "napi"
+            },
+            {
+              "value": "napo"
+            },
+            {
+              "value": "napor"
+            },
+            {
+              "value": "nart"
+            },
+            {
+              "value": "nas"
+            },
+            {
+              "value": "naš"
+            },
+            {
+              "value": "ne"
+            },
+            {
+              "value": "neb"
+            },
+            {
+              "value": "neg"
+            },
+            {
+              "value": "nek"
+            },
+            {
+              "value": "nem"
+            },
+            {
+              "value": "ni"
+            },
+            {
+              "value": "nit"
+            },
+            {
+              "value": "niz"
+            },
+            {
+              "value": "niš"
+            },
+            {
+              "value": "nič"
+            },
+            {
+              "value": "nje"
+            },
+            {
+              "value": "nji"
+            },
+            {
+              "value": "njo"
+            },
+            {
+              "value": "no"
+            },
+            {
+              "value": "nog"
+            },
+            {
+              "value": "noj"
+            },
+            {
+              "value": "nora"
+            },
+            {
+              "value": "nore"
+            },
+            {
+              "value": "nori"
+            },
+            {
+              "value": "nork"
+            },
+            {
+              "value": "norm"
+            },
+            {
+              "value": "noro"
+            },
+            {
+              "value": "nos"
+            },
+            {
+              "value": "not"
+            },
+            {
+              "value": "nov"
+            },
+            {
+              "value": "noš"
+            },
+            {
+              "value": "nož"
+            },
+            {
+              "value": "noč"
+            },
+            {
+              "value": "nuj"
+            },
+            {
+              "value": "nul"
+            },
+            {
+              "value": "nun"
+            },
+            {
+              "value": "op."
+            },
+            {
+              "value": "oper"
+            },
+            {
+              "value": "opor"
+            },
+            {
+              "value": "opre"
+            },
+            {
+              "value": "oprh"
+            },
+            {
+              "value": "opri"
+            },
+            {
+              "value": "oprl"
+            },
+            {
+              "value": "oprt"
+            },
+            {
+              "value": "pa"
+            },
+            {
+              "value": "par"
+            },
+            {
+              "value": "pne"
+            },
+            {
+              "value": "pni"
+            },
+            {
+              "value": "po"
+            },
+            {
+              "value": "por"
+            },
+            {
+              "value": "prh"
+            },
+            {
+              "value": "pri"
+            },
+            {
+              "value": "prt"
+            },
+            {
+              "value": "prš"
+            },
+            {
+              "value": "pur"
+            },
+            {
+              "value": "ser"
+            },
+            {
+              "value": "sir"
+            },
+            {
+              "value": "sp."
+            },
+            {
+              "value": "spe"
+            },
+            {
+              "value": "spi"
+            },
+            {
+              "value": "spor"
+            },
+            {
+              "value": "spre"
+            },
+            {
+              "value": "spri"
+            },
+            {
+              "value": "sprl"
+            },
+            {
+              "value": "sprt"
+            },
+            {
+              "value": "srp"
+            },
+            {
+              "value": "sur"
+            },
+            {
+              "value": "tar"
+            },
+            {
+              "value": "ter"
+            },
+            {
+              "value": "tir"
+            },
+            {
+              "value": "tor"
+            },
+            {
+              "value": "tur"
+            },
+            {
+              "value": "up"
+            },
+            {
+              "value": "upa"
+            },
+            {
+              "value": "upe"
+            },
+            {
+              "value": "upi"
+            },
+            {
+              "value": "upor"
+            },
+            {
+              "value": "upre"
+            },
+            {
+              "value": "upri"
+            },
+            {
+              "value": "uprl"
+            },
+            {
+              "value": "uprt"
+            },
+            {
+              "value": "upu"
+            },
+            {
+              "value": "ur"
+            },
+            {
+              "value": "var"
+            },
+            {
+              "value": "ver"
+            },
+            {
+              "value": "vir"
+            },
+            {
+              "value": "zor"
+            },
+            {
+              "value": "Špur"
+            },
+            {
+              "value": "žar"
+            },
+            {
+              "value": "žir"
+            },
+            {
+              "value": "čar"
+            },
+            {
+              "value": "čer"
+            },
+            {
+              "value": "čir"
+            },
+            {
+              "value": "BP"
+            },
+            {
+              "value": "CPU"
+            },
+            {
+              "value": "CR"
+            },
+            {
+              "value": "EXR"
+            },
+            {
+              "value": "GPU"
+            },
+            {
+              "value": "HP"
+            },
+            {
+              "value": "JPG"
+            },
+            {
+              "value": "MP3"
+            },
+            {
+              "value": "MP4"
+            },
+            {
+              "value": "NBA"
+            },
+            {
+              "value": "NBC"
+            },
+            {
+              "value": "NFC"
+            },
+            {
+              "value": "NFL"
+            },
+            {
+              "value": "NFT"
+            },
+            {
+              "value": "NHL"
+            },
+            {
+              "value": "NRA"
+            },
+            {
+              "value": "NSA"
+            },
+            {
+              "value": "NTT"
+            },
+            {
+              "value": "NXP"
+            },
+            {
+              "value": "PPT"
+            },
+            {
+              "value": "TPU"
+            },
+            {
+              "value": "UPS"
+            }
+          ],
+          "offset": 9,
+          "length": 3,
+          "context": {
+            "text": "Kupil je npr. jajca, moko in mleko.",
+            "offset": 9,
+            "length": 3
+          },
+          "sentence": "Kupil je npr. jajca, moko in mleko.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_SL_SI",
+            "description": "Morebitna napaka pri črkovanju",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Možna tipkarska napaka"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          35
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 35,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.99999136,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Najdena morebitna napaka pri črkovanju.",
+          "shortMessage": "Napaka pri črkovanju",
+          "replacements": [
+            {
+              "value": "NPR"
+            },
+            {
+              "value": "NDR"
+            },
+            {
+              "value": "Nor"
+            },
+            {
+              "value": "nor"
+            },
+            {
+              "value": "npr."
+            },
+            {
+              "value": "NPM"
+            },
+            {
+              "value": "Bar"
+            },
+            {
+              "value": "Bur"
+            },
+            {
+              "value": "Car"
+            },
+            {
+              "value": "Cer"
+            },
+            {
+              "value": "DP"
+            },
+            {
+              "value": "DPD"
+            },
+            {
+              "value": "Dor"
+            },
+            {
+              "value": "EP"
+            },
+            {
+              "value": "EPP"
+            },
+            {
+              "value": "Epir"
+            },
+            {
+              "value": "GPG"
+            },
+            {
+              "value": "Gor"
+            },
+            {
+              "value": "JAR"
+            },
+            {
+              "value": "Jer"
+            },
+            {
+              "value": "KPJ"
+            },
+            {
+              "value": "KPS"
+            },
+            {
+              "value": "Lar"
+            },
+            {
+              "value": "Mar"
+            },
+            {
+              "value": "Mir"
+            },
+            {
+              "value": "NK"
+            },
+            {
+              "value": "NLB"
+            },
+            {
+              "value": "NLP"
+            },
+            {
+              "value": "NOB"
+            },
+            {
+              "value": "NUK"
+            },
+            {
+              "value": "Nad"
+            },
+            {
+              "value": "Nec"
+            },
+            {
+              "value": "Nej"
+            },
+            {
+              "value": "Nel"
+            },
+            {
+              "value": "Nev"
+            },
+            {
+              "value": "New"
+            },
+            {
+              "value": "Než"
+            },
+            {
+              "value": "Nik"
+            },
+            {
+              "value": "Nil"
+            },
+            {
+              "value": "Nin"
+            },
+            {
+              "value": "Niš"
+            },
+            {
+              "value": "Noe"
+            },
+            {
+              "value": "Nora"
+            },
+            {
+              "value": "Nore"
+            },
+            {
+              "value": "Nori"
+            },
+            {
+              "value": "Noro"
+            },
+            {
+              "value": "Nuš"
+            },
+            {
+              "value": "Opar"
+            },
+            {
+              "value": "PD"
+            },
+            {
+              "value": "Prš"
+            },
+            {
+              "value": "SP"
+            },
+            {
+              "value": "Sar"
+            },
+            {
+              "value": "TNP"
+            },
+            {
+              "value": "Ter"
+            },
+            {
+              "value": "Tur"
+            },
+            {
+              "value": "Ver"
+            },
+            {
+              "value": "Vir"
+            },
+            {
+              "value": "ZR"
+            },
+            {
+              "value": "Zor"
+            },
+            {
+              "value": "ar"
+            },
+            {
+              "value": "bar"
+            },
+            {
+              "value": "bor"
+            },
+            {
+              "value": "car"
+            },
+            {
+              "value": "cer"
+            },
+            {
+              "value": "dar"
+            },
+            {
+              "value": "dir"
+            },
+            {
+              "value": "dur"
+            },
+            {
+              "value": "ep"
+            },
+            {
+              "value": "epa"
+            },
+            {
+              "value": "epe"
+            },
+            {
+              "value": "epi"
+            },
+            {
+              "value": "epu"
+            },
+            {
+              "value": "er"
+            },
+            {
+              "value": "far"
+            },
+            {
+              "value": "gor"
+            },
+            {
+              "value": "kar"
+            },
+            {
+              "value": "ker"
+            },
+            {
+              "value": "kor"
+            },
+            {
+              "value": "krp"
+            },
+            {
+              "value": "kur"
+            },
+            {
+              "value": "lir"
+            },
+            {
+              "value": "mar"
+            },
+            {
+              "value": "mer"
+            },
+            {
+              "value": "mir"
+            },
+            {
+              "value": "mor"
+            },
+            {
+              "value": "na"
+            },
+            {
+              "value": "nad"
+            },
+            {
+              "value": "nag"
+            },
+            {
+              "value": "naj"
+            },
+            {
+              "value": "nam"
+            },
+            {
+              "value": "nap"
+            },
+            {
+              "value": "napa"
+            },
+            {
+              "value": "nape"
+            },
+            {
+              "value": "naper"
+            },
+            {
+              "value": "napi"
+            },
+            {
+              "value": "napo"
+            },
+            {
+              "value": "napor"
+            },
+            {
+              "value": "nart"
+            },
+            {
+              "value": "nas"
+            },
+            {
+              "value": "naš"
+            },
+            {
+              "value": "ne"
+            },
+            {
+              "value": "neb"
+            },
+            {
+              "value": "neg"
+            },
+            {
+              "value": "nek"
+            },
+            {
+              "value": "nem"
+            },
+            {
+              "value": "ni"
+            },
+            {
+              "value": "nit"
+            },
+            {
+              "value": "niz"
+            },
+            {
+              "value": "niš"
+            },
+            {
+              "value": "nič"
+            },
+            {
+              "value": "nje"
+            },
+            {
+              "value": "nji"
+            },
+            {
+              "value": "njo"
+            },
+            {
+              "value": "no"
+            },
+            {
+              "value": "nog"
+            },
+            {
+              "value": "noj"
+            },
+            {
+              "value": "nora"
+            },
+            {
+              "value": "nore"
+            },
+            {
+              "value": "nori"
+            },
+            {
+              "value": "nork"
+            },
+            {
+              "value": "norm"
+            },
+            {
+              "value": "noro"
+            },
+            {
+              "value": "nos"
+            },
+            {
+              "value": "not"
+            },
+            {
+              "value": "nov"
+            },
+            {
+              "value": "noš"
+            },
+            {
+              "value": "nož"
+            },
+            {
+              "value": "noč"
+            },
+            {
+              "value": "nuj"
+            },
+            {
+              "value": "nul"
+            },
+            {
+              "value": "nun"
+            },
+            {
+              "value": "op."
+            },
+            {
+              "value": "oper"
+            },
+            {
+              "value": "opor"
+            },
+            {
+              "value": "opre"
+            },
+            {
+              "value": "oprh"
+            },
+            {
+              "value": "opri"
+            },
+            {
+              "value": "oprl"
+            },
+            {
+              "value": "oprt"
+            },
+            {
+              "value": "pa"
+            },
+            {
+              "value": "par"
+            },
+            {
+              "value": "pne"
+            },
+            {
+              "value": "pni"
+            },
+            {
+              "value": "po"
+            },
+            {
+              "value": "por"
+            },
+            {
+              "value": "prh"
+            },
+            {
+              "value": "pri"
+            },
+            {
+              "value": "prt"
+            },
+            {
+              "value": "prš"
+            },
+            {
+              "value": "pur"
+            },
+            {
+              "value": "ser"
+            },
+            {
+              "value": "sir"
+            },
+            {
+              "value": "sp."
+            },
+            {
+              "value": "spe"
+            },
+            {
+              "value": "spi"
+            },
+            {
+              "value": "spor"
+            },
+            {
+              "value": "spre"
+            },
+            {
+              "value": "spri"
+            },
+            {
+              "value": "sprl"
+            },
+            {
+              "value": "sprt"
+            },
+            {
+              "value": "srp"
+            },
+            {
+              "value": "sur"
+            },
+            {
+              "value": "tar"
+            },
+            {
+              "value": "ter"
+            },
+            {
+              "value": "tir"
+            },
+            {
+              "value": "tor"
+            },
+            {
+              "value": "tur"
+            },
+            {
+              "value": "up"
+            },
+            {
+              "value": "upa"
+            },
+            {
+              "value": "upe"
+            },
+            {
+              "value": "upi"
+            },
+            {
+              "value": "upor"
+            },
+            {
+              "value": "upre"
+            },
+            {
+              "value": "upri"
+            },
+            {
+              "value": "uprl"
+            },
+            {
+              "value": "uprt"
+            },
+            {
+              "value": "upu"
+            },
+            {
+              "value": "ur"
+            },
+            {
+              "value": "var"
+            },
+            {
+              "value": "ver"
+            },
+            {
+              "value": "vir"
+            },
+            {
+              "value": "zor"
+            },
+            {
+              "value": "Špur"
+            },
+            {
+              "value": "žar"
+            },
+            {
+              "value": "žir"
+            },
+            {
+              "value": "čar"
+            },
+            {
+              "value": "čer"
+            },
+            {
+              "value": "čir"
+            },
+            {
+              "value": "BP"
+            },
+            {
+              "value": "CPU"
+            },
+            {
+              "value": "CR"
+            },
+            {
+              "value": "EXR"
+            },
+            {
+              "value": "GPU"
+            },
+            {
+              "value": "HP"
+            },
+            {
+              "value": "JPG"
+            },
+            {
+              "value": "MP3"
+            },
+            {
+              "value": "MP4"
+            },
+            {
+              "value": "NBA"
+            },
+            {
+              "value": "NBC"
+            },
+            {
+              "value": "NFC"
+            },
+            {
+              "value": "NFL"
+            },
+            {
+              "value": "NFT"
+            },
+            {
+              "value": "NHL"
+            },
+            {
+              "value": "NRA"
+            },
+            {
+              "value": "NSA"
+            },
+            {
+              "value": "NTT"
+            },
+            {
+              "value": "NXP"
+            },
+            {
+              "value": "PPT"
+            },
+            {
+              "value": "TPU"
+            },
+            {
+              "value": "UPS"
+            }
+          ],
+          "offset": 9,
+          "length": 3,
+          "context": {
+            "text": "Kupil je npr. jajca, moko in mleko.",
+            "offset": 9,
+            "length": 3
+          },
+          "sentence": "Kupil je npr. jajca, moko in mleko.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_SL_SI",
+            "description": "Morebitna napaka pri črkovanju",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Možna tipkarska napaka"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          35
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 35,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.99999136,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Najdena morebitna napaka pri črkovanju.",
+          "shortMessage": "Napaka pri črkovanju",
+          "replacements": [
+            {
+              "value": "NPR"
+            },
+            {
+              "value": "NDR"
+            },
+            {
+              "value": "Nor"
+            },
+            {
+              "value": "nor"
+            },
+            {
+              "value": "npr."
+            },
+            {
+              "value": "NPM"
+            },
+            {
+              "value": "Bar"
+            },
+            {
+              "value": "Bur"
+            },
+            {
+              "value": "Car"
+            },
+            {
+              "value": "Cer"
+            },
+            {
+              "value": "DP"
+            },
+            {
+              "value": "DPD"
+            },
+            {
+              "value": "Dor"
+            },
+            {
+              "value": "EP"
+            },
+            {
+              "value": "EPP"
+            },
+            {
+              "value": "Epir"
+            },
+            {
+              "value": "GPG"
+            },
+            {
+              "value": "Gor"
+            },
+            {
+              "value": "JAR"
+            },
+            {
+              "value": "Jer"
+            },
+            {
+              "value": "KPJ"
+            },
+            {
+              "value": "KPS"
+            },
+            {
+              "value": "Lar"
+            },
+            {
+              "value": "Mar"
+            },
+            {
+              "value": "Mir"
+            },
+            {
+              "value": "NK"
+            },
+            {
+              "value": "NLB"
+            },
+            {
+              "value": "NLP"
+            },
+            {
+              "value": "NOB"
+            },
+            {
+              "value": "NUK"
+            },
+            {
+              "value": "Nad"
+            },
+            {
+              "value": "Nec"
+            },
+            {
+              "value": "Nej"
+            },
+            {
+              "value": "Nel"
+            },
+            {
+              "value": "Nev"
+            },
+            {
+              "value": "New"
+            },
+            {
+              "value": "Než"
+            },
+            {
+              "value": "Nik"
+            },
+            {
+              "value": "Nil"
+            },
+            {
+              "value": "Nin"
+            },
+            {
+              "value": "Niš"
+            },
+            {
+              "value": "Noe"
+            },
+            {
+              "value": "Nora"
+            },
+            {
+              "value": "Nore"
+            },
+            {
+              "value": "Nori"
+            },
+            {
+              "value": "Noro"
+            },
+            {
+              "value": "Nuš"
+            },
+            {
+              "value": "Opar"
+            },
+            {
+              "value": "PD"
+            },
+            {
+              "value": "Prš"
+            },
+            {
+              "value": "SP"
+            },
+            {
+              "value": "Sar"
+            },
+            {
+              "value": "TNP"
+            },
+            {
+              "value": "Ter"
+            },
+            {
+              "value": "Tur"
+            },
+            {
+              "value": "Ver"
+            },
+            {
+              "value": "Vir"
+            },
+            {
+              "value": "ZR"
+            },
+            {
+              "value": "Zor"
+            },
+            {
+              "value": "ar"
+            },
+            {
+              "value": "bar"
+            },
+            {
+              "value": "bor"
+            },
+            {
+              "value": "car"
+            },
+            {
+              "value": "cer"
+            },
+            {
+              "value": "dar"
+            },
+            {
+              "value": "dir"
+            },
+            {
+              "value": "dur"
+            },
+            {
+              "value": "ep"
+            },
+            {
+              "value": "epa"
+            },
+            {
+              "value": "epe"
+            },
+            {
+              "value": "epi"
+            },
+            {
+              "value": "epu"
+            },
+            {
+              "value": "er"
+            },
+            {
+              "value": "far"
+            },
+            {
+              "value": "gor"
+            },
+            {
+              "value": "kar"
+            },
+            {
+              "value": "ker"
+            },
+            {
+              "value": "kor"
+            },
+            {
+              "value": "krp"
+            },
+            {
+              "value": "kur"
+            },
+            {
+              "value": "lir"
+            },
+            {
+              "value": "mar"
+            },
+            {
+              "value": "mer"
+            },
+            {
+              "value": "mir"
+            },
+            {
+              "value": "mor"
+            },
+            {
+              "value": "na"
+            },
+            {
+              "value": "nad"
+            },
+            {
+              "value": "nag"
+            },
+            {
+              "value": "naj"
+            },
+            {
+              "value": "nam"
+            },
+            {
+              "value": "nap"
+            },
+            {
+              "value": "napa"
+            },
+            {
+              "value": "nape"
+            },
+            {
+              "value": "naper"
+            },
+            {
+              "value": "napi"
+            },
+            {
+              "value": "napo"
+            },
+            {
+              "value": "napor"
+            },
+            {
+              "value": "nart"
+            },
+            {
+              "value": "nas"
+            },
+            {
+              "value": "naš"
+            },
+            {
+              "value": "ne"
+            },
+            {
+              "value": "neb"
+            },
+            {
+              "value": "neg"
+            },
+            {
+              "value": "nek"
+            },
+            {
+              "value": "nem"
+            },
+            {
+              "value": "ni"
+            },
+            {
+              "value": "nit"
+            },
+            {
+              "value": "niz"
+            },
+            {
+              "value": "niš"
+            },
+            {
+              "value": "nič"
+            },
+            {
+              "value": "nje"
+            },
+            {
+              "value": "nji"
+            },
+            {
+              "value": "njo"
+            },
+            {
+              "value": "no"
+            },
+            {
+              "value": "nog"
+            },
+            {
+              "value": "noj"
+            },
+            {
+              "value": "nora"
+            },
+            {
+              "value": "nore"
+            },
+            {
+              "value": "nori"
+            },
+            {
+              "value": "nork"
+            },
+            {
+              "value": "norm"
+            },
+            {
+              "value": "noro"
+            },
+            {
+              "value": "nos"
+            },
+            {
+              "value": "not"
+            },
+            {
+              "value": "nov"
+            },
+            {
+              "value": "noš"
+            },
+            {
+              "value": "nož"
+            },
+            {
+              "value": "noč"
+            },
+            {
+              "value": "nuj"
+            },
+            {
+              "value": "nul"
+            },
+            {
+              "value": "nun"
+            },
+            {
+              "value": "op."
+            },
+            {
+              "value": "oper"
+            },
+            {
+              "value": "opor"
+            },
+            {
+              "value": "opre"
+            },
+            {
+              "value": "oprh"
+            },
+            {
+              "value": "opri"
+            },
+            {
+              "value": "oprl"
+            },
+            {
+              "value": "oprt"
+            },
+            {
+              "value": "pa"
+            },
+            {
+              "value": "par"
+            },
+            {
+              "value": "pne"
+            },
+            {
+              "value": "pni"
+            },
+            {
+              "value": "po"
+            },
+            {
+              "value": "por"
+            },
+            {
+              "value": "prh"
+            },
+            {
+              "value": "pri"
+            },
+            {
+              "value": "prt"
+            },
+            {
+              "value": "prš"
+            },
+            {
+              "value": "pur"
+            },
+            {
+              "value": "ser"
+            },
+            {
+              "value": "sir"
+            },
+            {
+              "value": "sp."
+            },
+            {
+              "value": "spe"
+            },
+            {
+              "value": "spi"
+            },
+            {
+              "value": "spor"
+            },
+            {
+              "value": "spre"
+            },
+            {
+              "value": "spri"
+            },
+            {
+              "value": "sprl"
+            },
+            {
+              "value": "sprt"
+            },
+            {
+              "value": "srp"
+            },
+            {
+              "value": "sur"
+            },
+            {
+              "value": "tar"
+            },
+            {
+              "value": "ter"
+            },
+            {
+              "value": "tir"
+            },
+            {
+              "value": "tor"
+            },
+            {
+              "value": "tur"
+            },
+            {
+              "value": "up"
+            },
+            {
+              "value": "upa"
+            },
+            {
+              "value": "upe"
+            },
+            {
+              "value": "upi"
+            },
+            {
+              "value": "upor"
+            },
+            {
+              "value": "upre"
+            },
+            {
+              "value": "upri"
+            },
+            {
+              "value": "uprl"
+            },
+            {
+              "value": "uprt"
+            },
+            {
+              "value": "upu"
+            },
+            {
+              "value": "ur"
+            },
+            {
+              "value": "var"
+            },
+            {
+              "value": "ver"
+            },
+            {
+              "value": "vir"
+            },
+            {
+              "value": "zor"
+            },
+            {
+              "value": "Špur"
+            },
+            {
+              "value": "žar"
+            },
+            {
+              "value": "žir"
+            },
+            {
+              "value": "čar"
+            },
+            {
+              "value": "čer"
+            },
+            {
+              "value": "čir"
+            },
+            {
+              "value": "BP"
+            },
+            {
+              "value": "CPU"
+            },
+            {
+              "value": "CR"
+            },
+            {
+              "value": "EXR"
+            },
+            {
+              "value": "GPU"
+            },
+            {
+              "value": "HP"
+            },
+            {
+              "value": "JPG"
+            },
+            {
+              "value": "MP3"
+            },
+            {
+              "value": "MP4"
+            },
+            {
+              "value": "NBA"
+            },
+            {
+              "value": "NBC"
+            },
+            {
+              "value": "NFC"
+            },
+            {
+              "value": "NFL"
+            },
+            {
+              "value": "NFT"
+            },
+            {
+              "value": "NHL"
+            },
+            {
+              "value": "NRA"
+            },
+            {
+              "value": "NSA"
+            },
+            {
+              "value": "NTT"
+            },
+            {
+              "value": "NXP"
+            },
+            {
+              "value": "PPT"
+            },
+            {
+              "value": "TPU"
+            },
+            {
+              "value": "UPS"
+            }
+          ],
+          "offset": 9,
+          "length": 3,
+          "context": {
+            "text": "Kupil je npr. jajca, moko in mleko.",
+            "offset": 9,
+            "length": 3
+          },
+          "sentence": "Kupil je npr. jajca, moko in mleko.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_SL_SI",
+            "description": "Morebitna napaka pri črkovanju",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Možna tipkarska napaka"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          35
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 35,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.9999907,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Ponavadi je pred 'zatorej' vejica: \", zatorej\"!",
+          "shortMessage": "Najbrž manjka vejica pred 'zatorej'",
+          "replacements": [
+            {
+              "value": ", zatorej"
+            }
+          ],
+          "offset": 13,
+          "length": 8,
+          "context": {
+            "text": "Bilo je vroče zatorej je odpela gumbe.",
+            "offset": 13,
+            "length": 8
+          },
+          "sentence": "Bilo je vroče zatorej je odpela gumbe.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "ZATOREJ_BREZ_VEJICE",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Manjkajoča vejica pred 'zatorej'",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT3",
+              "name": "Napake pri postavljanju ločil"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          38
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 38,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.9999907,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Ponavadi je pred 'zatorej' vejica: \", zatorej\"!",
+          "shortMessage": "Najbrž manjka vejica pred 'zatorej'",
+          "replacements": [
+            {
+              "value": ", zatorej"
+            }
+          ],
+          "offset": 13,
+          "length": 8,
+          "context": {
+            "text": "Bilo je vroče zatorej je odpela gumbe.",
+            "offset": 13,
+            "length": 8
+          },
+          "sentence": "Bilo je vroče zatorej je odpela gumbe.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "ZATOREJ_BREZ_VEJICE",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Manjkajoča vejica pred 'zatorej'",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT3",
+              "name": "Napake pri postavljanju ločil"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          38
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 38,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.9999907,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Ponavadi je pred 'zatorej' vejica: \", zatorej\"!",
+          "shortMessage": "Najbrž manjka vejica pred 'zatorej'",
+          "replacements": [
+            {
+              "value": ", zatorej"
+            }
+          ],
+          "offset": 13,
+          "length": 8,
+          "context": {
+            "text": "Bilo je vroče zatorej je odpela gumbe.",
+            "offset": 13,
+            "length": 8
+          },
+          "sentence": "Bilo je vroče zatorej je odpela gumbe.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "ZATOREJ_BREZ_VEJICE",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Manjkajoča vejica pred 'zatorej'",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT3",
+              "name": "Napake pri postavljanju ločil"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          38
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 38,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.9999912,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "V podredjih je lahko pred 'kakor' vejica: \", kakor\"!",
+          "shortMessage": "Morda manjka vejica pred 'kakor'",
+          "replacements": [
+            {
+              "value": ", kakor"
+            }
+          ],
+          "offset": 12,
+          "length": 6,
+          "context": {
+            "text": "Bilo je tako kakor nam je opisoval ded.",
+            "offset": 12,
+            "length": 6
+          },
+          "sentence": "Bilo je tako kakor nam je opisoval ded.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "KAKOR_BREZ_VEJICE",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Manjkajoča vejica pred 'kakor'",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT3",
+              "name": "Napake pri postavljanju ločil"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 1
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          39
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 39,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.9999912,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "V podredjih je lahko pred 'kakor' vejica: \", kakor\"!",
+          "shortMessage": "Morda manjka vejica pred 'kakor'",
+          "replacements": [
+            {
+              "value": ", kakor"
+            }
+          ],
+          "offset": 12,
+          "length": 6,
+          "context": {
+            "text": "Bilo je tako kakor nam je opisoval ded.",
+            "offset": 12,
+            "length": 6
+          },
+          "sentence": "Bilo je tako kakor nam je opisoval ded.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "KAKOR_BREZ_VEJICE",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Manjkajoča vejica pred 'kakor'",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT3",
+              "name": "Napake pri postavljanju ločil"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 1
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          39
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 39,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.9999912,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "V podredjih je lahko pred 'kakor' vejica: \", kakor\"!",
+          "shortMessage": "Morda manjka vejica pred 'kakor'",
+          "replacements": [
+            {
+              "value": ", kakor"
+            }
+          ],
+          "offset": 12,
+          "length": 6,
+          "context": {
+            "text": "Bilo je tako kakor nam je opisoval ded.",
+            "offset": 12,
+            "length": 6
+          },
+          "sentence": "Bilo je tako kakor nam je opisoval ded.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "KAKOR_BREZ_VEJICE",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Manjkajoča vejica pred 'kakor'",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT3",
+              "name": "Napake pri postavljanju ločil"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 1
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          39
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 39,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.99999243,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Neprimerno, priporočamo: \"glede\"",
+          "shortMessage": "Slogovni nasvet: z ozirom",
+          "replacements": [
+            {
+              "value": "Glede"
+            }
+          ],
+          "offset": 0,
+          "length": 8,
+          "context": {
+            "text": "Z ozirom na vse težave se je dobro končalo.",
+            "offset": 0,
+            "length": 8
+          },
+          "sentence": "Z ozirom na vse težave se je dobro končalo.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "Z_OZIROM",
+            "subId": "10",
+            "sourceFile": "grammar.xml",
+            "description": "Slogovni nasvet: z ozirom",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT6",
+              "name": "Pogoste napake"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          43
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 43,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.99999243,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Neprimerno, priporočamo: \"glede\"",
+          "shortMessage": "Slogovni nasvet: z ozirom",
+          "replacements": [
+            {
+              "value": "Glede"
+            }
+          ],
+          "offset": 0,
+          "length": 8,
+          "context": {
+            "text": "Z ozirom na vse težave se je dobro končalo.",
+            "offset": 0,
+            "length": 8
+          },
+          "sentence": "Z ozirom na vse težave se je dobro končalo.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "Z_OZIROM",
+            "subId": "10",
+            "sourceFile": "grammar.xml",
+            "description": "Slogovni nasvet: z ozirom",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT6",
+              "name": "Pogoste napake"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          43
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 43,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.99999243,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Neprimerno, priporočamo: \"glede\"",
+          "shortMessage": "Slogovni nasvet: z ozirom",
+          "replacements": [
+            {
+              "value": "Glede"
+            }
+          ],
+          "offset": 0,
+          "length": 8,
+          "context": {
+            "text": "Z ozirom na vse težave se je dobro končalo.",
+            "offset": 0,
+            "length": 8
+          },
+          "sentence": "Z ozirom na vse težave se je dobro končalo.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "Z_OZIROM",
+            "subId": "10",
+            "sourceFile": "grammar.xml",
+            "description": "Slogovni nasvet: z ozirom",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT6",
+              "name": "Pogoste napake"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          43
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 43,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.98731804,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "V podredjih je pred 'preden' vejica: \", preden\"!",
+          "shortMessage": "Najbrž manjka vejica pred 'preden'",
+          "replacements": [
+            {
+              "value": ", preden"
+            }
+          ],
+          "offset": 5,
+          "length": 7,
+          "context": {
+            "text": "Gremo preden bo prepozno.",
+            "offset": 5,
+            "length": 7
+          },
+          "sentence": "Gremo preden bo prepozno.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PREDEN_BREZ_VEJICE",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Manjkajoča vejica pred 'preden'",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT3",
+              "name": "Napake pri postavljanju ločil"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          25
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 25,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.98731804,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "V podredjih je pred 'preden' vejica: \", preden\"!",
+          "shortMessage": "Najbrž manjka vejica pred 'preden'",
+          "replacements": [
+            {
+              "value": ", preden"
+            }
+          ],
+          "offset": 5,
+          "length": 7,
+          "context": {
+            "text": "Gremo preden bo prepozno.",
+            "offset": 5,
+            "length": 7
+          },
+          "sentence": "Gremo preden bo prepozno.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PREDEN_BREZ_VEJICE",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Manjkajoča vejica pred 'preden'",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT3",
+              "name": "Napake pri postavljanju ločil"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          25
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 25,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.98731804,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "V podredjih je pred 'preden' vejica: \", preden\"!",
+          "shortMessage": "Najbrž manjka vejica pred 'preden'",
+          "replacements": [
+            {
+              "value": ", preden"
+            }
+          ],
+          "offset": 5,
+          "length": 7,
+          "context": {
+            "text": "Gremo preden bo prepozno.",
+            "offset": 5,
+            "length": 7
+          },
+          "sentence": "Gremo preden bo prepozno.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PREDEN_BREZ_VEJICE",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Manjkajoča vejica pred 'preden'",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT3",
+              "name": "Napake pri postavljanju ločil"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          25
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 25,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.9999922,
+          "source": "+fallback"
+        }
+      },
+      "matches": [],
+      "sentenceRanges": [
+        [
+          0,
+          40
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 40,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.9999922,
+          "source": "+fallback"
+        }
+      },
+      "matches": [],
+      "sentenceRanges": [
+        [
+          0,
+          40
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 40,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.9999922,
+          "source": "+fallback"
+        }
+      },
+      "matches": [],
+      "sentenceRanges": [
+        [
+          0,
+          40
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 40,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.99999607,
+          "source": "+fallback"
+        }
+      },
+      "matches": [],
+      "sentenceRanges": [
+        [
+          0,
+          53
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 53,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.99999607,
+          "source": "+fallback"
+        }
+      },
+      "matches": [],
+      "sentenceRanges": [
+        [
+          0,
+          53
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 53,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.99999607,
+          "source": "+fallback"
+        }
+      },
+      "matches": [],
+      "sentenceRanges": [
+        [
+          0,
+          53
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 53,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.9999964,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "\"nič\"",
+          "shortMessage": "Številka v besedilu",
+          "replacements": [
+            {
+              "value": "nič"
+            }
+          ],
+          "offset": 0,
+          "length": 1,
+          "context": {
+            "text": "0 oseb ni manjkalo 1 oseba je manjkala 2 ...",
+            "offset": 0,
+            "length": 1
+          },
+          "sentence": "0 oseb ni manjkalo 1 oseba je manjkala 2 osebi sta manjkali 3 osebe so manjkale 4 osebe so manjkale",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "STEVILA_DO_10",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Števila, manjša od 10",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT1",
+              "name": "Slog - številke"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 1
+        },
+        {
+          "message": "\"ena\"",
+          "shortMessage": "Številka v besedilu",
+          "replacements": [
+            {
+              "value": "ena"
+            }
+          ],
+          "offset": 19,
+          "length": 1,
+          "context": {
+            "text": "0 oseb ni manjkalo 1 oseba je manjkala 2 osebi sta manjkali ...",
+            "offset": 19,
+            "length": 1
+          },
+          "sentence": "0 oseb ni manjkalo 1 oseba je manjkala 2 osebi sta manjkali 3 osebe so manjkale 4 osebe so manjkale",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "STEVILA_DO_10",
+            "subId": "2",
+            "sourceFile": "grammar.xml",
+            "description": "Števila, manjša od 10",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT1",
+              "name": "Slog - številke"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 1
+        },
+        {
+          "message": "\"dve\"",
+          "shortMessage": "Številka v besedilu",
+          "replacements": [
+            {
+              "value": "dve"
+            }
+          ],
+          "offset": 39,
+          "length": 1,
+          "context": {
+            "text": "0 oseb ni manjkalo 1 oseba je manjkala 2 osebi sta manjkali 3 osebe so manjkale ...",
+            "offset": 39,
+            "length": 1
+          },
+          "sentence": "0 oseb ni manjkalo 1 oseba je manjkala 2 osebi sta manjkali 3 osebe so manjkale 4 osebe so manjkale",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "STEVILA_DO_10",
+            "subId": "3",
+            "sourceFile": "grammar.xml",
+            "description": "Števila, manjša od 10",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT1",
+              "name": "Slog - številke"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 1
+        },
+        {
+          "message": "\"tri\"",
+          "shortMessage": "Številka v besedilu",
+          "replacements": [
+            {
+              "value": "tri"
+            }
+          ],
+          "offset": 60,
+          "length": 1,
+          "context": {
+            "text": "... oseba je manjkala 2 osebi sta manjkali 3 osebe so manjkale 4 osebe so manjkale",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "0 oseb ni manjkalo 1 oseba je manjkala 2 osebi sta manjkali 3 osebe so manjkale 4 osebe so manjkale",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "STEVILA_DO_10",
+            "subId": "4",
+            "sourceFile": "grammar.xml",
+            "description": "Števila, manjša od 10",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT1",
+              "name": "Slog - številke"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 1
+        },
+        {
+          "message": "\"štiri\"",
+          "shortMessage": "Številka v besedilu",
+          "replacements": [
+            {
+              "value": "štiri"
+            }
+          ],
+          "offset": 80,
+          "length": 1,
+          "context": {
+            "text": "... osebi sta manjkali 3 osebe so manjkale 4 osebe so manjkale",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "0 oseb ni manjkalo 1 oseba je manjkala 2 osebi sta manjkali 3 osebe so manjkale 4 osebe so manjkale",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "STEVILA_DO_10",
+            "subId": "5",
+            "sourceFile": "grammar.xml",
+            "description": "Števila, manjša od 10",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT1",
+              "name": "Slog - številke"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 1
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          99
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 99,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.9999964,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "\"nič\"",
+          "shortMessage": "Številka v besedilu",
+          "replacements": [
+            {
+              "value": "nič"
+            }
+          ],
+          "offset": 0,
+          "length": 1,
+          "context": {
+            "text": "0 oseb ni manjkalo 1 oseba je manjkala 2 ...",
+            "offset": 0,
+            "length": 1
+          },
+          "sentence": "0 oseb ni manjkalo 1 oseba je manjkala 2 osebi sta manjkali 3 osebe so manjkale 4 osebe so manjkale",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "STEVILA_DO_10",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Števila, manjša od 10",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT1",
+              "name": "Slog - številke"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 1
+        },
+        {
+          "message": "\"ena\"",
+          "shortMessage": "Številka v besedilu",
+          "replacements": [
+            {
+              "value": "ena"
+            }
+          ],
+          "offset": 19,
+          "length": 1,
+          "context": {
+            "text": "0 oseb ni manjkalo 1 oseba je manjkala 2 osebi sta manjkali ...",
+            "offset": 19,
+            "length": 1
+          },
+          "sentence": "0 oseb ni manjkalo 1 oseba je manjkala 2 osebi sta manjkali 3 osebe so manjkale 4 osebe so manjkale",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "STEVILA_DO_10",
+            "subId": "2",
+            "sourceFile": "grammar.xml",
+            "description": "Števila, manjša od 10",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT1",
+              "name": "Slog - številke"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 1
+        },
+        {
+          "message": "\"dve\"",
+          "shortMessage": "Številka v besedilu",
+          "replacements": [
+            {
+              "value": "dve"
+            }
+          ],
+          "offset": 39,
+          "length": 1,
+          "context": {
+            "text": "0 oseb ni manjkalo 1 oseba je manjkala 2 osebi sta manjkali 3 osebe so manjkale ...",
+            "offset": 39,
+            "length": 1
+          },
+          "sentence": "0 oseb ni manjkalo 1 oseba je manjkala 2 osebi sta manjkali 3 osebe so manjkale 4 osebe so manjkale",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "STEVILA_DO_10",
+            "subId": "3",
+            "sourceFile": "grammar.xml",
+            "description": "Števila, manjša od 10",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT1",
+              "name": "Slog - številke"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 1
+        },
+        {
+          "message": "\"tri\"",
+          "shortMessage": "Številka v besedilu",
+          "replacements": [
+            {
+              "value": "tri"
+            }
+          ],
+          "offset": 60,
+          "length": 1,
+          "context": {
+            "text": "... oseba je manjkala 2 osebi sta manjkali 3 osebe so manjkale 4 osebe so manjkale",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "0 oseb ni manjkalo 1 oseba je manjkala 2 osebi sta manjkali 3 osebe so manjkale 4 osebe so manjkale",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "STEVILA_DO_10",
+            "subId": "4",
+            "sourceFile": "grammar.xml",
+            "description": "Števila, manjša od 10",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT1",
+              "name": "Slog - številke"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 1
+        },
+        {
+          "message": "\"štiri\"",
+          "shortMessage": "Številka v besedilu",
+          "replacements": [
+            {
+              "value": "štiri"
+            }
+          ],
+          "offset": 80,
+          "length": 1,
+          "context": {
+            "text": "... osebi sta manjkali 3 osebe so manjkale 4 osebe so manjkale",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "0 oseb ni manjkalo 1 oseba je manjkala 2 osebi sta manjkali 3 osebe so manjkale 4 osebe so manjkale",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "STEVILA_DO_10",
+            "subId": "5",
+            "sourceFile": "grammar.xml",
+            "description": "Števila, manjša od 10",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT1",
+              "name": "Slog - številke"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 1
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          99
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 99,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.9999907,
+          "source": "+fallback"
+        }
+      },
+      "matches": [],
+      "sentenceRanges": [
+        [
+          0,
+          38
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 38,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.9999907,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Ponavadi je pred 'zatorej' vejica: \", zatorej\"!",
+          "shortMessage": "Najbrž manjka vejica pred 'zatorej'",
+          "replacements": [
+            {
+              "value": ", zatorej"
+            }
+          ],
+          "offset": 13,
+          "length": 8,
+          "context": {
+            "text": "Bilo je vroče zatorej je odpela gumbe.",
+            "offset": 13,
+            "length": 8
+          },
+          "sentence": "Bilo je vroče zatorej je odpela gumbe.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "ZATOREJ_BREZ_VEJICE",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Manjkajoča vejica pred 'zatorej'",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT3",
+              "name": "Napake pri postavljanju ločil"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          38
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 38,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.9999912,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "V podredjih je lahko pred 'kakor' vejica: \", kakor\"!",
+          "shortMessage": "Morda manjka vejica pred 'kakor'",
+          "replacements": [
+            {
+              "value": ", kakor"
+            }
+          ],
+          "offset": 12,
+          "length": 6,
+          "context": {
+            "text": "Bilo je tako kakor nam je opisoval ded.",
+            "offset": 12,
+            "length": 6
+          },
+          "sentence": "Bilo je tako kakor nam je opisoval ded.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "KAKOR_BREZ_VEJICE",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Manjkajoča vejica pred 'kakor'",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT3",
+              "name": "Napake pri postavljanju ločil"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 1
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          39
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 39,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.9999912,
+          "source": "+fallback"
+        }
+      },
+      "matches": [],
+      "sentenceRanges": [
+        [
+          0,
+          39
+        ]
+      ],
+      "extendedSentenceRanges": []
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.9999912,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "V podredjih je lahko pred 'kakor' vejica: \", kakor\"!",
+          "shortMessage": "Morda manjka vejica pred 'kakor'",
+          "replacements": [
+            {
+              "value": ", kakor"
+            }
+          ],
+          "offset": 12,
+          "length": 6,
+          "context": {
+            "text": "Bilo je tako kakor nam je opisoval ded.",
+            "offset": 12,
+            "length": 6
+          },
+          "sentence": "Bilo je tako kakor nam je opisoval ded.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "KAKOR_BREZ_VEJICE",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Manjkajoča vejica pred 'kakor'",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT3",
+              "name": "Napake pri postavljanju ločil"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 1
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          39
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 39,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "English (US)",
+          "code": "en-US",
+          "confidence": 0,
+          "source": null
+        }
+      },
+      "matches": [],
+      "sentenceRanges": [],
+      "extendedSentenceRanges": []
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Tagalog",
+          "code": "tl-PH",
+          "confidence": 0.9999961,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Najdena morebitna napaka pri črkovanju.",
+          "shortMessage": "Napaka pri črkovanju",
+          "replacements": [],
+          "offset": 0,
+          "length": 200,
+          "context": {
+            "text": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "offset": 0,
+            "length": 200
+          },
+          "sentence": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_SL_SI",
+            "description": "Morebitna napaka pri črkovanju",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Možna tipkarska napaka"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          200
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 200,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.99999547,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Ponavadi je pred 'zatorej' vejica: \", zatorej\"!",
+          "shortMessage": "Najbrž manjka vejica pred 'zatorej'",
+          "replacements": [
+            {
+              "value": ", zatorej"
+            }
+          ],
+          "offset": 13,
+          "length": 8,
+          "context": {
+            "text": "Bilo je vroče zatorej je odpela gumbe.<b> Bilo je tako kakor ...",
+            "offset": 13,
+            "length": 8
+          },
+          "sentence": "Bilo je vroče zatorej je odpela gumbe.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "ZATOREJ_BREZ_VEJICE",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Manjkajoča vejica pred 'zatorej'",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT3",
+              "name": "Napake pri postavljanju ločil"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "V podredjih je lahko pred 'kakor' vejica: \", kakor\"!",
+          "shortMessage": "Morda manjka vejica pred 'kakor'",
+          "replacements": [
+            {
+              "value": ", kakor"
+            }
+          ],
+          "offset": 54,
+          "length": 6,
+          "context": {
+            "text": "...zatorej je odpela gumbe.<b> Bilo je tako kakor nam je opisoval ded.",
+            "offset": 43,
+            "length": 6
+          },
+          "sentence": "Bilo je tako kakor nam je opisoval ded.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "KAKOR_BREZ_VEJICE",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Manjkajoča vejica pred 'kakor'",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT3",
+              "name": "Napake pri postavljanju ločil"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 1
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          41
+        ],
+        [
+          42,
+          81
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 38,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 39,
+          "to": 78,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.9999907,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Ponavadi je pred 'zatorej' vejica: \", zatorej\"!",
+          "shortMessage": "Najbrž manjka vejica pred 'zatorej'",
+          "replacements": [
+            {
+              "value": ", zatorej"
+            }
+          ],
+          "offset": 13,
+          "length": 8,
+          "context": {
+            "text": "Bilo je vroče zatorej je odpela gumbe.",
+            "offset": 13,
+            "length": 8
+          },
+          "sentence": "Bilo je vroče zatorej je odpela gumbe.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "ZATOREJ_BREZ_VEJICE",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Manjkajoča vejica pred 'zatorej'",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT3",
+              "name": "Napake pri postavljanju ločil"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          38
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 38,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "language": {
+        "name": "Slovenian",
+        "code": "sl-SI",
+        "detectedLanguage": {
+          "name": "Slovenian",
+          "code": "sl-SI",
+          "confidence": 0.9999907,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Ponavadi je pred 'zatorej' vejica: \", zatorej\"!",
+          "shortMessage": "Najbrž manjka vejica pred 'zatorej'",
+          "replacements": [
+            {
+              "value": ", zatorej"
+            }
+          ],
+          "offset": 13,
+          "length": 8,
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "ZATOREJ_BREZ_VEJICE",
+            "subId": "1",
+            "description": "Manjkajoča vejica pred 'zatorej'",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT3",
+              "name": "Napake pri postavljanju ločil"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          38
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 38,
+          "detectedLanguages": [
+            {
+              "language": "sl",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": [
+      {
+        "name": "Arabic",
+        "code": "ar",
+        "longCode": "ar"
+      },
+      {
+        "name": "Asturian",
+        "code": "ast",
+        "longCode": "ast-ES"
+      },
+      {
+        "name": "Belarusian",
+        "code": "be",
+        "longCode": "be-BY"
+      },
+      {
+        "name": "Breton",
+        "code": "br",
+        "longCode": "br-FR"
+      },
+      {
+        "name": "Catalan",
+        "code": "ca",
+        "longCode": "ca-ES"
+      },
+      {
+        "name": "Catalan (Valencian)",
+        "code": "ca",
+        "longCode": "ca-ES-valencia"
+      },
+      {
+        "name": "Catalan (Balearic)",
+        "code": "ca",
+        "longCode": "ca-ES-balear"
+      },
+      {
+        "name": "Danish",
+        "code": "da",
+        "longCode": "da-DK"
+      },
+      {
+        "name": "German",
+        "code": "de",
+        "longCode": "de"
+      },
+      {
+        "name": "German (Germany)",
+        "code": "de",
+        "longCode": "de-DE"
+      },
+      {
+        "name": "German (Austria)",
+        "code": "de",
+        "longCode": "de-AT"
+      },
+      {
+        "name": "German (Swiss)",
+        "code": "de",
+        "longCode": "de-CH"
+      },
+      {
+        "name": "Simple German",
+        "code": "de-DE-x-simple-language",
+        "longCode": "de-DE-x-simple-language"
+      },
+      {
+        "name": "Greek",
+        "code": "el",
+        "longCode": "el-GR"
+      },
+      {
+        "name": "English",
+        "code": "en",
+        "longCode": "en"
+      },
+      {
+        "name": "English (US)",
+        "code": "en",
+        "longCode": "en-US"
+      },
+      {
+        "name": "English (GB)",
+        "code": "en",
+        "longCode": "en-GB"
+      },
+      {
+        "name": "English (Australian)",
+        "code": "en",
+        "longCode": "en-AU"
+      },
+      {
+        "name": "English (Canadian)",
+        "code": "en",
+        "longCode": "en-CA"
+      },
+      {
+        "name": "English (New Zealand)",
+        "code": "en",
+        "longCode": "en-NZ"
+      },
+      {
+        "name": "English (South African)",
+        "code": "en",
+        "longCode": "en-ZA"
+      },
+      {
+        "name": "Esperanto",
+        "code": "eo",
+        "longCode": "eo"
+      },
+      {
+        "name": "Spanish",
+        "code": "es",
+        "longCode": "es"
+      },
+      {
+        "name": "Spanish (voseo)",
+        "code": "es",
+        "longCode": "es-AR"
+      },
+      {
+        "name": "Persian",
+        "code": "fa",
+        "longCode": "fa"
+      },
+      {
+        "name": "French",
+        "code": "fr",
+        "longCode": "fr"
+      },
+      {
+        "name": "French (Canada)",
+        "code": "fr",
+        "longCode": "fr-CA"
+      },
+      {
+        "name": "French (Switzerland)",
+        "code": "fr",
+        "longCode": "fr-CH"
+      },
+      {
+        "name": "French (Belgium)",
+        "code": "fr",
+        "longCode": "fr-BE"
+      },
+      {
+        "name": "Irish",
+        "code": "ga",
+        "longCode": "ga-IE"
+      },
+      {
+        "name": "Galician",
+        "code": "gl",
+        "longCode": "gl-ES"
+      },
+      {
+        "name": "Italian",
+        "code": "it",
+        "longCode": "it"
+      },
+      {
+        "name": "Japanese",
+        "code": "ja",
+        "longCode": "ja-JP"
+      },
+      {
+        "name": "Khmer",
+        "code": "km",
+        "longCode": "km-KH"
+      },
+      {
+        "name": "Dutch",
+        "code": "nl",
+        "longCode": "nl"
+      },
+      {
+        "name": "Dutch (Belgium)",
+        "code": "nl",
+        "longCode": "nl-BE"
+      },
+      {
+        "name": "Polish",
+        "code": "pl",
+        "longCode": "pl-PL"
+      },
+      {
+        "name": "Portuguese",
+        "code": "pt",
+        "longCode": "pt"
+      },
+      {
+        "name": "Portuguese (Portugal)",
+        "code": "pt",
+        "longCode": "pt-PT"
+      },
+      {
+        "name": "Portuguese (Brazil)",
+        "code": "pt",
+        "longCode": "pt-BR"
+      },
+      {
+        "name": "Portuguese (Angola preAO)",
+        "code": "pt",
+        "longCode": "pt-AO"
+      },
+      {
+        "name": "Portuguese (Moçambique preAO)",
+        "code": "pt",
+        "longCode": "pt-MZ"
+      },
+      {
+        "name": "Romanian",
+        "code": "ro",
+        "longCode": "ro-RO"
+      },
+      {
+        "name": "Russian",
+        "code": "ru",
+        "longCode": "ru-RU"
+      },
+      {
+        "name": "Slovak",
+        "code": "sk",
+        "longCode": "sk-SK"
+      },
+      {
+        "name": "Slovenian",
+        "code": "sl",
+        "longCode": "sl-SI"
+      },
+      {
+        "name": "Swedish",
+        "code": "sv",
+        "longCode": "sv"
+      },
+      {
+        "name": "Tamil",
+        "code": "ta",
+        "longCode": "ta-IN"
+      },
+      {
+        "name": "Tagalog",
+        "code": "tl",
+        "longCode": "tl-PH"
+      },
+      {
+        "name": "Ukrainian",
+        "code": "uk",
+        "longCode": "uk-UA"
+      },
+      {
+        "name": "Chinese",
+        "code": "zh",
+        "longCode": "zh-CN"
+      },
+      {
+        "name": "Crimean Tatar",
+        "code": "crh",
+        "longCode": "crh-UA"
+      },
+      {
+        "name": "Dutch",
+        "code": "nl",
+        "longCode": "nl-NL"
+      },
+      {
+        "name": "Simple German",
+        "code": "de-DE-x-simple-language",
+        "longCode": "de-DE-x-simple-language-DE"
+      },
+      {
+        "name": "Spanish",
+        "code": "es",
+        "longCode": "es-ES"
+      },
+      {
+        "name": "Italian",
+        "code": "it",
+        "longCode": "it-IT"
+      },
+      {
+        "name": "Persian",
+        "code": "fa",
+        "longCode": "fa-IR"
+      },
+      {
+        "name": "Swedish",
+        "code": "sv",
+        "longCode": "sv-SE"
+      },
+      {
+        "name": "German",
+        "code": "de",
+        "longCode": "de-LU"
+      },
+      {
+        "name": "French",
+        "code": "fr",
+        "longCode": "fr-FR"
+      }
+    ],
+    "languagesList": true
+  }
+]

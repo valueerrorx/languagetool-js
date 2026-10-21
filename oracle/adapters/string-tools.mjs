@@ -6,13 +6,14 @@ import { javaCompare } from '../../src/lib/java/strings.js';
 import { safe } from './_text-common.mjs';
 import '../../src/lang/register.js';
 import { Languages } from '../../src/core/Languages.js';
+import { isPortedBase } from '../lib/scope.mjs';
 
 // short codes of Java languages outside the wave-1 modules (DEV-006): the port has no such language, a descriptor with the short code stands in
 const OUT_OF_SCOPE = new Set(['ar', 'eo', 'es', 'fa', 'it', 'nl', 'pt', 'sv', 'ca', 'el', 'uk', 'ja', 'km', 'ro', 'ru', 'sk', 'sl', 'ta', 'tl', 'zh', 'pl', 'da', 'ga', 'gl', 'be', 'br', 'ast', 'crh']);
 
 // Java: Languages#getLanguageForShortCode(String) (unknown codes give the Java error, its code list is DEV-006 filtered)
 function languageFor(code) {
-  if (OUT_OF_SCOPE.has(code)) return { getShortCode: () => code };
+  if (OUT_OF_SCOPE.has(code) && !isPortedBase(code)) return { getShortCode: () => code };
   return Languages.getLanguageForShortCode(code);
 }
 

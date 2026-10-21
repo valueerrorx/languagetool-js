@@ -1,10 +1,14 @@
 // DEV-006 handling for the language registry fixtures (docs/review/F10-porter.md): Java results that depend on a language outside the wave-1 modules.
 import { isDeepStrictEqual } from 'node:util';
+import { portedBases, portedClasses } from '../lib/scope.mjs';
 
-const IN_SCOPE_BASE = new Set(['de', 'en', 'fr']);
-const IN_SCOPE_CLASSES = new Set(['German', 'GermanyGerman', 'AustrianGerman', 'SwissGerman',
+// W02: languages registered in the port count as in scope on top of the wave-1 set
+const WAVE1_BASE = new Set(['de', 'en', 'fr']);
+const inScopeBase = (c) => WAVE1_BASE.has(c) || portedBases().has(c);
+const WAVE1_CLASSES = new Set(['German', 'GermanyGerman', 'AustrianGerman', 'SwissGerman',
   'English', 'AmericanEnglish', 'BritishEnglish', 'AustralianEnglish', 'CanadianEnglish', 'NewZealandEnglish', 'SouthAfricanEnglish',
   'French', 'CanadianFrench', 'SwissFrench', 'BelgianFrench']);
+const inScopeClass = (c) => WAVE1_CLASSES.has(c) || portedClasses().has(c);
 const LIST_RE = /Supported language codes are: [^]*?\. The list of languages is read/g;
 const WORKDIR_RE = /\/tmp\/ltjs-oracle-[A-Za-z0-9_]+|<CASE>/g; // Java work dir (user.dir of the oracle run), already replaced by <CASE> when the case normalises paths
 
@@ -24,7 +28,7 @@ function isNegative(a) {
 // expected item that exists only because Java registers more languages (builder over an out-of-scope base language)
 function dependsOnOutOfScopeBase(e, a) {
   if (!isWrap(e)) return false;
-  if (e.value !== null && typeof e.value === 'object' && e.value.class === 'org.languagetool.language.LanguageBuilder$ExtendedLanguage' && !IN_SCOPE_BASE.has(e.value.shortCode)) return true;
+  if (e.value !== null && typeof e.value === 'object' && e.value.class === 'org.languagetool.language.LanguageBuilder$ExtendedLanguage' && !inScopeBase(e.value.shortCode)) return true;
   return false;
 }
 
@@ -50,9 +54,9 @@ function pair(e0, a) {
   if (isWrap(e) && e.dev006Filtered === true) return isNegative(a) ? [null, null] : [e, a];
   if (dependsOnOutOfScopeBase(e, a)) return [null, null];
   if (alreadyInstantiated(e) && isWrap(a) && a.value && a.value.class === 'org.languagetool.language.LanguageBuilder$1') return [null, null];
-  if (Array.isArray(e) && e.every(isWrap) && e.length > 0) return [e.filter((x) => x.dev006Filtered !== true), a];
-  if (Array.isArray(e) && e.length > 0 && e.every(isRow)) return [e.filter((x) => x[2] !== true), a];
-  if (Array.isArray(e) && e.length > 0 && e.every(isTriple)) return [e.filter((x) => !x[0].startsWith('org.languagetool.language.') || IN_SCOPE_CLASSES.has(simpleName(x[0]))), a];
+  if (Array.isArray(e) && e.every(isWrap) && e.length > 0) return [e.filter((x) => x.dev006Filtered !== true || (x.value && inScopeBase(x.value.shortCode))), a];
+  if (Array.isArray(e) && e.length > 0 && e.every(isRow)) return [e.filter((x) => x[2] !== true || inScopeBase(String(x[1]).split('-')[0])), a];
+  if (Array.isArray(e) && e.length > 0 && e.every(isTriple)) return [e.filter((x) => !x[0].startsWith('org.languagetool.language.') || inScopeClass(simpleName(x[0]))), a];
   return [e, a];
 }
 
@@ -88,7 +92,7 @@ export function compareDev006(expectedLines, actualLines) {
 
 // structure:dev006-languages (X-LANGUAGES): Java list restricted to the in-scope classes (D-036)
 export function compareLanguagesList(expectedLines, actualLines) {
-  const filtered = expectedLines.map((l) => (l.ok && Array.isArray(l.result) ? { ...l, result: l.result.filter((x) => IN_SCOPE_CLASSES.has(simpleName(x.class))) } : l));
+  const filtered = expectedLines.map((l) => (l.ok && Array.isArray(l.result) ? { ...l, result: l.result.filter((x) => inScopeClass(simpleName(x.class))) } : l));
   const diffs = [];
   const n = Math.max(filtered.length, actualLines.length);
   for (let i = 0; i < n; i++) {

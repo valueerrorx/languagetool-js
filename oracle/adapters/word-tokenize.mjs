@@ -1,14 +1,17 @@
 // JS twin of harness op "word-tokenize" (WordTokOps#wordTokenize); out-of-scope languages are notPorted (DEV-006).
 import '../../src/lang/register.js';
 import { Languages } from '../../src/core/Languages.js';
+import { isPortedBase } from '../lib/scope.mjs';
 import { WordTokenizer } from '../../src/core/text/tokenizers/WordTokenizer.js';
 import { safe, str } from './_text-common.mjs';
 
 const OUT_OF_SCOPE = new Set(['ar', 'ast', 'be', 'br', 'ca', 'crh', 'da', 'el', 'eo', 'es', 'fa', 'ga', 'gl', 'it', 'ja', 'km', 'nl', 'pl', 'pt', 'ro', 'ru', 'sk', 'sl', 'sv', 'ta', 'tl', 'uk', 'zh']);
+// W02: a language is out of scope only while the port has not registered it
+const stillOut = (code) => OUT_OF_SCOPE.has(code) && !isPortedBase(code);
 
 // Java: Languages#getLanguageForShortCode(String); DEV-006: languages outside the wave-1 modules are notPorted
 function languageFor(code) {
-  if (/-x-simple-language/.test(code) || (OUT_OF_SCOPE.has(code.split('-')[0]) && code !== '')) {
+  if (/-x-simple-language/.test(code) || (stillOut(code.split('-')[0]) && code !== '')) {
     throw Object.assign(new Error(`language ${code} is out of scope (DEV-006)`), { notPorted: true });
   }
   return Languages.getLanguageForShortCode(code);

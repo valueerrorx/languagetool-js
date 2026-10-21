@@ -1,4 +1,5 @@
 import { normalize } from '../lib/normalizers.mjs';
+import { portedBases } from '../lib/scope.mjs';
 import { deepDiff } from './deep.mjs';
 import { compareApiCheckBody } from './api.mjs';
 
@@ -30,7 +31,7 @@ export function compareCli(e, a, { normalizers = [], ctx = {}, json = false, str
   const n0 = (t) => (stripTimestamp ? nn(t).replace(/^\d{4}-\d\d-\d\d \d\d:\d\d:\d\d [+-]\d{4} /gm, '') : nn(t));
   const n = (t) => cut(timeLine(n0(t)));
   // --list: Java prints all languages; keep only the in-scope ones (de, en, fr incl. variants) on the Java side
-  const listFilter = (t) => (listDev006 ? t.split('\n').filter((l) => l === '' || /^(de|en|fr)(-[A-Z]{2})? /.test(l)).join('\n') : t);
+  const listFilter = (t) => (listDev006 ? t.split('\n').filter((l) => l === '' || new RegExp(`^(${[...portedBases()].join('|')})(-[A-Z]{2})? `).test(l)).join('\n') : t);
   const eo = listFilter(n(e.stdout));
   const ao = listFilter(n(a.stdout));
   let jsonDone = false;
