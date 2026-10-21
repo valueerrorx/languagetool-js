@@ -1,0 +1,25 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0055: -p with non-text-level rules only",
+ "args": [
+  "-l",
+  "en-US",
+  "-eo",
+  "-e",
+  "DOUBLE_PUNCTUATION,WHITESPACE_RULE,ENGLISH_WORD_REPEAT_RULE",
+  "-p",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "Hi there there.\n\nSecond  paragraph.\n"
+ },
+ "profileTimes": true
+}

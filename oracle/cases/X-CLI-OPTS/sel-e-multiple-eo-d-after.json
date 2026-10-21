@@ -1,0 +1,23 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0040: -e then -d then -eo -> error",
+ "args": [
+  "-l",
+  "en-US",
+  "-e",
+  "WHITESPACE_RULE",
+  "-d",
+  "DOUBLE_PUNCTUATION",
+  "-eo",
+  "-"
+ ],
+ "stdin": "This is is a test of of language tool.  Hi ,there ( ok.. this is an test.\n\nlowercase start here."
+}

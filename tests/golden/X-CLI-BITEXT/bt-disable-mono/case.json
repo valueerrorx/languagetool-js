@@ -1,0 +1,25 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0062: -d monolingual rule id",
+ "args": [
+  "-l",
+  "de-DE",
+  "-m",
+  "en",
+  "-b2",
+  "-d",
+  "UPPERCASE_SENTENCE_START",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "this is not\tdas ist nicht.\n"
+ }
+}

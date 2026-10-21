@@ -1,0 +1,8 @@
+Expected text language: English (US) (no spell checking active)
+Exception in thread "main" java.io.UnsupportedEncodingException: foo-bar
+	at java.base/sun.nio.cs.StreamDecoder.forInputStreamReader(StreamDecoder.java:81)
+	at java.base/java.io.InputStreamReader.<init>(InputStreamReader.java:100)
+	at org.languagetool.commandline.Main.getInputStreamReader(Main.java:304)
+	at org.languagetool.commandline.Main.getFilteredText(Main.java:343)
+	at org.languagetool.commandline.Main.runOnFile(Main.java:170)
+	at org.languagetool.commandline.Main.main(Main.java:466)

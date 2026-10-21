@@ -1,0 +1,26 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0028: de->en external rule",
+ "args": [
+  "-l",
+  "en-US",
+  "-m",
+  "de",
+  "-b2",
+  "--bitextrules",
+  "bt.xml",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "Das ist ein Geschenk.\tThis is a gift.\n",
+  "bt.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules targetLang=\"en\" xsi:noNamespaceSchemaLocation=\"../bitext.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\n<category id=\"CAT1\" name=\"idioms\">\n<rule lang=\"en\" id=\"gift_rule\" name=\"Ext bitext rule\">\n<pattern>\n\t<source lang=\"de\">\n\t\t<token>Geschenk</token>\n\t</source>\n\t<target>\n\t\t<token>gift</token>\n\t</target>\n</pattern>\n<message>Did you mean <suggestion>present</suggestion>?</message>\n<example type=\"correct\"><srcExample>Geschenk</srcExample>\n<trgExample>ok ok</trgExample></example>\n<example type=\"incorrect\" correction=\"present\"><srcExample><marker>Geschenk</marker></srcExample>\n<trgExample><marker>gift</marker></trgExample></example>\n</rule></category></rules>\n"
+ }
+}

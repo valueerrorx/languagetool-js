@@ -1,0 +1,25 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0058: --line-by-line -p with only non-text-level rules",
+ "args": [
+  "-l",
+  "en-US",
+  "-eo",
+  "-e",
+  "DOUBLE_PUNCTUATION,WHITESPACE_RULE",
+  "--line-by-line",
+  "-p",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "first line here here\nsecond  line\n\nthird paragraph ,here\nfourth line (open\n"
+ }
+}

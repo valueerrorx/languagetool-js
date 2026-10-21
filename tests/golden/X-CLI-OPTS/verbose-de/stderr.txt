@@ -1,0 +1,49 @@
+Expected text language: German (Germany) (no spell checking active)
+Working on STDIN...
+<S> Das[der/ART:DEF:AKK:SIN:NEU,der/ART:DEF:NOM:SIN:NEU,der/PRO:DEM:AKK:SIN:NEU,der/PRO:DEM:NOM:SIN:NEU,der/PRO:PER:AKK:SIN:NEU,der/PRO:PER:NOM:SIN:NEU,O] ist[sein/VER:3:SIN:PRÄ:NON,sein/VER:AUX:3:SIN:PRÄ,O] ein[ein/ART:IND:AKK:SIN:NEU,ein/ART:IND:NOM:SIN:MAS,ein/ART:IND:NOM:SIN:NEU,ein/ZUS,O] ein[ein/ART:IND:NOM:SIN:MAS,B-NP|NPS] Test[Test/SUB:NOM:SIN:MAS,I-NP|NPS] ,[,/PKT,O]ok[ok/null,O].[./PKT,O].[</S>./PKT,O] 
+Disambiguator log: 
+
+UNIFY_DET_SUB[1]: ein[ein/ART:IND:AKK:SIN:NEU,ein/ART:IND:NOM:SIN:MAS,ein/ART:IND:NOM:SIN:NEU,ein/ZUS] -> ein[ein/ART:IND:NOM:SIN:MAS]
+UNIFY_DET_SUB2[1]: ein[ein/ART:IND:NOM:SIN:MAS] -> ein[ein/ART:IND:NOM:SIN:MAS]
+
+UNIFY_DET_SUB[1]: Test[Test/SUB:AKK:SIN:MAS,Test/SUB:DAT:SIN:MAS,Test/SUB:NOM:SIN:MAS] -> Test[Test/SUB:NOM:SIN:MAS]
+UNIFY_DET_SUB2[1]: Test[Test/SUB:NOM:SIN:MAS] -> Test[Test/SUB:NOM:SIN:MAS]
+
+UNKNOWN_PKT[1]: ,[,/null] -> ,[,/PKT]
+
+UNKNOWN_PKT[1]: .[./null*] -> .[./PKT*]
+
+UNKNOWN_PKT[1]: .[./SENT_END*] -> .[./SENT_END*,./PKT*]
+
+<S> ([(/null,O]ohne[ohne/KON:INF,ohne/KON:UNT,ohne/PRP:MOD:AKK,PP] Ende[Ende/SUB:AKK:SIN:NEU,Ende/SUB:DAT:SIN:NEU,B-NP|NPS|PP].[</S>./PKT,O]  
+Disambiguator log: 
+
+PRP_NOM[2]: Ende[Ende/SUB:AKK:SIN:NEU,Ende/SUB:DAT:SIN:NEU,Ende/SUB:NOM:SIN:NEU] -> Ende[Ende/SUB:AKK:SIN:NEU,Ende/SUB:DAT:SIN:NEU]
+
+UNKNOWN_PKT[1]: .[./SENT_END*] -> .[./SENT_END*,./PKT*]
+
+<S> Über[über/ADV:MOD,über/PRP:LOK+TMP+CAU:DAT+AKK,über/ZUS,B-NP|NPS] größere[groß/ADJ:AKK:PLU:MAS:KOM:SOL,I-NP] Ärzte[Arzt/SUB:AKK:PLU:MAS,Arzt/SUB:NOM:PLU:MAS,I-NP] sprechen[sprechen/VER:1:PLU:KJ1:NON,sprechen/VER:1:PLU:PRÄ:NON,O] wir[ich/PRO:PER:NOM:PLU:ALG,O] wir[ich/PRO:PER:NOM:PLU:ALG,O] später[später/ADV:TMP,spät/ADJ:DAT:SIN:FEM:GRU:SOL,spät/ADJ:GEN:PLU:FEM:GRU:SOL,spät/ADJ:GEN:PLU:MAS:GRU:SOL,spät/ADJ:GEN:PLU:NEU:GRU:SOL,spät/ADJ:GEN:SIN:FEM:GRU:SOL,spät/ADJ:NOM:SIN:MAS:GRU:IND,spät/ADJ:NOM:SIN:MAS:GRU:SOL,spät/ADJ:PRD:KOM,O].[</S>./PKT,O]  
+Disambiguator log: 
+
+UNIFY_ADJ_SUB[1]: größere[groß/ADJ:AKK:PLU:FEM:KOM:SOL,groß/ADJ:AKK:PLU:MAS:KOM:SOL,groß/ADJ:AKK:PLU:NEU:KOM:SOL,groß/ADJ:AKK:SIN:FEM:KOM:DEF,groß/ADJ:AKK:SIN:FEM:KOM:IND,groß/ADJ:AKK:SIN:FEM:KOM:SOL,groß/ADJ:AKK:SIN:NEU:KOM:DEF,groß/ADJ:NOM:PLU:FEM:KOM:SOL,groß/ADJ:NOM:PLU:MAS:KOM:SOL,groß/ADJ:NOM:PLU:NEU:KOM:SOL,groß/ADJ:NOM:SIN:FEM:KOM:DEF,groß/ADJ:NOM:SIN:FEM:KOM:IND,groß/ADJ:NOM:SIN:FEM:KOM:SOL,groß/ADJ:NOM:SIN:MAS:KOM:DEF,groß/ADJ:NOM:SIN:NEU:KOM:DEF] -> größere[groß/ADJ:AKK:PLU:MAS:KOM:SOL,groß/ADJ:NOM:PLU:MAS:KOM:SOL]
+PRP_NOM[2]: größere[groß/ADJ:AKK:PLU:MAS:KOM:SOL,groß/ADJ:NOM:PLU:MAS:KOM:SOL] -> größere[groß/ADJ:AKK:PLU:MAS:KOM:SOL]
+
+UNIFY_ADJ_SUB[1]: Ärzte[Arzt/SUB:AKK:PLU:MAS,Arzt/SUB:GEN:PLU:MAS,Arzt/SUB:NOM:PLU:MAS] -> Ärzte[Arzt/SUB:AKK:PLU:MAS,Arzt/SUB:NOM:PLU:MAS]
+
+VERB_AGREEMENT_WIR[1]: sprechen[sprechen/VER:1:PLU:KJ1:NON,sprechen/VER:1:PLU:PRÄ:NON,sprechen/VER:3:PLU:KJ1:NON,sprechen/VER:3:PLU:PRÄ:NON,sprechen/VER:INF:NON] -> sprechen[sprechen/VER:1:PLU:KJ1:NON,sprechen/VER:1:PLU:PRÄ:NON,sprechen/VER:3:PLU:PRÄ:NON,sprechen/VER:INF:NON]
+VERB_AGREEMENT_WIR[1]: sprechen[sprechen/VER:1:PLU:KJ1:NON,sprechen/VER:1:PLU:PRÄ:NON,sprechen/VER:3:PLU:PRÄ:NON,sprechen/VER:INF:NON] -> sprechen[sprechen/VER:1:PLU:KJ1:NON,sprechen/VER:1:PLU:PRÄ:NON,sprechen/VER:INF:NON]
+VERB_AGREEMENT_WIR[1]: sprechen[sprechen/VER:1:PLU:KJ1:NON,sprechen/VER:1:PLU:PRÄ:NON,sprechen/VER:INF:NON] -> sprechen[sprechen/VER:1:PLU:KJ1:NON,sprechen/VER:1:PLU:PRÄ:NON]
+
+UNKNOWN_PKT[1]: .[./SENT_END*] -> .[./SENT_END*,./PKT*]
+
+<S> kleiner[klein/ADJ:NOM:SIN:MAS:GRU:IND,klein/ADJ:NOM:SIN:MAS:GRU:SOL,klein/ADJ:NOM:SIN:MAS:GRU:IND,klein/ADJ:NOM:SIN:MAS:GRU:SOL,B-NP|NPS] Anfang[Anfang/SUB:NOM:SIN:MAS,I-NP|NPS].[</S>./PKT,<P/>,O]
+Disambiguator log: 
+
+UNIFY_ADJ_SUB[1]: kleiner[klein/ADJ:DAT:SIN:FEM:GRU:SOL*,klein/ADJ:GEN:PLU:FEM:GRU:SOL*,klein/ADJ:GEN:PLU:MAS:GRU:SOL*,klein/ADJ:GEN:PLU:NEU:GRU:SOL*,klein/ADJ:GEN:SIN:FEM:GRU:SOL*,klein/ADJ:NOM:SIN:MAS:GRU:IND*,klein/ADJ:NOM:SIN:MAS:GRU:SOL*,klein/ADJ:PRD:KOM*,klein/ADJ:DAT:SIN:FEM:GRU:SOL*,klein/ADJ:GEN:PLU:FEM:GRU:SOL*,klein/ADJ:GEN:PLU:MAS:GRU:SOL*,klein/ADJ:GEN:PLU:NEU:GRU:SOL*,klein/ADJ:GEN:SIN:FEM:GRU:SOL*,klein/ADJ:NOM:SIN:MAS:GRU:IND*,klein/ADJ:NOM:SIN:MAS:GRU:SOL*,klein/ADJ:PRD:KOM*] -> kleiner[klein/ADJ:NOM:SIN:MAS:GRU:IND*,klein/ADJ:NOM:SIN:MAS:GRU:SOL*,klein/ADJ:NOM:SIN:MAS:GRU:IND*,klein/ADJ:NOM:SIN:MAS:GRU:SOL*]
+
+UNIFY_ADJ_SUB[1]: Anfang[Anfang/SUB:AKK:SIN:MAS,Anfang/SUB:DAT:SIN:MAS,Anfang/SUB:NOM:SIN:MAS] -> Anfang[Anfang/SUB:NOM:SIN:MAS]
+
+UNKNOWN_PKT[1]: .[./SENT_END*] -> .[./SENT_END*,./PKT*]
+add_paragaph_end: .[./SENT_END*,./PKT*,O] -> .[./SENT_END*,./PKT*,./PARA_END*,O]
+
+7 rules activated for language German (Germany)

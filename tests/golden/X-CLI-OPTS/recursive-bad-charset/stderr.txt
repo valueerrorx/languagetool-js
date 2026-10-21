@@ -1,0 +1,12 @@
+Expected text language: English (US) (no spell checking active)
+Exception in thread "main" java.lang.RuntimeException: Could not check text in file dir/a.txt
+	at org.languagetool.commandline.Main.runRecursive(Main.java:329)
+	at org.languagetool.commandline.Main.main(Main.java:461)
+Caused by: java.io.UnsupportedEncodingException: foo-bar
+	at java.base/sun.nio.cs.StreamDecoder.forInputStreamReader(StreamDecoder.java:81)
+	at java.base/java.io.InputStreamReader.<init>(InputStreamReader.java:100)
+	at org.languagetool.commandline.Main.getInputStreamReader(Main.java:304)
+	at org.languagetool.commandline.Main.getFilteredText(Main.java:343)
+	at org.languagetool.commandline.Main.runOnFile(Main.java:170)
+	at org.languagetool.commandline.Main.runRecursive(Main.java:325)
+	... 1 more

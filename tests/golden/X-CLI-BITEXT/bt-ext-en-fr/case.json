@@ -1,0 +1,26 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0028: en->fr external rule",
+ "args": [
+  "-l",
+  "fr",
+  "-m",
+  "en",
+  "-b2",
+  "--bitextrules",
+  "bt.xml",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "He is actually here.\tIl est actuellement ici.\n",
+  "bt.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules targetLang=\"fr\" xsi:noNamespaceSchemaLocation=\"../bitext.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\n<category id=\"CAT1\" name=\"idioms\">\n<rule lang=\"fr\" id=\"actually_rule\" name=\"Ext bitext rule\">\n<pattern>\n\t<source lang=\"en\">\n\t\t<token>actually</token>\n\t</source>\n\t<target>\n\t\t<token>actuellement</token>\n\t</target>\n</pattern>\n<message>Vouliez-vous dire <suggestion>en fait</suggestion>?</message>\n<example type=\"correct\"><srcExample>actually</srcExample>\n<trgExample>ok ok</trgExample></example>\n<example type=\"incorrect\" correction=\"en fait\"><srcExample><marker>actually</marker></srcExample>\n<trgExample><marker>actuellement</marker></trgExample></example>\n</rule></category></rules>\n"
+ }
+}

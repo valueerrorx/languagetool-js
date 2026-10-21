@@ -1,0 +1,26 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0025: --rulefile de",
+ "args": [
+  "-l",
+  "de-DE",
+  "-eo",
+  "-e",
+  "COMMA_PARENTHESIS_WHITESPACE,DE_DOUBLE_PUNCTUATION,UPPERCASE_SENTENCE_START,WHITESPACE_RULE,UNPAIRED_BRACKETS,GERMAN_WORD_REPEAT_RULE,DE_SENTENCE_WHITESPACE,EXAMPLE_RULE",
+  "--rulefile",
+  "rules.xml",
+  "-"
+ ],
+ "stdin": "Das ist ein Test mit Sprach Werkzeug.",
+ "files": {
+  "rules.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"de\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\n<category id=\"CAT1\" name=\"trivial category\">\n<rule id=\"EXAMPLE_RULE\" name=\"External rule to test\">\n<pattern><token>Sprach</token><token>Werkzeug</token></pattern>\n<message>Das ist falsch, Größe äöü!</message>\n<example correction=\"\">Sprach Werkzeug</example>\n</rule></category></rules>"
+ }
+}

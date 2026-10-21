@@ -1,0 +1,55 @@
+Expected text language: French
+Working on STDIN...
+<S> Voici[voici/P] voici[voici/P] un[un/D m s,un/_GN_MS] test[test/N m s,test/_GN_MS].[./M fin,./M fin,</S>] 
+Disambiguator log: 
+
+PREPOSITIONS[2]: Voici[voici/P*] -> Voici[voici/P*]
+
+PREPOSITIONS[2]: voici[voici/P] -> voici[voici/P]
+
+NOT_NOUNS[1]: un[un/D m s,un/N m s,un/R m s] -> un[un/D m s,un/R m s]
+RP-D_N_AMBIG[1]: un[un/D m s,un/R m s] -> un[un/D m s]
+NOMINAL_GROUPS[17]: un[un/D m s] -> un[un/D m s,un/_GN_MS]
+
+N[4]: test[test/N m s] -> test[test/N m s]
+RP-D_N_AMBIG[1]: test[test/N m s] -> test[test/N m s]
+NOMINAL_GROUPS[17]: test[test/N m s] -> test[test/N m s,test/_GN_MS]
+
+<S> Il[il/R pers suj 3 m s] a[avoir/V avoir ind pres 3 s] acheté[acheter/V ppa m s] une[un/D f s,une/_GN_FS] voiture[voiture/N f s,voiture/_GN_FS] ,[,/M nonfin,,/M nonfin] c'[ce/R dem m s,containsTypewriterApostrophe]est[être/V etre ind pres 3 s] beau[beau/J m s].[./M fin,./M fin,</S><P/>]
+Disambiguator log: 
+
+PRON_VERB[1]: Il[il/R pers suj 3 m s*] -> Il[il/R pers suj 3 m s*]
+
+AVOIR_PARTICIPE[4]: a[a/N m sp,avoir/V avoir ind pres 3 s] -> a[avoir/V avoir ind pres 3 s]
+NE_V[1]: a[avoir/V avoir ind pres 3 s] -> a[avoir/V avoir ind pres 3 s]
+PRON_VERB[1]: a[avoir/V avoir ind pres 3 s] -> a[avoir/V avoir ind pres 3 s]
+PRONOM_SUJET_VERB[1]: a[avoir/V avoir ind pres 3 s] -> a[avoir/V avoir ind pres 3 s]
+RP-AS_A_ONT[1]: a[avoir/V avoir ind pres 3 s] -> a[avoir/V avoir ind pres 3 s]
+RB-PRO_PERS_V[4]: a[avoir/V avoir ind pres 3 s] -> a[avoir/V avoir ind pres 3 s]
+
+AVOIR_PARTICIPE[2]: acheté[acheté/J m s,acheter/V ppa m s] -> acheté[acheter/V ppa m s]
+
+NOT_NOUNS[1]: une[un/D f s,un/N f s,un/R f s] -> une[un/D f s,un/R f s]
+RP-D_N_AMBIG[1]: une[un/D f s,un/R f s] -> une[un/D f s]
+NOMINAL_GROUPS[18]: une[un/D f s] -> une[un/D f s,une/_GN_FS]
+
+N[3]: voiture[voiture/N f s] -> voiture[voiture/N f s]
+RP-D_N_AMBIG[1]: voiture[voiture/N f s] -> voiture[voiture/N f s]
+NOMINAL_GROUPS[18]: voiture[voiture/N f s] -> voiture[voiture/N f s,voiture/_GN_FS]
+
+PRON_VERB[1]: c'[ce/R dem m s,containsTypewriterApostrophe] -> c'[ce/R dem m s,containsTypewriterApostrophe]
+
+EST[7]: est[est/N m s*,être/V etre ind pres 3 s*] -> est[être/V etre ind pres 3 s*]
+PRON_VERB[1]: est[être/V etre ind pres 3 s*] -> est[être/V etre ind pres 3 s*]
+
+RP-ETRE_ADJ_AMBIG[1]: beau[beau/J m s,beau/N m s] -> beau[beau/J m s]
+
+add_paragaph_end: .[./M fin*,./M fin*,./SENT_END*] -> .[./M fin*,./M fin*,./SENT_END*,./PARA_END*]
+
+5469 rules activated for language French
+Antipatterns activated:
+  A_A_ACCENT[43] <antipattern> 3 (line 27200) /SENT_START /[RDIZT].*|UNKNOWN|[RA] inte a:  Il a
+  A_A_ACCENT[43] <antipattern> 11 (line 27242) a /UNKNOWN|V.* ppa.*|[YA]|V.* (ind|con|sub).*|C.*|R pers suj.*: a acheté
+  A_A_ACCENT[43] <antipattern> 13 (line 27250) a /[RP].*|A /V.* ppa.*: a acheté
+  SE_CE[25] <antipattern> 4 (line 34781) c' en /V etre.*: c' est
+  PRONOMS_PERSONNELS_MINUSCULE[1] <antipattern> 1 (line 144220) /SENT_START \p{P}|[^a-z].*|/d+|/^+ Je|Tu|Elle|Il|Nous|Vous|Elles|Ils|J':  Il

@@ -17,7 +17,14 @@ export function compareCli(e, a, { normalizers = [], ctx = {}, json = false, str
   const nn = (t) => normalize([...normalizers, 'stackFrames'], t, ctx);
   // server startup lines carry a timestamp prefix "yyyy-MM-dd HH:mm:ss +0000 " (D-045: content lines only)
   // "Time: 123ms for 5 sentences (4.3 sentences/sec)": ms and rate are not compared (D-045), the sentence count is
-  const timeLine = (t) => t.replace(/^Time: \d+ms for (\d+) sentences \((?:[\d.,]+|NaN|Infinity) sentences\/sec\)$/gm, 'Time: #ms for $1 sentences (# sentences/sec)');
+  // -p profile output (CLI-0055): timings and rates are not compared; rule ids, sentence and match counts are
+  const profileLines = (t) => t
+    .replace(/^Analyze time: \d+ ms, (?:[\d.,]+|NaN|Infinity) sent\/sec$/gm, 'Analyze time: # ms, # sent/sec')
+    .replace(/^Disambig time: \d+ ms, (?:[\d.,]+|NaN|Infinity) sent\/sec$/gm, 'Disambig time: # ms, # sent/sec')
+    .replace(/^(\S+) +\d+ +(\d+) +(\d+) +(?:[\d.,]+|NaN|Infinity)$/gm, (m, id, sc, mc) => `${id} # ${sc} ${mc} #`)
+    .replace(/^Total rule time: \d+ ms$/gm, 'Total rule time: # ms')
+    .replace(/^Total time: \d+ ms \(analyze \+ disambig \+ rules\)$/gm, 'Total time: # ms (analyze + disambig + rules)');
+  const timeLine = (t) => profileLines(t.replace(/^Time: \d+ms for (\d+) sentences \((?:[\d.,]+|NaN|Infinity) sentences\/sec\)$/gm, 'Time: #ms for $1 sentences (# sentences/sec)'));
   // unknown-language texts: the supported-code list is cut (DEV-006)
   const cut = (t) => (listCut ? t.replace(/(Supported language codes are:).*?(\. The list of languages)/gs, '$1 <LIST>$2') : t);
   const n0 = (t) => (stripTimestamp ? nn(t).replace(/^\d{4}-\d\d-\d\d \d\d:\d\d:\d\d [+-]\d{4} /gm, '') : nn(t));

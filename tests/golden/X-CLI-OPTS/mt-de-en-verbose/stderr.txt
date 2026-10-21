@@ -1,0 +1,17 @@
+Expected text language: German (Germany)
+Working on STDIN...
+<S> Ich[Ich/SUB:AKK:PLU:NEU,Ich/SUB:AKK:SIN:NEU,Ich/SUB:DAT:PLU:NEU,Ich/SUB:DAT:SIN:NEU,Ich/SUB:GEN:PLU:NEU,Ich/SUB:GEN:SIN:NEU,Ich/SUB:NOM:PLU:NEU,Ich/SUB:NOM:SIN:NEU,ich/PRO:PER:NOM:SIN:ALG,B-NP] möchte[mögen/VER:MOD:1:SIN:KJ2,O] ein[ein/ART:IND:NOM:SIN:MAS,B-NP|NPS] Chef[Chef/SUB:NOM:SIN:MAS,I-NP|NPS] werden[werden/VER:1:PLU:KJ1:NON,werden/VER:1:PLU:PRÄ:NON,werden/VER:3:PLU:KJ1:NON,werden/VER:3:PLU:PRÄ:NON,werden/VER:AUX:1:PLU:KJ1,werden/VER:AUX:1:PLU:PRÄ,werden/VER:AUX:3:PLU:KJ1,werden/VER:AUX:3:PLU:PRÄ,werden/VER:AUX:INF,werden/VER:INF:NON,O].[</S>./PKT,<P/>,O]
+Disambiguator log: 
+
+ICH_VERB[1]: möchte[mögen/VER:MOD:1:SIN:KJ2,mögen/VER:MOD:3:SIN:KJ2] -> möchte[mögen/VER:MOD:1:SIN:KJ2]
+
+UNIFY_DET_SUB[1]: ein[ein/ART:IND:AKK:SIN:NEU,ein/ART:IND:NOM:SIN:MAS,ein/ART:IND:NOM:SIN:NEU,ein/ZUS] -> ein[ein/ART:IND:NOM:SIN:MAS]
+UNIFY_DET_SUB2[1]: ein[ein/ART:IND:NOM:SIN:MAS] -> ein[ein/ART:IND:NOM:SIN:MAS]
+
+UNIFY_DET_SUB[1]: Chef[Chef/SUB:AKK:SIN:MAS,Chef/SUB:DAT:SIN:MAS,Chef/SUB:NOM:SIN:MAS] -> Chef[Chef/SUB:NOM:SIN:MAS]
+UNIFY_DET_SUB2[1]: Chef[Chef/SUB:NOM:SIN:MAS] -> Chef[Chef/SUB:NOM:SIN:MAS]
+
+UNKNOWN_PKT[1]: .[./SENT_END*] -> .[./SENT_END*,./PKT*]
+add_paragaph_end: .[./SENT_END*,./PKT*,O] -> .[./SENT_END*,./PKT*,./PARA_END*,O]
+
+5238 rules activated for language German (Germany)

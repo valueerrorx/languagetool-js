@@ -1,0 +1,27 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0065: -a fr->en external rule",
+ "args": [
+  "-l",
+  "en-US",
+  "-m",
+  "fr",
+  "-b2",
+  "-a",
+  "--bitextrules",
+  "bt.xml",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "C'est actuellement bon.\tIt is actually good.\n",
+  "bt.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules targetLang=\"en\" xsi:noNamespaceSchemaLocation=\"../bitext.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\n<category id=\"CAT1\" name=\"idioms\">\n<rule lang=\"en\" id=\"actuel_rule\" name=\"Ext bitext rule\">\n<pattern>\n\t<source lang=\"fr\">\n\t\t<token>actuellement</token>\n\t</source>\n\t<target>\n\t\t<token>actually</token>\n\t</target>\n</pattern>\n<message>Did you mean <suggestion>currently</suggestion>?</message>\n<example type=\"correct\"><srcExample>actuellement</srcExample>\n<trgExample>ok ok</trgExample></example>\n<example type=\"incorrect\" correction=\"currently\"><srcExample><marker>actuellement</marker></srcExample>\n<trgExample><marker>actually</marker></trgExample></example>\n</rule></category></rules>\n"
+ }
+}

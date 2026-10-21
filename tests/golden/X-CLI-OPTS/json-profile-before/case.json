@@ -1,0 +1,26 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0032: -p then --json (no check at --json for -p; recorded)",
+ "args": [
+  "-l",
+  "en-US",
+  "-eo",
+  "-e",
+  "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,UPPERCASE_SENTENCE_START,WHITESPACE_RULE,EN_UNPAIRED_BRACKETS,ENGLISH_WORD_REPEAT_RULE,SENTENCE_WHITESPACE",
+  "-p",
+  "--json",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "Hi there there.\n"
+ },
+ "profileTimes": true
+}

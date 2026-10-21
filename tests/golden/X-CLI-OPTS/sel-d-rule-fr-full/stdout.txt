@@ -1,0 +1,59 @@
+1.) Line 1, column 7, Rule ID: WHITESPACE_RULE premium: false
+Message: Faute de frappe possible : une espace est répétée
+Suggestion:  
+Bonjour  le monde , voici voici un test (sans fin.  Il...
+       ^^                                             
+
+2.) Line 1, column 8, Rule ID: DOUBLES_ESPACES[1] premium: false prio=20
+Message: Il semblerait qu’une espace surnuméraire s’est glissée entre ces deux mots.
+Suggestion:  
+Bonjour  le monde , voici voici un test (sans fin.  Il...
+       ^^                                             
+
+3.) Line 1, column 18, Rule ID: COMMA_PARENTHESIS_WHITESPACE premium: false
+Message: Insérez une espace après la virgule et non avant.
+Suggestion: ,
+Bonjour  le monde , voici voici un test (sans fin.  Il y a un un...
+                 ^^                                             
+
+4.) Line 1, column 21, Rule ID: FRENCH_WORD_REPEAT_RULE[2] premium: false prio=-20
+Message: Un mot est répété.
+Suggestion: voici
+Bonjour  le monde , voici voici un test (sans fin.  Il y a un un problème.. ...
+                    ^^^^^^^^^^^                                             
+
+5.) Line 1, column 40, Rule ID: UNPAIRED_BRACKETS premium: false
+Message: Pas de correspondance fermante ou ouvrante pour le caractère « ) »
+Bonjour  le monde , voici voici un test (sans fin.  Il y a un un problème..  minuscule...
+                                        ^                                             
+
+6.) Line 1, column 50, Rule ID: WHITESPACE_RULE premium: false
+Message: Faute de frappe possible : une espace est répétée
+Suggestion:  
+...ur  le monde , voici voici un test (sans fin.  Il y a un un problème..  minuscule.
+                                                ^^                                   
+
+7.) Line 1, column 60, Rule ID: DUPLICATE_DETERMINER[1] premium: false
+Message: Choisissez un déterminant.
+Suggestion: un problème; des problèmes
+...nde , voici voici un test (sans fin.  Il y a un un problème..  minuscule.
+                                                ^^^^^^^^^^^^^^              
+
+8.) Line 1, column 60, Rule ID: FRENCH_WORD_REPEAT_RULE[2] premium: false prio=-20
+Message: Un mot est répété.
+Suggestion: un
+...nde , voici voici un test (sans fin.  Il y a un un problème..  minuscule.
+                                                ^^^^^                       
+
+9.) Line 1, column 74, Rule ID: DOUBLE_PUNCTUATION premium: false
+Message: Deux points consécutifs
+Suggestion: .; …
+...ici un test (sans fin.  Il y a un un problème..  minuscule.
+                                                ^^            
+
+10.) Line 3, column 1, Rule ID: UPPERCASE_SENTENCE_START premium: false prio=-300
+Message: Cette phrase ne commence pas par une majuscule.
+Suggestion: Minuscule
+...un test (sans fin.  Il y a un un problème..  minuscule.
+                                                ^^^^^^^^^ 
+Time: 4436ms for 3 sentences (0.7 sentences/sec)

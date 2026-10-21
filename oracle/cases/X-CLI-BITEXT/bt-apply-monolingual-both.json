@@ -1,0 +1,26 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0065: -a with monolingual rules and bitext rule",
+ "args": [
+  "-l",
+  "de-DE",
+  "-m",
+  "en",
+  "-b2",
+  "-a",
+  "-e",
+  "UPPERCASE_SENTENCE_START,TRANSLATION_LENGTH",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "this is a test.\tdas ist ein test.\n"
+ }
+}

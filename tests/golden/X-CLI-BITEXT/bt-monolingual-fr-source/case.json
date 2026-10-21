@@ -1,0 +1,25 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0062: French source repeat/whitespace rules",
+ "args": [
+  "-l",
+  "de-DE",
+  "-m",
+  "fr",
+  "-b2",
+  "-e",
+  "WHITESPACE_RULE,DOUBLE_PUNCTUATION",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "Voici  un test..\tDas ist ein Test.\n"
+ }
+}

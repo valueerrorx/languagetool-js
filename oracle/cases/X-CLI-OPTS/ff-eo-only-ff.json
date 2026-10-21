@@ -1,0 +1,30 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0027/0040: -eo -e EXT_FF (id unknown at selection time -> No rules are active?)",
+ "args": [
+  "-l",
+  "en-US",
+  "-m",
+  "de",
+  "-eo",
+  "-e",
+  "EXT_FF",
+  "--falsefriends",
+  "ff.xml",
+  "--level",
+  "PICKY",
+  "-"
+ ],
+ "stdin": "gift.",
+ "files": {
+  "ff.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE rules SYSTEM \"false-friends.dtd\">\n<rules>\n<rulegroup id=\"EXT_FF\">\n<rule>\n<pattern lang=\"en\">\n<token>gift</token>\n</pattern>\n<translation lang=\"de\">Geschenk</translation>\n</rule>\n<rule>\n<pattern lang=\"de\">\n<token>Gift</token>\n</pattern>\n<translation lang=\"en\">poison</translation>\n</rule>\n</rulegroup>\n</rules>\n"
+ }
+}

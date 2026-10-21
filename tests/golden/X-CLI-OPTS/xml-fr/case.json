@@ -1,0 +1,22 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0035: --xmlfilter French",
+ "args": [
+  "-l",
+  "fr",
+  "-eo",
+  "-e",
+  "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,UPPERCASE_SENTENCE_START,WHITESPACE_RULE,UNPAIRED_BRACKETS,SENTENCE_WHITESPACE",
+  "--xmlfilter",
+  "-"
+ ],
+ "stdin": "<p>Élève  français.</p>"
+}

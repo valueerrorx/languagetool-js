@@ -1,0 +1,25 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0064: monolingual rules enabled with uppercase source start",
+ "args": [
+  "-l",
+  "de-DE",
+  "-m",
+  "en",
+  "-b2",
+  "-e",
+  "UPPERCASE_SENTENCE_START",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "this is a test.\tdas ist ein test.\nFine.\tGut.\n"
+ }
+}

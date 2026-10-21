@@ -1,0 +1,24 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0051: --json file",
+ "args": [
+  "-l",
+  "en-US",
+  "-eo",
+  "-e",
+  "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,UPPERCASE_SENTENCE_START,WHITESPACE_RULE,EN_UNPAIRED_BRACKETS,ENGLISH_WORD_REPEAT_RULE,SENTENCE_WHITESPACE",
+  "--json",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "This is an test.\n\nThis is a test of of language tool.\n\nThis is is a test of language tool."
+ }
+}

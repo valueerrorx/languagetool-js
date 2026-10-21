@@ -1,0 +1,23 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0064: SameTranslationRule cases",
+ "args": [
+  "-l",
+  "de-DE",
+  "-m",
+  "en",
+  "-b2",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "Berlin\tBerlin\nThis is a test.\tThis is a test.\nSame!\tSame!\nA\tB\n"
+ }
+}

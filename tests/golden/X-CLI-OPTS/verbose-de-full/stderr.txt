@@ -1,0 +1,29 @@
+Expected text language: German (Germany)
+Working on STDIN...
+<S> Das[der/ART:DEF:AKK:SIN:NEU,der/ART:DEF:NOM:SIN:NEU,der/PRO:DEM:AKK:SIN:NEU,der/PRO:DEM:NOM:SIN:NEU,der/PRO:PER:AKK:SIN:NEU,der/PRO:PER:NOM:SIN:NEU,O] ist[sein/VER:3:SIN:PRÄ:NON,sein/VER:AUX:3:SIN:PRÄ,O] ein[ein/ART:IND:AKK:SIN:NEU,ein/ART:IND:NOM:SIN:MAS,ein/ART:IND:NOM:SIN:NEU,ein/ZUS,O] ein[ein/ART:IND:NOM:SIN:MAS,B-NP|NPS] Test[Test/SUB:NOM:SIN:MAS,I-NP|NPS].[</S>./PKT,O] 
+Disambiguator log: 
+
+UNIFY_DET_SUB[1]: ein[ein/ART:IND:AKK:SIN:NEU,ein/ART:IND:NOM:SIN:MAS,ein/ART:IND:NOM:SIN:NEU,ein/ZUS] -> ein[ein/ART:IND:NOM:SIN:MAS]
+UNIFY_DET_SUB2[1]: ein[ein/ART:IND:NOM:SIN:MAS] -> ein[ein/ART:IND:NOM:SIN:MAS]
+
+UNIFY_DET_SUB[1]: Test[Test/SUB:AKK:SIN:MAS,Test/SUB:DAT:SIN:MAS,Test/SUB:NOM:SIN:MAS] -> Test[Test/SUB:NOM:SIN:MAS]
+UNIFY_DET_SUB2[1]: Test[Test/SUB:NOM:SIN:MAS] -> Test[Test/SUB:NOM:SIN:MAS]
+
+UNKNOWN_PKT[1]: .[./SENT_END*] -> .[./SENT_END*,./PKT*]
+
+<S> Er[ich/PRO:PER:NOM:SIN:MAS,O] hat[haben/VER:3:SIN:PRÄ:NON,haben/VER:AUX:3:SIN:PRÄ,O] eine[einen/VER:3:SIN:KJ1:SFT,einen/VER:IMP:SIN:SFT,ein/ART:IND:AKK:SIN:FEM,ein/PRO:IND:AKK:SIN:FEM:STV,ein/PRO:IND:NOM:SIN:FEM:STV,B-NP|NPS] Auto[Auto/SUB:AKK:SIN:NEU,Auto/SUB:DAT:SIN:NEU,Auto/SUB:NOM:SIN:NEU,I-NP|NPS] gekauft[gekauft/PA2:PRD:GRU:VER,kaufen/VER:PA2:SFT,O],[,/PKT,O] dass[dass/KON:UNT,O] ist[sein/VER:3:SIN:PRÄ:NON,sein/VER:AUX:3:SIN:PRÄ,O] schön[schön/ADJ:PRD:GRU,schön/ZUS,O].[</S>./PKT,<P/>,O]
+Disambiguator log: 
+
+KEIN_1_SIN_PRAE[4]: eine[einen/VER:1:SIN:KJ1:SFT,einen/VER:1:SIN:PRÄ:SFT,einen/VER:3:SIN:KJ1:SFT,einen/VER:IMP:SIN:SFT,ein/ART:IND:AKK:SIN:FEM,ein/ART:IND:NOM:SIN:FEM,ein/PRO:IND:AKK:SIN:FEM:STV,ein/PRO:IND:NOM:SIN:FEM:STV] -> eine[einen/VER:1:SIN:PRÄ:SFT,einen/VER:3:SIN:KJ1:SFT,einen/VER:IMP:SIN:SFT,ein/ART:IND:AKK:SIN:FEM,ein/ART:IND:NOM:SIN:FEM,ein/PRO:IND:AKK:SIN:FEM:STV,ein/PRO:IND:NOM:SIN:FEM:STV]
+KEIN_1_SIN_PRAE[4]: eine[einen/VER:1:SIN:PRÄ:SFT,einen/VER:3:SIN:KJ1:SFT,einen/VER:IMP:SIN:SFT,ein/ART:IND:AKK:SIN:FEM,ein/ART:IND:NOM:SIN:FEM,ein/PRO:IND:AKK:SIN:FEM:STV,ein/PRO:IND:NOM:SIN:FEM:STV] -> eine[einen/VER:3:SIN:KJ1:SFT,einen/VER:IMP:SIN:SFT,ein/ART:IND:AKK:SIN:FEM,ein/ART:IND:NOM:SIN:FEM,ein/PRO:IND:AKK:SIN:FEM:STV,ein/PRO:IND:NOM:SIN:FEM:STV]
+KEIN_NOMINATIV[1]: eine[einen/VER:3:SIN:KJ1:SFT,einen/VER:IMP:SIN:SFT,ein/ART:IND:AKK:SIN:FEM,ein/ART:IND:NOM:SIN:FEM,ein/PRO:IND:AKK:SIN:FEM:STV,ein/PRO:IND:NOM:SIN:FEM:STV] -> eine[einen/VER:3:SIN:KJ1:SFT,einen/VER:IMP:SIN:SFT,ein/ART:IND:AKK:SIN:FEM,ein/PRO:IND:AKK:SIN:FEM:STV,ein/PRO:IND:NOM:SIN:FEM:STV]
+
+UNKNOWN_PKT[1]: ,[,/null*] -> ,[,/PKT*]
+
+UNKNOWN_PKT[1]: .[./SENT_END*] -> .[./SENT_END*,./PKT*]
+add_paragaph_end: .[./SENT_END*,./PKT*,O] -> .[./SENT_END*,./PKT*,./PARA_END*,O]
+
+5014 rules activated for language German (Germany)
+Antipatterns activated:
+  SUBJ_VERBLETZTSTELLUNG[1] <antipattern> 1 (line 64268) , dass /SUB.*SIN:NEU|.*VER.*[123].*: , dass ist
+  SUBJ_VERBLETZTSTELLUNG[1] <antipattern> 6 (line 64302) !so dass /VER:(AUX:)?(2|3):.+: dass

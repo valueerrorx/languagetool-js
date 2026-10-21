@@ -1,0 +1,21 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0020: category id is case-sensitive",
+ "args": [
+  "-l",
+  "en-US",
+  "-eo",
+  "--enablecategories",
+  "punctuation",
+  "-"
+ ],
+ "stdin": "This is is a test of of language tool.  Hi ,there ( ok.. this is an test.\n\nlowercase start here."
+}

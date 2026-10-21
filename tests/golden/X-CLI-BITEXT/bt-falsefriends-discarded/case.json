@@ -1,0 +1,26 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0062: --falsefriends file in bitext mode",
+ "args": [
+  "-l",
+  "de-DE",
+  "-m",
+  "en",
+  "-b2",
+  "--falsefriends",
+  "ff.xml",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "gift\tGeschenk\n",
+  "ff.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE rules SYSTEM \"false-friends.dtd\">\n<rules><rulegroup id=\"EXT_FF\"><rule><pattern lang=\"en\"><token>gift</token></pattern><translation lang=\"de\">Geschenk</translation></rule><rule><pattern lang=\"de\"><token>Geschenk</token></pattern><translation lang=\"en\">gift</translation></rule></rulegroup></rules>\n"
+ }
+}

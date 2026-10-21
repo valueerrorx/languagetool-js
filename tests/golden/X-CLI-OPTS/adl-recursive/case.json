@@ -1,0 +1,24 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths",
+  "logTimestamp"
+ ],
+ "description": "CLI-0009/0060: -adl -r",
+ "args": [
+  "-adl",
+  "-r",
+  "-eo",
+  "-e",
+  "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,UPPERCASE_SENTENCE_START,WHITESPACE_RULE,EN_UNPAIRED_BRACKETS,ENGLISH_WORD_REPEAT_RULE,SENTENCE_WHITESPACE",
+  "dir"
+ ],
+ "files": {
+  "dir/a.txt": "This is a small English text to test the language detection,  with two spaces.\n"
+ }
+}

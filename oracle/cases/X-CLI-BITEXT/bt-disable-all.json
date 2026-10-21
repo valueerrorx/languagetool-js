@@ -1,0 +1,25 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0062: -d all three generic rules",
+ "args": [
+  "-l",
+  "de-DE",
+  "-m",
+  "en",
+  "-b2",
+  "-d",
+  "TRANSLATION_LENGTH,SAME_TRANSLATION,DIFFERENT_PUNCTUATION",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "This is a test.\tDas ist ein Test.\nHello world\tHallo Welt\nShort\tDies ist eine sehr lange Übersetzung, die viel länger ist als das Original und deshalb auffällt.\nBerlin\tBerlin\nThis is a test.\tThis is a test.\nSame!\tSame!\nA\tB\nIs this a question?\tIst das eine Frage.\nHello!\tHallo\nStop...\tHalt\nFine.\tGut\n"
+ }
+}

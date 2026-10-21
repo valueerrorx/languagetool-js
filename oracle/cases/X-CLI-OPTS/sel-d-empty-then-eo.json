@@ -1,0 +1,23 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0017/0018: -d \"\" then -eo (empty list size 1 -> error)",
+ "args": [
+  "-l",
+  "en-US",
+  "-d",
+  "",
+  "-eo",
+  "-e",
+  "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,UPPERCASE_SENTENCE_START,WHITESPACE_RULE,EN_UNPAIRED_BRACKETS,ENGLISH_WORD_REPEAT_RULE,SENTENCE_WHITESPACE",
+  "-"
+ ],
+ "stdin": "This is is a test of of language tool.  Hi ,there ( ok.. this is an test.\n\nlowercase start here."
+}

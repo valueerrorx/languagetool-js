@@ -1,0 +1,22 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0057: --line-by-line French",
+ "args": [
+  "-l",
+  "fr",
+  "-eo",
+  "-e",
+  "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,UPPERCASE_SENTENCE_START,WHITESPACE_RULE,UNPAIRED_BRACKETS,SENTENCE_WHITESPACE",
+  "--line-by-line",
+  "-"
+ ],
+ "stdin": "Bonjour  le monde ,voici.\n\nDeuxième paragraphe..\n"
+}

@@ -1,0 +1,26 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0025/0043: --rulefile with umlaut token and message",
+ "args": [
+  "-l",
+  "de-DE",
+  "-eo",
+  "-e",
+  "EXT_UML",
+  "--rulefile",
+  "rules.xml",
+  "-"
+ ],
+ "stdin": "Er trägt eine Größe über Äpfel.",
+ "files": {
+  "rules.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"de\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\n<category id=\"CAT1\" name=\"trivial category\">\n<rule id=\"EXT_UML\" name=\"External rule to test\">\n<pattern><token>Größe</token><token>über</token></pattern>\n<message>Äpfel ß</message>\n<example correction=\"\">Größe über</example>\n</rule></category></rules>"
+ }
+}

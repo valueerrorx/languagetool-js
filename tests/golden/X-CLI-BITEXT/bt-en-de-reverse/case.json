@@ -1,0 +1,23 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0064: de source -> en target",
+ "args": [
+  "-l",
+  "en-US",
+  "-m",
+  "de",
+  "-b2",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "Das ist ein Test.\tThis is a test.\nHallo\tHello world, this is a much longer translation text than the original one is.\n"
+ }
+}

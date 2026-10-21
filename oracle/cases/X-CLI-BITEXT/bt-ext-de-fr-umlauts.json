@@ -1,0 +1,26 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0028: de->fr external rule with umlauts in file",
+ "args": [
+  "-l",
+  "fr",
+  "-m",
+  "de",
+  "-b2",
+  "--bitextrules",
+  "bt.xml",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "Die Größe über alles.\tLa grandeur sur tout.\n",
+  "bt.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules targetLang=\"fr\" xsi:noNamespaceSchemaLocation=\"../bitext.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\n<category id=\"CAT1\" name=\"idioms\">\n<rule lang=\"fr\" id=\"gr_rule\" name=\"Ext bitext rule\">\n<pattern>\n\t<source lang=\"de\">\n\t\t<token>Größe</token>\n\t\t<token>über</token>\n\t</source>\n\t<target>\n\t\t<token>grandeur</token>\n\t</target>\n</pattern>\n<message>Hinweis: Äpfel ß <suggestion>taille</suggestion>?</message>\n<example type=\"correct\"><srcExample>Größe über</srcExample>\n<trgExample>ok ok</trgExample></example>\n<example type=\"incorrect\" correction=\"taille\"><srcExample><marker>Größe über</marker></srcExample>\n<trgExample><marker>grandeur</marker></trgExample></example>\n</rule></category></rules>\n"
+ }
+}

@@ -1,0 +1,25 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0062: -e UPPERCASE_SENTENCE_START with both sides lowercase",
+ "args": [
+  "-l",
+  "de-DE",
+  "-m",
+  "en",
+  "-b2",
+  "-e",
+  "UPPERCASE_SENTENCE_START,TRANSLATION_LENGTH",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "this is a test.\tdas ist ein test.\n"
+ }
+}

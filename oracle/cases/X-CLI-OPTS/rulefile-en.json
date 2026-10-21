@@ -1,0 +1,26 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0025: --rulefile en pattern rule",
+ "args": [
+  "-l",
+  "en-US",
+  "-eo",
+  "-e",
+  "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,UPPERCASE_SENTENCE_START,WHITESPACE_RULE,EN_UNPAIRED_BRACKETS,ENGLISH_WORD_REPEAT_RULE,SENTENCE_WHITESPACE,EXAMPLE_RULE",
+  "--rulefile",
+  "rules.xml",
+  "-"
+ ],
+ "stdin": "This is a test of language tool and more.",
+ "files": {
+  "rules.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\n<category id=\"CAT1\" name=\"trivial category\">\n<rule id=\"EXAMPLE_RULE\" name=\"External rule to test\">\n<pattern><token>language</token><token>tool</token></pattern>\n<message>This is wrong!</message>\n<example correction=\"\">language tool</example>\n</rule></category></rules>"
+ }
+}

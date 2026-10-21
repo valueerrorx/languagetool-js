@@ -1,0 +1,25 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0062: English monolingual rule on source side",
+ "args": [
+  "-l",
+  "de-DE",
+  "-m",
+  "en",
+  "-b2",
+  "-e",
+  "ENGLISH_WORD_REPEAT_RULE",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "This is is a test.\tDas ist ein Test.\n"
+ }
+}

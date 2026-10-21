@@ -1,0 +1,14 @@
+Expected text language: English (US) (no spell checking active)
+Working on STDIN...
+<S> This[this/DT,B-NP-singular|E-NP-singular] is[be/VBZ,B-VP] a[a/DT,B-NP-singular] fine[fine/JJ,I-NP-singular] sentence[sentence/NN,sentence/VB,sentence/VBP,E-NP-singular].[./.,</S>./PCT,<P/>,O]
+Disambiguator log: 
+
+PDT_DT[1]: This[this/DT*,this/PDT*,B-NP-singular|E-NP-singular] -> This[this/DT*,B-NP-singular|E-NP-singular]
+
+JJ_NN_JJ[1]: fine[fine/JJ,fine/NN,fine/RB,fine/VB,fine/VBP,I-NP-singular] -> fine[fine/JJ,fine/RB,fine/VB,fine/VBP,I-NP-singular]
+DT_RBJJ_NN_JJ[1]: fine[fine/JJ,fine/RB,fine/VB,fine/VBP,I-NP-singular] -> fine[fine/JJ,I-NP-singular]
+
+UNKNOWN_PCT[1]: .[./.*,./SENT_END*,O] -> .[./.*,./SENT_END*,./PCT*,O]
+add_paragaph_end: .[./.*,./SENT_END*,./PCT*,O] -> .[./.*,./SENT_END*,./PCT*,./PARA_END*,O]
+
+7 rules activated for language English (US)

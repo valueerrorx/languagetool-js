@@ -1,0 +1,33 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0027: --falsefriends twice (last wins)",
+ "args": [
+  "-l",
+  "en-US",
+  "-eo",
+  "-e",
+  "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,UPPERCASE_SENTENCE_START,WHITESPACE_RULE,EN_UNPAIRED_BRACKETS,ENGLISH_WORD_REPEAT_RULE,SENTENCE_WHITESPACE",
+  "-m",
+  "de",
+  "--falsefriends",
+  "ff.xml",
+  "--falsefriends",
+  "ff2.xml",
+  "--level",
+  "PICKY",
+  "-"
+ ],
+ "stdin": "A gift and a box.",
+ "files": {
+  "ff.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE rules SYSTEM \"false-friends.dtd\">\n<rules>\n<rulegroup id=\"EXT_FF\">\n<rule>\n<pattern lang=\"en\">\n<token>gift</token>\n</pattern>\n<translation lang=\"de\">Geschenk</translation>\n</rule>\n<rule>\n<pattern lang=\"de\">\n<token>Gift</token>\n</pattern>\n<translation lang=\"en\">poison</translation>\n</rule>\n</rulegroup>\n</rules>\n",
+  "ff2.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE rules SYSTEM \"false-friends.dtd\">\n<rules>\n<rulegroup id=\"EXT_BOX\">\n<rule>\n<pattern lang=\"en\">\n<token>box</token>\n</pattern>\n<translation lang=\"de\">Kasten</translation>\n</rule>\n<rule>\n<pattern lang=\"de\">\n<token>Box</token>\n</pattern>\n<translation lang=\"en\">Schachtel</translation>\n</rule>\n</rulegroup>\n</rules>\n"
+ }
+}

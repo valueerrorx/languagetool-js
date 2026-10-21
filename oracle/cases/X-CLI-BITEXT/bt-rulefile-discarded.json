@@ -1,0 +1,28 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0062: --rulefile is lost in bitext mode (lt re-created)",
+ "args": [
+  "-l",
+  "de-DE",
+  "-m",
+  "en",
+  "-b2",
+  "--rulefile",
+  "rules.xml",
+  "-e",
+  "EXAMPLE_RULE",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "x\tlanguage tool\n",
+  "rules.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"de\">\n<category id=\"CAT1\" name=\"c\">\n<rule id=\"EXAMPLE_RULE\" name=\"n\">\n<pattern><token>language</token><token>tool</token></pattern>\n<message>wrong</message>\n<example correction=\"\">language tool</example>\n</rule></category></rules>"
+ }
+}

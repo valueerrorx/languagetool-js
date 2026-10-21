@@ -1,0 +1,26 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0025/0046: external rule with suggestion listing",
+ "args": [
+  "-l",
+  "en-US",
+  "-eo",
+  "-e",
+  "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,UPPERCASE_SENTENCE_START,WHITESPACE_RULE,EN_UNPAIRED_BRACKETS,ENGLISH_WORD_REPEAT_RULE,SENTENCE_WHITESPACE,EXT_COLOR",
+  "--rulefile",
+  "rules.xml",
+  "-"
+ ],
+ "stdin": "This is a color.",
+ "files": {
+  "rules.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules lang=\"en\">\n<category id=\"CAT1\" name=\"c\">\n<rule id=\"EXT_COLOR\" name=\"n\">\n<pattern><token>color</token></pattern>\n<message>Use <suggestion>colour</suggestion>.</message>\n<url>https://example.org/colour</url>\n<short>Spelling</short>\n<example correction=\"colour\">This is a <marker>color</marker>.</example>\n</rule></category></rules>"
+ }
+}

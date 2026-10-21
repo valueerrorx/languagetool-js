@@ -1,0 +1,21 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0039/0020: -eo with unknown category -> No rules active (HashSet printing)",
+ "args": [
+  "-l",
+  "en-US",
+  "-eo",
+  "--enablecategories",
+  "FOO_CAT",
+  "-"
+ ],
+ "stdin": "This is is a test of of language tool.  Hi ,there ( ok.. this is an test.\n\nlowercase start here."
+}

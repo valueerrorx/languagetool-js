@@ -1,0 +1,23 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0063: three columns (extra column ignored?)",
+ "args": [
+  "-l",
+  "de-DE",
+  "-m",
+  "en",
+  "-b2",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "One\tEins\tdrei\nShort\tDies ist eine sehr lange Übersetzung, die viel länger ist als das Original.\tx\n"
+ }
+}

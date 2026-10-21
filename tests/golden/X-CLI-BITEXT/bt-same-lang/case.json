@@ -1,0 +1,23 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0064: -m same as -l",
+ "args": [
+  "-l",
+  "en-US",
+  "-m",
+  "en",
+  "-b2",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "Berlin\tBerlin\nThis is a test.\tThis is a test.\nSame!\tSame!\nA\tB\n"
+ }
+}

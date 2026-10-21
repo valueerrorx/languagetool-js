@@ -1,0 +1,24 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0065: -a with punctuation/same-translation rules",
+ "args": [
+  "-l",
+  "de-DE",
+  "-m",
+  "en",
+  "-b2",
+  "-a",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "Berlin\tBerlin\nThis is a test.\tThis is a test.\nSame!\tSame!\nA\tB\nIs this a question?\tIst das eine Frage.\nHello!\tHallo\nStop...\tHalt\nFine.\tGut\n"
+ }
+}

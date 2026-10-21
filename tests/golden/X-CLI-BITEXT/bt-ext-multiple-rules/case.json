@@ -1,0 +1,28 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0028: external file with several rules and -e list order",
+ "args": [
+  "-l",
+  "de-DE",
+  "-m",
+  "en",
+  "-b2",
+  "--bitextrules",
+  "bt.xml",
+  "-e",
+  "good_day,red_herring",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "This is a red herring.\tDas ist ein roter Hering.\nThis is a fine day.\tDas ist ein schöner Tag.\nGood day.\tGuten Tag.\n",
+  "bt.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<rules targetLang=\"de\" xsi:noNamespaceSchemaLocation=\"../bitext.xsd\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\n<category id=\"CAT1\" name=\"idioms\">\n<rule lang=\"de\" id=\"red_herring\" name=\"Ext bitext rule\">\n<pattern>\n\t<source lang=\"en\">\n\t\t<token>is</token>\n\t\t<token>a</token>\n\t\t<token>red</token>\n\t\t<token>herring</token>\n\t</source>\n\t<target>\n\t\t<token>ein</token>\n\t\t<token>roter</token>\n\t\t<token>Hering</token>\n\t</target>\n</pattern>\n<message>Meinten Sie <suggestion>ein Ablenkungsmanöver</suggestion>?</message>\n<example type=\"correct\"><srcExample>is a red herring</srcExample>\n<trgExample>ok ok</trgExample></example>\n<example type=\"incorrect\" correction=\"ein Ablenkungsmanöver\"><srcExample><marker>is a red herring</marker></srcExample>\n<trgExample><marker>ein roter Hering</marker></trgExample></example>\n</rule>\n<rule lang=\"de\" id=\"good_day\" name=\"Good day\"><pattern><source lang=\"en\"><token>good</token><token>day</token></source><target><token>Guten</token><token>Tag</token></target></pattern><message>Meinten Sie <suggestion>Hallo</suggestion>?</message><example type=\"correct\"><srcExample>Good day.</srcExample><trgExample>Hallo.</trgExample></example><example type=\"incorrect\" correction=\"Hallo\"><srcExample><marker>Good day</marker>.</srcExample><trgExample><marker>Guten Tag</marker>.</trgExample></example></rule></category></rules>"
+ }
+}

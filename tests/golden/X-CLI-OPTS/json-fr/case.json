@@ -1,0 +1,22 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0051: --json French",
+ "args": [
+  "-l",
+  "fr",
+  "-eo",
+  "-e",
+  "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,UPPERCASE_SENTENCE_START,WHITESPACE_RULE,UNPAIRED_BRACKETS,SENTENCE_WHITESPACE",
+  "--json",
+  "-"
+ ],
+ "stdin": "Bonjour  le monde , voici voici un test (sans fin.  Il y a un un problème..\n\nminuscule."
+}

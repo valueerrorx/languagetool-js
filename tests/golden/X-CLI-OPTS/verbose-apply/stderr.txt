@@ -1,0 +1,10 @@
+Working on STDIN...
+<S> Hi[Hi/NNP,hi/NN,hi/UH,B-ADVP] there[there/EX,there/RB,there/UH,I-ADVP] there[there/RB,B-ADVP].[./.,</S>./PCT,<P/>,O]
+Disambiguator log: 
+
+EX_SENT_END_RB[1]: there[there/EX,there/RB,there/UH,B-ADVP] -> there[there/RB,B-ADVP]
+
+UNKNOWN_PCT[1]: .[./.*,./SENT_END*,O] -> .[./.*,./SENT_END*,./PCT*,O]
+add_paragaph_end: .[./.*,./SENT_END*,./PCT*,O] -> .[./.*,./SENT_END*,./PCT*,./PARA_END*,O]
+
+7 rules activated for language English (US)

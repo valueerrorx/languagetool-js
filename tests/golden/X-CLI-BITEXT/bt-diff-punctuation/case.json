@@ -1,0 +1,23 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0064: DifferentPunctuationRule cases",
+ "args": [
+  "-l",
+  "de-DE",
+  "-m",
+  "en",
+  "-b2",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "Is this a question?\tIst das eine Frage.\nHello!\tHallo\nStop...\tHalt\nFine.\tGut\n"
+ }
+}

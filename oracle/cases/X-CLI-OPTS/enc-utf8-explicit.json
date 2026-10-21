@@ -1,0 +1,25 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0029: -c utf-8 file with umlauts",
+ "args": [
+  "-l",
+  "de-DE",
+  "-eo",
+  "-e",
+  "COMMA_PARENTHESIS_WHITESPACE,DE_DOUBLE_PUNCTUATION,UPPERCASE_SENTENCE_START,WHITESPACE_RULE,UNPAIRED_BRACKETS,GERMAN_WORD_REPEAT_RULE,DE_SENTENCE_WHITESPACE",
+  "-c",
+  "utf-8",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "Über größere Ärzte  sprechen wir wir später.\n"
+ }
+}

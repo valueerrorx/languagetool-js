@@ -1,0 +1,94 @@
+Expected text language: English (US)
+Working on STDIN...
+<S> The[the/DT,B-NP-singular] report[report/NN:UN,E-NP-singular] was[be/VBD,B-VP] written[written/JJ,write/VBN,I-VP] by[by/IN,by/JJ,by/RP,B-PP] him[he/PRP,he/PRP_O3SM,B-NP-singular|E-NP-singular] and[and/CC,O] it[it/PRP,it/PRP_O3SN,it/PRP_S3SN,B-NP-singular|E-NP-singular] was[be/VBD,B-VP] decided[decide/VBN,I-VP] that[that/DT,that/RP,that/WDT,that/WP,B-SBAR] we[we/PRP,we/PRP_S1P,B-NP-singular|E-NP-singular] should[should/MD,B-VP] basically[basically/RB,I-VP] proceed[proceed/VB,I-VP].[./.,</S>./PCT,O] 
+Disambiguator log: 
+
+DT_VB_NN[1]: report[report/NN:UN,report/VB,report/VBP,E-NP-singular] -> report[report/NN:UN,E-NP-singular]
+
+BY_NO_NOUN[1]: by[by/IN,by/JJ,by/NN,by/RP,B-PP] -> by[by/IN,by/JJ,by/RP,B-PP]
+
+VBN_VBD[1]: decided[decided/JJ,decide/VBD,decide/VBN,I-VP] -> decided[decide/VBN,I-VP]
+
+PRP_MD_RB_VB[1]: proceed[proceed/VB,proceed/VBP,I-VP] -> proceed[proceed/VB,I-VP]
+
+UNKNOWN_PCT[1]: .[./.*,./SENT_END*,O] -> .[./.*,./SENT_END*,./PCT*,O]
+
+<S> Really[really/RB,really/UH,Really/RB_SENT,B-ADVP],[,/,,,/PCT,,/RB_SENT,O] it[it/PRP,it/PRP_O3SN,it/PRP_S3SN,B-NP-singular|E-NP-singular] is[be/VBZ,B-VP] very[very/RB,B-ADJP] good[good/JJ,good/NN:U,I-ADJP].[./.,</S>./PCT,O] 
+Disambiguator log: 
+
+PHRASES_1_WORD[1]: Really[really/RB*,really/UH*,B-ADVP] -> Really[really/RB*,really/UH*,Really/RB_SENT*,B-ADVP]
+
+UNKNOWN_PCT[1]: ,[,/,*,O] -> ,[,/,*,,/PCT*,O]
+PHRASES_1_WORD[1]: ,[,/,*,,/PCT*,O] -> ,[,/,*,,/PCT*,,/RB_SENT*,O]
+
+VERY_RB[3]: very[very/JJ,very/RB,B-ADJP] -> very[very/RB,B-ADJP]
+VERY_RB[4]: very[very/RB,B-ADJP] -> very[very/RB,B-ADJP]
+
+UNKNOWN_PCT[1]: .[./.*,./SENT_END*,O] -> .[./.*,./SENT_END*,./PCT*,O]
+
+<S> In[in/IN,B-PP] order[order/NN:UN,B-NP-singular|E-NP-singular] to[to/IN,to/TO,B-VP] do[do/VB,do/VBP,I-VP] so[so/CC,so/JJ,so/NN:U,so/RB,B-ADVP],[,/,,,/PCT,O] we[we/PRP,we/PRP_S1P,B-NP-singular|E-NP-singular] will[will/MD,B-VP],[,/,,,/PCT,O] at[at/IN,at/RP,B-PP] this[this/DT,B-NP-singular] point[point/NN:UN,E-NP-singular] in[in/IN,B-PP] time[time/NN:UN,B-NP-singular|E-NP-singular],[,/,,,/PCT,O] utilize[utilize/VB,utilize/VBP,B-VP] the[the/DT,B-NP-singular] tool[tool/NN,E-NP-singular].[./.,</S>./PCT,O] 
+Disambiguator log: 
+
+IN_NNUN[2]: In[In/NNP*,in/IN*,in/NN*,in/RB*,in/RP*,B-PP] -> In[in/IN*,B-PP]
+
+IN_NN[1]: order[order/NN:UN,order/UH,order/VB,order/VBP,B-NP-singular|E-NP-singular] -> order[order/NN:UN,B-NP-singular|E-NP-singular]
+ORDER_UH[1]: order[order/NN:UN,B-NP-singular|E-NP-singular] -> order[order/NN:UN,B-NP-singular|E-NP-singular]
+
+UNKNOWN_PCT[1]: ,[,/,*,O] -> ,[,/,*,,/PCT*,O]
+
+CAN_WILL_MD[3]: will[will/MD,will/NN:UN,will/VB,will/VBP,B-VP] -> will[will/MD,B-VP]
+
+UNKNOWN_PCT[1]: ,[,/,*,O] -> ,[,/,*,,/PCT*,O]
+
+PDT_DT[1]: this[this/DT,this/PDT,B-NP-singular] -> this[this/DT,B-NP-singular]
+
+E_NP_NN_VBP[1]: point[point/NN:UN,point/VB,point/VBP,E-NP-singular] -> point[point/NN:UN,E-NP-singular]
+
+IN_NNUN[2]: in[in/IN,in/NN,in/RB,in/RP,B-PP] -> in[in/IN,B-PP]
+
+IN_NN[1]: time[time/JJ,time/NN:UN,time/VB,time/VBP,B-NP-singular|E-NP-singular] -> time[time/NN:UN,B-NP-singular|E-NP-singular]
+
+UNKNOWN_PCT[1]: ,[,/,*,O] -> ,[,/,*,,/PCT*,O]
+
+DT_VB_NN[1]: tool[tool/NN,tool/VB,tool/VBP,E-NP-singular] -> tool[tool/NN,E-NP-singular]
+
+UNKNOWN_PCT[1]: .[./.*,./SENT_END*,O] -> .[./.*,./SENT_END*,./PCT*,O]
+
+<S> This[this/DT,B-NP-singular|E-NP-singular] is[be/VBZ,B-VP] an[a/DT,B-NP-singular] extremely[extremely/RB,I-NP-singular] long[long/JJ,long/NN:UN,long/VB,long/VBP,I-NP-singular] sentence[sentence/NN,sentence/VB,sentence/VBP,E-NP-singular] that[that/DT,that/RP,that/WDT,that/WP,B-NP-singular|E-NP-singular] keeps[keep/NNS,keep/VBZ,B-VP] going[going/NN:UN,go/VBG,I-VP] and[and/CC,I-VP] going[going/NN:UN,go/VBG,I-VP] with[with/IN,with/RP,B-PRT] many[many/PDT,B-NP-plural] many[many/DT,many/PDT,I-NP-plural] words[word/NNS,E-NP-plural] so[so/CC,so/JJ,so/NN:U,so/RB,B-SBAR] that[that/DT,that/RP,that/WDT,that/WP,I-SBAR] it[it/PRP,it/PRP_O3SN,it/PRP_S3SN,B-NP-singular|E-NP-singular] surely[surely/RB,B-ADVP] exceeds[exceed/VBZ,B-VP] the[the/DT,B-NP-singular] usual[usual/JJ,I-NP-singular] limit[limit/NN,E-NP-singular] of[of/IN,B-PP] words[word/NNS,word/VBZ,B-NP-plural|E-NP-plural] that[that/DT,that/RP,that/WDT,that/WP,B-NP-singular|E-NP-singular] is[be/VBZ,B-VP] acceptable[acceptable/JJ,B-ADJP] for[for/CC,for/IN,for/RP,B-PP] a[a/DT,B-NP-singular] sentence[sentence/NN,E-NP-singular] in[in/IN,B-PP] any[any/DT,B-NP-singular] text[text/NN:UN,E-NP-singular],[,/,,,/PCT,O] and[and/CC,O] furthermore[furthermore/RB,B-ADVP] it[it/PRP,it/PRP_O3SN,it/PRP_S3SN,B-NP-singular|E-NP-singular] does[do/VBZ,B-VP] not[not/RB,I-VP] stop[stop/VB,I-VP] there[there/EX,there/RB,there/UH,B-ADVP] either[either/CC,either/DT,either/RB,O],[,/,,,/PCT,O] which[which/WP,B-NP-singular|E-NP-singular] is[be/VBZ,B-VP] bad[bad/JJ,bad/NN:U,B-ADJP].[./.,</S>./PCT,<P/>,O]
+Disambiguator log: 
+
+PDT_DT[1]: This[this/DT*,this/PDT*,B-NP-singular|E-NP-singular] -> This[this/DT*,B-NP-singular|E-NP-singular]
+
+PDT_PDT[1]: many[many/DT,many/PDT,B-NP-plural] -> many[many/PDT,B-NP-plural]
+
+DT_VBZNNS_NNS[1]: words[word/NNS,word/VBZ,E-NP-plural] -> words[word/NNS,E-NP-plural]
+
+NNJJ_NN_JJ[1]: usual[usual/JJ,usual/NN:U,I-NP-singular] -> usual[usual/JJ,I-NP-singular]
+
+DT_JJ_NN_NN[1]: limit[limit/NN,limit/VB,limit/VBP,E-NP-singular] -> limit[limit/NN,E-NP-singular]
+
+DT_VB_NN[1]: sentence[sentence/NN,sentence/VB,sentence/VBP,E-NP-singular] -> sentence[sentence/NN,E-NP-singular]
+
+IN_IN[1]: in[in/IN,in/NN,in/RB,in/RP,B-PP] -> in[in/IN,B-PP]
+
+DT_VB_NN[1]: text[text/NN:UN,text/VB,text/VBP,E-NP-singular] -> text[text/NN:UN,E-NP-singular]
+
+UNKNOWN_PCT[1]: ,[,/,*,O] -> ,[,/,*,,/PCT*,O]
+
+DO_not_VBNN_VB[1]: does[doe/NNS,do/VBZ,B-VP] -> does[do/VBZ,B-VP]
+DOES_not[1]: does[do/VBZ,B-VP] -> does[do/VBZ,B-VP]
+
+DO_not_VBNN_VB[1]: not[not/RB,I-VP] -> not[not/RB,I-VP]
+DOES_not[1]: not[not/RB,I-VP] -> not[not/RB,I-VP]
+
+DO_not_VBNN_VB[1]: stop[stop/NN,stop/VB,stop/VBP,I-VP] -> stop[stop/VB,I-VP]
+DOES_not[1]: stop[stop/VB,I-VP] -> stop[stop/VB,I-VP]
+
+UNKNOWN_PCT[1]: ,[,/,*,O] -> ,[,/,*,,/PCT*,O]
+
+WDT_WP[1]: which[which/WDT,which/WP,B-NP-singular|E-NP-singular] -> which[which/WP,B-NP-singular|E-NP-singular]
+
+UNKNOWN_PCT[1]: .[./.*,./SENT_END*,O] -> .[./.*,./SENT_END*,./PCT*,O]
+add_paragaph_end: .[./.*,./SENT_END*,./PCT*,O] -> .[./.*,./SENT_END*,./PCT*,./PARA_END*,O]
+
+5836 rules activated for language English (US)

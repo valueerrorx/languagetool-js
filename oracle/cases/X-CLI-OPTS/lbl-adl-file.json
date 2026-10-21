@@ -1,0 +1,24 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths",
+  "logTimestamp"
+ ],
+ "description": "CLI-0057: --line-by-line -adl file",
+ "args": [
+  "-adl",
+  "--line-by-line",
+  "-eo",
+  "-e",
+  "COMMA_PARENTHESIS_WHITESPACE,DE_DOUBLE_PUNCTUATION,UPPERCASE_SENTENCE_START,WHITESPACE_RULE,UNPAIRED_BRACKETS,GERMAN_WORD_REPEAT_RULE,DE_SENTENCE_WHITESPACE",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "Das ist ein kleiner deutscher Text zum Testen der Spracherkennung, mit  zwei Leerzeichen.\n\nZweiter Absatz mit mit Fehler.\n"
+ }
+}

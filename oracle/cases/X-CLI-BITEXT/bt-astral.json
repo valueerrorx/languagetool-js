@@ -1,0 +1,23 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0064: astral characters in pair",
+ "args": [
+  "-l",
+  "de-DE",
+  "-m",
+  "en",
+  "-b2",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "Hi 😀\tHallo 😀 sehr lange Zeichenfolge ohne Sinn, die lang genug ist, um aufzufallen im Vergleich.\n"
+ }
+}

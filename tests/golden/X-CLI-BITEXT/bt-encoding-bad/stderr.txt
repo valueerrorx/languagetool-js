@@ -1,0 +1,10 @@
+Expected text language: German (Germany)
+Exception in thread "main" java.lang.RuntimeException: java.io.UnsupportedEncodingException: foo-bar
+	at org.languagetool.bitext.TabBitextReader.<init>(TabBitextReader.java:59)
+	at org.languagetool.commandline.Main.runOnFile(Main.java:163)
+	at org.languagetool.commandline.Main.main(Main.java:466)
+Caused by: java.io.UnsupportedEncodingException: foo-bar
+	at java.base/sun.nio.cs.StreamDecoder.forInputStreamReader(StreamDecoder.java:81)
+	at java.base/java.io.InputStreamReader.<init>(InputStreamReader.java:100)
+	at org.languagetool.bitext.TabBitextReader.<init>(TabBitextReader.java:53)
+	... 2 more

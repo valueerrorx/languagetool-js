@@ -1,0 +1,57 @@
+Expected text language: French (no spell checking active, specify a language variant like 'en-GB' if available)
+Working on STDIN...
+<S> Bonjour[bonjour/N m s]  le[le/D m s,le/_GN_MS] monde[monde/N m s,monde/_GN_MS] ,[,/M nonfin,,/M nonfin] voici[voici/P] voici[voici/P] un[un/D m s,un/_GN_MS] test[test/N m s,test/_GN_MS] ([(/null]sans[sans/P] fin[fin/A,fin/J m s,fin/N f s,fin/N m s].[./M fin,./M fin,</S>]  
+Disambiguator log: 
+
+RP-D_N_AMBIG[1]: le[le/D m s,le/R pers obj 3 m s] -> le[le/D m s]
+NOMINAL_GROUPS[17]: le[le/D m s] -> le[le/D m s,le/_GN_MS]
+
+RP-D_N_AMBIG[1]: monde[monde/N m s,monder/V imp pres 2 s,monder/V ind pres 1 s,monder/V ind pres 3 s,monder/V sub pres 1 s,monder/V sub pres 3 s] -> monde[monde/N m s]
+NOMINAL_GROUPS[17]: monde[monde/N m s] -> monde[monde/N m s,monde/_GN_MS]
+
+PREPOSITIONS[2]: voici[voici/P] -> voici[voici/P]
+
+PREPOSITIONS[2]: voici[voici/P] -> voici[voici/P]
+
+NOT_NOUNS[1]: un[un/D m s,un/N m s,un/R m s] -> un[un/D m s,un/R m s]
+RP-D_N_AMBIG[1]: un[un/D m s,un/R m s] -> un[un/D m s]
+NOMINAL_GROUPS[17]: un[un/D m s] -> un[un/D m s,un/_GN_MS]
+
+N[4]: test[test/N m s] -> test[test/N m s]
+RP-D_N_AMBIG[1]: test[test/N m s] -> test[test/N m s]
+NOMINAL_GROUPS[17]: test[test/N m s] -> test[test/N m s,test/_GN_MS]
+
+PREPOSITIONS[2]: sans[sans/P*] -> sans[sans/P*]
+
+<S> Il[il/R pers suj 3 m s] y[y/R pers obj 3 sp] a[avoir/V avoir ind pres 3 s] un[un/D m s,un/R m s] un[un/D m s,un/_GN_MS] problème[problème/N m s,problème/_GN_MS].[./M fin,./M fin].[./M fin,./M fin,</S>]  
+Disambiguator log: 
+
+PRON_PRON_VERB[1]: Il[il/R pers suj 3 m s*] -> Il[il/R pers suj 3 m s*]
+PRON_PRON_VERB[2]: Il[il/R pers suj 3 m s*] -> Il[il/R pers suj 3 m s*]
+
+NOT_NOUNS[1]: y[y/N m sp,y/R pers obj 3 sp] -> y[y/R pers obj 3 sp]
+PRON_VERB[1]: y[y/R pers obj 3 sp] -> y[y/R pers obj 3 sp]
+PRON_PRON_VERB[1]: y[y/R pers obj 3 sp] -> y[y/R pers obj 3 sp]
+PRON_PRON_VERB[2]: y[y/R pers obj 3 sp] -> y[y/R pers obj 3 sp]
+
+NE_V[1]: a[a/N m sp,avoir/V avoir ind pres 3 s] -> a[avoir/V avoir ind pres 3 s]
+PRON_VERB[1]: a[avoir/V avoir ind pres 3 s] -> a[avoir/V avoir ind pres 3 s]
+PRON_PRON_VERB[1]: a[avoir/V avoir ind pres 3 s] -> a[avoir/V avoir ind pres 3 s]
+PRON_PRON_VERB[2]: a[avoir/V avoir ind pres 3 s] -> a[avoir/V avoir ind pres 3 s]
+
+NOT_NOUNS[1]: un[un/D m s,un/N m s,un/R m s] -> un[un/D m s,un/R m s]
+
+NOT_NOUNS[1]: un[un/D m s,un/N m s,un/R m s] -> un[un/D m s,un/R m s]
+RP-D_N_AMBIG[1]: un[un/D m s,un/R m s] -> un[un/D m s]
+NOMINAL_GROUPS[17]: un[un/D m s] -> un[un/D m s,un/_GN_MS]
+
+N[4]: problème[problème/N m s] -> problème[problème/N m s]
+RP-D_N_AMBIG[1]: problème[problème/N m s] -> problème[problème/N m s]
+NOMINAL_GROUPS[17]: problème[problème/N m s] -> problème[problème/N m s,problème/_GN_MS]
+
+<S> minuscule[minuscule/J e s,minuscule/N e s].[./M fin,./M fin,</S><P/>]
+Disambiguator log: 
+
+add_paragaph_end: .[./M fin*,./M fin*,./SENT_END*] -> .[./M fin*,./M fin*,./SENT_END*,./PARA_END*]
+
+6 rules activated for language French

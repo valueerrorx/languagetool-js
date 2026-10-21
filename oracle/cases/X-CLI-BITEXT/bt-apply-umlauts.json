@@ -1,0 +1,26 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0065: -a umlauts preserved",
+ "args": [
+  "-l",
+  "de-DE",
+  "-m",
+  "en",
+  "-b2",
+  "-a",
+  "-e",
+  "UPPERCASE_SENTENCE_START",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "x\tüber Größe. äpfel sind gut.\n"
+ }
+}

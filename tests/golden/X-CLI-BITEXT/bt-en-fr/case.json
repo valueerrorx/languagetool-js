@@ -1,0 +1,23 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0064: en source -> fr target",
+ "args": [
+  "-l",
+  "fr",
+  "-m",
+  "en",
+  "-b2",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "Hello world.\tBonjour le monde.\nHi\tSalut, ceci est une traduction française vraiment très longue pour un mot.\n"
+ }
+}

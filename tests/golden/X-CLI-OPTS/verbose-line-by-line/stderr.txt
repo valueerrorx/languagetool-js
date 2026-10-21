@@ -1,0 +1,20 @@
+Expected text language: English (US) (no spell checking active)
+Warning: running in line by line mode. Cross-paragraph checks will not work.
+
+Working on STDIN...
+7 rules activated for language English (US)
+<S> Hi[Hi/NNP,hi/NN,hi/UH,B-ADVP] there[there/EX,there/RB,there/UH,I-ADVP] there[there/RB,B-ADVP].[./.,</S>./PCT,O] 
+Disambiguator log: 
+
+EX_SENT_END_RB[1]: there[there/EX,there/RB,there/UH,B-ADVP] -> there[there/RB,B-ADVP]
+
+UNKNOWN_PCT[1]: .[./.*,./SENT_END*,O] -> .[./.*,./SENT_END*,./PCT*,O]
+
+<S> Second[second/JJ,second/VB,second/VBP,B-NP-singular] line[line/NN:UN,line/VB,line/VBP,E-NP-singular].[./.,</S>./PCT,O]<P/> 
+Disambiguator log: 
+
+JJ_NN_JJ[1]: Second[second/JJ*,second/NN:UN*,second/VB*,second/VBP*,B-NP-singular] -> Second[second/JJ*,second/VB*,second/VBP*,B-NP-singular]
+
+UNKNOWN_PCT[1]: .[./.*,./SENT_END*,O] -> .[./.*,./SENT_END*,./PCT*,O]
+
+7 rules activated for language English (US)

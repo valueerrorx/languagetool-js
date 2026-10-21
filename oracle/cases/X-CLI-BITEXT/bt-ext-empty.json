@@ -1,0 +1,26 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0028: --bitextrules empty file",
+ "args": [
+  "-l",
+  "de-DE",
+  "-m",
+  "en",
+  "-b2",
+  "--bitextrules",
+  "empty.xml",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "This is a red herring.\tDas ist ein roter Hering.\nThis is a fine day.\tDas ist ein schöner Tag.\n",
+  "empty.xml": ""
+ }
+}

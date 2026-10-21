@@ -1,0 +1,30 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0027/0043: external ff file with umlauts",
+ "args": [
+  "-l",
+  "de-DE",
+  "-eo",
+  "-e",
+  "COMMA_PARENTHESIS_WHITESPACE,DE_DOUBLE_PUNCTUATION,UPPERCASE_SENTENCE_START,WHITESPACE_RULE,UNPAIRED_BRACKETS,GERMAN_WORD_REPEAT_RULE,DE_SENTENCE_WHITESPACE",
+  "-m",
+  "en",
+  "--falsefriends",
+  "ff.xml",
+  "--level",
+  "PICKY",
+  "-"
+ ],
+ "stdin": "Das ist eine Beere im Wald.",
+ "files": {
+  "ff.xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE rules SYSTEM \"false-friends.dtd\">\n<rules>\n<rulegroup id=\"EXT_FF\">\n<rule>\n<pattern lang=\"en\">\n<token>bear</token>\n</pattern>\n<translation lang=\"de\">Bär</translation>\n</rule>\n<rule>\n<pattern lang=\"de\">\n<token>Beere</token>\n</pattern>\n<translation lang=\"en\">Größe</translation>\n</rule>\n</rulegroup>\n</rules>\n"
+ }
+}

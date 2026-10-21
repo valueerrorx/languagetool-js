@@ -1,0 +1,23 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0063: UTF-8 BOM in bitext file",
+ "args": [
+  "-l",
+  "de-DE",
+  "-m",
+  "en",
+  "-b2",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "﻿This is a test.\tDas ist ein Test.\nHello world\tHallo Welt\nShort\tDies ist eine sehr lange Übersetzung, die viel länger ist als das Original und deshalb auffällt.\n"
+ }
+}

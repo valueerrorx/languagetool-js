@@ -1,0 +1,19 @@
+1.) Line 1, column 1009, Rule ID: GERMAN_SPELLER_RULE premium: false prio=-3
+Message: Möglicher Tippfehler gefunden.
+... word word word word word word word end Wort xxxxxxxxxx
+                                                ^^^^^^^^^^
+
+2.) Line 1, column 1004, Rule ID: TRANSLATION_LENGTH premium: false
+Message: Source and target translation lengths are very different
+... word word word word word word word word end Wort xxxxxxxxxx
+                                                ^^^^^^^^^^^^^^^
+3.) Line 2, column 6, Rule ID: TRANSLATION_LENGTH premium: false
+Message: Source and target translation lengths are very different
+Short Dies ist eine sehr lange Übersetzung, die viel länger ist als das Original.
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+4.) Line 2, column 7, Rule ID: DIFFERENT_PUNCTUATION premium: false
+Message: Source and target translation have different ending punctuation
+Short Dies ist eine sehr lange Übersetzung, die viel länger ist als das Original.
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Time: 27408ms for 2 sentences (0.1 sentences/sec)

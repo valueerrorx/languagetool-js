@@ -1,0 +1,34 @@
+Expected text language: English (no spell checking active, specify a language variant like 'en-GB' if available)
+Working on input.txt...
+<S> This[this/DT,B-NP-singular|E-NP-singular] is[be/VBZ,B-VP] an[a/DT,B-NP-singular] test[test/NN,E-NP-singular].[./.,</S>./PCT,O]  
+Disambiguator log: 
+
+PDT_DT[1]: This[this/DT*,this/PDT*,B-NP-singular|E-NP-singular] -> This[this/DT*,B-NP-singular|E-NP-singular]
+
+DT_VB_NN_SENTEND[1]: test[test/JJ,test/NN,test/VB,test/VBP,E-NP-singular] -> test[test/NN,E-NP-singular]
+
+UNKNOWN_PCT[1]: .[./.*,./SENT_END*,O] -> .[./.*,./SENT_END*,./PCT*,O]
+
+<S> This[this/DT,B-NP-singular|E-NP-singular] is[be/VBZ,B-VP] a[a/DT,B-NP-singular] test[test/NN,E-NP-singular] of[of/IN,B-PP] of[of/IN,B-NP-singular] language[language/NN:UN,I-NP-singular] tool[tool/NN,tool/VB,tool/VBP,E-NP-singular].[./.,</S>./PCT,O]  
+Disambiguator log: 
+
+PDT_DT[1]: This[this/DT*,this/PDT*,B-NP-singular|E-NP-singular] -> This[this/DT*,B-NP-singular|E-NP-singular]
+
+DT_JJNN_IN_NN[1]: test[test/JJ,test/NN,test/VB,test/VBP,E-NP-singular] -> test[test/NN,E-NP-singular]
+
+UNKNOWN_PCT[1]: .[./.*,./SENT_END*,O] -> .[./.*,./SENT_END*,./PCT*,O]
+
+<S> This[this/DT,B-NP-singular|E-NP-singular] is[be/VBZ,B-VP] is[be/VBZ,B-VP] a[a/DT,B-NP-singular] test[test/NN,E-NP-singular] of[of/IN,B-PP] language[language/NN:UN,B-NP-singular] tool[tool/NN,tool/VB,tool/VBP,E-NP-singular].[./.,</S>./PCT,<P/>,O]
+Disambiguator log: 
+
+PDT_DT[1]: This[this/DT*,this/PDT*,B-NP-singular|E-NP-singular] -> This[this/DT*,B-NP-singular|E-NP-singular]
+
+DT_JJNN_IN_NN[1]: test[test/JJ,test/NN,test/VB,test/VBP,E-NP-singular] -> test[test/NN,E-NP-singular]
+
+UNKNOWN_PCT[1]: .[./.*,./SENT_END*,O] -> .[./.*,./SENT_END*,./PCT*,O]
+add_paragaph_end: .[./.*,./SENT_END*,./PCT*,O] -> .[./.*,./SENT_END*,./PCT*,./PARA_END*,O]
+
+5644 rules activated for language English
+Antipatterns activated:
+  REPEATED_VERBS[1] <antipattern> 1 (line 38445) /VB.* \0: is
+  REPEATED_VERBS[1] <antipattern> 4 (line 38457) be be: is

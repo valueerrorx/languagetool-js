@@ -1,0 +1,21 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "CLI-0061: -b2 without -m -> error",
+ "args": [
+  "-l",
+  "de-DE",
+  "-b2",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "This is a test.\tDas ist ein Test.\nHello world\tHallo Welt\nShort\tDies ist eine sehr lange Übersetzung, die viel länger ist als das Original und deshalb auffällt.\n"
+ }
+}
