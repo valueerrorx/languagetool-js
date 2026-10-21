@@ -66,3 +66,4 @@ Format: D-nnn | date | decision
 - Still logged: each case gets a DEV entry in DEVIATIONS.md citing D-053 (lead decides "clearly better"; doubtful cases -> ask user).
 - First use: Hunspell suggest() wall-clock limits (DEV-009).
 - D-054 | 2026-10-21 | User: wave 2 stays as D-031 (it, es, sl, ru, sk, pl). No Croatian module exists in LanguageTool; Serbian (sr, incl. sr-HR) is not ported. Order: finish wave 1 (F67-F73 + audit), then wave 2.
+- D-055 | 2026-10-21 | User: crashes caused only by Java bugs (exception instead of a result, e.g. DIFFERENT_PUNCTUATION fromPos/toPos, false-friend example without type NPE, DMYDateCheckFilter, -p --line-by-line, ruleValues without ':' AIOOBE) are fixed in the port: no match or a clean error message instead of the crash. One DEV entry per case; affected golden cases get a deviation marker plus a JS test of the fixed behaviour. Error messages for invalid user input stay exactly as in Java.
