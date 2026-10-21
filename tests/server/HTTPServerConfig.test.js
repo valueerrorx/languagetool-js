@@ -50,8 +50,8 @@ describe('HTTPServerConfig argument parsing', () => {
     expect(() => new HTTPServerConfig(['--port', 'abc'])).toThrow('For input string: "abc"');
     expect(() => new HTTPServerConfig(['--port', ''])).toThrow('For input string: ""');
     expect(() => new HTTPServerConfig(['--port', '2147483648'])).toThrow('For input string: "2147483648"');
-    expect(() => new HTTPServerConfig(['--port'])).toThrow('Index 1 out of bounds for length 1');
-    expect(() => new HTTPServerConfig(['--config'])).toThrow('Index 1 out of bounds for length 1');
+    expect(() => new HTTPServerConfig(['--port'])).toThrow('Missing value for option --port'); // DEV-020
+    expect(() => new HTTPServerConfig(['--config'])).toThrow('Missing value for option --config'); // DEV-020
   });
 
   it('unknown options print a warning on stdout, --opt=value also warns on stderr', () => {

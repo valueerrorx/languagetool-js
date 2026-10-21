@@ -109,7 +109,7 @@ describe('TextChecker', () => {
     const c = newChecker();
     const v = c.getRuleValues(new Map([['ruleValues', 'A:i5;sx,B:b true']]));
     expect(v.get('A')).toEqual([5, 'x']);
-    expect(() => c.getRuleValues(new Map([['ruleValues', 'A']]))).toThrow('Index 1 out of bounds for length 1');
+    expect(() => c.getRuleValues(new Map([['ruleValues', 'A']]))).toThrow("Invalid 'ruleValues' entry 'A', expected format RULE_ID:value[;value...]"); // DEV-021
   });
 
   // Java: TextChecker#checkText premium status check text

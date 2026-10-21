@@ -1,6 +1,6 @@
 # Resume (lead)
-State 2026-10-21: F01-F34, F38, F44-F49, F51-F59, F61-F63, F65 verified; F50, F60, F64 partial (F64: 3 -adl cases detect ca/it/ga, DEV-006/008); F35-F37, F39-F43 partial. 625/1193 verified. Full npm test green (1061 pass, exit 0, ~6 min, maxWorkers 6).
-F46-F65 done. Next: F66 (see PLAN.md), only on user request. Keep full npm test green (exit 0) after each batch. FalseFriendRuleHandler treats out-of-scope languages as placeholders (DEV-006): mother-tongue cases de/fr pass. X-RULEINFRA harness now loads the disambiguator (unify in antipatterns).
+State 2026-10-22: F01-F74 done (F73 perf partial: warm de/en <0.8 ratio, rerun on quiet machine). 770/1193 verified; remaining ported = blocked (wave 2, DEV-001, unoracleable; see docs/review/RESIDUALS.md). D-056: detection >= Java, Java bugs fixed (DEV-013..027, oracle/deviations.json -> parity reports DEV).
+Next: full npm test green, reviewer audit (docs/review/AUDIT-reviewer.md), F75 final acceptance + parity matrix; then wave 2 (es,it,sl,ru,sk,pl, D-054).
 Notes: npm test now long (EnglishPatternRuleTest 190 s); parity.mjs supports LTJS_CASE=<regex>.
 Rules:
 - D-052 token budget: sonnet only, short prompts, no reviewer unless fixtures thin, one round.
