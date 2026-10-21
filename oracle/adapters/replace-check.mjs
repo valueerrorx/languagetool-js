@@ -102,16 +102,7 @@ function confusion(a) {
   return res;
 }
 
-// Java: German#getRelevantRules (F37 rules merged into the F36 list, Java order); English uses the real getRelevantRules (F50)
-export function f37Rules(l, m, uc, natives) {
-  const code = l.getShortCode();
-  const full = l.getShortCodeWithCountryAndVariant();
-  const at = (pred) => natives.findIndex(pred);
-  const isReadability = (r) => r.constructor?.name === 'ReadabilityRule';
-  const out = natives.slice();
-  if (code === 'de') {
-    return out; // natives already hold the complete German list (_de-rules.mjs, F57)
-  }
-  throw notPorted(`replace-check: rule list of ${code}`);
+// Java: French#getRelevantRules (F37 rules merged into the F36 list); English and German use the real getRelevantRules (F50, F59)
+export function f37Rules(l) {
+  throw notPorted(`replace-check: rule list of ${l.getShortCode()}`);
 }
-f37Rules.withPatternRules = true; // style-check also activates the de XML pattern rules (F58)

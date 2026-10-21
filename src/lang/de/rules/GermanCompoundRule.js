@@ -7,7 +7,7 @@ import { Example } from '../../../core/rules/model/Examples.js';
 import { PatternTokenBuilder } from '../../../core/patterns/PatternTokenBuilder.js';
 import { token, tokenRegex } from '../../../core/patterns/PatternRuleBuilderHelper.js';
 import '../../../core/disambiguation/DisambiguationPatternRule.js';
-import { GermanyGerman } from '../language/GermanyGerman.js';
+import { GermanyGerman } from './GermanyGermanLazy.js';
 
 let compoundData = null; // Java: static volatile compoundData
 let antiPatterns = null; // Java: static ANTI_PATTERNS (built at class load, here on first use)

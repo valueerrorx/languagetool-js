@@ -84,11 +84,11 @@ export class Main {
   // Java: Main#Main(CommandLineOptions)
   constructor(options) {
     this.options = options;
-    // the rule lists of de/fr are interim (ported core rules only): a rule set without -eo would differ from Java; English has the full list since F50
-    // TODO(F59/F63): remove when the full rule lists of de and fr exist
-    const interim = options.getLanguage().getShortCode() !== 'en';
+    // the rule list of fr is interim (ported core rules only): a rule set without -eo would differ from Java; English and German have the full list since F50/F59
+    // TODO(F63): remove when the full rule list of fr exists
+    const interim = options.getLanguage().getShortCode() === 'fr';
     if (interim && !options.isUseEnabledOnly()) throw notPortedYet('full rule set (use -eo -e <ids>)');
-    // TODO(F59/F63): remove when the full rule lists of de and fr exist
+    // TODO(F63): remove when the full rule list of fr exists
     if (interim && options.isEnableTempOff()) throw notPortedYet('full rule set (--enable-temp-off activates pattern rules with default temp_off; use -eo -e <ids>)');
     this.profileRules = false;
     this.bitextMode = false;
@@ -107,7 +107,7 @@ export class Main {
       new Set(options.getDisabledRules()), new Set(options.getEnabledRules()), options.isUseEnabledOnly(), options.isEnableTempOff());
   }
 
-  // Java: new MultiThreadedJLanguageTool(language, motherTongue) (sequential, S9; rule list = interim rules for de/fr until their rule steps land)
+  // Java: new MultiThreadedJLanguageTool(language, motherTongue) (sequential, S9; rule list = interim rules for fr until F63)
   static newLanguageTool(language, motherTongue) {
     return new MultiThreadedJLanguageTool(language, [], motherTongue, null, null, null, true, false, interimRules(language));
   }

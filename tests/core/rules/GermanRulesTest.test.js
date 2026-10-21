@@ -1,15 +1,16 @@
-// Ported from the de module rule tests (GenericUnpairedBracketsRuleTest, GermanWordRepeatRuleTest, UppercaseSentenceStartRuleTest, GermanCommaWhitespaceRuleTest, WordRepeatRuleTest, GermanUnpairedQuotesRuleTest, SentenceWhitespaceRuleTest); German tagger since F22, skipped tests name their missing step
+// Ported from the de module rule tests (GenericUnpairedBracketsRuleTest, GermanWordRepeatRuleTest, UppercaseSentenceStartRuleTest, GermanCommaWhitespaceRuleTest, WordRepeatRuleTest, GermanUnpairedQuotesRuleTest, SentenceWhitespaceRuleTest)
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { GenericUnpairedBracketsRule } from '../../../src/core/rules/GenericUnpairedBracketsRule.js';
 import { GenericUnpairedQuotesRule } from '../../../src/core/rules/GenericUnpairedQuotesRule.js';
 import { GermanWordRepeatRule } from '../../../src/lang/de/rules/GermanWordRepeatRule.js';
-import { GermanUnpairedBracketsRule } from '../../../src/lang/de/rules/GermanUnpairedBracketsRule.js';
-import { GermanUnpairedQuotesRule } from '../../../src/lang/de/rules/GermanUnpairedQuotesRule.js';
 import { GermanCommaWhitespaceRule } from '../../../src/lang/de/rules/GermanCommaWhitespaceRule.js';
 import { Example } from '../../../src/core/rules/model/Examples.js';
 import { getUrl } from '../../../src/core/Tools.js';
 import { Languages } from '../../../src/core/Languages.js';
-import { EN, englishMessages, messagesFor, newLt } from '../../support/ruleTestSupport.js';
+import { JLanguageTool } from '../../../src/core/JLanguageTool.js';
+import { RuntimeException } from '../../../src/lib/java/errors.js';
+import { disableAllRulesExcept } from '../../support/TestTools.js';
+import { englishMessages } from '../../support/ruleTestSupport.js';
 
 describe('GermanRulesTest', () => {
   // real German disambiguation and chunking (F51)
@@ -20,22 +21,23 @@ describe('GermanRulesTest', () => {
   const assertMatches = (input, expectedMatches) => expect(rule.match([lt.getAnalyzedSentence(input)]).length).toBe(expectedMatches);
   const assertGood = (text, tool) => expect((tool ?? lt).check(text).length).toBe(0);
   const assertBad = (text, tool) => expect((tool ?? lt).check(text).length).toBe(1);
-  // Java: GenericUnpairedBracketsRuleTest#getBracketsRule(JLanguageTool) / GenericUnpairedQuotesRuleTest#getQuotesRule(JLanguageTool): the rule of the de list (German#getRelevantRules is F59), also added to lt
+  // Java: GenericUnpairedBracketsRuleTest#getBracketsRule(JLanguageTool) / GenericUnpairedQuotesRuleTest#getQuotesRule(JLanguageTool)
   const getBracketsRule = (tool) => {
-    const r = new GermanUnpairedBracketsRule(messagesFor(germanDe), germanDe);
-    tool.addRule(r);
-    return r;
+    for (const r of tool.getAllActiveRules()) {
+      if (r instanceof GenericUnpairedBracketsRule) return r;
+    }
+    throw new RuntimeException(`Rule not found: ${GenericUnpairedBracketsRule.name}`);
   };
   const getQuotesRule = (tool) => {
-    const r = new GermanUnpairedQuotesRule(messagesFor(germanDe), germanDe);
-    tool.addRule(r);
-    return r;
+    for (const r of tool.getAllActiveRules()) {
+      if (r instanceof GenericUnpairedQuotesRule) return r;
+    }
+    throw new RuntimeException(`Rule not found: ${GenericUnpairedQuotesRule.name}`);
   };
-  const disableAllRulesExcept = () => { throw new Error('de rule list: F17'); };
 
   // Java: GenericUnpairedBracketsRuleTest (de)#testGermanRule
   it('testGermanRule_brackets', () => {
-    lt = newLt(Languages.getLanguageForShortCode("de-DE"));
+    lt = new JLanguageTool(Languages.getLanguageForShortCode("de-DE"));
     rule = getBracketsRule(lt);
     // correct sentences:
     assertMatches("(Das sind die Sätze, die sie testen sollen).", 0);
@@ -62,7 +64,7 @@ describe('GermanRulesTest', () => {
 
   // Java: GermanUnpairedQuotesRuleTest#testGermanRule
   it('testGermanRule_quotes', () => {
-    lt = newLt(Languages.getLanguageForShortCode("de-DE"));
+    lt = new JLanguageTool(Languages.getLanguageForShortCode("de-DE"));
     rule = getQuotesRule(lt);
     // correct sentences:
     assertMatches("»Das sind die Sätze, die sie testen sollen«.", 0);
@@ -101,7 +103,7 @@ describe('GermanRulesTest', () => {
   it('testRule_germanWordRepeat', () => {
     const german = Languages.getLanguageForShortCode("de");
     let rule = new GermanWordRepeatRule(englishMessages(), german);
-    let lt = newLt(german);
+    let lt = new JLanguageTool(german);
     expect(rule.match(lt.getAnalyzedSentence("Das ist gut so.")).length).toBe(0);
     expect(rule.match(lt.getAnalyzedSentence("Das ist ist gut so.")).length).toBe(1);
     expect(rule.match(lt.getAnalyzedSentence("Der der Mann")).length).toBe(1);
@@ -122,10 +124,9 @@ describe('GermanRulesTest', () => {
     expect(rule.match(lt.getAnalyzedSentence("hat hat")).length).toBe(1);
   });
 
-  // SKIPPED: German language rules need the full de rule list (F59) and GermanRuleDisambiguator/GermanChunker (F51)
   // Java: UppercaseSentenceStartRuleTest (de)#testRule
-  it.skip('testRule_uppercase', () => {
-    const lt = newLt(Languages.getLanguageForShortCode("de-DE"));
+  it('testRule_uppercase', () => {
+    const lt = new JLanguageTool(Languages.getLanguageForShortCode("de-DE"));
     disableAllRulesExcept(lt, "UPPERCASE_SENTENCE_START");
     expect(lt.check("etwas beginnen. und der auch nicht").length).toBe(2);
     expect(lt.check("schön").length).toBe(0); // not a real sentence
@@ -173,14 +174,14 @@ describe('GermanRulesTest', () => {
       Example.wrong("Die Partei<marker> ,</marker> die die letzte Wahl gewann."),
       Example.fixed("Die Partei<marker>,</marker> die die letzte Wahl gewann."),
       getUrl("http://fake"));
-    const lt = newLt(Languages.getLanguageForShortCode("de"));
+    const lt = new JLanguageTool(Languages.getLanguageForShortCode("de"));
     expect(rule.match(lt.getAnalyzedSentence("Es gibt 5 Millionen .de-Domains.")).length).toBe(0);
   });
 
   // Java: WordRepeatRuleTest (de)#testRuleGerman
   it('testRuleGerman', () => {
     const german = Languages.getLanguageForShortCode('de-DE');
-    const lt = newLt(german);
+    const lt = new JLanguageTool(german);
     const wordRepeat = new GermanWordRepeatRule(englishMessages(), german); // Java: WordRepeatRuleTest#rule
     const assertGood = (text, tool) => expect(wordRepeat.match(tool.getAnalyzedSentence(text)).length).toBe(0);
     const assertBad = (text, tool) => expect(wordRepeat.match(tool.getAnalyzedSentence(text)).length).toBe(1);
@@ -197,10 +198,9 @@ describe('GermanRulesTest', () => {
     assertBad("Sie sie gehen nach Hause.", lt);
   });
 
-  // SKIPPED: German language rules need the full de rule list (F59) and GermanRuleDisambiguator/GermanChunker (F51)
   // Java: SentenceWhitespaceRuleTest (de)#testMatch
-  it.skip('testMatch_sentenceWhitespace', () => {
-    const lt = newLt(Languages.getLanguageForShortCode("de-DE"));
+  it('testMatch_sentenceWhitespace', () => {
+    const lt = new JLanguageTool(Languages.getLanguageForShortCode("de-DE"));
     disableAllRulesExcept(lt, "DE_SENTENCE_WHITESPACE");
     assertGood("Das ist ein Satz. Und hier der nächste.", lt);
     assertGood("Das ist ein Satz! Und hier der nächste.", lt);

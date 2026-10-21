@@ -1,9 +1,11 @@
 // Java: org.languagetool.language.SwissGerman
-import { createComponent, notPortedYet } from '../../../core/language/components.js';
+import { createComponent } from '../../../core/language/components.js';
 import { registerClass } from '../../../core/resources/ClassBroker.js';
 import { RuleMatch } from '../../../core/rules/model/RuleMatch.js';
 import { SuggestedReplacement } from '../../../core/rules/model/SuggestedReplacement.js';
 import { StringIndexOutOfBoundsException } from '../../../lib/java/errors.js';
+import { SwissCompoundRule } from '../rules/SwissCompoundRule.js';
+import { SwissGermanSpellerRule } from '../rules/SwissGermanSpellerRule.js';
 import { German } from './German.js';
 
 // Java: String#substring(int,int)
@@ -34,8 +36,10 @@ export class SwissGerman extends German {
   }
 
   // Java: SwissGerman#getRelevantRules(ResourceBundle,UserConfig,Language,List)
-  getRelevantRules() {
-    throw notPortedYet('SwissGerman#getRelevantRules (F17)');
+  getRelevantRules(messages, userConfig, motherTongue, altLanguages) {
+    const rules = [...super.getRelevantRules(messages, userConfig, motherTongue, altLanguages)];
+    rules.push(new SwissCompoundRule(messages, this, userConfig));
+    return rules;
   }
 
   // Java: SwissGerman#createDefaultSpellingRule(ResourceBundle)
@@ -44,8 +48,10 @@ export class SwissGerman extends German {
   }
 
   // Java: SwissGerman#getRelevantLanguageModelCapableRules(ResourceBundle,LanguageModel,GlobalConfig,UserConfig,Language,List)
-  getRelevantLanguageModelCapableRules() {
-    throw notPortedYet('SwissGerman#getRelevantLanguageModelCapableRules (F17)');
+  getRelevantLanguageModelCapableRules(messages, languageModel, globalConfig, userConfig, motherTongue, altLanguages) {
+    const rules = [...super.getRelevantLanguageModelCapableRules(messages, languageModel, globalConfig, userConfig, motherTongue, altLanguages)];
+    rules.push(new SwissGermanSpellerRule(messages, this, userConfig, languageModel));
+    return rules;
   }
 
   // Java: SwissGerman#isVariant()

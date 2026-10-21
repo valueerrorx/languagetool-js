@@ -1,14 +1,14 @@
-// Ported from GermanWordRepeatBeginningRuleTest (de module); lt holds the rule alone (German#getRelevantRules is F59)
+// Ported from GermanWordRepeatBeginningRuleTest (de module)
 import { describe, it, expect } from 'vitest';
-import { GermanWordRepeatBeginningRule } from '../../../../src/lang/de/rules/GermanWordRepeatBeginningRule.js';
-import { messagesFor, newLt } from '../../../support/ruleTestSupport.js';
+import '../../../../src/lang/register.js';
+import { JLanguageTool } from '../../../../src/core/JLanguageTool.js';
 import { german } from './_styleTestSupport.js';
 
 describe('GermanWordRepeatBeginningRuleTest', () => {
   // Java: GermanWordRepeatBeginningRuleTest#testRule
   it('testRule', () => {
     const lang = german();
-    const lt = newLt(lang, new GermanWordRepeatBeginningRule(messagesFor(lang), lang));
+    const lt = new JLanguageTool(lang);
     lt.disableRule('DE_REPEATEDWORDS');
     // correct sentences:
     expect(lt.check('Er ist nett. Er heißt Max.').length).toBe(0);

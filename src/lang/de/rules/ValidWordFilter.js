@@ -3,7 +3,7 @@ import { registerClass } from '../../../core/resources/ClassBroker.js';
 import { NullPointerException } from '../../../lib/java/errors.js';
 import { toLowerCase } from '../../../lib/java/strings.js';
 import { RuleFilter } from '../../../core/patterns/RuleFilter.js';
-import { GermanyGerman } from '../language/GermanyGerman.js';
+import { GermanyGerman } from './GermanyGermanLazy.js';
 
 // Java: ValidWordFilter
 export class ValidWordFilter extends RuleFilter {

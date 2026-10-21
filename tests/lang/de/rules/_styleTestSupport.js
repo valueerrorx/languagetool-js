@@ -1,6 +1,6 @@
-// Helpers for the German style rule tests: stands in for "new JLanguageTool(de-DE)" + setUpRule (German#getRelevantRules is F59).
+// Helpers for the German style rule tests: "new JLanguageTool(de-DE)" + setUpRule.
 import { Languages } from '../../../../src/core/Languages.js';
-import { newLt } from '../../../support/ruleTestSupport.js';
+import { JLanguageTool } from '../../../../src/core/JLanguageTool.js';
 
 export const german = () => Languages.getLanguageForShortCode('de-DE');
 
@@ -13,9 +13,9 @@ export function setUpRule(lt, rule) {
   lt.enableRule(rule.getId());
 }
 
-// new JLanguageTool(lang) without built-in rules (German#getRelevantRules is F59), then setUpRule
+// new JLanguageTool(lang), then setUpRule
 export function ltWithRule(lang, rule) {
-  const lt = newLt(lang);
+  const lt = new JLanguageTool(lang);
   setUpRule(lt, rule);
   return lt;
 }

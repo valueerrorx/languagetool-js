@@ -1,4 +1,4 @@
-// Ported from GermanSpellerRuleTest (languagetool-language-modules/de); lt.check variants use a tool holding only the speller (TestTools.disableAllRulesExcept)
+// Ported from GermanSpellerRuleTest (languagetool-language-modules/de)
 // ignored in Java: testIgnoreMisspelledWordForRegressions, testForRegressions (local corpus), testMorfologikSpeller, testMorfologikSpeller2, testMorfologikSpellerWithSpellingTxt (morfologik internals, @Ignore)
 import { describe, it, expect, afterEach } from 'vitest';
 import '../../../../src/lang/register.js';
@@ -11,6 +11,8 @@ import { AustrianGermanSpellerRule } from '../../../../src/lang/de/rules/Austria
 import { SwissGermanSpellerRule } from '../../../../src/lang/de/rules/SwissGermanSpellerRule.js';
 import { LineExpander } from '../../../../src/lang/de/rules/LineExpander.js';
 import { messagesFor, newLt } from '../../../support/ruleTestSupport.js';
+import { JLanguageTool } from '../../../../src/core/JLanguageTool.js';
+import { disableAllRulesExcept } from '../../../support/TestTools.js';
 import { simulateNoEnglishModule } from '../../../support/NoEnglishModule.js';
 
 const GERMAN_DE = Languages.getLanguageForShortCode('de-DE');
@@ -959,7 +961,8 @@ describe('GermanSpellerRuleTest', () => {
   // Java: GermanSpellerRuleTest#testDashAndHyphenEtc
   it('testDashAndHyphenEtc', () => {
     let rule = new GermanSpellerRule(deMessages(), GERMAN_DE);
-    let lt = newLt(GERMAN_DE, new GermanSpellerRule(deMessages(), GERMAN_DE)); // only the speller (TestTools.disableAllRulesExcept)
+    let lt = new JLanguageTool(GERMAN_DE);
+    disableAllRulesExcept(lt, GermanSpellerRule.RULE_ID);
 
     expect(lt.check("\uFEFF-Product Development Coordinator").length).toEqual(2);
     expect(lt.check("-Product Development Coordinator").length).toEqual(2);

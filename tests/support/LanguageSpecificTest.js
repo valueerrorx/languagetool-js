@@ -29,6 +29,11 @@ const idToExpectedMatches = new Map([ // Java: LanguageSpecificTest#idToExpected
 
 // Java: LanguageSpecificTest
 export class LanguageSpecificTest {
+  // module = short code of the language module under test (its classpath holds that language and the core demo language)
+  constructor(module = 'en') {
+    this.module = module;
+  }
+
   // Java: LanguageSpecificTest#runTests(Language[,String[,String]]) / (Language,Language,String,String)
   runTests(lang, ...rest) {
     if (rest.length === 0) return this.runTests4(lang, lang, null, '');
@@ -194,7 +199,7 @@ export class LanguageSpecificTest {
     const ruleClasses = new Set();
     const printLimitSeconds = 0.2;
     for (const language of Languages.getWithDemoLanguage()) {
-      if (language.getShortCode() !== 'en' && language.getShortCode() !== 'xx') continue; // the en module's classpath holds only English and the core demo language
+      if (language.getShortCode() !== this.module && language.getShortCode() !== 'xx') continue; // the module's classpath holds only its language and the core demo language
       if (onlyRunCode !== null && language.getShortCodeWithCountryAndVariant() !== onlyRunCode) {
         console.log(`Skipping ${language}`); // speed up for languages that are sub classes (e.g. simple German)
         continue;
@@ -224,13 +229,13 @@ export class LanguageSpecificTest {
   // Java: LanguageSpecificTest#testConfusionSetLoading()
   testConfusionSetLoading() {
     for (const language of Languages.get()) {
-      if (language.getShortCode() !== 'en') continue; // only English is under test here (the de/fr language-model rule lists are ported with their steps)
+      if (language.getShortCode() !== this.module) continue; // only the language module under test (the fr language-model rule list is ported with its step)
       try {
         let hasRules;
         try {
           hasRules = language.getRelevantLanguageModelRules(getMessageBundle(), {}, null).length > 0;
         } catch (e) {
-          if (e && e.notPorted === true) hasRules = true; // the n-gram rules are not available (DEV-001): Java's English list has 3 rules
+          if (e && e.notPorted === true) hasRules = true; // the n-gram rules are not available (DEV-001): Java's list has rules (en and de: 3)
           else throw e;
         }
         if (hasRules) {

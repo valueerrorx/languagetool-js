@@ -1,8 +1,9 @@
 // Ported from SentenceWhitespaceRuleTest (de)
 import { describe, it, expect } from 'vitest';
+import '../../../../src/lang/register.js';
 import { Languages } from '../../../../src/core/Languages.js';
-import { SentenceWhitespaceRule } from '../../../../src/lang/de/rules/SentenceWhitespaceRule.js';
-import { messagesFor, newLt } from '../../../support/ruleTestSupport.js';
+import { JLanguageTool } from '../../../../src/core/JLanguageTool.js';
+import { disableAllRulesExcept } from '../../../support/TestTools.js';
 
 describe('SentenceWhitespaceRuleTest', () => {
   // Java: SentenceWhitespaceRuleTest#assertGood(String,JLanguageTool)
@@ -18,8 +19,8 @@ describe('SentenceWhitespaceRuleTest', () => {
   // Java: SentenceWhitespaceRuleTest#testMatch
   it('testMatch', () => {
     const de = Languages.getLanguageForShortCode('de-DE');
-    // Java: new JLanguageTool(de-DE) + TestTools.disableAllRulesExcept(lt, "DE_SENTENCE_WHITESPACE") = only this rule (German#getRelevantRules is F59)
-    const lt = newLt(de, new SentenceWhitespaceRule(messagesFor(de)));
+    const lt = new JLanguageTool(de);
+    disableAllRulesExcept(lt, 'DE_SENTENCE_WHITESPACE');
     assertGood("Das ist ein Satz. Und hier der nächste.", lt);
     assertGood("Das ist ein Satz! Und hier der nächste.", lt);
     assertGood("Ist das ein Satz? Hier der nächste.", lt);

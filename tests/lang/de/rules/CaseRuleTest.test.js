@@ -1,61 +1,37 @@
-// Ported from CaseRuleTest (de-DE). Assertions that need the German speller (F52) or a full German JLanguageTool (F59) throw notPorted and are counted as pending.
-import { describe, it, expect, afterAll } from 'vitest';
+// Ported from CaseRuleTest (de-DE)
+import { describe, it, expect } from 'vitest';
+import { JLanguageTool } from '../../../../src/core/JLanguageTool.js';
 import { Languages } from '../../../../src/core/Languages.js';
 import { CaseRule } from '../../../../src/lang/de/rules/CaseRule.js';
 import { StringMatcher } from '../../../../src/core/patterns/StringMatcher.js';
-import { messagesFor, newLt } from '../../../support/ruleTestSupport.js';
+import { messagesFor } from '../../../support/ruleTestSupport.js';
 
 const regexp = (p) => StringMatcher.regexp(p); // Java: StringMatcher.regexp
 
-let pending = 0;
+import { simulateNoEnglishModule } from '../../../support/NoEnglishModule.js';
 
-// runs fn; a notPorted error counts as pending instead of failing
-function pendingIfNotPorted(fn) {
-  try {
-    return fn();
-  } catch (e) {
-    if (e && e.notPorted === true) {
-      pending++;
-      return null;
-    }
-    throw e;
-  }
-}
+simulateNoEnglishModule(); // the Java de module tests run without the en module on the classpath
 
 describe('CaseRuleTest', () => {
   const lang = Languages.getLanguageForShortCode('de-DE');
   const rule = new CaseRule(messagesFor(lang), lang);
-  const lt = newLt(lang);
-  afterAll(() => {
-    if (pending > 0) console.warn(`CaseRuleTest: ${pending} assertions pending (notPorted: German speller/rule list)`);
-  });
+  const lt = new JLanguageTool(lang);
 
   // Java: CaseRuleTest#assertGood(String)
   function assertGood(input) {
-    const matches = pendingIfNotPorted(() => rule.match(lt.getAnalyzedSentence(input)));
-    if (matches === null) return;
+    const matches = rule.match(lt.getAnalyzedSentence(input));
     expect(matches.length, `Did not expect error in: '${input}'`).toBe(0);
   }
 
   // Java: CaseRuleTest#assertBad(String)
   function assertBad(input) {
-    const matches = pendingIfNotPorted(() => rule.match(lt.getAnalyzedSentence(input)));
-    if (matches === null) return;
+    const matches = rule.match(lt.getAnalyzedSentence(input));
     expect(matches.length, `Did not find expected error in: '${input}'`).toBe(1);
-  }
-
-  // Java: assertEquals(n, lt.check(text).size())
-  function assertCheckCount(n, text) {
-    // counts all German rules: pending until German#getRelevantRules (F59); then use lt.check and assert n
-    pending++;
-    expect([n, text].length).toBe(2);
   }
 
   // Java: CaseRuleTest#testRuleActivation
   it('testRuleActivation', () => {
-    // Rule#supportsLanguage uses German#getRelevantRules (F59)
-    const supported = pendingIfNotPorted(() => rule.supportsLanguage(Languages.getLanguageForShortCode('de-DE')));
-    if (supported !== null) expect(supported).toBe(true);
+    expect(rule.supportsLanguage(Languages.getLanguageForShortCode('de-DE'))).toBe(true);
   });
 
   // Java: CaseRuleTest#testRule
@@ -416,10 +392,10 @@ describe('CaseRuleTest', () => {
     assertBad("Er rennt Schneller als ich.");
     assertBad("Das Winseln Stört.");
     assertBad("Sein verhalten war okay.");
-    assertCheckCount(1, "Karten werden vom Auswahlstapel gezogen. Auch […] Der Auswahlstapel gehört zum Inhalt.");
+    expect(lt.check("Karten werden vom Auswahlstapel gezogen. Auch […] Der Auswahlstapel gehört zum Inhalt.").length).toBe(1);
     //assertEquals(2, lt.check("Karten werden vom Auswahlstapel gezogen. Auch [...] Der Auswahlstapel gehört zum Inhalt.").size());
 
-    assertCheckCount(0, "Karten werden vom Auswahlstapel gezogen. […] Der Auswahlstapel gehört zum Inhalt.");
+    expect(lt.check("Karten werden vom Auswahlstapel gezogen. […] Der Auswahlstapel gehört zum Inhalt.").length).toBe(0);
     //assertEquals(1, lt.check("Karten werden vom Auswahlstapel gezogen. [...] Der Auswahlstapel gehört zum Inhalt.").size());
     //TODO: error not found:
     //assertBad("So schwer, dass selbst Er ihn nicht hochheben kann.");

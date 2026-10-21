@@ -1,4 +1,4 @@
-// Ported from JLanguageToolTest#testMultitokenSpeller (de module); SpellingCheckRuleTest#testMultitokenSpelling (de) needs the full German rule set (F17)
+// Ported from JLanguageToolTest#testMultitokenSpeller (de module); SpellingCheckRuleTest (de) is SpellingCheckRuleTest.test.js
 import { describe, it, expect } from 'vitest';
 import '../../../../src/lang/register.js';
 import { Languages } from '../../../../src/core/Languages.js';
@@ -26,7 +26,4 @@ describe('GermanMultitokenSpellerTest', () => {
     expect(s('Tum Universität')).toEqual('[]');
     expect(s('fuer Trump')).toEqual('[]');
   });
-
-  // Java: SpellingCheckRuleTest#testMultitokenSpelling (de)
-  it.skip('testMultitokenSpelling', () => { /* lt.check with the full German rule set needs German#getRelevantRules (F17) */ });
 });

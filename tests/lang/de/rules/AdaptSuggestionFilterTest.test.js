@@ -8,12 +8,12 @@ import { RuleMatch } from '../../../../src/core/rules/model/RuleMatch.js';
 import { JavaHashMap } from '../../../../src/lib/java/collections/JavaHashMap.js';
 import { abstractCollectionToString } from '../../../../src/lib/java/toString.js';
 import { AdaptSuggestionFilter } from '../../../../src/lang/de/rules/AdaptSuggestionFilter.js';
-import { newLt } from '../../../support/ruleTestSupport.js';
+import { JLanguageTool } from '../../../../src/core/JLanguageTool.js';
 import { FakeRule } from './_filterTestSupport.js';
 
 describe('AdaptSuggestionFilterTest', () => {
   const filter = new AdaptSuggestionFilter();
-  const lt = newLt(Languages.getLanguageForShortCode('de'));
+  const lt = new JLanguageTool(Languages.getLanguageForShortCode('de'));
 
   // Java: AdaptSuggestionFilterTest#runAcceptRuleMatch
   function runAcceptRuleMatch(sentenceStr, word, origReplacement, newReplacements) {
@@ -40,16 +40,7 @@ describe('AdaptSuggestionFilterTest', () => {
 
   // Java: AdaptSuggestionFilterTest#testAcceptRuleMatchWithDet
   it('testAcceptRuleMatchWithDet', () => {
-    try {
-      acceptRuleMatchWithDet();
-    } catch (e) {
-      // German#getRelevantRules (F17) is not ported yet: new SuggestionFilter(agreementRule, german) cannot create its JLanguageTool
-      if (e && e.notPorted === true) {
-        console.warn('AdaptSuggestionFilterTest#testAcceptRuleMatchWithDet pending (notPorted: ' + e.message + ')');
-        return;
-      }
-      throw e;
-    }
+    acceptRuleMatchWithDet();
   }, 120000);
 
   // Java: AdaptSuggestionFilterTest#testAcceptRuleMatchWithDet (body)

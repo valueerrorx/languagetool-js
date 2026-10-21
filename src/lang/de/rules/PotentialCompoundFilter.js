@@ -8,7 +8,7 @@ import { RuleFilter } from '../../../core/patterns/RuleFilter.js';
 import { isAllUppercase, isMixedCase, uppercaseFirstChar } from '../../../core/text/StringTools.js';
 import { toLowerCase } from '../../../lib/java/strings.js';
 import { listGet } from '../../../lib/java/arrays.js';
-import { GermanyGerman } from '../language/GermanyGerman.js';
+import { GermanyGerman } from './GermanyGermanLazy.js';
 
 // Java: PotentialCompoundFilter
 export class PotentialCompoundFilter extends RuleFilter {

@@ -7,7 +7,7 @@ import { PatternTokenBuilder } from '../../../core/patterns/PatternTokenBuilder.
 import { token, tokenRegex, posRegex, csToken, csRegex, regex, pos } from '../../../core/patterns/PatternRuleBuilderHelper.js';
 import '../../../core/disambiguation/DisambiguationPatternRule.js';
 import { equalsAny, equalsAnyIgnoreCase } from '../../../lib/java/StringUtils.js';
-import { GermanyGerman } from '../language/GermanyGerman.js';
+import { GermanyGerman } from './GermanyGermanLazy.js';
 
 const MARKS_REGEX = Pattern.compile('[,;.:?•!-–—’\'"„“”…»«‚‘›‹()\\/\\[\\]]'); // Java: MARKS_REGEX
 const PRONOUN = Pattern.compile('(d(e[mnr]|ie|as|e([nr]|ss)en)|welche[mrs]?|wessen|was)'); // Java: PRONOUN

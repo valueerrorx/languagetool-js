@@ -1,26 +1,20 @@
-// Interim rule lists of French and German (the ported F16 core rules); replaced by Language#getRelevantRules when the language rule steps land (English done in F50).
+// Interim rule list of French (the ported F16 core rules); replaced by Language#getRelevantRules when F63 lands (English F50, German F59).
 import { getMessageBundleForLanguage } from '../core/resources/ResourceBundleTools.js';
 import { NoopDisambiguator } from '../core/noop/NoopDisambiguator.js';
 import { NoopChunker } from '../core/noop/NoopChunker.js';
-import { Example } from '../core/rules/model/Examples.js';
-import { getUrl } from '../core/Tools.js';
 import { CommaWhitespaceRule } from '../core/rules/CommaWhitespaceRule.js';
 import { DoublePunctuationRule } from '../core/rules/DoublePunctuationRule.js';
 import { GenericUnpairedBracketsRule } from '../core/rules/GenericUnpairedBracketsRule.js';
 import { UppercaseSentenceStartRule } from '../core/rules/UppercaseSentenceStartRule.js';
 import { MultipleWhitespaceRule } from '../core/rules/MultipleWhitespaceRule.js';
 import { SentenceWhitespaceRule } from '../core/rules/SentenceWhitespaceRule.js';
-import { GermanCommaWhitespaceRule } from '../lang/de/rules/GermanCommaWhitespaceRule.js';
-import { GermanDoublePunctuationRule } from '../lang/de/rules/GermanDoublePunctuationRule.js';
-import { GermanUnpairedBracketsRule } from '../lang/de/rules/GermanUnpairedBracketsRule.js';
-import { GermanUnpairedQuotesRule } from '../lang/de/rules/GermanUnpairedQuotesRule.js';
-import { SentenceWhitespaceRule as GermanSentenceWhitespaceRule } from '../lang/de/rules/SentenceWhitespaceRule.js';
 
-// Java: French#getRelevantRules / German#getRelevantRules (the entries of the F16 rule classes, list order); null = use the language's real rule list (en)
+// Java: French#getRelevantRules (the entries of the F16 rule classes, list order); null = use the language real rule list (en, de)
 export function interimRules(l) {
   const messages = getMessageBundleForLanguage(l);
   const code = l.getShortCode();
   if (code === 'en') return null; // English: real Language#getRelevantRules + XML pattern rules + speller (F50)
+  if (code === 'de') return null; // German: real Language#getRelevantRules + XML pattern rules + speller (F59)
   if (code === 'fr') {
     return [
       new CommaWhitespaceRule(messages, false),
@@ -29,24 +23,6 @@ export function interimRules(l) {
       new UppercaseSentenceStartRule(messages, l),
       new MultipleWhitespaceRule(messages, l),
       new SentenceWhitespaceRule(messages),
-    ];
-  }
-  if (code === 'de') {
-    // GermanWordRepeatRule excluded: its ANTI_PATTERNS still throw notPorted
-    return [
-      new GermanCommaWhitespaceRule(messages,
-        Example.wrong('Die Partei<marker> ,</marker> die die letzte Wahl gewann.'),
-        Example.fixed('Die Partei<marker>,</marker> die die letzte Wahl gewann.'),
-        getUrl('https://languagetool.org/insights/de/beitrag/grammatik-leerzeichen/#fehler-1-leerzeichen-vor-und-nach-satzzeichen')),
-      new GermanUnpairedBracketsRule(messages, l),
-      new GermanUnpairedQuotesRule(messages, l),
-      new UppercaseSentenceStartRule(messages, l,
-        Example.wrong('Das Haus ist alt. <marker>es</marker> wurde 1950 gebaut.'),
-        Example.fixed('Das Haus ist alt. <marker>Es</marker> wurde 1950 gebaut.'),
-        getUrl('https://languagetool.org/insights/de/beitrag/gross-klein-schreibung-rechtschreibung/#1-satzanf%C3%A4nge-schreiben-wir-gro%C3%9F')),
-      new MultipleWhitespaceRule(messages, l),
-      new GermanSentenceWhitespaceRule(messages),
-      new GermanDoublePunctuationRule(messages),
     ];
   }
   return [];

@@ -1,7 +1,9 @@
 // Java: org.languagetool.language.AustrianGerman
-import { createComponent, notPortedYet } from '../../../core/language/components.js';
+import { createComponent } from '../../../core/language/components.js';
 import { getDataBroker } from '../../../core/resources/LtStatics.js';
 import { registerClass } from '../../../core/resources/ClassBroker.js';
+import { GermanCompoundRule } from '../rules/GermanCompoundRule.js';
+import { AustrianGermanSpellerRule } from '../rules/AustrianGermanSpellerRule.js';
 import { German } from './German.js';
 
 // Java: AustrianGerman
@@ -19,8 +21,10 @@ export class AustrianGerman extends German {
   }
 
   // Java: AustrianGerman#getRelevantRules(ResourceBundle,UserConfig,Language,List)
-  getRelevantRules() {
-    throw notPortedYet('AustrianGerman#getRelevantRules (F17)');
+  getRelevantRules(messages, userConfig, motherTongue, altLanguages) {
+    const rules = [...super.getRelevantRules(messages, userConfig, motherTongue, altLanguages)];
+    rules.push(new GermanCompoundRule(messages, this, userConfig));
+    return rules;
   }
 
   // Java: AustrianGerman#createDefaultSpellingRule(ResourceBundle)
@@ -29,8 +33,10 @@ export class AustrianGerman extends German {
   }
 
   // Java: AustrianGerman#getRelevantLanguageModelCapableRules(ResourceBundle,LanguageModel,GlobalConfig,UserConfig,Language,List)
-  getRelevantLanguageModelCapableRules() {
-    throw notPortedYet('AustrianGerman#getRelevantLanguageModelCapableRules (F17)');
+  getRelevantLanguageModelCapableRules(messages, languageModel, globalConfig, userConfig, motherTongue, altLanguages) {
+    const rules = [...super.getRelevantLanguageModelCapableRules(messages, languageModel, globalConfig, userConfig, motherTongue, altLanguages)];
+    rules.push(new AustrianGermanSpellerRule(messages, this, userConfig, languageModel));
+    return rules;
   }
 
   // Java: AustrianGerman#getRuleFileNames()

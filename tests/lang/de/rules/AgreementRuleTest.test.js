@@ -1,46 +1,30 @@
-// Ported from AgreementRuleTest (de-DE). Assertions that reach the compound check or a full German JLanguageTool throw notPorted until F52/F59 and are counted as pending.
-import { describe, it, expect, afterAll } from 'vitest';
+// Ported from AgreementRuleTest (de-DE)
+import { describe, it, expect } from 'vitest';
 import { Languages } from '../../../../src/core/Languages.js';
 import { JLanguageTool } from '../../../../src/core/JLanguageTool.js';
 import { AnalyzedToken } from '../../../../src/core/AnalyzedToken.js';
 import { AnalyzedTokenReadings } from '../../../../src/core/AnalyzedTokenReadings.js';
 import { AgreementRule } from '../../../../src/lang/de/rules/AgreementRule.js';
-import { messagesFor, newLt } from '../../../support/ruleTestSupport.js';
+import { messagesFor } from '../../../support/ruleTestSupport.js';
 
-let pending = 0;
+import { simulateNoEnglishModule } from '../../../support/NoEnglishModule.js';
 
-// runs fn; a notPorted error (German speller / rule list not ported yet) counts as pending instead of failing
-function pendingIfNotPorted(fn) {
-  try {
-    return fn();
-  } catch (e) {
-    if (e && e.notPorted === true) {
-      pending++;
-      return null;
-    }
-    throw e;
-  }
-}
+simulateNoEnglishModule(); // the Java de module tests run without the en module on the classpath
 
 describe('AgreementRuleTest', () => {
   const lang = Languages.getLanguageForShortCode('de-DE');
   const rule = new AgreementRule(messagesFor(lang), lang);
-  const lt = newLt(lang);
-  afterAll(() => {
-    if (pending > 0) console.warn(`AgreementRuleTest: ${pending} assertions pending (notPorted: German speller/rule list)`);
-  });
+  const lt = new JLanguageTool(lang);
 
   // Java: AgreementRuleTest#assertGood(String)
   function assertGood(s) {
-    const matches = pendingIfNotPorted(() => rule.match(lt.getAnalyzedSentence(s)));
-    if (matches === null) return;
+    const matches = rule.match(lt.getAnalyzedSentence(s));
     expect(matches.length, `Found unexpected match in sentence '${s}': [${matches.join(', ')}]`).toBe(0);
   }
 
   // Java: AgreementRuleTest#assertBad(String,String...)
   function assertBad(s, ...expectedSuggestions) {
-    const matches = pendingIfNotPorted(() => rule.match(lt.getAnalyzedSentence(s)));
-    if (matches === null) return;
+    const matches = rule.match(lt.getAnalyzedSentence(s));
     expect(matches.length, `Did not find one match in sentence '${s}'`).toBe(1);
     if (expectedSuggestions.length > 0) {
       expect(matches[0].getSuggestedReplacements()).toEqual(expectedSuggestions);
@@ -49,8 +33,7 @@ describe('AgreementRuleTest', () => {
 
   // Java: AgreementRuleTest#assertBad1(String,String) (a suggestion is there within the first 4, no matter its position)
   function assertBad1(s, expectedSuggestion) {
-    const matches = pendingIfNotPorted(() => rule.match(lt.getAnalyzedSentence(s)));
-    if (matches === null) return;
+    const matches = rule.match(lt.getAnalyzedSentence(s));
     expect(matches.length, `Did not find one match in sentence '${s}'`).toBe(1);
     const suggestions = matches[0].getSuggestedReplacements();
     const found = suggestions.slice(0, Math.min(4, suggestions.length)).includes(expectedSuggestion);
@@ -112,11 +95,9 @@ describe('AgreementRuleTest', () => {
     assertBad("Es ist ein sehr interessantes kostenloses Slot Spiel.", "ein sehr interessantes kostenloses Slotspiel", "ein sehr interessantes kostenloses Slot-Spiel");
     //assertBad("Die Bad Taste Party von Susi", "Die Bad-Taste-Party");   // not supported yet
     //assertBad("Die Update Liste.", "Die Updateliste");  // not accepted by speller
-    pendingIfNotPorted(() => { // needs the full German rule list (GermanSpellerRule F52, German#getRelevantRules F59)
-      const matches = new JLanguageTool(lang).check("Er folgt damit dem Tipp des Autoren Michael Müller.");
-      expect(matches.length).toBe(1);
-      expect(matches[0].getMessage().includes("zusammengesetztes Nomen")).toBe(false);
-    });
+    const matches = new JLanguageTool(lang).check("Er folgt damit dem Tipp des Autoren Michael Müller.");
+    expect(matches.length).toBe(1);
+    expect(matches[0].getMessage().includes("zusammengesetztes Nomen")).toBe(false);
   });
   
   // Java: AgreementRuleTest#testDetNounRule
@@ -778,13 +759,11 @@ describe('AgreementRuleTest', () => {
 
   // Java: AgreementRuleTest#testRegression
   it('testRegression', () => {
-    pendingIfNotPorted(() => { // needs the full German rule list (F52/F59)
-      const lt = new JLanguageTool(Languages.getLanguageForShortCode("de-DE"));
-      // used to be not detected > 1.0.1:
-      const str = "Und so.\r\nDie Bier.";
-      const matches = lt.check(str);
-      expect(matches.length).toBe(1);
-    });
+    const lt = new JLanguageTool(Languages.getLanguageForShortCode("de-DE"));
+    // used to be not detected > 1.0.1:
+    const str = "Und so.\r\nDie Bier.";
+    const matches = lt.check(str);
+    expect(matches.length).toBe(1);
   });
 
   // Java: AgreementRuleTest#testDetAdjNounRule

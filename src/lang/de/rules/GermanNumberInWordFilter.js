@@ -1,7 +1,7 @@
 // org.languagetool.rules.de.GermanNumberInWordFilter
 import { registerClass } from '../../../core/resources/ClassBroker.js';
 import { AbstractNumberInWordFilter } from '../../../core/rules/AbstractNumberInWordFilter.js';
-import { GermanyGerman } from '../language/GermanyGerman.js';
+import { GermanyGerman } from './GermanyGermanLazy.js';
 
 // Java: GermanNumberInWordFilter
 export class GermanNumberInWordFilter extends AbstractNumberInWordFilter {

@@ -47,11 +47,11 @@ function harnessOps() {
   return new Set([...src.matchAll(/case "([^"]+)":/g)].map((m) => m[1]));
 }
 
-// portLater cli cases whose language is en have the full rule list since F50 (de/fr stay skipped until F59/F63; -adl = unknown language)
+// portLater cli cases whose language is en or de have the full rule list since F50/F59 (fr stays skipped until F63; -adl = unknown language)
 function englishRuleListPorted(cs) {
   const args = cs.args ?? [];
   const i = args.indexOf('-l');
-  return i >= 0 && !args.includes('-adl') && /^en(-|$)/.test(String(args[i + 1]));
+  return i >= 0 && !args.includes('-adl') && /^(en|de)(-|$)/.test(String(args[i + 1]));
 }
 
 // cli/http: the JS side is oracle/adapters/<kind>.mjs; run(cs, {workDir, port?}) returns the same shape as the Java side.

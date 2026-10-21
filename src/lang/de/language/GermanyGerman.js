@@ -2,9 +2,10 @@
 import { RuntimeException } from '../../../lib/java/errors.js';
 import { Objects } from '../../../lib/java/Objects.js';
 import { Languages } from '../../../core/Languages.js';
-import { notPortedYet } from '../../../core/language/components.js';
 import { getDataBroker } from '../../../core/resources/LtStatics.js';
 import { registerClass } from '../../../core/resources/ClassBroker.js';
+import { GermanCompoundRule } from '../rules/GermanCompoundRule.js';
+import { GermanSpellerRule } from '../rules/GermanSpellerRule.js';
 import { German } from './German.js';
 
 const GERMANY_GERMAN_SHORT_CODE = 'de-DE';
@@ -24,13 +25,20 @@ export class GermanyGerman extends German {
   }
 
   // Java: GermanyGerman#getRelevantRules(ResourceBundle,UserConfig,Language,List)
-  getRelevantRules() {
-    throw notPortedYet('GermanyGerman#getRelevantRules (F17)');
+  getRelevantRules(messages, userConfig, motherTongue, altLanguages) {
+    const rules = [...super.getRelevantRules(messages, userConfig, motherTongue, altLanguages)];
+    rules.push(new GermanCompoundRule(messages, this, userConfig));
+    return rules;
   }
 
   // Java: GermanyGerman#getRelevantLanguageModelCapableRules(ResourceBundle,LanguageModel,GlobalConfig,UserConfig,Language,List)
-  getRelevantLanguageModelCapableRules() {
-    throw notPortedYet('GermanyGerman#getRelevantLanguageModelCapableRules (F17)');
+  getRelevantLanguageModelCapableRules(messages, languageModel, globalConfig, userConfig, motherTongue, altLanguages) {
+    const rules = [...super.getRelevantLanguageModelCapableRules(messages, languageModel, globalConfig, userConfig, motherTongue, altLanguages)];
+    const rule = (userConfig === null || userConfig === undefined) && (languageModel === null || languageModel === undefined) && altLanguages.length === 0
+      ? this.getDefaultSpellingRule()
+      : new GermanSpellerRule(messages, this, userConfig, null, altLanguages, languageModel);
+    rules.push(rule);
+    return rules;
   }
 
   // Java: GermanyGerman#getRuleFileNames()

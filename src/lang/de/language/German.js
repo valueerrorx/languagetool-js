@@ -16,6 +16,58 @@ import { RuleMatch } from '../../../core/rules/model/RuleMatch.js';
 import { ITSIssueType } from '../../../core/rules/model/ITSIssueType.js';
 import { Tag } from '../../../core/rules/model/Tag.js';
 import { GermanCompoundTokenizer } from '../tokenizers/GermanCompoundTokenizer.js';
+import { Example } from '../../../core/rules/model/Examples.js';
+import { getUrl } from '../../../core/Tools.js';
+import { UppercaseSentenceStartRule } from '../../../core/rules/UppercaseSentenceStartRule.js';
+import { MultipleWhitespaceRule } from '../../../core/rules/MultipleWhitespaceRule.js';
+import { WhiteSpaceBeforeParagraphEnd } from '../../../core/rules/WhiteSpaceBeforeParagraphEnd.js';
+import { WhiteSpaceAtBeginOfParagraph } from '../../../core/rules/WhiteSpaceAtBeginOfParagraph.js';
+import { EmptyLineRule } from '../../../core/rules/EmptyLineRule.js';
+import { LongParagraphRule } from '../../../core/rules/LongParagraphRule.js';
+import { PunctuationMarkAtParagraphEnd } from '../../../core/rules/PunctuationMarkAtParagraphEnd.js';
+import { GermanCommaWhitespaceRule } from '../rules/GermanCommaWhitespaceRule.js';
+import { OldSpellingRule } from '../rules/OldSpellingRule.js';
+import { SentenceWhitespaceRule } from '../rules/SentenceWhitespaceRule.js';
+import { GermanDoublePunctuationRule } from '../rules/GermanDoublePunctuationRule.js';
+import { MissingVerbRule } from '../rules/MissingVerbRule.js';
+import { DashRule } from '../rules/DashRule.js';
+import { VerbAgreementRule } from '../rules/VerbAgreementRule.js';
+import { SubjectVerbAgreementRule } from '../rules/SubjectVerbAgreementRule.js';
+import { WiederVsWiderRule } from '../rules/WiederVsWiderRule.js';
+import { CompoundCoherencyRule } from '../rules/CompoundCoherencyRule.js';
+import { ConjunctionAtBeginOfSentenceRule } from '../rules/ConjunctionAtBeginOfSentenceRule.js';
+import { DuUpperLowerCaseRule } from '../rules/DuUpperLowerCaseRule.js';
+import { MissingCommaRelativeClauseRule } from '../rules/MissingCommaRelativeClauseRule.js';
+import { CompoundInfinitivRule } from '../rules/CompoundInfinitivRule.js';
+import { SimpleReplaceRule } from '../rules/SimpleReplaceRule.js';
+import { GermanUnpairedBracketsRule } from '../rules/GermanUnpairedBracketsRule.js';
+import { GermanUnpairedQuotesRule } from '../rules/GermanUnpairedQuotesRule.js';
+import { GermanWordRepeatRule } from '../rules/GermanWordRepeatRule.js';
+import { GermanWordRepeatBeginningRule } from '../rules/GermanWordRepeatBeginningRule.js';
+import { GermanWrongWordInContextRule } from '../rules/GermanWrongWordInContextRule.js';
+import { AgreementRule } from '../rules/AgreementRule.js';
+import { AgreementRule2 } from '../rules/AgreementRule2.js';
+import { CaseRule } from '../rules/CaseRule.js';
+import { WordCoherencyRule } from '../rules/WordCoherencyRule.js';
+import { SimilarNameRule } from '../rules/SimilarNameRule.js';
+import { GermanStyleRepeatedWordRule } from '../rules/GermanStyleRepeatedWordRule.js';
+import { LongSentenceRule } from '../rules/LongSentenceRule.js';
+import { GermanFillerWordsRule } from '../rules/GermanFillerWordsRule.js';
+import { PassiveSentenceRule } from '../rules/PassiveSentenceRule.js';
+import { SentenceWithModalVerbRule } from '../rules/SentenceWithModalVerbRule.js';
+import { SentenceWithManRule } from '../rules/SentenceWithManRule.js';
+import { NonSignificantVerbsRule } from '../rules/NonSignificantVerbsRule.js';
+import { UnnecessaryPhraseRule } from '../rules/UnnecessaryPhraseRule.js';
+import { GermanParagraphRepeatBeginningRule } from '../rules/GermanParagraphRepeatBeginningRule.js';
+import { UnitConversionRule } from '../rules/UnitConversionRule.js';
+import { RedundantModalOrAuxiliaryVerb } from '../rules/RedundantModalOrAuxiliaryVerb.js';
+import { GermanReadabilityRule } from '../rules/GermanReadabilityRule.js';
+import { StyleRepeatedVeryShortSentences } from '../rules/StyleRepeatedVeryShortSentences.js';
+import { StyleRepeatedSentenceBeginning } from '../rules/StyleRepeatedSentenceBeginning.js';
+import { GermanRepeatedWordsRule } from '../rules/GermanRepeatedWordsRule.js';
+import { StyleTooOftenUsedVerbRule } from '../rules/StyleTooOftenUsedVerbRule.js';
+import { StyleTooOftenUsedNounRule } from '../rules/StyleTooOftenUsedNounRule.js';
+import { StyleTooOftenUsedAdjectiveRule } from '../rules/StyleTooOftenUsedAdjectiveRule.js';
 import { ID2PRIO_ENTRIES } from './id2prioGerman.js';
 
 const TYPOGRAPHY_PATTERN = Pattern.compile('\\b([a-zA-Z]\\.)([a-zA-Z]\\.)');
@@ -105,8 +157,68 @@ export class German extends LanguageWithModel {
   }
 
   // Java: German#getRelevantRules(ResourceBundle,UserConfig,Language,List)
-  getRelevantRules() {
-    throw notPortedYet('German#getRelevantRules (F17)');
+  getRelevantRules(messages, userConfig) {
+    return [
+      new GermanCommaWhitespaceRule(messages,
+        Example.wrong('Die Partei<marker> ,</marker> die die letzte Wahl gewann.'),
+        Example.fixed('Die Partei<marker>,</marker> die die letzte Wahl gewann.'),
+        getUrl('https://languagetool.org/insights/de/beitrag/grammatik-leerzeichen/#fehler-1-leerzeichen-vor-und-nach-satzzeichen')),
+      new GermanUnpairedBracketsRule(messages, this),
+      new GermanUnpairedQuotesRule(messages, this),
+      new UppercaseSentenceStartRule(messages, this,
+        Example.wrong('Das Haus ist alt. <marker>es</marker> wurde 1950 gebaut.'),
+        Example.fixed('Das Haus ist alt. <marker>Es</marker> wurde 1950 gebaut.'),
+        getUrl('https://languagetool.org/insights/de/beitrag/gross-klein-schreibung-rechtschreibung/#1-satzanf%C3%A4nge-schreiben-wir-gro%C3%9F')),
+      new MultipleWhitespaceRule(messages, this),
+      new WhiteSpaceBeforeParagraphEnd(messages, this),
+      new WhiteSpaceAtBeginOfParagraph(messages),
+      new EmptyLineRule(messages, this),
+      new LongParagraphRule(messages, this, userConfig),
+      new PunctuationMarkAtParagraphEnd(messages, this),
+      // specific to German:
+      new SimpleReplaceRule(messages, this),
+      new OldSpellingRule(messages, this),
+      new SentenceWhitespaceRule(messages),
+      new GermanDoublePunctuationRule(messages),
+      new MissingVerbRule(messages, this),
+      new GermanWordRepeatRule(messages, this),
+      new GermanWordRepeatBeginningRule(messages, this),
+      new GermanWrongWordInContextRule(messages, this),
+      new AgreementRule(messages, this),
+      new AgreementRule2(messages, this),
+      new CaseRule(messages, this),
+      new DashRule(messages),
+      new VerbAgreementRule(messages, this),
+      new SubjectVerbAgreementRule(messages, this),
+      new WordCoherencyRule(messages),
+      new SimilarNameRule(messages),
+      new WiederVsWiderRule(messages),
+      new GermanStyleRepeatedWordRule(messages, this, userConfig),
+      new CompoundCoherencyRule(messages),
+      new LongSentenceRule(messages, userConfig, 40),
+      new GermanFillerWordsRule(messages, this, userConfig),
+      new PassiveSentenceRule(messages, this, userConfig),
+      new SentenceWithModalVerbRule(messages, this, userConfig),
+      new SentenceWithManRule(messages, this, userConfig),
+      new ConjunctionAtBeginOfSentenceRule(messages, this, userConfig),
+      new NonSignificantVerbsRule(messages, this, userConfig),
+      new UnnecessaryPhraseRule(messages, this, userConfig),
+      new GermanParagraphRepeatBeginningRule(messages, this),
+      new DuUpperLowerCaseRule(messages),
+      new UnitConversionRule(messages),
+      new MissingCommaRelativeClauseRule(messages),
+      new MissingCommaRelativeClauseRule(messages, true),
+      new RedundantModalOrAuxiliaryVerb(messages),
+      new GermanReadabilityRule(messages, this, userConfig, true),
+      new GermanReadabilityRule(messages, this, userConfig, false),
+      new CompoundInfinitivRule(messages, this, userConfig),
+      new StyleRepeatedVeryShortSentences(messages, this, userConfig),
+      new StyleRepeatedSentenceBeginning(messages),
+      new GermanRepeatedWordsRule(messages),
+      new StyleTooOftenUsedVerbRule(messages, this, userConfig),
+      new StyleTooOftenUsedNounRule(messages, this, userConfig),
+      new StyleTooOftenUsedAdjectiveRule(messages, this, userConfig),
+    ];
   }
 
   // Java: German#getNonStrictCompoundSplitter()
@@ -121,7 +233,9 @@ export class German extends LanguageWithModel {
   }
 
   // Java: German#getRelevantLanguageModelRules(ResourceBundle,LanguageModel,UserConfig)
-  getRelevantLanguageModelRules() {
+  getRelevantLanguageModelRules(messages, languageModel) {
+    // UpperCaseNgramRule, GermanConfusionProbabilityRule, ProhibitedCompoundRule: constructors dereference the language model
+    if (languageModel === null || languageModel === undefined) throw new NullPointerException();
     throw notPortedYet('German#getRelevantLanguageModelRules (ngram rules, DEV-001)');
   }
 

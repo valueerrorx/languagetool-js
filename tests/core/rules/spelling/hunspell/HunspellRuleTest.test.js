@@ -1,9 +1,9 @@
 // Ported from HunspellRuleTest (languagetool-language-modules/de, package org.languagetool.rules.spelling.hunspell)
-// testMultitokensWithSepllerRule needs the full German rule set (lt.check, German#getRelevantRules F17): skipped; testPerformance, testSeparateCorrectWordPerformance, testCompoundAwareRulePerformance are @Ignore in Java
+// testPerformance, testSeparateCorrectWordPerformance, testCompoundAwareRulePerformance are @Ignore in Java
 import { describe, it, expect } from 'vitest';
 import '../../../../../src/lang/register.js';
 import { Languages } from '../../../../../src/core/Languages.js';
-import { SwissGermanSpellerRule } from '../../../../../src/lang/de/rules/SwissGermanSpellerRule.js';
+import { JLanguageTool } from '../../../../../src/core/JLanguageTool.js';
 import { HunspellRule } from '../../../../../src/core/rules/spelling/hunspell/HunspellRule.js';
 import { SuggestedReplacement } from '../../../../../src/core/rules/model/SuggestedReplacement.js';
 import { messagesFor, newLt } from '../../../../support/ruleTestSupport.js';
@@ -123,7 +123,17 @@ describe('HunspellRuleTest', () => {
   });
 
   // Java: HunspellRuleTest#testMultitokensWithSepllerRule
-  it.skip('testMultitokensWithSepllerRule', () => {});
+  it('testMultitokensWithSepllerRule', () => {
+    const lt = new JLanguageTool(Languages.getLanguageForShortCode("de-DE"));
+
+    // a multiword as a suggestion for a single-token misspelled word
+    const matches = lt.check("BigBrother");
+    expect(matches.length).toEqual(1);
+    expect(matches[0].getSuggestedReplacements()[0]).toEqual("Big Brother");
+
+    // multiwords at the sentence start (capitalized)
+    expect(lt.check("Mea culpa").length).toEqual(0);
+  }, 120000);
 
   // Java: HunspellRuleTest#testRuleWithWrongSplit
   it('testRuleWithWrongSplit', () => {
@@ -182,8 +192,7 @@ describe('HunspellRuleTest', () => {
     expect(rule.match(lt.getAnalyzedSentence("Der äussere Übeltäter.")).length).toEqual(0);  // ss is used instead of ß
 
     // suggestions with ss, not ß, in Swiss German
-    // suggestions with ss, not ß, in Swiss German (lt.check on a tool with only the Swiss speller, as the full German rule set is F17)
-    const ltCheck = newLt(Languages.getLanguageForShortCode("de-CH"), new SwissGermanSpellerRule(deMessages(), Languages.getLanguageForShortCode("de-CH")));
+    const ltCheck = new JLanguageTool(Languages.getLanguageForShortCode("de-CH"));
     let matches = ltCheck.check("Mit freundlichen Gruessen");
     expect(matches[0].getSuggestedReplacements()[0]).toEqual("Grüssen");
     matches = ltCheck.check("schließen");
