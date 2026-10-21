@@ -1,0 +1,20 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "--stoppable: /v2/stop prefix paths",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "stopAfter": true,
+ "serverArgs": [
+  "--stoppable"
+ ],
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/maxtextlength"
+  }
+ ]
+}

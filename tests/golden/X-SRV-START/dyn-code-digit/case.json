@@ -1,0 +1,27 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "jar": "languagetool-server.jar",
+ "mainClass": "org.languagetool.server.HTTPServer",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames"
+ ],
+ "stripTimestamp": true,
+ "description": "lang-1 (digit key does not match lang-[a-z]+: unknown-key warning then code check)",
+ "stderrExceptionOnly": true,
+ "args": [
+  "--config",
+  "c.properties",
+  "--port",
+  "18175"
+ ],
+ "files": {
+  "c.properties": "lang-12=Numeric\nlang-12-dictPath=dyn/n.dic\n",
+  "dyn/n.dic": "4\nhello\nworld\nfoo/S\nBär\n",
+  "dyn/n.aff": "SET UTF-8\nSFX S Y 1\nSFX S 0 s .\n",
+  "dyn/common_words.txt": "hello\nworld\nfoo\n"
+ }
+}

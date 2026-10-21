@@ -1,0 +1,260 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "GET /v2/users/me: Basic Authentication parsing, AuthException -> 403 text (SRV-0106, SRV-0075); no database configured",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "stopAfter": true,
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/users/me"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": ""
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic "
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "basic dTpw"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Bearer abc"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic dTpw"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic OnA="
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic dTo="
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic IDpw"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic dTog"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic dQ=="
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic "
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic dTpwOnE="
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic w7w6w7Y="
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic !!!"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic dTpw"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic  dTpw"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic dTpw "
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "params": {
+    "authMethod": "password"
+   },
+   "headers": {
+    "Authorization": "Basic dTpw"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "params": {
+    "authMethod": "apiKey"
+   },
+   "headers": {
+    "Authorization": "Basic dTpw"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "params": {
+    "authMethod": "addonToken"
+   },
+   "headers": {
+    "Authorization": "Basic dTpw"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "params": {
+    "authMethod": "bogus"
+   },
+   "headers": {
+    "Authorization": "Basic dTpw"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "params": {
+    "authMethod": ""
+   },
+   "headers": {
+    "Authorization": "Basic dTpw"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "params": {
+    "authMethod": "bogus"
+   },
+   "headers": {
+    "Authorization": "Bearer abc"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "params": {
+    "authMethod": "bogus"
+   },
+   "headers": {
+    "Authorization": "Basic !!!"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic dTpw"
+   },
+   "body": ""
+  },
+  {
+   "method": "PUT",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic dTpw"
+   },
+   "body": "x"
+  },
+  {
+   "method": "HEAD",
+   "path": "/v2/users/me"
+  },
+  {
+   "method": "OPTIONS",
+   "path": "/v2/users/me"
+  },
+  {
+   "method": "OPTIONS",
+   "path": "/v2/users/me",
+   "headers": {
+    "Access-Control-Request-Headers": "authorization, x-custom"
+   },
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic dTpw"
+   },
+   "recordHeaders": [
+    "content-type"
+   ]
+  }
+ ]
+}

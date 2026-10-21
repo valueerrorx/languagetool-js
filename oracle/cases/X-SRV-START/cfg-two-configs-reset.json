@@ -1,0 +1,27 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "second --config re-reads all keys: keys missing in the second file fall back to defaults",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "stopAfter": true,
+ "serverArgs": [
+  "--config",
+  "{WORK}/a.properties",
+  "--config",
+  "{WORK}/b.properties"
+ ],
+ "files": {
+  "a.properties": "maxTextLength=11\n",
+  "b.properties": "maxTextHardLength=500\n"
+ },
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/maxtextlength"
+  }
+ ]
+}

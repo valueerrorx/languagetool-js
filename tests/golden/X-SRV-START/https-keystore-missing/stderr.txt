@@ -1,0 +1,15 @@
+Exception in thread "main" java.lang.RuntimeException: Could not start LanguageTool HTTPS server on localhost, port 18192
+	at org.languagetool.server.HTTPSServer.main(HTTPSServer.java:149)
+Caused by: java.lang.RuntimeException: LanguageTool HTTPS server could not be started on host "localhost", port 18192
+	at org.languagetool.server.HTTPSServer.<init>(HTTPSServer.java:85)
+	at org.languagetool.server.HTTPSServer.main(HTTPSServer.java:145)
+Caused by: java.lang.RuntimeException: Could not set up SSL context
+	at org.languagetool.server.HTTPSServer.getSslContext(HTTPSServer.java:101)
+	at org.languagetool.server.HTTPSServer.<init>(HTTPSServer.java:68)
+	... 1 more
+Caused by: java.io.FileNotFoundException: k.jks (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+	at org.languagetool.server.HTTPSServer.getSslContext(HTTPSServer.java:90)
+	... 2 more

@@ -1,0 +1,40 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "users/me with --allow-origin: preflight headers",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "stopAfter": true,
+ "serverArgs": [
+  "--allow-origin",
+  "*"
+ ],
+ "requests": [
+  {
+   "method": "OPTIONS",
+   "path": "/v2/users/me",
+   "headers": {
+    "Access-Control-Request-Headers": "authorization"
+   },
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic !!!"
+   }
+  }
+ ]
+}

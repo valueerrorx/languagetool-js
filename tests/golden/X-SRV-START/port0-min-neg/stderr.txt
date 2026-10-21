@@ -1,0 +1,13 @@
+2026-03-15 10:00:00.293 INFO  o.l.server.DatabaseAccessOpenSource - Not setting up database access, dbDriver is not configured
+2026-03-15 10:00:01.051 WARN  o.l.l.i.DefaultLanguageIdentifier - fastText not configured - language detection performance will be degraded. See https://dev.languagetool.org/http-server#starting-from-command-line for instructions.
+2026-03-15 10:00:01.054 INFO  org.languagetool.server.TextChecker - A/B-Test enabled: []
+Exception in thread "main" java.lang.RuntimeException: Could not start LanguageTool HTTP server on localhost, port 0
+	at org.languagetool.server.HTTPServer.main(HTTPServer.java:184)
+Caused by: org.languagetool.server.PortBindingException: LanguageTool HTTP server could not be started on host "localhost", port 0.
+Maybe something else is running on that port already?
+	at org.languagetool.server.HTTPServer.<init>(HTTPServer.java:128)
+	at org.languagetool.server.HTTPServer.main(HTTPServer.java:180)
+Caused by: java.io.IOException: Invalid port configuration found. The value for '--port' need to be greater than 0 or if set to 0 you need to specify a minPort and maxPort in your properties file (minPort must be lower that maxPort).
+	at org.languagetool.server.HTTPServer.getPortFromRange(HTTPServer.java:149)
+	at org.languagetool.server.HTTPServer.<init>(HTTPServer.java:115)
+	... 1 more

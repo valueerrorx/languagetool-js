@@ -1,0 +1,24 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "jar": "languagetool-server.jar",
+ "mainClass": "org.languagetool.server.HTTPSServer",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames"
+ ],
+ "stripTimestamp": true,
+ "description": "HTTPSServer keystore with blank value",
+ "stderrExceptionOnly": true,
+ "args": [
+  "--config",
+  "c.properties",
+  "--port",
+  "18192"
+ ],
+ "files": {
+  "c.properties": "keystore=   \npassword=p\n"
+ }
+}

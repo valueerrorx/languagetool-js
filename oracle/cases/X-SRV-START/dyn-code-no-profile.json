@@ -1,0 +1,27 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "jar": "languagetool-server.jar",
+ "mainClass": "org.languagetool.server.HTTPServer",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames"
+ ],
+ "stripTimestamp": true,
+ "description": "dynamic language without a language-identifier profile (xy): server cannot start",
+ "stderrExceptionOnly": true,
+ "args": [
+  "--config",
+  "c.properties",
+  "--port",
+  "18155"
+ ],
+ "files": {
+  "c.properties": "lang-xy=Xylish\nlang-xy-dictPath=dyn/xy.dic\n",
+  "dyn/xy.dic": "4\nhello\nworld\nfoo/S\nBär\n",
+  "dyn/xy.aff": "SET UTF-8\nSFX S Y 1\nSFX S 0 s .\n",
+  "dyn/common_words.txt": "hello\nworld\nfoo\n"
+ }
+}

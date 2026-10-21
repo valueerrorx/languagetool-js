@@ -1,0 +1,24 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "jar": "languagetool-server.jar",
+ "mainClass": "org.languagetool.server.HTTPServer",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames"
+ ],
+ "stripTimestamp": true,
+ "description": "maxTextLength=\"5 \"",
+ "stderrExceptionOnly": true,
+ "args": [
+  "--config",
+  "c.properties",
+  "--port",
+  "18171"
+ ],
+ "files": {
+  "c.properties": "maxTextLength=5 \n"
+ }
+}

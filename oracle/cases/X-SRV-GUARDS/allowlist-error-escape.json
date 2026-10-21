@@ -1,0 +1,32 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "denied address text goes through escapeXML (cannot be forced from a socket; recorded for IPv4 only)",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "stopAfter": true,
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "&<>\""
+   },
+   "localAddress": "127.0.0.2"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "&<>\""
+   },
+   "localAddress": "127.0.0.2"
+  }
+ ]
+}

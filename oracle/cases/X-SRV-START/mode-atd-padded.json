@@ -1,0 +1,24 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "jar": "languagetool-server.jar",
+ "mainClass": "org.languagetool.server.HTTPServer",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames"
+ ],
+ "stripTimestamp": true,
+ "description": "mode= AfterTheDeadline (leading blanks stripped by Properties)",
+ "stderrExceptionOnly": true,
+ "args": [
+  "--config",
+  "c.properties",
+  "--port",
+  "18160"
+ ],
+ "files": {
+  "c.properties": "mode= AfterTheDeadline\n"
+ }
+}

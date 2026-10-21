@@ -1,0 +1,60 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "queued healthchecks and non-healthcheck paths (503 texts differ: doubled \"Error: \")",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "stopAfter": true,
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "maxCheckThreads=1\nmaxWorkQueueSize=1\n"
+ },
+ "requests": [
+  {
+   "hold": {
+    "path": "/v2/check",
+    "contentLength": 200,
+    "sent": 10,
+    "holdMs": 500,
+    "settleMs": 800,
+    "probes": [
+     {
+      "method": "GET",
+      "path": "/v2/healthcheck"
+     },
+     {
+      "method": "GET",
+      "path": "/v2/healthcheck"
+     },
+     {
+      "method": "GET",
+      "path": "/"
+     },
+     {
+      "method": "GET",
+      "path": "/"
+     },
+     {
+      "method": "GET",
+      "path": "/v2/nothing"
+     }
+    ]
+   },
+   "note": "queued healthchecks and non-healthcheck paths (503 texts differ: doubled \"Error: \")"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/healthcheck"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/maxtextlength"
+  }
+ ]
+}

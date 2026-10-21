@@ -1,0 +1,30 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "maxSpellingSuggestions=5",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "stopAfter": true,
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "maxSpellingSuggestions=5\n"
+ },
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "A tset and a speling mistaek and wrod.",
+    "enabledRules": "MORFOLOGIK_RULE_EN_US",
+    "enabledOnly": "true"
+   }
+  }
+ ]
+}

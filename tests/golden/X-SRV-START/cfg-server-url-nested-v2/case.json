@@ -1,0 +1,36 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "serverURL=/v2x: prefix equal to part of the API path",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "stopAfter": true,
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "serverURL=/v2x\n"
+ },
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2x/v2/maxtextlength"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/maxtextlength"
+  },
+  {
+   "method": "GET",
+   "path": "/v2x"
+  },
+  {
+   "method": "GET",
+   "path": "/v2x/"
+  }
+ ]
+}

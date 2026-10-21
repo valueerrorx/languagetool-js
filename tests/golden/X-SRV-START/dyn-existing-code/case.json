@@ -1,0 +1,29 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "jar": "languagetool-server.jar",
+ "mainClass": "org.languagetool.server.HTTPServer",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames"
+ ],
+ "stripTimestamp": true,
+ "description": "dynamic language with the code of a built-in language (en): server starts",
+ "ignoreExit": true,
+ "stopOnOutput": "Server started",
+ "stderrFilter": "^(\\*{5} WARNING|Key '|Known keys:|WARNING:|\\*\\*\\* |Exception in thread|Caused by:)",
+ "args": [
+  "--config",
+  "c.properties",
+  "--port",
+  "18158"
+ ],
+ "files": {
+  "c.properties": "lang-en=English2\nlang-en-dictPath=dyn/en.dic\n",
+  "dyn/en.dic": "4\nhello\nworld\nfoo/S\nBär\n",
+  "dyn/en.aff": "SET UTF-8\nSFX S Y 1\nSFX S 0 s .\n",
+  "dyn/common_words.txt": "hello\nworld\nfoo\n"
+ }
+}

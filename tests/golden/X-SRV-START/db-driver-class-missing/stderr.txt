@@ -1,0 +1,19 @@
+2026-03-15 10:00:00.268 INFO  o.l.server.DatabaseAccessOpenSource - Setting up database access, URL null, driver: foo.Bar, user: null
+Exception in thread "main" java.lang.RuntimeException: java.lang.reflect.InvocationTargetException
+	at org.languagetool.server.DatabaseAccess.init(DatabaseAccess.java:65)
+	at org.languagetool.server.HTTPServer.main(HTTPServer.java:171)
+Caused by: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481)
+	at org.languagetool.server.DatabaseAccess.init(DatabaseAccess.java:63)
+	... 1 more
+Caused by: java.lang.NullPointerException
+	at java.base/java.util.concurrent.ConcurrentHashMap.putVal(ConcurrentHashMap.java:1011)
+	at java.base/java.util.concurrent.ConcurrentHashMap.put(ConcurrentHashMap.java:1006)
+	at java.base/java.util.Properties.put(Properties.java:1301)
+	at java.base/java.util.Properties.setProperty(Properties.java:229)
+	at org.languagetool.server.DatabaseAccessOpenSource.<init>(DatabaseAccessOpenSource.java:66)
+	... 7 more

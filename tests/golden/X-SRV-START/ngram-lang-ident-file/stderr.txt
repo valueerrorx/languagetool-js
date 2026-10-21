@@ -1,0 +1,28 @@
+2026-03-15 10:00:00.287 INFO  o.l.server.DatabaseAccessOpenSource - Not setting up database access, dbDriver is not configured
+2026-03-15 10:00:00.998 INFO  o.l.l.i.DefaultLanguageIdentifier - Loading ngram data for language identification from z.zip...
+Exception in thread "main" java.lang.RuntimeException: Could not start LanguageTool HTTP server on localhost, port 18167
+	at org.languagetool.server.HTTPServer.main(HTTPServer.java:184)
+Caused by: org.languagetool.server.PortBindingException: LanguageTool HTTP server could not be started on host "localhost", port 18167.
+Maybe something else is running on that port already?
+	at org.languagetool.server.HTTPServer.<init>(HTTPServer.java:128)
+	at org.languagetool.server.HTTPServer.main(HTTPServer.java:180)
+Caused by: java.lang.RuntimeException: Could not load ngram data language identification from z.zip
+	at org.languagetool.language.identifier.DefaultLanguageIdentifier.enableNgrams(DefaultLanguageIdentifier.java:167)
+	at org.languagetool.language.identifier.LanguageIdentifierService.getDefaultLanguageIdentifier(LanguageIdentifierService.java:55)
+	at org.languagetool.server.TextChecker.<init>(TextChecker.java:190)
+	at org.languagetool.server.V2TextChecker.<init>(V2TextChecker.java:48)
+	at org.languagetool.server.LanguageToolHttpHandler.<init>(LanguageToolHttpHandler.java:84)
+	at org.languagetool.server.HTTPServer.<init>(HTTPServer.java:110)
+	... 1 more
+Caused by: java.util.zip.ZipException: zip END header not found
+	at java.base/java.util.zip.ZipFile$Source.findEND(ZipFile.java:1637)
+	at java.base/java.util.zip.ZipFile$Source.initCEN(ZipFile.java:1645)
+	at java.base/java.util.zip.ZipFile$Source.<init>(ZipFile.java:1483)
+	at java.base/java.util.zip.ZipFile$Source.get(ZipFile.java:1445)
+	at java.base/java.util.zip.ZipFile$CleanableResource.<init>(ZipFile.java:717)
+	at java.base/java.util.zip.ZipFile.<init>(ZipFile.java:251)
+	at java.base/java.util.zip.ZipFile.<init>(ZipFile.java:180)
+	at java.base/java.util.zip.ZipFile.<init>(ZipFile.java:194)
+	at org.languagetool.language.identifier.detector.NGramDetector.<init>(NGramDetector.java:62)
+	at org.languagetool.language.identifier.DefaultLanguageIdentifier.enableNgrams(DefaultLanguageIdentifier.java:164)
+	... 6 more

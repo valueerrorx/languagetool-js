@@ -1,0 +1,17 @@
+2026-03-15 10:00:00.283 INFO  o.l.server.DatabaseAccessOpenSource - Not setting up database access, dbDriver is not configured
+2026-03-15 10:00:01.022 WARN  o.l.l.i.DefaultLanguageIdentifier - fastText not configured - language detection performance will be degraded. See https://dev.languagetool.org/http-server#starting-from-command-line for instructions.
+Exception in thread "main" java.lang.RuntimeException: Could not start LanguageTool HTTP server on localhost, port 18158
+	at org.languagetool.server.HTTPServer.main(HTTPServer.java:184)
+Caused by: org.languagetool.server.PortBindingException: LanguageTool HTTP server could not be started on host "localhost", port 18158.
+Maybe something else is running on that port already?
+	at org.languagetool.server.HTTPServer.<init>(HTTPServer.java:128)
+	at org.languagetool.server.HTTPServer.main(HTTPServer.java:180)
+Caused by: java.lang.IllegalArgumentException: duration cannot be negative: -5 SECONDS
+	at com.google.common.base.Preconditions.checkArgument(Preconditions.java:385)
+	at com.google.common.cache.CacheBuilder.expireAfterAccess(CacheBuilder.java:838)
+	at org.languagetool.ResultCache.<init>(ResultCache.java:74)
+	at org.languagetool.server.TextChecker.<init>(TextChecker.java:229)
+	at org.languagetool.server.V2TextChecker.<init>(V2TextChecker.java:48)
+	at org.languagetool.server.LanguageToolHttpHandler.<init>(LanguageToolHttpHandler.java:84)
+	at org.languagetool.server.HTTPServer.<init>(HTTPServer.java:110)
+	... 1 more

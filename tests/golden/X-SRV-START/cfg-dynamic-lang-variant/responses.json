@@ -1,0 +1,95 @@
+[
+  {
+    "status": 400,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: 'tr-TR' is not a language code known to LanguageTool. Supported language codes are: ar, ast-ES, be-BY, br-FR, ca-ES, ca-ES-balear, ca-ES-valencia, crh-UA, da-DK, de, de-AT, de-CH, de-DE, de-DE-x-simple-language, de-DE-x-simple-language-DE, de-LU, el-GR, en, en-AU, en-CA, en-GB, en-NZ, en-US, en-ZA, eo, es, es-AR, es-ES, fa, fa-IR, fr, fr-BE, fr-CA, fr-CH, fr-FR, ga-IE, gl-ES, it, it-IT, ja-JP, km-KH, nl, nl-BE, nl-NL, pl-PL, pt, pt-AO, pt-BR, pt-MZ, pt-PT, ro-RO, ru-RU, sk-SK, sl-SI, sv, sv-SE, ta-IN, tl-PH, tr, uk-UA, zh-CN. The list of languages is read from META-INF/org/languagetool/language-module.properties in the Java classpath. See https://dev.languagetool.org/java-api for details."
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Turkish (Turkey)",
+        "code": "tr",
+        "spellCheckOnly": true,
+        "detectedLanguage": {
+          "name": "English (US)",
+          "code": "en-US",
+          "confidence": 0.9987582,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Possible spelling mistake found.",
+          "shortMessage": "Spelling mistake",
+          "replacements": [
+            {
+              "value": "world"
+            }
+          ],
+          "offset": 6,
+          "length": 4,
+          "context": {
+            "text": "hello wrld",
+            "offset": 6,
+            "length": 4
+          },
+          "sentence": "hello wrld",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "TR-TR_SPELLER_RULE",
+            "description": "Possible spelling mistake",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Possible Typo"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          10
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 10,
+          "detectedLanguages": [
+            {
+              "language": "tr",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 400,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: 'tr-XX' is not a language code known to LanguageTool. Supported language codes are: ar, ast-ES, be-BY, br-FR, ca-ES, ca-ES-balear, ca-ES-valencia, crh-UA, da-DK, de, de-AT, de-CH, de-DE, de-DE-x-simple-language, de-DE-x-simple-language-DE, de-LU, el-GR, en, en-AU, en-CA, en-GB, en-NZ, en-US, en-ZA, eo, es, es-AR, es-ES, fa, fa-IR, fr, fr-BE, fr-CA, fr-CH, fr-FR, ga-IE, gl-ES, it, it-IT, ja-JP, km-KH, nl, nl-BE, nl-NL, pl-PL, pt, pt-AO, pt-BR, pt-MZ, pt-PT, ro-RO, ru-RU, sk-SK, sl-SI, sv, sv-SE, ta-IN, tl-PH, tr, uk-UA, zh-CN. The list of languages is read from META-INF/org/languagetool/language-module.properties in the Java classpath. See https://dev.languagetool.org/java-api for details."
+  }
+]

@@ -1,0 +1,28 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "dynamic language listed in /v2/languages (endpoint ported later; Java list restricted to in-scope plus dynamic)",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "stopAfter": true,
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "lang-tr=Turkish\nlang-tr-dictPath={WORK}/dyn/tr.dic\n",
+  "dyn/tr.dic": "4\nhello\nworld\nfoo/S\nBär\n",
+  "dyn/tr.aff": "SET UTF-8\nSFX S Y 1\nSFX S 0 s .\n",
+  "dyn/common_words.txt": "hello\nworld\nfoo\n"
+ },
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/languages",
+   "languagesList": true
+  }
+ ]
+}

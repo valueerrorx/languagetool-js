@@ -1,0 +1,40 @@
+error: /tmp/ltjs-oracle-FWDAVl/dyn/tr.aff: cannot open
+error: /tmp/ltjs-oracle-FWDAVl/dyn/tr.aff: cannot open
+2026-03-15 10:00:00.950 ERROR o.l.r.spelling.hunspell.HunspellRule - Could not read aff file: /tmp/ltjs-oracle-FWDAVl/dyn/tr.aff
+java.nio.file.NoSuchFileException: /tmp/ltjs-oracle-FWDAVl/dyn/tr.aff
+	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:92)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:106)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:111)
+	at java.base/sun.nio.fs.UnixFileSystemProvider.newByteChannel(UnixFileSystemProvider.java:218)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:380)
+	at java.base/java.nio.file.Files.newByteChannel(Files.java:432)
+	at java.base/java.nio.file.spi.FileSystemProvider.newInputStream(FileSystemProvider.java:422)
+	at java.base/java.nio.file.Files.newInputStream(Files.java:160)
+	at org.languagetool.rules.spelling.hunspell.HunspellRule.lambda$nonWordPatternFromPath$5(HunspellRule.java:537)
+	at java.base/java.util.concurrent.ConcurrentHashMap.computeIfAbsent(ConcurrentHashMap.java:1708)
+	at org.languagetool.rules.spelling.hunspell.HunspellRule.nonWordPatternFromPath(HunspellRule.java:535)
+	at org.languagetool.rules.spelling.hunspell.HunspellRule.init(HunspellRule.java:525)
+	at org.languagetool.rules.spelling.hunspell.HunspellRule.ensureInitialized(HunspellRule.java:495)
+	at org.languagetool.rules.spelling.hunspell.HunspellRule.match(HunspellRule.java:166)
+	at org.languagetool.JLanguageTool.checkAnalyzedSentence(JLanguageTool.java:1603)
+	at org.languagetool.JLanguageTool$TextCheckCallable.getOtherRuleMatches(JLanguageTool.java:2216)
+	at org.languagetool.JLanguageTool$TextCheckCallable.call(JLanguageTool.java:2111)
+	at org.languagetool.JLanguageTool$TextCheckCallable.call(JLanguageTool.java:2079)
+	at org.languagetool.JLanguageTool.performCheck(JLanguageTool.java:1522)
+	at org.languagetool.JLanguageTool.checkInternalWithCustomRules(JLanguageTool.java:1123)
+	at org.languagetool.JLanguageTool.checkInternal(JLanguageTool.java:1085)
+	at org.languagetool.JLanguageTool.checkInternal(JLanguageTool.java:1078)
+	at org.languagetool.JLanguageTool.check(JLanguageTool.java:1021)
+	at org.languagetool.JLanguageTool.check(JLanguageTool.java:1006)
+	at org.languagetool.JLanguageTool.check(JLanguageTool.java:996)
+	at org.languagetool.JLanguageTool.check(JLanguageTool.java:978)
+	at org.languagetool.JLanguageTool.check(JLanguageTool.java:970)
+	at org.languagetool.JLanguageTool.check(JLanguageTool.java:927)
+	at org.languagetool.JLanguageTool.check(JLanguageTool.java:899)
+	at org.languagetool.server.HTTPServerConfig.addDynamicLanguages(HTTPServerConfig.java:552)
+	at org.languagetool.server.HTTPServerConfig.parseConfigFile(HTTPServerConfig.java:506)
+	at org.languagetool.server.HTTPServerConfig.<init>(HTTPServerConfig.java:252)
+	at org.languagetool.server.HTTPServer.main(HTTPServer.java:170)
+2026-03-15 10:00:01.000 INFO  o.l.server.DatabaseAccessOpenSource - Not setting up database access, dbDriver is not configured
+2026-03-15 10:00:01.590 WARN  o.l.l.i.DefaultLanguageIdentifier - fastText not configured - language detection performance will be degraded. See https://dev.languagetool.org/http-server#starting-from-command-line for instructions.
+2026-03-15 10:00:01.593 INFO  org.languagetool.server.TextChecker - A/B-Test enabled: []

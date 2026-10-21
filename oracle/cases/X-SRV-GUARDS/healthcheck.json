@@ -1,0 +1,92 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "GET/HEAD/POST/PUT/OPTIONS/DELETE /v2/healthcheck, variants of the path, query and body",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "stopAfter": true,
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/healthcheck"
+  },
+  {
+   "method": "HEAD",
+   "path": "/v2/healthcheck"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/healthcheck"
+  },
+  {
+   "method": "PUT",
+   "path": "/v2/healthcheck",
+   "body": "x"
+  },
+  {
+   "method": "DELETE",
+   "path": "/v2/healthcheck"
+  },
+  {
+   "method": "OPTIONS",
+   "path": "/v2/healthcheck"
+  },
+  {
+   "method": "PATCH",
+   "path": "/v2/healthcheck",
+   "body": "x"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/healthcheck?x=1"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/healthcheck/"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/healthcheckx"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/Healthcheck"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/healthcheck;a=b"
+  },
+  {
+   "method": "GET",
+   "path": "/v2//healthcheck"
+  },
+  {
+   "method": "GET",
+   "path": "/healthcheck"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/healthcheck%2F"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/health%63heck"
+  },
+  {
+   "method": "head",
+   "path": "/v2/healthcheck"
+  },
+  {
+   "method": "GET",
+   "path": "/V2/healthcheck"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/healthcheck#frag"
+  }
+ ]
+}

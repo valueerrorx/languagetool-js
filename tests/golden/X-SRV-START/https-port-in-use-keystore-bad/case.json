@@ -1,0 +1,28 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "jar": "languagetool-server.jar",
+ "mainClass": "org.languagetool.server.HTTPSServer",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames"
+ ],
+ "stripTimestamp": true,
+ "description": "HTTPSServer port occupied and keystore bad: BindException branch (SRV-0021 text)",
+ "stderrExceptionOnly": true,
+ "args": [
+  "--config",
+  "c.properties",
+  "--port",
+  "18193"
+ ],
+ "files": {
+  "c.properties": "keystore=k.jks\npassword=p\n",
+  "k.jks": "x"
+ },
+ "occupyPorts": [
+  18193
+ ]
+}

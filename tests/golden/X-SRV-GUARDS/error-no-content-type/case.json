@@ -1,0 +1,61 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "sendError sends no Content-Type: record contentType for errors",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "stopAfter": true,
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/check"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/nothing"
+  },
+  {
+   "method": "GET",
+   "path": "/"
+  },
+  {
+   "method": "GET",
+   "path": "/favicon.ico"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   },
+   "recordHeaders": [
+    "content-type",
+    "content-length"
+   ]
+  },
+  {
+   "method": "GET",
+   "path": "/v2/nothing",
+   "recordHeaders": [
+    "content-type",
+    "content-length",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "GET",
+   "path": "/v2/healthcheck",
+   "recordHeaders": [
+    "content-type",
+    "content-length"
+   ]
+  }
+ ]
+}

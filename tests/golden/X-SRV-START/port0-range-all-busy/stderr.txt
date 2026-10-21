@@ -1,0 +1,17 @@
+2026-03-15 10:00:00.308 INFO  o.l.server.DatabaseAccessOpenSource - Not setting up database access, dbDriver is not configured
+2026-03-15 10:00:01.139 WARN  o.l.l.i.DefaultLanguageIdentifier - fastText not configured - language detection performance will be degraded. See https://dev.languagetool.org/http-server#starting-from-command-line for instructions.
+2026-03-15 10:00:01.142 INFO  org.languagetool.server.TextChecker - A/B-Test enabled: []
+2026-03-15 10:00:01.142 INFO  org.languagetool.server.HTTPServer - Try to find a free Port for Server in range 18180-18182
+2026-03-15 10:00:01.143 INFO  org.languagetool.server.HTTPServer - Check port 18180
+2026-03-15 10:00:01.149 INFO  org.languagetool.server.HTTPServer - Check port 18181
+2026-03-15 10:00:01.149 INFO  org.languagetool.server.HTTPServer - Check port 18182
+Exception in thread "main" java.lang.RuntimeException: Could not start LanguageTool HTTP server on localhost, port 0
+	at org.languagetool.server.HTTPServer.main(HTTPServer.java:184)
+Caused by: org.languagetool.server.PortBindingException: LanguageTool HTTP server could not be started on host "localhost", port 0.
+Maybe something else is running on that port already?
+	at org.languagetool.server.HTTPServer.<init>(HTTPServer.java:128)
+	at org.languagetool.server.HTTPServer.main(HTTPServer.java:180)
+Caused by: java.io.IOException: No free port in range (18180 - 18182) found.
+	at org.languagetool.server.HTTPServer.getPortFromRange(HTTPServer.java:147)
+	at org.languagetool.server.HTTPServer.<init>(HTTPServer.java:115)
+	... 1 more

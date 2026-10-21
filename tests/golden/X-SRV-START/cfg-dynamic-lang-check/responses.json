@@ -1,0 +1,283 @@
+[
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Turkish",
+        "code": "tr",
+        "spellCheckOnly": true,
+        "detectedLanguage": {
+          "name": "English (US)",
+          "code": "en-US",
+          "confidence": 0.9999976,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Possible spelling mistake found.",
+          "shortMessage": "Spelling mistake",
+          "replacements": [
+            {
+              "value": "world"
+            }
+          ],
+          "offset": 6,
+          "length": 4,
+          "context": {
+            "text": "hello wrld foos Bär",
+            "offset": 6,
+            "length": 4
+          },
+          "sentence": "hello wrld foos Bär",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "TR_SPELLER_RULE",
+            "description": "Possible spelling mistake",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Possible Typo"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          19
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 19,
+          "detectedLanguages": [
+            {
+              "language": "tr",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Turkish",
+        "code": "tr",
+        "spellCheckOnly": true,
+        "detectedLanguage": {
+          "name": "English (US)",
+          "code": "en-US",
+          "confidence": 0.9999837,
+          "source": "+fallback"
+        }
+      },
+      "matches": [],
+      "sentenceRanges": [
+        [
+          0,
+          15
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 15,
+          "detectedLanguages": [
+            {
+              "language": "tr",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 400,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: 'tr-TR' is not a language code known to LanguageTool. Supported language codes are: ar, ast-ES, be-BY, br-FR, ca-ES, ca-ES-balear, ca-ES-valencia, crh-UA, da-DK, de, de-AT, de-CH, de-DE, de-DE-x-simple-language, de-DE-x-simple-language-DE, de-LU, el-GR, en, en-AU, en-CA, en-GB, en-NZ, en-US, en-ZA, eo, es, es-AR, es-ES, fa, fa-IR, fr, fr-BE, fr-CA, fr-CH, fr-FR, ga-IE, gl-ES, it, it-IT, ja-JP, km-KH, nl, nl-BE, nl-NL, pl-PL, pt, pt-AO, pt-BR, pt-MZ, pt-PT, ro-RO, ru-RU, sk-SK, sl-SI, sv, sv-SE, ta-IN, tl-PH, tr, uk-UA, zh-CN. The list of languages is read from META-INF/org/languagetool/language-module.properties in the Java classpath. See https://dev.languagetool.org/java-api for details."
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "English (US)",
+        "code": "en-US",
+        "detectedLanguage": {
+          "name": "English (US)",
+          "code": "en-US",
+          "confidence": 0.9987582,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "This sentence does not start with an uppercase letter.",
+          "shortMessage": "Capitalization",
+          "replacements": [
+            {
+              "value": "Hello"
+            }
+          ],
+          "offset": 0,
+          "length": 5,
+          "context": {
+            "text": "hello wrld",
+            "offset": 0,
+            "length": 5
+          },
+          "sentence": "hello wrld",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "UPPERCASE_SENTENCE_START",
+            "description": "Checks that a sentence starts with an uppercase letter",
+            "issueType": "typographical",
+            "urls": [
+              {
+                "value": "https://languagetool.org/insights/post/spelling-capital-letters/"
+              }
+            ],
+            "category": {
+              "id": "CASING",
+              "name": "Capitalization"
+            }
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": -1
+        },
+        {
+          "message": "Possible spelling mistake found.",
+          "shortMessage": "Spelling mistake",
+          "replacements": [
+            {
+              "value": "world"
+            },
+            {
+              "value": "wild",
+              "shortDescription": "untamed"
+            },
+            {
+              "value": "weld",
+              "shortDescription": "join together by heating"
+            },
+            {
+              "value": "Wald"
+            },
+            {
+              "value": "RLD"
+            },
+            {
+              "value": "Weld"
+            },
+            {
+              "value": "Wold"
+            },
+            {
+              "value": "wold"
+            }
+          ],
+          "offset": 6,
+          "length": 4,
+          "context": {
+            "text": "hello wrld",
+            "offset": 6,
+            "length": 4
+          },
+          "sentence": "hello wrld",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_EN_US",
+            "description": "Possible spelling mistake",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Possible Typo"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          10
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 10,
+          "detectedLanguages": [
+            {
+              "language": "en",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "text/plain",
+    "accessControlAllowOrigin": null,
+    "body": "2147483647"
+  }
+]

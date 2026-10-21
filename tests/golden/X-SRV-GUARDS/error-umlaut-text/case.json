@@ -1,0 +1,52 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "error texts with non-ASCII characters (utf-8 length in Content-Length): language code and path with umlauts",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "stopAfter": true,
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "äö-ÜÖ",
+    "text": "This is a test,, ok."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/nöthing"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok.",
+    "mode": "äöü"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok.",
+    "level": "😀"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "😀",
+    "text": "This is a test,, ok."
+   }
+  }
+ ]
+}

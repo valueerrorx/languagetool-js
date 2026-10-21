@@ -1,0 +1,24 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "port= in the config file is not a key",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "stopAfter": true,
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "port=1\n"
+ },
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/maxtextlength"
+  }
+ ]
+}

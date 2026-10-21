@@ -1,0 +1,60 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "timeout limiter with de/fr texts",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "stopAfter": true,
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "maxCheckTimeMillis=1\ntimeoutRequestLimit=1\nrequestLimitPeriodInSeconds=60\npipelineCaching=true\npipelinePrewarming=true\npreferredLanguages=en-US,de-DE,fr\n"
+ },
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. ",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DE_DOUBLE_PUNCTUATION,DE_SENTENCE_WHITESPACE,DE_UNPAIRED_QUOTES,GERMAN_WORD_REPEAT_RULE,UNPAIRED_BRACKETS,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. Das ist ein Test,, der leider lange dauert und noch viel länger geht. ",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DE_DOUBLE_PUNCTUATION,DE_SENTENCE_WHITESPACE,DE_UNPAIRED_QUOTES,GERMAN_WORD_REPEAT_RULE,UNPAIRED_BRACKETS,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "fr",
+    "text": "Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. ",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,UNPAIRED_BRACKETS,UNPAIRED_QUOTES,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE,WORD_REPEAT_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "fr",
+    "text": "Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. Ceci est un test,, qui dure assez longtemps. ",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,UNPAIRED_BRACKETS,UNPAIRED_QUOTES,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE,WORD_REPEAT_RULE",
+    "enabledOnly": "true"
+   }
+  }
+ ]
+}

@@ -1,0 +1,15 @@
+Exception in thread "main" java.lang.IllegalArgumentException: Could not parse provided serverURL: 'http://[bad'
+	at org.languagetool.server.HTTPServerConfig.setServerURL(HTTPServerConfig.java:635)
+	at org.languagetool.server.HTTPServerConfig.parseConfigFile(HTTPServerConfig.java:348)
+	at org.languagetool.server.HTTPServerConfig.<init>(HTTPServerConfig.java:252)
+	at org.languagetool.server.HTTPServer.main(HTTPServer.java:170)
+Caused by: java.net.URISyntaxException: Expected closing bracket for IPv6 address at index 11: http://[bad
+	at java.base/java.net.URI$Parser.fail(URI.java:2976)
+	at java.base/java.net.URI$Parser.failExpecting(URI.java:2982)
+	at java.base/java.net.URI$Parser.parseServer(URI.java:3369)
+	at java.base/java.net.URI$Parser.parseAuthority(URI.java:3284)
+	at java.base/java.net.URI$Parser.parseHierarchical(URI.java:3221)
+	at java.base/java.net.URI$Parser.parse(URI.java:3177)
+	at java.base/java.net.URI.<init>(URI.java:623)
+	at org.languagetool.server.HTTPServerConfig.setServerURL(HTTPServerConfig.java:633)
+	... 3 more

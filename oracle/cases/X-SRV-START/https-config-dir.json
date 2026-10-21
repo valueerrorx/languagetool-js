@@ -1,0 +1,21 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "jar": "languagetool-server.jar",
+ "mainClass": "org.languagetool.server.HTTPSServer",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames"
+ ],
+ "stripTimestamp": true,
+ "description": "HTTPSServer --config is a directory",
+ "stderrExceptionOnly": true,
+ "args": [
+  "--config",
+  ".",
+  "--port",
+  "18192"
+ ]
+}

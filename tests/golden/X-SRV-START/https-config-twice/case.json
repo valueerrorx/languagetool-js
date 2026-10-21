@@ -1,0 +1,27 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "jar": "languagetool-server.jar",
+ "mainClass": "org.languagetool.server.HTTPSServer",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames"
+ ],
+ "stripTimestamp": true,
+ "description": "HTTPSServer two --config options: last one is used for keystore/password",
+ "stderrExceptionOnly": true,
+ "args": [
+  "--config",
+  "a.properties",
+  "--config",
+  "c.properties",
+  "--port",
+  "18192"
+ ],
+ "files": {
+  "a.properties": "keystore=k\npassword=p\n",
+  "c.properties": ""
+ }
+}

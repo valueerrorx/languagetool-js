@@ -1,0 +1,24 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "jar": "languagetool-server.jar",
+ "mainClass": "org.languagetool.server.HTTPServer",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames"
+ ],
+ "stripTimestamp": true,
+ "description": "maxCheckTimeMillisAnonymous=\"9223372036854775808\" (Long.parseLong / Integer.parseInt)",
+ "stderrExceptionOnly": true,
+ "args": [
+  "--config",
+  "c.properties",
+  "--port",
+  "18178"
+ ],
+ "files": {
+  "c.properties": "maxCheckTimeMillisAnonymous=9223372036854775808\n"
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "jar": "languagetool-server.jar",
+ "mainClass": "org.languagetool.server.HTTPServer",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames"
+ ],
+ "stripTimestamp": true,
+ "description": "all limit keys valid",
+ "ignoreExit": true,
+ "stopOnOutput": "Server started",
+ "stderrFilter": "^(\\*{5} WARNING|Key '|Known keys:|WARNING:|\\*\\*\\* |Exception in thread|Caused by:)",
+ "args": [
+  "--config",
+  "c.properties",
+  "--port",
+  "18167"
+ ],
+ "files": {
+  "c.properties": "requestLimit=10\nrequestLimitInBytes=1000\ntimeoutRequestLimit=3\nrequestLimitPeriodInSeconds=60\nipFingerprintFactor=3\nrequestLimitWhitelistUsers=a, b,c\nrequestLimitWhitelistLimit=5\nmaxWorkQueueSize=50\nmaxPipelinePoolSize=7\npipelineExpireTimeInSeconds=30\npipelineCaching=true\npipelinePrewarming=false\n"
+ }
+}

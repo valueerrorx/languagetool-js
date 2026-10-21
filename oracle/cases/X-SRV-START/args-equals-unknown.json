@@ -1,0 +1,27 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "jar": "languagetool-server.jar",
+ "mainClass": "org.languagetool.server.HTTPServer",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames"
+ ],
+ "stripTimestamp": true,
+ "description": "unknown option with \"=\": extended hint text; --a-b=c does not match the --option=value regex",
+ "ignoreExit": true,
+ "stopOnOutput": "Server started",
+ "stderrFilter": "^(\\*{5} WARNING|Key '|Known keys:|WARNING:|\\*\\*\\* |Exception in thread|Caused by:)",
+ "args": [
+  "--foo=bar",
+  "--a-b=c",
+  "--a=",
+  "-x=1",
+  "=",
+  "a=b=c",
+  "--port",
+  "18151"
+ ]
+}

@@ -1,0 +1,21 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "jar": "languagetool-server.jar",
+ "mainClass": "org.languagetool.server.HTTPServer",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames"
+ ],
+ "stripTimestamp": true,
+ "description": "--config nonexistent file (FileNotFoundException wrapped)",
+ "stderrExceptionOnly": true,
+ "args": [
+  "--config",
+  "nope.properties",
+  "--port",
+  "18178"
+ ]
+}

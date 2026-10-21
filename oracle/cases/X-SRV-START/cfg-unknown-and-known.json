@@ -1,0 +1,24 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "unknown key warning does not stop the server",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "stopAfter": true,
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "foo=bar\nmaxTextLength=33\n"
+ },
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/maxtextlength"
+  }
+ ]
+}

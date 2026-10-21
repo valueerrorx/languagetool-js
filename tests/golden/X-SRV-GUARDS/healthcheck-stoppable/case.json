@@ -1,0 +1,24 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "--stoppable server: healthcheck unaffected, /v2/stopx handled as stop prefix",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "stopAfter": true,
+ "serverArgs": [
+  "--stoppable"
+ ],
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/healthcheck"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/maxtextlength"
+  }
+ ]
+}

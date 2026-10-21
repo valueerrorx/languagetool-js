@@ -1,0 +1,26 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "jar": "languagetool-server.jar",
+ "mainClass": "org.languagetool.server.HTTPServer",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames"
+ ],
+ "stripTimestamp": true,
+ "description": "common_words.txt missing",
+ "stderrExceptionOnly": true,
+ "args": [
+  "--config",
+  "c.properties",
+  "--port",
+  "18151"
+ ],
+ "files": {
+  "c.properties": "lang-tr=Turkish\nlang-tr-dictPath=dyn/tr.dic\n",
+  "dyn/tr.dic": "1\nhello\n",
+  "dyn/tr.aff": "SET UTF-8\n"
+ }
+}

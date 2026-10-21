@@ -45,7 +45,9 @@ export function compareCli(e, a, { normalizers = [], ctx = {}, json = false, str
     // log lines are not compared (D-045): only the uncaught exception line and its causes
     // stderrFilter: regex source, only matching lines are compared (e.g. config warnings, F66)
     const keep = stderrFilter ? new RegExp(stderrFilter) : null;
-    const f = (t) => (keep ? n(t).split('\n').filter((l) => keep.test(l)).join('\n') : stderrExceptionOnly ? n(t).split('\n').filter((l) => /^(Exception in thread|Caused by:)/.test(l)).join('\n') : n(t));
+    // Java startup race (F66): the pool monitor timer thread may fail with "Label cannot be null" before the metrics collector exists; not part of the contract
+    const noRace = (t) => t.split('\n').filter((l) => !l.startsWith('Exception in thread "LtThreadPoolExecutorMonitor"')).join('\n');
+    const f = (t) => (keep ? noRace(n(t)).split('\n').filter((l) => keep.test(l)).join('\n') : stderrExceptionOnly ? noRace(n(t)).split('\n').filter((l) => /^(Exception in thread|Caused by:|Maybe something else is running)/.test(l)).join('\n') : n(t));
     lineDiff('stderr', f(e.stderr), f(a.stderr), diffs);
   }
   if (e.files || a.files) diffs.push(...deepDiff(e.files ?? {}, a.files ?? {}, 'files'));

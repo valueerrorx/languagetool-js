@@ -1,0 +1,29 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "jar": "languagetool-server.jar",
+ "mainClass": "org.languagetool.server.HTTPServer",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames"
+ ],
+ "stripTimestamp": true,
+ "description": "two --config files are both parsed, later keys override",
+ "ignoreExit": true,
+ "stopOnOutput": "Server started",
+ "stderrFilter": "^(\\*{5} WARNING|Key '|Known keys:|WARNING:|\\*\\*\\* |Exception in thread|Caused by:)",
+ "args": [
+  "--config",
+  "a.properties",
+  "--config",
+  "b.properties",
+  "--port",
+  "18155"
+ ],
+ "files": {
+  "a.properties": "unknownA=1\nmaxTextLength=5\n",
+  "b.properties": "unknownB=2\n"
+ }
+}

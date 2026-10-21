@@ -1,0 +1,29 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "jar": "languagetool-server.jar",
+ "mainClass": "org.languagetool.server.HTTPServer",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames"
+ ],
+ "stripTimestamp": true,
+ "description": "--port 0: every port in the range busy -> \"No free port in range\"",
+ "stderrExceptionOnly": true,
+ "args": [
+  "--port",
+  "0",
+  "--config",
+  "c.properties"
+ ],
+ "files": {
+  "c.properties": "minPort=18180\nmaxPort=18182\n"
+ },
+ "occupyPorts": [
+  18180,
+  18181,
+  18182
+ ]
+}

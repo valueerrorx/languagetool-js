@@ -1,0 +1,32 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "serverURL with umlaut (config read as Latin-1: mojibake prefix)",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "stopAfter": true,
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "serverURL=/äpi\n"
+ },
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/%C3%A4pi/v2/maxtextlength"
+  },
+  {
+   "method": "GET",
+   "path": "/äpi/v2/maxtextlength"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/maxtextlength"
+  }
+ ]
+}

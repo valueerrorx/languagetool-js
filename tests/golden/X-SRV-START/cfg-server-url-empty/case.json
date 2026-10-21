@@ -1,0 +1,32 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "serverURL= (empty string)",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "stopAfter": true,
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "serverURL=\n"
+ },
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/maxtextlength"
+  },
+  {
+   "method": "GET",
+   "path": "/x"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/nothing"
+  }
+ ]
+}

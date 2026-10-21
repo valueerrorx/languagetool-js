@@ -1,0 +1,26 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "jar": "languagetool-server.jar",
+ "mainClass": "org.languagetool.server.HTTPServer",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames"
+ ],
+ "stripTimestamp": true,
+ "description": "boolean keys: padded true/TRUE/yes/1/garbage",
+ "ignoreExit": true,
+ "stopOnOutput": "Server started",
+ "stderrFilter": "^(\\*{5} WARNING|Key '|Known keys:|WARNING:|\\*\\*\\* |Exception in thread|Caused by:)",
+ "args": [
+  "--config",
+  "c.properties",
+  "--port",
+  "18152"
+ ],
+ "files": {
+  "c.properties": "pipelineCaching= true \npipelinePrewarming=FALSE\ntrustXForwardForHeader=yes\nskipLoggingChecks=1\nskipLoggingRuleMatches=True\nsuggestionsEnabled=no\nlocalApiMode= true \nredisUseSSL=maybe\nredisUseSentinel=true\ngracefulDatabaseFailure=TRUE\n"
+ }
+}

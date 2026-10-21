@@ -1,0 +1,27 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "jar": "languagetool-server.jar",
+ "mainClass": "org.languagetool.server.HTTPServer",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames"
+ ],
+ "stripTimestamp": true,
+ "description": "code of four letters without dash",
+ "stderrExceptionOnly": true,
+ "args": [
+  "--config",
+  "c.properties",
+  "--port",
+  "18173"
+ ],
+ "files": {
+  "c.properties": "lang-abcd=Abcd\nlang-abcd-dictPath=dyn/abcd.dic\n",
+  "dyn/abcd.dic": "4\nhello\nworld\nfoo/S\nBär\n",
+  "dyn/abcd.aff": "SET UTF-8\nSFX S Y 1\nSFX S 0 s .\n",
+  "dyn/common_words.txt": "hello\nworld\nfoo\n"
+ }
+}

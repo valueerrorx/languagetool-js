@@ -1,0 +1,18 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "defaults: maxtextlength = Integer.MAX_VALUE",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "stopAfter": true,
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/maxtextlength"
+  }
+ ]
+}

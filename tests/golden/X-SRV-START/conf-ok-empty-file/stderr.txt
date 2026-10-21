@@ -1,0 +1,22 @@
+2026-03-15 10:00:00.297 INFO  o.l.server.DatabaseAccessOpenSource - Not setting up database access, dbDriver is not configured
+2026-03-15 10:00:01.130 WARN  o.l.l.i.DefaultLanguageIdentifier - fastText not configured - language detection performance will be degraded. See https://dev.languagetool.org/http-server#starting-from-command-line for instructions.
+2026-03-15 10:00:01.135 INFO  org.languagetool.server.TextChecker - A/B-Test enabled: []
+2026-03-15 10:00:01.141 INFO  o.l.server.ConfidenceMapLoader - Loaded 0 mappings for English from confidence map for rules from /tmp/ltjs-oracle-xvqshj/conf-en.csv
+2026-03-15 10:00:01.142 INFO  o.l.server.ConfidenceMapLoader - Loaded 0 mappings for English (US) from confidence map for rules from /tmp/ltjs-oracle-xvqshj/conf-en.csv
+2026-03-15 10:00:01.142 INFO  o.l.server.ConfidenceMapLoader - Loaded 0 mappings for English (GB) from confidence map for rules from /tmp/ltjs-oracle-xvqshj/conf-en.csv
+2026-03-15 10:00:01.142 INFO  o.l.server.ConfidenceMapLoader - Loaded 0 mappings for English (Australian) from confidence map for rules from /tmp/ltjs-oracle-xvqshj/conf-en.csv
+2026-03-15 10:00:01.142 INFO  o.l.server.ConfidenceMapLoader - Loaded 0 mappings for English (Canadian) from confidence map for rules from /tmp/ltjs-oracle-xvqshj/conf-en.csv
+2026-03-15 10:00:01.142 INFO  o.l.server.ConfidenceMapLoader - Loaded 0 mappings for English (New Zealand) from confidence map for rules from /tmp/ltjs-oracle-xvqshj/conf-en.csv
+2026-03-15 10:00:01.143 INFO  o.l.server.ConfidenceMapLoader - Loaded 0 mappings for English (South African) from confidence map for rules from /tmp/ltjs-oracle-xvqshj/conf-en.csv
+Exception in thread "main" java.lang.RuntimeException: Could not start LanguageTool HTTP server on localhost, port 18173
+	at org.languagetool.server.HTTPServer.main(HTTPServer.java:184)
+Caused by: org.languagetool.server.PortBindingException: LanguageTool HTTP server could not be started on host "localhost", port 18173.
+Maybe something else is running on that port already?
+	at org.languagetool.server.HTTPServer.<init>(HTTPServer.java:128)
+	at org.languagetool.server.HTTPServer.main(HTTPServer.java:180)
+Caused by: java.lang.RuntimeException: No confidence values could be loaded for conf-{lang}.csv -- please check there are actually files that match this pattern
+	at org.languagetool.server.ConfidenceMapLoader.load(ConfidenceMapLoader.java:73)
+	at org.languagetool.server.V2TextChecker.<init>(V2TextChecker.java:51)
+	at org.languagetool.server.LanguageToolHttpHandler.<init>(LanguageToolHttpHandler.java:84)
+	at org.languagetool.server.HTTPServer.<init>(HTTPServer.java:110)
+	... 1 more

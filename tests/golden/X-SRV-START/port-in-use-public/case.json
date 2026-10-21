@@ -1,0 +1,23 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "jar": "languagetool-server.jar",
+ "mainClass": "org.languagetool.server.HTTPServer",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames"
+ ],
+ "stripTimestamp": true,
+ "description": "port in use with --public",
+ "stderrExceptionOnly": true,
+ "args": [
+  "--port",
+  "18187",
+  "--public"
+ ],
+ "occupyPorts": [
+  18187
+ ]
+}

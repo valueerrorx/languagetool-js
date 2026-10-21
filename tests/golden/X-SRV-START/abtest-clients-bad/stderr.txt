@@ -1,0 +1,14 @@
+Exception in thread "main" java.util.regex.PatternSyntaxException: Unclosed group near index 1
+(
+	at java.base/java.util.regex.Pattern.error(Pattern.java:2055)
+	at java.base/java.util.regex.Pattern.accept(Pattern.java:1905)
+	at java.base/java.util.regex.Pattern.group0(Pattern.java:3080)
+	at java.base/java.util.regex.Pattern.sequence(Pattern.java:2151)
+	at java.base/java.util.regex.Pattern.expr(Pattern.java:2096)
+	at java.base/java.util.regex.Pattern.compile(Pattern.java:1810)
+	at java.base/java.util.regex.Pattern.<init>(Pattern.java:1441)
+	at java.base/java.util.regex.Pattern.compile(Pattern.java:1069)
+	at org.languagetool.server.HTTPServerConfig.setAbTestClients(HTTPServerConfig.java:1357)
+	at org.languagetool.server.HTTPServerConfig.parseConfigFile(HTTPServerConfig.java:508)
+	at org.languagetool.server.HTTPServerConfig.<init>(HTTPServerConfig.java:252)
+	at org.languagetool.server.HTTPServer.main(HTTPServer.java:170)

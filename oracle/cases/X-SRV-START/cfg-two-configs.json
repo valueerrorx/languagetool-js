@@ -1,0 +1,27 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "two --config files: later overrides",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "stopAfter": true,
+ "serverArgs": [
+  "--config",
+  "{WORK}/a.properties",
+  "--config",
+  "{WORK}/b.properties"
+ ],
+ "files": {
+  "a.properties": "maxTextLength=11\nmaxTextHardLength=500\n",
+  "b.properties": "maxTextLength=22\n"
+ },
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/maxtextlength"
+  }
+ ]
+}

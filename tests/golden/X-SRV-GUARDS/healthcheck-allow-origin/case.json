@@ -1,0 +1,29 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "healthcheck has no Access-Control-Allow-Origin header even when --allow-origin is set",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "stopAfter": true,
+ "serverArgs": [
+  "--allow-origin",
+  "*"
+ ],
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/healthcheck"
+  },
+  {
+   "method": "HEAD",
+   "path": "/v2/healthcheck"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/maxtextlength"
+  }
+ ]
+}

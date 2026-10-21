@@ -1,0 +1,15 @@
+2026-03-15 10:00:00.306 INFO  o.l.server.DatabaseAccessOpenSource - Not setting up database access, dbDriver is not configured
+2026-03-15 10:00:01.071 WARN  o.l.l.i.DefaultLanguageIdentifier - fastText not configured - language detection performance will be degraded. See https://dev.languagetool.org/http-server#starting-from-command-line for instructions.
+2026-03-15 10:00:01.075 INFO  org.languagetool.server.TextChecker - A/B-Test enabled: []
+Exception in thread "main" java.lang.RuntimeException: Could not start LanguageTool HTTP server on localhost, port 18169
+	at org.languagetool.server.HTTPServer.main(HTTPServer.java:184)
+Caused by: org.languagetool.server.PortBindingException: LanguageTool HTTP server could not be started on host "localhost", port 18169.
+Maybe something else is running on that port already?
+	at org.languagetool.server.HTTPServer.<init>(HTTPServer.java:128)
+	at org.languagetool.server.HTTPServer.main(HTTPServer.java:180)
+Caused by: java.lang.RuntimeException: Invalid confidence float value in /tmp/ltjs-oracle-PEvdio/conf-en.csv, expected 'RULE_ID,float_value[,...]': COMMA_PARENTHESIS_WHITESPACE,abc
+	at org.languagetool.server.ConfidenceMapLoader.load(ConfidenceMapLoader.java:64)
+	at org.languagetool.server.V2TextChecker.<init>(V2TextChecker.java:51)
+	at org.languagetool.server.LanguageToolHttpHandler.<init>(LanguageToolHttpHandler.java:84)
+	at org.languagetool.server.HTTPServer.<init>(HTTPServer.java:110)
+	... 1 more

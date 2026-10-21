@@ -1,0 +1,40 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "serverURL=/api/ with trailing slash",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "stopAfter": true,
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "serverURL=/api/\n"
+ },
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/api/v2/maxtextlength"
+  },
+  {
+   "method": "GET",
+   "path": "/api/"
+  },
+  {
+   "method": "GET",
+   "path": "/api"
+  },
+  {
+   "method": "GET",
+   "path": "/apix/v2/maxtextlength"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/maxtextlength"
+  }
+ ]
+}

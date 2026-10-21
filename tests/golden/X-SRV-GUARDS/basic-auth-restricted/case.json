@@ -1,0 +1,31 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "anonymousAccessAllowed=false with users/me",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "stopAfter": true,
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "anonymousAccessAllowed=false\n"
+ },
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/users/me"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic dTpw"
+   }
+  }
+ ]
+}

@@ -1,0 +1,33 @@
+2026-03-15 10:00:00.309 INFO  o.l.server.DatabaseAccessOpenSource - Not setting up database access, dbDriver is not configured
+2026-03-15 09:00:00 +0000 Setting up thread pool with 10 threads
+2026-03-15 10:00:01.137 WARN  o.l.l.i.DefaultLanguageIdentifier - fastText not configured - language detection performance will be degraded. See https://dev.languagetool.org/http-server#starting-from-command-line for instructions.
+2026-03-15 10:00:01.140 INFO  org.languagetool.server.TextChecker - A/B-Test enabled: []
+2026-03-15 09:00:01 +0000 Starting LanguageTool 6.9-SNAPSHOT (build date: 2026-10-12 18:33:54 +0200, 9b0be9d) server on http://localhost:18100...
+2026-03-15 09:00:01 +0000 Server started
+2026-03-15 10:00:01.236 INFO  o.l.server.LanguageToolHttpHandler - Handling GET /v2/healthcheck
+2026-03-15 10:00:01.256 INFO  o.l.server.LanguageToolHttpHandler - Handled request in 42ms; sending code 200
+2026-03-15 10:00:01.258 INFO  o.l.server.LanguageToolHttpHandler - Handling POST /v2/check
+2026-03-15 10:00:01.319 ERROR o.l.server.LanguageToolHttpHandler - An error has occurred: 'Index 1 out of bounds for length 1', sending HTTP code 500. Access from 127.0.0.1, HTTP user agent: node, User agent param: null, Referrer: null, language: en-US, h: 1, r: 2, time: 54text length: 31, m: ALL, l: DEFAULT, Stacktrace follows:java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+	at org.languagetool.server.TextChecker.getRuleValues(TextChecker.java:864)
+	at org.languagetool.server.TextChecker.checkText(TextChecker.java:498)
+	at org.languagetool.server.ApiV2.handleCheckRequest(ApiV2.java:177)
+	at org.languagetool.server.ApiV2.lambda$handleRequest$4(ApiV2.java:87)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.ApiV2.handleRequest(ApiV2.java:87)
+	at org.languagetool.server.LanguageToolHttpHandler.lambda$handle$0(LanguageToolHttpHandler.java:213)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.LanguageToolHttpHandler.handle(LanguageToolHttpHandler.java:213)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:928)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:904)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+2026-03-15 10:00:01.319 INFO  o.l.server.LanguageToolHttpHandler - Handled request in 61ms; sending code 500
+2026-03-15 10:00:01.321 INFO  o.l.server.LanguageToolHttpHandler - Handling POST /v2/check
+2026-03-15 10:00:04.022 INFO  org.languagetool.server.TextChecker - Check done: 20 chars, en-US, requestId: null, #1, null, 0/1 matches, 2689ms, agent:-, sent, q:0, h:1, dH:1, r:3, m:all, premium: false
+2026-03-15 10:00:04.023 INFO  o.l.server.LanguageToolHttpHandler - Handled request in 2702ms; sending code 200

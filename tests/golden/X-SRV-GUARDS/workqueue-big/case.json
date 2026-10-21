@@ -1,0 +1,52 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "maxWorkQueueSize=100: all answered OK",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "stopAfter": true,
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "maxCheckThreads=1\nmaxWorkQueueSize=100\n"
+ },
+ "requests": [
+  {
+   "hold": {
+    "path": "/v2/check",
+    "contentLength": 200,
+    "sent": 10,
+    "holdMs": 500,
+    "settleMs": 800,
+    "probes": [
+     {
+      "method": "GET",
+      "path": "/v2/healthcheck"
+     },
+     {
+      "method": "GET",
+      "path": "/v2/healthcheck"
+     },
+     {
+      "method": "GET",
+      "path": "/v2/healthcheck"
+     }
+    ]
+   },
+   "note": "maxWorkQueueSize=100: all answered OK"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/healthcheck"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/maxtextlength"
+  }
+ ]
+}

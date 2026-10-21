@@ -1,0 +1,8 @@
+2026-03-15 10:00:00.623 INFO  o.l.server.DatabaseAccessOpenSource - Not setting up database access, dbDriver is not configured
+Exception in thread "LtThreadPoolExecutorMonitor" java.lang.IllegalArgumentException: Label cannot be null.
+	at io.prometheus.client.SimpleCollector.labels(SimpleCollector.java:69)
+	at org.languagetool.tools.LtThreadPoolExecutor$1.run(LtThreadPoolExecutor.java:60)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:566)
+	at java.base/java.util.TimerThread.run(Timer.java:516)
+2026-03-15 10:00:02.217 WARN  o.l.l.i.DefaultLanguageIdentifier - fastText not configured - language detection performance will be degraded. See https://dev.languagetool.org/http-server#starting-from-command-line for instructions.
+2026-03-15 10:00:02.224 INFO  org.languagetool.server.TextChecker - A/B-Test enabled: []

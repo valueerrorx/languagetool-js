@@ -1,0 +1,13 @@
+Exception in thread "main" java.lang.IllegalArgumentException: Could not parse provided serverURL: '/a%20b'
+	at org.languagetool.server.HTTPServerConfig.setServerURL(HTTPServerConfig.java:635)
+	at org.languagetool.server.HTTPServerConfig.parseConfigFile(HTTPServerConfig.java:348)
+	at org.languagetool.server.HTTPServerConfig.<init>(HTTPServerConfig.java:252)
+	at org.languagetool.server.HTTPServer.main(HTTPServer.java:170)
+Caused by: java.net.URISyntaxException: Illegal character in path at index 2: /a b
+	at java.base/java.net.URI$Parser.fail(URI.java:2976)
+	at java.base/java.net.URI$Parser.checkChars(URI.java:3147)
+	at java.base/java.net.URI$Parser.parseHierarchical(URI.java:3229)
+	at java.base/java.net.URI$Parser.parse(URI.java:3188)
+	at java.base/java.net.URI.<init>(URI.java:623)
+	at org.languagetool.server.HTTPServerConfig.setServerURL(HTTPServerConfig.java:633)
+	... 3 more

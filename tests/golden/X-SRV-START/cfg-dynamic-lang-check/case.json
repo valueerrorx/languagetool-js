@@ -1,0 +1,59 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "dynamic language tr: check text, unknown word flagged by the hunspell speller (SRV-0059)",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "stopAfter": true,
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "lang-tr=Turkish\nlang-tr-dictPath={WORK}/dyn/tr.dic\n",
+  "dyn/tr.dic": "4\nhello\nworld\nfoo/S\nBär\n",
+  "dyn/tr.aff": "SET UTF-8\nSFX S Y 1\nSFX S 0 s .\n",
+  "dyn/common_words.txt": "hello\nworld\nfoo\n"
+ },
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "tr",
+    "text": "hello wrld foos Bär"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "tr",
+    "text": "hello world foo"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "tr-TR",
+    "text": "hello wrld"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "auto",
+    "text": "hello wrld"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/maxtextlength"
+  }
+ ]
+}

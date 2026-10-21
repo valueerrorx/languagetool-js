@@ -1,0 +1,27 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "configinfo reports maxTextHardLength (endpoint ported later)",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "stopAfter": true,
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "maxTextHardLength=77\n"
+ },
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/configinfo",
+   "params": {
+    "language": "en-US"
+   }
+  }
+ ]
+}

@@ -1,0 +1,24 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "jar": "languagetool-server.jar",
+ "mainClass": "org.languagetool.server.HTTPSServer",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames"
+ ],
+ "stripTimestamp": true,
+ "description": "HTTPSServer unknown config key plus missing keystore: warning on stderr, message on stdout",
+ "args": [
+  "--config",
+  "c.properties",
+  "--port",
+  "18192"
+ ],
+ "files": {
+  "c.properties": "foo=1\n"
+ },
+ "stderrFilter": "^(\\*{5} WARNING|Key '|Known keys:|WARNING:|\\*\\*\\* |Exception in thread|Caused by:)"
+}
