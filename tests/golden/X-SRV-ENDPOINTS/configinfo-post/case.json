@@ -1,0 +1,33 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "/v2/configinfo via POST and with doubled parameter",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/configinfo?language=fr&language=en"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/configinfo"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/configinfo",
+   "params": {
+    "language": "en-GB",
+    "foo": "bar"
+   }
+  },
+  {
+   "method": "HEAD",
+   "path": "/v2/configinfo?language=en"
+  }
+ ]
+}

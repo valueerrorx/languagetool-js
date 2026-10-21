@@ -1,0 +1,189 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "/v2/words (SRV-0193): GET checks without DB",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/words"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/words"
+  },
+  {
+   "method": "get",
+   "path": "/v2/words"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/words",
+   "params": {
+    "username": "testuser",
+    "apiKey": "testkey"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/words",
+   "params": {
+    "username": "u"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/words",
+   "params": {
+    "apiKey": "k"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/words",
+   "params": {
+    "username": "u",
+    "apiKey": "k",
+    "password": "p"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/words",
+   "params": {
+    "username": "u",
+    "password": "p"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/words",
+   "params": {
+    "password": "p"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/words",
+   "params": {
+    "username": "testuser",
+    "apiKey": "testkey",
+    "dict": "x"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/words",
+   "params": {
+    "username": "testuser",
+    "apiKey": "testkey",
+    "dicts": "a,b"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/words",
+   "params": {
+    "username": "testuser",
+    "apiKey": "testkey",
+    "offset": "0",
+    "limit": "10"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/words",
+   "params": {
+    "username": "testuser",
+    "apiKey": "testkey",
+    "offset": "abc"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/words",
+   "params": {
+    "username": "testuser",
+    "apiKey": "testkey",
+    "limit": "-1"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/words",
+   "params": {
+    "username": "",
+    "apiKey": ""
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/words",
+   "params": {
+    "username": " ",
+    "apiKey": " "
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/words",
+   "params": {
+    "username": "u",
+    "apiKey": ""
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/words",
+   "params": {},
+   "headers": {
+    "Authorization": "Basic dTpw"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/words",
+   "params": {},
+   "headers": {
+    "Authorization": "Bearer abc.def.ghi"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/words",
+   "params": {},
+   "headers": {
+    "Authorization": "   "
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/words",
+   "params": {
+    "username": "u",
+    "tokenV2": "t"
+   }
+  },
+  {
+   "method": "PUT",
+   "path": "/v2/words"
+  },
+  {
+   "method": "DELETE",
+   "path": "/v2/words"
+  },
+  {
+   "method": "OPTIONS",
+   "path": "/v2/words"
+  },
+  {
+   "method": "HEAD",
+   "path": "/v2/words"
+  }
+ ]
+}

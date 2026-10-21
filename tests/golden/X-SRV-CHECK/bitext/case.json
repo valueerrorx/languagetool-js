@@ -1,0 +1,595 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "sourceText + sourceLanguage bitext checks per language pair and errors (SRV-0136)",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a house.",
+    "sourceLanguage": "de-DE",
+    "sourceText": "Das ist ein Haus."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a house.,, ok.",
+    "sourceLanguage": "de-DE",
+    "sourceText": "Das ist ein Haus.,, ok."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a house.",
+    "sourceLanguage": "de-DE",
+    "sourceText": "Das ist ein Haus.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DE_DOUBLE_PUNCTUATION,DE_SENTENCE_WHITESPACE,DE_UNPAIRED_QUOTES,GERMAN_WORD_REPEAT_RULE,UNPAIRED_BRACKETS,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE,COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE,COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,UNPAIRED_BRACKETS,UNPAIRED_QUOTES,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE,WORD_REPEAT_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a house.",
+    "sourceLanguage": "de-DE",
+    "sourceText": "Das ist ein Haus.",
+    "motherTongue": "de-DE"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a house.",
+    "sourceLanguage": "de-DE",
+    "sourceText": "Das ist ein Haus."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Der Hund und die die Katze. Zwei Hunde.",
+    "sourceLanguage": "de-DE",
+    "sourceText": "The dog and the cat. Two dogs."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Das ist ein Haus.",
+    "sourceLanguage": "en-US",
+    "sourceText": "This is a house."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Das ist ein Haus.,, ok.",
+    "sourceLanguage": "en-US",
+    "sourceText": "This is a house.,, ok."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Das ist ein Haus.",
+    "sourceLanguage": "en-US",
+    "sourceText": "This is a house.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DE_DOUBLE_PUNCTUATION,DE_SENTENCE_WHITESPACE,DE_UNPAIRED_QUOTES,GERMAN_WORD_REPEAT_RULE,UNPAIRED_BRACKETS,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE,COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE,COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,UNPAIRED_BRACKETS,UNPAIRED_QUOTES,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE,WORD_REPEAT_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Das ist ein Haus.",
+    "sourceLanguage": "en-US",
+    "sourceText": "This is a house.",
+    "motherTongue": "en-US"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Das ist ein Haus.",
+    "sourceLanguage": "en-US",
+    "sourceText": "This is a house."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Der Hund und die die Katze. Zwei Hunde.",
+    "sourceLanguage": "en-US",
+    "sourceText": "The dog and the cat. Two dogs."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a house.",
+    "sourceLanguage": "fr",
+    "sourceText": "Ceci est une maison."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a house.,, ok.",
+    "sourceLanguage": "fr",
+    "sourceText": "Ceci est une maison.,, ok."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a house.",
+    "sourceLanguage": "fr",
+    "sourceText": "Ceci est une maison.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DE_DOUBLE_PUNCTUATION,DE_SENTENCE_WHITESPACE,DE_UNPAIRED_QUOTES,GERMAN_WORD_REPEAT_RULE,UNPAIRED_BRACKETS,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE,COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE,COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,UNPAIRED_BRACKETS,UNPAIRED_QUOTES,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE,WORD_REPEAT_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a house.",
+    "sourceLanguage": "fr",
+    "sourceText": "Ceci est une maison.",
+    "motherTongue": "fr"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a house.",
+    "sourceLanguage": "fr",
+    "sourceText": "Ceci est une maison."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Der Hund und die die Katze. Zwei Hunde.",
+    "sourceLanguage": "fr",
+    "sourceText": "The dog and the cat. Two dogs."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "fr",
+    "text": "Ceci est une maison.",
+    "sourceLanguage": "en-US",
+    "sourceText": "This is a house."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "fr",
+    "text": "Ceci est une maison.,, ok.",
+    "sourceLanguage": "en-US",
+    "sourceText": "This is a house.,, ok."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "fr",
+    "text": "Ceci est une maison.",
+    "sourceLanguage": "en-US",
+    "sourceText": "This is a house.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DE_DOUBLE_PUNCTUATION,DE_SENTENCE_WHITESPACE,DE_UNPAIRED_QUOTES,GERMAN_WORD_REPEAT_RULE,UNPAIRED_BRACKETS,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE,COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE,COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,UNPAIRED_BRACKETS,UNPAIRED_QUOTES,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE,WORD_REPEAT_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "fr",
+    "text": "Ceci est une maison.",
+    "sourceLanguage": "en-US",
+    "sourceText": "This is a house.",
+    "motherTongue": "en-US"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "fr",
+    "text": "Ceci est une maison.",
+    "sourceLanguage": "en-US",
+    "sourceText": "This is a house."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "fr",
+    "text": "Der Hund und die die Katze. Zwei Hunde.",
+    "sourceLanguage": "en-US",
+    "sourceText": "The dog and the cat. Two dogs."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "fr",
+    "text": "Ceci est une maison.",
+    "sourceLanguage": "de-DE",
+    "sourceText": "Das ist ein Haus."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "fr",
+    "text": "Ceci est une maison.,, ok.",
+    "sourceLanguage": "de-DE",
+    "sourceText": "Das ist ein Haus.,, ok."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "fr",
+    "text": "Ceci est une maison.",
+    "sourceLanguage": "de-DE",
+    "sourceText": "Das ist ein Haus.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DE_DOUBLE_PUNCTUATION,DE_SENTENCE_WHITESPACE,DE_UNPAIRED_QUOTES,GERMAN_WORD_REPEAT_RULE,UNPAIRED_BRACKETS,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE,COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE,COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,UNPAIRED_BRACKETS,UNPAIRED_QUOTES,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE,WORD_REPEAT_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "fr",
+    "text": "Ceci est une maison.",
+    "sourceLanguage": "de-DE",
+    "sourceText": "Das ist ein Haus.",
+    "motherTongue": "de-DE"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "fr",
+    "text": "Ceci est une maison.",
+    "sourceLanguage": "de-DE",
+    "sourceText": "Das ist ein Haus."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "fr",
+    "text": "Der Hund und die die Katze. Zwei Hunde.",
+    "sourceLanguage": "de-DE",
+    "sourceText": "The dog and the cat. Two dogs."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Das ist ein Haus.",
+    "sourceLanguage": "fr",
+    "sourceText": "Ceci est une maison."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Das ist ein Haus.,, ok.",
+    "sourceLanguage": "fr",
+    "sourceText": "Ceci est une maison.,, ok."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Das ist ein Haus.",
+    "sourceLanguage": "fr",
+    "sourceText": "Ceci est une maison.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DE_DOUBLE_PUNCTUATION,DE_SENTENCE_WHITESPACE,DE_UNPAIRED_QUOTES,GERMAN_WORD_REPEAT_RULE,UNPAIRED_BRACKETS,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE,COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE,COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,UNPAIRED_BRACKETS,UNPAIRED_QUOTES,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE,WORD_REPEAT_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Das ist ein Haus.",
+    "sourceLanguage": "fr",
+    "sourceText": "Ceci est une maison.",
+    "motherTongue": "fr"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Das ist ein Haus.",
+    "sourceLanguage": "fr",
+    "sourceText": "Ceci est une maison."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Der Hund und die die Katze. Zwei Hunde.",
+    "sourceLanguage": "fr",
+    "sourceText": "The dog and the cat. Two dogs."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-AT",
+    "text": "Das ist ein Haus.",
+    "sourceLanguage": "en-GB",
+    "sourceText": "This is a house."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-AT",
+    "text": "Das ist ein Haus.,, ok.",
+    "sourceLanguage": "en-GB",
+    "sourceText": "This is a house.,, ok."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-AT",
+    "text": "Das ist ein Haus.",
+    "sourceLanguage": "en-GB",
+    "sourceText": "This is a house.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DE_DOUBLE_PUNCTUATION,DE_SENTENCE_WHITESPACE,DE_UNPAIRED_QUOTES,GERMAN_WORD_REPEAT_RULE,UNPAIRED_BRACKETS,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE,COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE,COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,UNPAIRED_BRACKETS,UNPAIRED_QUOTES,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE,WORD_REPEAT_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-AT",
+    "text": "Das ist ein Haus.",
+    "sourceLanguage": "en-GB",
+    "sourceText": "This is a house.",
+    "motherTongue": "en-GB"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-AT",
+    "text": "Das ist ein Haus.",
+    "sourceLanguage": "en-GB",
+    "sourceText": "This is a house."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-AT",
+    "text": "Der Hund und die die Katze. Zwei Hunde.",
+    "sourceLanguage": "en-GB",
+    "sourceText": "The dog and the cat. Two dogs."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a house.",
+    "sourceText": "Das ist ein Haus."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a house.",
+    "sourceText": "Das ist ein Haus.",
+    "sourceLanguage": ""
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a house.",
+    "sourceText": "Das ist ein Haus.",
+    "sourceLanguage": "xx"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a house.",
+    "sourceText": "Das ist ein Haus.",
+    "sourceLanguage": "auto"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "auto",
+    "text": "This is a house.",
+    "sourceText": "Das ist ein Haus.",
+    "sourceLanguage": "de-DE"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a house.",
+    "sourceText": "",
+    "sourceLanguage": "de-DE"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "",
+    "sourceText": "Das ist ein Haus.",
+    "sourceLanguage": "de-DE"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a house.",
+    "sourceLanguage": "de-DE"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a house.",
+    "sourceText": "Das ist ein Haus.",
+    "sourceLanguage": "de"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "data": "{\"text\":\"This is a house.\"}",
+    "sourceText": "Das ist ein Haus.",
+    "sourceLanguage": "de-DE"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "aaaaaaaaaaaaaaaaaaaa",
+    "sourceText": "bbbbbbbbbbbbbbbbbbbb",
+    "sourceLanguage": "de-DE"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "One. Two.",
+    "sourceText": "Eins.",
+    "sourceLanguage": "de-DE"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a house.",
+    "sourceText": "Das ist ein Haus.",
+    "sourceLanguage": "de-DE",
+    "level": "picky",
+    "mode": "all"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a house.",
+    "sourceText": "Esta es una casa.",
+    "sourceLanguage": "es"
+   },
+   "expect": "dev006"
+  }
+ ]
+}

@@ -1,0 +1,55 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "/v2/configinfo per language: rules, rule options (SRV-0095, SRV-0096)",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/configinfo",
+   "params": {
+    "language": "de-DE"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/configinfo",
+   "params": {
+    "language": "de-AT"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/configinfo",
+   "params": {
+    "language": "en-US"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/configinfo",
+   "params": {
+    "language": "en-GB"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/configinfo",
+   "params": {
+    "language": "fr"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/configinfo",
+   "params": {
+    "language": "fr-CA"
+   }
+  }
+ ]
+}

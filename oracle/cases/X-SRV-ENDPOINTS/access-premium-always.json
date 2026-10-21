@@ -1,0 +1,136 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "premiumAlways: words/users/limits endpoints (user id 1 via default limits)",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "premiumAlways=true\n"
+ },
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/words"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/words",
+   "params": {
+    "offset": "0",
+    "limit": "5"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/words",
+   "params": {
+    "dict": "x"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/words",
+   "params": {
+    "offset": "abc"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/words/add",
+   "params": {
+    "word": "Wort"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/words/add",
+   "params": {
+    "word": ""
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/words/add",
+   "params": {
+    "word": "zwei Wörter"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/words/add",
+   "params": {
+    "mode": "batch",
+    "words": "a b c"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/words/add",
+   "params": {
+    "mode": "batch"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/words/delete",
+   "params": {
+    "word": "Wort"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/words/delete",
+   "params": {
+    "mode": "batch",
+    "words": "a b"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/words/delete",
+   "params": {
+    "word": ""
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/admin/refreshUser"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/admin/refreshUser",
+   "params": {
+    "username": "u"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/words",
+   "params": {
+    "username": "u",
+    "apiKey": "k"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/words",
+   "params": {
+    "apiKey": "k"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/words",
+   "params": {
+    "dicts": "a,b"
+   }
+  }
+ ]
+}

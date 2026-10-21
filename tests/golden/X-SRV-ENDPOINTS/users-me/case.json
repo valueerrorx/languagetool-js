@@ -1,0 +1,293 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "/v2/users/me (SRV-0105): methods, Basic auth parsing, authMethod, no DB",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/users/me"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/users/me"
+  },
+  {
+   "method": "OPTIONS",
+   "path": "/v2/users/me",
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "OPTIONS",
+   "path": "/v2/users/me",
+   "headers": {
+    "Access-Control-Request-Headers": "authorization, x-foo"
+   },
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers"
+   ]
+  },
+  {
+   "method": "options",
+   "path": "/v2/users/me",
+   "headers": {
+    "Access-Control-Request-Headers": "content-type"
+   },
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers"
+   ]
+  },
+  {
+   "method": "PUT",
+   "path": "/v2/users/me"
+  },
+  {
+   "method": "DELETE",
+   "path": "/v2/users/me"
+  },
+  {
+   "method": "HEAD",
+   "path": "/v2/users/me"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic dXNlcjpwYXNz"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "params": {
+    "authMethod": "password"
+   },
+   "headers": {
+    "Authorization": "Basic dXNlcjpwYXNz"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "params": {
+    "authMethod": "apiKey"
+   },
+   "headers": {
+    "Authorization": "Basic dXNlcjprZXk="
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "params": {
+    "authMethod": "addonToken"
+   },
+   "headers": {
+    "Authorization": "Basic dXNlcjp0b2s="
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "params": {
+    "authMethod": "bogus"
+   },
+   "headers": {
+    "Authorization": "Basic dXNlcjpwYXNz"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "params": {
+    "authMethod": ""
+   },
+   "headers": {
+    "Authorization": "Basic dXNlcjpwYXNz"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "params": {
+    "authMethod": "APIKEY"
+   },
+   "headers": {
+    "Authorization": "Basic dXNlcjpwYXNz"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "params": {
+    "authMethod": "apiKey",
+    "format": "minimal"
+   },
+   "headers": {
+    "Authorization": "Basic dXNlcjprZXk="
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "params": {
+    "format": "minimal"
+   },
+   "headers": {
+    "Authorization": "Basic dXNlcjpwYXNz"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "params": {
+    "format": "extended"
+   },
+   "headers": {
+    "Authorization": "Basic dXNlcjpwYXNz"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "params": {
+    "format": "bogus"
+   },
+   "headers": {
+    "Authorization": "Basic dXNlcjpwYXNz"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic "
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic !!!notbase64"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic bm9jb2xvbg=="
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic Og=="
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic dXNlcjo="
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic OnBhc3M="
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic dXM6ZXI6cGE6c3M="
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic w7xtbGF1dDpww6Rzc3dvcmQ="
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "basic dXNlcjpwYXNz"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Bearer abc.def.ghi"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Digest x"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": ""
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "params": {
+    "authMethod": "apiKey"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "params": {
+    "authMethod": "bogus"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "params": {
+    "username": "u",
+    "apiKey": "k"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me",
+   "headers": {
+    "Authorization": "Basic dXNlcjpwYXNz",
+    "Origin": "https://x.example"
+   }
+  }
+ ]
+}

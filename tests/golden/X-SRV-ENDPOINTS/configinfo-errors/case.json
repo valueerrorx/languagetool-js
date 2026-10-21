@@ -1,0 +1,87 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "/v2/configinfo error paths",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/configinfo"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/configinfo",
+   "params": {
+    "language": ""
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/configinfo",
+   "params": {
+    "language": "xx"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/configinfo",
+   "params": {
+    "language": "DE"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/configinfo",
+   "params": {
+    "language": "De-de"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/configinfo",
+   "params": {
+    "language": "auto"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/configinfo",
+   "params": {
+    "language": "en_US"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/configinfo",
+   "params": {
+    "language": " en"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/configinfo",
+   "params": {
+    "lang": "en"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/configinfo",
+   "params": {
+    "language": "de-XX"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/configinfo",
+   "params": {
+    "language": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   }
+  }
+ ]
+}

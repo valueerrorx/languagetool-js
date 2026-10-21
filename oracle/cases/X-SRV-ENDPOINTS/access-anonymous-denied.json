@@ -1,0 +1,107 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "anonymousAccessAllowed=false: anonymous and username/apiKey requests (SRV-0199)",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "anonymousAccessAllowed=false\n"
+ },
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok.",
+    "enabledRules": "DOUBLE_PUNCTUATION",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok.",
+    "enabledRules": "DOUBLE_PUNCTUATION",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok.",
+    "enabledRules": "DOUBLE_PUNCTUATION",
+    "enabledOnly": "true",
+    "username": "u",
+    "apiKey": "k"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok.",
+    "enabledRules": "DOUBLE_PUNCTUATION",
+    "enabledOnly": "true",
+    "apiKey": "k"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/languages",
+   "languagesList": true
+  },
+  {
+   "method": "GET",
+   "path": "/v2/maxtextlength"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/info"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/healthcheck"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/configinfo",
+   "params": {
+    "language": "en"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/words",
+   "params": {
+    "username": "u",
+    "apiKey": "k"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok.",
+    "enabledRules": "DOUBLE_PUNCTUATION",
+    "enabledOnly": "true"
+   },
+   "headers": {
+    "Authorization": "Basic dTpw"
+   }
+  }
+ ]
+}

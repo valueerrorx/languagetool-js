@@ -1,0 +1,41 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "/v2/users/me OPTIONS with --allow-origin: CORS headers",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [
+  "--allow-origin",
+  "https://example.org"
+ ],
+ "requests": [
+  {
+   "method": "OPTIONS",
+   "path": "/v2/users/me",
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "OPTIONS",
+   "path": "/v2/users/me",
+   "headers": {
+    "Access-Control-Request-Headers": "authorization"
+   },
+   "recordHeaders": [
+    "access-control-allow-methods",
+    "access-control-allow-headers",
+    "access-control-allow-origin"
+   ]
+  },
+  {
+   "method": "GET",
+   "path": "/v2/users/me"
+  }
+ ]
+}

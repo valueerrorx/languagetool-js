@@ -1,0 +1,119 @@
+[
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "English (US)",
+        "code": "en-US",
+        "detectedLanguage": {
+          "name": "English (US)",
+          "code": "en-US",
+          "confidence": 0.99999124,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Two consecutive commas",
+          "shortMessage": "Two consecutive commas",
+          "replacements": [
+            {
+              "value": ","
+            }
+          ],
+          "offset": 14,
+          "length": 2,
+          "context": {
+            "text": "This is a test,, ok.",
+            "offset": 14,
+            "length": 2
+          },
+          "sentence": "This is a test,, ok.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "DOUBLE_PUNCTUATION",
+            "description": "Use of two consecutive dots or commas",
+            "issueType": "typographical",
+            "urls": [
+              {
+                "value": "https://languagetool.org/insights/post/punctuation-guide/#what-are-periods"
+              }
+            ],
+            "category": {
+              "id": "PUNCTUATION",
+              "name": "Punctuation"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          20
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 20,
+          "detectedLanguages": [
+            {
+              "language": "en",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 403,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: org.languagetool.server.AuthException: This is the endpoint for the basic version of LanguageTool. When using 'username' and 'apiKey' to access the premium version, use api.languagetoolplus.com instead."
+  },
+  {
+    "status": 403,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: org.languagetool.server.AuthException: This is the endpoint for the basic version of LanguageTool. When using 'username' and 'apiKey' to access the premium version, use api.languagetoolplus.com instead."
+  },
+  {
+    "status": 200,
+    "contentType": "text/plain",
+    "accessControlAllowOrigin": null,
+    "body": "OK"
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "commit": "9b0be9d",
+        "premium": false
+      }
+    }
+  }
+]

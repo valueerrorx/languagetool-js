@@ -1,0 +1,111 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "/v2/admin/refreshUser (SRV-0104) without DB",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/admin/refreshUser"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/admin/refreshUser"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/admin/refreshUser",
+   "params": {
+    "username": "u"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/admin/refreshUser",
+   "params": {
+    "username": "testuser",
+    "apiKey": "testkey"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/admin/refreshUser",
+   "params": {
+    "apiKey": "k"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/admin/refreshUser",
+   "params": {
+    "username": "u",
+    "apiKey": "k",
+    "password": "p"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/admin/refreshUser",
+   "params": {
+    "username": "u",
+    "password": "p"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/admin/refreshUser",
+   "params": {
+    "password": "p"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/admin/refreshUser",
+   "params": {},
+   "headers": {
+    "Authorization": "Basic dTpw"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/admin/refreshUser",
+   "params": {},
+   "headers": {
+    "Authorization": "Bearer a.b.c"
+   }
+  },
+  {
+   "method": "PUT",
+   "path": "/v2/admin/refreshUser"
+  },
+  {
+   "method": "OPTIONS",
+   "path": "/v2/admin/refreshUser"
+  },
+  {
+   "method": "post",
+   "path": "/v2/admin/refreshUser"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/admin"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/admin/"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/admin/refreshuser"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/admin/refreshUser/x"
+  }
+ ]
+}

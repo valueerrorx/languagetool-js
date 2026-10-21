@@ -1,0 +1,23 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "/v2/maxtextlength with premiumAlways (anonymous limit still reported)",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "maxTextLengthAnonymous=300\nmaxTextLengthPremium=900\npremiumAlways=true\n"
+ },
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/maxtextlength"
+  }
+ ]
+}

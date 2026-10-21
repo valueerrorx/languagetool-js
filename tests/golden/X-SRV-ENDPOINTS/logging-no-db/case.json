@@ -1,0 +1,54 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "skipLoggingChecks / skipLoggingRuleMatches / pings without logger: check results unchanged (SRV-0201)",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "skipLoggingChecks=true\nskipLoggingRuleMatches=true\n"
+ },
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok.",
+    "enabledRules": "DOUBLE_PUNCTUATION",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok.",
+    "enabledRules": "DOUBLE_PUNCTUATION",
+    "enabledOnly": "true",
+    "inputLogging": "no"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok.",
+    "enabledRules": "DOUBLE_PUNCTUATION",
+    "enabledOnly": "true",
+    "v": "v1",
+    "useragent": "ua",
+    "instanceId": "i1",
+    "languageChanged": "true"
+   }
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "/v2/maxtextlength default (SRV-0093)",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/maxtextlength"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/maxtextlength"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/maxtextlength",
+   "params": {
+    "language": "en-US"
+   }
+  },
+  {
+   "method": "HEAD",
+   "path": "/v2/maxtextlength"
+  }
+ ]
+}

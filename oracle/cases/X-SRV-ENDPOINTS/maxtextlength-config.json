@@ -1,0 +1,23 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "/v2/maxtextlength with maxTextLength=1234 and maxTextLengthAnonymous=77",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "maxTextLength=1234\nmaxTextLengthAnonymous=77\n"
+ },
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/maxtextlength"
+  }
+ ]
+}

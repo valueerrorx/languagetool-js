@@ -1,0 +1,63 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "/v2/languages (SRV-0092): GET/POST/extra params; list restricted to in-scope languages by the comparator (DEV-006)",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/languages",
+   "languagesList": true
+  },
+  {
+   "method": "POST",
+   "path": "/v2/languages",
+   "languagesList": true
+  },
+  {
+   "method": "GET",
+   "path": "/v2/languages",
+   "params": {
+    "foo": "bar"
+   },
+   "languagesList": true
+  },
+  {
+   "method": "POST",
+   "path": "/v2/languages",
+   "params": {
+    "language": "de"
+   },
+   "languagesList": true
+  },
+  {
+   "method": "GET",
+   "path": "/v2/languages/",
+   "languagesList": true
+  },
+  {
+   "method": "GET",
+   "path": "/v2/languages/x"
+  },
+  {
+   "method": "HEAD",
+   "path": "/v2/languages",
+   "languagesList": true
+  },
+  {
+   "method": "OPTIONS",
+   "path": "/v2/languages"
+  },
+  {
+   "method": "PUT",
+   "path": "/v2/languages",
+   "body": "x",
+   "contentType": "text/plain"
+  }
+ ]
+}

@@ -1,0 +1,23 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "/v2/info with premiumAlways (config key)",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "premiumAlways=true\n"
+ },
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/info"
+  }
+ ]
+}

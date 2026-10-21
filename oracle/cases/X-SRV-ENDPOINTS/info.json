@@ -1,0 +1,40 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "/v2/info (SRV-0094)",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/info"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/info"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/info",
+   "params": {
+    "x": "y"
+   }
+  },
+  {
+   "method": "HEAD",
+   "path": "/v2/info"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/info/"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/Info"
+  }
+ ]
+}

@@ -1,0 +1,143 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "/v2/words/delete (SRV-0197)",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/words/delete"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/words/delete",
+   "params": {
+    "word": "x"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/words/delete"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/words/delete",
+   "params": {
+    "word": "Wort"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/words/delete",
+   "params": {
+    "username": "testuser",
+    "apiKey": "testkey",
+    "word": "Wort"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/words/delete",
+   "params": {
+    "username": "testuser",
+    "apiKey": "testkey"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/words/delete",
+   "params": {
+    "username": "testuser",
+    "apiKey": "testkey",
+    "word": ""
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/words/delete",
+   "params": {
+    "username": "testuser",
+    "apiKey": "testkey",
+    "word": "zwei Wörter"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/words/delete",
+   "params": {
+    "username": "testuser",
+    "apiKey": "testkey",
+    "mode": "batch",
+    "words": "a b c"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/words/delete",
+   "params": {
+    "username": "testuser",
+    "apiKey": "testkey",
+    "mode": "batch"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/words/delete",
+   "params": {
+    "username": "u",
+    "word": "x"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/words/delete",
+   "params": {
+    "apiKey": "k",
+    "word": "x"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/words/delete",
+   "params": {
+    "word": "x"
+   },
+   "headers": {
+    "Authorization": "Basic dTpw"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/words/delete",
+   "params": {
+    "username": "testuser",
+    "apiKey": "testkey",
+    "word": "x",
+    "dict": "d"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/words/delete",
+   "params": {
+    "username": "testuser",
+    "apiKey": "testkey",
+    "word": "x",
+    "dicts": "d1"
+   }
+  },
+  {
+   "method": "DELETE",
+   "path": "/v2/words/delete"
+  },
+  {
+   "method": "OPTIONS",
+   "path": "/v2/words/delete"
+  }
+ ]
+}

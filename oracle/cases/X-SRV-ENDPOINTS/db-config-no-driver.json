@@ -1,0 +1,57 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "dbUrl/dbUsername/dbPassword without dbDriver: no DB access, checks work (SRV-0199, SRV-0201)",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "dbUrl=jdbc:mysql://localhost/none\ndbUsername=x\ndbPassword=y\n"
+ },
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok.",
+    "enabledRules": "DOUBLE_PUNCTUATION",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok.",
+    "enabledRules": "DOUBLE_PUNCTUATION",
+    "enabledOnly": "true",
+    "username": "u",
+    "apiKey": "k"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/words",
+   "params": {
+    "username": "u",
+    "apiKey": "k"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/healthcheck"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/info"
+  }
+ ]
+}

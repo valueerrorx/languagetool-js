@@ -1,0 +1,33 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "/v2/configinfo parameter.maxTextLength reflects maxTextHardLength",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "maxTextHardLength=4321\nmaxTextLength=100\n"
+ },
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/configinfo",
+   "params": {
+    "language": "en-US"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/configinfo",
+   "params": {
+    "language": "fr"
+   }
+  }
+ ]
+}
