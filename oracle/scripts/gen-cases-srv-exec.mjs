@@ -255,7 +255,7 @@ const PIPE_REQS = () => {
     ...cfg({ pipelinePrewarming: 'true', preferredLanguages: 'en-US' }),
     requests: [chk('This is a test,, ok.'), health()],
   });
-  writeCli('pipeline-prewarm-bad-language', 'pipelinePrewarming with an unknown preferred language fails at startup', ['--config', 'bad.properties', '--port', '18393'], { 'bad.properties': 'pipelinePrewarming=true\npipelineCaching=true\npreferredLanguages=xx-YY\n' });
+  writeCli('pipeline-prewarm-bad-language', 'pipelinePrewarming with an unknown preferred language fails at startup', ['--config', 'bad.properties', '--port', '18393'], { 'bad.properties': 'pipelinePrewarming=true\npipelineCaching=true\npreferredLanguages=xx-YY\n' }, { listCut: true });
 }
 
 // ---- pipeline creation settings (SRV-0152): rulesFile, disabledRuleIds
