@@ -219,15 +219,15 @@ FF('ff-no-mothertongue', 'false friends without -m', ffx(ffRule()), { mt: '' });
 // ---- bitext XML via --bitextrules
 const btx = (inner, root = 'targetLang="de"') => `${XML}<rules ${root}>\n<category id="CAT1" name="c">\n${inner}\n</category>\n</rules>\n`;
 const btRule = (o = {}) => `<rule lang="${o.lang ?? 'de'}" id="${o.id ?? 'BT1'}" name="bt"><pattern><source lang="en">${o.src ?? tok('is') + tok('a')}</source><target>${o.trg ?? tok('ein')}</target></pattern><message>${o.msg ?? 'Meinten Sie <suggestion>x</suggestion>?'}</message>${o.ex ?? '<example type="incorrect" correction="x"><srcExample><marker>is a</marker></srcExample><trgExample><marker>ein</marker></trgExample></example>'}</rule>`;
-const BT = (name, desc, xml, o = {}) => cli(name, desc, ['-l', o.lang ?? 'de-DE', ...((o.mt ?? 'en') ? ['-m', o.mt ?? 'en'] : []), '-b2', '--bitextrules', 'bt.xml', ...(o.extra ?? []), 'input.txt'], { files: { 'input.txt': o.input ?? 'This is a test.\tDas ist ein Test.\nHello world\tHallo Welt\n', 'bt.xml': xml } });
+const BT = (name, desc, xml, o = {}) => cli(name, desc, ['-l', o.lang ?? 'de-DE', ...((o.mt ?? 'en') ? ['-m', o.mt ?? 'en'] : []), '-b2', '--bitextrules', 'bt.xml', ...(o.extra ?? []), 'input.txt'], { files: { 'input.txt': o.input ?? 'This is a test.\tDas ist ein Test.\nHello world\tHallo Welt\n', 'bt.xml': xml }, ...(o.listCut ? { listCut: true } : {}) });
 BT('bt-xml-ok-control', 'valid bitext rule file (control)', btx(btRule()));
 BT('bt-xml-triggers-error', 'CORE-0452 BitextPatternRuleHandler:158 triggers_error example', btx(btRule({ ex: '<example type="triggers_error"><srcExample>is a</srcExample><trgExample>ein</trgExample></example>' })));
 BT('bt-xml-malformed', 'CORE-0452 BitextPatternRuleLoader:48 malformed XML', btx('<rule lang="de" id="X">'));
 BT('bt-xml-empty-file', 'CORE-0452 BitextPatternRuleLoader:48 empty file', '');
 BT('bt-xml-not-xml', 'bitext rule file with plain text', 'plain\n');
 BT('bt-xml-no-targetlang', 'bitext rules without targetLang', btx(btRule(), ''));
-BT('bt-xml-bad-targetlang', 'bitext rules with unknown targetLang', btx(btRule(), 'targetLang="xx"'));
-BT('bt-xml-bad-srclang', 'bitext source lang unknown', btx(btRule().replace('<source lang="en">', '<source lang="xx">')));
+BT('bt-xml-bad-targetlang', 'bitext rules with unknown targetLang', btx(btRule(), 'targetLang="xx"'), { listCut: true });
+BT('bt-xml-bad-srclang', 'bitext source lang unknown', btx(btRule().replace('<source lang="en">', '<source lang="xx">')), { listCut: true });
 BT('bt-xml-no-srclang', 'bitext source without lang', btx(btRule().replace('<source lang="en">', '<source>')));
 BT('bt-xml-ref-forward', 'bitext forward reference in source', btx(btRule({ src: tok('is') + tok('<match no="5"/>') })));
 BT('bt-xml-skip-200', 'bitext skip out of range', btx(btRule({ src: tok('is', ' skip="200"') })));
@@ -272,7 +272,7 @@ http('u2-preferred-variants', 'U-2 SRV-0120: both preferredVariants error texts 
   check({ text: 'This is a test.', language: 'auto', preferredVariants: 'xx-YY', mode: 'textLevelOnly' }),
   pv('en-XX'), pv('en-ZZ,de-AT'), pv('en-US-x'), pv('en-1'), pv('en-GB-oed'), pv('en--'),
   check({ text: 'Das ist ein Test.', language: 'auto', preferredVariants: 'de-XX' }),
-  check({ text: 'Das ist ein Test.', language: 'auto', preferredVariants: 'de-DE-x-simple-language' }),
+  { ...check({ text: 'Das ist ein Test.', language: 'auto', preferredVariants: 'de-DE-x-simple-language' }), expect: 'dev006' },
   check({ text: 'Ceci est un test.', language: 'auto', preferredVariants: 'fr-XX' }),
   check({ text: 'Ceci est un test.', language: 'auto', preferredVariants: 'fr-CA' }),
 ]);

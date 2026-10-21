@@ -41,7 +41,7 @@ const impl = {
   },
   // remove "\tat ..." frames and "... n more" lines; "Caused by:" lines and the first line stay
   stackFrames(text) {
-    return text.split('\n').filter((l) => !/^\s+at [\w$.<>/]+\(.*\)\s*$/.test(l) && !/^\s*\.\.\. \d+ (more|common frames omitted)\s*$/.test(l)).join('\n');
+    return text.split('\n').filter((l) => !/^\s+at [\w$.<>/#]+\(.*\)\s*$/.test(l) && !/^\s*\.\.\. \d+ (more|common frames omitted)\s*$/.test(l)).join('\n');
   },
 };
 

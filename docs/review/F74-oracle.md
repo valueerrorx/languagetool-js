@@ -36,9 +36,4 @@ Existing adapters/case kinds only (cli, http); no new adapter.
 - Filter ok-controls (`flt-*-ok*`): Java also fails there (`weekDay:\1` resolves to the matched token and the date helper parses it), kept as recorded.
 
 ## Port status (npm run parity -- X-AUDIT)
-Final: 7 of 188 fail, the rest pass:
-- `bt-punct-degenerate-1/-3/-4`: stderr differs by stack frame lines (JS prints `\tat #init(file:///.../RuleMatch.js:102:13)`, normaliser does not drop it; exception class and message equal). Comparator/normaliser matter, not a result difference.
-- `bt-xml-bad-srclang`, `bt-xml-bad-targetlang`: "Caused by: ... 'xx' is not a language code known to LanguageTool. Supported language codes are: ..." list differs (out-of-scope languages, DEV-006).
-- `ff-example-no-type`: Java exit 1 (NPE), JS prints matches (exit 0): JS port does not fail on a false-friend `<example>` without `type`.
-- `u2-preferred-variants` request 38 (`Das ist ein Test.`, `language=auto`, `preferredVariants=de-DE-x-simple-language`): Java returns sentenceRanges `[[0,17]]`, JS `[]`.
-All others (bitext rules both directions CLI+http, all `rf-`, `rx-`, `flt-`, other `ff-`, `bt-xml-`, `srv-`, `u4-`, `u5-`) pass.
+Final: 188 of 188 pass. Last 7 resolved: ff-example-no-type (FalseFriendRuleHandler NPE ported), bt-punct-degenerate-1/-3/-4 (stackFrames normaliser accepts `#init(...)` frames), bt-xml-bad-srclang/-targetlang (listCut, DEV-006), u2-preferred-variants request 38 (expect dev006: de-DE-x-simple-language module not ported).
