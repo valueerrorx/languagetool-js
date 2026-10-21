@@ -1,0 +1,146 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "maxTextLengthAnonymous wins for anonymous requests; maxTextLength/LoggedIn/Premium do not apply; maxTextHardLength",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "sysLoad",
+  "identityHash"
+ ],
+ "isolate": "limits-textlength",
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "maxTextLength=30\nmaxTextLengthAnonymous=20\nmaxTextLengthLoggedIn=10\nmaxTextLengthPremium=5\nmaxTextHardLength=45\n"
+ },
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "aaaaaaaaaaaaaaaaaaa",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "aaaaaaaaaaaaaaaaaaaa",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "aaaaaaaaaaaaaaaaaaaaa",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Emoji 😀😀😀😀😀😀😀😀!",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "ääääääääääääääääääää",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "äääääääääääääääääääää",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "data": "{\"annotation\":[{\"text\":\"aaaaaaaaaaaaaaa\"},{\"markup\":\"<b>this markup is not counted</b>\"},{\"text\":\"bbbbb\"}]}",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "data": "{\"annotation\":[{\"text\":\"aaaaaaaaaaaaaaa\"},{\"markup\":\"<b>\"},{\"text\":\"bbbbbb\"}]}",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/maxtextlength"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  }
+ ]
+}

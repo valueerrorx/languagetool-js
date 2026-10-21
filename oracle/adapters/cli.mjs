@@ -3,14 +3,21 @@ import { spawn } from 'node:child_process';
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { ROOT } from '../lib/env.mjs';
-import { snapshotFiles } from '../lib/cli-run.mjs';
+import { occupyPorts, snapshotFiles } from '../lib/cli-run.mjs';
 
 const FIXED = '2026-03-15T10:00:00+01:00';
 
 // run(cs, {workDir}) -> {exitCode, stdout, stderr, files}
-export async function run(cs, { workDir }) {
-  const isServer = cs.mainClass === 'org.languagetool.server.HTTPServer';
-  const bin = path.join(ROOT, isServer ? 'bin/lt-server.mjs' : 'bin/lt-cli.mjs');
+export async function run(cs, ctx) {
+  const blockers = await occupyPorts(cs.occupyPorts);
+  try { return await run0(cs, ctx); } finally { for (const b of blockers) b.close(); }
+}
+
+async function run0(cs, { workDir }) {
+  const isHttps = cs.mainClass === 'org.languagetool.server.HTTPSServer'; // F66: bin/lt-https-server.mjs once ported
+  const isServer = cs.mainClass === 'org.languagetool.server.HTTPServer' || isHttps;
+  const bin = path.join(ROOT, isHttps ? 'bin/lt-https-server.mjs' : isServer ? 'bin/lt-server.mjs' : 'bin/lt-cli.mjs');
+  if (isHttps && !existsSync(bin)) throw Object.assign(new Error('HTTPSServer not ported'), { notPorted: true });
   if (!isServer && (cs.jar || cs.mainClass || !existsSync(bin))) {
     throw Object.assign(new Error(`cli case ${cs.mainClass ?? cs.jar ?? 'commandline'} not ported`), { notPorted: true });
   }

@@ -1,0 +1,41 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "--stoppable and GET /v2/stop: WARN \"Stopping server by external command\", then the server is gone",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "sysLoad",
+  "identityHash"
+ ],
+ "isolate": "srv-stop",
+ "realLogging": true,
+ "captureLog": true,
+ "serverArgs": [
+  "--stoppable"
+ ],
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/stop"
+  },
+  {
+   "sleep": 800
+  },
+  {
+   "method": "GET",
+   "path": "/v2/healthcheck"
+  }
+ ]
+}

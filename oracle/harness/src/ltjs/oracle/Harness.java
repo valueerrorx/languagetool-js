@@ -181,6 +181,12 @@ public class Harness {
       case "rules-list": return ContentOps.rulesList(a);
       case "rule-examples": return ContentOps.ruleExamples(a);
       case "disambiguation-examples": return ContentOps.disambiguationExamples(a);
+      case "exec-user-limits": return org.languagetool.server.LtjsBridge.userLimits(a);
+      case "exec-limit-mode": return org.languagetool.server.LtjsBridge.limitMode(a);
+      case "exec-pipeline-settings": return org.languagetool.server.LtjsBridge.pipelineSettings(a);
+      case "exec-pipeline-pool": return org.languagetool.server.LtjsBridge.pipelinePool(a);
+      case "exec-thread-pool": return org.languagetool.server.LtjsBridge.threadPool(a);
+      case "exec-crash-server": return org.languagetool.server.LtjsBridge.crashServer(a);
       default: throw new IllegalArgumentException("unknown op: " + op);
     }
   }

@@ -1,0 +1,77 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "startup lines, healthcheck, simple checks, 404/400 paths",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "sysLoad",
+  "identityHash"
+ ],
+ "isolate": "srv-startup-default",
+ "realLogging": true,
+ "captureLog": true,
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "GET",
+   "path": "/v2/healthcheck"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/unknown"
+  },
+  {
+   "method": "GET",
+   "path": "/favicon.ico"
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "text": "No language."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/maxtextlength"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/languages",
+   "languagesList": true
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  }
+ ]
+}

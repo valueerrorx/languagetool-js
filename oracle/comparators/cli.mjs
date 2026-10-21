@@ -11,7 +11,7 @@ function lineDiff(tag, e, a, diffs) {
 }
 
 // result: {exitCode, stdout, stderr, files:{path: content}}; json=true compares stdout as the check JSON.
-export function compareCli(e, a, { normalizers = [], ctx = {}, json = false, streams = ['stdout', 'stderr'], ignoreExit = false, stripTimestamp = false, stderrExceptionOnly = false, listDev006 = false, listCut = false } = {}) {
+export function compareCli(e, a, { normalizers = [], ctx = {}, json = false, streams = ['stdout', 'stderr'], ignoreExit = false, stripTimestamp = false, stderrExceptionOnly = false, stderrFilter = null, listDev006 = false, listCut = false } = {}) {
   const diffs = [];
   if (!ignoreExit && e.exitCode !== a.exitCode) diffs.push(`exit code ${e.exitCode} != ${a.exitCode}`);
   const nn = (t) => normalize([...normalizers, 'stackFrames'], t, ctx);
@@ -43,7 +43,9 @@ export function compareCli(e, a, { normalizers = [], ctx = {}, json = false, str
   if (!jsonDone && streams.includes('stdout')) lineDiff('stdout', eo, ao, diffs);
   if (streams.includes('stderr')) {
     // log lines are not compared (D-045): only the uncaught exception line and its causes
-    const f = (t) => (stderrExceptionOnly ? n(t).split('\n').filter((l) => /^(Exception in thread|Caused by:)/.test(l)).join('\n') : n(t));
+    // stderrFilter: regex source, only matching lines are compared (e.g. config warnings, F66)
+    const keep = stderrFilter ? new RegExp(stderrFilter) : null;
+    const f = (t) => (keep ? n(t).split('\n').filter((l) => keep.test(l)).join('\n') : stderrExceptionOnly ? n(t).split('\n').filter((l) => /^(Exception in thread|Caused by:)/.test(l)).join('\n') : n(t));
     lineDiff('stderr', f(e.stderr), f(a.stderr), diffs);
   }
   if (e.files || a.files) diffs.push(...deepDiff(e.files ?? {}, a.files ?? {}, 'files'));

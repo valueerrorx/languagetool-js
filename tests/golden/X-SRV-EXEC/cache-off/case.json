@@ -1,0 +1,331 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "reference run without result cache (cacheSize=0): same requests as cache-on",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "sysLoad",
+  "identityHash"
+ ],
+ "isolate": "cache-off",
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on the mat. Another sentence follows here.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on the mat. Another sentence follows here.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. A different second sentence,, here. Another sentence follows here.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Another sentence follows here.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "The the cat sat on the mat.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on the mat. Another sentence follows here.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on the mat. Another sentence follows here.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. A different second sentence,, here. Another sentence follows here.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Another sentence follows here.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "The the cat sat on the mat.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on the mat. Another sentence follows here.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "disabledRules": "DOUBLE_PUNCTUATION"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on the mat. Another sentence follows here.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true",
+    "motherTongue": "de-DE"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on the mat. Another sentence follows here.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true",
+    "mode": "allButTextLevelOnly"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-GB",
+    "text": "This is a test,, ok. The the cat sat on the mat. Another sentence follows here.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-GB",
+    "text": "This is a test,, ok. The the cat sat on the mat. Another sentence follows here.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on the mat. Another sentence follows here."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on the mat. Another sentence follows here."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. A different second sentence,, here. Another sentence follows here.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true",
+    "toneTags": "formal"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. A different second sentence,, here. Another sentence follows here.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true",
+    "altLanguages": "de-DE"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. A different second sentence,, here. Another sentence follows here.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true",
+    "textSessionId": "12"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. A different second sentence,, here. Another sentence follows here.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true",
+    "textSessionId": "13"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Das ist ein Test,, ok.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Das ist ein Test,, ok.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "fr",
+    "text": "Ceci est un test,, ok.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on the mat. Another sentence follows here.",
+    "ruleValues": "SOME_RULE:3"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on the mat. Another sentence follows here.",
+    "ruleValues": "SOME_RULE:3"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Line one,, here.\n\nSecond paragraph,, here.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Line one,, here.\n\nSecond paragraph,, here.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Second paragraph,, here.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "data": "{\"annotation\":[{\"text\":\"This is \"},{\"markup\":\"<b>\"},{\"text\":\"a test,, ok.\"},{\"markup\":\"</b>\"}]}",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "data": "{\"annotation\":[{\"text\":\"This is \"},{\"markup\":\"<b>\"},{\"text\":\"a test,, ok.\"},{\"markup\":\"</b>\"}]}",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  }
+ ]
+}

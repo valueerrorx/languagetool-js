@@ -1,0 +1,66 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "request limiter 429 error lines and request size limit",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "sysLoad",
+  "identityHash"
+ ],
+ "isolate": "srv-limits",
+ "realLogging": true,
+ "captureLog": true,
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "requestLimit=2\nrequestLimitPeriodInSeconds=3600\n"
+ },
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "One.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Two.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Three.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true",
+    "useragent": "ua"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Four.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true",
+    "username": "u"
+   }
+  }
+ ]
+}

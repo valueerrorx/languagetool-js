@@ -1,0 +1,896 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "exceptions raised inside the check task (pipeline creation fault injection) mapped to HTTP status/text by the real handler (SRV-0139, SRV-0137)",
+ "compare": "jsonl",
+ "normalize": [
+  "identityHash",
+  "paths",
+  "buildDate",
+  "commit"
+ ],
+ "ops": [
+  {
+   "op": "exec-crash-server",
+   "args": {
+    "config": {
+     "props": {},
+     "args": [
+      "--port",
+      "18360"
+     ]
+    },
+    "fault": "runtime",
+    "message": "injected <sentcontent>secret</sentcontent> failure",
+    "requests": [
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "inputLogging": "no"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "allowIncompleteResults": "true"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "Das ist ein Test.",
+       "mode": "textLevelOnly"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "op": "exec-crash-server",
+   "args": {
+    "config": {
+     "props": {},
+     "args": [
+      "--port",
+      "18361"
+     ]
+    },
+    "fault": "illegalArgument",
+    "message": "injected failure",
+    "requests": [
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "inputLogging": "no"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "allowIncompleteResults": "true"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "Das ist ein Test.",
+       "mode": "textLevelOnly"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "op": "exec-crash-server",
+   "args": {
+    "config": {
+     "props": {},
+     "args": [
+      "--port",
+      "18362"
+     ]
+    },
+    "fault": "io",
+    "message": "injected failure",
+    "requests": [
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "inputLogging": "no"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "allowIncompleteResults": "true"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "Das ist ein Test.",
+       "mode": "textLevelOnly"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "op": "exec-crash-server",
+   "args": {
+    "config": {
+     "props": {},
+     "args": [
+      "--port",
+      "18363"
+     ]
+    },
+    "fault": "npe",
+    "message": "injected failure",
+    "requests": [
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "inputLogging": "no"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "allowIncompleteResults": "true"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "Das ist ein Test.",
+       "mode": "textLevelOnly"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "op": "exec-crash-server",
+   "args": {
+    "config": {
+     "props": {},
+     "args": [
+      "--port",
+      "18364"
+     ]
+    },
+    "fault": "error",
+    "message": "injected failure",
+    "requests": [
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "inputLogging": "no"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "allowIncompleteResults": "true"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "Das ist ein Test.",
+       "mode": "textLevelOnly"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "op": "exec-crash-server",
+   "args": {
+    "config": {
+     "props": {},
+     "args": [
+      "--port",
+      "18365"
+     ]
+    },
+    "fault": "stackOverflow",
+    "message": "injected failure",
+    "requests": [
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "inputLogging": "no"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "allowIncompleteResults": "true"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "Das ist ein Test.",
+       "mode": "textLevelOnly"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "op": "exec-crash-server",
+   "args": {
+    "config": {
+     "props": {},
+     "args": [
+      "--port",
+      "18366"
+     ]
+    },
+    "fault": "badRequest",
+    "message": "injected failure",
+    "requests": [
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "inputLogging": "no"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "allowIncompleteResults": "true"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "Das ist ein Test.",
+       "mode": "textLevelOnly"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "op": "exec-crash-server",
+   "args": {
+    "config": {
+     "props": {},
+     "args": [
+      "--port",
+      "18367"
+     ]
+    },
+    "fault": "textTooLong",
+    "message": "injected failure",
+    "requests": [
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "inputLogging": "no"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "allowIncompleteResults": "true"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "Das ist ein Test.",
+       "mode": "textLevelOnly"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "op": "exec-crash-server",
+   "args": {
+    "config": {
+     "props": {},
+     "args": [
+      "--port",
+      "18368"
+     ]
+    },
+    "fault": "auth",
+    "message": "injected failure",
+    "requests": [
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "inputLogging": "no"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "allowIncompleteResults": "true"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "Das ist ein Test.",
+       "mode": "textLevelOnly"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "op": "exec-crash-server",
+   "args": {
+    "config": {
+     "props": {},
+     "args": [
+      "--port",
+      "18369"
+     ]
+    },
+    "fault": "timeout",
+    "message": "injected failure",
+    "requests": [
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "inputLogging": "no"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "allowIncompleteResults": "true"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "Das ist ein Test.",
+       "mode": "textLevelOnly"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "op": "exec-crash-server",
+   "args": {
+    "config": {
+     "props": {},
+     "args": [
+      "--port",
+      "18370"
+     ]
+    },
+    "fault": "unavailable",
+    "message": "injected failure",
+    "requests": [
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "inputLogging": "no"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "allowIncompleteResults": "true"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "Das ist ein Test.",
+       "mode": "textLevelOnly"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "op": "exec-crash-server",
+   "args": {
+    "config": {
+     "props": {},
+     "args": [
+      "--port",
+      "18371"
+     ]
+    },
+    "fault": "pathNotFound",
+    "message": "injected failure",
+    "requests": [
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "inputLogging": "no"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "allowIncompleteResults": "true"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "Das ist ein Test.",
+       "mode": "textLevelOnly"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "op": "exec-crash-server",
+   "args": {
+    "config": {
+     "props": {},
+     "args": [
+      "--port",
+      "18372"
+     ]
+    },
+    "fault": "errorRate",
+    "message": "injected failure",
+    "requests": [
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "inputLogging": "no"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "allowIncompleteResults": "true"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "Das ist ein Test.",
+       "mode": "textLevelOnly"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "op": "exec-crash-server",
+   "args": {
+    "config": {
+     "props": {},
+     "args": [
+      "--port",
+      "18373"
+     ]
+    },
+    "fault": "nestedBadRequest",
+    "message": "injected failure",
+    "requests": [
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "inputLogging": "no"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "allowIncompleteResults": "true"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "Das ist ein Test.",
+       "mode": "textLevelOnly"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "op": "exec-crash-server",
+   "args": {
+    "config": {
+     "props": {},
+     "args": [
+      "--port",
+      "18374"
+     ]
+    },
+    "fault": "nestedErrorRate",
+    "message": "injected failure",
+    "requests": [
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "inputLogging": "no"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "allowIncompleteResults": "true"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "Das ist ein Test.",
+       "mode": "textLevelOnly"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "op": "exec-crash-server",
+   "args": {
+    "config": {
+     "props": {},
+     "args": [
+      "--port",
+      "18375"
+     ]
+    },
+    "fault": "nestedTimeout",
+    "message": "injected failure",
+    "requests": [
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "inputLogging": "no"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "allowIncompleteResults": "true"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "Das ist ein Test.",
+       "mode": "textLevelOnly"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "op": "exec-crash-server",
+   "args": {
+    "config": {
+     "props": {},
+     "args": [
+      "--port",
+      "18376"
+     ]
+    },
+    "fault": "nestedAuth",
+    "message": "injected failure",
+    "requests": [
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "inputLogging": "no"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "allowIncompleteResults": "true"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "Das ist ein Test.",
+       "mode": "textLevelOnly"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     }
+    ]
+   }
+  },
+  {
+   "op": "exec-crash-server",
+   "args": {
+    "config": {
+     "props": {},
+     "args": [
+      "--port",
+      "18377"
+     ]
+    },
+    "fault": "failOnce",
+    "message": "injected failure",
+    "requests": [
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "inputLogging": "no"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test.",
+       "allowIncompleteResults": "true"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "Das ist ein Test.",
+       "mode": "textLevelOnly"
+      }
+     },
+     {
+      "params": {
+       "language": "en-US",
+       "text": "This is a test."
+      }
+     }
+    ]
+   }
+  }
+ ]
+}

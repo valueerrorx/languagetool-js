@@ -1,0 +1,250 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "pipelineCaching=true, pool of 5: results equal the uncached run for every request",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "sysLoad",
+  "identityHash"
+ ],
+ "isolate": "pipeline-cached",
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "pipelineCaching=true\nmaxPipelinePoolSize=5\npipelineExpireTimeInSeconds=60\n"
+ },
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "He go to school every days and she dont like it. I has a apple. Their is a mistake in you're sentence. The the cat."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "He go to school every days and she dont like it. I has a apple. Their is a mistake in you're sentence. The the cat."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "He go to school every days and she dont like it. I has a apple. Their is a mistake in you're sentence. The the cat.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "He go to school every days and she dont like it. I has a apple. Their is a mistake in you're sentence. The the cat.",
+    "disabledRules": "ENGLISH_WORD_REPEAT_RULE"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "He go to school every days and she dont like it. I has a apple. Their is a mistake in you're sentence. The the cat.",
+    "enabledRules": "DOUBLE_PUNCTUATION",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "He go to school every days and she dont like it. I has a apple. Their is a mistake in you're sentence. The the cat.",
+    "motherTongue": "de-DE"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "He go to school every days and she dont like it. I has a apple. Their is a mistake in you're sentence. The the cat.",
+    "motherTongue": "fr"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "He go to school every days and she dont like it. I has a apple. Their is a mistake in you're sentence. The the cat.",
+    "altLanguages": "de-DE"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "He go to school every days and she dont like it. I has a apple. Their is a mistake in you're sentence. The the cat.",
+    "mode": "textLevelOnly"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "He go to school every days and she dont like it. I has a apple. Their is a mistake in you're sentence. The the cat.",
+    "mode": "allButTextLevelOnly"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "He go to school every days and she dont like it. I has a apple. Their is a mistake in you're sentence. The the cat.",
+    "toneTags": "formal"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "He go to school every days and she dont like it. I has a apple. Their is a mistake in you're sentence. The the cat."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "He go to school every days and she dont like it. I has a apple. Their is a mistake in you're sentence. The the cat.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "He go to school every days and she dont like it. I has a apple. Their is a mistake in you're sentence. The the cat.",
+    "disabledCategories": "GRAMMAR"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "He go to school every days and she dont like it. I has a apple. Their is a mistake in you're sentence. The the cat.",
+    "enabledCategories": "STYLE",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Das ist ein Test,, ok. Das das ist falsch."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Das ist ein Test,, ok. Das das ist falsch."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "fr",
+    "text": "Ceci est un test,, ok. Le le chat dort."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-GB",
+    "text": "He go to school every days and she dont like it. I has a apple. Their is a mistake in you're sentence. The the cat."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-GB",
+    "text": "He go to school every days and she dont like it. I has a apple. Their is a mistake in you're sentence. The the cat."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "He go to school every days and she dont like it. I has a apple. Their is a mistake in you're sentence. The the cat.",
+    "ruleValues": "SOME_RULE:3"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "He go to school every days and she dont like it. I has a apple. Their is a mistake in you're sentence. The the cat.",
+    "ruleValues": "SOME_RULE:3"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "He go to school every days and she dont like it. I has a apple. Their is a mistake in you're sentence. The the cat.",
+    "enableTempOffRules": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "He go to school every days and she dont like it. I has a apple. Their is a mistake in you're sentence. The the cat.",
+    "enableHiddenRules": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "He go to school every days and she dont like it. I has a apple. Their is a mistake in you're sentence. The the cat.",
+    "inputLogging": "no"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "He go to school every days and she dont like it. I has a apple. Their is a mistake in you're sentence. The the cat.",
+    "filterDictionaryMatches": "false"
+   }
+  }
+ ]
+}

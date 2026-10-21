@@ -1,0 +1,496 @@
+[
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "English (US)",
+        "code": "en-US",
+        "detectedLanguage": {
+          "name": "English (US)",
+          "code": "en-US",
+          "confidence": 0.99999374,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Two consecutive commas",
+          "shortMessage": "Two consecutive commas",
+          "replacements": [
+            {
+              "value": ","
+            }
+          ],
+          "offset": 14,
+          "length": 2,
+          "context": {
+            "text": "This is a test,, ok. The the cat sat on teh mat.",
+            "offset": 14,
+            "length": 2
+          },
+          "sentence": "This is a test,, ok.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "DOUBLE_PUNCTUATION",
+            "description": "Use of two consecutive dots or commas",
+            "issueType": "typographical",
+            "urls": [
+              {
+                "value": "https://languagetool.org/insights/post/punctuation-guide/#what-are-periods"
+              }
+            ],
+            "category": {
+              "id": "PUNCTUATION",
+              "name": "Punctuation"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Possible typo: you repeated a word.",
+          "shortMessage": "Word repetition",
+          "replacements": [
+            {
+              "value": "The"
+            }
+          ],
+          "offset": 21,
+          "length": 7,
+          "context": {
+            "text": "This is a test,, ok. The the cat sat on teh mat.",
+            "offset": 21,
+            "length": 7
+          },
+          "sentence": "The the cat sat on teh mat.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "ENGLISH_WORD_REPEAT_RULE",
+            "description": "Word repetition (e.g. 'will will')",
+            "issueType": "duplication",
+            "category": {
+              "id": "MISC",
+              "name": "Miscellaneous"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 1
+        },
+        {
+          "message": "Possible spelling mistake found.",
+          "shortMessage": "Spelling mistake",
+          "replacements": [
+            {
+              "value": "the"
+            },
+            {
+              "value": "ten"
+            },
+            {
+              "value": "tea"
+            },
+            {
+              "value": "tech"
+            },
+            {
+              "value": "Ted"
+            },
+            {
+              "value": "TeX"
+            },
+            {
+              "value": "tee"
+            },
+            {
+              "value": "eh"
+            },
+            {
+              "value": "tel"
+            },
+            {
+              "value": "TEF"
+            },
+            {
+              "value": "BEH"
+            },
+            {
+              "value": "GEH"
+            },
+            {
+              "value": "NEH"
+            },
+            {
+              "value": "Neh"
+            },
+            {
+              "value": "TAH"
+            },
+            {
+              "value": "TBH"
+            },
+            {
+              "value": "TCH"
+            },
+            {
+              "value": "TEB"
+            },
+            {
+              "value": "TEC"
+            },
+            {
+              "value": "TED"
+            },
+            {
+              "value": "TEE"
+            },
+            {
+              "value": "TEI"
+            },
+            {
+              "value": "TEL"
+            },
+            {
+              "value": "TEM"
+            },
+            {
+              "value": "TEP"
+            },
+            {
+              "value": "TEQ"
+            },
+            {
+              "value": "TER"
+            },
+            {
+              "value": "TES"
+            },
+            {
+              "value": "TEU"
+            },
+            {
+              "value": "TEV"
+            },
+            {
+              "value": "TH"
+            },
+            {
+              "value": "TLH"
+            },
+            {
+              "value": "TSH"
+            },
+            {
+              "value": "TVH"
+            },
+            {
+              "value": "Te"
+            },
+            {
+              "value": "Tet"
+            },
+            {
+              "value": "Tex"
+            },
+            {
+              "value": "Th"
+            },
+            {
+              "value": "heh"
+            },
+            {
+              "value": "meh"
+            }
+          ],
+          "offset": 40,
+          "length": 3,
+          "context": {
+            "text": "...This is a test,, ok. The the cat sat on teh mat.",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "The the cat sat on teh mat.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_EN_US",
+            "description": "Possible spelling mistake",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Possible Typo"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          20
+        ],
+        [
+          21,
+          48
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 20,
+          "detectedLanguages": [
+            {
+              "language": "en",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 21,
+          "to": 48,
+          "detectedLanguages": [
+            {
+              "language": "en",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "German (Germany)",
+        "code": "de-DE",
+        "detectedLanguage": {
+          "name": "German (Germany)",
+          "code": "de-DE",
+          "confidence": 0.9999996,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Zwei aufeinanderfolgende Kommas",
+          "shortMessage": "Zwei aufeinanderfolgende Kommas",
+          "replacements": [
+            {
+              "value": ","
+            }
+          ],
+          "offset": 16,
+          "length": 2,
+          "context": {
+            "text": "Das ist ein Test,, ok. Das das ist falsch.",
+            "offset": 16,
+            "length": 2
+          },
+          "sentence": "Das ist ein Test,, ok.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "DE_DOUBLE_PUNCTUATION",
+            "description": "Zwei aufeinanderfolgende Kommas oder Punkte",
+            "issueType": "typographical",
+            "urls": [
+              {
+                "value": "https://dict.leo.org/grammatik/deutsch/Rechtschreibung/Amtlich/Interpunktion/pgf101-105.html#grammarpgf103"
+              }
+            ],
+            "category": {
+              "id": "PUNCTUATION",
+              "name": "Zeichensetzung"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Möglicher Tippfehler: ein Wort wird wiederholt",
+          "shortMessage": "Wortwiederholung",
+          "replacements": [
+            {
+              "value": "Das"
+            }
+          ],
+          "offset": 23,
+          "length": 7,
+          "context": {
+            "text": "Das ist ein Test,, ok. Das das ist falsch.",
+            "offset": 23,
+            "length": 7
+          },
+          "sentence": "Das das ist falsch.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "GERMAN_WORD_REPEAT_RULE",
+            "description": "Wortwiederholung (z. B. 'als als')",
+            "issueType": "duplication",
+            "category": {
+              "id": "REDUNDANCY",
+              "name": "Redundanz"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 1
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          22
+        ],
+        [
+          23,
+          42
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 22,
+          "detectedLanguages": [
+            {
+              "language": "de",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 23,
+          "to": 42,
+          "detectedLanguages": [
+            {
+              "language": "de",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "French",
+        "code": "fr",
+        "detectedLanguage": {
+          "name": "French",
+          "code": "fr",
+          "confidence": 0.9624025,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Deux virgules consécutives",
+          "shortMessage": "Deux virgules consécutives",
+          "replacements": [
+            {
+              "value": ","
+            }
+          ],
+          "offset": 16,
+          "length": 2,
+          "context": {
+            "text": "Ceci est un test,, ok.",
+            "offset": 16,
+            "length": 2
+          },
+          "sentence": "Ceci est un test,, ok.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "DOUBLE_PUNCTUATION",
+            "description": "Deux virgules ou points consécutifs",
+            "issueType": "typographical",
+            "category": {
+              "id": "PUNCTUATION",
+              "name": "Ponctuation"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          22
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 22,
+          "detectedLanguages": [
+            {
+              "language": "fr",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "text/plain",
+    "accessControlAllowOrigin": null,
+    "body": "OK"
+  }
+]

@@ -1,0 +1,238 @@
+2026-03-15 10:00:00.303 GMT+01:00 INFO  org.languagetool.server.DatabaseAccessOpenSource Not setting up database access, dbDriver is not configured
+2026-03-15 09:00:00 +0000 Setting up thread pool with 10 threads
+2026-03-15 10:00:01.081 GMT+01:00 WARN  org.languagetool.language.identifier.DefaultLanguageIdentifier fastText not configured - language detection performance will be degraded. See https://dev.languagetool.org/http-server#starting-from-command-line for instructions.
+2026-03-15 10:00:01.085 GMT+01:00 INFO  org.languagetool.server.TextChecker A/B-Test enabled: []
+2026-03-15 09:00:01 +0000 Starting LanguageTool 6.9-SNAPSHOT (build date: 2026-10-12 18:33:54 +0200, 9b0be9d) server on http://localhost:18300...
+2026-03-15 09:00:01 +0000 Server started
+2026-03-15 10:00:01.242 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling GET /v2/healthcheck
+2026-03-15 10:00:01.261 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 33ms; sending code 200
+2026-03-15 10:00:01.272 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:01.299 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler An error has occurred: 'Your text exceeds the limit of 400 characters (it's 401 characters). Please submit a shorter text.', sending HTTP code 413. Access from 127.0.0.1, HTTP user agent: node, User agent param: null, Referrer: null, language: en-US, h: 1, r: 2, time: 20text length: 401, m: ALL, l: DEFAULT, (no stacktrace logged)
+2026-03-15 10:00:01.300 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 28ms; sending code 413
+2026-03-15 10:00:01.304 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:04.148 GMT+01:00 INFO  org.languagetool.JLanguageTool With rule: PHRASE_REPETITION[1] 108/201 the sentence error rate increased by: 0.8518519 from: 0.0 to total: 0.8518519
+2026-03-15 10:00:04.152 GMT+01:00 INFO  org.languagetool.JLanguageTool ErrorRateTooHigh is reached by a single sentence after rule: PHRASE_REPETITION[1]. The whole text contains 54 words  and this sentence has 46 matches.
+2026-03-15 10:00:04.154 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler An error has occurred: 'java.lang.RuntimeException: org.languagetool.ErrorRateTooHighException: ErrorRateTooHigh is reached by a single sentence after rule: PHRASE_REPETITION[1]. The whole text contains 54 words and this sentence has 46 matches., detected: en-US', sending HTTP code 400. Access from 127.0.0.1, HTTP user agent: node, User agent param: null, Referrer: null, language: en-US, h: 1, r: 3, time: 2849text length: 208, m: ALL, l: DEFAULT, (no stacktrace logged)
+2026-03-15 10:00:04.154 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 2850ms; sending code 400
+2026-03-15 10:00:04.159 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:04.242 GMT+01:00 INFO  org.languagetool.JLanguageTool With rule: PHRASE_REPETITION[1] 108/201 the sentence error rate increased by: 0.8518519 from: 0.0 to total: 0.8518519
+2026-03-15 10:00:04.242 GMT+01:00 INFO  org.languagetool.JLanguageTool ErrorRateTooHigh is reached by a single sentence after rule: PHRASE_REPETITION[1]. The whole text contains 54 words  and this sentence has 46 matches.
+2026-03-15 10:00:04.246 GMT+01:00 WARN  org.languagetool.server.TextChecker java.lang.RuntimeException: org.languagetool.ErrorRateTooHighException: ErrorRateTooHigh is reached by a single sentence after rule: PHRASE_REPETITION[1]. The whole text contains 54 words and this sentence has 46 matches. - returning 1 matches found so far. Detected language: en-US, Access from 127.0.0.1, HTTP user agent: node, User agent param: null, Referrer: null, language: en-US, h: 1, r: 4, time: 84
+2026-03-15 10:00:04.261 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:04.264 GMT+01:00 ERROR org.languagetool.server.LanguageToolHttpHandler An error has occurred: 'Index 1 out of bounds for length 1', sending HTTP code 500. Access from 127.0.0.1, HTTP user agent: node, User agent param: null, Referrer: null, language: en-US, h: 2, r: 5, time: 2text length: 15, m: ALL, l: DEFAULT, Stacktrace follows:java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+	at org.languagetool.server.TextChecker.getRuleValues(TextChecker.java:864)
+	at org.languagetool.server.TextChecker.checkText(TextChecker.java:498)
+	at org.languagetool.server.ApiV2.handleCheckRequest(ApiV2.java:177)
+	at org.languagetool.server.ApiV2.lambda$handleRequest$4(ApiV2.java:87)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.ApiV2.handleRequest(ApiV2.java:87)
+	at org.languagetool.server.LanguageToolHttpHandler.lambda$handle$0(LanguageToolHttpHandler.java:213)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.LanguageToolHttpHandler.handle(LanguageToolHttpHandler.java:213)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:928)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:904)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+2026-03-15 10:00:04.265 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 4ms; sending code 500
+2026-03-15 10:00:04.272 GMT+01:00 INFO  org.languagetool.server.TextChecker Check done: 208 chars, en-US, requestId: null, #1, null, 0/1 matches, 97ms, agent:-, sent, q:0, h:1, dH:1, r:4, m:all, premium: false
+2026-03-15 10:00:04.274 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 116ms; sending code 200
+2026-03-15 10:00:04.340 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:04.344 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler An error has occurred: 'Unknown value 'foo' for parameter 'level'. Valid values: default, picky, academic, clarity, professional, creative, customer, jobapp, objective, elegant', sending HTTP code 400. Access from 127.0.0.1, HTTP user agent: node, User agent param: null, Referrer: null, language: en-US, h: 1, r: 6, time: 4text length: 15, m: ALL, l: invalid, Stacktrace follows:org.languagetool.server.BadRequestException: Unknown value 'foo' for parameter 'level'. Valid values: default, picky, academic, clarity, professional, creative, customer, jobapp, objective, elegant
+	at org.languagetool.server.ServerTools.getLevel(ServerTools.java:233)
+	at org.languagetool.server.TextChecker.checkText(TextChecker.java:575)
+	at org.languagetool.server.ApiV2.handleCheckRequest(ApiV2.java:177)
+	at org.languagetool.server.ApiV2.lambda$handleRequest$4(ApiV2.java:87)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.ApiV2.handleRequest(ApiV2.java:87)
+	at org.languagetool.server.LanguageToolHttpHandler.lambda$handle$0(LanguageToolHttpHandler.java:213)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.LanguageToolHttpHandler.handle(LanguageToolHttpHandler.java:213)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:928)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:904)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+2026-03-15 10:00:04.346 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 6ms; sending code 400
+2026-03-15 10:00:04.390 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:04.392 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler An error has occurred: 'Mode must be one of 'textLevelOnly', 'allButTextLevelOnly', or 'all' but was: 'foo'', sending HTTP code 400. Access from 127.0.0.1, HTTP user agent: node, User agent param: null, Referrer: null, language: en-US, h: 1, r: 7, time: 2text length: 15, m: invalid, l: DEFAULT, Stacktrace follows:org.languagetool.server.BadRequestException: Mode must be one of 'textLevelOnly', 'allButTextLevelOnly', or 'all' but was: 'foo'
+	at org.languagetool.server.ServerTools.getMode(ServerTools.java:188)
+	at org.languagetool.server.TextChecker.checkText(TextChecker.java:574)
+	at org.languagetool.server.ApiV2.handleCheckRequest(ApiV2.java:177)
+	at org.languagetool.server.ApiV2.lambda$handleRequest$4(ApiV2.java:87)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.ApiV2.handleRequest(ApiV2.java:87)
+	at org.languagetool.server.LanguageToolHttpHandler.lambda$handle$0(LanguageToolHttpHandler.java:213)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.LanguageToolHttpHandler.handle(LanguageToolHttpHandler.java:213)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:928)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:904)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+2026-03-15 10:00:04.393 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 3ms; sending code 400
+2026-03-15 10:00:04.396 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:04.397 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler An error has occurred: 'This is the endpoint for the basic version of LanguageTool. When using 'username' and 'apiKey' to access the premium version, use api.languagetoolplus.com instead.', sending HTTP code 403. Access from 127.0.0.1, HTTP user agent: node, User agent param: null, Referrer: null, language: en-US, h: 1, r: 8, user: a@b.com, apiKey: k, time: 1text length: 15, m: ALL, l: DEFAULT, (no stacktrace logged)
+2026-03-15 10:00:04.398 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 2ms; sending code 403
+2026-03-15 10:00:04.441 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:04.441 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler An error has occurred: 'With 'username' set, you also need to specify 'apiKey'', sending HTTP code 400. Access from 127.0.0.1, HTTP user agent: node, User agent param: null, Referrer: null, language: en-US, h: 1, r: 9, user: a@b.com, time: 0text length: 15, m: ALL, l: DEFAULT, Stacktrace follows:org.languagetool.server.BadRequestException: With 'username' set, you also need to specify 'apiKey'
+	at org.languagetool.server.ServerTools.getUserLimits(ServerTools.java:157)
+	at org.languagetool.server.TextChecker.checkText(TextChecker.java:358)
+	at org.languagetool.server.ApiV2.handleCheckRequest(ApiV2.java:177)
+	at org.languagetool.server.ApiV2.lambda$handleRequest$4(ApiV2.java:87)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.ApiV2.handleRequest(ApiV2.java:87)
+	at org.languagetool.server.LanguageToolHttpHandler.lambda$handle$0(LanguageToolHttpHandler.java:213)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.LanguageToolHttpHandler.handle(LanguageToolHttpHandler.java:213)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:928)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:904)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+2026-03-15 10:00:04.442 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 1ms; sending code 400
+2026-03-15 10:00:04.444 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:04.445 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler An error has occurred: ''zz' is not a language code known to LanguageTool. Supported language codes are: ar, ast-ES, be-BY, br-FR, ca-ES, ca-ES-balear, ca-ES-valencia, crh-UA, da-DK, de, de-AT, de-CH, de-DE, de-DE-x-simple-language, de-DE-x-simple-language-DE, de-LU, el-GR, en, en-AU, en-CA, en-GB, en-NZ, en-US, en-ZA, eo, es, es-AR, es-ES, fa, fa-IR, fr, fr-BE, fr-CA, fr-CH, fr-FR, ga-IE, gl-ES, it, it-IT, ja-JP, km-KH, nl, nl-BE, nl-NL, pl-PL, pt, pt-AO, pt-BR, pt-MZ, pt-PT, ro-RO, ru-RU, sk-SK, sl-SI, sv, sv-SE, ta-IN, tl-PH, uk-UA, zh-CN. The list of languages is read from META-INF/org/languagetool/language-module.properties in the Java classpath. See https://dev.languagetool.org/java-api for details.', sending HTTP code 400. Access from 127.0.0.1, HTTP user agent: node, User agent param: null, Referrer: null, language: zz, h: 1, r: 10, time: 1text length: 15, m: ALL, l: DEFAULT, Stacktrace follows:org.languagetool.server.BadRequestException: 'zz' is not a language code known to LanguageTool. Supported language codes are: ar, ast-ES, be-BY, br-FR, ca-ES, ca-ES-balear, ca-ES-valencia, crh-UA, da-DK, de, de-AT, de-CH, de-DE, de-DE-x-simple-language, de-DE-x-simple-language-DE, de-LU, el-GR, en, en-AU, en-CA, en-GB, en-NZ, en-US, en-ZA, eo, es, es-AR, es-ES, fa, fa-IR, fr, fr-BE, fr-CA, fr-CH, fr-FR, ga-IE, gl-ES, it, it-IT, ja-JP, km-KH, nl, nl-BE, nl-NL, pl-PL, pt, pt-AO, pt-BR, pt-MZ, pt-PT, ro-RO, ru-RU, sk-SK, sl-SI, sv, sv-SE, ta-IN, tl-PH, uk-UA, zh-CN. The list of languages is read from META-INF/org/languagetool/language-module.properties in the Java classpath. See https://dev.languagetool.org/java-api for details.
+	at org.languagetool.server.TextChecker.parseLanguage(TextChecker.java:265)
+	at org.languagetool.server.V2TextChecker.getLanguage(V2TextChecker.java:125)
+	at org.languagetool.server.TextChecker.lambda$checkText$9(TextChecker.java:480)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:76)
+	at org.languagetool.server.TextChecker.checkText(TextChecker.java:480)
+	at org.languagetool.server.ApiV2.handleCheckRequest(ApiV2.java:177)
+	at org.languagetool.server.ApiV2.lambda$handleRequest$4(ApiV2.java:87)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.ApiV2.handleRequest(ApiV2.java:87)
+	at org.languagetool.server.LanguageToolHttpHandler.lambda$handle$0(LanguageToolHttpHandler.java:213)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.LanguageToolHttpHandler.handle(LanguageToolHttpHandler.java:213)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:928)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:904)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+2026-03-15 10:00:04.446 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 2ms; sending code 400
+2026-03-15 10:00:04.490 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:04.493 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:04.495 GMT+01:00 ERROR org.languagetool.server.LanguageToolHttpHandler Error: Access with referrer https://blocked.example.org/x denied., sending code 403 - useragent: null - HTTP UserAgent: node, r:11, referrer: https://blocked.example.org/x, language: null, 
+2026-03-15 10:00:04.495 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 5ms; sending code 403
+2026-03-15 10:00:04.530 GMT+01:00 INFO  org.languagetool.server.TextChecker Check done: 15 chars, en-US, requestId: e-1, #2, null, 0/0 matches, 36ms, agent:ua, version: 2.0, sent, q:0, h:1, dH:1, r:12, m:all, premium: false
+2026-03-15 10:00:04.530 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 37ms; sending code 200
+2026-03-15 10:00:04.572 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:04.574 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler An error has occurred: 'org.languagetool.server.BadRequestException: 'sourceLanguage' parameter missing - must be set when 'sourceText' is set, detected: en-US', sending HTTP code 400. Access from 127.0.0.1, HTTP user agent: node, User agent param: null, Referrer: null, language: en-US, h: 1, r: 13, time: 1text length: 2, m: ALL, l: DEFAULT, Stacktrace follows:java.lang.RuntimeException: org.languagetool.server.BadRequestException: 'sourceLanguage' parameter missing - must be set when 'sourceText' is set, detected: en-US
+	at org.languagetool.server.TextChecker.lambda$checkText$14(TextChecker.java:664)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:54)
+	at org.languagetool.server.TextChecker.checkText(TextChecker.java:641)
+	at org.languagetool.server.ApiV2.handleCheckRequest(ApiV2.java:177)
+	at org.languagetool.server.ApiV2.lambda$handleRequest$4(ApiV2.java:87)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.ApiV2.handleRequest(ApiV2.java:87)
+	at org.languagetool.server.LanguageToolHttpHandler.lambda$handle$0(LanguageToolHttpHandler.java:213)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.LanguageToolHttpHandler.handle(LanguageToolHttpHandler.java:213)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:928)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:904)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.util.concurrent.ExecutionException: org.languagetool.server.BadRequestException: 'sourceLanguage' parameter missing - must be set when 'sourceText' is set
+	at java.base/java.util.concurrent.FutureTask.report(FutureTask.java:122)
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:191)
+	at org.languagetool.server.TextChecker.lambda$checkText$14(TextChecker.java:646)
+	... 18 more
+Caused by: org.languagetool.server.BadRequestException: 'sourceLanguage' parameter missing - must be set when 'sourceText' is set
+	at org.languagetool.server.TextChecker.getRuleMatches(TextChecker.java:905)
+	at org.languagetool.server.TextChecker.lambda$checkText$13(TextChecker.java:620)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	... 3 more
+
+2026-03-15 10:00:04.575 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 3ms; sending code 400
+2026-03-15 10:00:04.577 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling GET /v2/words
+2026-03-15 10:00:04.578 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler An error has occurred: 'With 'username' set, you also need to specify 'apiKey'', sending HTTP code 400. Access from 127.0.0.1, HTTP user agent: node, User agent param: null, Referrer: null, language: null, h: 1, r: 14, user: u, time: 2m: ALL, l: DEFAULT, Stacktrace follows:org.languagetool.server.BadRequestException: With 'username' set, you also need to specify 'apiKey'
+	at org.languagetool.server.ServerTools.getUserLimits(ServerTools.java:157)
+	at org.languagetool.server.ServerTools.getUserLimits(ServerTools.java:139)
+	at org.languagetool.server.ApiV2.getUserLimits(ApiV2.java:414)
+	at org.languagetool.server.ApiV2.handleWordsRequest(ApiV2.java:188)
+	at org.languagetool.server.ApiV2.lambda$handleRequest$5(ApiV2.java:89)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.ApiV2.handleRequest(ApiV2.java:89)
+	at org.languagetool.server.LanguageToolHttpHandler.lambda$handle$0(LanguageToolHttpHandler.java:213)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.LanguageToolHttpHandler.handle(LanguageToolHttpHandler.java:213)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:928)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:904)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+2026-03-15 10:00:04.578 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 2ms; sending code 400
+2026-03-15 10:00:04.620 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/words/add
+2026-03-15 10:00:04.621 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler An error has occurred: 'This end point needs a user id', sending HTTP code 400. Access from 127.0.0.1, HTTP user agent: node, User agent param: null, Referrer: null, language: null, h: 1, r: 15, time: 1m: ALL, l: DEFAULT, Stacktrace follows:org.languagetool.server.BadRequestException: This end point needs a user id
+	at org.languagetool.server.ApiV2.getUserLimits(ApiV2.java:416)
+	at org.languagetool.server.ApiV2.handleWordAddRequest(ApiV2.java:219)
+	at org.languagetool.server.ApiV2.lambda$handleRequest$6(ApiV2.java:91)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.ApiV2.handleRequest(ApiV2.java:91)
+	at org.languagetool.server.LanguageToolHttpHandler.lambda$handle$0(LanguageToolHttpHandler.java:213)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.LanguageToolHttpHandler.handle(LanguageToolHttpHandler.java:213)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:928)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:904)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+2026-03-15 10:00:04.622 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 2ms; sending code 400
+2026-03-15 10:00:04.623 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling GET /v2/nope/nope
+2026-03-15 10:00:04.623 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler An error has occurred: 'Unsupported action: 'nope/nope'. Please see https://languagetool.org/http-api/swagger-ui/#/default', sending HTTP code 404. Access from 127.0.0.1, HTTP user agent: node, User agent param: null, Referrer: null, language: null, h: 1, r: 16, time: 0m: ALL, l: DEFAULT, Stacktrace follows:org.languagetool.server.PathNotFoundException: Unsupported action: 'nope/nope'. Please see https://languagetool.org/http-api/swagger-ui/#/default
+	at org.languagetool.server.ApiV2.handleRequest(ApiV2.java:105)
+	at org.languagetool.server.LanguageToolHttpHandler.lambda$handle$0(LanguageToolHttpHandler.java:213)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.LanguageToolHttpHandler.handle(LanguageToolHttpHandler.java:213)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:928)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:904)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+2026-03-15 10:00:04.623 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 0ms; sending code 404

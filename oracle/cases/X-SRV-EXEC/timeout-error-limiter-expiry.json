@@ -1,0 +1,73 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "timeoutRequestLimit=1 per 2 s: refused while the window is open, accepted again after it expired",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "sysLoad",
+  "identityHash"
+ ],
+ "isolate": "timeout-error-limiter-expiry",
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "pipelinePrewarming=true\npreferredLanguages=en-US, en-GB, de-DE, fr\nmaxCheckTimeMillis=0\ntimeoutRequestLimit=1\nrequestLimitPeriodInSeconds=2\n"
+ },
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on teh mat."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on teh mat."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on teh mat."
+   }
+  },
+  {
+   "sleep": 2600
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on teh mat."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on teh mat."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on teh mat."
+   }
+  }
+ ]
+}

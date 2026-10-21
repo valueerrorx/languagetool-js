@@ -1,0 +1,60 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "pipelineCaching=true, pipelineExpireTimeInSeconds=1 and a pause between requests",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "sysLoad",
+  "identityHash"
+ ],
+ "isolate": "pipeline-cached-expire",
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "pipelineCaching=true\npipelineExpireTimeInSeconds=1\nmaxPipelinePoolSize=5\n"
+ },
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok."
+   }
+  },
+  {
+   "sleep": 1500
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is another test,, ok."
+   }
+  },
+  {
+   "sleep": 1500
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok."
+   }
+  }
+ ]
+}

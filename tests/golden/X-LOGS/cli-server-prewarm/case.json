@@ -1,0 +1,29 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli-log",
+ "realLogging": true,
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "pipelinePrewarming logs at startup",
+ "args": [
+  "--port",
+  "18387",
+  "--config",
+  "w.properties"
+ ],
+ "files": {
+  "w.properties": "pipelineCaching=true\npipelinePrewarming=true\npreferredLanguages=en-US\n"
+ },
+ "jar": "languagetool-server.jar",
+ "mainClass": "org.languagetool.server.HTTPServer",
+ "streams": [
+  "stdout"
+ ],
+ "ignoreExit": true,
+ "stopOnOutput": "Server started"
+}

@@ -1,0 +1,30 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli-log",
+ "realLogging": true,
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "unknown config key warning block and --public warnings",
+ "args": [
+  "--port",
+  "18385",
+  "--public",
+  "--config",
+  "k.properties"
+ ],
+ "files": {
+  "k.properties": "noSuchKey=1\nmaxTextLength=100\n"
+ },
+ "jar": "languagetool-server.jar",
+ "mainClass": "org.languagetool.server.HTTPServer",
+ "streams": [
+  "stdout"
+ ],
+ "ignoreExit": true,
+ "stopOnOutput": "Server started"
+}

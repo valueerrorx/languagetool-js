@@ -1,0 +1,469 @@
+[
+  {
+    "status": 200,
+    "contentType": "text/plain",
+    "accessControlAllowOrigin": null,
+    "body": "OK"
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "English (US)",
+        "code": "en-US",
+        "detectedLanguage": {
+          "name": "English (US)",
+          "code": "en-US",
+          "confidence": 0.99999124,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Two consecutive commas",
+          "shortMessage": "Two consecutive commas",
+          "replacements": [
+            {
+              "value": ","
+            }
+          ],
+          "offset": 14,
+          "length": 2,
+          "context": {
+            "text": "This is a test,, ok.",
+            "offset": 14,
+            "length": 2
+          },
+          "sentence": "This is a test,, ok.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "DOUBLE_PUNCTUATION",
+            "description": "Use of two consecutive dots or commas",
+            "issueType": "typographical",
+            "urls": [
+              {
+                "value": "https://languagetool.org/insights/post/punctuation-guide/#what-are-periods"
+              }
+            ],
+            "category": {
+              "id": "PUNCTUATION",
+              "name": "Punctuation"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          20
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 20,
+          "detectedLanguages": [
+            {
+              "language": "en",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 400,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: Missing arguments for LanguageTool API. Please see https://languagetool.org/http-api/swagger-ui/#/default"
+  },
+  {
+    "status": 404,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: Unsupported action: 'unknown'. Please see https://languagetool.org/http-api/swagger-ui/#/default"
+  },
+  {
+    "status": 404,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Not found"
+  },
+  {
+    "status": 400,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: Missing 'text' or 'data' parameter"
+  },
+  {
+    "status": 400,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: Missing 'language' parameter, e.g. 'language=en-US' for American English or 'language=fr' for French"
+  },
+  {
+    "status": 200,
+    "contentType": "text/plain",
+    "accessControlAllowOrigin": null,
+    "body": "2147483647"
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": [
+      {
+        "name": "Arabic",
+        "code": "ar",
+        "longCode": "ar"
+      },
+      {
+        "name": "Asturian",
+        "code": "ast",
+        "longCode": "ast-ES"
+      },
+      {
+        "name": "Belarusian",
+        "code": "be",
+        "longCode": "be-BY"
+      },
+      {
+        "name": "Breton",
+        "code": "br",
+        "longCode": "br-FR"
+      },
+      {
+        "name": "Catalan",
+        "code": "ca",
+        "longCode": "ca-ES"
+      },
+      {
+        "name": "Catalan (Valencian)",
+        "code": "ca",
+        "longCode": "ca-ES-valencia"
+      },
+      {
+        "name": "Catalan (Balearic)",
+        "code": "ca",
+        "longCode": "ca-ES-balear"
+      },
+      {
+        "name": "Danish",
+        "code": "da",
+        "longCode": "da-DK"
+      },
+      {
+        "name": "German",
+        "code": "de",
+        "longCode": "de"
+      },
+      {
+        "name": "German (Germany)",
+        "code": "de",
+        "longCode": "de-DE"
+      },
+      {
+        "name": "German (Austria)",
+        "code": "de",
+        "longCode": "de-AT"
+      },
+      {
+        "name": "German (Swiss)",
+        "code": "de",
+        "longCode": "de-CH"
+      },
+      {
+        "name": "Simple German",
+        "code": "de-DE-x-simple-language",
+        "longCode": "de-DE-x-simple-language"
+      },
+      {
+        "name": "Greek",
+        "code": "el",
+        "longCode": "el-GR"
+      },
+      {
+        "name": "English",
+        "code": "en",
+        "longCode": "en"
+      },
+      {
+        "name": "English (US)",
+        "code": "en",
+        "longCode": "en-US"
+      },
+      {
+        "name": "English (GB)",
+        "code": "en",
+        "longCode": "en-GB"
+      },
+      {
+        "name": "English (Australian)",
+        "code": "en",
+        "longCode": "en-AU"
+      },
+      {
+        "name": "English (Canadian)",
+        "code": "en",
+        "longCode": "en-CA"
+      },
+      {
+        "name": "English (New Zealand)",
+        "code": "en",
+        "longCode": "en-NZ"
+      },
+      {
+        "name": "English (South African)",
+        "code": "en",
+        "longCode": "en-ZA"
+      },
+      {
+        "name": "Esperanto",
+        "code": "eo",
+        "longCode": "eo"
+      },
+      {
+        "name": "Spanish",
+        "code": "es",
+        "longCode": "es"
+      },
+      {
+        "name": "Spanish (voseo)",
+        "code": "es",
+        "longCode": "es-AR"
+      },
+      {
+        "name": "Persian",
+        "code": "fa",
+        "longCode": "fa"
+      },
+      {
+        "name": "French",
+        "code": "fr",
+        "longCode": "fr"
+      },
+      {
+        "name": "French (Canada)",
+        "code": "fr",
+        "longCode": "fr-CA"
+      },
+      {
+        "name": "French (Switzerland)",
+        "code": "fr",
+        "longCode": "fr-CH"
+      },
+      {
+        "name": "French (Belgium)",
+        "code": "fr",
+        "longCode": "fr-BE"
+      },
+      {
+        "name": "Irish",
+        "code": "ga",
+        "longCode": "ga-IE"
+      },
+      {
+        "name": "Galician",
+        "code": "gl",
+        "longCode": "gl-ES"
+      },
+      {
+        "name": "Italian",
+        "code": "it",
+        "longCode": "it"
+      },
+      {
+        "name": "Japanese",
+        "code": "ja",
+        "longCode": "ja-JP"
+      },
+      {
+        "name": "Khmer",
+        "code": "km",
+        "longCode": "km-KH"
+      },
+      {
+        "name": "Dutch",
+        "code": "nl",
+        "longCode": "nl"
+      },
+      {
+        "name": "Dutch (Belgium)",
+        "code": "nl",
+        "longCode": "nl-BE"
+      },
+      {
+        "name": "Polish",
+        "code": "pl",
+        "longCode": "pl-PL"
+      },
+      {
+        "name": "Portuguese",
+        "code": "pt",
+        "longCode": "pt"
+      },
+      {
+        "name": "Portuguese (Portugal)",
+        "code": "pt",
+        "longCode": "pt-PT"
+      },
+      {
+        "name": "Portuguese (Brazil)",
+        "code": "pt",
+        "longCode": "pt-BR"
+      },
+      {
+        "name": "Portuguese (Angola preAO)",
+        "code": "pt",
+        "longCode": "pt-AO"
+      },
+      {
+        "name": "Portuguese (Moçambique preAO)",
+        "code": "pt",
+        "longCode": "pt-MZ"
+      },
+      {
+        "name": "Romanian",
+        "code": "ro",
+        "longCode": "ro-RO"
+      },
+      {
+        "name": "Russian",
+        "code": "ru",
+        "longCode": "ru-RU"
+      },
+      {
+        "name": "Slovak",
+        "code": "sk",
+        "longCode": "sk-SK"
+      },
+      {
+        "name": "Slovenian",
+        "code": "sl",
+        "longCode": "sl-SI"
+      },
+      {
+        "name": "Swedish",
+        "code": "sv",
+        "longCode": "sv"
+      },
+      {
+        "name": "Tamil",
+        "code": "ta",
+        "longCode": "ta-IN"
+      },
+      {
+        "name": "Tagalog",
+        "code": "tl",
+        "longCode": "tl-PH"
+      },
+      {
+        "name": "Ukrainian",
+        "code": "uk",
+        "longCode": "uk-UA"
+      },
+      {
+        "name": "Chinese",
+        "code": "zh",
+        "longCode": "zh-CN"
+      },
+      {
+        "name": "Crimean Tatar",
+        "code": "crh",
+        "longCode": "crh-UA"
+      },
+      {
+        "name": "Dutch",
+        "code": "nl",
+        "longCode": "nl-NL"
+      },
+      {
+        "name": "Simple German",
+        "code": "de-DE-x-simple-language",
+        "longCode": "de-DE-x-simple-language-DE"
+      },
+      {
+        "name": "Spanish",
+        "code": "es",
+        "longCode": "es-ES"
+      },
+      {
+        "name": "Italian",
+        "code": "it",
+        "longCode": "it-IT"
+      },
+      {
+        "name": "Persian",
+        "code": "fa",
+        "longCode": "fa-IR"
+      },
+      {
+        "name": "Swedish",
+        "code": "sv",
+        "longCode": "sv-SE"
+      },
+      {
+        "name": "German",
+        "code": "de",
+        "longCode": "de-LU"
+      },
+      {
+        "name": "French",
+        "code": "fr",
+        "longCode": "fr-FR"
+      }
+    ],
+    "languagesList": true
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "English (US)",
+        "code": "en-US",
+        "detectedLanguage": {
+          "name": "English (US)",
+          "code": "en-US",
+          "confidence": 0,
+          "source": null
+        }
+      },
+      "matches": [],
+      "sentenceRanges": [],
+      "extendedSentenceRanges": []
+    }
+  }
+]

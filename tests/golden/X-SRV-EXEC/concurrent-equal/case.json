@@ -1,0 +1,313 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "the same 12 requests sequentially, concurrently (sorted multiset) and staggered 20 ms apart (request order): per-request results must be equal",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "sysLoad",
+  "identityHash"
+ ],
+ "isolate": "concurrent-equal",
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on teh mat."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "He go to school every days."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-GB",
+    "text": "Colour and color,, both fine."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "I has a apple."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "fr",
+    "text": "Ceci est un test,, ok. Le le chat dort."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "fr",
+    "text": "Il a dit (bonjour."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Das ist ein Test,, ok. Das das ist falsch."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Er sagte (hallo."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Café naïve façade,, résumé."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Fine sentence without errors."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Emoji 😀 and a,, comma."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Grüße aus München,, äöü."
+   }
+  },
+  {
+   "parallel": [
+    {
+     "method": "POST",
+     "path": "/v2/check",
+     "params": {
+      "language": "en-US",
+      "text": "This is a test,, ok. The the cat sat on teh mat."
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/v2/check",
+     "params": {
+      "language": "en-US",
+      "text": "He go to school every days."
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/v2/check",
+     "params": {
+      "language": "en-GB",
+      "text": "Colour and color,, both fine."
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/v2/check",
+     "params": {
+      "language": "en-US",
+      "text": "I has a apple."
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/v2/check",
+     "params": {
+      "language": "fr",
+      "text": "Ceci est un test,, ok. Le le chat dort."
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/v2/check",
+     "params": {
+      "language": "fr",
+      "text": "Il a dit (bonjour."
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/v2/check",
+     "params": {
+      "language": "de-DE",
+      "text": "Das ist ein Test,, ok. Das das ist falsch."
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/v2/check",
+     "params": {
+      "language": "de-DE",
+      "text": "Er sagte (hallo."
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/v2/check",
+     "params": {
+      "language": "en-US",
+      "text": "Café naïve façade,, résumé."
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/v2/check",
+     "params": {
+      "language": "en-US",
+      "text": "Fine sentence without errors."
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/v2/check",
+     "params": {
+      "language": "en-US",
+      "text": "Emoji 😀 and a,, comma."
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/v2/check",
+     "params": {
+      "language": "de-DE",
+      "text": "Grüße aus München,, äöü."
+     }
+    }
+   ]
+  },
+  {
+   "parallel": [
+    {
+     "method": "POST",
+     "path": "/v2/check",
+     "params": {
+      "language": "en-US",
+      "text": "This is a test,, ok. The the cat sat on teh mat."
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/v2/check",
+     "params": {
+      "language": "en-US",
+      "text": "He go to school every days."
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/v2/check",
+     "params": {
+      "language": "en-GB",
+      "text": "Colour and color,, both fine."
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/v2/check",
+     "params": {
+      "language": "en-US",
+      "text": "I has a apple."
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/v2/check",
+     "params": {
+      "language": "fr",
+      "text": "Ceci est un test,, ok. Le le chat dort."
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/v2/check",
+     "params": {
+      "language": "fr",
+      "text": "Il a dit (bonjour."
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/v2/check",
+     "params": {
+      "language": "de-DE",
+      "text": "Das ist ein Test,, ok. Das das ist falsch."
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/v2/check",
+     "params": {
+      "language": "de-DE",
+      "text": "Er sagte (hallo."
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/v2/check",
+     "params": {
+      "language": "en-US",
+      "text": "Café naïve façade,, résumé."
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/v2/check",
+     "params": {
+      "language": "en-US",
+      "text": "Fine sentence without errors."
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/v2/check",
+     "params": {
+      "language": "en-US",
+      "text": "Emoji 😀 and a,, comma."
+     }
+    },
+    {
+     "method": "POST",
+     "path": "/v2/check",
+     "params": {
+      "language": "de-DE",
+      "text": "Grüße aus München,, äöü."
+     }
+    }
+   ],
+   "stagger": 20
+  }
+ ]
+}

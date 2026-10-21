@@ -1,0 +1,20 @@
+*** Running in RESTRICTED-ACCESS mode
+2026-03-15 10:00:00.278 GMT+01:00 INFO  org.languagetool.server.DatabaseAccessOpenSource Not setting up database access, dbDriver is not configured
+2026-03-15 09:00:00 +0000 Setting up thread pool with 10 threads
+2026-03-15 10:00:00.988 GMT+01:00 WARN  org.languagetool.language.identifier.DefaultLanguageIdentifier fastText not configured - language detection performance will be degraded. See https://dev.languagetool.org/http-server#starting-from-command-line for instructions.
+2026-03-15 10:00:00.991 GMT+01:00 INFO  org.languagetool.server.TextChecker A/B-Test enabled: []
+2026-03-15 09:00:01 +0000 Starting LanguageTool 6.9-SNAPSHOT (build date: 2026-10-12 18:33:54 +0200, 9b0be9d) server on http://localhost:18300...
+2026-03-15 09:00:01 +0000 Server started
+2026-03-15 10:00:01.029 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling GET /v2/healthcheck
+2026-03-15 10:00:01.047 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 27ms; sending code 200
+2026-03-15 10:00:01.055 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:01.059 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:01.059 GMT+01:00 ERROR org.languagetool.server.LanguageToolHttpHandler Error: Access with referrer https://blocked.example.org/x denied., sending code 403 - useragent: null - HTTP UserAgent: node, r:2, referrer: https://blocked.example.org/x, language: null, 
+2026-03-15 10:00:01.059 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 4ms; sending code 403
+2026-03-15 10:00:01.059 GMT+01:00 ERROR org.languagetool.server.LanguageToolHttpHandler Error: Access with origin https://blocked.example.org denied., sending code 403 - useragent: null - HTTP UserAgent: node, r:3, referrer: null, language: null, 
+2026-03-15 10:00:01.059 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 0ms; sending code 403
+2026-03-15 10:00:01.102 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:01.124 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler An error has occurred: 'Anonymous access is prohibited on this server, please provide authentication.', sending HTTP code 403. Access from 127.0.0.1, HTTP user agent: node, User agent param: null, Referrer: null, language: en-US, h: 1, r: 4, time: 16text length: 15, m: ALL, l: DEFAULT, (no stacktrace logged)
+2026-03-15 10:00:01.124 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 22ms; sending code 403
+2026-03-15 10:00:01.127 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling GET /v2/healthcheck
+2026-03-15 10:00:01.127 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 0ms; sending code 200

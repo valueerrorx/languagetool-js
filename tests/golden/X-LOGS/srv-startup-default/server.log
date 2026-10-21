@@ -1,0 +1,95 @@
+2026-03-15 10:00:00.267 GMT+01:00 INFO  org.languagetool.server.DatabaseAccessOpenSource Not setting up database access, dbDriver is not configured
+2026-03-15 09:00:00 +0000 Setting up thread pool with 10 threads
+2026-03-15 10:00:00.963 GMT+01:00 WARN  org.languagetool.language.identifier.DefaultLanguageIdentifier fastText not configured - language detection performance will be degraded. See https://dev.languagetool.org/http-server#starting-from-command-line for instructions.
+2026-03-15 10:00:00.966 GMT+01:00 INFO  org.languagetool.server.TextChecker A/B-Test enabled: []
+2026-03-15 09:00:00 +0000 Starting LanguageTool 6.9-SNAPSHOT (build date: 2026-10-12 18:33:54 +0200, 9b0be9d) server on http://localhost:18300...
+2026-03-15 09:00:00 +0000 Server started
+2026-03-15 10:00:01.037 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling GET /v2/healthcheck
+2026-03-15 10:00:01.054 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 29ms; sending code 200
+2026-03-15 10:00:01.059 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling GET /v2/healthcheck
+2026-03-15 10:00:01.060 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 1ms; sending code 200
+2026-03-15 10:00:01.065 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:03.526 GMT+01:00 INFO  org.languagetool.server.TextChecker Check done: 20 chars, en-US, requestId: null, #1, null, 0/1 matches, 2433ms, agent:-, sent, q:0, h:1, dH:1, r:3, m:all, premium: false
+2026-03-15 10:00:03.526 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 2461ms; sending code 200
+2026-03-15 10:00:03.560 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling GET /
+2026-03-15 10:00:03.567 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler An error has occurred: 'Missing arguments for LanguageTool API. Please see https://languagetool.org/http-api/swagger-ui/#/default', sending HTTP code 400. Access from 127.0.0.1, HTTP user agent: node, User agent param: null, Referrer: null, language: null, h: 1, r: 4, time: 2m: ALL, l: DEFAULT, Stacktrace follows:org.languagetool.server.BadRequestException: Missing arguments for LanguageTool API. Please see https://languagetool.org/http-api/swagger-ui/#/default
+	at org.languagetool.server.LanguageToolHttpHandler.handle(LanguageToolHttpHandler.java:217)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:928)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:904)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+2026-03-15 10:00:03.568 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 9ms; sending code 400
+2026-03-15 10:00:03.570 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling GET /v2/unknown
+2026-03-15 10:00:03.571 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler An error has occurred: 'Unsupported action: 'unknown'. Please see https://languagetool.org/http-api/swagger-ui/#/default', sending HTTP code 404. Access from 127.0.0.1, HTTP user agent: node, User agent param: null, Referrer: null, language: null, h: 1, r: 5, time: 1m: ALL, l: DEFAULT, Stacktrace follows:org.languagetool.server.PathNotFoundException: Unsupported action: 'unknown'. Please see https://languagetool.org/http-api/swagger-ui/#/default
+	at org.languagetool.server.ApiV2.handleRequest(ApiV2.java:105)
+	at org.languagetool.server.LanguageToolHttpHandler.lambda$handle$0(LanguageToolHttpHandler.java:213)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.LanguageToolHttpHandler.handle(LanguageToolHttpHandler.java:213)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:928)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:904)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+2026-03-15 10:00:03.572 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 2ms; sending code 404
+2026-03-15 10:00:03.615 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling GET /favicon.ico
+2026-03-15 10:00:03.616 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 1ms; sending code 404
+2026-03-15 10:00:03.618 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:03.619 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler An error has occurred: 'Missing 'text' or 'data' parameter', sending HTTP code 400. Access from 127.0.0.1, HTTP user agent: node, User agent param: null, Referrer: null, language: en-US, h: 1, r: 7, time: 1m: ALL, l: DEFAULT, Stacktrace follows:org.languagetool.server.BadRequestException: Missing 'text' or 'data' parameter
+	at org.languagetool.server.ApiV2.handleCheckRequest(ApiV2.java:169)
+	at org.languagetool.server.ApiV2.lambda$handleRequest$4(ApiV2.java:87)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.ApiV2.handleRequest(ApiV2.java:87)
+	at org.languagetool.server.LanguageToolHttpHandler.lambda$handle$0(LanguageToolHttpHandler.java:213)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.LanguageToolHttpHandler.handle(LanguageToolHttpHandler.java:213)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:928)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:904)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+2026-03-15 10:00:03.619 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 1ms; sending code 400
+2026-03-15 10:00:03.663 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:03.664 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler An error has occurred: 'Missing 'language' parameter, e.g. 'language=en-US' for American English or 'language=fr' for French', sending HTTP code 400. Access from 127.0.0.1, HTTP user agent: node, User agent param: null, Referrer: null, language: null, h: 1, r: 8, time: 0text length: 12, m: ALL, l: DEFAULT, Stacktrace follows:org.languagetool.server.BadRequestException: Missing 'language' parameter, e.g. 'language=en-US' for American English or 'language=fr' for French
+	at org.languagetool.server.V2TextChecker.checkParams(V2TextChecker.java:98)
+	at org.languagetool.server.TextChecker.checkText(TextChecker.java:355)
+	at org.languagetool.server.ApiV2.handleCheckRequest(ApiV2.java:177)
+	at org.languagetool.server.ApiV2.lambda$handleRequest$4(ApiV2.java:87)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.ApiV2.handleRequest(ApiV2.java:87)
+	at org.languagetool.server.LanguageToolHttpHandler.lambda$handle$0(LanguageToolHttpHandler.java:213)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.LanguageToolHttpHandler.handle(LanguageToolHttpHandler.java:213)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:928)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:904)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+2026-03-15 10:00:03.664 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 1ms; sending code 400
+2026-03-15 10:00:03.666 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling GET /v2/maxtextlength
+2026-03-15 10:00:03.667 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 1ms; sending code 200
+2026-03-15 10:00:03.710 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling GET /v2/languages
+2026-03-15 10:00:03.712 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 2ms; sending code 200
+2026-03-15 10:00:03.715 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:03.738 GMT+01:00 INFO  org.languagetool.server.TextChecker Check done: 0 chars, en-US, requestId: null, #2, null, 0/0 matches, 23ms, agent:-, sent, q:0, h:1, dH:1, r:11, m:all, premium: false
+2026-03-15 10:00:03.739 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 25ms; sending code 200

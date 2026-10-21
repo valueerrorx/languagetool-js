@@ -54,11 +54,12 @@ export function pinnedEnv(workDir, extra = {}) {
   };
 }
 
-export function pinnedJvmFlags(workDir, extra = []) {
+// opts.realLogging: keep the jar's own logback.xml (X-LOGS) instead of the stderr config of the harness
+export function pinnedJvmFlags(workDir, extra = [], opts = {}) {
   return [
     '-Duser.language=en', '-Duser.country=US', '-Dfile.encoding=UTF-8',
     `-Djava.io.tmpdir=${path.join(workDir, 'tmp')}`,
-    `-Dlogback.configurationFile=${path.join(ROOT, 'oracle/harness/logback-stderr.xml')}`,
+    ...(opts.realLogging ? [] : [`-Dlogback.configurationFile=${path.join(ROOT, 'oracle/harness/logback-stderr.xml')}`]),
     ...extra,
   ];
 }

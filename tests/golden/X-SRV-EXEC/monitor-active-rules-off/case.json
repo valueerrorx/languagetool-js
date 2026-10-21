@@ -1,0 +1,44 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "reference run without -DmonitorActiveRules",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "sysLoad",
+  "identityHash"
+ ],
+ "isolate": "monitor-active-rules-off",
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on teh mat."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Das ist ein Test,, ok. Das das ist falsch."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "fr",
+    "text": "Ceci est un test,, ok."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/healthcheck"
+  }
+ ]
+}

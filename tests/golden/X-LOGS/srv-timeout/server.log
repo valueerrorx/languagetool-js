@@ -1,0 +1,75 @@
+2026-03-15 10:00:00.330 GMT+01:00 INFO  org.languagetool.server.DatabaseAccessOpenSource Not setting up database access, dbDriver is not configured
+2026-03-15 09:00:00 +0000 Setting up thread pool with 10 threads
+2026-03-15 10:00:01.114 GMT+01:00 WARN  org.languagetool.language.identifier.DefaultLanguageIdentifier fastText not configured - language detection performance will be degraded. See https://dev.languagetool.org/http-server#starting-from-command-line for instructions.
+2026-03-15 10:00:01.117 GMT+01:00 INFO  org.languagetool.server.TextChecker Prewarming pipelines...
+2026-03-15 10:00:01.119 GMT+01:00 INFO  org.languagetool.server.TextChecker Prewarming 2 pipelines
+2026-03-15 10:00:04.786 GMT+01:00 INFO  org.languagetool.server.TextChecker Prewarming finished in 3.669 seconds.
+2026-03-15 10:00:04.786 GMT+01:00 INFO  org.languagetool.server.TextChecker A/B-Test enabled: []
+2026-03-15 09:00:04 +0000 Starting LanguageTool 6.9-SNAPSHOT (build date: 2026-10-12 18:33:54 +0200, 9b0be9d) server on http://localhost:18300...
+2026-03-15 09:00:04 +0000 Server started
+2026-03-15 10:00:04.864 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling GET /v2/healthcheck
+2026-03-15 10:00:04.882 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 22ms; sending code 200
+2026-03-15 10:00:04.891 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:04.934 GMT+01:00 WARN  org.languagetool.server.LanguageToolHttpHandler An error has occurred: 'Text checking took longer than allowed maximum of 0 milliseconds (cancelled: true, lang: en-US, detected: en-US, #1, 20 characters of text, mode: all, h: 1, r: 2, requestId: null, system load: [11.16 13.19 14.19 13/1717 2568189])', sending HTTP code 500. Access from 127.0.0.1, HTTP user agent: node, User agent param: null, Referrer: null, language: en-US, h: 1, r: 2, time: 38text length: 20, m: ALL, l: DEFAULT, Stacktrace follows:java.lang.RuntimeException: Text checking took longer than allowed maximum of 0 milliseconds (cancelled: true, lang: en-US, detected: en-US, #1, 20 characters of text, mode: all, h: 1, r: 2, requestId: null, system load: [11.16 13.19 14.19 13/1717 2568189])
+	at org.languagetool.server.TextChecker.lambda$checkText$14(TextChecker.java:692)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:54)
+	at org.languagetool.server.TextChecker.checkText(TextChecker.java:641)
+	at org.languagetool.server.ApiV2.handleCheckRequest(ApiV2.java:177)
+	at org.languagetool.server.ApiV2.lambda$handleRequest$4(ApiV2.java:87)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.ApiV2.handleRequest(ApiV2.java:87)
+	at org.languagetool.server.LanguageToolHttpHandler.lambda$handle$0(LanguageToolHttpHandler.java:213)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.LanguageToolHttpHandler.handle(LanguageToolHttpHandler.java:213)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:928)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:904)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.util.concurrent.TimeoutException
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:204)
+	at org.languagetool.server.TextChecker.lambda$checkText$14(TextChecker.java:648)
+	... 18 more
+
+2026-03-15 10:00:04.935 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 44ms; sending code 500
+2026-03-15 10:00:04.939 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:04.941 GMT+01:00 INFO  org.languagetool.server.TextChecker Text checking took longer than allowed maximum of 0 milliseconds (cancelled: true, lang: en-US, detected: en-US, #1, 20 characters of text, mode: all, h: 1, r: 3, requestId: null, system load: [11.16 13.19 14.19 14/1722 2568195]) - returning 0 matches found so far
+2026-03-15 10:00:04.955 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:04.957 GMT+01:00 WARN  org.languagetool.server.LanguageToolHttpHandler An error has occurred: 'Text checking took longer than allowed maximum of 0 milliseconds (cancelled: true, lang: en-US, detected: en-US, #2, 20 characters of text, mode: all, h: 2, r: 4, requestId: null, system load: [11.16 13.19 14.19 14/1725 2568198])', sending HTTP code 500. Access from 127.0.0.1, HTTP user agent: node, User agent param: null, Referrer: null, language: en-US, h: 2, r: 4, time: 2text length: 20, m: ALL, l: DEFAULT, Stacktrace follows:java.lang.RuntimeException: Text checking took longer than allowed maximum of 0 milliseconds (cancelled: true, lang: en-US, detected: en-US, #2, 20 characters of text, mode: all, h: 2, r: 4, requestId: null, system load: [11.16 13.19 14.19 14/1725 2568198])
+	at org.languagetool.server.TextChecker.lambda$checkText$14(TextChecker.java:692)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:54)
+	at org.languagetool.server.TextChecker.checkText(TextChecker.java:641)
+	at org.languagetool.server.ApiV2.handleCheckRequest(ApiV2.java:177)
+	at org.languagetool.server.ApiV2.lambda$handleRequest$4(ApiV2.java:87)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.ApiV2.handleRequest(ApiV2.java:87)
+	at org.languagetool.server.LanguageToolHttpHandler.lambda$handle$0(LanguageToolHttpHandler.java:213)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.LanguageToolHttpHandler.handle(LanguageToolHttpHandler.java:213)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:928)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:904)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.util.concurrent.TimeoutException
+	at java.base/java.util.concurrent.FutureTask.get(FutureTask.java:204)
+	at org.languagetool.server.TextChecker.lambda$checkText$14(TextChecker.java:648)
+	... 18 more
+
+2026-03-15 10:00:04.958 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 3ms; sending code 500
+2026-03-15 10:00:04.964 GMT+01:00 INFO  org.languagetool.server.TextChecker Check done: 20 chars, en-US, requestId: null, #1, null, 0/0 matches, 11ms, agent:-, sent, q:0, h:1, dH:1, r:3, m:all, premium: false
+2026-03-15 10:00:04.966 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 26ms; sending code 200
+2026-03-15 10:00:05.002 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:05.009 GMT+01:00 INFO  org.languagetool.server.ErrorRequestLimiter wouldAccessBeOkay -> false: Client request limit of 2 requests per 3600 seconds exceeded
+2026-03-15 10:00:05.016 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling GET /v2/healthcheck
+2026-03-15 10:00:05.017 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 2ms; sending code 200
+2026-03-15 10:00:05.017 GMT+01:00 ERROR org.languagetool.server.LanguageToolHttpHandler Error: Access from 127.0.0.1 denied - too many recent timeouts. Text size: 20. Allowed maximum timeouts: 2 per 3600 seconds, sending code 429 - useragent: ua - HTTP UserAgent: node, r:5, referrer: null, language: en-US, Text size: 20.
+2026-03-15 10:00:05.017 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 15ms; sending code 429

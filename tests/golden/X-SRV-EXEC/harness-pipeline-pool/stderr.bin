@@ -1,0 +1,52 @@
+2026-03-15 10:00:00.749 INFO  o.l.server.DatabaseAccessOpenSource - Not setting up database access, dbDriver is not configured
+2026-03-15 10:00:06.983 INFO  o.languagetool.server.PipelinePool - Pipeline pool capacity reached: 1 active objects, 0 idle
+2026-03-15 10:00:07.024 INFO  o.languagetool.server.PipelinePool - Exception while trying to return pipeline to pool; this is expected when pipeline capacity is reached
+java.lang.IllegalStateException: Returned object not currently part of this pool
+	at org.apache.commons.pool2.impl.GenericKeyedObjectPool.returnObject(GenericKeyedObjectPool.java:1497)
+	at org.languagetool.server.PipelinePool.returnPipeline(PipelinePool.java:105)
+	at org.languagetool.server.LtjsBridge.pipelinePool(LtjsBridge.java:200)
+	at ltjs.oracle.Harness.dispatch(Harness.java:187)
+	at ltjs.oracle.Harness.main(Harness.java:43)
+2026-03-15 10:00:07.028 INFO  o.languagetool.server.PipelinePool - Pipeline pool capacity reached: 1 active objects, 0 idle
+2026-03-15 10:00:08.490 INFO  o.languagetool.server.PipelinePool - Exception while trying to return pipeline to pool; this is expected when pipeline capacity is reached
+java.lang.IllegalStateException: No keyed pool found under the given key.
+	at org.apache.commons.pool2.impl.GenericKeyedObjectPool.returnObject(GenericKeyedObjectPool.java:1491)
+	at org.languagetool.server.PipelinePool.returnPipeline(PipelinePool.java:105)
+	at org.languagetool.server.LtjsBridge.pipelinePool(LtjsBridge.java:200)
+	at ltjs.oracle.Harness.dispatch(Harness.java:187)
+	at ltjs.oracle.Harness.main(Harness.java:43)
+2026-03-15 10:00:08.491 INFO  o.languagetool.server.PipelinePool - Pipeline pool capacity reached: 1 active objects, 0 idle
+2026-03-15 10:00:08.550 INFO  o.languagetool.server.PipelinePool - Exception while trying to return pipeline to pool; this is expected when pipeline capacity is reached
+java.lang.IllegalStateException: No keyed pool found under the given key.
+	at org.apache.commons.pool2.impl.GenericKeyedObjectPool.returnObject(GenericKeyedObjectPool.java:1491)
+	at org.languagetool.server.PipelinePool.returnPipeline(PipelinePool.java:105)
+	at org.languagetool.server.LtjsBridge.pipelinePool(LtjsBridge.java:200)
+	at ltjs.oracle.Harness.dispatch(Harness.java:187)
+	at ltjs.oracle.Harness.main(Harness.java:43)
+2026-03-15 10:00:08.662 INFO  o.languagetool.server.PipelinePool - Pipeline pool capacity reached: 3 active objects, 0 idle
+2026-03-15 10:00:08.693 INFO  o.languagetool.server.PipelinePool - Exception while trying to return pipeline to pool; this is expected when pipeline capacity is reached
+java.lang.IllegalStateException: Returned object not currently part of this pool
+	at org.apache.commons.pool2.impl.GenericKeyedObjectPool.returnObject(GenericKeyedObjectPool.java:1497)
+	at org.languagetool.server.PipelinePool.returnPipeline(PipelinePool.java:105)
+	at org.languagetool.server.LtjsBridge.pipelinePool(LtjsBridge.java:200)
+	at ltjs.oracle.Harness.dispatch(Harness.java:187)
+	at ltjs.oracle.Harness.main(Harness.java:43)
+2026-03-15 10:00:08.694 INFO  o.languagetool.server.PipelinePool - Pipeline pool capacity reached: 3 active objects, 0 idle
+2026-03-15 10:00:08.719 INFO  o.languagetool.server.PipelinePool - Pipeline pool capacity reached: 3 active objects, 0 idle
+2026-03-15 10:00:08.754 INFO  o.languagetool.server.PipelinePool - Exception while trying to return pipeline to pool; this is expected when pipeline capacity is reached
+java.lang.IllegalStateException: No keyed pool found under the given key.
+	at org.apache.commons.pool2.impl.GenericKeyedObjectPool.returnObject(GenericKeyedObjectPool.java:1491)
+	at org.languagetool.server.PipelinePool.returnPipeline(PipelinePool.java:105)
+	at org.languagetool.server.LtjsBridge.pipelinePool(LtjsBridge.java:200)
+	at ltjs.oracle.Harness.dispatch(Harness.java:187)
+	at ltjs.oracle.Harness.main(Harness.java:43)
+2026-03-15 10:00:08.755 INFO  o.languagetool.server.PipelinePool - Exception while trying to return pipeline to pool; this is expected when pipeline capacity is reached
+java.lang.IllegalStateException: Object has already been returned to this pool or is invalid
+	at org.apache.commons.pool2.impl.BaseGenericObjectPool.markReturningState(BaseGenericObjectPool.java:1325)
+	at org.apache.commons.pool2.impl.GenericKeyedObjectPool.returnObject(GenericKeyedObjectPool.java:1500)
+	at org.languagetool.server.PipelinePool.returnPipeline(PipelinePool.java:105)
+	at org.languagetool.server.LtjsBridge.pipelinePool(LtjsBridge.java:200)
+	at ltjs.oracle.Harness.dispatch(Harness.java:187)
+	at ltjs.oracle.Harness.main(Harness.java:43)
+2026-03-15 10:00:08.793 INFO  o.languagetool.server.PipelinePool - Pipeline pool capacity reached: 3 active objects, 0 idle
+2026-03-15 10:00:09.058 INFO  o.languagetool.server.PipelinePool - Pipeline pool capacity reached: 2 active objects, 0 idle

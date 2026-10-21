@@ -1,0 +1,44 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "maxCheckTimeMillisLoggedIn/Premium and the legacy key maxCheckTimeWithApiKeyMillis do not limit anonymous requests",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "sysLoad",
+  "identityHash"
+ ],
+ "isolate": "timeout-other-keys",
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "pipelinePrewarming=true\npreferredLanguages=en-US, en-GB, de-DE, fr\nmaxCheckTimeMillisLoggedIn=0\nmaxCheckTimeMillisPremium=0\nmaxCheckTimeWithApiKeyMillis=0\n"
+ },
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on teh mat."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on teh mat.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/maxtextlength"
+  }
+ ]
+}

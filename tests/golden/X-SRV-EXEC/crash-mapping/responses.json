@@ -1,0 +1,835 @@
+[
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "English (US)",
+        "code": "en-US",
+        "detectedLanguage": {
+          "name": "English (US)",
+          "code": "en-US",
+          "confidence": 0.9763576,
+          "source": "+fallback"
+        }
+      },
+      "matches": [],
+      "sentenceRanges": [
+        [
+          0,
+          8
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 8,
+          "detectedLanguages": [
+            {
+              "language": "en",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 400,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: ErrorRateTooHigh is reached by a single sentence after rule: PHRASE_REPETITION[1]. The whole text contains 54 words and this sentence has 46 matches."
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": true,
+        "incompleteResultsReason": "Results are incomplete: ErrorRateTooHigh is reached by a single sentence after rule: PHRASE_REPETITION[1]. The whole text contains 54 words and this sentence has 46 matches."
+      },
+      "language": {
+        "name": "English (US)",
+        "code": "en-US",
+        "detectedLanguage": {
+          "name": "English (US)",
+          "code": "en-US",
+          "confidence": 0.9999982,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "This sentence does not start with an uppercase letter.",
+          "shortMessage": "Capitalization",
+          "replacements": [
+            {
+              "value": "The"
+            }
+          ],
+          "offset": 0,
+          "length": 3,
+          "context": {
+            "text": "the the the the the the the the the the the...",
+            "offset": 0,
+            "length": 3
+          },
+          "sentence": "the the the the the the the the the the the the the the the the the the the the the the the the the the the the cat cat cat cat cat cat cat cat cat cat cat cat cat cat cat cat cat cat cat cat cat cat cat cat.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "UPPERCASE_SENTENCE_START",
+            "description": "Checks that a sentence starts with an uppercase letter",
+            "issueType": "typographical",
+            "urls": [
+              {
+                "value": "https://languagetool.org/insights/post/spelling-capital-letters/"
+              }
+            ],
+            "category": {
+              "id": "CASING",
+              "name": "Capitalization"
+            }
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": -1
+        }
+      ],
+      "sentenceRanges": [],
+      "extendedSentenceRanges": []
+    }
+  },
+  {
+    "status": 400,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: ErrorRateTooHigh is reached by a single sentence after rule: PHRASE_REPETITION[1]. The whole text contains 54 words and this sentence has 46 matches."
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "English (US)",
+        "code": "en-US",
+        "detectedLanguage": {
+          "name": "English (US)",
+          "code": "en-US",
+          "confidence": 0.99999356,
+          "source": "+fallback"
+        }
+      },
+      "matches": [],
+      "sentenceRanges": [
+        [
+          0,
+          48
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 48,
+          "detectedLanguages": [
+            {
+              "language": "en",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 400,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: org.languagetool.server.BadRequestException: 'sourceLanguage' parameter missing - must be set when 'sourceText' is set, detected: en-US"
+  },
+  {
+    "status": 400,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: org.languagetool.server.BadRequestException: 'xx-XX' is not a language code known to LanguageTool. Supported language codes are: ar, ast-ES, be-BY, br-FR, ca-ES, ca-ES-balear, ca-ES-valencia, crh-UA, da-DK, de, de-AT, de-CH, de-DE, de-DE-x-simple-language, de-DE-x-simple-language-DE, de-LU, el-GR, en, en-AU, en-CA, en-GB, en-NZ, en-US, en-ZA, eo, es, es-AR, es-ES, fa, fa-IR, fr, fr-BE, fr-CA, fr-CH, fr-FR, ga-IE, gl-ES, it, it-IT, ja-JP, km-KH, nl, nl-BE, nl-NL, pl-PL, pt, pt-AO, pt-BR, pt-MZ, pt-PT, ro-RO, ru-RU, sk-SK, sl-SI, sv, sv-SE, ta-IN, tl-PH, uk-UA, zh-CN. The list of languages is read from META-INF/org/languagetool/language-module.properties in the Java classpath. See https://dev.languagetool.org/java-api for details., detected: en-US"
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "English (US)",
+        "code": "en-US",
+        "detectedLanguage": {
+          "name": "English (US)",
+          "code": "en-US",
+          "confidence": 0.9999905,
+          "source": "+fallback"
+        }
+      },
+      "matches": [],
+      "sentenceRanges": [],
+      "extendedSentenceRanges": []
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "English (US)",
+        "code": "en-US",
+        "detectedLanguage": {
+          "name": "English (US)",
+          "code": "en-US",
+          "confidence": 0.9999905,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Source and target translation lengths are very different",
+          "shortMessage": "",
+          "replacements": [],
+          "offset": 0,
+          "length": 15,
+          "context": {
+            "text": "This is a test.",
+            "offset": 0,
+            "length": 15
+          },
+          "sentence": "This is a test.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "TRANSLATION_LENGTH",
+            "description": "Check if translation length is similar to source length",
+            "issueType": "length",
+            "category": {
+              "id": "MISC",
+              "name": "Miscellaneous"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Source and target translation have different ending punctuation",
+          "shortMessage": "",
+          "replacements": [],
+          "offset": 1,
+          "length": 14,
+          "context": {
+            "text": "This is a test.",
+            "offset": 1,
+            "length": 14
+          },
+          "sentence": "This is a test.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "DIFFERENT_PUNCTUATION",
+            "description": "Check if translation has ending punctuation different from the source",
+            "issueType": "typographical",
+            "category": {
+              "id": "MISC",
+              "name": "Miscellaneous"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [],
+      "extendedSentenceRanges": []
+    }
+  },
+  {
+    "status": 500,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: Internal Error: Index 1 out of bounds for length 1"
+  },
+  {
+    "status": 500,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: Internal Error: Index 1 out of bounds for length 1"
+  },
+  {
+    "status": 500,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: Internal Error: For input string: \"ef\""
+  },
+  {
+    "status": 500,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: Internal Error: Index 1 out of bounds for length 1"
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "English (US)",
+        "code": "en-US",
+        "detectedLanguage": {
+          "name": "English (US)",
+          "code": "en-US",
+          "confidence": 0.9999905,
+          "source": "+fallback"
+        }
+      },
+      "matches": [],
+      "sentenceRanges": [
+        [
+          0,
+          15
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 15,
+          "detectedLanguages": [
+            {
+              "language": "en",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "English (US)",
+        "code": "en-US",
+        "detectedLanguage": {
+          "name": "English (US)",
+          "code": "en-US",
+          "confidence": 0.9999905,
+          "source": "+fallback"
+        }
+      },
+      "matches": [],
+      "sentenceRanges": [
+        [
+          0,
+          15
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 15,
+          "detectedLanguages": [
+            {
+              "language": "en",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "English (US)",
+        "code": "en-US",
+        "detectedLanguage": {
+          "name": "English (US)",
+          "code": "en-US",
+          "confidence": 0.9999905,
+          "source": "+fallback"
+        }
+      },
+      "matches": [],
+      "sentenceRanges": [
+        [
+          0,
+          15
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 15,
+          "detectedLanguages": [
+            {
+              "language": "en",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "English (US)",
+        "code": "en-US",
+        "detectedLanguage": {
+          "name": "English (US)",
+          "code": "en-US",
+          "confidence": 0.9999905,
+          "source": "+fallback"
+        }
+      },
+      "matches": [],
+      "sentenceRanges": [
+        [
+          0,
+          15
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 15,
+          "detectedLanguages": [
+            {
+              "language": "en",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 400,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: 'xx' is not a language code known to LanguageTool. Supported language codes are: ar, ast-ES, be-BY, br-FR, ca-ES, ca-ES-balear, ca-ES-valencia, crh-UA, da-DK, de, de-AT, de-CH, de-DE, de-DE-x-simple-language, de-DE-x-simple-language-DE, de-LU, el-GR, en, en-AU, en-CA, en-GB, en-NZ, en-US, en-ZA, eo, es, es-AR, es-ES, fa, fa-IR, fr, fr-BE, fr-CA, fr-CH, fr-FR, ga-IE, gl-ES, it, it-IT, ja-JP, km-KH, nl, nl-BE, nl-NL, pl-PL, pt, pt-AO, pt-BR, pt-MZ, pt-PT, ro-RO, ru-RU, sk-SK, sl-SI, sv, sv-SE, ta-IN, tl-PH, uk-UA, zh-CN. The list of languages is read from META-INF/org/languagetool/language-module.properties in the Java classpath. See https://dev.languagetool.org/java-api for details."
+  },
+  {
+    "status": 400,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: You specified altLanguage 'de', but for this language you need to specify a variant, e.g. 'en-GB' instead of just 'en'"
+  },
+  {
+    "status": 400,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: 'xx' is not a language code known to LanguageTool. Supported language codes are: ar, ast-ES, be-BY, br-FR, ca-ES, ca-ES-balear, ca-ES-valencia, crh-UA, da-DK, de, de-AT, de-CH, de-DE, de-DE-x-simple-language, de-DE-x-simple-language-DE, de-LU, el-GR, en, en-AU, en-CA, en-GB, en-NZ, en-US, en-ZA, eo, es, es-AR, es-ES, fa, fa-IR, fr, fr-BE, fr-CA, fr-CH, fr-FR, ga-IE, gl-ES, it, it-IT, ja-JP, km-KH, nl, nl-BE, nl-NL, pl-PL, pt, pt-AO, pt-BR, pt-MZ, pt-PT, ro-RO, ru-RU, sk-SK, sl-SI, sv, sv-SE, ta-IN, tl-PH, uk-UA, zh-CN. The list of languages is read from META-INF/org/languagetool/language-module.properties in the Java classpath. See https://dev.languagetool.org/java-api for details."
+  },
+  {
+    "status": 400,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: Unknown value 'foo' for parameter 'level'. Valid values: default, picky, academic, clarity, professional, creative, customer, jobapp, objective, elegant"
+  },
+  {
+    "status": 400,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: Mode must be one of 'textLevelOnly', 'allButTextLevelOnly', or 'all' but was: 'foo'"
+  },
+  {
+    "status": 400,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: 'callback' value must match [a-zA-Z]+: '1'"
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": "ok({\"software\":{\"name\":\"LanguageTool\",\"version\":\"6.9-SNAPSHOT\",\"buildDate\":\"2026-10-12 18:33:54 +0200\",\"apiVersion\":1,\"premium\":false,\"premiumHint\":\"You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.\",\"status\":\"\"},\"warnings\":{\"incompleteResults\":false},\"language\":{\"name\":\"English (US)\",\"code\":\"en-US\",\"detectedLanguage\":{\"name\":\"English (US)\",\"code\":\"en-US\",\"confidence\":0.9999905,\"source\":\"+fallback\"}},\"matches\":[],\"sentenceRanges\":[[0,15]],\"extendedSentenceRanges\":[{\"from\":0,\"to\":15,\"detectedLanguages\":[{\"language\":\"en\",\"rate\":1.0}]}]});"
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "English (US)",
+        "code": "en-US",
+        "detectedLanguage": {
+          "name": "English (US)",
+          "code": "en-US",
+          "confidence": 0.9999905,
+          "source": "+fallback"
+        }
+      },
+      "matches": [],
+      "sentenceRanges": [
+        [
+          0,
+          15
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 15,
+          "detectedLanguages": [
+            {
+              "language": "en",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "English (US)",
+        "code": "en-US",
+        "detectedLanguage": {
+          "name": "English (US)",
+          "code": "en-US",
+          "confidence": 0.9999905,
+          "source": "+fallback"
+        }
+      },
+      "matches": [],
+      "sentenceRanges": [
+        [
+          0,
+          15
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 15,
+          "detectedLanguages": [
+            {
+              "language": "en",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "English (US)",
+        "code": "en-US",
+        "detectedLanguage": {
+          "name": "English (US)",
+          "code": "en-US",
+          "confidence": 0.9999905,
+          "source": "+fallback"
+        }
+      },
+      "matches": [],
+      "sentenceRanges": [
+        [
+          0,
+          15
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 15,
+          "detectedLanguages": [
+            {
+              "language": "en",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "English (US)",
+        "code": "en-US",
+        "detectedLanguage": {
+          "name": "English (US)",
+          "code": "en-US",
+          "confidence": 0.9999905,
+          "source": "+fallback"
+        }
+      },
+      "matches": [],
+      "sentenceRanges": [
+        [
+          0,
+          15
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 15,
+          "detectedLanguages": [
+            {
+              "language": "en",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 400,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: You must specify enabled rules or categories when using enabledOnly=true"
+  },
+  {
+    "status": 400,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: You cannot specify disabled rules or categories using enabledOnly=true"
+  },
+  {
+    "status": 400,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: You can specify 'noopLanguages' only when also using 'language=auto'"
+  },
+  {
+    "status": 500,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": "Error: Internal Error: For input string: \"x\""
+  },
+  {
+    "status": 400,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: 'zz' is not a language code known to LanguageTool. Supported language codes are: ar, ast-ES, be-BY, br-FR, ca-ES, ca-ES-balear, ca-ES-valencia, crh-UA, da-DK, de, de-AT, de-CH, de-DE, de-DE-x-simple-language, de-DE-x-simple-language-DE, de-LU, el-GR, en, en-AU, en-CA, en-GB, en-NZ, en-US, en-ZA, eo, es, es-AR, es-ES, fa, fa-IR, fr, fr-BE, fr-CA, fr-CH, fr-FR, ga-IE, gl-ES, it, it-IT, ja-JP, km-KH, nl, nl-BE, nl-NL, pl-PL, pt, pt-AO, pt-BR, pt-MZ, pt-PT, ro-RO, ru-RU, sk-SK, sl-SI, sv, sv-SE, ta-IN, tl-PH, uk-UA, zh-CN. The list of languages is read from META-INF/org/languagetool/language-module.properties in the Java classpath. See https://dev.languagetool.org/java-api for details."
+  },
+  {
+    "status": 400,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: Missing 'language' parameter, e.g. 'language=en-US' for American English or 'language=fr' for French"
+  },
+  {
+    "status": 400,
+    "contentType": "",
+    "accessControlAllowOrigin": null,
+    "body": "Error: Missing 'text' or 'data' parameter"
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "English (US)",
+        "code": "en-US",
+        "detectedLanguage": {
+          "name": "English (US)",
+          "code": "en-US",
+          "confidence": 0.9999905,
+          "source": "+fallback"
+        }
+      },
+      "matches": [],
+      "sentenceRanges": [],
+      "extendedSentenceRanges": []
+    }
+  }
+]

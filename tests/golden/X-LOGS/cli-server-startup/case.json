@@ -1,0 +1,25 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli-log",
+ "realLogging": true,
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "server startup lines with the real logback layout (SRV-0089)",
+ "args": [
+  "--port",
+  "18384"
+ ],
+ "files": null,
+ "jar": "languagetool-server.jar",
+ "mainClass": "org.languagetool.server.HTTPServer",
+ "streams": [
+  "stdout"
+ ],
+ "ignoreExit": true,
+ "stopOnOutput": "Server started"
+}

@@ -1,0 +1,20 @@
+2026-03-15 10:00:00.629 INFO  o.l.server.DatabaseAccessOpenSource - Not setting up database access, dbDriver is not configured
+2026-03-15 10:00:02.068 WARN  o.l.l.i.DefaultLanguageIdentifier - fastText not configured - language detection performance will be degraded. See https://dev.languagetool.org/http-server#starting-from-command-line for instructions.
+2026-03-15 10:00:02.185 INFO  org.languagetool.server.TextChecker - Prewarming pipelines...
+Exception in thread "main" java.lang.RuntimeException: Could not start LanguageTool HTTP server on localhost, port 18393
+	at org.languagetool.server.HTTPServer.main(HTTPServer.java:184)
+Caused by: org.languagetool.server.PortBindingException: LanguageTool HTTP server could not be started on host "localhost", port 18393.
+Maybe something else is running on that port already?
+	at org.languagetool.server.HTTPServer.<init>(HTTPServer.java:128)
+	at org.languagetool.server.HTTPServer.main(HTTPServer.java:180)
+Caused by: java.lang.IllegalArgumentException: 'xx-YY' is not a language code known to LanguageTool. Supported language codes are: ar, ast-ES, be-BY, br-FR, ca-ES, ca-ES-balear, ca-ES-valencia, crh-UA, da-DK, de, de-AT, de-CH, de-DE, de-DE-x-simple-language, de-DE-x-simple-language-DE, de-LU, el-GR, en, en-AU, en-CA, en-GB, en-NZ, en-US, en-ZA, eo, es, es-AR, es-ES, fa, fa-IR, fr, fr-BE, fr-CA, fr-CH, fr-FR, ga-IE, gl-ES, it, it-IT, ja-JP, km-KH, nl, nl-BE, nl-NL, pl-PL, pt, pt-AO, pt-BR, pt-MZ, pt-PT, ro-RO, ru-RU, sk-SK, sl-SI, sv, sv-SE, ta-IN, tl-PH, uk-UA, zh-CN. The list of languages is read from META-INF/org/languagetool/language-module.properties in the Java classpath. See https://dev.languagetool.org/java-api for details.
+	at org.languagetool.Languages.getLanguageForShortCode(Languages.java:240)
+	at org.languagetool.Languages.getLanguageForShortCode(Languages.java:218)
+	at org.languagetool.server.TextChecker.lambda$prewarmPipelinePool$6(TextChecker.java:301)
+	at java.base/java.util.Arrays$ArrayList.forEach(Arrays.java:4204)
+	at org.languagetool.server.TextChecker.prewarmPipelinePool(TextChecker.java:301)
+	at org.languagetool.server.TextChecker.<init>(TextChecker.java:248)
+	at org.languagetool.server.V2TextChecker.<init>(V2TextChecker.java:48)
+	at org.languagetool.server.LanguageToolHttpHandler.<init>(LanguageToolHttpHandler.java:84)
+	at org.languagetool.server.HTTPServer.<init>(HTTPServer.java:110)
+	... 1 more

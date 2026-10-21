@@ -1,0 +1,92 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "timeoutRequestLimit=2 per 3600 s: third timeout request is refused with 429; window expiry with a 2 s period",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "sysLoad",
+  "identityHash"
+ ],
+ "isolate": "timeout-error-limiter",
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "pipelinePrewarming=true\npreferredLanguages=en-US, en-GB, de-DE, fr\nmaxCheckTimeMillis=0\ntimeoutRequestLimit=2\nrequestLimitPeriodInSeconds=3600\n"
+ },
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on teh mat."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on teh mat."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on teh mat."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "data": "{\"text\":\"Data text.\"}"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "data": "{\"annotation\":[{\"text\":\"Data \"},{\"markup\":\"<b>\"},{\"text\":\"text.\"}]}"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on teh mat.",
+    "allowIncompleteResults": "true"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/healthcheck"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/maxtextlength"
+  },
+  {
+   "method": "GET",
+   "path": "/v2/languages",
+   "languagesList": true
+  }
+ ]
+}

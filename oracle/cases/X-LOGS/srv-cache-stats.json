@@ -1,0 +1,264 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "cacheSize=2000: \"Cache stats: s% / m% / r% hit rate\" every 500 cache requests",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "sysLoad",
+  "identityHash"
+ ],
+ "isolate": "srv-cache-stats",
+ "realLogging": true,
+ "captureLog": true,
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "cacheSize=2000\n"
+ },
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Sentence 0-0 has a comma,, problem. Sentence 0-1 has a comma,, problem. Sentence 0-2 has a comma,, problem. Sentence 0-3 has a comma,, problem. Sentence 0-4 has a comma,, problem. Sentence 0-5 has a comma,, problem. Sentence 0-6 has a comma,, problem. Sentence 0-7 has a comma,, problem. Sentence 0-8 has a comma,, problem. Sentence 0-9 has a comma,, problem. Sentence 0-10 has a comma,, problem. Sentence 0-11 has a comma,, problem. Sentence 0-12 has a comma,, problem. Sentence 0-13 has a comma,, problem. Sentence 0-14 has a comma,, problem. Sentence 0-15 has a comma,, problem. Sentence 0-16 has a comma,, problem. Sentence 0-17 has a comma,, problem. Sentence 0-18 has a comma,, problem. Sentence 0-19 has a comma,, problem. Sentence 0-20 has a comma,, problem. Sentence 0-21 has a comma,, problem. Sentence 0-22 has a comma,, problem. Sentence 0-23 has a comma,, problem. Sentence 0-24 has a comma,, problem.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Sentence 1-0 has a comma,, problem. Sentence 1-1 has a comma,, problem. Sentence 1-2 has a comma,, problem. Sentence 1-3 has a comma,, problem. Sentence 1-4 has a comma,, problem. Sentence 1-5 has a comma,, problem. Sentence 1-6 has a comma,, problem. Sentence 1-7 has a comma,, problem. Sentence 1-8 has a comma,, problem. Sentence 1-9 has a comma,, problem. Sentence 1-10 has a comma,, problem. Sentence 1-11 has a comma,, problem. Sentence 1-12 has a comma,, problem. Sentence 1-13 has a comma,, problem. Sentence 1-14 has a comma,, problem. Sentence 1-15 has a comma,, problem. Sentence 1-16 has a comma,, problem. Sentence 1-17 has a comma,, problem. Sentence 1-18 has a comma,, problem. Sentence 1-19 has a comma,, problem. Sentence 1-20 has a comma,, problem. Sentence 1-21 has a comma,, problem. Sentence 1-22 has a comma,, problem. Sentence 1-23 has a comma,, problem. Sentence 1-24 has a comma,, problem.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Sentence 2-0 has a comma,, problem. Sentence 2-1 has a comma,, problem. Sentence 2-2 has a comma,, problem. Sentence 2-3 has a comma,, problem. Sentence 2-4 has a comma,, problem. Sentence 2-5 has a comma,, problem. Sentence 2-6 has a comma,, problem. Sentence 2-7 has a comma,, problem. Sentence 2-8 has a comma,, problem. Sentence 2-9 has a comma,, problem. Sentence 2-10 has a comma,, problem. Sentence 2-11 has a comma,, problem. Sentence 2-12 has a comma,, problem. Sentence 2-13 has a comma,, problem. Sentence 2-14 has a comma,, problem. Sentence 2-15 has a comma,, problem. Sentence 2-16 has a comma,, problem. Sentence 2-17 has a comma,, problem. Sentence 2-18 has a comma,, problem. Sentence 2-19 has a comma,, problem. Sentence 2-20 has a comma,, problem. Sentence 2-21 has a comma,, problem. Sentence 2-22 has a comma,, problem. Sentence 2-23 has a comma,, problem. Sentence 2-24 has a comma,, problem.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Sentence 3-0 has a comma,, problem. Sentence 3-1 has a comma,, problem. Sentence 3-2 has a comma,, problem. Sentence 3-3 has a comma,, problem. Sentence 3-4 has a comma,, problem. Sentence 3-5 has a comma,, problem. Sentence 3-6 has a comma,, problem. Sentence 3-7 has a comma,, problem. Sentence 3-8 has a comma,, problem. Sentence 3-9 has a comma,, problem. Sentence 3-10 has a comma,, problem. Sentence 3-11 has a comma,, problem. Sentence 3-12 has a comma,, problem. Sentence 3-13 has a comma,, problem. Sentence 3-14 has a comma,, problem. Sentence 3-15 has a comma,, problem. Sentence 3-16 has a comma,, problem. Sentence 3-17 has a comma,, problem. Sentence 3-18 has a comma,, problem. Sentence 3-19 has a comma,, problem. Sentence 3-20 has a comma,, problem. Sentence 3-21 has a comma,, problem. Sentence 3-22 has a comma,, problem. Sentence 3-23 has a comma,, problem. Sentence 3-24 has a comma,, problem.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Sentence 4-0 has a comma,, problem. Sentence 4-1 has a comma,, problem. Sentence 4-2 has a comma,, problem. Sentence 4-3 has a comma,, problem. Sentence 4-4 has a comma,, problem. Sentence 4-5 has a comma,, problem. Sentence 4-6 has a comma,, problem. Sentence 4-7 has a comma,, problem. Sentence 4-8 has a comma,, problem. Sentence 4-9 has a comma,, problem. Sentence 4-10 has a comma,, problem. Sentence 4-11 has a comma,, problem. Sentence 4-12 has a comma,, problem. Sentence 4-13 has a comma,, problem. Sentence 4-14 has a comma,, problem. Sentence 4-15 has a comma,, problem. Sentence 4-16 has a comma,, problem. Sentence 4-17 has a comma,, problem. Sentence 4-18 has a comma,, problem. Sentence 4-19 has a comma,, problem. Sentence 4-20 has a comma,, problem. Sentence 4-21 has a comma,, problem. Sentence 4-22 has a comma,, problem. Sentence 4-23 has a comma,, problem. Sentence 4-24 has a comma,, problem.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Sentence 5-0 has a comma,, problem. Sentence 5-1 has a comma,, problem. Sentence 5-2 has a comma,, problem. Sentence 5-3 has a comma,, problem. Sentence 5-4 has a comma,, problem. Sentence 5-5 has a comma,, problem. Sentence 5-6 has a comma,, problem. Sentence 5-7 has a comma,, problem. Sentence 5-8 has a comma,, problem. Sentence 5-9 has a comma,, problem. Sentence 5-10 has a comma,, problem. Sentence 5-11 has a comma,, problem. Sentence 5-12 has a comma,, problem. Sentence 5-13 has a comma,, problem. Sentence 5-14 has a comma,, problem. Sentence 5-15 has a comma,, problem. Sentence 5-16 has a comma,, problem. Sentence 5-17 has a comma,, problem. Sentence 5-18 has a comma,, problem. Sentence 5-19 has a comma,, problem. Sentence 5-20 has a comma,, problem. Sentence 5-21 has a comma,, problem. Sentence 5-22 has a comma,, problem. Sentence 5-23 has a comma,, problem. Sentence 5-24 has a comma,, problem.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Sentence 6-0 has a comma,, problem. Sentence 6-1 has a comma,, problem. Sentence 6-2 has a comma,, problem. Sentence 6-3 has a comma,, problem. Sentence 6-4 has a comma,, problem. Sentence 6-5 has a comma,, problem. Sentence 6-6 has a comma,, problem. Sentence 6-7 has a comma,, problem. Sentence 6-8 has a comma,, problem. Sentence 6-9 has a comma,, problem. Sentence 6-10 has a comma,, problem. Sentence 6-11 has a comma,, problem. Sentence 6-12 has a comma,, problem. Sentence 6-13 has a comma,, problem. Sentence 6-14 has a comma,, problem. Sentence 6-15 has a comma,, problem. Sentence 6-16 has a comma,, problem. Sentence 6-17 has a comma,, problem. Sentence 6-18 has a comma,, problem. Sentence 6-19 has a comma,, problem. Sentence 6-20 has a comma,, problem. Sentence 6-21 has a comma,, problem. Sentence 6-22 has a comma,, problem. Sentence 6-23 has a comma,, problem. Sentence 6-24 has a comma,, problem.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Sentence 7-0 has a comma,, problem. Sentence 7-1 has a comma,, problem. Sentence 7-2 has a comma,, problem. Sentence 7-3 has a comma,, problem. Sentence 7-4 has a comma,, problem. Sentence 7-5 has a comma,, problem. Sentence 7-6 has a comma,, problem. Sentence 7-7 has a comma,, problem. Sentence 7-8 has a comma,, problem. Sentence 7-9 has a comma,, problem. Sentence 7-10 has a comma,, problem. Sentence 7-11 has a comma,, problem. Sentence 7-12 has a comma,, problem. Sentence 7-13 has a comma,, problem. Sentence 7-14 has a comma,, problem. Sentence 7-15 has a comma,, problem. Sentence 7-16 has a comma,, problem. Sentence 7-17 has a comma,, problem. Sentence 7-18 has a comma,, problem. Sentence 7-19 has a comma,, problem. Sentence 7-20 has a comma,, problem. Sentence 7-21 has a comma,, problem. Sentence 7-22 has a comma,, problem. Sentence 7-23 has a comma,, problem. Sentence 7-24 has a comma,, problem.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Sentence 8-0 has a comma,, problem. Sentence 8-1 has a comma,, problem. Sentence 8-2 has a comma,, problem. Sentence 8-3 has a comma,, problem. Sentence 8-4 has a comma,, problem. Sentence 8-5 has a comma,, problem. Sentence 8-6 has a comma,, problem. Sentence 8-7 has a comma,, problem. Sentence 8-8 has a comma,, problem. Sentence 8-9 has a comma,, problem. Sentence 8-10 has a comma,, problem. Sentence 8-11 has a comma,, problem. Sentence 8-12 has a comma,, problem. Sentence 8-13 has a comma,, problem. Sentence 8-14 has a comma,, problem. Sentence 8-15 has a comma,, problem. Sentence 8-16 has a comma,, problem. Sentence 8-17 has a comma,, problem. Sentence 8-18 has a comma,, problem. Sentence 8-19 has a comma,, problem. Sentence 8-20 has a comma,, problem. Sentence 8-21 has a comma,, problem. Sentence 8-22 has a comma,, problem. Sentence 8-23 has a comma,, problem. Sentence 8-24 has a comma,, problem.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Sentence 9-0 has a comma,, problem. Sentence 9-1 has a comma,, problem. Sentence 9-2 has a comma,, problem. Sentence 9-3 has a comma,, problem. Sentence 9-4 has a comma,, problem. Sentence 9-5 has a comma,, problem. Sentence 9-6 has a comma,, problem. Sentence 9-7 has a comma,, problem. Sentence 9-8 has a comma,, problem. Sentence 9-9 has a comma,, problem. Sentence 9-10 has a comma,, problem. Sentence 9-11 has a comma,, problem. Sentence 9-12 has a comma,, problem. Sentence 9-13 has a comma,, problem. Sentence 9-14 has a comma,, problem. Sentence 9-15 has a comma,, problem. Sentence 9-16 has a comma,, problem. Sentence 9-17 has a comma,, problem. Sentence 9-18 has a comma,, problem. Sentence 9-19 has a comma,, problem. Sentence 9-20 has a comma,, problem. Sentence 9-21 has a comma,, problem. Sentence 9-22 has a comma,, problem. Sentence 9-23 has a comma,, problem. Sentence 9-24 has a comma,, problem.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Sentence 10-0 has a comma,, problem. Sentence 10-1 has a comma,, problem. Sentence 10-2 has a comma,, problem. Sentence 10-3 has a comma,, problem. Sentence 10-4 has a comma,, problem. Sentence 10-5 has a comma,, problem. Sentence 10-6 has a comma,, problem. Sentence 10-7 has a comma,, problem. Sentence 10-8 has a comma,, problem. Sentence 10-9 has a comma,, problem. Sentence 10-10 has a comma,, problem. Sentence 10-11 has a comma,, problem. Sentence 10-12 has a comma,, problem. Sentence 10-13 has a comma,, problem. Sentence 10-14 has a comma,, problem. Sentence 10-15 has a comma,, problem. Sentence 10-16 has a comma,, problem. Sentence 10-17 has a comma,, problem. Sentence 10-18 has a comma,, problem. Sentence 10-19 has a comma,, problem. Sentence 10-20 has a comma,, problem. Sentence 10-21 has a comma,, problem. Sentence 10-22 has a comma,, problem. Sentence 10-23 has a comma,, problem. Sentence 10-24 has a comma,, problem.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Sentence 11-0 has a comma,, problem. Sentence 11-1 has a comma,, problem. Sentence 11-2 has a comma,, problem. Sentence 11-3 has a comma,, problem. Sentence 11-4 has a comma,, problem. Sentence 11-5 has a comma,, problem. Sentence 11-6 has a comma,, problem. Sentence 11-7 has a comma,, problem. Sentence 11-8 has a comma,, problem. Sentence 11-9 has a comma,, problem. Sentence 11-10 has a comma,, problem. Sentence 11-11 has a comma,, problem. Sentence 11-12 has a comma,, problem. Sentence 11-13 has a comma,, problem. Sentence 11-14 has a comma,, problem. Sentence 11-15 has a comma,, problem. Sentence 11-16 has a comma,, problem. Sentence 11-17 has a comma,, problem. Sentence 11-18 has a comma,, problem. Sentence 11-19 has a comma,, problem. Sentence 11-20 has a comma,, problem. Sentence 11-21 has a comma,, problem. Sentence 11-22 has a comma,, problem. Sentence 11-23 has a comma,, problem. Sentence 11-24 has a comma,, problem.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Sentence 0-0 has a comma,, problem. Sentence 0-1 has a comma,, problem. Sentence 0-2 has a comma,, problem. Sentence 0-3 has a comma,, problem. Sentence 0-4 has a comma,, problem. Sentence 0-5 has a comma,, problem. Sentence 0-6 has a comma,, problem. Sentence 0-7 has a comma,, problem. Sentence 0-8 has a comma,, problem. Sentence 0-9 has a comma,, problem. Sentence 0-10 has a comma,, problem. Sentence 0-11 has a comma,, problem. Sentence 0-12 has a comma,, problem. Sentence 0-13 has a comma,, problem. Sentence 0-14 has a comma,, problem. Sentence 0-15 has a comma,, problem. Sentence 0-16 has a comma,, problem. Sentence 0-17 has a comma,, problem. Sentence 0-18 has a comma,, problem. Sentence 0-19 has a comma,, problem. Sentence 0-20 has a comma,, problem. Sentence 0-21 has a comma,, problem. Sentence 0-22 has a comma,, problem. Sentence 0-23 has a comma,, problem. Sentence 0-24 has a comma,, problem.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Sentence 1-0 has a comma,, problem. Sentence 1-1 has a comma,, problem. Sentence 1-2 has a comma,, problem. Sentence 1-3 has a comma,, problem. Sentence 1-4 has a comma,, problem. Sentence 1-5 has a comma,, problem. Sentence 1-6 has a comma,, problem. Sentence 1-7 has a comma,, problem. Sentence 1-8 has a comma,, problem. Sentence 1-9 has a comma,, problem. Sentence 1-10 has a comma,, problem. Sentence 1-11 has a comma,, problem. Sentence 1-12 has a comma,, problem. Sentence 1-13 has a comma,, problem. Sentence 1-14 has a comma,, problem. Sentence 1-15 has a comma,, problem. Sentence 1-16 has a comma,, problem. Sentence 1-17 has a comma,, problem. Sentence 1-18 has a comma,, problem. Sentence 1-19 has a comma,, problem. Sentence 1-20 has a comma,, problem. Sentence 1-21 has a comma,, problem. Sentence 1-22 has a comma,, problem. Sentence 1-23 has a comma,, problem. Sentence 1-24 has a comma,, problem.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Sentence 2-0 has a comma,, problem. Sentence 2-1 has a comma,, problem. Sentence 2-2 has a comma,, problem. Sentence 2-3 has a comma,, problem. Sentence 2-4 has a comma,, problem. Sentence 2-5 has a comma,, problem. Sentence 2-6 has a comma,, problem. Sentence 2-7 has a comma,, problem. Sentence 2-8 has a comma,, problem. Sentence 2-9 has a comma,, problem. Sentence 2-10 has a comma,, problem. Sentence 2-11 has a comma,, problem. Sentence 2-12 has a comma,, problem. Sentence 2-13 has a comma,, problem. Sentence 2-14 has a comma,, problem. Sentence 2-15 has a comma,, problem. Sentence 2-16 has a comma,, problem. Sentence 2-17 has a comma,, problem. Sentence 2-18 has a comma,, problem. Sentence 2-19 has a comma,, problem. Sentence 2-20 has a comma,, problem. Sentence 2-21 has a comma,, problem. Sentence 2-22 has a comma,, problem. Sentence 2-23 has a comma,, problem. Sentence 2-24 has a comma,, problem.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Sentence 3-0 has a comma,, problem. Sentence 3-1 has a comma,, problem. Sentence 3-2 has a comma,, problem. Sentence 3-3 has a comma,, problem. Sentence 3-4 has a comma,, problem. Sentence 3-5 has a comma,, problem. Sentence 3-6 has a comma,, problem. Sentence 3-7 has a comma,, problem. Sentence 3-8 has a comma,, problem. Sentence 3-9 has a comma,, problem. Sentence 3-10 has a comma,, problem. Sentence 3-11 has a comma,, problem. Sentence 3-12 has a comma,, problem. Sentence 3-13 has a comma,, problem. Sentence 3-14 has a comma,, problem. Sentence 3-15 has a comma,, problem. Sentence 3-16 has a comma,, problem. Sentence 3-17 has a comma,, problem. Sentence 3-18 has a comma,, problem. Sentence 3-19 has a comma,, problem. Sentence 3-20 has a comma,, problem. Sentence 3-21 has a comma,, problem. Sentence 3-22 has a comma,, problem. Sentence 3-23 has a comma,, problem. Sentence 3-24 has a comma,, problem.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Sentence 4-0 has a comma,, problem. Sentence 4-1 has a comma,, problem. Sentence 4-2 has a comma,, problem. Sentence 4-3 has a comma,, problem. Sentence 4-4 has a comma,, problem. Sentence 4-5 has a comma,, problem. Sentence 4-6 has a comma,, problem. Sentence 4-7 has a comma,, problem. Sentence 4-8 has a comma,, problem. Sentence 4-9 has a comma,, problem. Sentence 4-10 has a comma,, problem. Sentence 4-11 has a comma,, problem. Sentence 4-12 has a comma,, problem. Sentence 4-13 has a comma,, problem. Sentence 4-14 has a comma,, problem. Sentence 4-15 has a comma,, problem. Sentence 4-16 has a comma,, problem. Sentence 4-17 has a comma,, problem. Sentence 4-18 has a comma,, problem. Sentence 4-19 has a comma,, problem. Sentence 4-20 has a comma,, problem. Sentence 4-21 has a comma,, problem. Sentence 4-22 has a comma,, problem. Sentence 4-23 has a comma,, problem. Sentence 4-24 has a comma,, problem.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Sentence 5-0 has a comma,, problem. Sentence 5-1 has a comma,, problem. Sentence 5-2 has a comma,, problem. Sentence 5-3 has a comma,, problem. Sentence 5-4 has a comma,, problem. Sentence 5-5 has a comma,, problem. Sentence 5-6 has a comma,, problem. Sentence 5-7 has a comma,, problem. Sentence 5-8 has a comma,, problem. Sentence 5-9 has a comma,, problem. Sentence 5-10 has a comma,, problem. Sentence 5-11 has a comma,, problem. Sentence 5-12 has a comma,, problem. Sentence 5-13 has a comma,, problem. Sentence 5-14 has a comma,, problem. Sentence 5-15 has a comma,, problem. Sentence 5-16 has a comma,, problem. Sentence 5-17 has a comma,, problem. Sentence 5-18 has a comma,, problem. Sentence 5-19 has a comma,, problem. Sentence 5-20 has a comma,, problem. Sentence 5-21 has a comma,, problem. Sentence 5-22 has a comma,, problem. Sentence 5-23 has a comma,, problem. Sentence 5-24 has a comma,, problem.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Sentence 0-0 has a comma,, problem. Sentence 0-1 has a comma,, problem. Sentence 0-2 has a comma,, problem. Sentence 0-3 has a comma,, problem. Sentence 0-4 has a comma,, problem. Sentence 0-5 has a comma,, problem. Sentence 0-6 has a comma,, problem. Sentence 0-7 has a comma,, problem. Sentence 0-8 has a comma,, problem. Sentence 0-9 has a comma,, problem. Sentence 0-10 has a comma,, problem. Sentence 0-11 has a comma,, problem. Sentence 0-12 has a comma,, problem. Sentence 0-13 has a comma,, problem. Sentence 0-14 has a comma,, problem. Sentence 0-15 has a comma,, problem. Sentence 0-16 has a comma,, problem. Sentence 0-17 has a comma,, problem. Sentence 0-18 has a comma,, problem. Sentence 0-19 has a comma,, problem. Sentence 0-20 has a comma,, problem. Sentence 0-21 has a comma,, problem. Sentence 0-22 has a comma,, problem. Sentence 0-23 has a comma,, problem. Sentence 0-24 has a comma,, problem.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Sentence 1-0 has a comma,, problem. Sentence 1-1 has a comma,, problem. Sentence 1-2 has a comma,, problem. Sentence 1-3 has a comma,, problem. Sentence 1-4 has a comma,, problem. Sentence 1-5 has a comma,, problem. Sentence 1-6 has a comma,, problem. Sentence 1-7 has a comma,, problem. Sentence 1-8 has a comma,, problem. Sentence 1-9 has a comma,, problem. Sentence 1-10 has a comma,, problem. Sentence 1-11 has a comma,, problem. Sentence 1-12 has a comma,, problem. Sentence 1-13 has a comma,, problem. Sentence 1-14 has a comma,, problem. Sentence 1-15 has a comma,, problem. Sentence 1-16 has a comma,, problem. Sentence 1-17 has a comma,, problem. Sentence 1-18 has a comma,, problem. Sentence 1-19 has a comma,, problem. Sentence 1-20 has a comma,, problem. Sentence 1-21 has a comma,, problem. Sentence 1-22 has a comma,, problem. Sentence 1-23 has a comma,, problem. Sentence 1-24 has a comma,, problem.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Sentence 2-0 has a comma,, problem. Sentence 2-1 has a comma,, problem. Sentence 2-2 has a comma,, problem. Sentence 2-3 has a comma,, problem. Sentence 2-4 has a comma,, problem. Sentence 2-5 has a comma,, problem. Sentence 2-6 has a comma,, problem. Sentence 2-7 has a comma,, problem. Sentence 2-8 has a comma,, problem. Sentence 2-9 has a comma,, problem. Sentence 2-10 has a comma,, problem. Sentence 2-11 has a comma,, problem. Sentence 2-12 has a comma,, problem. Sentence 2-13 has a comma,, problem. Sentence 2-14 has a comma,, problem. Sentence 2-15 has a comma,, problem. Sentence 2-16 has a comma,, problem. Sentence 2-17 has a comma,, problem. Sentence 2-18 has a comma,, problem. Sentence 2-19 has a comma,, problem. Sentence 2-20 has a comma,, problem. Sentence 2-21 has a comma,, problem. Sentence 2-22 has a comma,, problem. Sentence 2-23 has a comma,, problem. Sentence 2-24 has a comma,, problem.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Sentence 3-0 has a comma,, problem. Sentence 3-1 has a comma,, problem. Sentence 3-2 has a comma,, problem. Sentence 3-3 has a comma,, problem. Sentence 3-4 has a comma,, problem. Sentence 3-5 has a comma,, problem. Sentence 3-6 has a comma,, problem. Sentence 3-7 has a comma,, problem. Sentence 3-8 has a comma,, problem. Sentence 3-9 has a comma,, problem. Sentence 3-10 has a comma,, problem. Sentence 3-11 has a comma,, problem. Sentence 3-12 has a comma,, problem. Sentence 3-13 has a comma,, problem. Sentence 3-14 has a comma,, problem. Sentence 3-15 has a comma,, problem. Sentence 3-16 has a comma,, problem. Sentence 3-17 has a comma,, problem. Sentence 3-18 has a comma,, problem. Sentence 3-19 has a comma,, problem. Sentence 3-20 has a comma,, problem. Sentence 3-21 has a comma,, problem. Sentence 3-22 has a comma,, problem. Sentence 3-23 has a comma,, problem. Sentence 3-24 has a comma,, problem.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Sentence 4-0 has a comma,, problem. Sentence 4-1 has a comma,, problem. Sentence 4-2 has a comma,, problem. Sentence 4-3 has a comma,, problem. Sentence 4-4 has a comma,, problem. Sentence 4-5 has a comma,, problem. Sentence 4-6 has a comma,, problem. Sentence 4-7 has a comma,, problem. Sentence 4-8 has a comma,, problem. Sentence 4-9 has a comma,, problem. Sentence 4-10 has a comma,, problem. Sentence 4-11 has a comma,, problem. Sentence 4-12 has a comma,, problem. Sentence 4-13 has a comma,, problem. Sentence 4-14 has a comma,, problem. Sentence 4-15 has a comma,, problem. Sentence 4-16 has a comma,, problem. Sentence 4-17 has a comma,, problem. Sentence 4-18 has a comma,, problem. Sentence 4-19 has a comma,, problem. Sentence 4-20 has a comma,, problem. Sentence 4-21 has a comma,, problem. Sentence 4-22 has a comma,, problem. Sentence 4-23 has a comma,, problem. Sentence 4-24 has a comma,, problem.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "Sentence 5-0 has a comma,, problem. Sentence 5-1 has a comma,, problem. Sentence 5-2 has a comma,, problem. Sentence 5-3 has a comma,, problem. Sentence 5-4 has a comma,, problem. Sentence 5-5 has a comma,, problem. Sentence 5-6 has a comma,, problem. Sentence 5-7 has a comma,, problem. Sentence 5-8 has a comma,, problem. Sentence 5-9 has a comma,, problem. Sentence 5-10 has a comma,, problem. Sentence 5-11 has a comma,, problem. Sentence 5-12 has a comma,, problem. Sentence 5-13 has a comma,, problem. Sentence 5-14 has a comma,, problem. Sentence 5-15 has a comma,, problem. Sentence 5-16 has a comma,, problem. Sentence 5-17 has a comma,, problem. Sentence 5-18 has a comma,, problem. Sentence 5-19 has a comma,, problem. Sentence 5-20 has a comma,, problem. Sentence 5-21 has a comma,, problem. Sentence 5-22 has a comma,, problem. Sentence 5-23 has a comma,, problem. Sentence 5-24 has a comma,, problem.",
+    "enabledRules": "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  }
+ ]
+}

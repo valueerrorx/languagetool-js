@@ -9,6 +9,7 @@ import { compareCli } from './cli.mjs';
 import { compareCheckPipe } from './check-pipe.mjs';
 import { compareJsonSerialize } from './json-serialize.mjs';
 import { compareDev006, compareLanguagesList } from './dev006.mjs';
+import { compareCliLog } from './logs.mjs';
 
 // jsonl: per line deep-equal after parsing; doubles are strings (text + bits) in the protocol.
 export function compareJsonl(expectedLines, actualLines) {
@@ -55,6 +56,7 @@ export async function getComparator(name) {
   if (name === 'json-serialize') return compareJsonSerialize;
   if (name === 'api') return compareApi;
   if (name === 'cli') return compareCli;
+  if (name === 'cli-log') return compareCliLog;
   if (name === 'structure:dev006-languages') return compareLanguagesList;
   if (name.startsWith('structure:')) {
     const f = new URL(`../../tests/parity/comparators/${name.slice(10)}.mjs`, import.meta.url);

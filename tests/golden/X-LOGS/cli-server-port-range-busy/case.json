@@ -1,0 +1,33 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli-log",
+ "realLogging": true,
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "first ports of the range are occupied: \"Check port N\" lines for each",
+ "args": [
+  "--port",
+  "0",
+  "--config",
+  "p.properties"
+ ],
+ "files": {
+  "p.properties": "minPort=18380\nmaxPort=18383\n"
+ },
+ "jar": "languagetool-server.jar",
+ "mainClass": "org.languagetool.server.HTTPServer",
+ "streams": [
+  "stdout"
+ ],
+ "ignoreExit": true,
+ "stopOnOutput": "Server started",
+ "occupyPorts": [
+  18380,
+  18381
+ ]
+}

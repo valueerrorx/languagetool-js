@@ -1,0 +1,70 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "allowIncompleteResults timeouts count for timeoutRequestLimit as well",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "sysLoad",
+  "identityHash"
+ ],
+ "isolate": "timeout-error-limiter-incomplete",
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "pipelinePrewarming=true\npreferredLanguages=en-US, en-GB, de-DE, fr\nmaxCheckTimeMillis=0\ntimeoutRequestLimit=2\nrequestLimitPeriodInSeconds=3600\n"
+ },
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on teh mat.",
+    "allowIncompleteResults": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on teh mat.",
+    "allowIncompleteResults": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on teh mat.",
+    "allowIncompleteResults": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on teh mat."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on teh mat.",
+    "allowIncompleteResults": "true"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/healthcheck"
+  }
+ ]
+}

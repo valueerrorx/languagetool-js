@@ -31,6 +31,14 @@ const impl = {
   logTimestamp(text) {
     return text.split('\n').map((l) => l.replace(/^\d{4}-\d\d-\d\d \d\d:\d\d:\d\d[.,]\d{3} /, '<TS> ')).join('\n');
   },
+  // timeout messages (SRV-0138): "system load: [/proc/loadavg line]" and the running request counter "r: <n>" vary between runs
+  sysLoad(text) {
+    return text.replace(/system load: \[[^\]]*\]/g, 'system load: [<LOAD>]').replace(/\br: \d+/g, 'r: #');
+  },
+  // identity hash codes of Object.toString ("UserLimits@1a2b3c4d[...]")
+  identityHash(text) {
+    return text.replace(/@[0-9a-f]{5,8}\b/g, '@<H>');
+  },
   // remove "\tat ..." frames and "... n more" lines; "Caused by:" lines and the first line stay
   stackFrames(text) {
     return text.split('\n').filter((l) => !/^\s+at [\w$.<>/]+\(.*\)\s*$/.test(l) && !/^\s*\.\.\. \d+ (more|common frames omitted)\s*$/.test(l)).join('\n');
@@ -42,7 +50,7 @@ export const NORMALIZERS = Object.keys(impl);
 export function normalize(names, text, ctx = {}) {
   let t = text;
   // tmp dir lives inside the work dir, so paths runs first; order of the others is fixed
-  for (const n of ['paths', 'stackFrames', 'buildDate', 'commit', 'durations', 'logTimestamp']) {
+  for (const n of ['paths', 'stackFrames', 'buildDate', 'commit', 'durations', 'logTimestamp', 'sysLoad', 'identityHash']) {
     if (n !== 'paths' && !names.includes(n)) continue;
     t = impl[n](t, ctx);
   }

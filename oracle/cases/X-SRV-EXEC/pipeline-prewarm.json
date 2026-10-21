@@ -1,0 +1,59 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "pipelinePrewarming=true with preferredLanguages=en-US,de-DE: prewarm at startup, then checks in several languages",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "sysLoad",
+  "identityHash"
+ ],
+ "isolate": "pipeline-prewarm",
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "pipelineCaching=true\npipelinePrewarming=true\npreferredLanguages=en-US, de-DE\nmaxPipelinePoolSize=4\n"
+ },
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Das ist ein Test,, ok."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "fr",
+    "text": "Ceci est un test,, ok."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok.",
+    "motherTongue": "de-DE"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/healthcheck"
+  }
+ ]
+}

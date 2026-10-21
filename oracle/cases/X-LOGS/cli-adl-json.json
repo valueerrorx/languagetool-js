@@ -1,0 +1,22 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli-log",
+ "realLogging": true,
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "-adl --json: the WARN line precedes the JSON document",
+ "args": [
+  "-adl",
+  "--json",
+  "-eo",
+  "-e",
+  "COMMA_PARENTHESIS_WHITESPACE,DOUBLE_PUNCTUATION,ENGLISH_WORD_REPEAT_RULE,EN_UNPAIRED_BRACKETS,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,UPPERCASE_SENTENCE_START,WHITESPACE_PUNCTUATION,WHITESPACE_RULE",
+  "-"
+ ],
+ "stdin": "This is a small English text to test the language detection,, with two commas."
+}

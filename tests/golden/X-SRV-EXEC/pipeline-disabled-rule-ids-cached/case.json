@@ -1,0 +1,91 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "disabledRuleIds with pipelineCaching",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "sysLoad",
+  "identityHash"
+ ],
+ "isolate": "pipeline-disabled-rule-ids-cached",
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "disabledRuleIds=DOUBLE_PUNCTUATION, WHITESPACE_RULE\npipelineCaching=true\nmaxPipelinePoolSize=3\n"
+ },
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,,  ok. The the cat sat on teh mat."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,,  ok. The the cat sat on teh mat.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,,  ok. The the cat sat on teh mat.",
+    "enabledRules": "DOUBLE_PUNCTUATION,WHITESPACE_RULE",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,,  ok. The the cat sat on teh mat.",
+    "enabledRules": "DOUBLE_PUNCTUATION"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,,  ok. The the cat sat on teh mat.",
+    "disabledRules": "ENGLISH_WORD_REPEAT_RULE"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Das ist ein Test,,  ok."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-GB",
+    "text": "This is a test,,  ok. The the cat sat on teh mat."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "fr",
+    "text": "Ceci est un test,,  ok."
+   }
+  }
+ ]
+}

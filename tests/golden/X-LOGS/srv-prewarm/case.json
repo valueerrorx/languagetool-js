@@ -1,0 +1,36 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "pipelinePrewarming: \"Prewarming pipelines...\", count, duration",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "sysLoad",
+  "identityHash"
+ ],
+ "isolate": "srv-prewarm",
+ "realLogging": true,
+ "captureLog": true,
+ "serverArgs": [
+  "--config",
+  "{WORK}/server.properties"
+ ],
+ "files": {
+  "server.properties": "pipelineCaching=true\npipelinePrewarming=true\npreferredLanguages=en-US, de-DE\nmaxPipelinePoolSize=4\n"
+ },
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/healthcheck"
+  }
+ ]
+}

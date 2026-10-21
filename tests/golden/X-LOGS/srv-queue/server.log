@@ -1,0 +1,60 @@
+2026-03-15 10:00:00.401 GMT+01:00 INFO  org.languagetool.server.DatabaseAccessOpenSource Not setting up database access, dbDriver is not configured
+2026-03-15 09:00:00 +0000 Setting up thread pool with 10 threads
+2026-03-15 10:00:01.262 GMT+01:00 WARN  org.languagetool.language.identifier.DefaultLanguageIdentifier fastText not configured - language detection performance will be degraded. See https://dev.languagetool.org/http-server#starting-from-command-line for instructions.
+2026-03-15 10:00:01.266 GMT+01:00 INFO  org.languagetool.server.TextChecker A/B-Test enabled: []
+2026-03-15 09:00:01 +0000 Starting LanguageTool 6.9-SNAPSHOT (build date: 2026-10-12 18:33:54 +0200, 9b0be9d) server on http://localhost:18300...
+2026-03-15 09:00:01 +0000 Server started
+2026-03-15 10:00:01.441 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling GET /v2/healthcheck
+2026-03-15 10:00:01.460 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 27ms; sending code 200
+2026-03-15 10:00:01.469 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:04.855 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:04.861 GMT+01:00 INFO  org.languagetool.server.TextChecker Check done: 8 chars, en-US, requestId: null, #1, null, 0/0 matches, 3363ms, agent:-, sent, q:0, h:1, dH:1, r:2, m:all, premium: false
+2026-03-15 10:00:04.862 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 3394ms; sending code 200
+2026-03-15 10:00:05.003 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:05.160 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:05.302 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling GET /v2/healthcheck
+2026-03-15 10:00:05.302 GMT+01:00 WARN  org.languagetool.server.TextChecker TextChecker queue is almost full requests in queue: 2 active request: 1
+2026-03-15 10:00:05.303 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 2ms; sending code 503
+2026-03-15 10:00:05.455 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:05.462 GMT+01:00 WARN  org.languagetool.tools.LtThreadPoolFactory Task rejected from pool 'lt-text-checker-thread' (queue full, all threads exhausted)
+2026-03-15 10:00:05.473 GMT+01:00 ERROR org.languagetool.server.LanguageToolHttpHandler An error has occurred: 'Server overloaded, please try again later', sending HTTP code 503. Access from 127.0.0.1, HTTP user agent: node, User agent param: null, Referrer: null, language: en-US, h: 4, r: 7, time: 9text length: 56500, m: ALL, l: DEFAULT, Stacktrace follows:org.languagetool.server.UnavailableException: Server overloaded, please try again later
+	at org.languagetool.server.TextChecker.checkText(TextChecker.java:630)
+	at org.languagetool.server.ApiV2.handleCheckRequest(ApiV2.java:177)
+	at org.languagetool.server.ApiV2.lambda$handleRequest$4(ApiV2.java:87)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.ApiV2.handleRequest(ApiV2.java:87)
+	at org.languagetool.server.LanguageToolHttpHandler.lambda$handle$0(LanguageToolHttpHandler.java:213)
+	at org.languagetool.tools.TelemetryProvider.createSpan(TelemetryProvider.java:96)
+	at org.languagetool.server.LanguageToolHttpHandler.handle(LanguageToolHttpHandler.java:213)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:928)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:904)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.util.concurrent.RejectedExecutionException: Task java.util.concurrent.FutureTask@2e3a26d7[Not completed, task = org.languagetool.server.TextChecker$$Lambda$292/0x00007f65e81ab680@6b38b5d4] rejected from org.languagetool.tools.LtThreadPoolExecutor@4968f84a[Running, pool size = 1, active threads = 1, queued tasks = 2, completed tasks = 1]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2065)
+	at org.languagetool.tools.LtThreadPoolFactory$LtRejectedExecutionHandler.rejectedExecution(LtThreadPoolFactory.java:128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:833)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1365)
+	at org.languagetool.tools.LtThreadPoolExecutor.execute(LtThreadPoolExecutor.java:71)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.languagetool.server.TextChecker.checkText(TextChecker.java:616)
+	... 16 more
+
+2026-03-15 10:00:05.474 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 19ms; sending code 503
+2026-03-15 10:00:05.602 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling GET /v2/healthcheck
+2026-03-15 10:00:05.602 GMT+01:00 WARN  org.languagetool.server.TextChecker TextChecker queue is almost full requests in queue: 2 active request: 1
+2026-03-15 10:00:05.603 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 1ms; sending code 503
+2026-03-15 10:00:07.713 GMT+01:00 INFO  org.languagetool.server.TextChecker Check done: 56500 chars, en-US, requestId: null, #2, null, 0/0 matches, 2852ms, agent:-, sent, q:0, h:3, dH:1, r:8, m:all, premium: false
+2026-03-15 10:00:07.713 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 2858ms; sending code 200
+2026-03-15 10:00:09.453 GMT+01:00 INFO  org.languagetool.server.TextChecker Check done: 56500 chars, en-US, requestId: null, #2, null, 0/0 matches, 4445ms, agent:-, sent, q:0, h:2, dH:1, r:8, m:all, premium: false
+2026-03-15 10:00:09.454 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 4451ms; sending code 200
+2026-03-15 10:00:10.842 GMT+01:00 INFO  org.languagetool.server.TextChecker Check done: 56500 chars, en-US, requestId: null, #2, null, 0/0 matches, 5678ms, agent:-, sent, q:0, h:1, dH:1, r:8, m:all, premium: false
+2026-03-15 10:00:10.842 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 5682ms; sending code 200
+2026-03-15 10:00:10.845 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:10.866 GMT+01:00 INFO  org.languagetool.server.TextChecker Check done: 6 chars, en-US, requestId: null, #3, null, 0/0 matches, 21ms, agent:-, sent, q:0, h:1, dH:1, r:9, m:all, premium: false
+2026-03-15 10:00:10.866 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 21ms; sending code 200

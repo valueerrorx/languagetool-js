@@ -1,0 +1,33 @@
+2026-03-15 10:00:00.351 GMT+01:00 INFO  org.languagetool.server.DatabaseAccessOpenSource Not setting up database access, dbDriver is not configured
+2026-03-15 09:00:00 +0000 Setting up thread pool with 10 threads
+2026-03-15 10:00:01.112 GMT+01:00 WARN  org.languagetool.language.identifier.DefaultLanguageIdentifier fastText not configured - language detection performance will be degraded. See https://dev.languagetool.org/http-server#starting-from-command-line for instructions.
+2026-03-15 10:00:01.115 GMT+01:00 INFO  org.languagetool.server.TextChecker A/B-Test enabled: []
+2026-03-15 09:00:01 +0000 Starting LanguageTool 6.9-SNAPSHOT (build date: 2026-10-12 18:33:54 +0200, 9b0be9d) server on http://localhost:18300...
+2026-03-15 09:00:01 +0000 Server started
+2026-03-15 10:00:01.232 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling GET /v2/healthcheck
+2026-03-15 10:00:01.247 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 23ms; sending code 200
+2026-03-15 10:00:01.256 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:03.561 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:03.572 GMT+01:00 INFO  org.languagetool.server.TextChecker Check done: 4 chars, en-US, requestId: null, #1, null, 0/0 matches, 2285ms, agent:-, sent, q:0, h:1, dH:1, r:2, m:all, premium: false
+2026-03-15 10:00:03.573 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 2317ms; sending code 200
+2026-03-15 10:00:03.588 GMT+01:00 INFO  org.languagetool.server.TextChecker Check done: 4 chars, en-US, requestId: null, #2, null, 0/0 matches, 26ms, agent:-, sent, q:0, h:1, dH:1, r:3, m:all, premium: false
+2026-03-15 10:00:03.588 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 27ms; sending code 200
+2026-03-15 10:00:03.591 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:03.598 GMT+01:00 ERROR org.languagetool.server.LanguageToolHttpHandler Error: Access from 127.0.0.1 denied: Client request limit of 2 requests per 3600 seconds exceeded, sending code 429 - useragent: ua - HTTP UserAgent: node, r:4, referrer: null, language: en-US, Text size: 6.
+2026-03-15 10:00:03.598 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 7ms; sending code 429
+2026-03-15 10:00:03.638 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handling POST /v2/check
+2026-03-15 10:00:03.643 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler An error has occurred: 'With 'username' set, you also need to specify 'apiKey'', sending HTTP code 400. Access from 127.0.0.1, HTTP user agent: node, User agent param: null, Referrer: null, language: en-US, h: 1, r: 5, user: u, time: 1text length: 5, m: ALL, l: DEFAULT, Stacktrace follows:org.languagetool.server.BadRequestException: With 'username' set, you also need to specify 'apiKey'
+	at org.languagetool.server.ServerTools.getUserLimits(ServerTools.java:157)
+	at org.languagetool.server.ServerTools.getUserLimits(ServerTools.java:139)
+	at org.languagetool.server.LanguageToolHttpHandler.handle(LanguageToolHttpHandler.java:179)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.AuthFilter.doFilter(AuthFilter.java:82)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:98)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange$LinkHandler.handle(ServerImpl.java:928)
+	at jdk.httpserver/com.sun.net.httpserver.Filter$Chain.doFilter(Filter.java:95)
+	at jdk.httpserver/sun.net.httpserver.ServerImpl$Exchange.run(ServerImpl.java:904)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+2026-03-15 10:00:03.644 GMT+01:00 INFO  org.languagetool.server.LanguageToolHttpHandler Handled request in 6ms; sending code 400

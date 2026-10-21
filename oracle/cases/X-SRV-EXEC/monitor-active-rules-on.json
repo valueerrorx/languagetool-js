@@ -1,0 +1,50 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "description": "-DmonitorActiveRules=true: results identical, the MBean is JMX-only (SRV-0176, later)",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "sysLoad",
+  "identityHash"
+ ],
+ "isolate": "monitor-active-rules-on",
+ "serverArgs": [],
+ "javaOpts": [
+  "-DmonitorActiveRules=true"
+ ],
+ "env": {
+  "LTJS_MONITOR_ACTIVE_RULES": "1"
+ },
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "en-US",
+    "text": "This is a test,, ok. The the cat sat on teh mat."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "de-DE",
+    "text": "Das ist ein Test,, ok. Das das ist falsch."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "fr",
+    "text": "Ceci est un test,, ok."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/healthcheck"
+  }
+ ]
+}

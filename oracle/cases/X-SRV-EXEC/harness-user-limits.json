@@ -1,0 +1,305 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "UserLimits: defaults, whitelist fallback (private method, reflection), parameter validation of ServerTools.getUserLimits (SRV-0160)",
+ "compare": "jsonl",
+ "normalize": [
+  "identityHash",
+  "paths"
+ ],
+ "ops": [
+  {
+   "op": "exec-user-limits",
+   "args": {
+    "config": {
+     "props": {
+      "maxTextLength": 40,
+      "maxTextLengthAnonymous": 30,
+      "maxTextLengthLoggedIn": 50,
+      "maxTextLengthPremium": 60,
+      "maxCheckTimeMillis": 100,
+      "maxCheckTimeMillisAnonymous": 3,
+      "maxCheckTimeMillisLoggedIn": 5,
+      "maxCheckTimeMillisPremium": 7,
+      "requestLimitWhitelistUsers": "a@b.com, example.org"
+     }
+    },
+    "cases": [
+     {
+      "params": {}
+     },
+     {
+      "params": {},
+      "authHeader": "Bearer x"
+     },
+     {
+      "params": {
+       "username": "a@b.com",
+       "apiKey": "k"
+      }
+     },
+     {
+      "params": {
+       "username": "x@example.org",
+       "apiKey": "k"
+      }
+     },
+     {
+      "params": {
+       "username": "example.org",
+       "apiKey": "k"
+      }
+     },
+     {
+      "params": {
+       "username": "",
+       "apiKey": "k"
+      }
+     },
+     {
+      "params": {
+       "username": "z@z.com",
+       "apiKey": "k"
+      }
+     },
+     {
+      "params": {
+       "username": "A@B.com",
+       "apiKey": "k"
+      }
+     },
+     {
+      "params": {
+       "username": "a@b.com ",
+       "apiKey": "k"
+      }
+     },
+     {
+      "params": {
+       "username": "user@sub.example.org",
+       "apiKey": "k"
+      }
+     },
+     {
+      "params": {
+       "username": "@example.org",
+       "apiKey": "k"
+      }
+     },
+     {
+      "params": {
+       "username": "a@b.com@example.org",
+       "apiKey": "k"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "op": "exec-user-limits",
+   "args": {
+    "config": {
+     "props": {
+      "maxTextLength": 40,
+      "maxTextLengthAnonymous": 30,
+      "maxTextLengthLoggedIn": 50,
+      "maxTextLengthPremium": 60,
+      "maxCheckTimeMillis": 100,
+      "maxCheckTimeMillisAnonymous": 3,
+      "maxCheckTimeMillisLoggedIn": 5,
+      "maxCheckTimeMillisPremium": 7,
+      "requestLimitWhitelistUsers": "a@b.com, example.org"
+     }
+    },
+    "cases": [
+     {
+      "direct": "whitelist",
+      "params": {
+       "username": "a@b.com",
+       "apiKey": "k"
+      }
+     },
+     {
+      "direct": "whitelist",
+      "params": {
+       "username": "x@example.org",
+       "apiKey": "k"
+      }
+     },
+     {
+      "direct": "whitelist",
+      "params": {
+       "username": "example.org",
+       "apiKey": "k"
+      }
+     },
+     {
+      "direct": "whitelist",
+      "params": {
+       "username": "",
+       "apiKey": "k"
+      }
+     },
+     {
+      "direct": "whitelist",
+      "params": {
+       "username": "z@z.com",
+       "apiKey": "k"
+      }
+     },
+     {
+      "direct": "whitelist",
+      "params": {
+       "username": "A@B.com",
+       "apiKey": "k"
+      }
+     },
+     {
+      "direct": "whitelist",
+      "params": {
+       "username": "a@b.com ",
+       "apiKey": "k"
+      }
+     },
+     {
+      "direct": "whitelist",
+      "params": {
+       "username": "user@sub.example.org",
+       "apiKey": "k"
+      }
+     },
+     {
+      "direct": "whitelist",
+      "params": {
+       "username": "@example.org",
+       "apiKey": "k"
+      }
+     },
+     {
+      "direct": "whitelist",
+      "params": {
+       "username": "a@b.com@example.org",
+       "apiKey": "k"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "op": "exec-user-limits",
+   "args": {
+    "config": {
+     "props": {
+      "requestLimitWhitelistUsers": ""
+     }
+    },
+    "cases": [
+     {
+      "direct": "whitelist",
+      "params": {
+       "username": ""
+      }
+     },
+     {
+      "direct": "whitelist",
+      "params": {
+       "username": "a@b.com"
+      }
+     },
+     {
+      "params": {}
+     }
+    ]
+   }
+  },
+  {
+   "op": "exec-user-limits",
+   "args": {
+    "config": {
+     "props": {
+      "maxTextLength": 10
+     }
+    },
+    "cases": [
+     {
+      "direct": "whitelist",
+      "params": {
+       "username": ""
+      }
+     },
+     {
+      "params": {}
+     }
+    ]
+   }
+  },
+  {
+   "op": "exec-user-limits",
+   "args": {
+    "config": {
+     "props": {
+      "maxTextLengthPremium": 11
+     },
+     "args": [
+      "--premiumAlways"
+     ]
+    },
+    "cases": [
+     {
+      "params": {}
+     }
+    ]
+   }
+  },
+  {
+   "op": "exec-user-limits",
+   "args": {
+    "config": {
+     "props": {
+      "maxTextLength": 12,
+      "maxCheckTimeMillisAnonymous": 0
+     }
+    },
+    "cases": [
+     {
+      "params": {}
+     },
+     {
+      "params": {
+       "username": "u"
+      }
+     },
+     {
+      "params": {
+       "apiKey": "k"
+      }
+     },
+     {
+      "params": {
+       "username": "u",
+       "password": "p"
+      }
+     },
+     {
+      "params": {
+       "username": "u",
+       "apiKey": "k",
+       "password": "p"
+      }
+     },
+     {
+      "params": {
+       "password": "p"
+      }
+     },
+     {
+      "params": {
+       "username": "u",
+       "tokenV2": "t"
+      }
+     }
+    ]
+   }
+  }
+ ]
+}

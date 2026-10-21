@@ -1,0 +1,688 @@
+[
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "English (US)",
+        "code": "en-US",
+        "detectedLanguage": {
+          "name": "English (US)",
+          "code": "en-US",
+          "confidence": 0.99999374,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Two consecutive commas",
+          "shortMessage": "Two consecutive commas",
+          "replacements": [
+            {
+              "value": ","
+            }
+          ],
+          "offset": 14,
+          "length": 2,
+          "context": {
+            "text": "This is a test,, ok. The the cat sat on teh mat.",
+            "offset": 14,
+            "length": 2
+          },
+          "sentence": "This is a test,, ok.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "DOUBLE_PUNCTUATION",
+            "description": "Use of two consecutive dots or commas",
+            "issueType": "typographical",
+            "urls": [
+              {
+                "value": "https://languagetool.org/insights/post/punctuation-guide/#what-are-periods"
+              }
+            ],
+            "category": {
+              "id": "PUNCTUATION",
+              "name": "Punctuation"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Possible typo: you repeated a word.",
+          "shortMessage": "Word repetition",
+          "replacements": [
+            {
+              "value": "The"
+            }
+          ],
+          "offset": 21,
+          "length": 7,
+          "context": {
+            "text": "This is a test,, ok. The the cat sat on teh mat.",
+            "offset": 21,
+            "length": 7
+          },
+          "sentence": "The the cat sat on teh mat.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "ENGLISH_WORD_REPEAT_RULE",
+            "description": "Word repetition (e.g. 'will will')",
+            "issueType": "duplication",
+            "category": {
+              "id": "MISC",
+              "name": "Miscellaneous"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 1
+        },
+        {
+          "message": "Possible spelling mistake found.",
+          "shortMessage": "Spelling mistake",
+          "replacements": [
+            {
+              "value": "the"
+            },
+            {
+              "value": "ten"
+            },
+            {
+              "value": "tea"
+            },
+            {
+              "value": "tech"
+            },
+            {
+              "value": "Ted"
+            },
+            {
+              "value": "TeX"
+            },
+            {
+              "value": "tee"
+            },
+            {
+              "value": "eh"
+            },
+            {
+              "value": "tel"
+            },
+            {
+              "value": "TEF"
+            },
+            {
+              "value": "BEH"
+            },
+            {
+              "value": "GEH"
+            },
+            {
+              "value": "NEH"
+            },
+            {
+              "value": "Neh"
+            },
+            {
+              "value": "TAH"
+            },
+            {
+              "value": "TBH"
+            },
+            {
+              "value": "TCH"
+            },
+            {
+              "value": "TEB"
+            },
+            {
+              "value": "TEC"
+            },
+            {
+              "value": "TED"
+            },
+            {
+              "value": "TEE"
+            },
+            {
+              "value": "TEI"
+            },
+            {
+              "value": "TEL"
+            },
+            {
+              "value": "TEM"
+            },
+            {
+              "value": "TEP"
+            },
+            {
+              "value": "TEQ"
+            },
+            {
+              "value": "TER"
+            },
+            {
+              "value": "TES"
+            },
+            {
+              "value": "TEU"
+            },
+            {
+              "value": "TEV"
+            },
+            {
+              "value": "TH"
+            },
+            {
+              "value": "TLH"
+            },
+            {
+              "value": "TSH"
+            },
+            {
+              "value": "TVH"
+            },
+            {
+              "value": "Te"
+            },
+            {
+              "value": "Tet"
+            },
+            {
+              "value": "Tex"
+            },
+            {
+              "value": "Th"
+            },
+            {
+              "value": "heh"
+            },
+            {
+              "value": "meh"
+            }
+          ],
+          "offset": 40,
+          "length": 3,
+          "context": {
+            "text": "...This is a test,, ok. The the cat sat on teh mat.",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "The the cat sat on teh mat.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_EN_US",
+            "description": "Possible spelling mistake",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Possible Typo"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          20
+        ],
+        [
+          21,
+          48
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 20,
+          "detectedLanguages": [
+            {
+              "language": "en",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 21,
+          "to": 48,
+          "detectedLanguages": [
+            {
+              "language": "en",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "English (US)",
+        "code": "en-US",
+        "detectedLanguage": {
+          "name": "English (US)",
+          "code": "en-US",
+          "confidence": 0.99999374,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Two consecutive commas",
+          "shortMessage": "Two consecutive commas",
+          "replacements": [
+            {
+              "value": ","
+            }
+          ],
+          "offset": 14,
+          "length": 2,
+          "context": {
+            "text": "This is a test,, ok. The the cat sat on teh mat.",
+            "offset": 14,
+            "length": 2
+          },
+          "sentence": "This is a test,, ok.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "DOUBLE_PUNCTUATION",
+            "description": "Use of two consecutive dots or commas",
+            "issueType": "typographical",
+            "urls": [
+              {
+                "value": "https://languagetool.org/insights/post/punctuation-guide/#what-are-periods"
+              }
+            ],
+            "category": {
+              "id": "PUNCTUATION",
+              "name": "Punctuation"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Possible typo: you repeated a word.",
+          "shortMessage": "Word repetition",
+          "replacements": [
+            {
+              "value": "The"
+            }
+          ],
+          "offset": 21,
+          "length": 7,
+          "context": {
+            "text": "This is a test,, ok. The the cat sat on teh mat.",
+            "offset": 21,
+            "length": 7
+          },
+          "sentence": "The the cat sat on teh mat.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "ENGLISH_WORD_REPEAT_RULE",
+            "description": "Word repetition (e.g. 'will will')",
+            "issueType": "duplication",
+            "category": {
+              "id": "MISC",
+              "name": "Miscellaneous"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 1
+        },
+        {
+          "message": "Possible spelling mistake found.",
+          "shortMessage": "Spelling mistake",
+          "replacements": [
+            {
+              "value": "the"
+            },
+            {
+              "value": "ten"
+            },
+            {
+              "value": "tea"
+            },
+            {
+              "value": "tech"
+            },
+            {
+              "value": "Ted"
+            },
+            {
+              "value": "TeX"
+            },
+            {
+              "value": "tee"
+            },
+            {
+              "value": "eh"
+            },
+            {
+              "value": "tel"
+            },
+            {
+              "value": "TEF"
+            },
+            {
+              "value": "BEH"
+            },
+            {
+              "value": "GEH"
+            },
+            {
+              "value": "NEH"
+            },
+            {
+              "value": "Neh"
+            },
+            {
+              "value": "TAH"
+            },
+            {
+              "value": "TBH"
+            },
+            {
+              "value": "TCH"
+            },
+            {
+              "value": "TEB"
+            },
+            {
+              "value": "TEC"
+            },
+            {
+              "value": "TED"
+            },
+            {
+              "value": "TEE"
+            },
+            {
+              "value": "TEI"
+            },
+            {
+              "value": "TEL"
+            },
+            {
+              "value": "TEM"
+            },
+            {
+              "value": "TEP"
+            },
+            {
+              "value": "TEQ"
+            },
+            {
+              "value": "TER"
+            },
+            {
+              "value": "TES"
+            },
+            {
+              "value": "TEU"
+            },
+            {
+              "value": "TEV"
+            },
+            {
+              "value": "TH"
+            },
+            {
+              "value": "TLH"
+            },
+            {
+              "value": "TSH"
+            },
+            {
+              "value": "TVH"
+            },
+            {
+              "value": "Te"
+            },
+            {
+              "value": "Tet"
+            },
+            {
+              "value": "Tex"
+            },
+            {
+              "value": "Th"
+            },
+            {
+              "value": "heh"
+            },
+            {
+              "value": "meh"
+            }
+          ],
+          "offset": 40,
+          "length": 3,
+          "context": {
+            "text": "...This is a test,, ok. The the cat sat on teh mat.",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "The the cat sat on teh mat.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_EN_US",
+            "description": "Possible spelling mistake",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Possible Typo"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          20
+        ],
+        [
+          21,
+          48
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 20,
+          "detectedLanguages": [
+            {
+              "language": "en",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 21,
+          "to": 48,
+          "detectedLanguages": [
+            {
+              "language": "en",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "English (US)",
+        "code": "en-US",
+        "detectedLanguage": {
+          "name": "English (US)",
+          "code": "en-US",
+          "confidence": 0.99999374,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Two consecutive commas",
+          "shortMessage": "Two consecutive commas",
+          "replacements": [
+            {
+              "value": ","
+            }
+          ],
+          "offset": 14,
+          "length": 2,
+          "context": {
+            "text": "This is a test,, ok. The the cat sat on teh mat.",
+            "offset": 14,
+            "length": 2
+          },
+          "sentence": "This is a test,, ok.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "DOUBLE_PUNCTUATION",
+            "description": "Use of two consecutive dots or commas",
+            "issueType": "typographical",
+            "urls": [
+              {
+                "value": "https://languagetool.org/insights/post/punctuation-guide/#what-are-periods"
+              }
+            ],
+            "category": {
+              "id": "PUNCTUATION",
+              "name": "Punctuation"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Possible typo: you repeated a word.",
+          "shortMessage": "Word repetition",
+          "replacements": [
+            {
+              "value": "The"
+            }
+          ],
+          "offset": 21,
+          "length": 7,
+          "context": {
+            "text": "This is a test,, ok. The the cat sat on teh mat.",
+            "offset": 21,
+            "length": 7
+          },
+          "sentence": "The the cat sat on teh mat.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "ENGLISH_WORD_REPEAT_RULE",
+            "description": "Word repetition (e.g. 'will will')",
+            "issueType": "duplication",
+            "category": {
+              "id": "MISC",
+              "name": "Miscellaneous"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 1
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          20
+        ],
+        [
+          21,
+          48
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 20,
+          "detectedLanguages": [
+            {
+              "language": "en",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 21,
+          "to": 48,
+          "detectedLanguages": [
+            {
+              "language": "en",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

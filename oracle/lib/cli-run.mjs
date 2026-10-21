@@ -1,6 +1,7 @@
 import { spawn } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { mkdirSync, mkdtempSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
+import net from 'node:net';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { JDK, LT, pinnedEnv, pinnedJvmFlags } from './env.mjs';
@@ -26,6 +27,20 @@ export function snapshotFiles(workDir, skip = ['home', 'tmp']) {
 // Runs the original command line tool: args/stdin/env/input files in a fresh work dir.
 // Returns files created or changed (path -> content), stdout/stderr as text.
 export async function runCli(cs) {
+  const blockers = await occupyPorts(cs.occupyPorts);
+  try { return await runCli0(cs); } finally { for (const b of blockers) b.close(); }
+}
+
+// cs.occupyPorts: TCP ports on 127.0.0.1 held open while the program runs (port-in-use cases, F66)
+export async function occupyPorts(ports = []) {
+  return Promise.all(ports.map((p) => new Promise((resolve, reject) => {
+    const s = net.createServer();
+    s.once('error', reject);
+    s.listen(p, '127.0.0.1', () => resolve(s));
+  })));
+}
+
+async function runCli0(cs) {
   const workDir = mkdtempSync(path.join(tmpdir(), 'ltjs-oracle-'));
   mkdirSync(path.join(workDir, 'home'));
   mkdirSync(path.join(workDir, 'tmp'));
@@ -39,7 +54,7 @@ export async function runCli(cs) {
   }
   const before = snapshotFiles(workDir);
   const jar = path.join(LT, cs.jar ?? 'languagetool-commandline.jar');
-  const args = [...pinnedJvmFlags(workDir, cs.javaOpts ?? []), ...(cs.mainClass ? ['-cp', jar, cs.mainClass] : ['-jar', jar]), ...(cs.args ?? [])];
+  const args = [...pinnedJvmFlags(workDir, cs.javaOpts ?? [], { realLogging: cs.realLogging }), ...(cs.mainClass ? ['-cp', jar, cs.mainClass] : ['-jar', jar]), ...(cs.args ?? [])];
   const child = spawn(`${JDK}/bin/java`, args, { cwd: workDir, env: pinnedEnv(workDir, cs.env ?? {}), stdio: ['pipe', 'pipe', 'pipe'] });
   const out = [];
   const err = [];
@@ -55,6 +70,9 @@ export async function runCli(cs) {
     }, 100);
     child.on('close', () => clearInterval(iv));
   }
+  // safety net: a program that neither exits nor prints the stop pattern is killed after cs.timeoutMs (default 120 s)
+  const killer = setTimeout(() => child.kill('SIGKILL'), cs.timeoutMs ?? 120000);
+  child.on('close', () => clearTimeout(killer));
   child.stdin.on('error', () => {});
   child.stdin.end(cs.stdin ?? '');
   const exitCode = await exit;

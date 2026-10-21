@@ -1,0 +1,386 @@
+{
+ "kind": "harness",
+ "clock": "fixed",
+ "description": "PipelinePool: keyed pool, identity of pipelines, frozen pipelines, unmodifiable views, capacity (SRV-0150..0153)",
+ "compare": "jsonl",
+ "normalize": [
+  "identityHash",
+  "paths"
+ ],
+ "ops": [
+  {
+   "op": "exec-pipeline-pool",
+   "args": {
+    "config": {
+     "props": {
+      "pipelineCaching": "true",
+      "maxPipelinePoolSize": 1,
+      "pipelineExpireTimeInSeconds": 10
+     }
+    },
+    "steps": [
+     {
+      "op": "get",
+      "name": "a",
+      "settings": {
+       "lang": "en-US"
+      }
+     },
+     {
+      "op": "mutate",
+      "name": "a",
+      "method": "addRule"
+     },
+     {
+      "op": "mutate",
+      "name": "a",
+      "method": "disableRule"
+     },
+     {
+      "op": "mutate",
+      "name": "a",
+      "method": "setMaxErrorsPerWordRate"
+     },
+     {
+      "op": "mutate",
+      "name": "a",
+      "method": "setCleanOverlappingMatches"
+     },
+     {
+      "op": "mutate",
+      "name": "a",
+      "method": "enableRuleCategory"
+     },
+     {
+      "op": "mutate",
+      "name": "a",
+      "method": "addMatchFilter"
+     },
+     {
+      "op": "view",
+      "name": "a",
+      "method": "getDisabledRules.add"
+     },
+     {
+      "op": "view",
+      "name": "a",
+      "method": "getAllRules.clear"
+     },
+     {
+      "op": "view",
+      "name": "a",
+      "method": "getCategories.clear"
+     },
+     {
+      "op": "view",
+      "name": "a",
+      "method": "getUnknownWords.clear"
+     },
+     {
+      "op": "check",
+      "name": "a",
+      "text": "This is a test,, ok."
+     },
+     {
+      "op": "get",
+      "name": "b",
+      "settings": {
+       "lang": "en-US"
+      }
+     },
+     {
+      "op": "return",
+      "name": "a"
+     },
+     {
+      "op": "return",
+      "name": "b"
+     },
+     {
+      "op": "get",
+      "name": "c",
+      "settings": {
+       "lang": "en-US"
+      }
+     },
+     {
+      "op": "get",
+      "name": "d",
+      "settings": {
+       "lang": "de-DE"
+      }
+     },
+     {
+      "op": "return",
+      "name": "c"
+     },
+     {
+      "op": "return",
+      "name": "d"
+     },
+     {
+      "op": "get",
+      "name": "e",
+      "settings": {
+       "lang": "en-US"
+      }
+     },
+     {
+      "op": "get",
+      "name": "f",
+      "settings": {
+       "lang": "de-DE"
+      }
+     },
+     {
+      "op": "return",
+      "name": "e"
+     },
+     {
+      "op": "return",
+      "name": "f"
+     }
+    ]
+   }
+  },
+  {
+   "op": "exec-pipeline-pool",
+   "args": {
+    "config": {
+     "props": {
+      "pipelineCaching": "true",
+      "maxPipelinePoolSize": 3
+     }
+    },
+    "steps": [
+     {
+      "op": "get",
+      "name": "a",
+      "settings": {
+       "lang": "en-US"
+      }
+     },
+     {
+      "op": "get",
+      "name": "b",
+      "settings": {
+       "lang": "en-US"
+      }
+     },
+     {
+      "op": "get",
+      "name": "c",
+      "settings": {
+       "lang": "en-US"
+      }
+     },
+     {
+      "op": "get",
+      "name": "d",
+      "settings": {
+       "lang": "en-US"
+      }
+     },
+     {
+      "op": "return",
+      "name": "b"
+     },
+     {
+      "op": "return",
+      "name": "a"
+     },
+     {
+      "op": "return",
+      "name": "c"
+     },
+     {
+      "op": "return",
+      "name": "d"
+     },
+     {
+      "op": "get",
+      "name": "e",
+      "settings": {
+       "lang": "en-US"
+      }
+     },
+     {
+      "op": "get",
+      "name": "f",
+      "settings": {
+       "lang": "en-US"
+      }
+     },
+     {
+      "op": "get",
+      "name": "g",
+      "settings": {
+       "lang": "en-US"
+      }
+     },
+     {
+      "op": "get",
+      "name": "h",
+      "settings": {
+       "lang": "en-US",
+       "query": {
+        "level": "PICKY"
+       }
+      }
+     },
+     {
+      "op": "get",
+      "name": "i",
+      "settings": {
+       "lang": "en-US",
+       "query": {
+        "level": "PICKY"
+       }
+      }
+     },
+     {
+      "op": "return",
+      "name": "h"
+     },
+     {
+      "op": "return",
+      "name": "e"
+     },
+     {
+      "op": "return",
+      "name": "e"
+     },
+     {
+      "op": "get",
+      "name": "j",
+      "settings": {
+       "lang": "en-US",
+       "query": {
+        "level": "PICKY"
+       }
+      }
+     },
+     {
+      "op": "get",
+      "name": "k",
+      "settings": {
+       "lang": "en-US",
+       "motherTongue": "de-DE"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "op": "exec-pipeline-pool",
+   "args": {
+    "config": {
+     "props": {}
+    },
+    "steps": [
+     {
+      "op": "get",
+      "name": "a",
+      "settings": {
+       "lang": "en-US"
+      }
+     },
+     {
+      "op": "mutate",
+      "name": "a",
+      "method": "addRule"
+     },
+     {
+      "op": "mutate",
+      "name": "a",
+      "method": "setMaxErrorsPerWordRate"
+     },
+     {
+      "op": "view",
+      "name": "a",
+      "method": "getDisabledRules.add"
+     },
+     {
+      "op": "return",
+      "name": "a"
+     },
+     {
+      "op": "get",
+      "name": "b",
+      "settings": {
+       "lang": "en-US"
+      }
+     },
+     {
+      "op": "check",
+      "name": "b",
+      "text": "This is a test,, ok."
+     }
+    ]
+   }
+  },
+  {
+   "op": "exec-pipeline-pool",
+   "args": {
+    "config": {
+     "props": {
+      "pipelineCaching": "true",
+      "maxPipelinePoolSize": 2,
+      "disabledRuleIds": "DOUBLE_PUNCTUATION, WHITESPACE_RULE"
+     }
+    },
+    "steps": [
+     {
+      "op": "get",
+      "name": "a",
+      "settings": {
+       "lang": "en-US"
+      }
+     },
+     {
+      "op": "check",
+      "name": "a",
+      "text": "This is a test,, ok.  Two spaces."
+     },
+     {
+      "op": "get",
+      "name": "b",
+      "settings": {
+       "lang": "en-US",
+       "query": {
+        "enabledRules": [
+         "DOUBLE_PUNCTUATION"
+        ],
+        "useQuerySettings": true,
+        "useEnabledOnly": true
+       }
+      }
+     },
+     {
+      "op": "check",
+      "name": "b",
+      "text": "This is a test,, ok."
+     },
+     {
+      "op": "get",
+      "name": "c",
+      "settings": {
+       "lang": "en-US",
+       "query": {
+        "disabledRules": [
+         "COMMA_PARENTHESIS_WHITESPACE"
+        ],
+        "useQuerySettings": true
+       }
+      }
+     },
+     {
+      "op": "check",
+      "name": "c",
+      "text": "This is a test,, ok. The the cat."
+     }
+    ]
+   }
+  }
+ ]
+}

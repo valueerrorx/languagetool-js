@@ -1,0 +1,29 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli-log",
+ "realLogging": true,
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths"
+ ],
+ "description": "nerUrl logs \"Using NER service\"",
+ "args": [
+  "--port",
+  "18386",
+  "--config",
+  "n.properties"
+ ],
+ "files": {
+  "n.properties": "nerUrl=http://127.0.0.1:18399/ner\n"
+ },
+ "jar": "languagetool-server.jar",
+ "mainClass": "org.languagetool.server.HTTPServer",
+ "streams": [
+  "stdout"
+ ],
+ "ignoreExit": true,
+ "stopOnOutput": "Server started"
+}
