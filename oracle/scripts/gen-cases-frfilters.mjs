@@ -51,7 +51,7 @@ const corpus = readFileSync(path.join(ROOT, 'oracle/corpus/fr/corpus.txt'), 'utf
 const sentences = pick(corpus.split(/(?<=[.!?])\s+/).map((s) => s.replace(/\s+/g, ' ').trim()).filter((s) => s.length > 20 && s.length < 200), 300);
 const date = (name, desc, ops) => {
   W(name, desc, ops);
-  for (const [tag, ft] of [['jan', '@2027-01-05 12:00:00'], ['dec', '@2026-12-31 12:00:00']]) W(`${name}-${tag}`, `${desc} [clock ${ft.slice(1)}]`, ops, { FAKETIME: ft });
+  for (const [tag, ft] of [['jan', '@2027-01-05 12:00:00'], ['dec', '@2026-12-31 12:00:00']]) W(`${name}-${tag}`, `${desc} [clock ${ft.slice(1)}]`, ops.map((o) => (o.op === 'filter-run' ? { ...o, args: { ...o.args, clockAt: `${ft.slice(1, 11)}T12:00:00+01:00` } } : o)), { FAKETIME: ft });
 };
 const counts = {};
 

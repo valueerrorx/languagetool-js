@@ -26,6 +26,11 @@ const EN_MONTHS_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug',
 const EN_GB_MONTHS_SHORT = EN_MONTHS_SHORT.map((m) => (m === 'Sep' ? 'Sept' : m));
 
 // de/de_DE/de_AT/de_CH names (JDK 17 CLDR, probe-verified)
+const FR_DAYS_LONG = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+const FR_DAYS_SHORT = ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'];
+const FR_MONTHS_LONG = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+const FR_MONTHS_SHORT = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'];
+const FR_CA_MONTHS_SHORT = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juill.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'];
 const DE_DAYS_LONG = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
 const DE_DAYS_SHORT = ['So.', 'Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.'];
 const DE_DAYS_SHORT_STANDALONE = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
@@ -345,7 +350,7 @@ export class Calendar {
     return other instanceof Calendar && this.getTimeBig() === other.getTimeBig();
   }
 
-  // Java: Calendar#getDisplayName(int,int,Locale) (DAY_OF_WEEK/MONTH with style SHORT/LONG, JDK 17 CLDR names of the locales en, en_US, en_GB, de, de_DE, de_AT, de_CH; probe-verified)
+  // Java: Calendar#getDisplayName(int,int,Locale) (DAY_OF_WEEK/MONTH with style SHORT/LONG, JDK 17 CLDR names of the locales en, en_US, en_GB, de, de_DE, de_AT, de_CH, fr, fr_FR/CH/BE/CA; probe-verified)
   getDisplayName(field, style, locale) {
     if (locale === null || locale === undefined) throw new NullPointerException();
     const base = style & ~0x8000; // standalone flag
@@ -370,6 +375,13 @@ export class Calendar {
       if (deLong) return (at ? DE_MONTHS_LONG_AT : DE_MONTHS_LONG)[deValue];
       if (standalone) return (at ? DE_MONTHS_SHORT_STANDALONE_AT : DE_MONTHS_SHORT_STANDALONE)[deValue];
       return (at ? DE_MONTHS_SHORT_AT : DE_MONTHS_SHORT)[deValue];
+    }
+    if (locale.getLanguage() === 'fr' && locale.getVariant() === '' && (country === '' || country === 'FR' || country === 'CH' || country === 'BE' || country === 'CA')) {
+      const frValue = this.get(field);
+      const frLong = (style & 0x7fff) === 2;
+      if (field === DAY_OF_WEEK) return (frLong ? FR_DAYS_LONG : FR_DAYS_SHORT)[frValue - 1];
+      if (frLong) return FR_MONTHS_LONG[frValue];
+      return (country === 'CA' ? FR_CA_MONTHS_SHORT : FR_MONTHS_SHORT)[frValue];
     }
     if (locale.getLanguage() !== 'en' || locale.getVariant() !== '' || (country !== '' && country !== 'US' && country !== 'GB')) {
       throw new UnsupportedOperationException(`Calendar#getDisplayName locale ${locale} not ported`);

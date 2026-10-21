@@ -7,6 +7,12 @@ import { ConfusionSetLoader } from '../../src/core/rules/ConfusionSetLoader.js';
 import { errorOf, languageFor } from './_check-pipe-common.mjs';
 import { run as styleRun } from './style-check.mjs';
 import { notPorted } from './_pipe-common.mjs';
+import { MorfologikFrenchSpellerRule } from '../../src/lang/fr/rules/MorfologikFrenchSpellerRule.js';
+import { CompoundRule } from '../../src/lang/fr/rules/CompoundRule.js';
+import { QuestionWhitespaceRule } from '../../src/lang/fr/rules/QuestionWhitespaceRule.js';
+import { QuestionWhitespaceStrictRule } from '../../src/lang/fr/rules/QuestionWhitespaceStrictRule.js';
+import { SimpleReplaceRule } from '../../src/lang/fr/rules/SimpleReplaceRule.js';
+import { FrenchRepeatedWordsRule } from '../../src/lang/fr/rules/FrenchRepeatedWordsRule.js';
 
 // Java: ReplaceOps#check(JsonNode)
 export function run(a) {
@@ -102,7 +108,10 @@ function confusion(a) {
   return res;
 }
 
-// Java: French#getRelevantRules (F37 rules merged into the F36 list); English and German use the real getRelevantRules (F50, F59)
-export function f37Rules(l) {
-  throw notPorted(`replace-check: rule list of ${l.getShortCode()}`);
+// Java: French#getRelevantRules (F36 natives + F61 French rules in Java list order, without the XML pattern rules (F63)); English and German use the real getRelevantRules (F50, F59)
+export function f37Rules(l, m, uc, natives) {
+  if (l.getShortCode() !== 'fr') throw notPorted(`replace-check: rule list of ${l.getShortCode()}`);
+  const speller = uc === null ? l.getDefaultSpellingRule() : new MorfologikFrenchSpellerRule(m, l, uc, []);
+  return [speller, ...natives, new CompoundRule(m, l, uc), new QuestionWhitespaceStrictRule(m, l), new QuestionWhitespaceRule(m, l),
+    new SimpleReplaceRule(m, l), new FrenchRepeatedWordsRule(m)];
 }
