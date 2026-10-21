@@ -3,7 +3,6 @@ import { Mode, Level } from '../core/JLanguageTool.js';
 import { currentTimeMillis } from '../lib/java/clock.js';
 import { BadRequestException } from './BadRequestException.js';
 import { UserLimits } from './UserLimits.js';
-import { notPortedYet } from '../core/language/components.js';
 
 // Java: ServerTools#print(String,PrintStream) with SimpleDateFormat("yyyy-MM-dd HH:mm:ss ZZ") in UTC
 export function print(s, stream = process.stdout) {
@@ -26,14 +25,21 @@ export function setAllowOrigin(httpExchange, allowOriginUrl) {
   }
 }
 
-// Java: ServerTools#getUserLimits(Map,HTTPServerConfig[,String]); database/JWT lookups follow with the user/auth steps
+// Java: ServerTools#getUserLimits(Map,HTTPServerConfig[,String])
 export function getUserLimits(params, config, authHeader = null) {
   if (params.get('username') !== undefined) {
     if (params.get('apiKey') !== undefined && params.get('password') !== undefined) {
       throw new BadRequestException('apiKey AND password was set, set only apiKey');
     }
-    if (params.get('apiKey') !== undefined || params.get('password') !== undefined || params.get('tokenV2') !== undefined) {
-      throw notPortedYet('ServerTools#getUserLimits (account lookup via apiKey/password/tokenV2)');
+    if (params.get('apiKey') !== undefined) {
+      return UserLimits.getLimitsByApiKey(config, params.get('username'), params.get('apiKey'));
+    } else if (params.get('password') !== undefined) {
+      return UserLimits.getLimitsFromUserAccount(config, params.get('username'), params.get('password'));
+    } else if (params.get('tokenV2') !== undefined) {
+      if (authHeader !== null) {
+        return UserLimits.getLimitsWithJwtToken(config, authHeader, params.get('username'), params.get('tokenV2'));
+      }
+      return UserLimits.getLimitsByAddonToken(config, params.get('username'), params.get('tokenV2'));
     }
     throw new BadRequestException("With 'username' set, you also need to specify 'apiKey'");
   }
@@ -44,7 +50,7 @@ export function getUserLimits(params, config, authHeader = null) {
     throw new BadRequestException('password was set, but username was not');
   }
   if (authHeader !== null) {
-    throw notPortedYet('ServerTools#getUserLimits (JWT token via Authorization header)');
+    return UserLimits.getLimitsWithJwtToken(config, authHeader, null, params.get('tokenV2') ?? null);
   }
   return UserLimits.getDefaultLimits(config);
 }

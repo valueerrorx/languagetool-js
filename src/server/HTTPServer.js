@@ -7,6 +7,7 @@ import { getMessageBundle } from '../core/resources/ResourceBundleTools.js';
 import { i18n } from '../core/Tools.js';
 import { Exception, IllegalArgumentException, IOException, RuntimeException, isThrowable } from '../lib/java/errors.js';
 import { URI, URISyntaxException } from '../lib/java/net.js';
+import { DatabaseAccess } from './DatabaseAccess.js';
 import { notPortedYet } from '../core/language/components.js';
 import { DEFAULT_HOST, DEFAULT_PORT, HTTPServerConfig } from './HTTPServerConfig.js';
 import { BindException, PortBindingException } from './exceptions.js';
@@ -302,6 +303,7 @@ export class HTTPServer extends Server {
       process.exit(1);
     }
     const config = new HTTPServerConfig(args);
+    DatabaseAccess.init(config);
     try {
       checkForNonRootUser();
       let server;

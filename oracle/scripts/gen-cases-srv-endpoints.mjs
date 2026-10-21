@@ -18,7 +18,7 @@ const CFG = (props) => ({ serverArgs: ['--config', '{WORK}/server.properties'], 
 // languages
 write('languages', '/v2/languages (SRV-0092): GET/POST/extra params; list restricted to in-scope languages by the comparator (DEV-006)', { requests: [
   LANGS(get('/v2/languages')), LANGS(post('/v2/languages')), LANGS(get('/v2/languages', { foo: 'bar' })), LANGS(post('/v2/languages', { language: 'de' })),
-  LANGS(get('/v2/languages/')), get('/v2/languages/x'), LANGS({ method: 'HEAD', path: '/v2/languages' }), { method: 'OPTIONS', path: '/v2/languages' }, { method: 'PUT', path: '/v2/languages', body: 'x', contentType: 'text/plain' },
+  LANGS(get('/v2/languages/')), get('/v2/languages/x'), LANGS({ method: 'HEAD', path: '/v2/languages' }), LANGS({ method: 'OPTIONS', path: '/v2/languages' }), LANGS({ method: 'PUT', path: '/v2/languages', body: 'x', contentType: 'text/plain' }),
 ] });
 // maxtextlength
 write('maxtextlength', '/v2/maxtextlength default (SRV-0093)', { requests: [get('/v2/maxtextlength'), post('/v2/maxtextlength'), get('/v2/maxtextlength', { language: 'en-US' }), { method: 'HEAD', path: '/v2/maxtextlength' }] });
