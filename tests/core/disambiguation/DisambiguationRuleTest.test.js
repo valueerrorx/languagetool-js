@@ -1,4 +1,4 @@
-// Java: org.languagetool.tagging.disambiguation.rules.DisambiguationRuleTest (xx examples replayed; real languages need their hybrid disambiguators F45/F51/F60)
+// Java: org.languagetool.tagging.disambiguation.rules.DisambiguationRuleTest (xx examples and en/de/fr replayed)
 import { describe, it, expect } from 'vitest';
 import '../../../src/lang/register.js';
 import { DisambiguationRuleLoader } from '../../../src/core/disambiguation/DisambiguationRuleLoader.js';
@@ -144,8 +144,8 @@ describe('DisambiguationRuleTest', () => {
     expect(loaded).toBeGreaterThan(0);
   });
 
-  // Java: DisambiguationRuleTest#testDisambiguationRulesFromXML(Set) for en (EnglishHybridDisambiguator, F45) and de (GermanRuleDisambiguator, F51); built-in rules are not needed for the replay
-  for (const code of ['en', 'de']) {
+  // Java: DisambiguationRuleTest#testDisambiguationRulesFromXML(Set) for en (F45), de (F51) and fr (FrenchHybridDisambiguator, F60); built-in rules are not needed for the replay
+  for (const code of ['en', 'de', 'fr']) {
     it(`replays the disambiguation examples of ${code}`, () => {
       const lang = Languages.getLanguageForShortCode(code);
       const nameWithLocale = `${code}/disambiguation.xml`;
@@ -154,13 +154,4 @@ describe('DisambiguationRuleTest', () => {
       testDisambiguationRulesFromXMLExamples(rules, newLt(lang), lang);
     }, 120000);
   }
-
-  // Java: DisambiguationRuleTest#testDisambiguationRulesFromXML(Set) for fr: SKIPPED, the examples need the hybrid disambiguator (multiword preDisambiguate) of F60
-  it.skip('F60: disambiguation examples replay of fr', () => {
-    const lang = Languages.getLanguageForShortCode('fr');
-    const nameWithLocale = 'fr/disambiguation.xml';
-    const stream = getDataBroker().getAsStream(`${getDataBroker().getResourceDir()}/${nameWithLocale}`);
-    const rules = new DisambiguationRuleLoader().getRules(stream, lang, nameWithLocale);
-    testDisambiguationRulesFromXMLExamples(rules, new JLanguageTool(lang), lang);
-  });
 });

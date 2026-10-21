@@ -1,19 +1,11 @@
-// Ported from GermanWrongWordInContextRuleTest (de-DE, no-op disambiguation: F32 pending)
-import { describe, it, expect, beforeAll, afterAll } from 'vitest';
-import { NoopChunker } from '../../../src/core/noop/NoopChunker.js';
+// Ported from GermanWrongWordInContextRuleTest (de-DE, real German disambiguation and chunking since F51)
+import { describe, it, expect } from 'vitest';
 import { Languages } from '../../../src/core/Languages.js';
 import { GermanWrongWordInContextRule } from '../../../src/lang/de/rules/GermanWrongWordInContextRule.js';
-import { newLt, useNoopAnalysis } from '../../support/ruleTestSupport.js';
+import { newLt } from '../../support/ruleTestSupport.js';
 
 describe('GermanWrongWordInContextRuleTest', () => {
   const lang = Languages.getLanguageForShortCode('de-DE');
-  useNoopAnalysis(lang);
-  let savedPostChunker;
-  beforeAll(() => {
-    savedPostChunker = lang.getPostDisambiguationChunker();
-    lang.setPostDisambiguationChunker(new NoopChunker());
-  });
-  afterAll(() => lang.setPostDisambiguationChunker(savedPostChunker));
   const lt = newLt(lang);
   const rule = new GermanWrongWordInContextRule(null, lang);
   const assertGood = (sentence) => expect(rule.match(lt.getAnalyzedSentence(sentence)).length).toBe(0);

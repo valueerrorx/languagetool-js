@@ -1,5 +1,6 @@
 // org.languagetool.rules.AbstractStyleRepeatedWordRule
 import { Pattern } from '../../lib/java/regex/index.js';
+import { listGet } from '../../lib/java/arrays.js';
 import { TextLevelRule } from './model/TextLevelRule.js';
 import { RuleMatch } from './model/RuleMatch.js';
 import { RuleOption } from './model/RuleOption.js';
@@ -173,7 +174,7 @@ export class AbstractStyleRepeatedWordRule extends TextLevelRule {
     if (!this.excludeDirectSpeech || n <= 0) {
       return false;
     }
-    const sentence = sentences[n - 1].getTokensWithoutWhitespace();
+    const sentence = listGet(sentences, n - 1).getTokensWithoutWhitespace();
     for (let i = 0; i < sentence.length; i++) {
       const token = sentence[i];
       if (!isDirectSpeech && OPENING_QUOTES.matcher(token.getToken()).matches()
@@ -195,14 +196,14 @@ export class AbstractStyleRepeatedWordRule extends TextLevelRule {
     let pos = 0;
     let startsWithDirectSpeech = false;
     for (let n = 0; n < this.maxDistanceOfSentences && n < sentences.length; n++) {
-      tokenList.push(sentences[n].getTokensWithoutWhitespace());
+      tokenList.push(listGet(sentences, n).getTokensWithoutWhitespace());
       startsWithDirectSpeech = this.getStartsWithDirectSpeech(n, sentences, startsWithDirectSpeech);
       isDSList.push(startsWithDirectSpeech);
     }
     let isDirectSpeech = false;
     for (let n = 0; n < sentences.length; n++) {
       if (n + this.maxDistanceOfSentences < sentences.length) {
-        tokenList.push(sentences[n + this.maxDistanceOfSentences].getTokensWithoutWhitespace());
+        tokenList.push(listGet(sentences, n + this.maxDistanceOfSentences).getTokensWithoutWhitespace()); // Java: List#get throws on a negative index
         startsWithDirectSpeech = this.getStartsWithDirectSpeech(n + this.maxDistanceOfSentences, sentences, startsWithDirectSpeech);
         isDSList.push(startsWithDirectSpeech);
       }
@@ -216,7 +217,7 @@ export class AbstractStyleRepeatedWordRule extends TextLevelRule {
       } else if (n >= sentences.length - this.maxDistanceOfSentences) {
         nTok = tokenList.length - (sentences.length - n);
       }
-      if (!hasBreakToken(tokenList[nTok])) {
+      if (!hasBreakToken(listGet(tokenList, nTok))) { // Java: tokenList.get(nTok) throws IndexOutOfBoundsException
         for (let i = 0; i < tokenList[nTok].length; i++) {
           const token = tokenList[nTok][i];
           if (this.excludeDirectSpeech && !isDirectSpeech && OPENING_QUOTES.matcher(token.getToken()).matches()

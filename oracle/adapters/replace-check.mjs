@@ -7,13 +7,6 @@ import { ConfusionSetLoader } from '../../src/core/rules/ConfusionSetLoader.js';
 import { errorOf, languageFor } from './_check-pipe-common.mjs';
 import { run as styleRun } from './style-check.mjs';
 import { notPorted } from './_pipe-common.mjs';
-import { GermanCompoundRule } from '../../src/lang/de/rules/GermanCompoundRule.js';
-import { SimpleReplaceRule as DeSimpleReplaceRule } from '../../src/lang/de/rules/SimpleReplaceRule.js';
-import { GermanWrongWordInContextRule } from '../../src/lang/de/rules/GermanWrongWordInContextRule.js';
-import { WordCoherencyRule as DeWordCoherencyRule } from '../../src/lang/de/rules/WordCoherencyRule.js';
-import { AgreementRule } from '../../src/lang/de/rules/AgreementRule.js';
-import { AgreementRule2 } from '../../src/lang/de/rules/AgreementRule2.js';
-import { CaseRule } from '../../src/lang/de/rules/CaseRule.js';
 
 // Java: ReplaceOps#check(JsonNode)
 export function run(a) {
@@ -117,8 +110,8 @@ export function f37Rules(l, m, uc, natives) {
   const isReadability = (r) => r.constructor?.name === 'ReadabilityRule';
   const out = natives.slice();
   if (code === 'de') {
-    out.push(new GermanCompoundRule(m, l, uc), new DeSimpleReplaceRule(m, l), new GermanWrongWordInContextRule(m, l), new AgreementRule(m, l), new AgreementRule2(m, l), new CaseRule(m, l), new DeWordCoherencyRule(m));
-    return out;
+    return out; // natives already hold the complete German list (_de-rules.mjs, F57)
   }
   throw notPorted(`replace-check: rule list of ${code}`);
 }
+f37Rules.withPatternRules = true; // style-check also activates the de XML pattern rules (F58)

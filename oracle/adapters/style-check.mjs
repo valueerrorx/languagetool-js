@@ -19,6 +19,7 @@ import { JLanguageTool } from '../../src/core/JLanguageTool.js';
 import { errorOf, languageFor, withNoopAnalysis } from './_check-pipe-common.mjs';
 import { recordPreLanguageFilter, runCase } from './check2.mjs';
 import { notPorted } from './_pipe-common.mjs';
+import { germanRelevantRules } from './_de-rules.mjs';
 import { UnitConversionRule as EnUnitConversionRule } from '../../src/lang/en/rules/UnitConversionRule.js';
 import { UnitConversionRuleUS } from '../../src/lang/en/rules/UnitConversionRuleUS.js';
 import { UnitConversionRuleImperial } from '../../src/lang/en/rules/UnitConversionRuleImperial.js';
@@ -35,16 +36,13 @@ const EXTRA = {
 // Java: English#getRelevantRules / German#getRelevantRules / French#getRelevantRules (F36 rules only, list order kept; np = shadow instance for config errors only)
 function nativeRules(code, l, m, uc) {
   switch (code) {
-    case 'de': return [
-      new WhiteSpaceBeforeParagraphEnd(m, l), new WhiteSpaceAtBeginOfParagraph(m), new EmptyLineRule(m, l),
-      new LongParagraphRule(m, l, uc), new PunctuationMarkAtParagraphEnd(m, l),
-    ];
+    case 'de': return germanRelevantRules(l, m, uc); // all ported German rules in Java list order (_de-rules.mjs)
     case 'fr': return [new LongSentenceRule(m, uc, 40), new LongParagraphRule(m, l, uc)];
     default: throw notPorted(`style-check: rule list of ${code}`);
   }
 }
 
-// Java: StyleOps#check(JsonNode); fr disambiguator/chunker are not ported (F60): no-op analysis (R4), see docs/review/F36-porter.md
+// Java: StyleOps#check(JsonNode); all of en/de/fr analysis is real
 export function run(a, hook = null) {
   let l;
   try {
@@ -54,7 +52,8 @@ export function run(a, hook = null) {
   }
   if (l.getShortCode() === 'en') return check(a, l, hook); // English: real rule list, analysis complete since F45/F50
   if (l.getShortCode() === 'de') return check(a, l, hook); // German: native rule instances, real GermanRuleDisambiguator + GermanChunker since F51
-  // French post-disambiguation chunker is replaced too (until F60); the F36 rules read no chunk tags
+  if (l.getShortCode() === 'fr') return check(a, l, hook); // French: real FrenchHybridDisambiguator since F60
+  // other languages: the F36 rules read no chunk tags
   const savedPost = l.postDisambiguationChunker;
   l.postDisambiguationChunker = new NoopChunker();
   try {
@@ -94,6 +93,8 @@ function check(a, l, hook) {
   if (hook !== null || real) recordPreLanguageFilter(lt);
   const rules = real ? [] : natives.filter((r) => r.np === undefined);
   for (const r of rules) lt.addRule(r);
+  // de: the Java HarnessLT also loads the XML pattern rules (F58 X-DEFILTERS); only for hooks that ask for it, natives stay first
+  if (hook !== null && hook.withPatternRules === true && !real && l.getShortCode() === 'de') lt.activateDefaultPatternRules();
   const enabled = new Set(a.ids);
   // with the F37 hook the rule lists of en/de are complete for the requested ids: ids without a rule are absent in Java too (e.g. variant rules of other variants)
   if (hook === null && !real) for (const id of a.ids) if (!rules.some((r) => r.getId() === id)) throw notPorted(`style-check: ${id} (rule class not ported)`);

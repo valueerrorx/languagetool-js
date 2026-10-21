@@ -56,6 +56,7 @@ export function interimRules(l) {
 export function withInterimAnalysis(lang, fn) {
   if (lang.getShortCode() === 'en') return fn(); // English: real EnglishHybridDisambiguator and EnglishChunker (F45)
   if (lang.getShortCode() === 'de') return fn(); // German: real GermanRuleDisambiguator and GermanChunker (F51)
+  if (lang.getShortCode() === 'fr') return fn(); // French: real FrenchHybridDisambiguator (F60)
   const d = lang.getDisambiguator();
   const c = lang.getChunker();
   const pc = lang.postDisambiguationChunker; // raw field: the getter would create the unported default

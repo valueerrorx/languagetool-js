@@ -5,7 +5,7 @@
 import { deepDiff } from './deep.mjs';
 
 // X-RULES-CORE: cases with disambChanged (rule result depends on the disambiguator/immunization) are skipped until the disambiguators are ported (F32/F45/F51); set true then
-const DISAMB_PORTED = false;
+const DISAMB_PORTED = true;
 const errKey = (e) => (e ? `${e.class}: ${e.message}` : null);
 
 function check2Case(e, a, p, out) {

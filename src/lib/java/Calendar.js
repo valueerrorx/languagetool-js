@@ -25,6 +25,17 @@ const EN_MONTHS_LONG = ['January', 'February', 'March', 'April', 'May', 'June', 
 const EN_MONTHS_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const EN_GB_MONTHS_SHORT = EN_MONTHS_SHORT.map((m) => (m === 'Sep' ? 'Sept' : m));
 
+// de/de_DE/de_AT/de_CH names (JDK 17 CLDR, probe-verified)
+const DE_DAYS_LONG = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+const DE_DAYS_SHORT = ['So.', 'Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.'];
+const DE_DAYS_SHORT_STANDALONE = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
+const DE_MONTHS_LONG = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
+const DE_MONTHS_LONG_AT = DE_MONTHS_LONG.map((m) => (m === 'Januar' ? 'Jänner' : m));
+const DE_MONTHS_SHORT = ['Jan.', 'Feb.', 'März', 'Apr.', 'Mai', 'Juni', 'Juli', 'Aug.', 'Sept.', 'Okt.', 'Nov.', 'Dez.'];
+const DE_MONTHS_SHORT_AT = ['Jän.', 'Feb.', 'März', 'Apr.', 'Mai', 'Juni', 'Juli', 'Aug.', 'Sep.', 'Okt.', 'Nov.', 'Dez.'];
+const DE_MONTHS_SHORT_STANDALONE = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'];
+const DE_MONTHS_SHORT_STANDALONE_AT = DE_MONTHS_SHORT_STANDALONE.map((m) => (m === 'Jan' ? 'Jän' : m));
+
 const floorDiv = (a, b) => Math.floor(a / b);
 const mod = (a, b) => a - Math.floor(a / b) * b;
 const isGregorianLeap = (y) => (y % 4 === 0) && (y % 100 !== 0 || y % 400 === 0);
@@ -334,7 +345,7 @@ export class Calendar {
     return other instanceof Calendar && this.getTimeBig() === other.getTimeBig();
   }
 
-  // Java: Calendar#getDisplayName(int,int,Locale) (DAY_OF_WEEK/MONTH with style SHORT/LONG, JDK 17 CLDR names of the locales en, en_US, en_GB; probe-verified)
+  // Java: Calendar#getDisplayName(int,int,Locale) (DAY_OF_WEEK/MONTH with style SHORT/LONG, JDK 17 CLDR names of the locales en, en_US, en_GB, de, de_DE, de_AT, de_CH; probe-verified)
   getDisplayName(field, style, locale) {
     if (locale === null || locale === undefined) throw new NullPointerException();
     const base = style & ~0x8000; // standalone flag
@@ -350,6 +361,16 @@ export class Calendar {
       return null;
     }
     const country = locale.getCountry();
+    if (locale.getLanguage() === 'de' && locale.getVariant() === '' && (country === '' || country === 'DE' || country === 'AT' || country === 'CH')) {
+      const deValue = this.get(field);
+      const deLong = (style & 0x7fff) === 2;
+      const standalone = (style & 0x8000) !== 0;
+      const at = country === 'AT';
+      if (field === DAY_OF_WEEK) return (deLong ? DE_DAYS_LONG : standalone ? DE_DAYS_SHORT_STANDALONE : DE_DAYS_SHORT)[deValue - 1];
+      if (deLong) return (at ? DE_MONTHS_LONG_AT : DE_MONTHS_LONG)[deValue];
+      if (standalone) return (at ? DE_MONTHS_SHORT_STANDALONE_AT : DE_MONTHS_SHORT_STANDALONE)[deValue];
+      return (at ? DE_MONTHS_SHORT_AT : DE_MONTHS_SHORT)[deValue];
+    }
     if (locale.getLanguage() !== 'en' || locale.getVariant() !== '' || (country !== '' && country !== 'US' && country !== 'GB')) {
       throw new UnsupportedOperationException(`Calendar#getDisplayName locale ${locale} not ported`);
     }

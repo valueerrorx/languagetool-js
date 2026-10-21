@@ -1,12 +1,11 @@
-// Ported from MorfologikFrenchSpellerRuleTest (fr module); no-op disambiguator/chunker (F32/F44 pending, F60 French disambiguation)
+// Ported from MorfologikFrenchSpellerRuleTest (fr module); real analysis (FrenchHybridDisambiguator, F60)
 import { describe, it, expect } from 'vitest';
 import '../../../../src/lang/register.js';
 import { Languages } from '../../../../src/core/Languages.js';
-import { newLt, useNoopAnalysis } from '../../../support/ruleTestSupport.js';
+import { newLt } from '../../../support/ruleTestSupport.js';
 
 describe('MorfologikFrenchSpellerRuleTest', () => {
   const french = Languages.getLanguageForShortCode('fr');
-  useNoopAnalysis(french);
   const lt = newLt(french);
   const rule = french.getDefaultSpellingRule();
 
@@ -111,12 +110,15 @@ describe('MorfologikFrenchSpellerRuleTest', () => {
     assertNoMatches("Écoute-moi.");
     assertNoMatches("35%");
     assertNoMatches("20$");
+    assertNoMatches("4x4");
     assertNoMatches("300 000 yen");
+    assertNoMatches("20°C");
     assertNoMatches("même s'il coûte 10.000 yens");
     assertNoMatches("J'ai 38,9 de fièvre.");
     assertNoMatches("Thunderbird 2.0.0.14");
     assertNoMatches("Va-t’en !");
     assertNoMatches("-Je ne suis pas venu par manque de temps.");
+    assertNoMatches("12hr-14hr");
     assertNoMatches("Dominique Strauss-Kahn");
     assertNoMatches("L'ONU");
     assertNoMatches("d'1");
@@ -127,6 +129,7 @@ describe('MorfologikFrenchSpellerRuleTest', () => {
     assertNoMatches("Le Déconfinement");
     assertNoMatches("Cesse de t'autoflageller.");
     assertNoMatches("L'iPhone");
+    assertNoMatches("Une #sprache @mentioned mywebsite.org ereredd.7z, domaine .com, NH₄OH");
   });
 
   // Java: MorfologikFrenchSpellerRuleTest#testMultiwords
@@ -266,17 +269,9 @@ describe('MorfologikFrenchSpellerRuleTest', () => {
 
   // Java: MorfologikFrenchSpellerRuleTest#testMultitokens
   it('testMultitokens', () => {
+    assertNoMatches("MERCEDES-BENZ");
     assertNoMatches("Walt Disney Animation Studios");
     assertNoMatches("MÉTÉO-FRANCE");
     assertNoMatches("CLERMONT-FERRAND");
-  });
-
-  // Java: MorfologikFrenchSpellerRuleTest#testCorrectWords / #testMultitokens (assertions that need the ignore_spelling and multiword rules of the French disambiguator, F60)
-  it.skip('testCorrectWords / testMultitokens (disambiguation)', () => {
-    assertNoMatches("4x4");
-    assertNoMatches("20°C");
-    assertNoMatches("12hr-14hr");
-    assertNoMatches("Une #sprache @mentioned mywebsite.org ereredd.7z, domaine .com, NH₄OH");
-    assertNoMatches("MERCEDES-BENZ");
   });
 });

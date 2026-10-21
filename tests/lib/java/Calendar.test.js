@@ -98,3 +98,28 @@ describe('Calendar#getDisplayName (probe-verified vs JDK 17)', () => {
     expect(() => c.getDisplayName(Calendar.DAY_OF_WEEK, 3, Locale.UK)).toThrow();
   });
 });
+
+describe('Calendar#getDisplayName de (probe-verified vs JDK 17: de, de_DE, de_AT, de_CH)', () => {
+  const names = (loc, field, style, n) => {
+    const c = Calendar.getInstance(loc);
+    const out = [];
+    for (let i = 0; i < n; i++) {
+      if (field === Calendar.DAY_OF_WEEK) c.set(Calendar.DAY_OF_WEEK, i + 1); else c.set(2014, i, 1);
+      out.push(c.getDisplayName(field, style, loc));
+    }
+    return out.join('|');
+  };
+  it('days and months', () => {
+    const de = Locale.GERMAN; const at = new Locale('de', 'AT'); const ch = new Locale('de', 'CH');
+    expect(names(de, Calendar.DAY_OF_WEEK, Calendar.LONG, 7)).toBe('Sonntag|Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag');
+    expect(names(Locale.GERMANY, Calendar.DAY_OF_WEEK, Calendar.SHORT, 7)).toBe('So.|Mo.|Di.|Mi.|Do.|Fr.|Sa.');
+    expect(names(de, Calendar.MONTH, Calendar.LONG, 12)).toBe('Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember');
+    expect(names(at, Calendar.MONTH, Calendar.LONG, 12)).toBe('Jänner|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember');
+    expect(names(ch, Calendar.MONTH, Calendar.SHORT, 12)).toBe('Jan.|Feb.|März|Apr.|Mai|Juni|Juli|Aug.|Sept.|Okt.|Nov.|Dez.');
+    expect(names(at, Calendar.MONTH, Calendar.SHORT, 12)).toBe('Jän.|Feb.|März|Apr.|Mai|Juni|Juli|Aug.|Sep.|Okt.|Nov.|Dez.');
+    expect(Calendar.getInstance(Locale.GERMANY).getFirstDayOfWeek()).toBe(2);
+    expect(Calendar.getInstance(Locale.GERMANY).getMinimalDaysInFirstWeek()).toBe(4);
+    expect(Calendar.getInstance(ch).getFirstDayOfWeek()).toBe(2);
+    expect(Calendar.getInstance(de).getFirstDayOfWeek()).toBe(1);
+  });
+});

@@ -45,18 +45,6 @@ for (const cls of [AbstractAdvancedSynthesizerFilter, AbstractDateCheckFilter, A
 
 // filter classes referenced by the de/en/fr/core rule files (grep of <filter class=...>)
 const PENDING_RULE_FILTERS = [
-  'org.languagetool.rules.de.AdvancedSynthesizerFilter',
-  'org.languagetool.rules.de.CompoundCheckFilter',
-  'org.languagetool.rules.de.DateCheckFilter',
-  'org.languagetool.rules.de.FutureDateFilter',
-  'org.languagetool.rules.de.GermanNumberInWordFilter',
-  'org.languagetool.rules.de.InsertCommaFilter',
-  'org.languagetool.rules.de.NewYearDateFilter',
-  'org.languagetool.rules.de.PotentialCompoundFilter',
-  'org.languagetool.rules.de.RecentYearFilter',
-  'org.languagetool.rules.de.RemoveUnknownCompoundsFilter',
-  'org.languagetool.rules.de.ValidWordFilter',
-  'org.languagetool.rules.de.YMDNewYearDateFilter',
   'org.languagetool.rules.fr.AdvancedSynthesizerFilter',
   'org.languagetool.rules.fr.DMYDateCheckFilter',
   'org.languagetool.rules.fr.DateCheckFilter',
@@ -70,7 +58,6 @@ const PENDING_RULE_FILTERS = [
   'org.languagetool.rules.fr.SuggestionsFilter',
   'org.languagetool.rules.fr.WordWithDeterminerFilter',
   'org.languagetool.rules.ca.CatalanSuppressMisspelledSuggestionsFilter',
-  'org.languagetool.rules.de.GermanSuppressMisspelledSuggestionsFilter',
   'org.languagetool.rules.es.FindSuggestionsFilter',
   'org.languagetool.rules.nl.DutchNumberInWordFilter',
   'org.languagetool.rules.ru.RussianSuppressMisspelledSuggestionsFilter',

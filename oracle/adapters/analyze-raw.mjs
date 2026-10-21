@@ -1,4 +1,4 @@
-// JS twin of harness op "analyze-raw" (CheckPipeOps#analyzeRaw); fr disambiguator replaced by a no-op until F60 (only unchanged sentences are compared, R4).
+// JS twin of harness op "analyze-raw" (CheckPipeOps#analyzeRaw).
 import { languageFor, newTool, errorOf, withNoopAnalysis } from './_check-pipe-common.mjs';
 
 // Java: CheckPipeOps#tok(AnalyzedTokenReadings)
@@ -19,7 +19,7 @@ const toks = (a) => a.map(tok);
 // Java: CheckPipeOps#analyzeRaw(JsonNode)
 export function run(a) {
   const l = languageFor(a.lang);
-  const real = l.getShortCode() === 'en' || l.getShortCode() === 'de'; // EnglishHybridDisambiguator (F45) and GermanRuleDisambiguator (F51) ported: real post-disambiguation
+  const real = l.getShortCode() === 'en' || l.getShortCode() === 'de' || l.getShortCode() === 'fr'; // English (F45), German (F51), French (F60) disambiguators ported: real post-disambiguation
   return (real ? (f) => f() : (f) => withNoopAnalysis(l, false, f))(() => {
     const lt = newTool(l);
     lt.setCleanOverlappingMatches(false);

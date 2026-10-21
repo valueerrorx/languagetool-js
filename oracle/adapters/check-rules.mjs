@@ -87,7 +87,8 @@ export function run(a) {
     if (c === undefined) throw Object.assign(new Error(`check-rules: class ${n} not ported`), { notPorted: true });
     return c;
   });
-  return withNoopAnalysis(l, true, () => {
+  const realAnalysis = ['en', 'de', 'fr'].includes(l.getShortCode()); // disambiguators/chunkers of en (F45), de (F51), fr (F60) ported
+  return (realAnalysis ? (f) => f() : (f) => withNoopAnalysis(l, true, f))(() => {
     const messages = getMessageBundleForLanguage(l);
     const lt = newTool(l, null);
     lt.setCleanOverlappingMatches(false);

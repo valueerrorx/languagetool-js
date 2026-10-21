@@ -230,3 +230,15 @@ export function substringAfter(str, separator) {
   if (pos === -1) return '';
   return str.substring(pos + separator.length);
 }
+
+// Java: StringUtils#countMatches(CharSequence,CharSequence) (non-overlapping, empty arguments -> 0)
+export function countMatches(str, sub) {
+  if (isEmptyCs(str) || isEmptyCs(sub)) return 0;
+  let count = 0;
+  let idx = 0;
+  while ((idx = str.indexOf(sub, idx)) !== -1) {
+    count++;
+    idx += sub.length;
+  }
+  return count;
+}
