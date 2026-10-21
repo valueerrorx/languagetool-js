@@ -288,6 +288,8 @@ final class RuleInfraOps {
 
   private static Object ruleTextMatch0(JsonNode a) throws Exception {
     Language l = RuleLoadOps.lang(a.get("lang").asText());
+    l.getDisambiguator(); // loads disambiguation.xml (unifier config used by antipatterns), as JLanguageTool does
+    SeqMatchOps.tool(l);
     List<AbstractPatternRule> rules = rules(a);
     PatternRuleTransformer.TransformedRules tr = transformer(a.get("transformer").asText(), l).apply(rules);
     List<Rule> trans = tr.getTransformedRules();

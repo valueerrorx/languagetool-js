@@ -1,6 +1,6 @@
 # Resume (lead)
-State 2026-10-21: F01-F34, F38, F44-F49, F51-F59 verified; F50, F60 partial; F35-F37, F39-F43 partial. 555/1193 verified. Full npm test green (1014 pass, exit 0, ~5 min, maxWorkers 6).
-F46-F60 done. Next: F61 (see PLAN.md), only on user request. Keep full npm test green (exit 0) after each batch.
+State 2026-10-21: F01-F34, F38, F44-F49, F51-F59, F61-F63, F65 verified; F50, F60, F64 partial (F64: 3 -adl cases detect ca/it/ga, DEV-006/008); F35-F37, F39-F43 partial. 625/1193 verified. Full npm test green (1061 pass, exit 0, ~6 min, maxWorkers 6).
+F46-F65 done. Next: F66 (see PLAN.md), only on user request. Keep full npm test green (exit 0) after each batch. FalseFriendRuleHandler treats out-of-scope languages as placeholders (DEV-006): mother-tongue cases de/fr pass. X-RULEINFRA harness now loads the disambiguator (unify in antipatterns).
 Notes: npm test now long (EnglishPatternRuleTest 190 s); parity.mjs supports LTJS_CASE=<regex>.
 Rules:
 - D-052 token budget: sonnet only, short prompts, no reviewer unless fixtures thin, one round.
