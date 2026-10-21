@@ -27,6 +27,16 @@ export class SAXParseException extends SAXException {
   getColumnNumber() {
     return this.columnNumber;
   }
+
+  // Java: SAXParseException#toString() (publicId and systemId are always null here)
+  toString() {
+    let buf = this.javaClass;
+    const m = this.getLocalizedMessage();
+    if (this.lineNumber !== -1) buf += `; lineNumber: ${this.lineNumber}`;
+    if (this.columnNumber !== -1) buf += `; columnNumber: ${this.columnNumber}`;
+    if (m !== null && m !== undefined) buf += `; ${m}`;
+    return buf;
+  }
 }
 
 // Java: com.sun.org.apache.xerces.internal.impl.io.MalformedByteSequenceException

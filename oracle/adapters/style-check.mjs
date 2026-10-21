@@ -4,8 +4,6 @@
 import { UserConfig } from '../../src/core/rules/model/UserConfig.js';
 import { selectRules } from '../../src/core/Tools.js';
 import { getMessageBundleForLanguage } from '../../src/core/resources/ResourceBundleTools.js';
-import { LongSentenceRule } from '../../src/core/rules/LongSentenceRule.js';
-import { LongParagraphRule } from '../../src/core/rules/LongParagraphRule.js';
 import { EmptyLineRule } from '../../src/core/rules/EmptyLineRule.js';
 import { PunctuationMarkAtParagraphEnd } from '../../src/core/rules/PunctuationMarkAtParagraphEnd.js';
 import { PunctuationMarkAtParagraphEnd2 } from '../../src/core/rules/PunctuationMarkAtParagraphEnd2.js';
@@ -32,10 +30,9 @@ const EXTRA = {
   'org.languagetool.rules.en.UnitConversionRuleImperial': UnitConversionRuleImperial,
 };
 
-// Java: French#getRelevantRules (F36 rules only; English and German use the real getRelevantRules, list order kept; np = shadow instance for config errors only)
+// Java: Language#getRelevantRules of other languages (en, de, fr use the real getRelevantRules)
 function nativeRules(code, l, m, uc) {
   switch (code) {
-    case 'fr': return [new LongSentenceRule(m, uc, 40), new LongParagraphRule(m, l, uc)];
     default: throw notPorted(`style-check: rule list of ${code}`);
   }
 }
@@ -50,7 +47,7 @@ export function run(a, hook = null) {
   }
   if (l.getShortCode() === 'en') return check(a, l, hook); // English: real rule list, analysis complete since F45/F50
   if (l.getShortCode() === 'de') return check(a, l, hook); // German: real rule list (F59), GermanRuleDisambiguator + GermanChunker since F51
-  if (l.getShortCode() === 'fr') return check(a, l, hook); // French: real FrenchHybridDisambiguator since F60
+  if (l.getShortCode() === 'fr') return check(a, l, hook); // French: real rule list (F63), FrenchHybridDisambiguator since F60
   // other languages: the F36 rules read no chunk tags
   const savedPost = l.postDisambiguationChunker;
   l.postDisambiguationChunker = new NoopChunker();
@@ -67,7 +64,7 @@ function check(a, l, hook) {
   let lt;
   let natives;
   const m = getMessageBundleForLanguage(l);
-  const real = l.getShortCode() === 'en' || l.getShortCode() === 'de';
+  const real = l.getShortCode() === 'en' || l.getShortCode() === 'de' || l.getShortCode() === 'fr';
   try {
     let uc = null;
     if (a.config !== undefined) {

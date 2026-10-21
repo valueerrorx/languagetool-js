@@ -22,7 +22,7 @@ Notes valid for the whole file:
 | ID | behaviour (one line) | Java source (path#member) | Java tests | fixtures | status |
 |---|---|---|---|---|---|
 | FR-0001 | `French` "fr": name "French", countries [FR, "", LU, MC, CM, CI, HT, ML, SN, CD, MA, RE] (note empty string entry), default variant = Languages.getLanguageForShortCode("fr") (itself), SRX sentence tokenizer, `FrenchWordTokenizer`, `FrenchTagger.INSTANCE`, `FrenchSynthesizer.INSTANCE`, `new FrenchHybridDisambiguator()`, maintainer Dominique Pellé, ActivelyMaintained, `hasMinMatchesRules()=true`, `getMultitokenSpeller()=FrenchMultitokenSpeller.INSTANCE`; public ctor throws "Language was already instantiated, see the cause stacktrace below." on 2nd instantiation (protected ctor(boolean) used by variants); `getInstance()` throws "French(Premium) language expected, got ..." | JF:language/French.java | JLanguageToolTest, language/FrenchTest, FrenchConcurrencyTest | - | verified |
-| FR-0002 | `French.getRelevantRules` fixed order (14 rules): CommaWhitespaceRule(messages,false), DoublePunctuationRule, GenericUnpairedBracketsRule([ ( { / ] ) }), speller (`getDefaultSpellingRule()` if userConfig==null && altLanguages empty, else new MorfologikFrenchSpellerRule(messages,this,userConfig,altLanguages)), UppercaseSentenceStartRule, MultipleWhitespaceRule, SentenceWhitespaceRule, LongSentenceRule(40, picky), LongParagraphRule(on, picky), CompoundRule, QuestionWhitespaceStrictRule(temp_off, picky), QuestionWhitespaceRule, SimpleReplaceRule, FrenchRepeatedWordsRule | JF:language/French.java#getRelevantRules | language/FrenchTest#testRules, GenericUnpairedBracketsRuleTest | - | todo |
+| FR-0002 | `French.getRelevantRules` fixed order (14 rules): CommaWhitespaceRule(messages,false), DoublePunctuationRule, GenericUnpairedBracketsRule([ ( { / ] ) }), speller (`getDefaultSpellingRule()` if userConfig==null && altLanguages empty, else new MorfologikFrenchSpellerRule(messages,this,userConfig,altLanguages)), UppercaseSentenceStartRule, MultipleWhitespaceRule, SentenceWhitespaceRule, LongSentenceRule(40, picky), LongParagraphRule(on, picky), CompoundRule, QuestionWhitespaceStrictRule(temp_off, picky), QuestionWhitespaceRule, SimpleReplaceRule, FrenchRepeatedWordsRule | JF:language/French.java#getRelevantRules | language/FrenchTest#testRules, GenericUnpairedBracketsRuleTest | - | verified |
 | FR-0003 | `French.getRelevantRulesGlobalConfig`: adds GrammalecteRule when GlobalConfig.getGrammalecteServer() != null | JF:language/French.java#getRelevantRulesGlobalConfig | GrammalecteRuleTest | - | later |
 | FR-0004 | `French.getRelevantLanguageModelRules`: FrenchConfusionProbabilityRule (ngram) | JF:language/French.java#getRelevantLanguageModelRules | FrenchConfusionProbabilityRuleTest | - | later |
 | FR-0005 | `French.getPriorityForId`: id2prio HashMap with 99 entries (e.g. AGREEMENT_EXCEPTIONS 100, ..., FR_SPELLING_RULE -100, ELISION -200, UPPERCASE_SENTENCE_START -300, FRENCH_WHITESPACE_STRICT -350, FRENCH_WHITESPACE -400, TOUT_MAJUSCULES -400; note SE_CE is -10 despite comment); fallbacks: FR_COMPOUNDS* 500, CAT_TYPOGRAPHIE/CAT_TOURS_CRITIQUES/CAT_HOMONYMES_PARONYMES 20, SON -5, CAR* -50, CONFUSION_RULE_PREMIUM -50, FR_MULTITOKEN_SPELLING_* -90, FR_SIMPLE_REPLACE* 150, grammalecte_* -150, AI_FR_HYDRA_LEO* -101, AI_FR_GGEC_REPLACEMENT_ORTHOGRAPHY* -101, else core | JF:language/French.java#id2prio,getPriorityForId,getPriorityMap | FrenchTest (indirect) | - | verified |
@@ -64,25 +64,25 @@ Notes valid for the whole file:
 
 | ID | behaviour (one line) | Java source (path#member) | Java tests | fixtures | status |
 |---|---|---|---|---|---|
-| FR-0060 | `AdvancedSynthesizerFilter` (8 XML uses) | JF:rules/fr/AdvancedSynthesizerFilter.java | FrenchPatternRuleTest | - | ported |
-| FR-0061 | `DateCheckFilter` (3 uses) + `DateFilterHelper` (French day/month names) + `DMYDateCheckFilter` (1 use, dd-mm-yyyy) | JF:rules/fr/DateCheckFilter.java, DateFilterHelper.java, DMYDateCheckFilter.java | FrenchPatternRuleTest | - | ported |
-| FR-0062 | `NewYearDateFilter` (1 use, current date dependent) | JF:rules/fr/NewYearDateFilter.java | FrenchPatternRuleTest | - | ported |
-| FR-0063 | `FindSuggestionsFilter` (189 uses): speller-based suggestions with French specifics | JF:rules/fr/FindSuggestionsFilter.java | FrenchPatternRuleTest | - | ported |
-| FR-0064 | `FrenchNumberInWordFilter` (1 use) | JF:rules/fr/FrenchNumberInWordFilter.java | FrenchPatternRuleTest | - | ported |
-| FR-0065 | `FrenchPartialPosTagFilter` (runs disambiguator; no XML reference) | JF:rules/fr/FrenchPartialPosTagFilter.java | - | - | ported |
-| FR-0066 | `FrenchSuppressMisspelledSuggestionsFilter` (118 uses) | JF:rules/fr/FrenchSuppressMisspelledSuggestionsFilter.java | FrenchPatternRuleTest | - | ported |
-| FR-0067 | `InterrogativeVerbFilter` (6 uses): builds inverted interrogative verb forms (-t-il etc.) | JF:rules/fr/InterrogativeVerbFilter.java | FrenchPatternRuleTest | - | ported |
-| FR-0068 | `MakeContractionsFilter` (1 use): fixContractions in suggestions: `\bde le\b`->du, `\bà le\b`->au, `\bde les\b`->des, `\bà les\b`->aux (case-insensitive, Unicode) | JF:rules/fr/MakeContractionsFilter.java | FrenchPatternRuleTest | - | ported |
-| FR-0069 | `PostponedAdjectiveConcordanceFilter` (1 use, AGREEMENT_POSTPONED_ADJ): postponed adjective agreement with any previous noun, many exceptions | JF:rules/fr/PostponedAdjectiveConcordanceFilter.java | FrenchPatternRuleTest | - | ported |
-| FR-0070 | `SuggestionsFilter` (28 uses) | JF:rules/fr/SuggestionsFilter.java | FrenchPatternRuleTest | - | ported |
-| FR-0071 | `WordWithDeterminerFilter` (13 uses): suggestions for determiner + noun/adjective in all 4 gender/number combos (MS, FS, MP, FP), elision rules CET_CE/CE_CET/MA_VOYELLE/MON_NFS/VIEUX checked | JF:rules/fr/WordWithDeterminerFilter.java | FrenchPatternRuleTest | - | ported |
+| FR-0060 | `AdvancedSynthesizerFilter` (8 XML uses) | JF:rules/fr/AdvancedSynthesizerFilter.java | FrenchPatternRuleTest | - | verified |
+| FR-0061 | `DateCheckFilter` (3 uses) + `DateFilterHelper` (French day/month names) + `DMYDateCheckFilter` (1 use, dd-mm-yyyy) | JF:rules/fr/DateCheckFilter.java, DateFilterHelper.java, DMYDateCheckFilter.java | FrenchPatternRuleTest | - | verified |
+| FR-0062 | `NewYearDateFilter` (1 use, current date dependent) | JF:rules/fr/NewYearDateFilter.java | FrenchPatternRuleTest | - | verified |
+| FR-0063 | `FindSuggestionsFilter` (189 uses): speller-based suggestions with French specifics | JF:rules/fr/FindSuggestionsFilter.java | FrenchPatternRuleTest | - | verified |
+| FR-0064 | `FrenchNumberInWordFilter` (1 use) | JF:rules/fr/FrenchNumberInWordFilter.java | FrenchPatternRuleTest | - | verified |
+| FR-0065 | `FrenchPartialPosTagFilter` (runs disambiguator; no XML reference) | JF:rules/fr/FrenchPartialPosTagFilter.java | - | - | verified |
+| FR-0066 | `FrenchSuppressMisspelledSuggestionsFilter` (118 uses) | JF:rules/fr/FrenchSuppressMisspelledSuggestionsFilter.java | FrenchPatternRuleTest | - | verified |
+| FR-0067 | `InterrogativeVerbFilter` (6 uses): builds inverted interrogative verb forms (-t-il etc.) | JF:rules/fr/InterrogativeVerbFilter.java | FrenchPatternRuleTest | - | verified |
+| FR-0068 | `MakeContractionsFilter` (1 use): fixContractions in suggestions: `\bde le\b`->du, `\bà le\b`->au, `\bde les\b`->des, `\bà les\b`->aux (case-insensitive, Unicode) | JF:rules/fr/MakeContractionsFilter.java | FrenchPatternRuleTest | - | verified |
+| FR-0069 | `PostponedAdjectiveConcordanceFilter` (1 use, AGREEMENT_POSTPONED_ADJ): postponed adjective agreement with any previous noun, many exceptions | JF:rules/fr/PostponedAdjectiveConcordanceFilter.java | FrenchPatternRuleTest | - | verified |
+| FR-0070 | `SuggestionsFilter` (28 uses) | JF:rules/fr/SuggestionsFilter.java | FrenchPatternRuleTest | - | verified |
+| FR-0071 | `WordWithDeterminerFilter` (13 uses): suggestions for determiner + noun/adjective in all 4 gender/number combos (MS, FS, MP, FP), elision rules CET_CE/CE_CET/MA_VOYELLE/MON_NFS/VIEUX checked | JF:rules/fr/WordWithDeterminerFilter.java | FrenchPatternRuleTest | - | verified |
 
 ## XML rule resources
 
 | ID | behaviour (one line) | Java source (path#member) | Java tests | fixtures | status |
 |---|---|---|---|---|---|
-| FR-0150 | `rules/fr/grammar.xml` (9.1 MB): 5340 `<rule>`s, 507 rulegroups, 13 categories (AGREEMENT, CASING, CAT_ELISION, CAT_GRAMMAIRE, CAT_HOMONYMES_PARONYMES, CAT_MAJUSCULES, CAT_MARQUES_DE_COMMERCE, CAT_TOURS_CRITIQUES, CAT_TYPOGRAPHIE, MULTITOKEN_SPELLING, PONCTUATION_POINT, PONCTUATION_VIRGULE, SEMANTICS), 65 entities, 16792 examples, 65 off, 78 temp_off | RF:rules/fr/grammar.xml | FrenchPatternRuleTest | - | todo |
-| FR-0151 | `rules/fr/style.xml` (1.4 MB): 1680 rules, 211 rulegroups (CAT_ANGLICISMES_FOREIGN_TERMS, CAT_ARCHAISMES, CAT_CALQUES, CAT_PLEONASMES, CAT_REGIONALISMES, CAT_REGLES_DE_BASE, PONCTUATION_STYLE_OS, REPETITIONS_STYLE, STYLE), 58 entities, 2623 examples, 38 off, 9 temp_off | RF:rules/fr/style.xml | FrenchPatternRuleTest | - | todo |
+| FR-0150 | `rules/fr/grammar.xml` (9.1 MB): 5340 `<rule>`s, 507 rulegroups, 13 categories (AGREEMENT, CASING, CAT_ELISION, CAT_GRAMMAIRE, CAT_HOMONYMES_PARONYMES, CAT_MAJUSCULES, CAT_MARQUES_DE_COMMERCE, CAT_TOURS_CRITIQUES, CAT_TYPOGRAPHIE, MULTITOKEN_SPELLING, PONCTUATION_POINT, PONCTUATION_VIRGULE, SEMANTICS), 65 entities, 16792 examples, 65 off, 78 temp_off | RF:rules/fr/grammar.xml | FrenchPatternRuleTest | - | verified |
+| FR-0151 | `rules/fr/style.xml` (1.4 MB): 1680 rules, 211 rulegroups (CAT_ANGLICISMES_FOREIGN_TERMS, CAT_ARCHAISMES, CAT_CALQUES, CAT_PLEONASMES, CAT_REGIONALISMES, CAT_REGLES_DE_BASE, PONCTUATION_STYLE_OS, REPETITIONS_STYLE, STYLE), 58 entities, 2623 examples, 38 off, 9 temp_off | RF:rules/fr/style.xml | FrenchPatternRuleTest | - | verified |
 | FR-0152 | `rules/fr/remote-rule-filters.xml`: 77 rules / 17 rulegroups (AI_RULES) | RF:rules/fr/remote-rule-filters.xml | FrenchRemoteRuleFilterTest | - | later |
 | FR-0153 | `resource/fr/disambiguation.xml`: 1030 rules, 141 rulegroups, 11 entities, 17 examples; 11 `<filter>`s, all core `IsEnglishWordFilter` (ctor `Languages.getLanguageForShortCode("en-US")`, exception swallowed; tagger = en-US EnglishTagger (EN-0023); args formPositions[, postags]: keep only if every form is tagged (matching postag regex); count mismatch -> RuntimeException "The number of forms and postags has to be the same in disambiguation rule with filter IsEnglishWordFilter."; no en-US -> null): runtime dependency FR -> EN (see header note on D-021) | RF:resource/fr/disambiguation.xml | FrenchTest (DisambiguationRuleTest), FrenchRuleDisambiguatorTest | - | verified |
 
@@ -114,8 +114,8 @@ Notes valid for the whole file:
 
 | ID | behaviour (one line) | Java source (path#member) | Java tests | fixtures | status |
 |---|---|---|---|---|---|
-| FR-0220 | AnnotatedText with French: interpretAs before/after, `<br>`, fake markup, multiple simple markup -> correct offsets of French matches | core:markup/AnnotatedTextBuilder.java | AnnotatedTextTest (6) | - | todo |
-| FR-0221 | Test-only disambiguator `src/test/resources/disambiguator.xml` with test class TestFrenchDisambiguator | languagetool-language-modules/fr/src/test/resources/disambiguator.xml | TestFrenchDisambiguator | - | todo |
+| FR-0220 | AnnotatedText with French: interpretAs before/after, `<br>`, fake markup, multiple simple markup -> correct offsets of French matches | core:markup/AnnotatedTextBuilder.java | AnnotatedTextTest (6) | - | verified |
+| FR-0221 | Test-only disambiguator `src/test/resources/disambiguator.xml` with test class TestFrenchDisambiguator | languagetool-language-modules/fr/src/test/resources/disambiguator.xml | TestFrenchDisambiguator | - | verified |
 
 ## Coverage
 

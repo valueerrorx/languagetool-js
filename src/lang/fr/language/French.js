@@ -16,6 +16,20 @@ import { ITSIssueType } from '../../../core/rules/model/ITSIssueType.js';
 import { Tag } from '../../../core/rules/model/Tag.js';
 import { Categories } from '../../../core/rules/model/Category.js';
 import { getMessageBundleForLanguage } from '../../../core/resources/ResourceBundleTools.js';
+import { CommaWhitespaceRule } from '../../../core/rules/CommaWhitespaceRule.js';
+import { DoublePunctuationRule } from '../../../core/rules/DoublePunctuationRule.js';
+import { GenericUnpairedBracketsRule } from '../../../core/rules/GenericUnpairedBracketsRule.js';
+import { UppercaseSentenceStartRule } from '../../../core/rules/UppercaseSentenceStartRule.js';
+import { MultipleWhitespaceRule } from '../../../core/rules/MultipleWhitespaceRule.js';
+import { SentenceWhitespaceRule } from '../../../core/rules/SentenceWhitespaceRule.js';
+import { LongSentenceRule } from '../../../core/rules/LongSentenceRule.js';
+import { LongParagraphRule } from '../../../core/rules/LongParagraphRule.js';
+import { MorfologikFrenchSpellerRule } from '../rules/MorfologikFrenchSpellerRule.js';
+import { CompoundRule } from '../rules/CompoundRule.js';
+import { QuestionWhitespaceStrictRule } from '../rules/QuestionWhitespaceStrictRule.js';
+import { QuestionWhitespaceRule } from '../rules/QuestionWhitespaceRule.js';
+import { SimpleReplaceRule } from '../rules/SimpleReplaceRule.js';
+import { FrenchRepeatedWordsRule } from '../rules/FrenchRepeatedWordsRule.js';
 import { ID2PRIO_ENTRIES } from './id2prioFrench.js';
 
 const TRAILING_WS = '\\s+$';
@@ -136,8 +150,24 @@ export class French extends LanguageWithModel {
   }
 
   // Java: French#getRelevantRules(ResourceBundle,UserConfig,Language,List)
-  getRelevantRules() {
-    throw notPortedYet('French#getRelevantRules (F17)');
+  getRelevantRules(messages, userConfig, motherTongue, altLanguages) {
+    return [
+      new CommaWhitespaceRule(messages, false),
+      new DoublePunctuationRule(messages),
+      new GenericUnpairedBracketsRule(messages, ['[', '(', '{'], [']', ')', '}']),
+      (userConfig === null || userConfig === undefined) && altLanguages.length === 0 ? this.getDefaultSpellingRule() : new MorfologikFrenchSpellerRule(messages, this, userConfig, altLanguages),
+      new UppercaseSentenceStartRule(messages, this),
+      new MultipleWhitespaceRule(messages, this),
+      new SentenceWhitespaceRule(messages),
+      new LongSentenceRule(messages, userConfig, 40),
+      new LongParagraphRule(messages, this, userConfig),
+      // specific to French:
+      new CompoundRule(messages, this, userConfig),
+      new QuestionWhitespaceStrictRule(messages, this),
+      new QuestionWhitespaceRule(messages, this),
+      new SimpleReplaceRule(messages, this),
+      new FrenchRepeatedWordsRule(messages),
+    ];
   }
 
   // Java: French#getRelevantRulesGlobalConfig(ResourceBundle,GlobalConfig,UserConfig,Language,List); no Grammalecte server is configured (DEV-001)
@@ -146,7 +176,9 @@ export class French extends LanguageWithModel {
   }
 
   // Java: French#getRelevantLanguageModelRules(ResourceBundle,LanguageModel,UserConfig)
-  getRelevantLanguageModelRules() {
+  getRelevantLanguageModelRules(messages, languageModel) {
+    // FrenchConfusionProbabilityRule: the constructor dereferences the language model (Objects.requireNonNull)
+    if (languageModel === null || languageModel === undefined) throw new NullPointerException();
     throw notPortedYet('French#getRelevantLanguageModelRules (ngram rules, DEV-001)');
   }
 

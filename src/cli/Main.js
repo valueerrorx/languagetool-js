@@ -6,19 +6,21 @@ import { Language } from '../core/Language.js';
 import { Languages } from '../core/Languages.js';
 import { VERSION, BUILD_DATE, GIT_SHORT_ID } from '../core/LtBuildInfo.js';
 import { LanguageIdentifierService } from '../core/language/identifier/LanguageIdentifierService.js';
-import { notPortedYet } from '../core/language/components.js';
-import { selectRules } from '../core/Tools.js';
-import { filterXML, readerToString } from '../core/text/StringTools.js';
+import { createComponent, notPortedYet } from '../core/language/components.js';
+import { correctText, profileRulesOnLine, selectRules } from '../core/Tools.js';
+import { ApiPrintMode, filterXML, readerToString } from '../core/text/StringTools.js';
 import { AmericanEnglish } from '../lang/en/language/AmericanEnglish.js';
 import { English } from '../lang/en/language/English.js';
-import { Exception, FileNotFoundException, IllegalArgumentException, RuntimeException } from '../lib/java/errors.js';
-import { inputStreamReader } from '../lib/java/io.js';
+import { Exception, FileNotFoundException, IllegalArgumentException, NullPointerException, RuntimeException } from '../lib/java/errors.js';
+import { BufferedReader, inputStreamReader } from '../lib/java/io.js';
+import { File } from '../lib/java/io/File.js';
 import { currentTimeMillis } from '../lib/java/clock.js';
 import { javaCompare } from '../lib/java/strings.js';
-import { interimRules } from '../server/interimRules.js';
 import { CommandLineParser, UnknownParameterException, WrongParameterNumberException } from './CommandLineParser.js';
-import { checkText } from './CommandLineTools.js';
-import { errPrintln, outPrintln, systemErr } from './stdio.js';
+import { TabBitextReader } from '../core/bitext/TabBitextReader.js';
+import { getBitextRules } from '../core/bitext/BitextTools.js';
+import { checkBitext, correctBitext, checkText, checkTextFull, profileRulesOnText, tagText } from './CommandLineTools.js';
+import { errPrintln, outPrint, outPrintln, systemErr } from './stdio.js';
 
 // Java: Main.SystemExitHandler (exit must not return in production; tests install a throwing handler)
 export const exitHandler = { exit: (status) => process.exit(status) };
@@ -84,16 +86,11 @@ export class Main {
   // Java: Main#Main(CommandLineOptions)
   constructor(options) {
     this.options = options;
-    // the rule list of fr is interim (ported core rules only): a rule set without -eo would differ from Java; English and German have the full list since F50/F59
-    // TODO(F63): remove when the full rule list of fr exists
-    const interim = options.getLanguage().getShortCode() === 'fr';
-    if (interim && !options.isUseEnabledOnly()) throw notPortedYet('full rule set (use -eo -e <ids>)');
-    // TODO(F63): remove when the full rule list of fr exists
-    if (interim && options.isEnableTempOff()) throw notPortedYet('full rule set (--enable-temp-off activates pattern rules with default temp_off; use -eo -e <ids>)');
     this.profileRules = false;
     this.bitextMode = false;
     this.srcLt = null;
     this.bRules = null;
+    this.currentRule = null;
     this.lt = Main.newLanguageTool(options.getLanguage(), options.getMotherTongue());
     this.lt.setCleanOverlappingMatches(options.isCleanOverlapping());
     if (options.getRuleFile() !== null) {
@@ -107,14 +104,19 @@ export class Main {
       new Set(options.getDisabledRules()), new Set(options.getEnabledRules()), options.isUseEnabledOnly(), options.isEnableTempOff());
   }
 
-  // Java: new MultiThreadedJLanguageTool(language, motherTongue) (sequential, S9; rule list = interim rules for fr until F63)
+  // Java: new MultiThreadedJLanguageTool(language, motherTongue) (sequential, S9; real rule list)
   static newLanguageTool(language, motherTongue) {
-    return new MultiThreadedJLanguageTool(language, [], motherTongue, null, null, null, true, false, interimRules(language));
+    return new MultiThreadedJLanguageTool(language, [], motherTongue, null, null, null, true, false, null);
   }
 
   // Java: Main#addExternalRules(String,Language)
-  addExternalRules() {
-    throw notPortedYet('Main#addExternalRules (--rulefile)');
+  addExternalRules(filename, lang) {
+    const ruleLoader = createComponent('org.languagetool.rules.patterns.PatternRuleLoader');
+    const is = readFileBytes(filename); // new FileInputStream(filename)
+    const externalRules = ruleLoader.getRules(is, filename, lang);
+    for (const externalRule of externalRules) {
+      this.lt.addRule(externalRule);
+    }
   }
 
   // Java: Main#isSpellCheckingActive()
@@ -151,14 +153,48 @@ export class Main {
   }
 
   // Java: Main#setBitextMode(Language,List,List,File)
-  setBitextMode() {
-    throw notPortedYet('Main#setBitextMode (-b2)');
+  setBitextMode(sourceLang, disabledRules, enabledRules, bitextRuleFile) {
+    this.bitextMode = true;
+    const target = this.lt.getLanguage();
+    this.lt = Main.newLanguageTool(target, null);
+    this.srcLt = Main.newLanguageTool(sourceLang, null);
+    selectRules(this.lt, disabledRules, enabledRules, true);
+    selectRules(this.srcLt, disabledRules, enabledRules, true);
+    this.bRules = getBitextRules(sourceLang, this.lt.getLanguage(), bitextRuleFile);
+
+    let bRuleList = [...this.bRules];
+    for (const bitextRule of this.bRules) {
+      for (const disabledRule of disabledRules) {
+        if (bitextRule.getId() === disabledRule) {
+          const idx = bRuleList.indexOf(bitextRule);
+          if (idx >= 0) bRuleList.splice(idx, 1);
+        }
+      }
+    }
+    this.bRules = bRuleList;
+    if (enabledRules.length > 0) {
+      bRuleList = [];
+      for (const enabledRule of enabledRules) {
+        for (const bitextRule of this.bRules) {
+          if (bitextRule.getId() === enabledRule) {
+            bRuleList.push(bitextRule);
+          }
+        }
+      }
+      this.bRules = bRuleList;
+    }
   }
 
   // Java: Main#runOnFile(String,String,boolean)
   runOnFile(filename, encoding, xmlFiltering) {
     if (this.bitextMode) {
-      throw notPortedYet('Main#runOnFile bitext');
+      const reader = new TabBitextReader(filename, encoding);
+      if (this.options.isApplySuggestions()) {
+        correctBitext(reader, this.srcLt, this.lt, this.bRules);
+      } else {
+        checkBitext(reader, this.srcLt, this.lt, this.bRules);
+      }
+      return;
     }
     const text = this.getFilteredText(filename, encoding, xmlFiltering);
     if (this.isStdIn(filename)) {
@@ -176,13 +212,13 @@ export class Main {
       errPrintln(`Using ${language.getName()} for file ${filename}`);
     }
     if (this.options.isApplySuggestions()) {
-      throw notPortedYet('Main#runOnFile -a');
+      outPrint(correctText(text, this.lt));
     } else if (this.profileRules) {
-      throw notPortedYet('Main#runOnFile -p');
+      profileRulesOnText(text, this.lt);
     } else if (!this.options.isTaggerOnly()) {
       checkText(text, this.lt, this.options.isJsonFormat(), 0, this.options.getLevel(), this.options.isListUnknown(), this.options.isVerbose());
     } else {
-      throw notPortedYet('Main#runOnFile -t');
+      tagText(text, this.lt);
     }
     if (this.options.isListUnknown() && !this.options.isJsonFormat()) {
       outPrintln(`Unknown words: ${this.unknownWordsToString()}`);
@@ -195,8 +231,94 @@ export class Main {
   }
 
   // Java: Main#runOnFileLineByLine(String,String,Level)
-  runOnFileLineByLine() {
-    throw notPortedYet('Main#runOnFileLineByLine (--line-by-line)');
+  runOnFileLineByLine(filename, encoding, level) {
+    errPrintln('Warning: running in line by line mode. Cross-paragraph checks will not work.\n');
+    if (this.options.isVerbose()) {
+      this.lt.setOutput(systemErr);
+    }
+    if (!this.options.isApplySuggestions()) {
+      if (this.isStdIn(filename)) {
+        errPrintln('Working on STDIN...');
+      } else {
+        errPrintln(`Working on ${filename}...`);
+      }
+    }
+    if (this.profileRules && this.isStdIn(filename)) {
+      throw new IllegalArgumentException('Profiling mode cannot be used with input from STDIN');
+    }
+    let runCount = 1;
+    const rules = this.lt.getAllActiveRules();
+    if (this.profileRules) {
+      outPrint(`Testing ${rules.length} rules\n`);
+      outPrintln('Rule ID\tTime\tSentences\tMatches\tSentences per sec.');
+      runCount = rules.length;
+    }
+    let lineOffset = 0;
+    let tmpLineOffset = 0;
+    this.handleLine(ApiPrintMode.START_API, 0, '', level);
+    let sb = '';
+    for (let ruleIndex = 0; rules.length !== 0 && ruleIndex < runCount; ruleIndex++) {
+      this.currentRule = rules[ruleIndex];
+      try {
+        const br = new BufferedReader(readerToString(this.getInputStreamReader(filename, encoding)));
+        let line;
+        let lineCount = 0;
+        while ((line = br.readLine()) !== null) {
+          sb += line;
+          lineCount++;
+          // to detect language from the first input line
+          if (lineCount === 1 && this.options.isAutoDetect()) {
+            let language = this.detectLanguageOfString(line);
+            if (language === null) {
+              errPrintln('Could not detect language well enough, using American English');
+              language = AmericanEnglish.getInstance();
+            }
+            errPrintln(`Language used is: ${language.getName()}`);
+            language.getSentenceTokenizer().setSingleLineBreaksMarksParagraph(this.options.isSingleLineBreakMarksParagraph());
+            this.changeLanguage(language, this.options.getMotherTongue(), this.options.getDisabledRules(), this.options.getEnabledRules());
+          }
+          sb += '\n';
+          tmpLineOffset++;
+
+          if (this.isBreakPoint(line)) {
+            this.handleLine(ApiPrintMode.CONTINUE_API, lineOffset, sb, level);
+            if (this.profileRules) {
+              this.lt.sentenceTokenize(sb).length;
+            }
+            sb = '';
+            lineOffset = tmpLineOffset;
+          }
+        }
+      } finally {
+        if (sb.length > 0) {
+          if (this.profileRules) {
+            this.lt.sentenceTokenize(sb).length;
+          }
+        }
+        this.handleLine(ApiPrintMode.END_API, tmpLineOffset - 1, sb, level);
+      }
+    }
+  }
+
+  // Java: Main#handleLine(ApiPrintMode,int,StringBuilder,Level)
+  handleLine(mode, lineOffset, sb, level) {
+    const matches = 0;
+    const s = filterXML(sb);
+    if (this.options.isApplySuggestions()) {
+      outPrint(correctText(s, this.lt));
+    } else if (this.profileRules) {
+      profileRulesOnLine(s, this.lt, this.currentRule);
+    } else if (!this.options.isTaggerOnly()) {
+      checkTextFull(s, this.lt, this.options.isJsonFormat(), -1,
+        lineOffset, matches, mode, this.options.isListUnknown(), level, [], this.options.isVerbose());
+    } else {
+      tagText(s, this.lt);
+    }
+  }
+
+  // Java: Main#isBreakPoint(String)
+  isBreakPoint(line) {
+    return this.lt.getLanguage().getSentenceTokenizer().singleLineBreaksMarksPara() || line === '';
   }
 
   // Java: Main#getInputStreamReader(String,String); returns a Reader over the fully read bytes
@@ -222,8 +344,53 @@ export class Main {
   }
 
   // Java: Main#runRecursive(String,String,boolean,Level)
-  runRecursive() {
-    throw notPortedYet('Main#runRecursive (-r)');
+  runRecursive(filename, encoding, xmlFiltering, level) {
+    const dir = new File(filename);
+    const files = Main.listFiles(dir);
+    if (files === null) {
+      throw new IllegalArgumentException(`${dir.getAbsolutePath()} is not a directory, cannot use recursion`);
+    }
+    for (const file of files) {
+      try {
+        if (Main.isDirectory(file)) {
+          this.runRecursive(file.getAbsolutePath(), encoding, xmlFiltering, level);
+        } else if (this.options.isLineByLine()) {
+          this.runOnFileLineByLine(file.getAbsolutePath(), encoding, level);
+        } else {
+          this.runOnFile(file.getAbsolutePath(), encoding, xmlFiltering);
+        }
+      } catch (e0) {
+        let e = e0;
+        if (e instanceof TypeError) e = new NullPointerException(); // JS TypeError stands for a Java NPE
+        if (!(e instanceof Exception)) throw e0; // catch (Exception e): notPorted markers and Errors pass
+        throw new RuntimeException(`Could not check text in file ${file}`, e);
+      }
+    }
+  }
+
+  // Java: File#listFiles() (null if not a directory or on I/O error; directory order)
+  static listFiles(dir) {
+    try {
+      const d = fs.opendirSync(dir.getPath()); // raw readdir order, as File.listFiles()
+      const files = [];
+      try {
+        for (let e = d.readSync(); e !== null; e = d.readSync()) files.push(new File(dir, e.name));
+      } finally {
+        d.closeSync();
+      }
+      return files;
+    } catch {
+      return null;
+    }
+  }
+
+  // Java: File#isDirectory()
+  static isDirectory(file) {
+    try {
+      return fs.statSync(file.getPath()).isDirectory();
+    } catch {
+      return false;
+    }
   }
 
   // Java: Main#getFilteredText(String,String,boolean)
@@ -307,7 +474,10 @@ export class Main {
     options.getLanguage().getSentenceTokenizer().setSingleLineBreaksMarksParagraph(options.isSingleLineBreakMarksParagraph());
     const prg = new Main(options);
     if (options.getFalseFriendFile() !== null) {
-      throw notPortedYet('Main#main --falsefriends');
+      const ffRules = prg.lt.loadFalseFriendRules(options.getFalseFriendFile());
+      for (const ffRule of ffRules) {
+        prg.lt.addRule(ffRule);
+      }
     }
     if (prg.lt.getAllActiveRules().length === 0) {
       const catIds = options.getEnabledCategories().map((i) => i.toString());
@@ -334,7 +504,8 @@ export class Main {
       if (options.getMotherTongue() === null) {
         throw new IllegalArgumentException('You have to set the source language (as mother tongue) in bitext mode');
       }
-      prg.setBitextMode();
+      const bitextRuleFile = options.getBitextRuleFile() !== null ? new File(options.getBitextRuleFile()) : null;
+      prg.setBitextMode(options.getMotherTongue(), options.getDisabledRules(), options.getEnabledRules(), bitextRuleFile);
     }
     if (options.isRecursive()) {
       prg.runRecursive(options.getFilename(), options.getEncoding(), options.isXmlFiltering(), options.getLevel());

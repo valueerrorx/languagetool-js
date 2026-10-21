@@ -3,7 +3,8 @@ import { NullPointerException, RuntimeException } from '../../lib/java/errors.js
 import { MessageFormat } from '../../lib/java/MessageFormat.js';
 import { StringBuilder } from '../../lib/java/strings.js';
 import { Languages } from '../Languages.js';
-import { isLanguageSupportedGuarded } from '../language/javaLanguages.js';
+import { isUnportedJavaLanguage } from '../language/javaLanguages.js';
+import { UnifierConfiguration } from './UnifierConfiguration.js';
 import { getMessageBundleForLanguage } from '../resources/ResourceBundleTools.js';
 import { Categories } from '../rules/model/Category.js';
 import { CorrectExample, IncorrectExample } from '../rules/model/Examples.js';
@@ -12,6 +13,25 @@ import { XMLRuleHandler } from './XMLRuleHandler.js';
 
 const { RULE, PATTERN, TOKEN, EXAMPLE, TYPE, MESSAGE, RULEGROUP, DEFAULT } = XMLRuleHandler;
 const TRANSLATION = 'translation';
+
+// Languages of Java modules outside the port (DEV-006) as placeholders that never equal a ported language (false-friends.xml names pl, ru, ...); one object per code
+const outOfScopeLanguages = new Map();
+// Java: Languages#getLanguageForShortCode(String) for a language of a module that is not ported (placeholder)
+function outOfScopeLanguage(code) {
+  if (!outOfScopeLanguages.has(code)) {
+    outOfScopeLanguages.set(code, {
+      equalsConsiderVariantsIfSpecified: () => false,
+      getUnifierConfiguration: () => new UnifierConfiguration(),
+      toString: () => code,
+    });
+  }
+  return outOfScopeLanguages.get(code);
+}
+// Java: Languages#isLanguageSupported(String) combined with getLanguageForShortCode; null if unknown
+function languageOrNull(code) {
+  if (isUnportedJavaLanguage(code)) return outOfScopeLanguage(code);
+  return Languages.isLanguageSupported(code) ? Languages.getLanguageForShortCode(code) : null;
+}
 
 // Java: FalseFriendRuleHandler
 export class FalseFriendRuleHandler extends XMLRuleHandler {
@@ -62,16 +82,17 @@ export class FalseFriendRuleHandler extends XMLRuleHandler {
     } else if (qName === PATTERN) {
       this.inPattern = true;
       const languageStr = attrs.getValue('lang');
-      if (isLanguageSupportedGuarded(languageStr)) {
-        this.language = Languages.getLanguageForShortCode(languageStr);
+      const patternLanguage = languageOrNull(languageStr);
+      if (patternLanguage !== null) {
+        this.language = patternLanguage;
       }
     } else if (qName === TOKEN) {
       this.setToken(attrs);
     } else if (qName === TRANSLATION) {
       this.inTranslation = true;
       const languageStr = attrs.getValue('lang');
-      if (isLanguageSupportedGuarded(languageStr)) {
-        const tmpLang = Languages.getLanguageForShortCode(languageStr);
+      const tmpLang = languageOrNull(languageStr);
+      if (tmpLang !== null) {
         this.currentTranslationLanguage = tmpLang;
         if (this.inTestMode && this.currentTranslationLanguage === this.language) {
           throw new RuntimeException('Translation language (' + this.currentTranslationLanguage + ') must not be the same as pattern language (' + this.language + ') for rule ' + this.id);

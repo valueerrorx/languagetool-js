@@ -4,14 +4,15 @@ import '../../../../src/lang/register.js';
 import { Languages } from '../../../../src/core/Languages.js';
 import { CompoundRule } from '../../../../src/lang/fr/rules/CompoundRule.js';
 import { AbstractCompoundRuleTest } from '../../../support/AbstractCompoundRuleTest.js';
-import { messagesFor, newLt } from '../../../support/ruleTestSupport.js';
+import { JLanguageTool } from '../../../../src/core/JLanguageTool.js';
+import { messagesFor } from '../../../support/ruleTestSupport.js';
 
 describe('CompoundRuleTest', () => {
   const t = new AbstractCompoundRuleTest();
 
   // Java: CompoundRuleTest#setUp
   beforeAll(() => {
-    t.lt = newLt(Languages.getLanguageForShortCode('fr'));
+    t.lt = new JLanguageTool(Languages.getLanguageForShortCode('fr'));
     t.rule = new CompoundRule(messagesFor(Languages.getLanguageForShortCode('fr')), Languages.getLanguageForShortCode('fr'), null);
     t.testAllCompounds();
   });

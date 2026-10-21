@@ -32,7 +32,7 @@ export function run(a) {
     return out;
   }
   const l = langFor(a.lang);
-  if (l.getShortCode() !== 'en' && l.getShortCode() !== 'de') throw notPorted(`tools-correct: rule list of ${a.lang} (rule list not ported, F63)`);
+  if (l.getShortCode() !== 'en' && l.getShortCode() !== 'de' && l.getShortCode() !== 'fr') throw notPorted(`tools-correct: rule list of ${a.lang} (rule list not ported)`);
   let lt = LTS.get(a.lang);
   if (lt === undefined) LTS.set(a.lang, lt = new JLanguageTool(l)); // Java: ToolsOps#lt(String)
   if (a.ids !== undefined) {

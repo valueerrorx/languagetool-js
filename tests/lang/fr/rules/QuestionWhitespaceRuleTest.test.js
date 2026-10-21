@@ -1,16 +1,18 @@
-// Ported from QuestionWhitespaceRuleTest (fr module); lt.check runs with only FRENCH_WHITESPACE (stands in for disableAllRulesExcept)
+// Ported from QuestionWhitespaceRuleTest (fr module); lt.check runs with only FRENCH_WHITESPACE (disableAllRulesExcept)
 import { describe, it, expect } from 'vitest';
 import '../../../../src/lang/register.js';
 import { Languages } from '../../../../src/core/Languages.js';
 import { QuestionWhitespaceRule } from '../../../../src/lang/fr/rules/QuestionWhitespaceRule.js';
-import { englishMessages, newLt } from '../../../support/ruleTestSupport.js';
+import { JLanguageTool } from '../../../../src/core/JLanguageTool.js';
+import { englishMessages } from '../../../support/ruleTestSupport.js';
+import { disableAllRulesExcept } from '../../../support/TestTools.js';
 
 describe('QuestionWhitespaceRuleTest', () => {
   // Java: QuestionWhitespaceRuleTest#testRule
   it('testRule', () => {
     const french = Languages.getLanguageForShortCode('fr');
     const rule = new QuestionWhitespaceRule(englishMessages(), french);
-    const lt = newLt(french);
+    const lt = new JLanguageTool(french);
     const m = (s) => rule.match(lt.getAnalyzedSentence(s));
 
     // correct sentences:
@@ -24,7 +26,8 @@ describe('QuestionWhitespaceRuleTest', () => {
     expect(m('☀️9:00').length).toBe(0);
     expect(m('00:80:41:ae:fd:7e').length).toBe(0);
 
-    const lt2 = newLt(french, new QuestionWhitespaceRule(englishMessages(), french));
+    disableAllRulesExcept(lt, 'FRENCH_WHITESPACE');
+    const lt2 = lt;
     expect(lt2.check('« Je suis Chris… »').length).toBe(0);
     expect(lt2.check('« Je suis Chris ! »').length).toBe(0);
     expect(lt2.check('Je suis.[!]').length).toBe(0);

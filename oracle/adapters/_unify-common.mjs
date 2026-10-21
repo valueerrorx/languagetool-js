@@ -106,6 +106,8 @@ export function resetState() {
   FILES.clear(); INLINE.clear(); DISAMB.clear();
   for (const code of ['de-DE', 'en-US', 'fr']) {
     const l = lang(code);
+    l.patternRules = null; // the next JLanguageTool reloads the XML rules and disambiguator, which refills the emptied unifier configurations
+    l.disambiguator = null;
     for (const c of [l.getUnifierConfiguration(), l.getDefaultLanguageVariant().getDisambiguationUnifierConfiguration()]) {
       c.equivalenceTypes = new JavaConcurrentHashMap();
       c.equivalenceFeatures = new JavaConcurrentHashMap();

@@ -3,14 +3,15 @@ import { describe, it, expect } from 'vitest';
 import '../../../../src/lang/register.js';
 import { Languages } from '../../../../src/core/Languages.js';
 import { QuestionWhitespaceStrictRule } from '../../../../src/lang/fr/rules/QuestionWhitespaceStrictRule.js';
-import { englishMessages, newLt } from '../../../support/ruleTestSupport.js';
+import { JLanguageTool } from '../../../../src/core/JLanguageTool.js';
+import { englishMessages } from '../../../support/ruleTestSupport.js';
 
 describe('QuestionWhitespaceStrictRuleTest', () => {
   // Java: QuestionWhitespaceStrictRuleTest#testRule
   it('testRule', () => {
     const french = Languages.getLanguageForShortCode('fr');
     const rule = new QuestionWhitespaceStrictRule(englishMessages(), french);
-    const lt = newLt(french);
+    const lt = new JLanguageTool(french);
     const m = (s) => rule.match(lt.getAnalyzedSentence(s));
 
     // correct sentences:

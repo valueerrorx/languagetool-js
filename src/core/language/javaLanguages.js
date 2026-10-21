@@ -6,7 +6,14 @@ const JAVA_LANGUAGE_BASES = new Set('ar ast be br ca crh da de el en eo es fa fr
 
 // true if the code belongs to a Java language module that the port does not provide
 export function isUnportedJavaLanguage(code) {
-  return typeof code === 'string' && !Languages.isLanguageSupported(code) && JAVA_LANGUAGE_BASES.has(code.split('-')[0]);
+  if (typeof code !== 'string' || !JAVA_LANGUAGE_BASES.has(code.split('-')[0])) return false;
+  if (Languages.isLanguageSupported(code)) return false;
+  try {
+    Languages.getLanguageForShortCode(code); // long codes such as fr-FR resolve through the long code mapping (LibreOffice)
+    return false;
+  } catch (e) {
+    return true;
+  }
 }
 
 // Java: Languages#getLanguageForShortCode(String); notPorted for Java languages that are missing in the port
