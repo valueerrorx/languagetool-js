@@ -330,6 +330,12 @@ export class Languages {
 
 ref.Languages = Languages;
 
+// JS: dynamic languages as {name, code, dictPath} for the check workers (no Java counterpart; Java threads share the static list)
+export function getDynamicLanguageSpecs() {
+  if (state === null) return [];
+  return state.dynLanguages.map((l) => ({ name: l.name, code: l.code, dictPath: String(l.dictPath) }));
+}
+
 // test support (no Java counterpart): drops languages added at runtime, as a fresh JVM per case would
 export function resetDynamicLanguages() {
   if (state === null) return;

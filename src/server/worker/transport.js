@@ -1,5 +1,5 @@
 // JS: structured-clone transport between the main thread and check workers (no Java counterpart; mirrors what the Java pool shares by reference)
-import { Languages } from '../../core/Languages.js';
+import { Languages, getDynamicLanguageSpecs } from '../../core/Languages.js';
 import { AnnotatedText, MetaDataKey } from '../../core/text/AnnotatedText.js';
 import { TextPart, Type } from '../../core/text/TextPart.js';
 import { MappingValue } from '../../core/text/MappingValue.js';
@@ -115,6 +115,7 @@ export function configToDto(c) {
     rulesConfigFile: c.getRulesConfigFile() === null ? null : String(c.getRulesConfigFile()),
     remoteRulesConfigFile: c.getRemoteRulesConfigFile() === null ? null : String(c.getRemoteRulesConfigFile()),
     globalConfig: globalConfigToDto(c.globalConfig),
+    dynamicLanguages: getDynamicLanguageSpecs(), // JS: HTTPServerConfig#addDynamicLanguages ran on the main thread
   };
 }
 

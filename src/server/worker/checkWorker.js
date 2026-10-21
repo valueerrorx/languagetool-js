@@ -1,6 +1,8 @@
 // JS: check worker thread (the Java text checker pool thread): owns its ResultCache, pipeline pool and language data
 import { parentPort, workerData } from 'node:worker_threads';
 import '../../lang/register.js';
+import { Languages } from '../../core/Languages.js';
+import { File } from '../../lib/java/io/File.js';
 import { Thread } from '../../lib/java/Thread.js';
 import { CheckExecutor } from '../CheckExecutor.js';
 import { WorkerConfig, errorToDto } from './transport.js';
@@ -11,6 +13,7 @@ Thread.useSharedFlag(flag);
 let executor = null;
 let initError = null;
 try {
+  for (const d of workerData.config.dynamicLanguages ?? []) Languages.addLanguage(d.name, d.code, new File(d.dictPath)); // JS: same dynamic languages as the main thread
   executor = new CheckExecutor(new WorkerConfig(workerData.config), false);
 } catch (e) {
   initError = errorToDto(e);
