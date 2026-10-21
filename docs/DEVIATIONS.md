@@ -32,5 +32,5 @@ Format: ID | Java behaviour | port behaviour | reason. Golden fixtures stay unch
 - DEV-023 | CB-11 `enabledCategories=` / `disabledCategories=` empty: 500 `Category id must not be empty: ''` | empty ids are ignored (empty parameter = no categories), 200; ids with only whitespace still rejected | D-056
 - DEV-024 | CB-12 `/v2/words/add|delete` with `mode=batch` and no `words`: NullPointerException, 500 | 400 `Missing 'words' parameter` | D-056
 - DEV-025 | CB-13 `/v2/configinfo`: rule with empty `getRuleOptions()` gives ArrayIndexOutOfBounds, Float/Double option built with the 2-arg RuleOption constructor gives ClassCastException (latent, no shipped rule) | empty option array: no `ruleOptions`/compat fields; Integer min/max written numerically as float/double | D-056
-- DEV-026 | CB-14 `getRelevantLanguageModelRules(messages, null, userConfig)` of German/English/French: NullPointerException (API only) | empty rule list for a null language model | D-056
+- DEV-026 | CB-14 `getRelevantLanguageModelRules(messages, null, userConfig)` of German/English/French and all wave-2 languages: NullPointerException (API only) | empty rule list for a null language model | D-056
 - DEV-027 | CB-15 ShortenedYearRangeChecker with a 1-character `x`: StringIndexOutOfBoundsException, "Error analyzing sentence", exit 1 | treated as "not a date range": no match | D-056

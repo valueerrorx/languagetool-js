@@ -11,3 +11,7 @@ Rules:
 - Commit: git add -A -- . ':!oracle/cases/X-CLI-BASIC.bak' (user deletes that dir himself), trailer Co-Authored-By/Claude-Session lines.
 - Agents must leave no background wait loops.
 Status cmds: python3 docs/tools/plan_check.py ; cat docs/inventory/*.md | grep -cE '\| verified \|\s*$'
+
+W42 todo:
+- DEV-026 also applies to it/ru/es etc.: a null LM gives an empty list (it currently throws an NPE; IT-0052 rulelist-direct needs a deviations.json entry).
+- cli `--list` / rule-file-list: Java lists about 40 languages. Needs a dev006 listCut in the cli comparator (it/sk/sl cli-rule-file-list).

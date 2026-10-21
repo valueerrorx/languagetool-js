@@ -65,8 +65,8 @@ Row format: `| ID | behaviour (one line) | Java source (path#member) | Java test
 
 | ID | behaviour | Java source | Java tests | fixtures | status |
 |---|---|---|---|---|---|
-| SK-0050 | LanguageSpecificTest checks for Slovak (no demo text, the old one is commented out) | T/rules/sk/SlovakTest.java | SlovakTest | - | todo |
-| SK-0051 | Concurrency: parallel checks give identical results | T/SlovakConcurrencyTest.java | SlovakConcurrencyTest | - | todo |
+| SK-0050 | LanguageSpecificTest checks for Slovak (no demo text, the old one is commented out) | T/rules/sk/SlovakTest.java | SlovakTest | - | verified |
+| SK-0051 | Concurrency: parallel checks give identical results | T/SlovakConcurrencyTest.java | SlovakConcurrencyTest | - | verified |
 
 ## Test class mapping
 

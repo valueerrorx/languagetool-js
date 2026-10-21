@@ -51,10 +51,10 @@ Row format: `| ID | behaviour (one line) | Java source (path#member) | Java test
 
 | ID | behaviour | Java source | Java tests | fixtures | status |
 |---|---|---|---|---|---|
-| SL-0040 | Demo text "Tukaj vnesite svoje besedilo... Pa poglejmo primer besedila s nekaj napakami ki jih lahko razpozna orodje LanguageTool; ko opazite napake, jih lahko enostavno popiravite. ( Obenem se izvrši tudi preverjanje črkovanja črkovanja." yields [TROPIČJETRI, PREDLOG_S, KI_BREZ_VEJICE, MORFOLOGIK_RULE_SL_SI, COMMA_PARENTHESIS_WHITESPACE, WORD_REPEAT_RULE] | T/rules/sl/SlovenianTest.java#testLanguage | SlovenianTest | - | todo |
-| SL-0041 | "Kupil je npr. jajca, moko in mleko." -> exactly 1 match | T/JLanguageToolTest.java#testSlovenian | JLanguageToolTest | - | todo |
-| SL-0042 | LanguageSpecificTest checks (word lists, messages, Java rule examples, disambiguation examples) | CORE test LanguageSpecificTest#runTests | SlovenianTest | - | todo |
-| SL-0043 | Concurrency: parallel checks give identical results | T/SlovenianConcurrencyTest.java | SlovenianConcurrencyTest | - | todo |
+| SL-0040 | Demo text "Tukaj vnesite svoje besedilo... Pa poglejmo primer besedila s nekaj napakami ki jih lahko razpozna orodje LanguageTool; ko opazite napake, jih lahko enostavno popiravite. ( Obenem se izvrši tudi preverjanje črkovanja črkovanja." yields [TROPIČJETRI, PREDLOG_S, KI_BREZ_VEJICE, MORFOLOGIK_RULE_SL_SI, COMMA_PARENTHESIS_WHITESPACE, WORD_REPEAT_RULE] | T/rules/sl/SlovenianTest.java#testLanguage | SlovenianTest | - | verified |
+| SL-0041 | "Kupil je npr. jajca, moko in mleko." -> exactly 1 match | T/JLanguageToolTest.java#testSlovenian | JLanguageToolTest | - | verified |
+| SL-0042 | LanguageSpecificTest checks (word lists, messages, Java rule examples, disambiguation examples) | CORE test LanguageSpecificTest#runTests | SlovenianTest | - | verified |
+| SL-0043 | Concurrency: parallel checks give identical results | T/SlovenianConcurrencyTest.java | SlovenianConcurrencyTest | - | verified |
 
 ## Test class mapping
 
