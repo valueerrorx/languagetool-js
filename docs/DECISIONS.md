@@ -65,3 +65,4 @@ Format: D-nnn | date | decision
 - User: where the Java original is broken/poor and a clear, safe, better solution exists, the port may use it instead of bug-compatibility.
 - Still logged: each case gets a DEV entry in DEVIATIONS.md citing D-053 (lead decides "clearly better"; doubtful cases -> ask user).
 - First use: Hunspell suggest() wall-clock limits (DEV-009).
+- D-054 | 2026-10-21 | User: wave 2 stays as D-031 (it, es, sl, ru, sk, pl). No Croatian module exists in LanguageTool; Serbian (sr, incl. sr-HR) is not ported. Order: finish wave 1 (F67-F73 + audit), then wave 2.
