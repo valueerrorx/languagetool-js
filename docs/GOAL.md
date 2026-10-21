@@ -13,13 +13,13 @@ Express-Server auf Node.js (ESM), dazu die CLI. Keine GUI (D-002, D-004).
 - Funktionaler Port, kein 1:1-Klassenport. Interne Umsetzung frei, npm-Libraries erwünscht, wenn die Ergebnisse gleich sind.
 - API- und CLI-Ergebnisse inhaltlich gleich wie Java: gleiche Matches, Offsets, Regel-IDs, Meldungen, Vorschläge in gleicher Reihenfolge, gleiche Felder. JSON-Formatierung, Zahlendarstellung, HTTP-Header, Logzeilen und Stacktraces sind egal.
 - Nicht schlechter: Qualität (Regel-Testsätze, Korpora) und Performance (Benchmark gegen Java).
-- Bugs des Originals bleiben, außer ich genehmige eine Abweichung (docs/DEVIATIONS.md).
+- Maßstab ist die Fehlererkennung (D-056): Der Port erkennt mindestens alles, was das Original erkennt, gern mehr/besser. Java-Bugs und Abstürze werden nicht nachgebaut, wenn es einen besseren Weg gibt; bessere Lösungen und besserer Code sind ausdrücklich erwünscht. Schnittstellen (API-Felder, CLI-Optionen, Ausgabeformate) bleiben kompatibel. Jede bewusste Abweichung von Java steht kurz in docs/DEVIATIONS.md, damit Golden-Diffs erklärbar bleiben.
 
 ## Bekannte Besonderheiten
 Referenz-JDK 17 (D-008). Binäre Wörterbücher (morfologik .dict, hunspell) werden als Daten übernommen. ngram/Lucene, fastText, ONNX/neuronale Modelle und Remote-Rules sind zurückgestellt (D-005).
 
 ## Nicht-Ziele
-- Kein Refactoring des Verhaltens, keine neue Architektur-Idee, keine Performance-Optimierung über das Original hinaus.
+- Keine neuen Features außerhalb von LanguageTool; Verbesserungen an bestehendem Verhalten sind erlaubt (D-056).
 - Standalone-GUI, Office-Extension und nicht gewählte Sprachen (D-002, D-003).
 
 ## Abnahme
