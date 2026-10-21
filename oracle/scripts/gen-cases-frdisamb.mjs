@@ -1,0 +1,33 @@
+// Generates oracle/cases/X-FRDISAMB (inputs only; expectations come from the Java run).
+import { mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
+let seed = 60;
+const rnd = () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; };
+const text = readFileSync(path.join(ROOT, 'oracle/corpus/fr/corpus.txt'), 'utf8').replace(/\s+/g, ' ');
+const all = text.split(/(?<=[.!?»"])\s+(?=[A-ZÀÂÉÈÊÎÔÛÇ«"])/).map((s) => s.trim()).filter((s) => s.length > 3 && s.length < 600);
+const picked = []; const used = new Set();
+while (picked.length < 300 && picked.length < all.length) { const i = Math.floor(rnd() * all.length); if (!used.has(i)) { used.add(i); picked.push(all[i]); } }
+const hand = ["L'homme qu'il a vu n'est pas d'ici.", "J'ai mangé qu'une pomme aujourd'hui.", "Peut-être qu'il viendra demain.", "C'est-à-dire qu'on n'a pas fini.", "Est-ce que tu l'as vu ?", "Va-t-il venir ce soir ?", "Donne-moi-le, s'il te plaît.", "Quelqu'un m'a dit qu'aujourd'hui c'est férié.", "Il y a vingt-deux arc-en-ciel au-dessus de l'église.", "Un porte-monnaie, un grand-père, des grands-mères et un chef-d'œuvre.", "Rendez-vous au 12, rue de l'Université à Aix-en-Provence.", "Nous avons parlé à tout à l'heure, d'ores et déjà.", "Bien que je sois là, parce que tu viens, afin de partir.", "Il est parti en week-end avec son sac à dos.", "Elle a dit : « Je n'en peux plus ! »", "Les États-Unis d'Amérique et la Grande-Bretagne.", "Jean-Pierre et Marie-Claire sont allés à Saint-Étienne.", "Le peu qu'il a ; le plus qu'il peut.", "Je l'ai vu, la belle, le grand, l'autre.", "Aujourd’hui l’homme n’a qu’un souhait (typographic apostrophe).", "J'y vais, j'en viens, m'y voici, t'en as, s'en va.", "Y a-t-il quelqu'un ? Oui, il y en a.", "Au fur et à mesure, tout de suite, peu à peu, à peine.", "Ce qu'il faut, c'est qu'on y aille d'abord.", "Prends-en, vas-y, dis-le-moi, donnez-nous-en."];
+const edge = ['', ' ', '.', '!!!', '...', '?', ',', '«»', '()', 'a', 'Je', 'Le', '1', '3,14', '1 000 000', '5,99 € pour 10 % de remise.', "M. Dupont, Dr. Martin, Mme Durand habitent à Paris.", "E-mail : foo@bar.fr ou http://example.org/a?b=c#d", "L'", "l'", "d'", "qu'", "jusqu'à", "aujourd'hui", "-", "--", "-t-il", "a-t-il", "est-ce", "peut-être", "c'est-à-dire", "Ça va ? Çà et là.", "Œuvre, cœur, sœur, œil, Œdipe, ÀÉÈÊÎÔÛÇ àéèêîôûç.", 'Emoji 😀 et astral 𝒳 caractères.', "tab\tseparated\tvalues", "Ligne un\nLigne deux", 'Ligne.\r\nLigne2.', 'anticonstitutionnellement et hippopotomonstrosesquippedaliophobie et supercalifragilisticexpialidocieux.', 'LE RAPIDE RENARD BRUN SAUTE PAR-DESSUS LE CHIEN PARESSEUX', 'le rapide renard brun saute par-dessus le chien paresseux', '2026-03-15 à 10h30', '12345678901234567890', 'Une phrase très longue '.repeat(120) + 'finit ici.', 'Mot'.repeat(800), "Le vieil homme et la mer, ".repeat(60) + 'Fin.', 'Chinois 中文 et arabe العربية texte.', 'Le le le le la la les les.', 'Et et et.', 'Vingt-et-un, soixante-dix-sept, quatre-vingt-dix-neuf.', 'Abat-jour, abat-voix, après-midi, aller-retour, c\'est-à-dire.'];
+const out = (id, name, c) => { const d = path.join(ROOT, 'oracle/cases', id); mkdirSync(d, { recursive: true }); writeFileSync(path.join(d, name + '.json'), JSON.stringify(c)); };
+const base = (description, ops, compare = 'check-pipe') => ({ kind: 'harness', clock: 'fixed', description, normalize: [], compare, ops });
+const chunks = (a, n) => { const r = []; for (let i = 0; i < a.length; i += n) r.push(a.slice(i, i + n)); return r; };
+const pad = (i) => String(i).padStart(2, '0');
+const id = 'X-FRDISAMB';
+rmSync(path.join(ROOT, 'oracle/cases', id), { recursive: true, force: true });
+const ar = (lang, texts) => [{ op: 'analyze-raw', args: { lang, texts } }];
+chunks(picked, 20).forEach((c, i) => out(id, `analyze-corpus-${pad(i)}`, base('analyze-raw fr corpus: raw/post/pre (FR-0024, FR-0153)', ar('fr', c))));
+chunks([...hand, ...edge], 12).forEach((c, i) => out(id, `analyze-edge-${pad(i)}`, base('analyze-raw fr hand-made elision/hyphen sentences and edge inputs', ar('fr', c))));
+const dir = path.join(ROOT, 'oracle/java-src/languagetool-language-modules/fr/src/main/resources/org/languagetool/resource/fr');
+const lines = (f) => readFileSync(path.join(dir, f), 'utf8').split('\n').filter((l) => l && !l.startsWith('#'));
+const sample = (arr, n) => { const step = Math.max(1, Math.floor(arr.length / n)); const r = []; for (let i = 0; i < arr.length && r.length < n; i += step) r.push(arr[i]); return r; };
+const mw = lines('multiwords.txt').map((l) => l.split(/[\t;]/)[0].trim()).filter((x) => x.includes(' '));
+chunks(sample(mw, 160).map((x) => `Nous avons vu ${x} hier. ${x} est ici.`), 20).forEach((c, i) => out(id, `analyze-multiword-${pad(i)}`, base('analyze-raw fr multiwords.txt entries as sentences (FR-0172)', ar('fr', c))));
+const hy = lines('hyphenated_words.txt').map((l) => l.split('\t')[0].trim()).filter(Boolean);
+chunks(sample(hy, 160).map((x) => `Nous avons vu ${x} hier. ${x} est ici.`), 20).forEach((c, i) => out(id, `analyze-hyphen-${pad(i)}`, base('analyze-raw fr hyphenated_words.txt entries as sentences (FR-0173)', ar('fr', c))));
+const sg = readFileSync(path.join(ROOT, 'oracle/java-src/languagetool-core/src/main/resources/org/languagetool/resource/spelling_global.txt'), 'utf8').split('\n').filter((l) => l && !l.startsWith('#')).map((l) => l.split('\t')[0]).filter((x) => x.includes(' '));
+chunks(sample(sg, 40).map((x) => `Nous avons vu ${x} hier. ${x} est ici.`), 20).forEach((c, i) => out(id, `analyze-global-${pad(i)}`, base('analyze-raw fr spelling_global.txt entries as sentences', ar('fr', c))));
+for (const v of ['fr-FR', 'fr-BE', 'fr-CA', 'fr-CH']) out(id, `analyze-variant-${v}`, base(`analyze-raw ${v}`, ar(v, [...picked.slice(0, 15), ...hand.slice(0, 10)])));
+console.log('ok');
