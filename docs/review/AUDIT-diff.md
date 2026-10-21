@@ -1,0 +1,105 @@
+# AUDIT diff: Java scan (docs/review/AUDIT-java-scan.md) vs docs/inventory/{cli,core,server,lang-de,lang-en,lang-fr}.md
+
+Phase 5 audit, wave-1 scope. Inventory files were read only after the scan was written. Inventory files were NOT edited.
+Java source: /home/valueerror/STUFF/DEV/LanguageTool/languagetool @ 9b0be9db. Next free IDs (max existing + 1): CLI-0074, CORE-0451, SRV-0203, DE-0227, EN-0224, FR-0222.
+
+## 0 Result in one paragraph
+The inventory is near-complete for wave-1. Every one of the 615 Java files (core 346, cli 6, server 56, de 99, en 77, fr 31) is named in the matching inventory file (grouped rows count: AgreementRuleAntiPatterns2/3 -> DE-0041, StyleTooOftenUsed{Adjective,Noun}Rule -> DE-0089 / EN-0074, EnglishFor*FalseFriendRule -> EN-0060, JwtContent -> SRV-0166). All 50 CLI option spellings, all 99 server config keys (+3 grouped), all /v2/check and /v2/words parameters, all endpoints, every loaded resource path, every shipped resource file (or an explicit "never loaded" note), all Java rule IDs of de/en/fr, all test classes are present. No stale inventory location was found. Real gaps: 2 inaccurate rows (CORE-0291, EN-0004), 1 under-documented rule family (bitext rule texts/conditions), ~10 core rule-ID literals not written out, and a set of load-time error texts (low value, mostly unreachable).
+
+## 1 Method and coverage numbers (mechanical, scripts in the session scratchpad)
+| check | scanned | not found in inventory | notes |
+|---|---|---|---|
+| Java classes (name grep in module file, then all files) | 615 | 0 (6 only via grouped/wildcard rows) | see section 0 |
+| CLI option spellings (CommandLineParser) | 50 | 0 | CLI-0001..0073 |
+| Server config keys (getOptionalProperty/getProperty) | ~100 | 3 literal-name misses (grammalecteUser, grammalectePassword, maxTextLengthLoggedIn) -> all covered as grouped text in SRV-0057 / SRV-0031 | defaults of all keys cross-checked against SRV rows: no mismatch |
+| Request params (params.get/getOrDefault/containsKey) | ~50 distinct names | 0 | |
+| Endpoints / HTTP status mapping / headers | 11 paths, 9 error mappings | 0 | SRV-0090.. |
+| Resource files (main/resources) | 206 | 0 unnamed after grouping (hunspell .aff/.info, awk helpers, mybatis mappers are grouped/"not loaded" rows) | |
+| Resource path literals in Java (.txt/.xml/.dict/.bin/...) | ~200 | 0 relevant (NGramDetector vocab/thresholds = deferred; jdk.xml.* property names; PatternRuleXmlCreator XPath templates) | |
+| Java rule IDs (getId / *_ID constants) core+de+en+fr | 37+47+30+6 | 19 literal ID strings; 9 are covered by wildcard rows (TOO_OFTEN_USED_*_{DE,EN}, EN_FOR_*_SPEAKERS_FALSE_FRIENDS), 10 are core ids not stated literally: see G-3 | |
+| `throw new ...("literal")` with >= 6 chars | 438 | 203 by 25/40-char fragment; triaged in G-4 | cli 0, server 10 (all internal/dead), core 144, de 28, en 11, fr 10 |
+| System.getProperty/getenv | 22 | 0 | CORE-0009/..., SRV-0175, SRV-0144 |
+| Inventory -> Java: file refs (`c/ cl/ srv/ JD: JE: JF: core:`) | 943 refs | 0 stale files; 0 stale members (12 file-level and 4 member-level false positives = inner classes / wildcards such as `c/JLanguageTool.TextCheckCallable`, `srv/TextChecker.QueryParams`, `JD:language/German.java#createDefault*`) | |
+| Inventory -> Java: UPPER_SNAKE tokens (rule ids) | 337 | 0 stale (the 18 unmatched are concatenated prefixes such as `AI_DE_`, `TOO_OFTEN_USED_`, or ids that only live in tests/remote filters) | |
+| Inventory log catalogue (Class:line + text) | 112 rows | 0 stale; 99 verified by text within +-3 lines, 13 rows use placeholders so not machine-checkable (core: AnalyzedTokenReadings:538, LtThreadPoolFactory:162; server: ConfidenceMapLoader:70, DatabaseAccessOpenSource:198/252, LanguageToolHttpHandler:370, Server:193, TextChecker:201/222/444/656/685/791) | |
+| Numeric claims spot-checked | German id2prio 229 = 229; French 99 = 99; German relevant rules 52 = 52; Level enum names; CLI arg limit 14 | EN-0004 mismatch, see G-2 | |
+| JUnit | core 120 files, cli 4, server 29, de 69, en 59, fr 23 | 0 test classes unnamed; cli: 0 unmapped @Test methods (1 is AbstractSecurityTestCase.testSomething = helper); server: DictionaryMatchFilterTest (2) and DictionarySpellMatchFilterTest (4) are mapped at class level only (CORE-0186) | |
+
+## 2 MISSING / WRONG items (proposed changes; none applied)
+
+### G-1 Bitext rule family: ids, messages, exact conditions missing; CORE-0291 numerically wrong (observable via `-b2` CLI and `sourceText`/`sourceLanguage` on /v2/check)
+- Java: languagetool-core/src/main/java/org/languagetool/rules/bitext/DifferentLengthRule.java:36-37,44-72; DifferentPunctuationRule.java:36-70; SameTranslationRule.java:41-64; (BitextRule.java base).
+- What CORE-0291 says: "DifferentLengthRule (TRANSLATION_LENGTH, target <30% or >250% of source), DifferentPunctuationRule (end punctuation differs), SameTranslationRule (identical source/target with >2 words)". What Java does:
+  - DifferentLength: `skew = src.length()/trg.length()*100.0` (double, so trg.length()==0 gives Infinity and fires); match if `skew > 250 || skew < 30`, i.e. target shorter than 40% of source or longer than 3.33x source (direction in CORE-0291 is inverted/wrong). Match from=0, to = last token start + token length. Id TRANSLATION_LENGTH, description "Check if translation length is similar to source length", message "Source and target translation lengths are very different".
+  - DifferentPunctuation: id DIFFERENT_PUNCTUATION, ITS type Typographical, description "Check if translation has ending punctuation different from the source", message "Source and target translation have different ending punctuation"; fires only if the LAST target token is exactly ".", "?" or "!" AND differs from the last source token string (a source ending without punctuation with a target ending in "." fires; target ending in "," never fires). Match from=1 (not 0) to last token end.
+  - SameTranslation: id SAME_TRANSLATION, description "Check if translation is the same as source", message "Source and target translation are the same"; fires if `sourceText.getTokensWithoutWhitespace().length > 3` (array includes the SENT_START token, so >= 3 real tokens) AND `getText()` strings equal. Match from=1 to last token end.
+  - Tools.getBitextRules ordering/selection of these three is in CORE-0293 (not re-checked).
+- Proposed: new row **CORE-0451** (status todo): "Bitext rules exact behaviour: ids TRANSLATION_LENGTH / DIFFERENT_PUNCTUATION / SAME_TRANSLATION, descriptions and messages above, match conditions and from/to positions, DifferentLength skew formula (src/trg, double), SameTranslation token-count semantics (SENT_START included)" | c/rules/bitext/DifferentLengthRule, DifferentPunctuationRule, SameTranslationRule | DifferentLengthRuleTest#testRule, DifferentPunctuationRuleTest#testRule, SameTranslationRuleTest#testRule, MT.testBitextMode* | oracle fixture: `-b2` runs with source/target pairs covering each rule and the boundary skew values (e.g. src 25 chars / trg 10 chars, trg 0 chars, src 10 / trg 34) | todo. Also correct the wording of CORE-0291 (verified -> should be re-verified after fix).
+
+### G-2 EN-0004 count wording (priority map has duplicate keys)
+- Java: languagetool-language-modules/en/src/main/java/org/languagetool/language/English.java:391,413 (`SPURIOUS_APOSTROPHE` put twice, both 1) and :594-595 (`SENTENCE_FRAGMENT` put -50 then -51, effective value -51, ordering trap).
+- EN-0004 says "id2prio HashMap with 330 entries"; there are 330 put calls but 326 distinct keys. A port that builds the map from the 330 lines by `Object` literal works, but a port that asserts 330 entries or applies first-wins semantic would be wrong. Proposed: edit EN-0004 text (no new ID): "330 put calls, 326 distinct keys; later put wins: SENTENCE_FRAGMENT = -51". Test: priority of SENTENCE_FRAGMENT via /v2/check or CLI `prio=` output.
+
+### G-3 Rule-ID literals present in Java but not written in any inventory row (class rows exist, ids not stated)
+All are class-covered, so this is a documentation gap only (ids appear in CLI `Rule ID:` lines and JSON `rule.id`):
+| id | Java | existing row | reachable in wave 1? |
+|---|---|---|---|
+| DIFFERENT_PUNCTUATION, SAME_TRANSLATION | rules/bitext/*.java (getId) | CORE-0291 | yes, `-b2` -> covered by CORE-0451 |
+| WHITESPACE_PUNCTUATION | rules/WhitespaceBeforePunctuationRule.java:52 | CORE-0258 | not registered by de/en/fr getRelevantRules (no wave-1 use); keep todo as class API |
+| HUNSPELL_RULE, HUNSPELL_NO_SUGGEST_RULE | rules/spelling/hunspell/HunspellRule.java, HunspellNoSuggestionRule.java | CORE-0235/0440-0443 | base ids; German speller overrides getId (GERMAN_SPELLER_RULE), so unreachable |
+| SYMSPELL_RULE | rules/spelling/SymSpellRule.java | CORE-0238 | AmericanEnglish registers SymSpellRule (EN-0043 area): add id to row |
+| FAKE_FOR_VAGUE_SPELL_CHECKER, FAKE-RULE-FOR-FILTER | VagueSpellChecker.java, patterns/RuleFilter.java | CORE-0239 / CORE-0158 | internal |
+| NGRAM_RULE, BERT_SUGGESTION_RANKING | deferred (later) | | no |
+Proposed: documentation edit of CORE-0258, CORE-0238, CORE-0239, CORE-0291 (add the ids). No new ID.
+
+### G-4 Load-time validation error texts without inventory text (only reachable with user-supplied rule XML / bad data)
+Inventory has the high-traffic texts (CORE-0140..0158, 0379, 0432, 0447). The following are not written anywhere; all are exceptions thrown while loading rules or data. They are reachable only by (a) CLI `--rulefile`, `--falsefriends`, `--bitextrules` and server `rulesFile` with hand-made XML (then they print as `Error`/stack trace; D-045 says internal crash texts need not match) or (b) corrupt shipped data (not reachable). Proposed as ONE low-priority row per area so the lead can mark them `n/a` (D-043, docs/review/unreachable.md) or port them:
+
+**CORE-0452 (proposed, todo-low): pattern/disambiguation/false-friend/bitext XML load-time errors**
+- rules/patterns/XMLRuleHandler.java:425 "References cannot be empty: \n Line: ...", :429 "References must be larger than 0: ...", :437 "Only backward references in match elements are possible, tried to specify token ...", :506 "Contradicting regex contains both '?i' (case-insensitive) and \p{Lu}/\p{Ll} (case-sensitive): ...", :536 "You cannot set both 'chunk' and 'chunk_re' for <id>", :635 "Please set min and max attributes on the ..."
+- rules/patterns/PatternToken.java:404 "'skip' should be between -1 and 127", :415 "minOccurrences must be 0 or 1: i", :426 "maxOccurrences may not be 0", :429 "maxOccurrences should be between -1 and 127 but was: i", :496 clone failure
+- tagging/disambiguation/rules/DisambiguationRuleHandler.java:282 (same "Only backward references ..." text), XmlRuleDisambiguator.java:60,67 "Problems with loading disambiguation file: F" / "... global disambiguation file: disambiguation-global.xml"
+- rules/patterns/FalseFriendRuleHandler.java:106 "Translation language (X) must not be the same as pattern language (Y) for rule ...", :120 "'triggers_error' is not supported for false friend XML"; FalseFriendRuleLoader.java:69 "Could not load false friend rules from F"
+- rules/patterns/bitext/BitextPatternRuleHandler.java:158 "'triggers_error' is not supported for bitext XML"; BitextPatternRuleLoader.java:48 "Cannot load or parse 'F'"; Tools.java:182 "Failed to load bitext rules"
+- rules/patterns/RegexAntiPatternFilter.java:41 "Missing 'antiPatterns:' in 'args' in <filter> of rule <fullId>"; RuleFilterCreator.java:64 / RegexRuleFilterCreator.java:54 "Could not create filter class using constructor ..."
+- rules/ExampleSentence.java:35,38,41 "Example contains <marker> but lacks </marker>:" / "... </marker> but lacks <marker>:" / "Example <marker> comes before </marker>:"; rules/Example.java:51 "Example text must contain '<marker>...</marker>': ..."
+- rules/patterns/PatternTokenBuilder.java:85,163 (Java-side only), PatternRuleXmlCreator.java:76,79 ("Could not find rule 'id' for language L in files: ..."), PatternRuleMatcher.java:119,121 "Error analyzing sentence: '...'"
+- rules/YMDDateHelper.java:34 "Missing key 'date'", :38 "Expected date in format 'yyyy-mm-dd': '...'"; rules/PartialPosTagFilter.java:57 "Set 'no', 'regexp' and 'postag_regexp' for filter PartialPosTagFilter"
+- rules/GenericUnpairedBracketsRule.java:64 / GenericUnpairedQuotesRule.java:53 "Different number of start and end symbols: X vs. Y" (constructor, Java-only)
+- JLanguageTool.java:2123 "Unknown mode: <mode>", :2158 "Getting positions failed for match ..."; ResultCache.java:69 "Result cache size must be >= 0: N"; AnalyzedTokenReadings.java:774 NoSuchElementException "No such element: i, element count: n"
+
+**CORE-0453 (proposed, todo-low, expected n/a): data-file loader validation (only fire on corrupt shipped data)**
+- rules/ConfusionSetLoader.java:57 "Unexpected format: '...' - expected three semicolon-separated values: word1; word2; factor", :72 "Order words alphabetically per line in the confusion set file: ...", :77 "Word appears twice in same confusion set: 'w'"; ConfusionPair/ConfusionSet/ScoredConfusionSet "factor must be >= 1 / > 0"
+- rules/CompoundRuleData.java:56,143,146,149 ("Not a compound in file ...", "Too many compound parts in file ..., maximum allowed: 5", "Duplicated word in file ..."); rules/AbstractSimpleReplaceRule2.java:410; rules/SimpleReplaceDataLoader.java:49,53; rules/WordCoherencyDataLoader.java:66; rules/AbstractRepeatedWordsRule.java:222,236 "Word found in more than one line. \"w\" in line: ..."; ShortDescriptionProvider.java:60; synthesis/ManualSynthesizer.java:77,114,208; tagging/ManualTagger.java:69; tagging/disambiguation/MultiWordChunker2.java:110; chunking/ChunkTag.java:40, TokenPredicate.java:47,97; tools/StringTools.java:747; synthesis/BaseSynthesizer.java:158,261; tagging/MorfologikTagger.java:96
+
+**DE-0227 (proposed, todo-low, expected n/a)**: rules/de/LineExpander.java:51,54,71,107,148 ("Unexpected line format, expected at most one '_': ...", "... '_' cannot be combined with '/': ...", "Could not expand '...' from line '...', no forms found", "Unexpected line format, expected at most one slash: ...", "Unknown suffix: s in line: ..."), SpellingData.java:86,90,93 ("Old and new spelling are the same in F: line", "Contradictory entry in F: ...", "Duplicate key in F: ..."), ProhibitedCompoundRule.java:226,229,247, UpperCaseNgramRule.java:57, GermanSpellerRule.java:1803,1806,2016 ("Syntax '/{X}' for expansion not supported in this file: ...", "Syntax '_in' not supported ...", "Could not set up morfologik spell checker"), CaseRule.java:1347, UnitConversionRule.java:118,134, SubjectVerbAgreementRule.java:681,690 ("No singular/plural found for 'tok'"), AdaptSuggestionFilter.java:149 ("Unexpected POS tag: ..."), GermanStyleRepeatedWordRule.java:125 / CompoundInfinitivRule.java:260 (LinguServices null: unreachable), YMDDateCheckFilter.java:39 / YMDNewYearDateFilter.java:40 ("Set only 'weekDay' and 'date' for YMDDateCheckFilter"), DateFilterHelper.java:46,69 ("Could not find day of week for 'x'", "Could not find month 'x'"), UppercaseNounReadingFilter.java:46 ("Set 'token' for filter ... in rule <id>").
+
+**EN-0224 (proposed, todo-low, expected n/a)**: language/{American,British,Canadian}English.java:98/114/91 "XEnglish language expected, got L", rules/en/AbstractEnglishSpellerRule.java:388 "Only column 0 and 1 are supported: n", EnglishPartialPosTagFilter.java:52 / NoDisambiguationEnglishPartialPosTagFilter.java:45 "Could not tag and disambiguate 'tok'", YMDDateCheckFilter.java:39, YMDNewYearDateFilter.java:39, DateFilterHelper.java:45,67, chunking/EnglishChunkFilter.java:53 "Unknown chunk type: t".
+
+**FR-0222 (proposed, todo-low, expected n/a)**: rules/fr/DateFilterHelper.java:43,71, DMYDateCheckFilter.java:36 ("Set only 'weekDay' and 'date' for DMYDateCheckFilter"), :41 ("Expected date in format 'dd-mm-yyyy': '...'"), FrenchPartialPosTagFilter.java:49, WordWithDeterminerFilter.java:64,69,73 ("WordWithDeterminerFilter: Index out of bounds in <fullId> ..." / "... undefined parameters wordFrom or determinerFrom in ..."), InterrogativeVerbFilter.java:68 ("ConfusionCheckFilter: Index out of bounds in ..."), GrammalecteRule.java:653 (later, D-015).
+
+**Server (no new ID needed)**: ApiV2.java:267,270,285 ('lang' parameter missing / 'ruleId' parameter missing / Rule not found ...) belong to handleRuleExamplesRequest, which is only reachable through the commented-out route (ApiV2.java:94-96); SRV-0090 already states "rule/examples is disabled" -> mark as dead code in a note. TextChecker.java:286,324, PipelinePool.java:227, HTTPTestTools.java:86, ApiV2.java:395 are internal. TextChecker.java:1023 "Invalid 'preferredVariants', no such language/variant found: 'X'" is user reachable (400); SRV-0120 documents the "-" form check only -> verify the second text is in SRV-0120/0122 or add (UNCLEAR U-2).
+
+### G-5 Method-name-level notes (no ID proposed; class rows exist; for reviewers)
+Public non-accessor method names not literally mentioned in any inventory row (5200 public methods scanned, 1769 names not literal, 516 of those are not get/is/set/has accessors; most of the 516 are generated protobuf/gRPC builder methods in the 11 generated core files, the rest are overrides such as `acceptRuleMatch`, `createDefaultTagger`, iterators). Internal helpers worth a reviewer glance because they affect matching: Match#checksSpelling/#setsPos/#posRegExp (core/rules/patterns/Match.java), AnalyzedTokenReadings#readingWithLemma/#readingWithTagRegex/#matchesChunkRegex, PatternTokenMatcher#resolveReference/#addMemberAndGroup/#checkAndGroup, UnifierConfiguration#createUnifier, AbstractCompoundRule#mergeCompound, AbstractSimpleReplaceRule2#checkKeyWordsAreUnknownToSpeller/#separateKeyWordsBySpeller, MorfologikSpeller#findSimilarWords/#findReplacements, Rule#useDictionaryBasedFilterForMatches, RuleOption#objectToString, ReadabilityRule#printMessageLevel, ExampleSentence#cleanMarkersInExample, SymSpell#lookupCompound/#wordSegmentation (probably unused in LT), WordTokenizer#splitCurrencyExpression/#replaceEmojis/#restoreEmojis (emoji covered by CORE-0009/0445 area; currency split is in the tokenizer rows of CORE-0200..0203 per grep "currency"), TelemetryProvider#createSpan and UserConfig#enableABTests (no-op / config hooks; SRV abTest rows exist).
+
+## 3 UNCLEAR (could not decide statically; oracle runs proposed)
+- U-1 DifferentLengthRule with empty target: `src.length()/(double)0` = Infinity > 250 -> match; confirm no exception for empty `trg` and what the CLI prints (from=0, to=token end). Oracle: `-b2` with a line `Hello world\t` (empty target).
+- U-2 TextChecker.java:1017,1023: two preferredVariants errors. Confirm both texts in SRV-0120 (inventory shows only the first fragment in grep). Oracle: `language=auto&preferredVariants=enGB` and `preferredVariants=xx-YY`.
+- U-3 Core `JLanguageTool.java:2123` "Unknown mode: X": reachable only with an invalid enum, i.e. never from CLI/server (server maps mode names itself). Suggest n/a.
+- U-4 EN-0004 duplicate puts: confirm effective SENTENCE_FRAGMENT priority via oracle (`prio=-51` expected in CLI output for a SENTENCE_FRAGMENT match, e.g. a sentence-fragment test text).
+- U-5 ApiV2 `handleGetUserInfoRequest` (`/v2/users/me`) with DatabaseAccessOpenSource: confirm the no-DB path always ends in the AuthException text (SRV-0199) for both OPTIONS and GET; the OPTIONS branch (204, Access-Control-Allow-Methods "GET, OPTIONS", Access-Control-Allow-Headers echo) was found in the inventory by keyword only (SRV count 1 for "Access-Control-Allow-Methods"). Oracle: `curl -i -X OPTIONS /v2/users/me -H 'Access-Control-Request-Headers: x-a,x-b'`.
+
+## 4 Inventory items whose Java location no longer exists
+None. All 943 file references resolve at the pinned commit; every `#member` reference exists in the referenced file (false positives listed in the table above). Log-catalogue rows (core 46, server 66) were matched by text within +-3 lines of the stated line number; 13 rows use placeholders and could not be machine-checked (listed in the table).
+
+## 5 Proposed new IDs (summary, all status todo; lead may mark 0452/0453/DE-0227/EN-0224/FR-0222 as n/a under D-043)
+| ID | file | topic | priority |
+|---|---|---|---|
+| CORE-0451 | core.md | bitext rules: ids, texts, exact conditions/positions (replaces the numeric claims in CORE-0291) | normal (observable through `-b2` and `sourceText`) |
+| CORE-0452 | core.md | pattern / disambiguation / false-friend / bitext XML load-time error texts | low |
+| CORE-0453 | core.md | data-file loader validation errors | low (expected n/a) |
+| DE-0227 | lang-de.md | de data-loader / filter-argument error texts | low (expected n/a) |
+| EN-0224 | lang-en.md | en filter-argument and variant-guard error texts | low (expected n/a) |
+| FR-0222 | lang-fr.md | fr filter-argument error texts | low (expected n/a) |
+Row edits without new ID: EN-0004 (326 distinct keys, SENTENCE_FRAGMENT -51), CORE-0291 (wording), CORE-0258 / CORE-0238 / CORE-0239 (add rule-ID literals).
