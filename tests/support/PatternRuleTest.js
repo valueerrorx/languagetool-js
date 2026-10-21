@@ -193,13 +193,13 @@ export class PatternRuleTest {
    * @param ignoredLanguage ignore this language - useful to speed up tests from languages that have another language as a dependency
    */
   // Java: PatternRuleTest#runGrammarRulesFromXmlTest(Language)
-  runGrammarRulesFromXmlTestIgnoring(ignoredLanguage) {
+  async runGrammarRulesFromXmlTestIgnoring(ignoredLanguage) {
     let count = 0;
     for (const lang of Languages.get()) {
       if (ignoredLanguage.getShortCodeWithCountryAndVariant() === lang.getShortCodeWithCountryAndVariant()) {
         continue;
       }
-      this.runGrammarRuleForLanguage(lang);
+      await this.runGrammarRuleForLanguage(lang);
       count++;
     }
     if (count === 0) {
@@ -208,9 +208,9 @@ export class PatternRuleTest {
   }
 
   // Java: PatternRuleTest#runGrammarRulesFromXmlTest()
-  runGrammarRulesFromXmlTest() {
+  async runGrammarRulesFromXmlTest() {
     for (const lang of Languages.get()) {
-      this.runGrammarRuleForLanguage(lang);
+      await this.runGrammarRuleForLanguage(lang);
     }
     if (Languages.get().length === 0) {
       console.error('Warning: no languages found in classpath - cannot run any grammar rule tests');
@@ -218,13 +218,13 @@ export class PatternRuleTest {
   }
 
   // Java: PatternRuleTest#runGrammarRuleForLanguage(Language)
-  runGrammarRuleForLanguage(lang) {
+  async runGrammarRuleForLanguage(lang) {
     if (lang.getShortCode() === 'de') {
       if (lang.getShortCodeWithCountryAndVariant() === 'de-DE') {
-        this.runTestForLanguage(lang); // tests de-DE-AT/grammar.xml
-        this.runTestForLanguage(Languages.getLanguageForShortCode('de')); // tests de/grammar.xml
+        await this.runTestForLanguage(lang); // tests de-DE-AT/grammar.xml
+        await this.runTestForLanguage(Languages.getLanguageForShortCode('de')); // tests de/grammar.xml
       } else if (lang.getShortCodeWithCountryAndVariant() === 'de-CH') {
-        this.runTestForLanguage(lang);
+        await this.runTestForLanguage(lang);
       } else {
         console.log(`Skipping ${lang} because only de-DE and de-CH gets tested for German (assuming there are no de-AT specific rules)`);
       }
@@ -233,33 +233,33 @@ export class PatternRuleTest {
         console.log(`Skipping ${lang} because there are no specific rules for that variant`);
         return;
       }
-      this.runTestForLanguage(lang);
+      await this.runTestForLanguage(lang);
     }
   }
 
   // Java: PatternRuleTest#runGrammarRulesFromXmlTestIgnoringLanguages(Set)
-  runGrammarRulesFromXmlTestIgnoringLanguages(ignoredLanguages) {
+  async runGrammarRulesFromXmlTestIgnoringLanguages(ignoredLanguages) {
     console.log(`Known languages: ${listToString(Languages.getWithDemoLanguage())}`);
     for (const lang of Languages.getWithDemoLanguage()) {
       if (!isNull(ignoredLanguages) && ignoredLanguages.includes(lang)) {
         continue;
       }
-      this.runTestForLanguage(lang);
+      await this.runTestForLanguage(lang);
     }
   }
 
   // Java: PatternRuleTest#runTestForLanguage(Language) (TestHackHelper.isJUnitTest() is true inside PatternRuleTest)
-  runTestForLanguage(lang) {
+  async runTestForLanguage(lang) {
     TestHackHelper.setJUnitTest(true);
     try {
-      this.runTestForLanguageImpl(lang);
+      await this.runTestForLanguageImpl(lang);
     } finally {
       TestHackHelper.setJUnitTest(false);
     }
   }
 
   // Java: PatternRuleTest#runTestForLanguage(Language) (body)
-  runTestForLanguageImpl(lang) {
+  async runTestForLanguageImpl(lang) {
     this.validatePatternFile(lang);
     this.validateRemoteRulesFile(lang);
     console.log(`Running pattern rule tests for ${lang.getName()} (${lang.constructor.FQCN})... `);
@@ -273,7 +273,7 @@ export class PatternRuleTest {
     const rules = this.getAllPatternRules(lang, lt);
     this.testRegexSyntax(lang, rules);
     this.testMessages(lang, rules);
-    this.testGrammarRulesFromXML(rules, allRulesLt, lang);
+    await this.testGrammarRulesFromXML(rules, allRulesLt, lang);
     console.log(`${rules.length} rules tested.`);
     allRulesLt.shutdown();
     lt.shutdown();
@@ -563,7 +563,7 @@ export class PatternRuleTest {
   }
 
   // Java: PatternRuleTest#testGrammarRulesFromXML(List,JLanguageTool,Language)
-  testGrammarRulesFromXML(rules, allRulesLt, lang) {
+  async testGrammarRulesFromXML(rules, allRulesLt, lang) {
     if (process.env.skipRules !== undefined) { // Java: System.getProperty("skipRules")
       console.log(`SKIPPING: Checking example sentences of ${rules.length} rules for ${lang}...`);
       return;
@@ -575,6 +575,7 @@ export class PatternRuleTest {
     const complexRules = new JavaHashMap();
     let skipCount = 0;
     let i = 0;
+    let lastYield = Date.now();
     for (const rule of rules) {
       const sourceFile = rule.getSourceFile();
       if (lang.isVariant() && !isNull(sourceFile)
@@ -585,6 +586,10 @@ export class PatternRuleTest {
         continue;
       }
 
+      if (Date.now() - lastYield > 2000) { // lets the vitest worker answer its RPC calls during long runs
+        await new Promise((resolve) => setImmediate(resolve));
+        lastYield = Date.now();
+      }
       this.testCorrectSentences(lt, allRulesLt, rule);
       this.testBadSentences(lt, allRulesLt, lang, complexRules, rule);
       this.testErrorTriggeringSentences(lt, rule);
@@ -607,7 +612,7 @@ export class PatternRuleTest {
         }
       }
       if (badRules.length !== 0) {
-        this.testGrammarRulesFromXML(badRules, allRulesLt, lang);
+        await this.testGrammarRulesFromXML(badRules, allRulesLt, lang);
       }
     }
   }

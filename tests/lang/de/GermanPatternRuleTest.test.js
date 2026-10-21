@@ -18,11 +18,11 @@ describe('GermanPatternRuleTest', () => {
       if (lang.getShortCode() !== 'de') continue;
       const code = lang.getShortCodeWithCountryAndVariant();
       if (code === 'de-DE') {
-        t.runTestForLanguage(lang); // tests de-DE-AT/grammar.xml
+        await t.runTestForLanguage(lang); // tests de-DE-AT/grammar.xml
         await yieldLoop();
-        t.runTestForLanguage(Languages.getLanguageForShortCode('de')); // tests de/grammar.xml
+        await t.runTestForLanguage(Languages.getLanguageForShortCode('de')); // tests de/grammar.xml
       } else if (code === 'de-CH') {
-        t.runTestForLanguage(lang);
+        await t.runTestForLanguage(lang);
       } else {
         console.log(`Skipping ${lang} because only de-DE and de-CH gets tested for German (assuming there are no de-AT specific rules)`);
       }

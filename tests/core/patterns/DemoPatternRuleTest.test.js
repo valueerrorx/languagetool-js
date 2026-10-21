@@ -140,9 +140,9 @@ describe('DemoPatternRuleTest', () => {
   });
 
   // Java: DemoPatternRuleTest#testRules; runnable infrastructure: tests/support/PatternRuleTest.js (see DemoRulesExamplesTest)
-  it('testRules', () => {
+  it('testRules', async () => {
     const test = new PatternRuleTest();
-    test.runTestForLanguage(new DemoLanguage());
+    await test.runTestForLanguage(new DemoLanguage());
     test.ruleErrors.check(); // Java: PatternRuleErrorCollector rule verifies after the test
   });
 });

@@ -64,13 +64,13 @@ describe('GermanTest', () => {
   const base = new LanguageSpecificTest('de');
 
   // Java: GermanTest#testLanguage
-  it('testLanguage', () => {
+  it('testLanguage', async () => {
     // NOTE: this text needs to be kept in sync with config.ts -> DEMO_TEXTS:
     const s = 'Schreiben Sie in diesem Textfeld oder fügen Sie einen Text ein. Ihr Text wird kontinuierlich über prüft und Fehler werden farbig unterstrichen. Rechtshcreibfehler werden rot markirt, Grammatikfehler werden gelb hervor gehoben und Stilfehler werden, anders wie die anderen Fehler, blau unterstrichen. wussten Sie dass Synonyme per Doppelklick auf ein Wort aufgerufen werden können? Nutzen sie LanguageTool in allen Lebenslagen, etwa wenn Sie am Donnerstag, dem 13. Mai 2022, einen Basketballkorb in 10 Fuß Höhe montieren möchten.';
     const lang = Languages.getLanguageForShortCode('de-DE');
     base.testDemoText(lang, s,
       ['ZUSAMMENSCHREIBUNG_UEBER', 'GERMAN_SPELLER_RULE', 'GERMAN_SPELLER_RULE', 'ZUSAMMENSCHREIBUNG_HER', 'KOMP_WIE', 'UPPERCASE_SENTENCE_START', 'KOMMA_ZWISCHEN_HAUPT_UND_NEBENSATZ_2', 'AUFFORDERUNG_SIE', 'DE_DATE_WEEKDAY', 'EINHEITEN_METRISCH']);
-    base.runTests(lang, null, '_');
+    await base.runTests(lang, null, '_');
   }, LONG);
 
   // Java: GermanTest#testMessageCoherency

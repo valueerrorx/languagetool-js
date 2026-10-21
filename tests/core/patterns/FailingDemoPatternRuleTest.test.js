@@ -16,17 +16,17 @@ describe('FailingDemoPatternRuleTest', () => {
   useXxTestResources();
 
   // Java: FailingDemoPatternRuleTest#testRulesWithErrors1
-  it('testRulesWithErrors1', () => {
+  it('testRulesWithErrors1', async () => {
     const test = new FailingPatternRuleTest();
-    test.runTestForLanguage(new DemoWithGrammarFile('grammar-fail1.xml'));
+    await test.runTestForLanguage(new DemoWithGrammarFile('grammar-fail1.xml'));
     test.ruleErrors.check();
     expect(test.ruleErrors.errors.length).toBeGreaterThan(0);
   });
 
   // Java: FailingDemoPatternRuleTest#testRulesWithErrors2
-  it('testRulesWithErrors2', () => {
+  it('testRulesWithErrors2', async () => {
     const test = new FailingPatternRuleTest();
-    test.runTestForLanguage(new DemoWithGrammarFile('grammar-fail2.xml'));
+    await test.runTestForLanguage(new DemoWithGrammarFile('grammar-fail2.xml'));
     test.ruleErrors.check();
     expect(test.ruleErrors.errors.length).toBeGreaterThan(0);
   });

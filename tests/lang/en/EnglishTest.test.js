@@ -15,13 +15,13 @@ describe('EnglishTest', () => {
   const base = new LanguageSpecificTest();
 
   // Java: EnglishTest#testLanguage
-  it('testLanguage', () => {
+  it('testLanguage', async () => {
     // NOTE: this text needs to be kept in sync with config.ts -> DEMO_TEXTS:
     const s = 'Write or paste your text here too have it checked continuously. Errors will be underlined in different colours: we will mark seplling errors with red underilnes. Furthermore grammar error\'s are highlighted in yellow. LanguageTool also marks style issues in a reliable manner by underlining them in blue. did you know that you can sea synonyms by double clicking a word? Its a impressively versatile tool, e.g. if youd like to tell a colleague from over sea\'s about what happened at 5 PM in the afternoon on Monday, 27 May 2007.';
     const lang = Languages.getLanguageForShortCode('en-US');
     base.testDemoText(lang, s,
       ['TOO_TO', 'MORFOLOGIK_RULE_EN_US', 'MORFOLOGIK_RULE_EN_US', 'MORFOLOGIK_RULE_EN_US', 'SENT_START_CONJUNCTIVE_LINKING_ADVERB_COMMA', 'APOS_ARE', 'IN_A_X_MANNER', 'UPPERCASE_SENTENCE_START', 'DOUBLE_HYPHEN', 'IT_IS', 'EN_A_VS_AN', 'EN_CONTRACTION_SPELLING', 'OVER_SEAS', 'PM_IN_THE_EVENING', 'EN_DATE_WEEKDAY']);
-    base.runTests(lang, null, 'ÆæāýÅåøšùçıčćö');
+    await base.runTests(lang, null, 'ÆæāýÅåøšùçıčćö');
   }, LONG);
 
   // Java: EnglishTest#testRepeatedPatternRules

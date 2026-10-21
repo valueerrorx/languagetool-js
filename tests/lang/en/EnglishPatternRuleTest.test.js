@@ -49,19 +49,19 @@ describe('EnglishPatternRuleTest', () => {
   it('testRules', async () => {
     const t = new PatternRuleTest();
     for (const lang of Languages.get()) {
-      if (lang.getShortCode() === 'en') t.runGrammarRuleForLanguage(lang);
+      if (lang.getShortCode() === 'en') await t.runGrammarRuleForLanguage(lang);
       await new Promise((resolve) => setImmediate(resolve)); // lets the vitest worker answer its RPC calls between the long synchronous runs
     }
     t.ruleErrors.verify();
   }, LONG);
 
   // Java: EnglishPatternRuleTest#testL2Languages
-  it('testL2Languages', () => {
+  it('testL2Languages', async () => {
     const t = new PatternRuleTest();
     t.validatePatternFileNames(['en/grammar-l2-de.xml']);
     t.validatePatternFileNames(['en/grammar-l2-fr.xml']);
-    t.runTestForLanguage(new L2GermanRulesOnlyEnglish());
-    t.runTestForLanguage(new L2FrenchRulesOnlyEnglish());
+    await t.runTestForLanguage(new L2GermanRulesOnlyEnglish());
+    await t.runTestForLanguage(new L2FrenchRulesOnlyEnglish());
     t.ruleErrors.verify();
   }, LONG);
 

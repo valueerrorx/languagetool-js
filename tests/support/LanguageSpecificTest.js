@@ -35,7 +35,7 @@ export class LanguageSpecificTest {
   }
 
   // Java: LanguageSpecificTest#runTests(Language[,String[,String]]) / (Language,Language,String,String)
-  runTests(lang, ...rest) {
+  async runTests(lang, ...rest) {
     if (rest.length === 0) return this.runTests4(lang, lang, null, '');
     if (rest.length === 1) return this.runTests4(lang, lang, rest[0], '');
     if (rest.length === 2) return this.runTests4(lang, lang, rest[0], rest[1]);
@@ -43,11 +43,11 @@ export class LanguageSpecificTest {
   }
 
   // Java: LanguageSpecificTest#runTests(Language,Language,String,String)
-  runTests4(lang, langVariantForReplaceTests, onlyRunCode, additionalValidationChars) {
+  async runTests4(lang, langVariantForReplaceTests, onlyRunCode, additionalValidationChars) {
     new WordListValidatorTest(additionalValidationChars).testWordListValidity(lang);
     this.testNoLineBreaksEtcInMessage(lang);
     this.testNoQuotesAroundSuggestion(lang);
-    this.testJavaRules(onlyRunCode);
+    await this.testJavaRules(onlyRunCode);
     // testExampleAvailable(onlyRunCode) is commented out in Java
     this.testConfusionSetLoading();
     this.countTempOffRules(lang);
@@ -194,10 +194,11 @@ export class LanguageSpecificTest {
   }
 
   // Java: LanguageSpecificTest#testJavaRules(String)
-  testJavaRules(onlyRunCode) {
+  async testJavaRules(onlyRunCode) {
     const idsToClassName = new Map();
     const ruleClasses = new Set();
     const printLimitSeconds = 0.2;
+    let lastYield = Date.now();
     for (const language of Languages.getWithDemoLanguage()) {
       if (language.getShortCode() !== this.module && language.getShortCode() !== 'xx') continue; // the module's classpath holds only its language and the core demo language
       if (onlyRunCode !== null && language.getShortCodeWithCountryAndVariant() !== onlyRunCode) {
@@ -208,6 +209,10 @@ export class LanguageSpecificTest {
       const lt = new JLanguageTool(language);
       const allRules = lt.getAllRules();
       for (const rule of allRules) {
+        if (Date.now() - lastYield > 2000) { // lets the vitest worker answer its RPC calls during long runs
+          await new Promise((resolve) => setImmediate(resolve));
+          lastYield = Date.now();
+        }
         this.assertIdAndDescriptionValidity(language, rule);
         if (!(rule instanceof AbstractPatternRule)) {
           const startTime = Date.now();
