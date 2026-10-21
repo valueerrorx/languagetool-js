@@ -13,7 +13,7 @@ const OUT = path.join(ROOT, 'resources');
 const DIST = path.join(SRC, 'languagetool-standalone/target/LanguageTool-6.9-SNAPSHOT/LanguageTool-6.9-SNAPSHOT/libs');
 
 // classpath order: first module wins on duplicate paths
-const MODULES = ['languagetool-core', 'languagetool-commandline', 'languagetool-server', 'languagetool-language-modules/de', 'languagetool-language-modules/en', 'languagetool-language-modules/fr', 'languagetool-language-modules/sk', 'languagetool-language-modules/sl'];
+const MODULES = ['languagetool-core', 'languagetool-commandline', 'languagetool-server', 'languagetool-language-modules/de', 'languagetool-language-modules/en', 'languagetool-language-modules/fr', 'languagetool-language-modules/it', 'languagetool-language-modules/sk', 'languagetool-language-modules/sl'];
 const JARS = ['german-pos-dict', 'english-pos-dict', 'french-pos-dict', 'opennlp-chunk-models', 'opennlp-postag-models', 'opennlp-tokenize-models', 'jwordsplitter', 'language-detector'];
 
 const files = new Map(); // relative path -> { data(): Buffer, origin }
