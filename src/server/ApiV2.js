@@ -94,6 +94,8 @@ class JsonGenerator {
 
 // Java: (float)/(double) cast of an Object holding a boxed Float/Double
 function castBox(o, kind) {
+  // DEV-025: Java ClassCastException for the Integer min/max of the 2-arg RuleOption ctor; numeric conversion instead
+  if (typeof o === 'number') return kind === 'Float' ? Math.fround(o) : o;
   if (o !== null && typeof o === 'object' && o.kind === kind) return o.value;
   const actual = typeof o === 'number' ? 'java.lang.Integer' : typeof o === 'boolean' ? 'java.lang.Boolean' : o !== null && typeof o === 'object' && o.kind ? `java.lang.${o.kind}` : 'java.lang.String';
   throw new ClassCastException(`class ${actual} cannot be cast to class java.lang.${kind}`);
@@ -351,8 +353,9 @@ export class ApiV2 {
 
   // Java: Arrays.asList(parameters.get("words").split("\\s+")) (missing parameter: NullPointerException)
   splitWords(parameters) {
+    // DEV-024: Java NPE (500) without words; 400
     if (param(parameters, 'words') === null) {
-      throw new NullPointerException('Cannot invoke "String.split(String)" because the return value of "java.util.Map.get(Object)" is null');
+      throw new BadRequestException("Missing 'words' parameter");
     }
     return javaSplit(parameters.get('words'), WHITESPACE_SPLIT);
   }
@@ -561,10 +564,7 @@ export class ApiV2 {
         g.writeStringField('isOfficeDefaultOn', 'yes');
       }
       const ruleOptions = rule.getRuleOptions();
-      if (ruleOptions !== null) {
-        if (ruleOptions.length === 0) {
-          throw new ArrayIndexOutOfBoundsException('Index 0 out of bounds for length 0');
-        }
+      if (ruleOptions !== null && ruleOptions.length > 0) { // DEV-025: Java AIOOBE for an empty array
         //  Compatibility to old version (< 6.5)
         if (typeof ruleOptions[0].getDefaultValue() === 'number') {
           g.writeStringField('hasConfigurableValue', 'yes');

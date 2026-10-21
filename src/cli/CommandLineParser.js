@@ -97,6 +97,8 @@ export class CommandLineParser {
       } else if (args[i] === '--clean-overlapping') {
         options.setCleanOverlapping(true);
       } else if (args[i] === '--level') {
+        // DEV-019: Java AIOOBE for a missing value; clean message like the sibling options
+        if (i + 1 >= args.length) throw new IllegalArgumentException('Missing value for option --level');
         const level = argAt(args, ++i);
         try {
           options.setLevel(JLanguageTool.Level.valueOf(level));

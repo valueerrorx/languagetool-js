@@ -48,6 +48,8 @@ function distinct(list) {
   return out;
 }
 
+const SINGLE_TOKEN_LINES = new WeakMap(); // perf: tokenizer -> memo of ignore lines (<= 1 token / token lists)
+
 // Java: SpellingCheckRule (abstract: getId, getDescription, match, isMisspelled)
 export class SpellingCheckRule extends Rule {
   static FQCN = 'org.languagetool.rules.spelling.SpellingCheckRule';
@@ -397,7 +399,29 @@ export class SpellingCheckRule extends Rule {
       // if line consists of several words (separated by " "), a DisambiguationPatternRule
       // will be created where each words serves as a case-sensitive and non-inflected PatternToken
       // so that the entire multi-word entry is ignored by the spell checker
-      const tokens = this.language.getWordTokenizer().tokenize(line);
+      // perf: lines known to give exactly one token for this (stateless, shared) tokenizer skip re-tokenizing
+      const tokenizer = this.language.getWordTokenizer();
+      let memo;
+      if (tokenizer === this.ignoreMemoTokenizer) memo = this.ignoreMemo;
+      else {
+        memo = SINGLE_TOKEN_LINES.get(tokenizer);
+        if (memo === undefined) {
+          memo = { single: new Set(), multi: new Map() };
+          SINGLE_TOKEN_LINES.set(tokenizer, memo);
+        }
+        this.ignoreMemoTokenizer = tokenizer;
+        this.ignoreMemo = memo;
+      }
+      if (memo.single.has(line)) {
+        this.wordsToBeIgnored.add(line);
+        return;
+      }
+      let tokens = memo.multi.get(line);
+      if (tokens === undefined) {
+        tokens = tokenizer.tokenize(line);
+        if (tokens.length <= 1) memo.single.add(line);
+        else memo.multi.set(line, tokens);
+      }
       if (tokens.length > 1) {
         const patternTokens = [];
         for (const token of tokens) {
@@ -462,7 +486,7 @@ export class SpellingCheckRule extends Rule {
     const comparator = caseSensitive ? javaCompare : CASE_INSENSITIVE_ORDER;
     let array = caseSensitive ? this.wordsToBeIgnoredDictionary : this.wordsToBeIgnoredDictionaryIgnoreCase;
     if (array === null) {
-      array = [...this.wordsToBeIgnored].sort(comparator); // stable, as Stream#sorted
+      array = caseSensitive ? [...this.wordsToBeIgnored].sort() : [...this.wordsToBeIgnored].sort(comparator); // stable, as Stream#sorted; default sort = UTF-16 code unit order = String#compareTo
       if (caseSensitive) {
         this.wordsToBeIgnoredDictionary = array;
       } else {

@@ -6,6 +6,7 @@ import { IOException, RuntimeException } from '../lib/java/errors.js';
 import { StringBuilder } from '../lib/java/strings.js';
 import { getDataBroker } from './resources/LtStatics.js';
 import { MalformedURLException, URL } from '../lib/java/URL.js';
+import { TextLevelRule } from './rules/model/TextLevelRule.js';
 
 // Java: Tools#i18n(ResourceBundle,String,Object...)
 export function i18n(messages, key, ...messageArguments) {
@@ -20,7 +21,9 @@ let linguServices = null;
 export function profileRulesOnLine(contents, lt, rule) {
   let count = 0;
   for (const sentence of lt.sentenceTokenize(contents)) {
-    count += rule.match(lt.getAnalyzedSentence(sentence)).length;
+    const analyzed = lt.getAnalyzedSentence(sentence);
+    // DEV-018: Java throws 'Not implemented for a text-level rule'; text-level rules are profiled on the line as a one-sentence text
+    count += (rule instanceof TextLevelRule ? rule.match([analyzed]) : rule.match(analyzed)).length;
   }
   return count;
 }

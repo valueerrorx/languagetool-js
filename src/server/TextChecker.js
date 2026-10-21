@@ -562,9 +562,14 @@ export class TextChecker {
     const ruleValues = new Map();
     const parameterString = parameters.get('ruleValues');
     if (parameterString === undefined) return ruleValues;
+    if (parameterString === '') return ruleValues; // DEV-021: empty value = no rule values
     const pairs = javaSplit(parameterString, ',');
     for (const pair of pairs) {
       const ruleAndValue = javaSplit(pair, ':');
+      // DEV-021: Java AIOOBE/SIOOBE (500) for entries without value or with empty list elements; clean 400
+      if (ruleAndValue.length < 2 || javaSplit(ruleAndValue[1], ';').some((e) => javaTrim(e) === '')) {
+        throw new BadRequestException("Invalid 'ruleValues' entry '" + pair + "', expected format RULE_ID:value[;value...]");
+      }
       const objects = RuleOption.stringToObjects(arrayGet(ruleAndValue, 1));
       ruleValues.set(ruleAndValue[0], objects);
     }
@@ -580,7 +585,8 @@ export class TextChecker {
 
   // Java: TextChecker#getCategoryIds(String,Map)
   getCategoryIds(paramName, parameters) {
-    return this.getCommaSeparatedStrings(paramName, parameters).map((id) => new CategoryId(id));
+    // DEV-023: empty ids (e.g. empty parameter value) are ignored; Java: 'Category id must not be empty'
+    return this.getCommaSeparatedStrings(paramName, parameters).filter((id) => id !== '').map((id) => new CategoryId(id));
   }
 
   // Java: TextChecker#getCommaSeparatedStrings(String,Map)

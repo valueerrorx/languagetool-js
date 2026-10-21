@@ -23,7 +23,8 @@ export class DMYDateCheckFilter extends DateCheckFilter {
     args.put('day', parts[0]);
     args.put('month', parts[1]);
     args.put('year', parts[2]);
-    return super.acceptRuleMatch(match, args, patternTokenPos, patternTokens, tokenPositions);
+    // DEV-017: parent expects token indexes; the wrapper's text values are checked as weekday vs. date text
+    return this.acceptRuleMatchFromText(match, args);
   }
 }
 

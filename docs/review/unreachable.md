@@ -27,3 +27,7 @@
 | F32 | DisambiguationPatternRuleReplacer: null disAction -> Java NPE, JS no-op | handler always defaults to REPLACE |
 | F33 | MultiWordChunker.getInstance(""): resource dir listing order (Java: first classpath entry containing the dir, e.g. "ar"; JS: merged tree) - X-CHUNK/inline-errors job 3 message differs | empty/dir filename; never reachable from language wiring |
 | F36 | casts#castToIntAt: NullPointerException text for a null config element is a fixed helpful-NPE text (Java names the local variable) | null element in a UserConfig value array (harness inputs are int/bool/str) |
+
+## CORE-0009 residual (2026-10-21, D-043)
+- X-LOCALE (locales-main, locales-extra): adapter locale-dump is a stub; JDK locale data dump (display names, DecimalFormatSymbols, NumberFormat/DateFormatSymbols, calendar data for ~50 locales); de/en/fr number and date behaviour is covered by X-NUMFMT, X-PROBE-NUMBERS and the unit conversion fixtures.
+- X-PROBE-STRINGS/normalize-bytes: 84 `bytes`/`fromBytes` requests (String.getBytes/new String with UTF-8, ISO-8859-1, US-ASCII, UTF-16*, windows-1252, unknown charset) thrown as NotPorted in oracle/adapters/probe-strings.mjs; the file/stdin encodings used by CLI/server are covered by X-CLI-OPTS enc-* and X-SRV-* cases.

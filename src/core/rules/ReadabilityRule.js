@@ -41,7 +41,7 @@ export class ReadabilityRule extends TextLevelRule {
     if (userConfig !== null && userConfig !== undefined) {
       this.linguServices = userConfig.getLinguServices();
       const cf = userConfig.getConfigValueByID(this.getId());
-      if (cf !== null) {
+      if (cf !== null && cf.length > 0 && typeof cf[0] === 'number') { // DEV-022: guard like the sibling rules
         tmpLevel = castToIntAt(cf, 0);
       }
     } else {

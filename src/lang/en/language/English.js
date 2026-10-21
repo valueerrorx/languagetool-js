@@ -200,7 +200,7 @@ export class English extends LanguageWithModel {
   // Java: English#getRelevantLanguageModelRules(ResourceBundle,LanguageModel,UserConfig)
   getRelevantLanguageModelRules(messages, languageModel) {
     // UpperCaseNgramRule, EnglishConfusionProbabilityRule, EnglishNgramProbabilityRule: constructors dereference the language model
-    if (languageModel === null || languageModel === undefined) throw new NullPointerException();
+    if (languageModel === null || languageModel === undefined) return []; // DEV-026: Java NPE; no model, no model rules
     throw notPortedYet('English#getRelevantLanguageModelRules (ngram rules, DEV-001)');
   }
 

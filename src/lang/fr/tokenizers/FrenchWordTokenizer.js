@@ -54,24 +54,38 @@ export class FrenchWordTokenizer extends WordTokenizer {
     if (text === null || text === undefined) throw new NullPointerException('Cannot invoke "String.replace(char, char)" because "text" is null');
     let auxText = text.replaceAll('‐', '-');
     auxText = auxText.replaceAll('‑', '-');
-    let matcher = TYPEWRITER_APOSTROPHE.matcher(auxText);
-    auxText = matcher.replaceAll('$1xxFR_APOS_TYPEWxx$2');
-    matcher = TYPOGRAPHIC_APOSTROPHE.matcher(auxText);
-    auxText = matcher.replaceAll('$1xxFR_APOS_TYPOGxx$2');
-    matcher = NEARBY_HYPHENS.matcher(auxText);
-    auxText = matcher.replaceAll('$1xxFR_HYPHENxx$2xxFR_HYPHENxx$3');
-    matcher = HYPHENS.matcher(auxText);
-    auxText = matcher.replaceAll('$1xxFR_HYPHENxx$2');
-    matcher = DECIMAL_POINT.matcher(auxText);
-    auxText = matcher.replaceAll('$1xxFR_DECIMALPOINTxx$2');
-    matcher = DECIMAL_COMMA.matcher(auxText);
-    auxText = matcher.replaceAll('$1xxFR_DECIMALCOMMAxx$2');
-    matcher = SPACE_DIGITS2.matcher(auxText);
-    auxText = matcher.replaceAll('$1xxFR_SPACExx$2xxFR_SPACExx$3');
-    matcher = SPACE_DIGITS0.matcher(auxText);
-    auxText = matcher.replaceAll('$1xxFR_SPACE0xx');
-    matcher = SPACE_DIGITS.matcher(auxText);
-    auxText = matcher.replaceAll('$1xxFR_SPACExx$2');
+    let matcher;
+    // perf: each replacement can only match when its literal character is present (no-match replaceAll returns the input)
+    if (auxText.includes("'")) {
+      matcher = TYPEWRITER_APOSTROPHE.matcher(auxText);
+      auxText = matcher.replaceAll('$1xxFR_APOS_TYPEWxx$2');
+    }
+    if (auxText.includes('’')) {
+      matcher = TYPOGRAPHIC_APOSTROPHE.matcher(auxText);
+      auxText = matcher.replaceAll('$1xxFR_APOS_TYPOGxx$2');
+    }
+    if (auxText.includes('-')) {
+      matcher = NEARBY_HYPHENS.matcher(auxText);
+      auxText = matcher.replaceAll('$1xxFR_HYPHENxx$2xxFR_HYPHENxx$3');
+      matcher = HYPHENS.matcher(auxText);
+      auxText = matcher.replaceAll('$1xxFR_HYPHENxx$2');
+    }
+    if (auxText.includes('.')) {
+      matcher = DECIMAL_POINT.matcher(auxText);
+      auxText = matcher.replaceAll('$1xxFR_DECIMALPOINTxx$2');
+    }
+    if (auxText.includes(',')) {
+      matcher = DECIMAL_COMMA.matcher(auxText);
+      auxText = matcher.replaceAll('$1xxFR_DECIMALCOMMAxx$2');
+    }
+    if (auxText.includes(' ')) {
+      matcher = SPACE_DIGITS2.matcher(auxText);
+      auxText = matcher.replaceAll('$1xxFR_SPACExx$2xxFR_SPACExx$3');
+      matcher = SPACE_DIGITS0.matcher(auxText);
+      auxText = matcher.replaceAll('$1xxFR_SPACE0xx');
+      matcher = SPACE_DIGITS.matcher(auxText);
+      auxText = matcher.replaceAll('$1xxFR_SPACExx$2');
+    }
     auxText = auxText.replaceAll('xxFR_SPACE0xx', ' ');
 
     const tokenizerMatcher = tokenizerPattern.matcher(auxText);
@@ -98,6 +112,8 @@ export class FrenchWordTokenizer extends WordTokenizer {
         hyphensAtEnd++;
       }
       let j = 0;
+      // perf: all patterns need an apostrophe or a hyphen
+      if (!s.includes('-') && !s.includes("'") && !s.includes('’')) j = maxPatterns;
       while (j < maxPatterns && !matchFound) {
         matcher = patterns[j].matcher(s);
         matchFound = matcher.find();

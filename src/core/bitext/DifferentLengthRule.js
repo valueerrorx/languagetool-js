@@ -34,6 +34,8 @@ export class DifferentLengthRule extends BitextRule {
   // Java: DifferentLengthRule#match(AnalyzedSentence,AnalyzedSentence)
   match(sourceText, targetText) {
     if (targetText === undefined) return super.match(sourceText);
+    // DEV-014: empty target text: nothing to check (Java throws fromPos 0 / toPos 0)
+    if (targetText.getText().length === 0 || targetText.getTokens().length === 0) return RuleMatch.EMPTY_ARRAY;
     if (this.isLengthDifferent(sourceText.getText(), targetText.getText())) {
       const tokens = targetText.getTokens();
       const endPos = tokens[tokens.length - 1].getStartPos() + tokens[tokens.length - 1].getToken().length;

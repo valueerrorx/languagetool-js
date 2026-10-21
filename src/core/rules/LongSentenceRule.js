@@ -31,7 +31,7 @@ export class LongSentenceRule extends TextLevelRule {
     let tmpMaxWords = maxWords;
     if (userConfig !== null && userConfig !== undefined) {
       const cf = userConfig.getConfigValueByID(this.getId());
-      if (cf !== null) {
+      if (cf !== null && cf.length > 0 && typeof cf[0] === 'number') { // DEV-022: guard like the sibling rules
         tmpMaxWords = castToIntAt(cf, 0);
       }
     }

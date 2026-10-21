@@ -85,7 +85,7 @@ export function userConfigToDto(u) {
 }
 
 export function userConfigFromDto(d) {
-  const rv = new Map(d.ruleValues.map(([k, s]) => [k, RuleOption.stringToObjects(s)]));
+  const rv = new Map(d.ruleValues.map(([k, s]) => [k, s === '' ? [] : RuleOption.stringToObjects(s)]));
   return new UserConfig(d.words, [], rv, d.maxSpellingSuggestions, d.premiumUid, d.userDictName, d.userDictCacheSize, null,
     d.filterDictionaryMatches, d.abTest, d.textSessionId, d.hidePremiumMatches, d.preferredLanguages, d.trustedSource,
     d.optInThirdPartyAI, d.isPremium, UserConfig.TokenType.valueOf(d.tokenType), d.suggestionsEnabled);

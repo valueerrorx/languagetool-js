@@ -104,7 +104,7 @@ describe('ApiV2', () => {
       expect(await run('admin/refreshUser', 'POST')).toBe('{"success":false}');
       await expect(run('words/add', 'POST', { word: ' ' })).rejects.toThrow('Invalid word, cannot be empty or whitespace only');
       await expect(run('words/add', 'POST', { word: 'a b' })).rejects.toThrow("Invalid word, you can only add words that don't contain spaces: 'a b'");
-      await expect(run('words/add', 'POST', { mode: 'batch' })).rejects.toThrow(/NullPointer|null/);
+      await expect(run('words/add', 'POST', { mode: 'batch' })).rejects.toThrow("Missing 'words' parameter"); // DEV-024
       await expect(run('words', 'GET', { dict: 'x' })).rejects.toThrow("Use parameter 'dicts', not 'dict' in GET /words API method.");
     });
 

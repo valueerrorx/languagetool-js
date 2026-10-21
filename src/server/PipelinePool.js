@@ -1,6 +1,7 @@
 // Java: org.languagetool.server.PipelinePool (caches pre-configured JLanguageTool instances, keyed by PipelineSettings)
 import { NoSuchElementException, IllegalStateException } from '../lib/java/errors.js';
 import { DictionaryMatchFilter } from '../core/rules/DictionaryMatchFilter.js';
+import { DictionarySpellMatchFilter } from '../core/rules/DictionarySpellMatchFilter.js';
 import { selectRules } from '../core/Tools.js';
 import { notPortedYet } from '../core/language/components.js';
 import { Pipeline } from './Pipeline.js';
@@ -102,7 +103,7 @@ export class PipelinePool {
     if (userConfig.filterDictionaryMatches()) {
       lt.addMatchFilter(new DictionaryMatchFilter(userConfig));
     }
-    // DictionarySpellMatchFilter: accepted phrases need a user database, nothing to filter without one
+    lt.addMatchFilter(new DictionarySpellMatchFilter(userConfig));
     // premiumOnly cannot be set (refused in this build); PremiumOff: no premium rules to disable
     // AB treatment: LocalAbTestService#configureLTForTreatment does nothing
     if (this.pool !== null) {

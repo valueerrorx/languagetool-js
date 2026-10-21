@@ -20,9 +20,9 @@ const WD = 'wd';
 const ACTION = 'action';
 const DISAMBIG = 'disambig';
 
-// Java: attrs.getValue(..).method() on a possibly absent attribute
-function nn(v) {
-  if (v === null || v === undefined) throw new NullPointerException('Cannot invoke "String.equals(Object)" because the return value of "org.xml.sax.Attributes.getValue(String)" is null');
+// DEV-016: Java NPE on a missing <example> type attribute; clean load error naming the rule
+function nn(v, ruleId) {
+  if (v === null || v === undefined) throw new IllegalStateException('<example> without type attribute in rule ' + ruleId);
   return v;
 }
 
@@ -238,8 +238,8 @@ export class DisambiguationRuleHandler extends XMLRuleHandler {
         if (this.disambExamples === null) {
           this.disambExamples = [];
         }
-        this.untouched = nn(attrs.getValue(TYPE)) === 'untouched';
-        if (nn(attrs.getValue(TYPE)) === 'ambiguous') {
+        this.untouched = nn(attrs.getValue(TYPE), this.id) === 'untouched';
+        if (nn(attrs.getValue(TYPE), this.id) === 'ambiguous') {
           this.input = attrs.getValue('inputform');
           this.output = attrs.getValue('outputform');
         }

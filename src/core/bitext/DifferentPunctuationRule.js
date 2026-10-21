@@ -38,7 +38,9 @@ export class DifferentPunctuationRule extends BitextRule {
     if ((lastTransToken === '.' || lastTransToken === '?' || lastTransToken === '!')
         && lastTransToken !== sourceTokens[sourceTokens.length - 1].getToken()) {
       const endPos = lastTransTokenObj.getEndPos();
-      return [new RuleMatch(this, targetText, 1, endPos, this.getMessage())];
+      // DEV-013: Java throws for endPos <= 1 (fromPos 1); highlight the punctuation token instead
+      const fromPos = endPos > 1 ? 1 : Math.max(0, lastTransTokenObj.getStartPos());
+      return [new RuleMatch(this, targetText, fromPos, endPos, this.getMessage())];
     }
     return RuleMatch.EMPTY_ARRAY;
   }

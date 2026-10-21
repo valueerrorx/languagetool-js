@@ -135,3 +135,28 @@ describe('HTTPServer limits and stop', () => {
     expect(e.getCause().getCause().toString()).toBe('java.lang.IllegalArgumentException: port out of range:99999');
   });
 });
+
+describe('HTTPServer access check', () => {
+  // Java: HTTPServerTest#testAccessDenied (SRV-0009, SRV-0083): empty allow-list answers 403 on /v1 and /v2 requests
+  it('testAccessDenied', async () => {
+    const port = await freePort();
+    const out = vi.spyOn(process.stdout, 'write').mockImplementation(() => true);
+    const server = await HTTPServer.create(new HTTPServerConfig(['--port', String(port)]), false, 'localhost', new Set());
+    server.run();
+    out.mockRestore();
+    try {
+      const base = `http://127.0.0.1:${port}`;
+      const v1 = await fetch(`${base}/?language=de&text=${encodeURIComponent('no ip address allowed, so this cannot work')}`);
+      expect(v1.status).toBe(403);
+      expect(await v1.text()).toBe('Error: Access from 127.0.0.1 denied');
+      const v2 = await fetch(`${base}/v2/check`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'language=de&text=no+ip+address+allowed%2C+so+this+cannot+work',
+      });
+      expect(v2.status).toBe(403);
+    } finally {
+      await server.stop();
+    }
+  });
+});

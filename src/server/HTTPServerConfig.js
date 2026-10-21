@@ -187,14 +187,14 @@ export class HTTPServerConfig {
       switch (args[i]) {
         case '--config': {
           i++;
-          if (i >= args.length) throw new ArrayIndexOutOfBoundsException(`Index ${i} out of bounds for length ${args.length}`);
+          if (i >= args.length) throw new IllegalArgumentException(`Missing value for option ${args[i - 1]}`); // DEV-020
           this.parseConfigFile(new File(args[i]), !args.includes(LANGUAGE_MODEL_OPTION));
           break;
         }
         case '-p':
         case '--port':
           i++;
-          if (i >= args.length) throw new ArrayIndexOutOfBoundsException(`Index ${i} out of bounds for length ${args.length}`);
+          if (i >= args.length) throw new IllegalArgumentException(`Missing value for option ${args[i - 1]}`); // DEV-020
           this.port = Integer.parseInt(args[i]);
           break;
         case '-v':
@@ -221,7 +221,7 @@ export class HTTPServerConfig {
           break;
         case LANGUAGE_MODEL_OPTION:
           i++;
-          if (i >= args.length) throw new ArrayIndexOutOfBoundsException(`Index ${i} out of bounds for length ${args.length}`);
+          if (i >= args.length) throw new IllegalArgumentException(`Missing value for option ${args[i - 1]}`); // DEV-020
           this.setLanguageModelDirectory(args[i]);
           break;
         case '--stoppable': // internal only, doesn't need to be documented

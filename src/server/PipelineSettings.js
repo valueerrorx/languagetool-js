@@ -1,6 +1,7 @@
 // Java: org.languagetool.server.PipelineSettings (key of the pipeline pool: language, mother tongue, query params, global and user config)
 import { Objects } from '../lib/java/Objects.js';
 import { QueryParams } from './QueryParams.js';
+import { Level, Mode } from '../core/JLanguageTool.js';
 import { GlobalConfig } from '../core/rules/model/GlobalConfig.js';
 
 export class PipelineSettings {
@@ -11,7 +12,7 @@ export class PipelineSettings {
     if (a.length === 2) {
       this.lang = a[0];
       this.motherTongue = null;
-      this.query = new QueryParams([], [], [], [], [], false, false, false, false, false, false, null, null, null, null);
+      this.query = new QueryParams([], [], [], [], [], false, false, false, false, false, false, Mode.ALL, Level.DEFAULT, null, null);
       this.globalConfig = new GlobalConfig();
       this.userConfig = a[1];
     } else {

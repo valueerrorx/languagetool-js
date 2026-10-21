@@ -42,6 +42,22 @@ export class ManualSynthesizer {
       }
     }
     this.map = byHash;
+    // perf: lemma -> posTag -> triples (same order as the hash group, so lookup results are identical)
+    this.byLemma = new Map();
+    this.lastLemma = null;
+    this.lastTags = null;
+    for (const group of byHash.values()) {
+      for (const t of group) {
+        let byTag = this.byLemma.get(t[0]);
+        if (byTag === undefined) {
+          byTag = new Map();
+          this.byLemma.set(t[0], byTag);
+        }
+        const l = byTag.get(t[1]);
+        if (l === undefined) byTag.set(t[1], [t]);
+        else l.push(t);
+      }
+    }
     this.possibleTags = ManualSynthesizer.collectTags(mapping);
   }
 
@@ -109,13 +125,20 @@ export class ManualSynthesizer {
     if (lemma === null || lemma === undefined || posTag === null || posTag === undefined) {
       return null;
     }
-    const group = this.map.get(hashCode(lemma, posTag));
+    // perf: direct (tag, lemma) index; a miss returns null where Java returns an empty list for a hash collision (callers treat both alike)
+    let byTag;
+    if (lemma === this.lastLemma) byTag = this.lastTags;
+    else {
+      byTag = this.byLemma.get(lemma);
+      this.lastLemma = lemma;
+      this.lastTags = byTag;
+    }
+    if (byTag === undefined) return null;
+    const group = byTag.get(posTag);
     if (group === undefined) return null;
     const result = [];
     for (const t of group) {
-      if (lemma === t[0] && posTag === t[1]) {
-        result.push(ManualSynthesizer.decodeForm(lemma, t[2]));
-      }
+      result.push(ManualSynthesizer.decodeForm(lemma, t[2]));
     }
     return result;
   }

@@ -216,7 +216,7 @@ Notes valid for the whole file:
 
 | ID | behaviour (one line) | Java source (path#member) | Java tests | fixtures | status |
 |---|---|---|---|---|---|
-| DE-0220 | `src/test/resources/suggestions.txt`: speller suggestion regression data (test @Ignore'd) | languagetool-language-modules/de/src/test/resources/suggestions.txt | SuggestionRegressionTest (2 tests, both @Ignore) | - | ported |
+| DE-0220 | `src/test/resources/suggestions.txt`: speller suggestion regression data (test @Ignore'd) | languagetool-language-modules/de/src/test/resources/suggestions.txt | SuggestionRegressionTest (2 tests, both @Ignore) | X-DESPELL b-regression-inputs pass | verified  |
 
 ## Coverage
 

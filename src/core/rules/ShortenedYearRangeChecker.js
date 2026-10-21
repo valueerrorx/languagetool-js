@@ -1,5 +1,5 @@
 // org.languagetool.rules.ShortenedYearRangeChecker
-import { IllegalArgumentException } from '../../lib/java/errors.js';
+import { IllegalArgumentException, StringIndexOutOfBoundsException } from '../../lib/java/errors.js';
 import { Integer } from '../../lib/java/int.js';
 import { substring } from '../../lib/java/strings.js';
 import { RuleFilter } from '../patterns/RuleFilter.js';
@@ -18,7 +18,8 @@ export class ShortenedYearRangeChecker extends RuleFilter {
         return match;
       }
     } catch (ignore) {
-      if (!(ignore instanceof IllegalArgumentException)) throw ignore;
+      // DEV-027: also a too short x (Java: StringIndexOutOfBoundsException)
+      if (!(ignore instanceof IllegalArgumentException || ignore instanceof StringIndexOutOfBoundsException)) throw ignore;
       // if something's fishy with the number - ignore it silently, it's not a date range
       return null;
     }

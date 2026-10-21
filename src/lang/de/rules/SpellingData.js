@@ -14,12 +14,13 @@ export class SpellingData {
   constructor(filePath) {
     this.trie = new AhoCorasickDoubleArrayTrie();
     this.sentenceStartTrie = new AhoCorasickDoubleArrayTrie();
-    this.trie.build(SpellingData.getCoherencyMap(filePath, false));
-    this.sentenceStartTrie.build(SpellingData.getCoherencyMap(filePath, true));
+    const formsCache = new Map(); // perf: synthesizer results per old spelling, shared by both passes (pure lookup)
+    this.trie.build(SpellingData.getCoherencyMap(filePath, false, formsCache));
+    this.sentenceStartTrie.build(SpellingData.getCoherencyMap(filePath, true, formsCache));
   }
 
   // Java: SpellingData#getCoherencyMap(String,boolean)
-  static getCoherencyMap(filePath, sentStartMode) {
+  static getCoherencyMap(filePath, sentStartMode, formsCache = new Map()) {
     const lines = JLanguageTool.getDataBroker().getFromResourceDirAsLines(filePath);
     const coherencyMap = new Map(); // LinkedHashMap
     for (const line of lines) {
@@ -40,7 +41,11 @@ export class SpellingData {
         coherencyMap.set(oldSpelling, newSpelling);
       }
       if (oldSpelling.includes('ß') && javaReplace(oldSpelling, 'ß', 'ss') === newSpelling) {
-        const forms = GermanSynthesizer.INSTANCE.synthesizeForPosTags(oldSpelling, () => true);
+        let forms = formsCache.get(oldSpelling);
+        if (forms === undefined) {
+          forms = GermanSynthesizer.INSTANCE.synthesizeForPosTags(oldSpelling, () => true);
+          formsCache.set(oldSpelling, forms);
+        }
         for (const form of forms) {
           if (!form.includes('ss')) { // avoid e.g. "Schlüsse" as form of "Schluß", as that's the new spelling
             coherencyMap.set(form, javaReplace(form, 'ß', 'ss'));

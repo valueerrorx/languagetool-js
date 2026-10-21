@@ -458,7 +458,7 @@ export class Speller {
         bytes.set(prevBytes, 0);
         bytes[prevLen] = label;
         try {
-          decoded = charset.decode(bytes, 0, bufPos);
+          decoded = charset.kind === 'utf8' ? charset.decodeUtf8OrNull(bytes, 0, bufPos) : charset.decode(bytes, 0, bufPos);
         } catch (e) {
           if (e.javaClass === 'java.nio.charset.MalformedInputException') decoded = null;
           else if (e.javaClass === 'java.nio.charset.UnmappableCharacterException') decoded = undefined;

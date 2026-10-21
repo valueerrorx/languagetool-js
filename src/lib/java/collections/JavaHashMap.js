@@ -8,6 +8,8 @@ function tableSizeFor(cap) {
   return Math.min(n, 1 << 30);
 }
 
+const EMPTY_BIN = Object.freeze([]); // perf: shared placeholder of an empty bin, replaced by an array on first insert
+
 // Java: java.util.HashMap
 export class JavaHashMap {
   // Java: HashMap#HashMap() / HashMap(int)
@@ -41,8 +43,17 @@ export class JavaHashMap {
   resize() {
     const old = this.table;
     const newCap = old === null ? (this.threshold > 0 ? this.threshold : 16) : old.length * 2;
-    const table = Array.from({ length: newCap }, () => []);
-    if (old !== null) for (const bin of old) for (const node of bin) table[node.hash & (newCap - 1)].push(node);
+    const table = new Array(newCap).fill(EMPTY_BIN);
+    if (old !== null) {
+      for (const bin of old) {
+        for (const node of bin) {
+          const idx = node.hash & (newCap - 1);
+          const b = table[idx];
+          if (b === EMPTY_BIN) table[idx] = [node];
+          else b.push(node);
+        }
+      }
+    }
     this.table = table;
     this.threshold = Math.floor(newCap * 0.75);
   }
@@ -57,7 +68,9 @@ export class JavaHashMap {
   put(key, value) {
     if (this.table === null) this.resize();
     const hash = JavaHashMap.hash(key);
-    const bin = this.table[hash & (this.table.length - 1)];
+    const idx = hash & (this.table.length - 1);
+    let bin = this.table[idx];
+    if (bin === EMPTY_BIN) bin = this.table[idx] = [];
     for (const node of bin) {
       if (node.hash === hash && Objects.equals(node.key, key)) {
         const old = node.value;
@@ -108,7 +121,7 @@ export class JavaHashMap {
 
   // Java: HashMap#clear() (table capacity is kept)
   clear() {
-    if (this.table !== null) for (let i = 0; i < this.table.length; i++) this.table[i] = [];
+    if (this.table !== null) this.table.fill(EMPTY_BIN);
     this.size_ = 0;
   }
 
@@ -116,7 +129,9 @@ export class JavaHashMap {
   computeIfAbsent(key, fn) {
     if (this.size_ > this.threshold || this.table === null || this.table.length === 0) this.resize();
     const hash = JavaHashMap.hash(key);
-    const bin = this.table[hash & (this.table.length - 1)];
+    const idx = hash & (this.table.length - 1);
+    let bin = this.table[idx];
+    if (bin === EMPTY_BIN) bin = this.table[idx] = [];
     let old = null;
     for (const node of bin) {
       if (node.hash === hash && Objects.equals(node.key, key)) {
@@ -141,7 +156,9 @@ export class JavaHashMap {
   compute(key, fn) {
     if (this.size_ > this.threshold || this.table === null || this.table.length === 0) this.resize();
     const hash = JavaHashMap.hash(key);
-    const bin = this.table[hash & (this.table.length - 1)];
+    const idx = hash & (this.table.length - 1);
+    let bin = this.table[idx];
+    if (bin === EMPTY_BIN) bin = this.table[idx] = [];
     let old = null;
     let binCount = 0;
     for (const node of bin) {

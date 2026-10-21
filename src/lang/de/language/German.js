@@ -235,7 +235,7 @@ export class German extends LanguageWithModel {
   // Java: German#getRelevantLanguageModelRules(ResourceBundle,LanguageModel,UserConfig)
   getRelevantLanguageModelRules(messages, languageModel) {
     // UpperCaseNgramRule, GermanConfusionProbabilityRule, ProhibitedCompoundRule: constructors dereference the language model
-    if (languageModel === null || languageModel === undefined) throw new NullPointerException();
+    if (languageModel === null || languageModel === undefined) return []; // DEV-026: Java NPE; no model, no model rules
     throw notPortedYet('German#getRelevantLanguageModelRules (ngram rules, DEV-001)');
   }
 

@@ -9,6 +9,37 @@ function cpAt(s, i) {
   return c;
 }
 
+const DELIM_CACHE = new Map();
+
+// Java: StringTokenizer#setMaxDelimCodePoint() body
+function analyzeDelimiters(d) {
+  let m = 0;
+  let c;
+  let count = 0;
+  let hasSurrogates = false;
+  for (let i = 0; i < d.length; i += charCount(c)) {
+    c = d.charCodeAt(i);
+    if (c >= 0xd800 && c <= 0xdfff) {
+      c = cpAt(d, i);
+      hasSurrogates = true;
+    }
+    if (m < c) m = c;
+    count++;
+  }
+  let cps = null;
+  if (hasSurrogates) {
+    cps = new Array(count);
+    for (let i = 0, j = 0; i < count; i++, j += charCount(c)) {
+      c = cpAt(d, j);
+      cps[i] = c;
+    }
+  }
+  const set = new Set();
+  if (hasSurrogates) for (const x of cps) set.add(x);
+  else for (let i = 0; i < d.length; i++) set.add(d.charCodeAt(i));
+  return { max: m, hasSurrogates, cps, set };
+}
+
 // Java: java.util.StringTokenizer
 export class StringTokenizer {
   // Java: StringTokenizer#StringTokenizer(String,String,boolean)
@@ -24,36 +55,26 @@ export class StringTokenizer {
     this.hasSurrogates = false;
     this.maxDelimCodePoint = 0;
     this.delimiterCodePoints = null;
+    this.delimSet = null;
     this.setMaxDelimCodePoint();
   }
 
-  // Java: StringTokenizer#setMaxDelimCodePoint()
+  // Java: StringTokenizer#setMaxDelimCodePoint(); the analysis of a delimiter string is cached (perf, pure function of the string)
   setMaxDelimCodePoint() {
     if (this.delimiters === null) {
       this.maxDelimCodePoint = 0;
       return;
     }
-    const d = this.delimiters;
-    let m = 0;
-    let c;
-    let count = 0;
-    for (let i = 0; i < d.length; i += charCount(c)) {
-      c = d.charCodeAt(i);
-      if (c >= 0xd800 && c <= 0xdfff) {
-        c = cpAt(d, i);
-        this.hasSurrogates = true;
-      }
-      if (m < c) m = c;
-      count++;
+    let info = DELIM_CACHE.get(this.delimiters);
+    if (info === undefined) {
+      info = analyzeDelimiters(this.delimiters);
+      if (DELIM_CACHE.size > 1000) DELIM_CACHE.clear();
+      DELIM_CACHE.set(this.delimiters, info);
     }
-    this.maxDelimCodePoint = m;
-    if (this.hasSurrogates) {
-      this.delimiterCodePoints = new Array(count);
-      for (let i = 0, j = 0; i < count; i++, j += charCount(c)) {
-        c = cpAt(d, j);
-        this.delimiterCodePoints[i] = c;
-      }
-    }
+    this.hasSurrogates = info.hasSurrogates;
+    this.maxDelimCodePoint = info.max;
+    this.delimiterCodePoints = info.cps;
+    this.delimSet = info.set;
   }
 
   // Java: StringTokenizer#skipDelimiters(int)
@@ -63,7 +84,7 @@ export class StringTokenizer {
     while (!this.retDelims && position < this.maxPosition) {
       if (!this.hasSurrogates) {
         const c = this.str.charCodeAt(position);
-        if (c > this.maxDelimCodePoint || this.delimiters.indexOf(String.fromCharCode(c)) < 0) break;
+        if (c > this.maxDelimCodePoint || !this.delimSet.has(c)) break;
         position++;
       } else {
         const c = cpAt(this.str, position);
@@ -80,7 +101,7 @@ export class StringTokenizer {
     while (position < this.maxPosition) {
       if (!this.hasSurrogates) {
         const c = this.str.charCodeAt(position);
-        if (c <= this.maxDelimCodePoint && this.delimiters.indexOf(String.fromCharCode(c)) >= 0) break;
+        if (c <= this.maxDelimCodePoint && this.delimSet.has(c)) break;
         position++;
       } else {
         const c = cpAt(this.str, position);
@@ -91,7 +112,7 @@ export class StringTokenizer {
     if (this.retDelims && startPos === position) {
       if (!this.hasSurrogates) {
         const c = this.str.charCodeAt(position);
-        if (c <= this.maxDelimCodePoint && this.delimiters.indexOf(String.fromCharCode(c)) >= 0) position++;
+        if (c <= this.maxDelimCodePoint && this.delimSet.has(c)) position++;
       } else {
         const c = cpAt(this.str, position);
         if (c <= this.maxDelimCodePoint && this.isDelimiter(c)) position += charCount(c);
@@ -102,10 +123,7 @@ export class StringTokenizer {
 
   // Java: StringTokenizer#isDelimiter(int)
   isDelimiter(codePoint) {
-    for (let i = 0; i < this.delimiterCodePoints.length; i++) {
-      if (this.delimiterCodePoints[i] === codePoint) return true;
-    }
-    return false;
+    return this.delimSet.has(codePoint);
   }
 
   // Java: StringTokenizer#hasMoreTokens()

@@ -178,7 +178,7 @@ export class French extends LanguageWithModel {
   // Java: French#getRelevantLanguageModelRules(ResourceBundle,LanguageModel,UserConfig)
   getRelevantLanguageModelRules(messages, languageModel) {
     // FrenchConfusionProbabilityRule: the constructor dereferences the language model (Objects.requireNonNull)
-    if (languageModel === null || languageModel === undefined) throw new NullPointerException();
+    if (languageModel === null || languageModel === undefined) return []; // DEV-026: Java NPE; no model, no model rules
     throw notPortedYet('French#getRelevantLanguageModelRules (ngram rules, DEV-001)');
   }
 

@@ -47,7 +47,7 @@ describe('CommandLineParserTest', () => {
     expect(() => parse('-l')).toThrow('Missing argument to -l/--language command line option.');
     expect(() => parse('-b', '-d')).toThrow('Missing argument to -d/--disable command line option.');
     expect(() => parse('-c')).toThrow('Missing argument to -c/--encoding command line option.');
-    expect(() => parse('--level')).toThrow(ArrayIndexOutOfBoundsException);
+    expect(() => parse('--level')).toThrow('Missing value for option --level'); // DEV-019
     expect(() => parse('--level', 'FOO')).toThrow("Unknown level 'FOO' - currently, only 'PICKY' is supported");
   });
 

@@ -215,6 +215,35 @@ export class AbstractDateCheckWithSuggestionsFilter extends RuleFilter {
     return dayOfWeekFromDate;
   }
 
+  // DEV-017 (JS only): weekday check on resolved text args (weekDay word, year/month/day set by the YMD/DMY wrappers); Java crashes there
+  acceptRuleMatchFromText(match, args) {
+    try {
+      const dayOfWeekFromString = this.getDayOfWeek(javaReplace(this.getRequired('weekDay', args), '­', '')); // replace soft hyphen
+      const day = this.getDayOfMonthFromStr(this.getRequired('day', args));
+      const month = this.getMonthFromStr(this.getRequired('month', args));
+      const year = this.getYearFromStr(this.getRequired('year', args));
+      const dateFromDate = this.getDate(day, month, year);
+      const dayOfWeekFromDate = this.getDayOfWeekFromDate(dateFromDate);
+      if (dayOfWeekFromDate === -1 || dayOfWeekFromString === dayOfWeekFromDate) {
+        return null;
+      }
+      const calFromDateString = Calendar.getInstance();
+      calFromDateString.set(Calendar.DAY_OF_WEEK, dayOfWeekFromString);
+      let message = javaReplace(match.getMessage(), '{realDay}', this.getDayOfWeek(dateFromDate));
+      message = javaReplace(message, '{day}', this.getDayOfWeek(calFromDateString));
+      message = javaReplace(message, '{currentYear}', String(Calendar.getInstance().get(Calendar.YEAR)));
+      const ruleMatch = new RuleMatch(match.getRule(), match.getSentence(), match.getFromPos(), match.getToPos(), message, match.getShortMessage());
+      ruleMatch.setType(match.getType());
+      ruleMatch.setUrl(getUrl('https://www.timeanddate.com/calendar/?year=' + dateFromDate.get(Calendar.YEAR)));
+      return ruleMatch;
+    } catch (e) {
+      if (e instanceof TypeError) e = new NullPointerException();
+      if (e instanceof IllegalArgumentException) throw e;
+      if (e instanceof RuntimeException) return null; // unknown weekday/month words: skipped
+      throw e;
+    }
+  }
+
   // Java: AbstractDateCheckWithSuggestionsFilter#getDate(int,int,int)
   getDate(dayOfMonth, month, year) {
     const calendar = this.getCalendar();

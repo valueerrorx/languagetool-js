@@ -10,6 +10,8 @@ export function maxRealWorkers(poolThreads) {
   return Math.max(1, Math.min(poolThreads, cap));
 }
 
+const INTERRUPT_GRACE_MS = 100; // JS: how long a new job prefers an interrupted (soon free) worker over spawning a cold one
+
 // job = {promise, interrupt()}; promise resolves with the list of CheckResults
 export class WorkerBackend {
   // config: HTTPServerConfig; poolThreads: maxTextCheckerThreads
@@ -58,10 +60,19 @@ export class WorkerBackend {
   schedule() {
     while (this.queue.length > 0 && !this.closed) {
       let w = this.workers.find((x) => x.job === null);
+      if (w === undefined && this.workers.some((x) => x.interruptedAt !== undefined && Date.now() - x.interruptedAt < INTERRUPT_GRACE_MS)) {
+        // perf: a worker that was just interrupted is about to be free and warm; a new worker would start cold
+        if (this.graceTimer === undefined) {
+          this.graceTimer = setTimeout(() => { this.graceTimer = undefined; this.schedule(); }, INTERRUPT_GRACE_MS);
+          this.graceTimer.unref();
+        }
+        return;
+      }
       if (w === undefined && this.workers.length < this.max) w = this.spawn();
       if (w === undefined) return;
       const job = this.queue.shift();
       w.job = job;
+      w.interruptedAt = undefined;
       w.worker.postMessage(job.message);
     }
   }
@@ -82,7 +93,10 @@ export class WorkerBackend {
           return;
         }
         const w = this.workers.find((x) => x.job === job);
-        if (w !== undefined) Atomics.store(w.flag, 0, 1);
+        if (w !== undefined) {
+          Atomics.store(w.flag, 0, 1);
+          w.interruptedAt = Date.now();
+        }
       },
     };
   }

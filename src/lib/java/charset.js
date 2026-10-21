@@ -1,5 +1,6 @@
 // Java UTF-8 decoding with REPLACE semantics (sun.nio.cs.UTF_8.Decoder / String(byte[],UTF_8)): malformed-input lengths as in the JDK.
 const REPL = 0xfffd;
+const FAST_UTF8 = new TextDecoder('utf-8', { fatal: true, ignoreBOM: true });
 const isNotContinuation = (b) => (b & 0xc0) !== 0x80;
 const isMalformed3 = (b1, b2, b3) => (b1 === 0xe0 && (b2 & 0xe0) === 0x80) || (b2 & 0xc0) !== 0x80 || (b3 & 0xc0) !== 0x80;
 const isMalformed3_2 = (b1, b2) => (b1 === 0xe0 && (b2 & 0xe0) === 0x80) || (b2 & 0xc0) !== 0x80;
@@ -23,6 +24,11 @@ function malformedN(a, sp, nb) {
 
 // Java: new String(bytes, UTF_8) / InputStreamReader(UTF_8) over the whole input (malformed -> U+FFFD, BOM kept)
 export function decodeUtf8Java(bytes) {
+  try {
+    return FAST_UTF8.decode(bytes); // perf: well-formed input decodes identically (BOM kept)
+  } catch {
+    // malformed input: Java REPLACE semantics below
+  }
   const a = bytes;
   const sl = a.length;
   const out = [];

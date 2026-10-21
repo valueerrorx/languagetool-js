@@ -36,9 +36,8 @@ export class GermanStyleRepeatedWordRule extends AbstractStyleRepeatedWordRule {
       Example.fixed('Ich gehe zum Supermarkt, danach nach Hause.'));
     if (userConfig !== null && userConfig !== undefined) {
       const cf = userConfig.getConfigValueByID(this.getId());
-      if (cf !== null && cf.length > 2) {
-        if (cf[2] === null || cf[2] === undefined) throw new NullPointerException('Cannot invoke "java.lang.Boolean.booleanValue()" because "cf[2]" is null');
-        if (typeof cf[2] !== 'boolean') throw new ClassCastException(`class ${typeof cf[2]} cannot be cast to class java.lang.Boolean`);
+      // DEV-022: a missing or non-Boolean third value keeps the default (Java: NPE/ClassCastException)
+      if (cf !== null && cf.length > 2 && typeof cf[2] === 'boolean') {
         this.testCompoundWords = cf[2];
       }
     }

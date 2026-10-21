@@ -137,6 +137,37 @@ export class Charset {
     throw new MalformedInputException('Input length = 1');
   }
 
+  // perf: utf8 decode returning null instead of throwing MalformedInputException (same decision as decode)
+  decodeUtf8OrNull(a, off, len) {
+    const end = off + len;
+    let i = off;
+    while (i < end && a[i] < 0x80) i++;
+    if (i === end) return len === 0 ? '' : asciiString(a, off, end);
+    while (i < end) {
+      const b = a[i];
+      if (b < 0x80) i++;
+      else if (b >= 0xc2 && b <= 0xdf) {
+        if (i + 1 >= end || (a[i + 1] & 0xc0) !== 0x80) return null;
+        i += 2;
+      } else if (b >= 0xe0 && b <= 0xef) {
+        if (i + 2 >= end) return null;
+        const b2 = a[i + 1];
+        if ((b2 & 0xc0) !== 0x80 || (a[i + 2] & 0xc0) !== 0x80) return null;
+        if (b === 0xe0 && b2 < 0xa0) return null;
+        if (b === 0xed && b2 > 0x9f) return null;
+        i += 3;
+      } else if (b >= 0xf0 && b <= 0xf4) {
+        if (i + 3 >= end) return null;
+        const b2 = a[i + 1];
+        if ((b2 & 0xc0) !== 0x80 || (a[i + 2] & 0xc0) !== 0x80 || (a[i + 3] & 0xc0) !== 0x80) return null;
+        if (b === 0xf0 && b2 < 0x90) return null;
+        if (b === 0xf4 && b2 > 0x8f) return null;
+        i += 4;
+      } else return null;
+    }
+    return UTF8_FATAL.decode(a.subarray(off, end));
+  }
+
   // Java: CharsetDecoder#decode(ByteBuffer,CharBuffer,boolean)+flush with REPORT actions on a[off,off+len)
   decode(a, off, len) {
     const end = off + len;

@@ -17,7 +17,8 @@ export class YMDDateCheckFilter extends DateCheckFilter {
     if (args.containsKey('year') || args.containsKey('month') || args.containsKey('day')) {
       throw new RuntimeException("Set only 'weekDay' and 'date' for " + 'YMDDateCheckFilter');
     }
-    return super.acceptRuleMatch(match, this.ymdDateHelper.parseDate(args), patternTokenPos, patternTokens, tokenPositions);
+    // DEV-017: parent expects token indexes; the wrapper's text values are checked as weekday vs. date text
+    return this.acceptRuleMatchFromText(match, this.ymdDateHelper.parseDate(args));
   }
 }
 

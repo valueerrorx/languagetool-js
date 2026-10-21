@@ -9,6 +9,16 @@ import { isMark, NP_KEY } from './adapters/_partial.mjs';
 import { compareServerLog } from './comparators/logs.mjs';
 
 const GOLDEN = path.join(ROOT, 'tests/golden');
+
+// D-056 deliberate differences: oracle/deviations.json maps "<ID>/<case>[#request]" -> DEV id.
+// "#k" masks one request (http: response index, harness: request id) on both sides; without "#k" a FAIL of the case becomes DEV.
+const DEVIATIONS = existsSync(path.join(ROOT, 'oracle/deviations.json')) ? JSON.parse(readFileSync(path.join(ROOT, 'oracle/deviations.json'), 'utf8')) : {};
+function devMasks(id, name) {
+  const whole = DEVIATIONS[`${id}/${name}`] ?? null;
+  const reqs = new Map();
+  for (const [k, v] of Object.entries(DEVIATIONS)) if (k.startsWith(`${id}/${name}#`)) reqs.set(k.slice(id.length + name.length + 2), v);
+  return { whole, reqs };
+}
 const ADAPTERS = path.join(ROOT, 'oracle/adapters');
 
 // IDs whose inventory status is "later" are skipped.
@@ -74,9 +84,18 @@ async function runKindCase(cs, meta, dir) {
       diffs = cmp(exp, actual, { normalizers: cs.normalize ?? [], streams: cs.streams, ignoreExit: cs.ignoreExit, stripTimestamp: cs.stripTimestamp, stderrExceptionOnly: cs.stderrExceptionOnly, stderrFilter: cs.stderrFilter, listDev006: cs.listDev006, listCut: cs.listCut, args: cs.args, json: (cs.args ?? []).includes('--json') || (cs.args ?? []).includes('-json') });
     } else {
       const exp = JSON.parse(readFileSync(path.join(dir, 'responses.json'), 'utf8'));
-      diffs = cmp(exp, actual.responses ?? actual, { normalizers: cs.normalize ?? [], ctx: ctxA });
+      const actualResp = actual.responses ?? actual;
+      const dm = devMasks(cs.__id, cs.__name);
+      let expResp = exp;
+      let actResp = actualResp;
+      if (dm.reqs.size && Array.isArray(exp) && Array.isArray(actualResp)) { // drop the deviating responses on both sides
+        const drop = new Set([...dm.reqs.keys()].map(Number));
+        expResp = exp.filter((_, i) => !drop.has(i));
+        actResp = actualResp.filter((_, i) => !drop.has(i));
+      }
+      diffs = cmp(expResp, actResp, { normalizers: cs.normalize ?? [], ctx: ctxA });
       // captureLog cases (X-LOGS): server log records by message text, layout free (D-045)
-      if (cs.captureLog && existsSync(path.join(dir, 'server.log'))) diffs.push(...compareServerLog(readFileSync(path.join(dir, 'server.log'), 'utf8'), actual.log ?? '', ctxE, cs.dropLogPatterns ?? []));
+      if (cs.captureLog && !dm.reqs.size && existsSync(path.join(dir, 'server.log'))) diffs.push(...compareServerLog(readFileSync(path.join(dir, 'server.log'), 'utf8'), actual.log ?? '', ctxE, cs.dropLogPatterns ?? []));
     }
     return diffs.length ? { status: 'FAIL', diffs } : { status: 'PASS' };
   } catch (e) {
@@ -93,6 +112,7 @@ const partialTotals = { cases: 0, skipped: 0, total: 0 };
 async function runCase(id, name) {
   const dir = path.join(GOLDEN, id, name);
   const cs = JSON.parse(readFileSync(path.join(dir, 'case.json'), 'utf8'));
+  cs.__id = id; cs.__name = name;
   const meta = JSON.parse(readFileSync(path.join(dir, 'meta.json'), 'utf8'));
   if (cs.kind === 'cli' || cs.kind === 'http') return runKindCase(cs, meta, dir);
   if (cs.kind !== 'harness') return { status: 'SKIP', note: `kind ${cs.kind}` };
@@ -157,9 +177,10 @@ async function runHarnessOps(cs, meta, dir, reqs, adapters) {
   const norm = (t) => normalize(cs.normalize ?? [], t, { workDir: meta.workDir, tmpDir: meta.tmpDir });
   const expectedText = norm(readFileSync(path.join(dir, 'responses.jsonl'), 'utf8'));
   // per-request notPorted: drop those requests from both sides, then compare the rest
-  const expectedLines = jsonl(expectedText).filter((x) => !nonPorted.has(x.id));
+  const devReqs = devMasks(cs.__id, cs.__name).reqs;
+  const expectedLines = jsonl(expectedText).filter((x) => !nonPorted.has(x.id) && !devReqs.has(String(x.id)));
   const actualText = norm(actual.filter(Boolean).map((x) => JSON.stringify(x)).join('\n'));
-  const actualLines = jsonl(actualText);
+  const actualLines = jsonl(actualText).filter((x) => !devReqs.has(String(x.id)));
   if (partial.requests) {
     const byId = new Map(actualLines.map((x) => [x.id, x]));
     for (const e of expectedLines) { const a = byId.get(e.id); if (a && a.ok && e.ok) e.result = maskNotPorted(e.result, a.result); }
@@ -192,7 +213,8 @@ async function runHarnessOps(cs, meta, dir, reqs, adapters) {
 const ids = process.argv.slice(2).filter((a) => !a.startsWith('--'));
 const all = existsSync(GOLDEN) ? readdirSync(GOLDEN).filter((d) => !d.startsWith('.')).sort() : [];
 const later = laterIds();
-const counts = { PASS: 0, FAIL: 0, SKIP: 0, 'NOT PORTED': 0 };
+const DIFF_LINES = Number(process.env.LTJS_DIFF_LINES ?? 40); // LTJS_DIFF_LINES: more diff lines per case
+const counts = { PASS: 0, FAIL: 0, SKIP: 0, 'NOT PORTED': 0, DEV: 0 };
 const rows = [];
 for (const id of ids.length ? ids : all) {
   const cases = existsSync(path.join(GOLDEN, id)) ? readdirSync(path.join(GOLDEN, id)).filter((c) => !c.startsWith('.')).sort() : [];
@@ -203,13 +225,15 @@ for (const id of ids.length ? ids : all) {
     else {
       try { r = await runCase(id, c); } catch (e) { r = { status: 'FAIL', diffs: [`error: ${e.message}`] }; }
     }
+    if (r.status === 'FAIL' && devMasks(id, c).whole) r = { status: 'DEV', note: devMasks(id, c).whole }; // D-056 documented deviation
+    else if (r.status === 'PASS' && devMasks(id, c).reqs.size) r = { ...r, status: 'DEV', note: [...new Set(devMasks(id, c).reqs.values())].join(',') };
     counts[r.status]++;
     rows.push(`${r.status.padEnd(10)} ${id}/${c}${r.note ? `  (${r.note})` : ''}`);
-    if (r.diffs) rows.push(...r.diffs.slice(0, 40).join('\n').split('\n').slice(0, 40).map((l) => `    ${l}`));
+    if (r.diffs) rows.push(...r.diffs.slice(0, DIFF_LINES).join('\n').split('\n').slice(0, DIFF_LINES).map((l) => `    ${l}`));
   }
 }
 console.log(rows.join('\n'));
 if (partialTotals.cases) console.log(`partial: ${partialTotals.cases} case(s) compared with notPorted parts, ${partialTotals.skipped}/${partialTotals.total} parts skipped`);
 if (dev009Exempt) console.log(`dev009-exempt: ${dev009Exempt} word suggestion list(s) not compared (DEV-009)`);
-console.log(`parity: ${counts.PASS} pass, ${counts.FAIL} fail, ${counts.SKIP} skip, ${counts['NOT PORTED']} not ported`);
+console.log(`parity: ${counts.PASS} pass, ${counts.FAIL} fail, ${counts.SKIP} skip, ${counts.DEV} dev, ${counts['NOT PORTED']} not ported`);
 process.exit(counts.FAIL ? 1 : 0);

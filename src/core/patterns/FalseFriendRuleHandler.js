@@ -104,9 +104,9 @@ export class FalseFriendRuleHandler extends XMLRuleHandler {
     } else if (qName === EXAMPLE) {
       this.correctExample = new StringBuilder();
       this.incorrectExample = new StringBuilder();
-      // Java: attrs.getValue(TYPE).equals(...) throws NPE when the type attribute is missing
+      // DEV-015: Java throws an NPE for a missing type attribute; clean load error instead
       if (attrs.getValue(TYPE) === null || attrs.getValue(TYPE) === undefined) {
-        throw new NullPointerException('Cannot invoke "String.equals(Object)" because the return value of "org.xml.sax.Attributes.getValue(String)" is null');
+        throw new RuntimeException('<example> without type attribute in rule ' + this.id);
       }
       if (attrs.getValue(TYPE) === 'incorrect') {
         this.inIncorrectExample = true;
