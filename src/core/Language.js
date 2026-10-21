@@ -663,7 +663,7 @@ export class Language {
   }
 
   // Java: Language#adaptSuggestion(String,String)
-  adaptSuggestion(s) {
+  adaptSuggestion(s, originalErrorStr) {
     return s;
   }
 

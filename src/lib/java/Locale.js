@@ -50,6 +50,13 @@ export class Locale {
     return result;
   }
 
+  // Java: Locale#forLanguageTag(String) (language[-REGION] only, no script/variant/extensions)
+  static forLanguageTag(tag) {
+    const parts = tag.split(/[-_]/);
+    const country = parts.length > 1 && /^([A-Za-z]{2}|[0-9]{3})$/.test(parts[1]) ? parts[1] : '';
+    return new Locale(parts[0], country);
+  }
+
   // Java: Locale#getDefault()
   static getDefault() {
     return Locale.US;
@@ -61,6 +68,8 @@ Locale.ENGLISH = new Locale('en', '');
 Locale.US = new Locale('en', 'US');
 Locale.GERMAN = new Locale('de', '');
 Locale.GERMANY = new Locale('de', 'DE');
+Locale.ITALIAN = new Locale('it', '');
+Locale.ITALY = new Locale('it', 'IT');
 Locale.FRENCH = new Locale('fr', '');
 Locale.FRANCE = new Locale('fr', 'FR');
 Locale.UK = new Locale('en', 'GB');
