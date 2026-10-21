@@ -12,53 +12,53 @@ Row format: `| ID | behaviour (one line) | Java source (path#member) | Java test
 
 | ID | behaviour | Java source | Java tests | fixtures | status |
 |---|---|---|---|---|---|
-| SK-0001 | Language metadata: name "Slovak", shortCode "sk", countries [SK] (=> "sk-SK"), maintainer Contributor("Zdenko Podobný", "http://sk-spell.sk.cx"); getMaintainedState not overridden (core default); extends Language (no ngram LM) | J/language/Slovak.java | SlovakTest | - | todo |
-| SK-0002 | getRelevantRules order (all default on): 1 CommaWhitespaceRule, 2 DoublePunctuationRule, 3 GenericUnpairedBracketsRule(start ["[","(","{","„","»","«","\""], end ["]",")","}","“","«","»","\""]), 4 UppercaseSentenceStartRule, 5 WordRepeatRule (core), 6 MultipleWhitespaceRule, 7 CompoundRule (sk), 8 MorfologikSlovakSpellerRule; SlovakVesRule commented out | J/language/Slovak.java#getRelevantRules | SlovakTest | - | todo |
-| SK-0003 | getRuleFileNames: super list (rules/sk/grammar.xml; no style.xml) plus "<rulesDir>/sk/grammar-typography.xml"; grammar-nezaradene.xml is NOT added | J/language/Slovak.java#getRuleFileNames,RULE_FILES | SlovakPatternRuleTest | - | todo |
-| SK-0004 | Sentence tokenizer: SRXSentenceTokenizer(this) -> segment.srx languagerule "Slovak" (418 rules, lines 1989-3662, map "(SK\|sk).*") + Default | J/language/Slovak.java#createDefaultSentenceTokenizer; CORE/resources/org/languagetool/resource/segment.srx | SlovakSentenceTokenizerTest | - | todo |
-| SK-0005 | Word tokenizer: core default WordTokenizer | CORE/java/org/languagetool/Language.java#createDefaultWordTokenizer | SlovakTaggerTest | - | todo |
-| SK-0006 | Tagger wiring: new SlovakTagger() | J/language/Slovak.java#createDefaultTagger | SlovakTaggerTest | - | todo |
-| SK-0007 | Disambiguator: core default DEMO_DISAMBIGUATOR (no sk/disambiguation.xml); chunker: none | CORE/java/org/languagetool/Language.java | - | - | todo |
-| SK-0008 | Synthesizer wiring: SlovakSynthesizer.INSTANCE | J/language/Slovak.java#createDefaultSynthesizer | SlovakSynthesizerTest | - | todo |
-| SK-0009 | Default spelling rule: new MorfologikSlovakSpellerRule(messages, this, null, null) | J/language/Slovak.java#createDefaultSpellingRule | LanguageSpecificSpellcheckerTest (sk) | - | todo |
-| SK-0010 | Priorities, default disabled/enabled rules, quotes, typography: none overridden (core defaults); XML default-off ids see SK-0030 | J/language/Slovak.java | - | - | todo |
-| SK-0052 | Registration: src/main/resources/META-INF/org/languagetool/language-module.properties `languageClasses=org.languagetool.language.Slovak`; core Languages#getAllLanguages reads every such file via ClassLoader.getResources, splits on `\s*,\s*`, instantiates via public no-arg ctor in listed order (duplicates skipped); this order is the order of Languages.get() and of server /v2/languages | languagetool-language-modules/sk/src/main/resources/META-INF/org/languagetool/language-module.properties; CORE/java/org/languagetool/Languages.java#getAllLanguages | (all tests via Languages) | - | todo |
+| SK-0001 | Language metadata: name "Slovak", shortCode "sk", countries [SK] (=> "sk-SK"), maintainer Contributor("Zdenko Podobný", "http://sk-spell.sk.cx"); getMaintainedState not overridden (core default); extends Language (no ngram LM) | J/language/Slovak.java | SlovakTest | - | verified |
+| SK-0002 | getRelevantRules order (all default on): 1 CommaWhitespaceRule, 2 DoublePunctuationRule, 3 GenericUnpairedBracketsRule(start ["[","(","{","„","»","«","\""], end ["]",")","}","“","«","»","\""]), 4 UppercaseSentenceStartRule, 5 WordRepeatRule (core), 6 MultipleWhitespaceRule, 7 CompoundRule (sk), 8 MorfologikSlovakSpellerRule; SlovakVesRule commented out | J/language/Slovak.java#getRelevantRules | SlovakTest | - | verified |
+| SK-0003 | getRuleFileNames: super list (rules/sk/grammar.xml; no style.xml) plus "<rulesDir>/sk/grammar-typography.xml"; grammar-nezaradene.xml is NOT added | J/language/Slovak.java#getRuleFileNames,RULE_FILES | SlovakPatternRuleTest | - | verified |
+| SK-0004 | Sentence tokenizer: SRXSentenceTokenizer(this) -> segment.srx languagerule "Slovak" (418 rules, lines 1989-3662, map "(SK\|sk).*") + Default | J/language/Slovak.java#createDefaultSentenceTokenizer; CORE/resources/org/languagetool/resource/segment.srx | SlovakSentenceTokenizerTest | - | verified |
+| SK-0005 | Word tokenizer: core default WordTokenizer | CORE/java/org/languagetool/Language.java#createDefaultWordTokenizer | SlovakTaggerTest | - | verified |
+| SK-0006 | Tagger wiring: new SlovakTagger() | J/language/Slovak.java#createDefaultTagger | SlovakTaggerTest | - | verified |
+| SK-0007 | Disambiguator: core default DEMO_DISAMBIGUATOR (no sk/disambiguation.xml); chunker: none | CORE/java/org/languagetool/Language.java | - | - | verified |
+| SK-0008 | Synthesizer wiring: SlovakSynthesizer.INSTANCE | J/language/Slovak.java#createDefaultSynthesizer | SlovakSynthesizerTest | - | verified |
+| SK-0009 | Default spelling rule: new MorfologikSlovakSpellerRule(messages, this, null, null) | J/language/Slovak.java#createDefaultSpellingRule | LanguageSpecificSpellcheckerTest (sk) | - | verified |
+| SK-0010 | Priorities, default disabled/enabled rules, quotes, typography: none overridden (core defaults); XML default-off ids see SK-0030 | J/language/Slovak.java | - | - | verified |
+| SK-0052 | Registration: src/main/resources/META-INF/org/languagetool/language-module.properties `languageClasses=org.languagetool.language.Slovak`; core Languages#getAllLanguages reads every such file via ClassLoader.getResources, splits on `\s*,\s*`, instantiates via public no-arg ctor in listed order (duplicates skipped); this order is the order of Languages.get() and of server /v2/languages | languagetool-language-modules/sk/src/main/resources/META-INF/org/languagetool/language-module.properties; CORE/java/org/languagetool/Languages.java#getAllLanguages | (all tests via Languages) | - | verified |
 
 ## Java rule classes
 
 | ID | behaviour | Java source | Java tests | fixtures | status |
 |---|---|---|---|---|---|
-| SK-0011 | CompoundRule (sk): final AbstractCompoundRule, id "SK_COMPOUNDS", description "Slová so spojovníkom napr. použite „česko-slovenský” namiesto „česko slovenský”", messages "Toto slovo sa zvyčajne píše so spojovníkom." / "Toto slovo sa obvykle píše bez spojovníka." / "Tento výraz sa bežne píše s alebo bez spojovníka." / short "Problém spájania slov"; data "/sk/compounds.txt" lazily (static, double-checked); no example pair | J/rules/sk/CompoundRule.java | CompoundRuleTest (sk) | - | todo |
-| SK-0012 | MorfologikSlovakSpellerRule: final, id "MORFOLOGIK_RULE_SK_SK", dict "/sk/hunspell/sk_SK.dict"; otherwise core behaviour | J/rules/sk/MorfologikSlovakSpellerRule.java | LanguageSpecificSpellcheckerTest (sk) | - | todo |
+| SK-0011 | CompoundRule (sk): final AbstractCompoundRule, id "SK_COMPOUNDS", description "Slová so spojovníkom napr. použite „česko-slovenský” namiesto „česko slovenský”", messages "Toto slovo sa zvyčajne píše so spojovníkom." / "Toto slovo sa obvykle píše bez spojovníka." / "Tento výraz sa bežne píše s alebo bez spojovníka." / short "Problém spájania slov"; data "/sk/compounds.txt" lazily (static, double-checked); no example pair | J/rules/sk/CompoundRule.java | CompoundRuleTest (sk) | - | verified |
+| SK-0012 | MorfologikSlovakSpellerRule: final, id "MORFOLOGIK_RULE_SK_SK", dict "/sk/hunspell/sk_SK.dict"; otherwise core behaviour | J/rules/sk/MorfologikSlovakSpellerRule.java | LanguageSpecificSpellcheckerTest (sk) | - | verified |
 
 ## NLP component classes
 
 | ID | behaviour | Java source | Java tests | fixtures | status |
 |---|---|---|---|---|---|
-| SK-0020 | SlovakTagger: plain BaseTagger("/sk/slovak.dict", Locale "sk") incl. manual added/removed files | J/tagging/sk/SlovakTagger.java | SlovakTaggerTest | - | todo |
-| SK-0021 | SlovakSynthesizer: singleton BaseSynthesizer("/sk/slovak_synth.dict", "/sk/slovak_tags.txt", "sk"); deprecated public ctor(Language) | J/synthesis/sk/SlovakSynthesizer.java | SlovakSynthesizerTest | - | todo |
+| SK-0020 | SlovakTagger: plain BaseTagger("/sk/slovak.dict", Locale "sk") incl. manual added/removed files | J/tagging/sk/SlovakTagger.java | SlovakTaggerTest | - | verified |
+| SK-0021 | SlovakSynthesizer: singleton BaseSynthesizer("/sk/slovak_synth.dict", "/sk/slovak_tags.txt", "sk"); deprecated public ctor(Language) | J/synthesis/sk/SlovakSynthesizer.java | SlovakSynthesizerTest | - | verified |
 
 ## XML rule resource files
 
 | ID | behaviour | Java source | Java tests | fixtures | status |
 |---|---|---|---|---|---|
-| SK-0030 | grammar.xml: 156 `<rule>` (16 top-level ids, 13 rulegroups) in 4 categories (CAT1 Kapitalizácia, CAT2 Rôzne, PODSTATNE_A_PRIDAVNE_MENA, CIARKY), 315 examples (158 corrections), no filters/entities/antipatterns; default off: MUZSKY_ROD, MUZSKY_ROD_A, STREDNY_ROD, ZENSKY_ROD | R/rules/sk/grammar.xml | SlovakPatternRuleTest | - | todo |
-| SK-0031 | grammar-typography.xml: 14 rules (14 ids, 7 rulegroups), category TYPOGRAPHY "Typografia", 37 examples (18 corrections); loaded as additional rule file (SK-0003) | R/rules/sk/grammar-typography.xml | SlovakPatternRuleTest | - | todo |
+| SK-0030 | grammar.xml: 156 `<rule>` (16 top-level ids, 13 rulegroups) in 4 categories (CAT1 Kapitalizácia, CAT2 Rôzne, PODSTATNE_A_PRIDAVNE_MENA, CIARKY), 315 examples (158 corrections), no filters/entities/antipatterns; default off: MUZSKY_ROD, MUZSKY_ROD_A, STREDNY_ROD, ZENSKY_ROD | R/rules/sk/grammar.xml | SlovakPatternRuleTest | - | verified |
+| SK-0031 | grammar-typography.xml: 14 rules (14 ids, 7 rulegroups), category TYPOGRAPHY "Typografia", 37 examples (18 corrections); loaded as additional rule file (SK-0003) | R/rules/sk/grammar-typography.xml | SlovakPatternRuleTest | - | verified |
 | SK-0032 | grammar-nezaradene.xml: 36 rules (31 ids, 24 rulegroups), 5 categories, 73 examples; not referenced by Slovak#getRuleFileNames nor by any test, i.e. never loaded at runtime (dead file shipped in jar); not ported (D-010) | R/rules/sk/grammar-nezaradene.xml | - | - | n/a |
 
 ## Binary and data resources
 
 | ID | behaviour | Java source | Java tests | fixtures | status |
 |---|---|---|---|---|---|
-| SK-0040 | Tagger dictionary slovak.dict (760313 bytes) + slovak.info (separator "$", utf8, encoder prefix) | R/resource/sk/slovak.dict, slovak.info | SlovakTaggerTest | - | todo |
-| SK-0041 | Synthesizer dictionary slovak_synth.dict (2590243 bytes) + slovak_synth.info (separator "$", utf8, SUFFIX) | R/resource/sk/slovak_synth.dict, slovak_synth.info | SlovakSynthesizerTest | - | todo |
-| SK-0042 | slovak_tags.txt: 1457 synthesizer tags | R/resource/sk/slovak_tags.txt | SlovakSynthesizerTest | - | todo |
-| SK-0043 | Speller dictionary hunspell/sk_SK.dict (855216 bytes) + sk_SK.info (separator "+", utf-8, SUFFIX; no speller.* options) | R/resource/sk/hunspell/sk_SK.dict, sk_SK.info | LanguageSpecificSpellcheckerTest (sk) | - | todo |
-| SK-0044 | hunspell/spelling.txt and hunspell/ignore.txt (comments only, no words) | R/resource/sk/hunspell/spelling.txt, ignore.txt | SlovakTest (WordListValidatorTest) | - | todo |
-| SK-0045 | added.txt, added_custom.txt, removed.txt, removed_custom.txt (comments only, no entries) | R/resource/sk/added*.txt, removed*.txt | SlovakTaggerTest | - | todo |
-| SK-0046 | compounds.txt (1809 entries) for SK_COMPOUNDS | R/resource/sk/compounds.txt | CompoundRuleTest (sk) | - | todo |
-| SK-0047 | common_words.txt (4912 words) for language identification | R/resource/sk/common_words.txt | (standalone CommonWordsTest) | - | todo |
-| SK-0048 | MessagesBundle_sk.properties: 294 keys (ASCII, 154 \u escaped lines) | R/MessagesBundle_sk.properties | SlovakTest | - | todo |
+| SK-0040 | Tagger dictionary slovak.dict (760313 bytes) + slovak.info (separator "$", utf8, encoder prefix) | R/resource/sk/slovak.dict, slovak.info | SlovakTaggerTest | - | verified |
+| SK-0041 | Synthesizer dictionary slovak_synth.dict (2590243 bytes) + slovak_synth.info (separator "$", utf8, SUFFIX) | R/resource/sk/slovak_synth.dict, slovak_synth.info | SlovakSynthesizerTest | - | verified |
+| SK-0042 | slovak_tags.txt: 1457 synthesizer tags | R/resource/sk/slovak_tags.txt | SlovakSynthesizerTest | - | verified |
+| SK-0043 | Speller dictionary hunspell/sk_SK.dict (855216 bytes) + sk_SK.info (separator "+", utf-8, SUFFIX; no speller.* options) | R/resource/sk/hunspell/sk_SK.dict, sk_SK.info | LanguageSpecificSpellcheckerTest (sk) | - | verified |
+| SK-0044 | hunspell/spelling.txt and hunspell/ignore.txt (comments only, no words) | R/resource/sk/hunspell/spelling.txt, ignore.txt | SlovakTest (WordListValidatorTest) | - | verified |
+| SK-0045 | added.txt, added_custom.txt, removed.txt, removed_custom.txt (comments only, no entries) | R/resource/sk/added*.txt, removed*.txt | SlovakTaggerTest | - | verified |
+| SK-0046 | compounds.txt (1809 entries) for SK_COMPOUNDS | R/resource/sk/compounds.txt | CompoundRuleTest (sk) | - | verified |
+| SK-0047 | common_words.txt (4912 words) for language identification | R/resource/sk/common_words.txt | (standalone CommonWordsTest) | - | verified |
+| SK-0048 | MessagesBundle_sk.properties: 294 keys (ASCII, 154 \u escaped lines) | R/MessagesBundle_sk.properties | SlovakTest | - | verified |
 | SK-0049 | Non-runtime packaged files: tagset.txt, README.txt, create_dictionary.sh, bin/filter_lft.py, hunspell/README_en.txt, hunspell/README_sk.txt; not ported (D-010) | R/resource/sk/* | - | - | n/a |
 
 ## Whole-pipeline acceptance
@@ -87,4 +87,4 @@ Row format: `| ID | behaviour (one line) | Java source (path#member) | Java test
 
 ## Totals
 
-SK: 28 IDs (todo 28, spec 0, ported 0, verified 0, later 0; n/a 2 excluded: SK-0032, SK-0049).
+SK: 28 IDs (todo 2, spec 0, ported 0, verified 26, later 0; n/a 2 excluded: SK-0032, SK-0049).
