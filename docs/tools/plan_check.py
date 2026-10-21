@@ -15,7 +15,7 @@ by_prefix = collections.defaultdict(list)
 for i in status:
     p, n = i.split('-'); by_prefix[p].append(int(n))
 LINE = re.compile(r'^- \[[ x]\] (F\d+) (.*?) \| ids: (.*?) \| verify: (.*?) \| status: (\w+)$')
-LINEW = re.compile(r'^- \[[ x]\] (W\d+) (.*?) \| java: (.*?) \| js: (.*?) \| ids: (.*?) \| status: (\w+)$')
+LINEW = re.compile(r'^- \[[ x]\] (W\d+) (.*?) \| java: (.*?) \| js: (.*?) \| ids: (.*?)(?: \| done: .*?)? \| status: (\w+)$')
 cnt = collections.Counter(); steps = 0; bad = []; explicit_nontodo = []
 for l in open('docs/PLAN.md', encoding='utf8').read().split('\n'):
     if not re.match(r'- \[[ x]\] [FW]\d+ ', l): continue
