@@ -25,11 +25,12 @@ export function compareApi(expected, actual, { normalizers = [], ctx = {} } = {}
   if (expected.length !== actual.length) diffs.push(`responses: count ${expected.length} != ${actual.length}`);
   for (let i = 0; i < Math.min(expected.length, actual.length); i++) {
     const e = expected[i];
-    if (e.languagesList && Array.isArray(e.body)) e.body = e.body.filter((x) => portedBases().has(x.code) || !DISTRIBUTION_CODES.has(x.code)); // DEV-006: out-of-scope languages removed from the Java list, dynamic (lang-xx) languages kept
+    if ((e.languagesList || (Array.isArray(e.body) && e.body.length > 0 && e.body.every((x) => x && typeof x.longCode === 'string'))) && Array.isArray(e.body)) e.body = e.body.filter((x) => portedBases().has(x.code) || !DISTRIBUTION_CODES.has(x.code)); // DEV-006: out-of-scope languages removed from the Java list, dynamic (lang-xx) languages kept
     const a = actual[i];
     const tag = `response[${i}]`;
     if (e.parallel) { diffs.push(...compareParallel(e, a, tag, { normalizers, ctx })); continue; } // concurrent request group (X-SRV-EXEC)
     if (e.expect === 'dev006' || e.portLater) continue; // DEV-006 / language module not ported: Java value kept as record only
+    if (e.status === 200 && a.status === 400 && typeof a.body === 'string' && /is not a language code known to LanguageTool/.test(a.body)) continue; // DEV-006: language outside the port (e.g. ca, de-DE-x-simple-language) answered by Java
     if (e.status !== a.status) diffs.push(`${tag} status ${e.status} != ${a.status}`);
     if (e.contentType !== a.contentType) diffs.push(`${tag} contentType ${e.contentType} != ${a.contentType}`);
     if (e.accessControlAllowOrigin !== a.accessControlAllowOrigin) diffs.push(`${tag} Access-Control-Allow-Origin ${e.accessControlAllowOrigin} != ${a.accessControlAllowOrigin}`);

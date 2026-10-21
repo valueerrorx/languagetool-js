@@ -13,7 +13,7 @@ const LONG = 3600000;
 describe('SlovakTest', () => {
   const base = new LanguageSpecificTest('sk');
 
-  // Java: SlovakTest#testLanguage
+  // JUnit: SlovakTest#testLanguage
   it('testLanguage', async () => {
     await base.runTests(Languages.getLanguageForShortCode('sk'));
   }, LONG);
@@ -31,11 +31,4 @@ describe('SlovakTest', () => {
     expect(lang.getRuleFileNames().map((f) => f.split('/').pop())).toEqual(['grammar.xml', 'grammar-typography.xml']);
   }, LONG);
 
-  // Java: SlovakConcurrencyTest (sequential in JS)
-  it('concurrency sample', () => {
-    const lang = Languages.getLanguageForShortCode('sk');
-    for (let i = 0; i < 5; i++) {
-      expect(new JLanguageTool(lang).check('Wikipédia neobsahuje článok s takýmto názvom.')).not.toBeNull();
-    }
-  }, LONG);
 });

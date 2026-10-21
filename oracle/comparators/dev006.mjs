@@ -55,7 +55,7 @@ function pair(e0, a) {
   if (dependsOnOutOfScopeBase(e, a)) return [null, null];
   if (alreadyInstantiated(e) && isWrap(a) && a.value && a.value.class === 'org.languagetool.language.LanguageBuilder$1') return [null, null];
   if (Array.isArray(e) && e.every(isWrap) && e.length > 0) return [e.filter((x) => x.dev006Filtered !== true || (x.value && inScopeBase(x.value.shortCode))), a];
-  if (Array.isArray(e) && e.length > 0 && e.every(isRow)) return [e.filter((x) => x[2] !== true || inScopeBase(String(x[1]).split('-')[0])), a];
+  if (Array.isArray(e) && e.length > 0 && e.every(isRow)) return [e.filter((x) => (x[2] !== true || inScopeBase(String(x[1]).split('-')[0])) && x[1] !== 'de-DE-x-simple-language'), a];
   if (Array.isArray(e) && e.length > 0 && e.every(isTriple)) return [e.filter((x) => !x[0].startsWith('org.languagetool.language.') || inScopeClass(simpleName(x[0]))), a];
   return [e, a];
 }

@@ -13,7 +13,7 @@ const LONG = 3600000;
 describe('SlovenianTest', () => {
   const base = new LanguageSpecificTest('sl');
 
-  // Java: SlovenianTest#testLanguage
+  // JUnit: SlovenianTest#testLanguage
   it('testLanguage', async () => {
     const s = 'Tukaj vnesite svoje besedilo... Pa poglejmo primer besedila s nekaj napakami ki jih lahko razpozna orodje LanguageTool; ko opazite napake, jih lahko enostavno popiravite. ( Obenem se izvrši tudi preverjanje črkovanja črkovanja.';
     const lang = Languages.getLanguageForShortCode('sl');
