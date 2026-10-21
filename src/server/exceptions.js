@@ -30,3 +30,13 @@ export class AuthException extends RuntimeException {
 export class BindException extends Exception {
   static FQCN = 'java.net.BindException';
 }
+
+// Java: org.languagetool.server.IllegalConfigurationException
+export class IllegalConfigurationException extends RuntimeException {
+  static FQCN = 'org.languagetool.server.IllegalConfigurationException';
+}
+
+// Java: org.languagetool.server.TooManyRequestsException
+export class TooManyRequestsException extends RuntimeException {
+  static FQCN = 'org.languagetool.server.TooManyRequestsException';
+}

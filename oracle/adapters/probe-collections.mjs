@@ -73,12 +73,9 @@ function map(a) {
     if (isMap) {
       const lhm = new Map();
       for (const k of src) lhm.set(k, k);
-      const s = lhm.size;
-      // Java: HashMap#putMapEntries sizing (threshold = tableSizeFor((int)(s / 0.75f + 1.0f)))
-      coll = s > 0 ? new JavaHashMap(Math.trunc(Math.fround(Math.fround(s / Math.fround(0.75)) + 1))) : new JavaHashMap();
-      for (const [k, v] of lhm) coll.put(k, v);
+      coll = JavaHashMap.copyOf([...lhm]);
     } else {
-      coll = new JavaHashSet(Array.from(new Set(src)));
+      coll = new JavaHashSet(src); // sizing counts duplicates of the source list
     }
   } else {
     if (ctor.includes(':lf:')) throw new NotPorted('load factor');

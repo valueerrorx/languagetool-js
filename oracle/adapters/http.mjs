@@ -25,12 +25,8 @@ async function freePort() {
   });
 }
 
-// old F03 smoke case X-ORACLE-CHECK/http-check checks default rule sets (spelling, grammar, German) without per-request markers: notPorted until the rule steps land
-const NEEDS_FULL_RULES = (cs) => cs.description === '/v2/check de-DE and en-US, error path, languages';
-
 // run(cs, {workDir}) -> {responses}
 export async function run(cs, { workDir }) {
-  if (NEEDS_FULL_RULES(cs)) throw Object.assign(new Error('case needs the full language rule lists'), { notPorted: true });
   for (const [rel, content] of Object.entries(cs.files ?? {})) {
     mkdirSync(path.dirname(path.join(workDir, rel)), { recursive: true });
     writeFileSync(path.join(workDir, rel), content.split('{WORK}').join(workDir));

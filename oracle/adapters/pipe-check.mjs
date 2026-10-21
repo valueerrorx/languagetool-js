@@ -3,13 +3,20 @@ import { Level, Mode, ParagraphHandling } from '../../src/core/JLanguageTool.js'
 import { MultiThreadedJLanguageTool } from '../../src/core/MultiThreadedJLanguageTool.js';
 import { annotated, errorOf, languageFor, matchDump, newTool, tones, withNoopAnalysis } from './_check-pipe-common.mjs';
 import { floatToString } from '../../src/lib/java/toString.js';
-import { buildAll, filter, notPorted } from './_pipe-common.mjs';
+import { buildAll, filter } from './_pipe-common.mjs';
+import { ResultCache } from '../../src/core/ResultCache.js';
+import { JLanguageTool } from '../../src/core/JLanguageTool.js';
 
 // Java: PipeOps#ranges(CheckResults,Map)
 function ranges(cr, res) {
   res.sentenceRanges = cr.getSentenceRanges().map((s) => [s.getFromPos(), s.getToPos()]);
   res.extendedSentenceRanges = cr.getExtendedSentenceRanges().map((s) => [s.getFromPos(), s.getToPos(), Object.fromEntries([...s.getLanguageConfidenceRates()].map(([k, v]) => [k, Number(floatToString(v))]))]);
   res.ignoredRanges = cr.getIgnoredRanges().map((s) => [s.getFromPos(), s.getToPos(), s.getLang()]);
+}
+
+// Java: PipeOps#cacheStats(ResultCache)
+function cacheStats(c) {
+  return { requestCount: c.requestCount(), hitCount: c.hitCount(), hitRate: c.hitRate(), matchesSize: c.getMatchesCache().size(), sentenceSize: c.getSentenceCache().size() };
 }
 
 // Java: PipeOps#check(JsonNode); rules read token text only (R4), so the real disambiguator/chunker is bypassed unless readings are observed
@@ -22,9 +29,9 @@ export function run(a) {
 
 function runWith(a, l) {
   const o = a.opts ?? {};
-  if (o.cache !== undefined && o.cache !== null) throw notPorted('ResultCache (F70)');
+  const cache = o.cache !== undefined && o.cache !== null ? new ResultCache(o.cache) : null;
   const mt = o.threads !== undefined && o.threads !== null;
-  const lt = mt ? new MultiThreadedJLanguageTool(l, [], null, null, null, null, true, false, buildAll(a.rules)) : newTool(l, null, buildAll(a.rules));
+  const lt = mt ? new MultiThreadedJLanguageTool(l, [], null, null, null, null, true, false, buildAll(a.rules)) : new JLanguageTool(l, [], null, cache, null, null, true, false, buildAll(a.rules));
   try {
     if (o.cleanOverlapping !== undefined) lt.setCleanOverlappingMatches(o.cleanOverlapping === true);
     if (o.maxErrorsPerWordRate !== undefined) lt.setMaxErrorsPerWordRate(o.maxErrorsPerWordRate);
@@ -64,6 +71,7 @@ function runWith(a, l) {
       if (c.unknown === true) {
         try { res.unknownWords = lt.getUnknownWords(); } catch (t) { res.unknownError = errorOf(t).error; }
       }
+      if (cache !== null) res.cache = cacheStats(cache);
       cases.push(res);
     }
     return { cases };

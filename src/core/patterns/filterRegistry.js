@@ -43,20 +43,8 @@ for (const cls of [AbstractAdvancedSynthesizerFilter, AbstractDateCheckFilter, A
   registerClass(cls.FQCN, cls);
 }
 
-// filter classes referenced by the de/en/fr/core rule files (grep of <filter class=...>)
+// filter classes of out-of-scope languages referenced by rule files (ca/es/nl/ru, DEV-006); de/en/fr are registered by src/lang/register.js
 const PENDING_RULE_FILTERS = [
-  'org.languagetool.rules.fr.AdvancedSynthesizerFilter',
-  'org.languagetool.rules.fr.DMYDateCheckFilter',
-  'org.languagetool.rules.fr.DateCheckFilter',
-  'org.languagetool.rules.fr.FindSuggestionsFilter',
-  'org.languagetool.rules.fr.FrenchNumberInWordFilter',
-  'org.languagetool.rules.fr.FrenchSuppressMisspelledSuggestionsFilter',
-  'org.languagetool.rules.fr.InterrogativeVerbFilter',
-  'org.languagetool.rules.fr.MakeContractionsFilter',
-  'org.languagetool.rules.fr.NewYearDateFilter',
-  'org.languagetool.rules.fr.PostponedAdjectiveConcordanceFilter',
-  'org.languagetool.rules.fr.SuggestionsFilter',
-  'org.languagetool.rules.fr.WordWithDeterminerFilter',
   'org.languagetool.rules.ca.CatalanSuppressMisspelledSuggestionsFilter',
   'org.languagetool.rules.es.FindSuggestionsFilter',
   'org.languagetool.rules.nl.DutchNumberInWordFilter',

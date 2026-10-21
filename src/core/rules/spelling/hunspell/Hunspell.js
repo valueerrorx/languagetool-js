@@ -23,7 +23,17 @@ export class Hunspell {
     if (cached !== undefined && !cached.isClosed()) return cached;
     let dict;
     try {
-      dict = new DumontsHunspellDictionary(readFileSync(dictionary), readFileSync(affix), false);
+      const dicBytes = readFileSync(dictionary);
+      let affBytes;
+      try {
+        affBytes = readFileSync(affix);
+      } catch (e) {
+        if (e.code !== 'ENOENT') throw e;
+        // libhunspell prints the error and still loads the .dic with default affix settings (native stderr)
+        process.stderr.write(`error: ${affix}: cannot open\nerror: ${affix}: cannot open\n`);
+        affBytes = Buffer.alloc(0);
+      }
+      dict = new DumontsHunspellDictionary(dicBytes, affBytes, false);
     } catch (e) {
       if (e && e.code !== undefined && typeof e.syscall === 'string') throw new RuntimeException(e.message); // Java: IOException wrapped
       throw e;

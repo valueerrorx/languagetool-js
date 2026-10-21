@@ -1,5 +1,6 @@
 // java.util.Properties#load semantics (escapes, continuation lines, separators) on decoded text.
 import { IllegalArgumentException } from './errors.js';
+import { JavaConcurrentHashMap } from './collections/JavaConcurrentHashMap.js';
 
 const isWs = (c) => c === ' ' || c === '\t' || c === '\f';
 
@@ -146,4 +147,11 @@ export function decodeBundleBytes(buf) {
 // Java: Properties#load(InputStream) (ISO-8859-1)
 export function decodeLatin1(buf) {
   return buf.toString('latin1');
+}
+
+// Java: Properties#keySet() iteration order (backed by ConcurrentHashMap(8), String hash buckets) of a map from loadProperties
+export function propertiesKeyOrder(map) {
+  const chm = new JavaConcurrentHashMap();
+  for (const [k, v] of map) chm.put(k, v);
+  return chm.keySet();
 }

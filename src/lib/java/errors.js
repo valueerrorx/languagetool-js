@@ -172,6 +172,8 @@ export const ReflectiveOperationException = defineThrowable('ReflectiveOperation
 export const InstantiationException = defineThrowable('InstantiationException', ReflectiveOperationException, 'java.lang.InstantiationException');
 export const ClassNotFoundException = defineThrowable('ClassNotFoundException', ReflectiveOperationException, 'java.lang.ClassNotFoundException');
 export const IOException = defineThrowable('IOException', Exception, 'java.io.IOException');
+// Java: java.util.zip.ZipException
+export const ZipException = defineThrowable('ZipException', IOException, 'java.util.zip.ZipException');
 export const FileNotFoundException = defineThrowable('FileNotFoundException', IOException, 'java.io.FileNotFoundException');
 export const UnsupportedEncodingException = defineThrowable('UnsupportedEncodingException', IOException, 'java.io.UnsupportedEncodingException');
 export const MalformedInputException = defineThrowable('MalformedInputException', IOException, 'java.nio.charset.MalformedInputException');

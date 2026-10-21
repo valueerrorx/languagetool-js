@@ -1,5 +1,6 @@
 // Java: org.languagetool.language.identifier.DefaultLanguageIdentifier (optimaize fallback only; fastText/ngram: DEV-001)
-import { RuntimeException } from '../../../lib/java/errors.js';
+import { readFileSync } from 'node:fs';
+import { FileNotFoundException, RuntimeException, ZipException } from '../../../lib/java/errors.js';
 import { JMath } from '../../../lib/java/numbers.js';
 import { javaTrim } from '../../../lib/java/strings.js';
 import { setResourceLoader } from '../../../lib/optimaize/classpath.js';
@@ -88,6 +89,20 @@ function buildShared() {
   return shared;
 }
 
+// Java: new NGramDetector(File,int) -> new ZipFile(File): only the failures of opening the archive (loading the model: DEV-001)
+function openZipFile(file) {
+  let buf;
+  try {
+    buf = readFileSync(file.toString());
+  } catch {
+    throw new RuntimeException(`Could not load ngram data language identification from ${file}`, new FileNotFoundException(`${file} (No such file or directory)`));
+  }
+  if (buf.length === 0 || buf.lastIndexOf(Buffer.from([0x50, 0x4b, 0x05, 0x06])) < Math.max(0, buf.length - 65557)) {
+    throw new RuntimeException(`Could not load ngram data language identification from ${file}`,
+      new ZipException(buf.length === 0 ? 'zip file is empty' : 'zip END header not found'));
+  }
+}
+
 // Java: org.languagetool.language.identifier.DefaultLanguageIdentifier
 export class DefaultLanguageIdentifier extends LanguageIdentifier {
   static FQCN = 'org.languagetool.language.identifier.DefaultLanguageIdentifier';
@@ -105,7 +120,9 @@ export class DefaultLanguageIdentifier extends LanguageIdentifier {
   // Java: DefaultLanguageIdentifier#enableFasttext(File,File) (DEV-001: only the not-configured branch)
   enableFasttext(fasttextBinary, fasttextModel) {
     if (fasttextBinary !== null && fasttextBinary !== undefined && fasttextModel !== null && fasttextModel !== undefined) {
-      throw Object.assign(new Error('not ported: fastText language identification (DEV-001)'), { notPorted: true });
+      // F66: server startup only; detection with fastText stays unported (SRV-0184, DEV-001): marker detector, detection throws
+      this.fastTextDetector = { notPorted: true };
+      return;
     }
     // logger.warn "fastText not configured - language detection performance will be degraded. ..." (logger: F71)
   }
@@ -113,6 +130,7 @@ export class DefaultLanguageIdentifier extends LanguageIdentifier {
   // Java: DefaultLanguageIdentifier#enableNgrams(File) (DEV-001)
   enableNgrams(ngramDir) {
     if (ngramDir !== null && ngramDir !== undefined) {
+      openZipFile(ngramDir);
       throw Object.assign(new Error('not ported: ngram language identification (DEV-001)'), { notPorted: true });
     }
   }
@@ -143,6 +161,7 @@ export class DefaultLanguageIdentifier extends LanguageIdentifier {
     const preferredLangs = parsedLanguageLists.getPreferredLangs();
     let scores = null;
     let source = '';
+    if (this.fastTextDetector !== null) throw Object.assign(new Error('not ported: fastText language identification (DEV-001)'), { notPorted: true });
     // fastTextDetector == null && ngram == null (DEV-001): always the optimaize fallback
     text = this.textObjectFactory.forText(text).toString();
     source += '+fallback';

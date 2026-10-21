@@ -20,7 +20,7 @@ function javaSplitComma(s) {
 }
 
 // Java: DisambiguationRuleTest#sortForms(String)
-function sortForms(wordForms) {
+export function sortForms(wordForms) {
   if (wordForms === ',[,]') return wordForms;
   if (wordForms.length === 0) return wordForms;
   const word = wordForms.substring(0, wordForms.indexOf('[') + 1);

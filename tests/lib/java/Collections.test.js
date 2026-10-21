@@ -21,6 +21,8 @@ describe('Collections', () => {
     expect(() => l[3]).toThrow(ArrayIndexOutOfBoundsException);
     expect(() => l[3]).toThrow('Index 3 out of bounds for length 3');
     expect(() => { l[9] = 'z'; }).toThrow(ArrayIndexOutOfBoundsException);
+    expect(() => l[-1]).toThrow('Index -1 out of bounds for length 3');
+    expect(() => { l[-2] = 'z'; }).toThrow('Index -2 out of bounds for length 3');
     expect(() => l.push('d')).toThrow(UnsupportedOperationException);
     l[0] = 'z';
     expect([...l]).toEqual(['z', 'b', 'c']);

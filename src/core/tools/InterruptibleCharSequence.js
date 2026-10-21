@@ -35,3 +35,10 @@ export class InterruptibleCharSequence {
     return String(this.inner);
   }
 }
+
+// JS: the check that Java's InterruptibleCharSequence#charAt performs on the first access of a non-empty input (V8 regexps never call charAt)
+export function checkInterrupted(s) {
+  if (s.length !== 0 && Thread.interrupted()) {
+    throw new RuntimeException(new InterruptedException());
+  }
+}

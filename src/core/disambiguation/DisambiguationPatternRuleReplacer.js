@@ -38,8 +38,7 @@ export class DisambiguationPatternRuleReplacer extends AbstractPatternRulePerfor
       if (this.keepDespiteFilter(tokens, tokenPositions, firstMatchToken, lastMatchToken)
           && this.keepByDisambig(sentence, ruleMatchFromPos, ruleMatchToPos, firstMatchToken, lastMatchToken)) {
         if (!changed[0]) {
-          // copy-on-first-write: sentence.getTokens() must not be modified, but the copy can be reused for
-          // all further matches of this rule (instead of cloning the whole array per match)
+          // copy-on-first-write: sentence.getTokens() stays unmodified, the copy is reused for further matches
           whTokens[0] = whTokens[0].slice();
         }
         whTokens[0] = this.executeAction(sentence, whTokens[0], this.unifiedTokens, firstMatchToken, lastMarkerMatchToken, matchingTokens, tokenPositions);
@@ -51,8 +50,7 @@ export class DisambiguationPatternRuleReplacer extends AbstractPatternRulePerfor
       // these actions only set flags on the tokens, they don't touch the readings:
       const readingsUnchanged = action === DisambiguatorAction.IMMUNIZE ||
                                 action === DisambiguatorAction.IGNORE_SPELLING;
-      // ADD modifies the shared token objects in place and may change their surface string
-      // (AnalyzedTokenReadings.addReading), so the previous token index can't be trusted then:
+      // ADD changes shared token objects in place (addReading), so the previous token index can't be trusted
       const previous = action === DisambiguatorAction.ADD ? null : sentence;
       return new AnalyzedSentence(whTokens[0], preDisambigTokens, previous, readingsUnchanged);
     }
@@ -67,8 +65,7 @@ export class DisambiguationPatternRuleReplacer extends AbstractPatternRulePerfor
     for (const antiPattern of antiPatterns) {
       if (!antiPattern.canBeIgnoredFor(sentence)) {
         if (antiPatternUnifier === null) {
-          // antipatterns of disambiguation rules must use the disambiguation unifier (see constructor),
-          // not the grammar unifier of the rule's language, which may not even be configured yet
+          // antipatterns of disambiguation rules use the disambiguation unifier (see constructor), not the grammar unifier
           antiPatternUnifier = this.rule.getLanguage().getDefaultLanguageVariant().getDisambiguationUnifier();
         }
         // Restrict the search to the tokens that can overlap the rule's match

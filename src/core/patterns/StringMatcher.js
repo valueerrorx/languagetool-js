@@ -1,4 +1,5 @@
 // Java: org.languagetool.rules.patterns.StringMatcher (text pattern + matching modes incl. fast paths)
+import { checkInterrupted } from '../tools/InterruptibleCharSequence.js';
 import { Pattern, PatternSyntaxException } from '../../lib/java/regex/index.js';
 import { AssertionError, RuntimeException, NullPointerException, NumberFormatException } from '../../lib/java/errors.js';
 import { Integer } from '../../lib/java/int.js';
@@ -132,6 +133,7 @@ export class StringMatcher {
       }
       if (substrings !== null && !substrings.matches(s, caseSensitive)) return false;
       if (substringsAreSufficient) return true;
+      checkInterrupted(s);
       return compiled.matcher(s).matches();
     };
     return m;
@@ -629,6 +631,7 @@ function runSequenceMatcher(pattern, caseSensitive, alternatives, regexFallback)
       return false;
     }
     if (containsSurrogate(s, len)) {
+      checkInterrupted(s);
       return regexFallback.matcher(s).matches();
     }
     for (const alt of alternatives) {

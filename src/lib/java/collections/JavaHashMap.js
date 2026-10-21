@@ -18,6 +18,19 @@ export class JavaHashMap {
     this.treeBinsNeeded = false; // set when Java would treeify a bin (iteration order of that bin is then not modelled)
   }
 
+  // Java: HashMap#HashMap(Map) - entries = [key, value] pairs of the source map (distinct keys); putMapEntries sizing, then puts in source order
+  static copyOf(entries) {
+    const s = entries.length;
+    const m = new JavaHashMap();
+    if (s > 0) {
+      const ft = Math.fround(Math.fround(s / Math.fround(0.75)) + 1);
+      const t = ft < (1 << 30) ? Math.trunc(ft) : (1 << 30);
+      m.threshold = tableSizeFor(t);
+    }
+    for (const [k, v] of entries) m.put(k, v);
+    return m;
+  }
+
   // Java: HashMap#hash(Object)
   static hash(key) {
     const h = Objects.hashCode(key);

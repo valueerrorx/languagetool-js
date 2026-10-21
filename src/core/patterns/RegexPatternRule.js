@@ -1,4 +1,5 @@
 // org.languagetool.rules.patterns.RegexPatternRule (matches 'regexp' elements from XML rules against sentences)
+import { checkInterrupted } from '../tools/InterruptibleCharSequence.js';
 import { Pattern } from '../../lib/java/regex/index.js';
 import { Exception, IndexOutOfBoundsException, RuntimeException } from '../../lib/java/errors.js';
 import { listGet } from '../../lib/java/arrays.js';
@@ -67,7 +68,7 @@ export class RegexPatternRule extends AbstractPatternRule {
     }
     const patternMatcher = this.pattern.matcher(text);
 
-    while (patternMatcher.find(startPos)) {
+    while ((checkInterrupted(text), patternMatcher.find(startPos))) {
       try {
         const markStart = patternMatcher.start(this.markGroup);
         const markEnd = patternMatcher.end(this.markGroup);

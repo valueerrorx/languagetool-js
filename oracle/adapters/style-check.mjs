@@ -1,6 +1,5 @@
 // JS twin of harness op "style-check" (StyleOps#check, docs/review/F36-oracle.md).
-// English uses the real JLanguageTool (Language#getRelevantRules + XML pattern rules, F50) like the Java HarnessLT; de/fr: the native rule instances are rebuilt here
-// (F36 rules); rules whose classes are not ported (de LongSentenceRule, German*/StyleTooOften*, pl/ru subclasses) make the request notPorted.
+// en/de/fr use the real JLanguageTool (Language#getRelevantRules + XML pattern rules) like the Java HarnessLT; other languages are notPorted.
 import { UserConfig } from '../../src/core/rules/model/UserConfig.js';
 import { selectRules } from '../../src/core/Tools.js';
 import { getMessageBundleForLanguage } from '../../src/core/resources/ResourceBundleTools.js';
@@ -12,9 +11,8 @@ import { WhiteSpaceBeforeParagraphEnd } from '../../src/core/rules/WhiteSpaceBef
 import { ParagraphRepeatBeginningRule } from '../../src/core/rules/ParagraphRepeatBeginningRule.js';
 import { WordRepeatBeginningRule } from '../../src/core/rules/WordRepeatBeginningRule.js';
 import { PhraseRepeatRule } from '../../src/core/rules/PhraseRepeatRule.js';
-import { NoopChunker } from '../../src/core/noop/NoopChunker.js';
 import { JLanguageTool } from '../../src/core/JLanguageTool.js';
-import { errorOf, languageFor, withNoopAnalysis } from './_check-pipe-common.mjs';
+import { errorOf, languageFor } from './_check-pipe-common.mjs';
 import { recordPreLanguageFilter, runCase } from './check2.mjs';
 import { notPorted } from './_pipe-common.mjs';
 import { UnitConversionRule as EnUnitConversionRule } from '../../src/lang/en/rules/UnitConversionRule.js';
@@ -30,41 +28,24 @@ const EXTRA = {
   'org.languagetool.rules.en.UnitConversionRuleImperial': UnitConversionRuleImperial,
 };
 
-// Java: Language#getRelevantRules of other languages (en, de, fr use the real getRelevantRules)
-function nativeRules(code, l, m, uc) {
-  switch (code) {
-    default: throw notPorted(`style-check: rule list of ${code}`);
-  }
-}
-
 // Java: StyleOps#check(JsonNode); all of en/de/fr analysis is real
-export function run(a, hook = null) {
+export function run(a) {
   let l;
   try {
     l = languageFor(a.lang);
   } catch (e) {
     throw notPorted(`style-check: language ${a.lang}`);
   }
-  if (l.getShortCode() === 'en') return check(a, l, hook); // English: real rule list, analysis complete since F45/F50
-  if (l.getShortCode() === 'de') return check(a, l, hook); // German: real rule list (F59), GermanRuleDisambiguator + GermanChunker since F51
-  if (l.getShortCode() === 'fr') return check(a, l, hook); // French: real rule list (F63), FrenchHybridDisambiguator since F60
-  // other languages: the F36 rules read no chunk tags
-  const savedPost = l.postDisambiguationChunker;
-  l.postDisambiguationChunker = new NoopChunker();
-  try {
-    return withNoopAnalysis(l, true, () => check(a, l, hook));
-  } finally {
-    l.postDisambiguationChunker = savedPost;
-  }
+  const code = l.getShortCode();
+  if (code === 'en' || code === 'de' || code === 'fr') return check(a, l);
+  throw notPorted(`style-check: language ${a.lang}`);
 }
 
 // Java: StyleOps#check(JsonNode)
-function check(a, l, hook) {
+function check(a, l) {
   const res = {};
   let lt;
-  let natives;
   const m = getMessageBundleForLanguage(l);
-  const real = l.getShortCode() === 'en' || l.getShortCode() === 'de' || l.getShortCode() === 'fr';
   try {
     let uc = null;
     if (a.config !== undefined) {
@@ -72,25 +53,15 @@ function check(a, l, hook) {
       for (const [k, vs] of Object.entries(a.config)) cv.set(k, vs.map((v) => v));
       uc = new UserConfig(cv);
     }
-    if (real) {
-      lt = new JLanguageTool(l, null, null, uc); // Java: HarnessLT(Language,UserConfig)
-    } else {
-      natives = nativeRules(l.getShortCode(), l, m, uc);
-      if (hook !== null) natives = hook(l, m, uc, natives); // F37 rules (replace-check.mjs) merged into the list
-      lt = new JLanguageTool(l, [], null, null, null, uc, true, false, []);
-    }
+    lt = new JLanguageTool(l, null, null, uc); // Java: HarnessLT(Language,UserConfig)
   } catch (t) {
     if (t && t.notPorted === true) throw t;
     res.buildError = errorOf(t);
     return res;
   }
   lt.setCleanOverlappingMatches(false);
-  if (hook !== null || real) recordPreLanguageFilter(lt);
-  const rules = real ? [] : natives.filter((r) => r.np === undefined);
-  for (const r of rules) lt.addRule(r);
+  recordPreLanguageFilter(lt);
   const enabled = new Set(a.ids);
-  // with the F37 hook the rule lists of en/de are complete for the requested ids: ids without a rule are absent in Java too (e.g. variant rules of other variants)
-  if (hook === null && !real) for (const id of a.ids) if (!rules.some((r) => r.getId() === id)) throw notPorted(`style-check: ${id} (rule class not ported)`);
   const selected = [];
   for (const n of a.extra ?? []) {
     const k = EXTRA[n];

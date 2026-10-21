@@ -104,6 +104,7 @@ export class Pattern {
 
   // Java: Pattern#split(CharSequence,int)
   split(input, limit = 0) {
+    if (input === null || input === undefined) throw new NullPointerException('Cannot invoke "java.lang.CharSequence.length()" because "this.text" is null');
     const text = String(input);
     let index = 0;
     const matchLimited = limit > 0;

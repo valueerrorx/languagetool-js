@@ -7,6 +7,7 @@ import { Languages } from '../../../src/core/Languages.js';
 import { JLanguageTool } from '../../../src/core/JLanguageTool.js';
 import { getDataBroker } from '../../../src/core/resources/LtStatics.js';
 import { javaSplit, javaReplaceAll, javaTrim, javaCompare } from '../../../src/lib/java/strings.js';
+import { DemoDisambiguator } from '../../../src/core/tagging/disambiguation/xx/DemoDisambiguator.js';
 import { newLt } from '../../support/ruleTestSupport.js';
 import { useXxTestResources } from '../../support/DemoLanguage.js';
 
@@ -111,7 +112,7 @@ describe('DisambiguationRuleTest', () => {
       if (lang.getShortCode() !== 'xx') continue; // Java core module only sees the demo language; new JLanguageTool(real language) needs F17 (see next test for real files)
       const ruleLoader = new DisambiguationRuleLoader();
       const lt = new JLanguageTool(lang);
-      if (lt.getLanguage().getDisambiguator().constructor.name !== 'DemoDisambiguator') {
+      if (!(lt.getLanguage().getDisambiguator() instanceof DemoDisambiguator)) {
         const nameWithLocale = `${lang.getShortCode()}/disambiguation.xml`;
         const nameInResourceDir = `${getDataBroker().getResourceDir()}/${nameWithLocale}`;
         // validateRuleFile: XSD validation is not ported (D-048)

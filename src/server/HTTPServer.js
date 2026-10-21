@@ -1,5 +1,6 @@
 // Java: org.languagetool.server.Server + HTTPServer (bind, start/stop, startup STDOUT lines, usage text)
 import http from 'node:http';
+import { userInfo } from 'node:os';
 import express from 'express';
 import { Buffer } from 'node:buffer';
 import { VERSION, BUILD_DATE, GIT_SHORT_ID } from '../core/LtBuildInfo.js';
@@ -8,7 +9,9 @@ import { i18n } from '../core/Tools.js';
 import { Exception, IllegalArgumentException, IOException, RuntimeException, isThrowable } from '../lib/java/errors.js';
 import { URI, URISyntaxException } from '../lib/java/net.js';
 import { DatabaseAccess } from './DatabaseAccess.js';
-import { notPortedYet } from '../core/language/components.js';
+import { LtThreadPoolFactory } from '../core/tools/LtThreadPoolFactory.js';
+import { RequestLimiter } from './RequestLimiter.js';
+import { ErrorRequestLimiter } from './ErrorRequestLimiter.js';
 import { DEFAULT_HOST, DEFAULT_PORT, HTTPServerConfig } from './HTTPServerConfig.js';
 import { BindException, PortBindingException } from './exceptions.js';
 import { HttpExchange } from './HttpExchange.js';
@@ -74,8 +77,12 @@ export class Server {
     const requestLimit = config.getRequestLimit();
     const requestLimitInBytes = config.getRequestLimitInBytes();
     const requestLimitPeriodInSeconds = config.getRequestLimitPeriodInSeconds();
+    const ipFingerprintFactor = config.ipFingerprintFactor; // can be <= 0, means fingerprinting is disabled
+    const requestLimitWhitelistUsers = config.getRequestLimitWhitelistUsers();
+    const requestLimitWhitelistLimit = config.requestLimitWhitelistLimit;
     if ((requestLimit > 0 || requestLimitInBytes > 0) && requestLimitPeriodInSeconds > 0) {
-      throw notPortedYet('RequestLimiter (request limits)');
+      return new RequestLimiter(requestLimit, requestLimitInBytes, requestLimitPeriodInSeconds, ipFingerprintFactor,
+        requestLimitWhitelistUsers, requestLimitWhitelistLimit);
     }
     return null;
   }
@@ -85,16 +92,22 @@ export class Server {
     const requestLimit = config.getTimeoutRequestLimit();
     const requestLimitPeriodInSeconds = config.getRequestLimitPeriodInSeconds();
     if (requestLimit > 0 && requestLimitPeriodInSeconds > 0) {
-      throw notPortedYet('ErrorRequestLimiter (timeout request limit)');
+      return new ErrorRequestLimiter(requestLimit, requestLimitPeriodInSeconds);
     }
     return null;
   }
 
-  // Java: Server#getExecutorService(HTTPServerConfig); the check pool is not modelled in-process (queue size is always 0)
+  // Java: Server#getExecutorService(HTTPServerConfig); the pool that runs the HTTP request handlers
   getExecutorService(config) {
     const threadPoolSize = config.getMaxCheckThreads();
     print(`Setting up thread pool with ${threadPoolSize} threads`);
-    return { getQueue: () => ({ size: () => 0 }), shutdownNow() {} };
+
+    // reuse = false -> this should only be called once in production, needs to be false for tests
+    return LtThreadPoolFactory.createFixedThreadPoolExecutor(LtThreadPoolFactory.SERVER_POOL,
+      threadPoolSize, threadPoolSize, 0, 0, false,
+      () => {
+        // log.error("Thread: " + thread.getName() + " failed with: " + throwable.getMessage()) (F71)
+      }, false);
   }
 }
 
@@ -143,6 +156,7 @@ export function printCommonConfigFileOptions() {
   out('                   \'lang-xx-dictPath\' - absolute path to the hunspell .dic file, use language code instead of \'xx\', e.g.');
   out('                                        lang-tr-dictPath=/path/to/tr.dic. Note that the same directory also needs to');
   out('                                        contain a common_words.txt file with the most common 10,000 words (used for better language detection)');
+  out('                 \'suggestionsEnabled\' - if suggestions should be generated for spell check errors (optional, default: true)');
 }
 
 // Java: Server#printCommonOptions()
@@ -158,11 +172,12 @@ export function printCommonOptions() {
   out('  --languageModel  a directory with \'1grams\', \'2grams\', \'3grams\' sub directories (per language)');
   out('                         which contain a Lucene index (optional, overwrites \'languageModel\'');
   out('                         parameter in properties files)');
+  out('  --premiumAlways  activate the premium rules even when user has no username/password - useful for API servers');
 }
 
 // Java: Server#checkForNonRootUser()
 export function checkForNonRootUser() {
-  if (process.env.USER === 'root' || (process.getuid && process.getuid() === 0)) {
+  if (userInfo().username === 'root') { // Java: System.getProperty("user.name")
     print('****************************************************************************************************');
     print('*** WARNING: this process is running as root - please do not run it as root for security reasons ***');
     print('****************************************************************************************************');
@@ -190,6 +205,7 @@ export class HTTPServer extends Server {
       this.executorService = this.getExecutorService(config);
       const workQueue = this.executorService.getQueue();
       this.httpHandler = new LanguageToolHttpHandler(config, allowedIps, runInternally, limiter, errorLimiter, workQueue, this);
+      await this.httpHandler.textCheckerV2.prewarmDone; // Java: pipeline prewarming runs in the TextChecker constructor
       // check if port is 0 for get random port from range
       if (this.port === 0) {
         const minPort = config.getMinPort();
@@ -270,12 +286,15 @@ export class HTTPServer extends Server {
         req.resume();
       }
       const exchange = new HttpExchange(req, res, requestUri, body, javaHostAddress(req.socket.remoteAddress), req.socket.localPort);
-      try {
-        await this.httpHandler.handle(exchange);
-      } catch (e) {
-        if (!res.writableEnded && !res.destroyed) res.destroy();
-        if (!(e instanceof Exception)) process.stderr.write(`${e?.stack ?? e}\n`);
-      }
+      // Java: server.setExecutor(executorService): the handler runs on a thread of the server pool (queued when all threads are busy)
+      this.executorService.execute(async () => {
+        try {
+          await this.httpHandler.handle(exchange);
+        } catch (e) {
+          if (!res.writableEnded && !res.destroyed) res.destroy();
+          if (!(e instanceof Exception)) process.stderr.write(`${e?.stack ?? e}\n`);
+        }
+      });
     });
     return app;
   }

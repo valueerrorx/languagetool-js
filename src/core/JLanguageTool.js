@@ -17,6 +17,8 @@ import { AnalyzedSentence } from './AnalyzedSentence.js';
 import { AnalyzedToken } from './AnalyzedToken.js';
 import { AnalyzedTokenReadings } from './AnalyzedTokenReadings.js';
 import { ShortDescriptionProvider } from './ShortDescriptionProvider.js';
+import { SimpleInputSentence } from './SimpleInputSentence.js';
+import { InputSentence } from './InputSentence.js';
 import { FALSE_FRIEND_FILE, SENTENCE_START_TAGNAME } from './JLanguageToolConstants.js';
 import { AnnotatedTextBuilder } from './text/AnnotatedTextBuilder.js';
 import { TextPart } from './text/TextPart.js';
@@ -1014,8 +1016,10 @@ export class JLanguageTool {
 
   // Java: JLanguageTool#getAnalyzedSentence(String)
   getAnalyzedSentence(sentence) {
-    if (this.cache !== null) {
-      throw notPortedYet('ResultCache / SimpleInputSentence (F70)');
+    const cacheKey = new SimpleInputSentence(sentence, this.language);
+    const cachedSentence = this.cache !== null ? this.cache.getIfPresent(cacheKey) : null;
+    if (cachedSentence !== null) {
+      return cachedSentence;
     }
     const raw = this.getRawAnalyzedSentence(sentence);
     // The disambiguator modifies some readings in place, so keep an independent copy of the
@@ -1025,6 +1029,9 @@ export class JLanguageTool {
     const analyzedSentence = new AnalyzedSentence(disambig.getTokens(), preDisambigTokens);
     if (this.language.getPostDisambiguationChunker() !== null) {
       this.language.getPostDisambiguationChunker().addChunkTags(analyzedSentence.getTokens());
+    }
+    if (this.cache !== null) {
+      this.cache.put(cacheKey, analyzedSentence);
     }
     return analyzedSentence;
   }
@@ -1370,13 +1377,20 @@ export class TextCheckCallable {
       extendedSentenceRanges.push(extendedSentenceRange);
       try {
         let sentenceMatches = null;
+        let cacheKey = null;
         if (lt.cache !== null) {
-          throw notPortedYet('ResultCache / InputSentence (F70)');
+          cacheKey = new InputSentence(sentence.analyzed, lt.language, lt.motherTongue,
+            lt.disabledRules, lt.disabledRuleCategories,
+            lt.enabledRules, lt.enabledRuleCategories, lt.userConfig, lt.altLanguages, this.mode, this.level, toneTags);
+          sentenceMatches = lt.cache.getIfPresent(cacheKey);
         }
         if (sentenceMatches === null) {
           const rules = this.rules.rulesForSentence(sentence.analyzed).slice();
           rules.push(...lt.userConfig.getRules());
           sentenceMatches = lt.checkAnalyzedSentence(this.paraMode, rules, sentence.analyzed, this.checkRemoteRules, textWordCounter);
+        }
+        if (lt.cache !== null) {
+          lt.cache.put(cacheKey, sentenceMatches);
         }
         if (sentenceMatches.length !== 0) {
           if (lt.checkCancelledCallback !== null && lt.checkCancelledCallback.checkCancelled()) {

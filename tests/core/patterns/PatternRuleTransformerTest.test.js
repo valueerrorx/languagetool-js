@@ -69,7 +69,7 @@ describe('PatternRuleTransformers', () => {
     const match = new RuleMatch(r, s, 8, 11, 'msg');
     const filter = new RegexAntiPatternFilter();
     const args = new JavaHashMap();
-    expect(() => filter.acceptRuleMatch(match, args, s, null)).toThrow("Missing 'antiPatterns:' in 'args' in <filter> of rule R");
+    expect(() => filter.acceptRuleMatch(match, args, s, null)).toThrow("Missing 'antiPatterns:' in 'args' in <filter> of rule R[1]");
     args.put('antipatterns', 'xyz|foo bar');
     expect(filter.acceptRuleMatch(match, args, s, null)).toBeNull();
     args.put('antipatterns', 'xyz|is');

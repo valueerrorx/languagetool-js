@@ -78,4 +78,14 @@ describe('JavaHashMap', () => {
     }
     expect(checked).toBeGreaterThan(200);
   });
+
+  // Java: HashMap#HashMap(Map) sizing: threshold = tableSizeFor(size / 0.75f + 1.0f)
+  it('copyOf sizes the table like the copy constructor', () => {
+    const keys = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'];
+    const copy = JavaHashMap.copyOf(keys.map((k) => [k, k]));
+    expect(copy.table.length).toBe(32); // 13 / 0.75 + 1 = 18.3 -> 32 (incremental puts would give 32 only after the 13th)
+    expect(copy.size()).toBe(13);
+    expect(JavaHashMap.copyOf([]).table).toBeNull();
+    expect(JavaHashMap.copyOf([['a', 1]]).table.length).toBe(2);
+  });
 });

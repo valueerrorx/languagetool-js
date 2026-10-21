@@ -6,13 +6,12 @@ import { ShortDescriptionProvider } from '../../src/core/ShortDescriptionProvide
 import { ConfusionSetLoader } from '../../src/core/rules/ConfusionSetLoader.js';
 import { errorOf, languageFor } from './_check-pipe-common.mjs';
 import { run as styleRun } from './style-check.mjs';
-import { notPorted } from './_pipe-common.mjs';
 
 // Java: ReplaceOps#check(JsonNode)
 export function run(a) {
   const mode = a.mode ?? 'rules';
   switch (mode) {
-    case 'rules': return styleRun(a, f37Rules);
+    case 'rules': return styleRun(a);
     case 'aho': return aho(a);
     case 'confusion': return confusion(a);
     case 'shortdesc': return shortdesc(a);
@@ -100,9 +99,4 @@ function confusion(a) {
     res.error = errorOf(t);
   }
   return res;
-}
-
-// Java: Language#getRelevantRules of other languages; English, German and French use the real getRelevantRules (F50, F59, F63)
-export function f37Rules(l) {
-  throw notPorted(`replace-check: rule list of ${l.getShortCode()}`);
 }

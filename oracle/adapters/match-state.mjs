@@ -1,4 +1,4 @@
-// JS twin of harness op "match-state" (RuleMatchOps#matchState): Match/MatchState direct; 
+// JS twin of harness op "match-state" (RuleMatchOps#matchState): Match/MatchState exercised directly (spec -> methods per call, a fresh sentence per case).
 import { lang, sentences } from './_unify-common.mjs';
 import { err } from './rule-match.mjs';
 import { Match, CaseConversion, IncludeRange } from '../../src/core/patterns/Match.js';

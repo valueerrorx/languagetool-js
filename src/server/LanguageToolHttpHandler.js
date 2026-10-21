@@ -5,17 +5,19 @@ import { IllegalArgumentException, IOException, RuntimeException, TimeoutExcepti
 import { ErrorRateTooHighException } from '../core/check/ErrorRateTooHighException.js';
 import { BadRequestException } from './BadRequestException.js';
 import { ApiV2, API_DOC_URL } from './ApiV2.js';
-import { AuthException, PathNotFoundException, TextTooLongException, UnavailableException } from './exceptions.js';
+import { AuthException, PathNotFoundException, TextTooLongException, TooManyRequestsException, UnavailableException } from './exceptions.js';
 import { getRootCause, V2TextChecker } from './TextChecker.js';
-import { setAllowOrigin, siteMatches } from './ServerTools.js';
-import { notPortedYet } from '../core/language/components.js';
+import { getUserLimits, setAllowOrigin, siteMatches } from './ServerTools.js';
+import { fdiv } from '../lib/java/float.js';
+import { floatToString } from '../lib/java/toString.js';
 
 const ENCODING = 'utf-8';
 const HTTP_UNAVAILABLE = 503;
+const REQUEST_LIMIT_ACCESS_TOKEN_HEADER = 'X-Request-Limit-Access-Token';
 const ESCAPE_XML = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 // Java: RequestCounter
-class RequestCounter {
+export class RequestCounter {
   reqCount = 0;
   handleCount = 0;
 
@@ -32,6 +34,16 @@ class RequestCounter {
   // Java: RequestCounter#decrementHandleCount(int)
   decrementHandleCount() {
     this.handleCount--;
+  }
+
+  // Java: RequestCounter#getHandleCount()
+  getHandleCount() {
+    return this.handleCount;
+  }
+
+  // Java: RequestCounter#getRequestCount()
+  getRequestCount() {
+    return this.reqCount;
   }
 }
 
@@ -131,7 +143,27 @@ export class LanguageToolHttpHandler {
       // not an error but may make the underlying TCP connection unusable for following exchanges.",
       // so we consume the request now, even before checking for request limits:
       parameters = this.getRequestQuery(httpExchange, requestedUri);
-      if (this.requestLimiter !== null || this.errorRequestLimiter !== null) throw notPortedYet('RequestLimiter / ErrorRequestLimiter (request limits)');
+      if (this.requestLimiter !== null && this.limitPath(path) && !this.allowSkipRequestLimit(httpExchange.getRequestHeaders())) {
+        try {
+          const userLimits = getUserLimits(parameters, config);
+          this.requestLimiter.checkAccess(remoteAddress, parameters, httpExchange.getRequestHeaders(), userLimits);
+        } catch (e) {
+          if (!(e instanceof TooManyRequestsException)) throw e;
+          const errorMessage = `Error: Access from ${remoteAddress} denied: ${e.getMessage()}`;
+          this.sendError(httpExchange, 429, errorMessage); // too many requests
+          return;
+        }
+      }
+      if (this.errorRequestLimiter !== null
+          && !this.allowSkipRequestLimit(httpExchange.getRequestHeaders())
+          && !this.errorRequestLimiter.wouldAccessBeOkay(remoteAddress, parameters, httpExchange.getRequestHeaders())) {
+        const textSizeMessage = this.getTextOrDataSizeMessage(parameters);
+        const errorMessage = `Error: Access from ${remoteAddress} denied - too many recent timeouts. ${textSizeMessage}`
+          + ` Allowed maximum timeouts: ${this.errorRequestLimiter.getRequestLimit()}`
+          + ` per ${this.errorRequestLimiter.getRequestLimitPeriodInSeconds()} seconds`;
+        this.sendError(httpExchange, 429, errorMessage); // too many requests
+        return;
+      }
       if (this.workQueueFull(httpExchange, parameters, 'Error: There are currently too many parallel requests. Please try again later.')) {
         return;
       }
@@ -157,9 +189,6 @@ export class LanguageToolHttpHandler {
         throw new RuntimeException(errorMessage);
       }
     } catch (e) {
-      if (e !== null && typeof e === 'object' && e.notPorted === true && !isThrowable(e)) {
-        // not-ported behaviour surfaces like an internal error carrying the marker text
-      }
       let response;
       let errorCode;
       const rootCause = getRootCause(e);
@@ -184,7 +213,7 @@ export class LanguageToolHttpHandler {
         if (message.includes('Checking took longer than')) {
           response = message; // more specific information already provided
         } else {
-          response = `Checking took longer than ${config.getMaxCheckTimeMillisAnonymous() / 1000.0} seconds, which is this server's limit. Please make sure you have selected the proper language or consider submitting a shorter text.`;
+          response = `Checking took longer than ${floatToString(fdiv(config.getMaxCheckTimeMillisAnonymous(), 1000))} seconds, which is this server's limit. Please make sure you have selected the proper language or consider submitting a shorter text.`;
         }
       } else if (e instanceof UnavailableException) {
         errorCode = HTTP_UNAVAILABLE;
@@ -200,6 +229,35 @@ export class LanguageToolHttpHandler {
         this.reqCounter.decrementHandleCount(reqId);
       }
     }
+  }
+
+  // Java: LanguageToolHttpHandler#allowSkipRequestLimit(Headers)
+  allowSkipRequestLimit(requestHeaders) {
+    if (this.config.getRequestLimitAccessToken() === null) {
+      return false;
+    }
+    if (!requestHeaders.containsKey(REQUEST_LIMIT_ACCESS_TOKEN_HEADER)) {
+      return false;
+    }
+    return this.config.getRequestLimitAccessToken() === requestHeaders.getFirst(REQUEST_LIMIT_ACCESS_TOKEN_HEADER);
+  }
+
+  // Java: LanguageToolHttpHandler#limitPath(String): whitelist paths from request limiting
+  limitPath(path) {
+    return !path.endsWith('admin/refreshUser');
+  }
+
+  // Java: LanguageToolHttpHandler#getTextOrDataSizeMessage(Map)
+  getTextOrDataSizeMessage(parameters) {
+    const text = parameters.get('text');
+    if (text !== undefined) {
+      return `Text size: ${text.length}.`;
+    }
+    const data = parameters.get('data');
+    if (data !== undefined) {
+      return `Data size: ${data.length}.`;
+    }
+    return '';
   }
 
   // Java: LanguageToolHttpHandler#workQueueFull(HttpExchange,Map,String)

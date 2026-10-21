@@ -2,6 +2,8 @@
 import { notPortedYet } from '../core/language/components.js';
 import { DatabaseAccess } from './DatabaseAccess.js';
 import { JwtContent } from './JwtContent.js';
+import { LimitEnforcementMode } from './LimitEnforcementMode.js';
+import { Objects } from '../lib/java/Objects.js';
 
 export class UserLimits {
   static FQCN = 'org.languagetool.server.UserLimits';
@@ -14,7 +16,7 @@ export class UserLimits {
     this.premium = hasPremium;
     this.dictionaryCacheSize = dictCacheSize;
     this.requestsPerDay = requestsPerDay;
-    this.limitEnforcementMode = limitEnforcement;
+    this.limitEnforcementMode = limitEnforcement !== null && limitEnforcement !== undefined ? limitEnforcement : LimitEnforcementMode.DISABLED;
     this.skipLimits = false;
     this.account = account;
     this.jwtContent = jwtContent;
@@ -136,5 +138,30 @@ export class UserLimits {
   // Java: UserLimits#getSkipLimits()
   getSkipLimits() {
     return this.skipLimits;
+  }
+
+  // Java: UserLimits#getRequestsPerDay()
+  getRequestsPerDay() {
+    return this.requestsPerDay;
+  }
+
+  // Java: UserLimits#getLimitEnforcementMode()
+  getLimitEnforcementMode() {
+    return this.limitEnforcementMode;
+  }
+
+  // Java: UserLimits#UserLimits(boolean): special case for internal use to skip all limits
+  static skipAll(skipLimits) {
+    const l = new UserLimits(0, 0, -1n, true);
+    l.skipLimits = skipLimits;
+    return l;
+  }
+
+  // Java: UserLimits#toString() (ToStringBuilder default style: <class>@<identity hash>[field=value,...], null as <null>)
+  toString() {
+    const v = (x) => (x === null || x === undefined ? '<null>' : String(x));
+    return `${UserLimits.FQCN}@${(Objects.hashCode(this) >>> 0).toString(16)}[premiumUid=${v(this.premiumUid)},maxTextLength=${this.maxTextLength},`
+      + `maxCheckTimeMillis=${this.maxCheckTimeMillis},dictCacheSize=${v(this.dictionaryCacheSize)},requestsPerDay=${v(this.requestsPerDay)},`
+      + `limitEnforcement=${this.limitEnforcementMode.name()}]`;
   }
 }

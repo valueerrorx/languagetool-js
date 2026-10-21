@@ -1,10 +1,11 @@
 // Java: org.languagetool.server.DatabaseAccess and DatabaseAccessOpenSource (no database: dbDriver is not supported yet, see DB steps)
-import { IllegalArgumentException, IllegalStateException, NotImplementedException } from '../lib/java/errors.js';
+import { IllegalArgumentException, IllegalStateException, InvocationTargetException, NotImplementedException, NullPointerException, RuntimeException, isThrowable } from '../lib/java/errors.js';
 import { Pattern } from '../lib/java/regex/index.js';
 import { javaTrim } from '../lib/java/strings.js';
 import { notPortedYet } from '../core/language/components.js';
 import { AuthException } from './exceptions.js';
 import { BadRequestException } from './BadRequestException.js';
+import { DatabaseLogger } from './DatabaseLogger.js';
 import { JwtContent } from './JwtContent.js';
 
 const NON_PREMIUM_MSG = 'This server does not support username/password';
@@ -18,7 +19,12 @@ export class DatabaseAccess {
   static init(config) {
     if (DatabaseAccess.instance === null) {
       // Premium.isPremiumVersion() is false in this build: DatabaseAccessOpenSource
-      DatabaseAccess.instance = new DatabaseAccessOpenSource(config);
+      try {
+        DatabaseAccess.instance = new DatabaseAccessOpenSource(config);
+      } catch (e) {
+        if (!isThrowable(e)) throw e;
+        throw new RuntimeException(new InvocationTargetException(e)); // Java: clazz.getConstructor(..).newInstance(config)
+      }
     }
   }
 
@@ -49,7 +55,13 @@ export class DatabaseAccessOpenSource extends DatabaseAccess {
     super();
     this.sqlSessionFactory = null;
     if (config.dbDriver !== null) {
-      throw notPortedYet('DatabaseAccessOpenSource MyBatis database access (dbDriver)');
+      // Properties.setProperty("url"/"username"/"password", null) -> NullPointerException (ConcurrentHashMap rejects null values)
+      if (config.dbUrl === null || config.dbUsername === null || config.dbPassword === null) throw new NullPointerException();
+      // MyBatis session factory: the pooled data source connects lazily (database features follow in the DB steps, D-026)
+      this.sqlSessionFactory = { configured: true };
+      if (!config.dbLogging) {
+        DatabaseLogger.getInstance().disableLogging();
+      }
     }
     // else: INFO log "Not setting up database access, dbDriver is not configured" (logging follows with F71)
   }

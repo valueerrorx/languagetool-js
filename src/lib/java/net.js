@@ -198,6 +198,13 @@ function parseUri(input) {
       const q = scanStop(p, n, '/?#');
       if (q > p) {
         checkChars(p, q, L_AUTH, 'authority');
+        // Java: Parser#parseServer: literal IPv6 host needs a closing bracket (a failed server parse of an authority with brackets is rethrown)
+        const hostStart = input.lastIndexOf('@', q - 1) >= p ? input.lastIndexOf('@', q - 1) + 1 : p;
+        if (input[hostStart] === '[') {
+          const close = input.indexOf(']', hostStart + 1);
+          const cq = close >= 0 && close < q ? close : q;
+          if (!(cq > hostStart + 1 && cq < q)) throw fail('Expected closing bracket for IPv6 address', cq);
+        }
         r.authority = input.substring(p, q);
         p = q;
       } else if (q >= n) {

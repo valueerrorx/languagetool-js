@@ -5,6 +5,9 @@ import { normalize } from '../lib/normalizers.mjs';
 // D-023: software version/buildDate/commit are ignored.
 const SOFTWARE_IGNORE = ['software.version', 'software.buildDate', 'software.commit', 'software.gitCommit'];
 
+// short codes of the full Java distribution (X-LANGUAGES); a code outside it is a dynamic spellcheck-only language (F66)
+const DISTRIBUTION_CODES = new Set(['ar', 'ast', 'be', 'br', 'ca', 'crh', 'da', 'de', 'de-DE-x-simple-language', 'el', 'en', 'eo', 'es', 'fa', 'fr', 'ga', 'gl', 'it', 'ja', 'km', 'nl', 'pl', 'pt', 'ro', 'ru', 'sk', 'sl', 'sv', 'ta', 'tl', 'uk', 'zh']);
+
 // /v2/check body (parsed JSON): content-equal, formatting and number text irrelevant.
 export function compareApiCheckBody(e, a) {
   const diffs = [];
@@ -21,7 +24,7 @@ export function compareApi(expected, actual, { normalizers = [], ctx = {} } = {}
   if (expected.length !== actual.length) diffs.push(`responses: count ${expected.length} != ${actual.length}`);
   for (let i = 0; i < Math.min(expected.length, actual.length); i++) {
     const e = expected[i];
-    if (e.languagesList && Array.isArray(e.body)) e.body = e.body.filter((x) => ['de', 'en', 'fr'].includes(x.code)); // DEV-006: out-of-scope languages removed from the Java list
+    if (e.languagesList && Array.isArray(e.body)) e.body = e.body.filter((x) => ['de', 'en', 'fr'].includes(x.code) || !DISTRIBUTION_CODES.has(x.code)); // DEV-006: out-of-scope languages removed from the Java list, dynamic (lang-xx) languages kept
     const a = actual[i];
     const tag = `response[${i}]`;
     if (e.parallel) { diffs.push(...compareParallel(e, a, tag, { normalizers, ctx })); continue; } // concurrent request group (X-SRV-EXEC)

@@ -10,6 +10,7 @@ import { RuleWithMaxFilter } from '../rules/RuleWithMaxFilter.js';
 import { isAllUppercase as stringToolsIsAllUppercase, startsWithUppercase as stringToolsStartsWithUppercase, isPositiveNumber, isEmpty, addSpace } from '../text/StringTools.js';
 import { AbstractPatternRulePerformer } from './AbstractPatternRulePerformer.js';
 import { RuleFilterEvaluator } from './RuleFilterEvaluator.js';
+import { System } from '../../lib/java/System.js';
 
 const PLEASE_SPELL_ME = '<pleasespellme/>'; // Java: PatternRuleHandler.PLEASE_SPELL_ME (import would be circular)
 const MISTAKE = '<mistake/>';
@@ -20,6 +21,9 @@ const SUGGESTION_PATTERN_SUPPRESS = Pattern
     + RuleMatch.SUGGESTION_END_TAG);
 const WHITESPACE_OR_PUNCT = Pattern.compile('[\\s,:;.!?].*');
 const TAG_AND_PLEASE_SPELL_ME = Pattern.compile(RuleMatch.SUGGESTION_START_TAG + PLEASE_SPELL_ME);
+// Java: PatternRuleMatcher#monitorRules (System property read once) and #currentlyActiveRules ("<fullId>: <sentence>" -> running matches)
+const monitorRules = System.getProperty('monitorActiveRules') !== null;
+const currentlyActiveRules = new Map();
 
 // Java: PatternRuleMatcher
 export class PatternRuleMatcher extends AbstractPatternRulePerformer {
@@ -35,6 +39,10 @@ export class PatternRuleMatcher extends AbstractPatternRulePerformer {
   // Java: PatternRuleMatcher#match(AnalyzedSentence) / match(AnalyzedSentence,int,int)
   match(sentence, minStartIndex = 0, maxStartIndex = 2147483647) {
     const ruleMatches = [];
+    const key = monitorRules ? `${this.rule.getFullId()}: ${sentence.getText()}` : null;
+    if (key !== null) {
+      currentlyActiveRules.set(key, (currentlyActiveRules.get(key) ?? 0) + 1);
+    }
     try {
       const tokens = this.isInterpretPosTagsPreDisambiguation()
         ? sentence.getPreDisambigTokensWithoutWhitespace()
@@ -56,7 +64,17 @@ export class PatternRuleMatcher extends AbstractPatternRulePerformer {
         throw new IOException(`Error analyzing sentence: '${sentence}'`, e);
       }
       throw new RuntimeException(`Error analyzing sentence: '${sentence}' with rule ${this.rule.getFullId()}`, e);
+    } finally {
+      if (key !== null && currentlyActiveRules.has(key)) {
+        const v = currentlyActiveRules.get(key);
+        if (v - 1 > 0) currentlyActiveRules.set(key, v - 1); else currentlyActiveRules.delete(key);
+      }
     }
+  }
+
+  // Java: PatternRuleMatcher#getCurrentRules()
+  static getCurrentRules() {
+    return currentlyActiveRules;
   }
 
   // Java: PatternRuleMatcher#testAllReadings(AnalyzedTokenReadings[],PatternTokenMatcher,PatternTokenMatcher,int,int,int)

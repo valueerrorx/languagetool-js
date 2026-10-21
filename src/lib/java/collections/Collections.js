@@ -12,7 +12,7 @@ function uoe() {
 function noop() {}
 
 function isIndexProp(prop) {
-  return typeof prop === 'string' && /^\d+$/.test(prop);
+  return typeof prop === 'string' && /^-?\d+$/.test(prop);
 }
 
 // asLenient: get/set outside the array throw ArrayIndexOutOfBoundsException (Arrays$ArrayList indexes the backing array)
@@ -21,7 +21,7 @@ function listView(list, blockedMethods, blockIndexSet, noopMethods = [], arrayIn
     get(target, prop) {
       if (noopMethods.includes(prop)) return noop;
       if (blockedMethods.includes(prop)) return uoe;
-      if (arrayIndexErrors && isIndexProp(prop) && Number(prop) >= target.length) {
+      if (arrayIndexErrors && isIndexProp(prop) && (Number(prop) >= target.length || Number(prop) < 0)) {
         throw new ArrayIndexOutOfBoundsException(`Index ${prop} out of bounds for length ${target.length}`);
       }
       const v = Reflect.get(target, prop, target);
@@ -29,7 +29,7 @@ function listView(list, blockedMethods, blockIndexSet, noopMethods = [], arrayIn
     },
     set(target, prop, value) {
       if (prop === 'length' || blockIndexSet) uoe();
-      if (isIndexProp(prop) && Number(prop) >= target.length) {
+      if (isIndexProp(prop) && (Number(prop) >= target.length || Number(prop) < 0)) {
         if (arrayIndexErrors) throw new ArrayIndexOutOfBoundsException(`Index ${prop} out of bounds for length ${target.length}`);
         uoe();
       }

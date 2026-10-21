@@ -27,7 +27,13 @@ describe('copyOfRange', () => {
     expect(copyOfRange(['a', 'b'], 1, 4)).toEqual(['b', null, null]);
     expect(copyOfRange(['a'], 1, 1)).toEqual([]);
     expect(() => copyOfRange(['a'], 2, 1)).toThrow('2 > 1');
-    expect(() => copyOfRange(['a'], 2, 3)).toThrow('arraycopy');
-    expect(() => copyOfRange(['a'], -1, 1)).toThrow('arraycopy');
+    expect(() => copyOfRange(['a'], 2, 3)).toThrow('arraycopy: length -1 is negative');
+    expect(() => copyOfRange(['a'], -1, 1)).toThrow('arraycopy: source index -1 out of bounds for object array[1]');
+  });
+});
+
+describe('Pattern#split(null)', () => {
+  it('throws NullPointerException like the Matcher constructor', () => {
+    expect(() => Pattern.compile(',').split(null)).toThrow(NullPointerException);
   });
 });

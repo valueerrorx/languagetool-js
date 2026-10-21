@@ -46,3 +46,12 @@ describe('URI', () => {
     expect(new URI('mailto:x@y').getPath()).toBeNull();
   });
 });
+
+describe('URI IPv6 authority', () => {
+  // Java: URI.Parser#parseServer
+  it('requires the closing bracket of a literal IPv6 host', () => {
+    expect(() => new URI('http://[bad')).toThrow('Expected closing bracket for IPv6 address at index 11: http://[bad');
+    expect(() => new URI('http://u@[]/x')).toThrow('Expected closing bracket for IPv6 address at index 10: http://u@[]/x');
+    expect(new URI('http://[::1]:80/x').getPath()).toBe('/x');
+  });
+});

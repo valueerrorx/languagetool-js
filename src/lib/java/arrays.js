@@ -27,11 +27,12 @@ export function arraySet(a, i, v) {
   a[i] = v;
 }
 
-// Java: Arrays#copyOfRange(T[],int,int) (pads with null beyond the end; the arraycopy message of the out-of-range case is not modelled)
+// Java: Arrays#copyOfRange(T[],int,int) (pads with null beyond the end; HotSpot arraycopy messages: from < 0 source index, from > length negative length)
 export function copyOfRange(a, from, to) {
   const newLength = to - from;
   if (newLength < 0) throw new IllegalArgumentException(`${from} > ${to}`);
-  if (from < 0 || from > a.length) throw new ArrayIndexOutOfBoundsException(`arraycopy: source index ${from} out of bounds for object array[${a.length}]`);
+  if (from < 0) throw new ArrayIndexOutOfBoundsException(`arraycopy: source index ${from} out of bounds for object array[${a.length}]`);
+  if (from > a.length) throw new ArrayIndexOutOfBoundsException(`arraycopy: length ${a.length - from} is negative`);
   const out = new Array(newLength).fill(null);
   for (let i = 0; i < Math.min(newLength, a.length - from); i++) out[i] = a[from + i];
   return out;

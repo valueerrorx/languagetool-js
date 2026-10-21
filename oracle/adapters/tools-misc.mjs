@@ -2,12 +2,18 @@
 import { createHash } from 'node:crypto';
 import { JLanguageTool } from '../../src/core/JLanguageTool.js';
 import { getFullStackTrace, getLinguisticServices, getStream, getUrl, i18n, isExternSpeller, isParagraphEnd, profileRulesOnLine, setLinguisticServices } from '../../src/core/Tools.js';
-import { IOException, IllegalArgumentException, IllegalStateException, RuntimeException } from '../../src/lib/java/errors.js';
+import { IOException, IllegalArgumentException, IllegalStateException, NullPointerException, RuntimeException } from '../../src/lib/java/errors.js';
 import { javaSplit } from '../../src/lib/java/strings.js';
-import { errorOf, withNoopAnalysis } from './_check-pipe-common.mjs';
-import { langFor, lt, notPorted, s } from './_bitext-common.mjs';
+import { errorOf } from './_check-pipe-common.mjs';
+import { langFor, s } from './_bitext-common.mjs';
 
 const sha = (b) => createHash('sha256').update(b).digest('hex');
+const LTS = new Map();
+// Java: ToolsOps#lt(String)
+const lt = (code) => {
+  if (!LTS.has(code)) LTS.set(code, new JLanguageTool(langFor(code)));
+  return LTS.get(code);
+};
 const strs = (n) => (n === undefined || n === null ? [] : n.map(String));
 
 // Java: ToolsOps#misc(JsonNode)
@@ -54,10 +60,9 @@ export function run(a) {
         break;
       }
       case 'paragraphEnd': {
-        const l = lt(a.lang, null);
+        const l = lt(a.lang);
         const texts = a.sentences !== undefined ? strs(a.sentences) : l.sentenceTokenize(a.text);
-        // isParagraphEnd reads only the sentence texts
-        const sents = withNoopAnalysis(l.getLanguage(), true, () => texts.map((t) => l.getAnalyzedSentence(t)));
+        const sents = texts.map((t) => l.getAnalyzedSentence(t));
         res.sentences = texts;
         res.singleLineBreaksMarksPara = l.getLanguage().getSentenceTokenizer().singleLineBreaksMarksPara();
         const r = [];
@@ -69,12 +74,13 @@ export function run(a) {
         break;
       }
       case 'profile': {
-        const l = lt(a.lang, null);
+        const l = lt(a.lang);
         let rule = null;
         for (const x of l.getAllRules()) if (x.getId() === a.ruleId) { rule = x; break; }
-        if (rule === null) throw notPorted(`tools-misc profile: rule ${a.ruleId} (built-in Java rules not ported, F45+)`);
-        res.ruleFound = true;
-        res.count = profileRulesOnLine(a.text, l, rule);
+        res.ruleFound = rule !== null;
+        // Java: null rule -> helpful NPE at rule.match(...)
+        const target = rule !== null ? rule : { match() { throw new NullPointerException('Cannot invoke "org.languagetool.rules.Rule.match(org.languagetool.AnalyzedSentence)" because "rule" is null'); } };
+        res.count = profileRulesOnLine(a.text, l, target);
         break;
       }
       case 'linguServices': {
