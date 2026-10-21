@@ -1,4 +1,4 @@
-// java.nio.charset subset used by morfologik (UTF-8, ISO-8859-1, US-ASCII, UTF-16, UTF-16BE/LE, windows-1252), encoders/decoders with REPORT actions.
+// java.nio.charset subset used by morfologik (UTF-8, ISO-8859-1, US-ASCII, UTF-16, UTF-16BE/LE, windows-1252, ISO-8859-2, ISO-8859-15, KOI8-R), encoders/decoders with REPORT actions.
 import {
   IllegalArgumentException, IllegalCharsetNameException, MalformedInputException, UnmappableCharacterException, UnsupportedCharsetException,
 } from '../java/errors.js';
@@ -21,9 +21,24 @@ const CHARSETS = [
   { name: 'UTF-16BE', kind: 'utf16be', maxBytes: 2.0, maxChars: 0.5, aliases: ['utf-16be', 'utf_16be', 'iso-10646-ucs-2', 'x-utf-16be', 'unicodebigunmarked'] },
   { name: 'UTF-16LE', kind: 'utf16le', maxBytes: 2.0, maxChars: 0.5, aliases: ['utf-16le', 'utf_16le', 'x-utf-16le', 'unicodelittleunmarked'] },
   { name: 'windows-1252', kind: 'cp1252', maxBytes: 1.0, maxChars: 1.0, aliases: ['windows-1252', 'cp1252', 'cp5348', 'ibm-1252', 'ibm1252'] },
+  { name: 'ISO-8859-2', kind: 'sbcs', maxBytes: 1.0, maxChars: 1.0, aliases: ['iso-8859-2', 'iso8859_2', '8859_2', 'iso-ir-101', 'iso_8859-2', 'iso_8859-2:1987', 'iso8859-2', 'latin2', 'l2', 'ibm912', 'ibm-912', 'cp912', '912', 'csisolatin2'] },
+  { name: 'ISO-8859-15', kind: 'sbcs', maxBytes: 1.0, maxChars: 1.0, aliases: ['iso-8859-15', 'iso_8859-15', 'latin-9', 'csiso885915', '8859_15', 'ibm923', 'ibm-923', 'cp923', '923', 'latin0', 'latin9', 'l9', 'csisolatin0', 'csisolatin9', 'iso8859_15_fdis', 'iso8859-15', 'iso8859_15'] },
+  { name: 'KOI8-R', kind: 'sbcs', maxBytes: 1.0, maxChars: 1.0, aliases: ['koi8-r', 'koi8_r', 'koi8', 'cskoi8r'] },
 ];
 const BY_NAME = new Map();
 for (const c of CHARSETS) for (const a of c.aliases) BY_NAME.set(a, c);
+
+// single-byte tables (byte -> char) from the WHATWG decoders, identical to the JDK mappings; reverse maps for encoding
+function sbcsTable(label) {
+  const bytes = Uint8Array.from({ length: 256 }, (_, i) => i);
+  const t = Array.from(new TextDecoder(label).decode(bytes), (ch) => ch.charCodeAt(0));
+  return { table: t, reverse: new Map(t.map((c, b) => [c, b])) };
+}
+const SBCS = {
+  'ISO-8859-2': sbcsTable('iso-8859-2'),
+  'ISO-8859-15': sbcsTable('iso-8859-15'),
+  'KOI8-R': sbcsTable('koi8-r'),
+};
 
 const isSurrogate = (c) => c >= 0xd800 && c <= 0xdfff;
 
@@ -86,6 +101,19 @@ export class Charset {
             throw new UnmappableCharacterException('Input length = 1');
           }
           out[o++] = c;
+        }
+        return o;
+      }
+      case 'sbcs': {
+        const rev = SBCS[this.def.name].reverse;
+        for (let i = 0; i < n; i++) {
+          const c = s.charCodeAt(i);
+          const b = rev.get(c);
+          if (b === undefined) {
+            if (isSurrogate(c)) this.#surrogateError(s, i);
+            throw new UnmappableCharacterException('Input length = 1');
+          }
+          out[o++] = b;
         }
         return o;
       }
@@ -188,6 +216,12 @@ export class Charset {
         for (let i = off; i < end; i++) if (a[i] > 0x7f) throw new MalformedInputException('Input length = 1');
         return asciiString(a, off, end);
       }
+      case 'sbcs': {
+        const t = SBCS[this.def.name].table;
+        let s = '';
+        for (let i = off; i < end; i++) s += String.fromCharCode(t[a[i]]);
+        return s;
+      }
       case 'cp1252': {
         let s = '';
         for (let i = off; i < end; i++) {
@@ -246,7 +280,8 @@ Charset.prototype.decodeLenient = function decodeLenient(a, off, len) {
         let s = '';
         for (let i = off; i < end; i++) {
           const b = a[i];
-          if (this.kind === 'ascii' && b > 0x7f) s += '\ufffd';
+          if (this.kind === 'sbcs') s += String.fromCharCode(SBCS[this.def.name].table[b]);
+          else if (this.kind === 'ascii' && b > 0x7f) s += '\ufffd';
           else if (this.kind === 'cp1252' && b >= 0x80 && b < 0xa0) s += CP1252_HIGH[b - 0x80] < 0 ? '\ufffd' : String.fromCharCode(CP1252_HIGH[b - 0x80]);
           else s += String.fromCharCode(b);
         }

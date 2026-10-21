@@ -64,6 +64,7 @@ All Java patterns (XML `regexp`, `postag_regexp`, `<regexp>`, SRX, disambiguatio
 - Morfologik runtime FSAs (MorfologikMultiSpeller over `spelling.txt`, user words): arc order = byte order of the words encoded in the dictionary charset; speller ties are broken by traversal order. -> `src/lib/fsa/` builds from the sorted encoded byte sequences, never from JS string order.
 
 ## S6 I/O, charsets, data loading (was P6)
+- Single-byte dictionary charsets ISO-8859-2, ISO-8859-15, KOI8-R (sl, it, ru .info files) are full 256-entry tables (decode never fails), unmappable chars on encode throw `UnmappableCharacterException`, JDK aliases. -> `src/lib/fsa/charsets.js` (`sbcs`).
 - `Scanner.nextLine()` separators `\r\n`, `\n`, `\r`, ` `, ` `, `\u0085` (ManualSynthesizer, SimpleReplaceDataLoader, WrongWordInContextRule, AbstractRepeatedWordsRule, CommonWordsDetector, MultiKeyProperties, Hunspell ignore files, AvsAnData, CompoundCheckFilter); `BufferedReader.readLine()` only `\n`, `\r`, `\r\n` (CLI line-by-line, other loaders). -> `io.js` `scannerLines`, `readerLines`.
 - UTF-8 decoding: malformed bytes -> U+FFFD with Java's granularity for readers/Scanner; `Files.readAllLines` throws `MalformedInputException` instead (ConfidenceMapLoader, BeoLingus). -> `charset.js`.
 - `Properties.load(InputStream)` is ISO-8859-1 + escapes (server config, morfologik `.info`); `ResourceBundle` .properties UTF-8 with ISO-8859-1 fallback; candidate chain and en_US default fallback. -> `Properties.js` (dot-properties), `ResourceBundle.js`.
