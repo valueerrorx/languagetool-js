@@ -44,6 +44,18 @@ export class FSATraversal {
   // Java: FSATraversal#FSATraversal(FSA)
   constructor(fsa) {
     this.fsa = fsa;
+    // perf: path of the previous query (bytes, nodes before each byte, number of steps); consecutive synthesizer keys "lemma|tag" share the lemma
+    this.memoRoot = -1;
+    this.memoStart = -1;
+    this.memoBytes = new Uint8Array(0);
+    this.memoNodes = new Int32Array(0);
+    this.memoDepth = 0;
+  }
+
+  // perf: remember the query bytes and the number of steps taken
+  saveMemo(sequence, start, length, depth) {
+    this.memoBytes = sequence.slice(start, start + length);
+    this.memoDepth = depth;
   }
 
   // Java: FSATraversal#match(MatchResult,byte[],int,int,int); result = {kind,index,node} object reused by the caller
@@ -56,29 +68,59 @@ export class FSATraversal {
     }
     const fsa = this.fsa;
     const max = start + length;
-    for (let i = start; i < max; i++) {
+    // resume after the common prefix of the previous query; steps before max-1 of both queries cannot take the EXACT_MATCH branch
+    let first = start;
+    const mb = this.memoBytes;
+    if (this.memoRoot === node && this.memoStart === start) {
+      let lim = Math.min(this.memoDepth, length - 1, mb.length - 1);
+      let c = 0;
+      while (c < lim && mb[c] === sequence[start + c]) c++;
+      if (c > 0) {
+        first = start + c;
+        node = this.memoNodes[c];
+      }
+    } else {
+      this.memoRoot = node;
+      this.memoStart = start;
+      this.memoDepth = 0;
+    }
+    if (this.memoNodes.length < length + 1) {
+      const grown = new Int32Array(length + 16);
+      grown.set(this.memoNodes);
+      this.memoNodes = grown;
+    }
+    const memoNodes = this.memoNodes;
+    let depth = first - start;
+    if (depth === 0) memoNodes[0] = node;
+    for (let i = first; i < max; i++) {
       const arc = fsa.getArc(node, sequence[i]);
       if (arc !== 0) {
         if (i + 1 === max && fsa.isArcFinal(arc)) {
+          this.saveMemo(sequence, start, length, depth);
           result.kind = MatchResult.EXACT_MATCH;
           result.index = i;
           result.node = node;
           return result;
         }
         if (fsa.isArcTerminal(arc)) {
+          this.saveMemo(sequence, start, length, depth);
           result.kind = MatchResult.AUTOMATON_HAS_PREFIX;
           result.index = i + 1;
           result.node = node;
           return result;
         }
         node = fsa.getEndNode(arc);
+        depth++;
+        memoNodes[depth] = node;
       } else {
+        this.saveMemo(sequence, start, length, depth);
         result.kind = i > start ? MatchResult.AUTOMATON_HAS_PREFIX : MatchResult.NO_MATCH;
         result.index = i;
         result.node = node;
         return result;
       }
     }
+    this.saveMemo(sequence, start, length, depth);
     result.kind = MatchResult.SEQUENCE_IS_A_PREFIX;
     result.index = 0;
     result.node = node;

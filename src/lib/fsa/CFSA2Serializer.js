@@ -39,6 +39,16 @@ function writeVInt(buffer, offset, value) {
   return offset;
 }
 
+// number of bytes writeVInt writes
+function vintLength(value) {
+  let n = 1;
+  while (value > 127) {
+    n++;
+    value >>= 7;
+  }
+  return n;
+}
+
 // Java: morfologik.fsa.builders.CFSA2Serializer (withNumbers is not supported: unused by the port)
 export class CFSA2Serializer {
   // Java: CFSA2Serializer#CFSA2Serializer()
@@ -47,10 +57,12 @@ export class CFSA2Serializer {
     this.scratch = new Uint8Array(5);
     this.labelsIndex = null;
     this.labelsInvIndex = null;
+    this.plan = null;
   }
 
   // Java: CFSA2Serializer#serialize(FSA,OutputStream); returns the bytes
   serialize(fsa) {
+    this.plan = null;
     this.computeLabelsIndex(fsa);
     const linearized = this.linearize(fsa);
     const os = new ByteSink();
@@ -138,7 +150,9 @@ export class CFSA2Serializer {
     for (let i = 0; i < linearized.length; i++) this.offsets[linearized[i] / 6] = MAX_INT;
     let max = 0;
     let i;
-    while ((i = this.emitNodes(fsa, null, linearized)) > 0) max = i;
+    if (this.plan === null) this.plan = this.planArcs(fsa, linearized); // every reachable state is in the first linearization
+    const plan = this.plan;
+    while ((i = this.emitNodesCounting(fsa, linearized, plan)) > 0) max = i;
     return max;
   }
 
@@ -186,6 +200,63 @@ export class CFSA2Serializer {
       }
     }
     return inlinkCount;
+  }
+
+  // perf (not Java API): per-arc constants of the linearized states, so the offset iteration does not walk the FSA again
+  planArcs(fsa, linearized) {
+    const start = new Int32Array(this.offsets.length + 1);
+    const end = new Int32Array(this.offsets.length + 1);
+    const labelLen = [];
+    const targetSlot = [];
+    const targetNode = [];
+    for (let index = 0; index < linearized.length; index++) {
+      const slotIndex = linearized[index] / 6;
+      start[slotIndex] = labelLen.length;
+      for (let arc = fsa.getFirstArc(linearized[index]); arc !== 0; arc = fsa.getNextArc(arc)) {
+        if (fsa.isArcTerminal(arc)) {
+          targetSlot.push(-1);
+          targetNode.push(0);
+        } else {
+          const target = fsa.getEndNode(arc);
+          targetSlot.push(target / 6);
+          targetNode.push(target);
+        }
+        labelLen.push(this.labelsInvIndex[fsa.getArcLabel(arc) & 0xff] > 0 ? 1 : 2);
+      }
+      end[slotIndex] = labelLen.length;
+    }
+    return { start, end, labelLen: Int32Array.from(labelLen), targetSlot: Int32Array.from(targetSlot), targetNode: Int32Array.from(targetNode) };
+  }
+
+  // Java: CFSA2Serializer#emitNodes(FSA,null,IntArrayList) on the precomputed plan (offset calculation only)
+  emitNodesCounting(fsa, linearized, plan) {
+    const offsets = this.offsets;
+    const { start, end, labelLen, targetSlot, targetNode } = plan;
+    let offset = 0;
+    const rootOffset = fsa.getRootNode() !== 0 ? offsets[fsa.getRootNode() / 6] : 0;
+    offset += (this.labelsInvIndex[94] > 0 ? 1 : 2) + vintLength(rootOffset);
+    let offsetsChanged = false;
+    const max = linearized.length;
+    for (let index = 0; index < max; index++) {
+      const state = linearized[index];
+      const nextState = index + 1 < max ? linearized[index + 1] : NO_STATE;
+      const slot = state / 6;
+      if (offsets[slot] !== offset) {
+        offsetsChanged = true;
+        offsets[slot] = offset;
+      }
+      for (let a = start[slot], e = end[slot]; a < e; a++) {
+        let targetOffset = targetSlot[a] < 0 ? 0 : offsets[targetSlot[a]];
+        let len = labelLen[a];
+        if (targetOffset !== 0 && targetNode[a] === nextState) {
+          targetOffset = 0;
+        } else {
+          len += vintLength(targetOffset);
+        }
+        offset += len;
+      }
+    }
+    return offsetsChanged ? offset : 0;
   }
 
   // Java: CFSA2Serializer#emitNodes(FSA,OutputStream,IntArrayList)

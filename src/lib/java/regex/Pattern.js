@@ -12,6 +12,7 @@ export const ENDANCHOR = 1;
 const CACHE_MAX = 4096;
 const PAIR = /[\uD800-\uDBFF][\uDC00-\uDFFF]/;
 const cache = new Map();
+const cache0 = new Map();
 
 // Java: java.util.regex.Pattern
 export class Pattern {
@@ -46,15 +47,15 @@ export class Pattern {
   // Java: Pattern#compile(String) / compile(String,int)
   static compile(regex, flags = 0) {
     if (typeof regex === 'string') {
-      const key = `${flags}:${regex}`;
-      let p = cache.get(key);
+      // perf: flags 0 is keyed by the pattern text itself (no key concatenation); hits are not re-inserted (FIFO eviction)
+      const c = flags === 0 ? cache0 : cache;
+      const key = flags === 0 ? regex : `${flags}:${regex}`;
+      let p = c.get(key);
       if (p === undefined) {
         p = new Pattern(regex, flags);
-        if (cache.size >= CACHE_MAX) cache.delete(cache.keys().next().value);
-      } else {
-        cache.delete(key); // LRU: re-insert as most recent
+        if (c.size >= CACHE_MAX) c.delete(c.keys().next().value);
+        c.set(key, p);
       }
-      cache.set(key, p);
       return p;
     }
     return new Pattern(regex, flags);
@@ -63,6 +64,7 @@ export class Pattern {
   // drops the compiled-pattern cache (not Java API; memory control for hosts and tests)
   static clearCache() {
     cache.clear();
+    cache0.clear();
   }
 
   // Java: Pattern#pattern()

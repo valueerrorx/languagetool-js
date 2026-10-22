@@ -84,3 +84,25 @@ Changes (no observable result change; Java behaviour is the specification, the p
 - Collections list views: fast path for index reads in the Proxy get trap.
 
 Checks: npm test tests/lib tests/core, lint clean; X-CORPUS de/en/fr (cli, h, http, all variants) and X-CORPUS-W2 ru/es all pass; X-ENSPELL, X-DECHECK, X-ENCHUNK pass. Note: running X-CHUNK X-ENCHUNK X-DECHUNK in one process fails 17 multiword cases at the unmodified HEAD as well (case order dependence of the MultiWordChunker cache, not caused by this round; each passes alone).
+
+## F73 round 3 (CLI cold start, target JS speed >= 1.0)
+
+Method: 3 paragraphs of oracle/corpus/<lang> (as in table (a)), median of 3 wall ms, Java and JS alternating on the same machine (load average about 5). The bench harness started `node` via PATH=/usr/bin:/bin, which is the system Node 22; the stack is Node 24, so oracle/bench/bench.mjs now starts the CLI with `process.execPath` (the server part still uses `node`). Both Node versions are shown.
+
+| lang | Java ms | JS before (Node 22, round 2) | JS after Node 24 | JS after Node 22 |
+|---|---|---|---|---|
+| de | 7873 | 0.69x | 7643 = 1.03x | 8605 = 0.92x |
+| en | 3621 | 0.96x | 2895 = 1.25x | 3372 = 1.15x |
+| fr | 5169 | 0.82x | 5023 = 1.03x | 5622 = 0.93x |
+
+Profile (`node --cpu-prof bin/lt-cli.mjs`, de): 2.4 M synthesizer FSA lookups (SpellingData build 1.6 s, GermanTagger expansion infos 1.0 s, 8 % hits), Pattern.compile cache churn (1.1 s de, 0.8 s fr), CFSA2Serializer offset iteration (0.4 s de), GC 0.6 s.
+
+Changes (results unchanged):
+- FSATraversal#match: resumes after the common prefix of the previous query (path memo); consecutive keys "lemma|tag" share the lemma. Early-return conditions of the skipped steps are identical for both queries (steps before the last byte of either).
+- BaseSynthesizer#synthesizeForPosTags: the dictionary entries after "lemma|" are enumerated once (DictionaryLookup#tagFilterForPrefix); tags without entries skip the stemmer lookup (manual/removal synthesizers still run). 2.4 M -> 0.2 M lookups for de.
+- Pattern.compile: flags 0 keyed by the pattern text (no key concatenation), no LRU re-insert on hit (FIFO eviction at 4096).
+- CFSA2Serializer: the offset fixed-point iteration runs on a precomputed arc plan (typed arrays); serialized bytes compared identical to the previous implementation on 3 real word lists (60k de, 35k fr, 42k de).
+- bin/lt-cli.mjs: `module.enableCompileCache()` before the dynamic imports (about 0.05 s).
+- Not done: lazy per-language registration (imports cost about 0.4 s of 3-8 s; the registry in register.js is side-effect based), regex engine time in AbstractUnitConversionRule (about 0.2 s de).
+
+Checks: X-CLI-BASIC, X-LANGUAGES, X-LANG-REGISTRY all pass; X-CORPUS cli-de/en/fr 148 pass; X-CORPUS-W2 cli-* 80 pass; X-CLI-OPTS sample (adl, list, b2 and names a-h) 102 pass, 2 not ported (adl-undetectable, as before); vitest tests/cli tests/core tests/lib pass; lint clean.

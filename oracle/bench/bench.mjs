@@ -27,7 +27,7 @@ const pct = (a, p) => [...a].sort((x, y) => x - y)[Math.min(a.length - 1, Math.f
 function cliCmd(impl, lang, file) {
   return impl === 'java'
     ? [JAVA, [...JAVA_OPTS, '-jar', join(LT, 'languagetool-commandline.jar'), '-l', lang, file]]
-    : ['node', [join(ROOT, 'bin/lt-cli.mjs'), '-l', lang, file]];
+    : [process.execPath, [join(ROOT, 'bin/lt-cli.mjs'), '-l', lang, file]];
 }
 function benchCli(impl, s, lang) {
   const file = join(work, `${s}.txt`);

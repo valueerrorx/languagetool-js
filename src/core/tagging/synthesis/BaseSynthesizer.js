@@ -98,9 +98,12 @@ export class BaseSynthesizer {
   // Java: BaseSynthesizer#lookup(String,String)
   lookup(lemma, posTag) {
     let results = [];
-    const wordForms = this.stemmer.lookup(`${lemma}|${posTag}`);
-    for (const wd of wordForms) {
-      results.push(String(wd.getStem()));
+    // perf: tagFilter (set by synthesizeForPosTags for its lemma) tells which tags have dictionary entries
+    if (this.tagFilterLemma === undefined || this.tagFilterLemma !== lemma || this.tagFilter(posTag)) {
+      const wordForms = this.stemmer.lookup(`${lemma}|${posTag}`);
+      for (const wd of wordForms) {
+        results.push(String(wd.getStem()));
+      }
     }
     if (this.manualSynthesizer !== null) {
       const manualForms = this.manualSynthesizer.lookup(lemma, posTag);
@@ -166,10 +169,20 @@ export class BaseSynthesizer {
   synthesizeForPosTags(lemma, acceptTag) {
     this.initPossibleTags();
     const results = [];
-    for (const tag of this.possibleTags) {
-      if (acceptTag(tag)) {
-        results.push(...this.lookup(lemma, tag));
+    const prevLemma = this.tagFilterLemma;
+    const prevFilter = this.tagFilter;
+    const filter = typeof lemma === 'string' && typeof this.stemmer.tagFilterForPrefix === 'function' ? this.stemmer.tagFilterForPrefix(`${lemma}|`) : null;
+    this.tagFilterLemma = filter === null ? undefined : lemma;
+    this.tagFilter = filter;
+    try {
+      for (const tag of this.possibleTags) {
+        if (acceptTag(tag)) {
+          results.push(...this.lookup(lemma, tag));
+        }
       }
+    } finally {
+      this.tagFilterLemma = prevLemma;
+      this.tagFilter = prevFilter;
     }
     return this.removeExceptions(results);
   }

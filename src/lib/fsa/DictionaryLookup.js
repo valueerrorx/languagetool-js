@@ -148,6 +148,60 @@ export class DictionaryLookup {
     return this.forms.slice(0, count);
   }
 
+  // perf (not Java API): predicate tag -> "lookup(prefix + tag) may return entries"; false answers are certain. null = no information
+  tagFilterForPrefix(prefix) {
+    const md = this.dictionaryMetadata;
+    if (md.getInputConversionPairs().size > 0 || typeof prefix !== 'string') return null;
+    const none = () => false;
+    for (let i = 0; i < prefix.length; i++) {
+      if (prefix[i] === this.separatorChar) return none;
+    }
+    const bb = new Uint8Array(Math.trunc(Math.fround(prefix.length * this.maxBytesPerChar)));
+    let n;
+    try {
+      n = this.charset.encodeInto(prefix, bb);
+    } catch (e) {
+      if (e.javaClass !== 'java.nio.charset.MalformedInputException' && e.javaClass !== 'java.nio.charset.UnmappableCharacterException') return null;
+      return none;
+    }
+    if (this.prefixMatcher === undefined) this.prefixMatcher = new FSATraversal(this.fsa);
+    const res = this.prefixMatcher.match({ kind: 0, index: 0, node: 0 }, bb, 0, n, this.rootNode);
+    if (res.kind === MatchResult.NO_MATCH || res.kind === MatchResult.AUTOMATON_HAS_PREFIX) return none;
+    if (res.kind !== MatchResult.SEQUENCE_IS_A_PREFIX) return null;
+    const tags = new Set(); // tag bytes (as latin1 string) that are followed by the separator in some entry
+    const it = new ByteSequenceIterator(this.fsa, res.node);
+    const sep = this.separator;
+    while (it.hasNext()) {
+      const len = it.next();
+      const buf = it.buffer;
+      let j = 0;
+      let key = '';
+      while (j < len && buf[j] !== sep) key += String.fromCharCode(buf[j++]);
+      if (j < len) tags.add(key);
+    }
+    if (this.tagKeys === undefined) this.tagKeys = new Map();
+    return (tag) => {
+      let k = this.tagKeys.get(tag);
+      if (k === undefined) {
+        k = null; // not encodable or containing the separator: lookup returns an empty list
+        if (typeof tag === 'string' && !tag.includes(this.separatorChar)) {
+          const tb = new Uint8Array(Math.trunc(Math.fround(tag.length * this.maxBytesPerChar)));
+          try {
+            const tn = this.charset.encodeInto(tag, tb);
+            k = '';
+            for (let i = 0; i < tn; i++) k += String.fromCharCode(tb[i]);
+          } catch (e) {
+            if (e.javaClass !== 'java.nio.charset.MalformedInputException' && e.javaClass !== 'java.nio.charset.UnmappableCharacterException') throw e;
+          }
+        } else if (typeof tag !== 'string') {
+          k = undefined;
+        }
+        this.tagKeys.set(tag, k);
+      }
+      return k === undefined ? true : k !== null && tags.has(k);
+    };
+  }
+
   // Java: DictionaryLookup#iterator()
   iterator() {
     return new DictionaryIterator(this.dictionary, this.charset, true);

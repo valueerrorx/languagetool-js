@@ -1,9 +1,12 @@
 #!/usr/bin/env node
 // Launcher of the command line tool (Java: org.languagetool.commandline.Main#main).
-import '../src/lang/register.js';
-import { configureLogging } from '../src/lib/slf4j/Logger.js';
-import { Main } from '../src/cli/Main.js';
-import { isThrowable } from '../src/lib/java/errors.js';
+import { enableCompileCache } from 'node:module';
+
+enableCompileCache(); // V8 code cache for the dynamically imported modules (startup only)
+await import('../src/lang/register.js');
+const { configureLogging } = await import('../src/lib/slf4j/Logger.js');
+const { Main } = await import('../src/cli/Main.js');
+const { isThrowable } = await import('../src/lib/java/errors.js');
 
 // Java: StackTraceElement text "Class.method(File.java:line)" from a V8 frame line "\tat fn (loc)" / "\tat loc"
 function javaFrame(line) {
