@@ -32,6 +32,13 @@ const PL_DAYS_SHORT = ['niedz.', 'pon.', 'wt.', 'śr.', 'czw.', 'pt.', 'sob.'];
 const PL_MONTHS_LONG = ['stycznia', 'lutego', 'marca', 'kwietnia', 'maja', 'czerwca', 'lipca', 'sierpnia', 'września', 'października', 'listopada', 'grudnia'];
 const PL_MONTHS_LONG_STANDALONE = ['styczeń', 'luty', 'marzec', 'kwiecień', 'maj', 'czerwiec', 'lipiec', 'sierpień', 'wrzesień', 'październik', 'listopad', 'grudzień'];
 const PL_MONTHS_SHORT = ['sty', 'lut', 'mar', 'kwi', 'maj', 'cze', 'lip', 'sie', 'wrz', 'paź', 'lis', 'gru'];
+// ru names (JDK 17 CLDR, probe-verified; month LONG = genitive, LONG_STANDALONE = nominative)
+const RU_DAYS_LONG = ['воскресенье', 'понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота'];
+const RU_DAYS_SHORT = ['вс', 'пн', 'вт', 'ср', 'чт', 'пт', 'сб'];
+const RU_MONTHS_LONG = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+const RU_MONTHS_LONG_STANDALONE = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь'];
+const RU_MONTHS_SHORT = ['янв.', 'февр.', 'мар.', 'апр.', 'мая', 'июн.', 'июл.', 'авг.', 'сент.', 'окт.', 'нояб.', 'дек.'];
+const RU_MONTHS_SHORT_STANDALONE = ['янв.', 'февр.', 'март', 'апр.', 'май', 'июнь', 'июль', 'авг.', 'сент.', 'окт.', 'нояб.', 'дек.'];
 const FR_DAYS_LONG = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
 const FR_DAYS_SHORT = ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'];
 const FR_MONTHS_LONG = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
@@ -356,7 +363,7 @@ export class Calendar {
     return other instanceof Calendar && this.getTimeBig() === other.getTimeBig();
   }
 
-  // Java: Calendar#getDisplayName(int,int,Locale) (DAY_OF_WEEK/MONTH with style SHORT/LONG, JDK 17 CLDR names of the locales en, en_US, en_GB, de, de_DE, de_AT, de_CH, fr, fr_FR/CH/BE/CA, pl, pl_PL; probe-verified)
+  // Java: Calendar#getDisplayName(int,int,Locale) (DAY_OF_WEEK/MONTH with style SHORT/LONG, JDK 17 CLDR names of the locales en, en_US, en_GB, de, de_DE, de_AT, de_CH, fr, fr_FR/CH/BE/CA, pl, pl_PL, ru, ru_RU; probe-verified)
   getDisplayName(field, style, locale) {
     if (locale === null || locale === undefined) throw new NullPointerException();
     const base = style & ~0x8000; // standalone flag
@@ -395,6 +402,13 @@ export class Calendar {
       if (field === DAY_OF_WEEK) return (plLong ? PL_DAYS_LONG : PL_DAYS_SHORT)[plValue - 1];
       if (plLong) return ((style & 0x8000) !== 0 ? PL_MONTHS_LONG_STANDALONE : PL_MONTHS_LONG)[plValue];
       return PL_MONTHS_SHORT[plValue];
+    }
+    if (locale.getLanguage() === 'ru' && locale.getVariant() === '' && (country === '' || country === 'RU')) {
+      const ruValue = this.get(field);
+      const ruLong = (style & 0x7fff) === 2;
+      if (field === DAY_OF_WEEK) return (ruLong ? RU_DAYS_LONG : RU_DAYS_SHORT)[ruValue - 1];
+      if (ruLong) return ((style & 0x8000) !== 0 ? RU_MONTHS_LONG_STANDALONE : RU_MONTHS_LONG)[ruValue];
+      return ((style & 0x8000) !== 0 ? RU_MONTHS_SHORT_STANDALONE : RU_MONTHS_SHORT)[ruValue];
     }
     if (locale.getLanguage() !== 'en' || locale.getVariant() !== '' || (country !== '' && country !== 'US' && country !== 'GB')) {
       throw new UnsupportedOperationException(`Calendar#getDisplayName locale ${locale} not ported`);

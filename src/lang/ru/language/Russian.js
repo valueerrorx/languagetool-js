@@ -1,4 +1,4 @@
-// Java: org.languagetool.language.Russian (rule list holds the rules ported so far, W26-W27 add the rest)
+// Java: org.languagetool.language.Russian
 import { RuntimeException, Throwable } from '../../../lib/java/errors.js';
 import { Objects } from '../../../lib/java/Objects.js';
 import { Pattern } from '../../../lib/java/regex/index.js';
@@ -22,6 +22,17 @@ import { ParagraphRepeatBeginningRule } from '../../../core/rules/ParagraphRepea
 import { PunctuationMarkAtParagraphEnd2 } from '../../../core/rules/PunctuationMarkAtParagraphEnd2.js';
 import { MorfologikRussianSpellerRule } from '../rules/MorfologikRussianSpellerRule.js';
 import { MorfologikRussianYOSpellerRule } from '../rules/MorfologikRussianYOSpellerRule.js';
+import { RussianFillerWordsRule } from '../rules/RussianFillerWordsRule.js';
+import { RussianUnpairedBracketsRule } from '../rules/RussianUnpairedBracketsRule.js';
+import { RussianCompoundRule } from '../rules/RussianCompoundRule.js';
+import { RussianSimpleReplaceRule } from '../rules/RussianSimpleReplaceRule.js';
+import { RussianSimpleWordRepeatRule } from '../rules/RussianSimpleWordRepeatRule.js';
+import { RussianWordCoherencyRule } from '../rules/RussianWordCoherencyRule.js';
+import { RussianWordRepeatRule } from '../rules/RussianWordRepeatRule.js';
+import { RussianWordRootRepeatRule } from '../rules/RussianWordRootRepeatRule.js';
+import { RussianVerbConjugationRule } from '../rules/RussianVerbConjugationRule.js';
+import { RussianDashRule } from '../rules/RussianDashRule.js';
+import { RussianSpecificCaseRule } from '../rules/RussianSpecificCaseRule.js';
 import { RussianTagger } from '../tagging/RussianTagger.js';
 import { RussianSynthesizer } from '../synthesis/RussianSynthesizer.js';
 import { RussianWordTokenizer } from '../tokenizers/RussianWordTokenizer.js';
@@ -29,12 +40,6 @@ import { RussianWordTokenizer } from '../tokenizers/RussianWordTokenizer.js';
 const LANGUAGE_SHORT_CODE = 'ru';
 
 let instantiationTrace = null; // Java: Russian#instantiationTrace
-
-// Rules still to be added to getRelevantRules by W26/W27 (position in the Java list in brackets)
-// [11] RussianFillerWordsRule(messages, this, userConfig) (after ParagraphRepeatBeginningRule)
-// [14] RussianUnpairedBracketsRule(messages, this), [15] RussianCompoundRule(messages, this, userConfig), [16] RussianSimpleReplaceRule(messages),
-// [17] RussianSimpleWordRepeatRule(messages, this), [18] RussianWordCoherencyRule(messages), [19] RussianWordRepeatRule(messages),
-// [20] RussianWordRootRepeatRule(messages), [21] RussianVerbConjugationRule(messages), [22] RussianDashRule(messages), [23] RussianSpecificCaseRule(messages)
 
 // Java: Russian
 export class Russian extends LanguageWithModel {
@@ -149,12 +154,20 @@ export class Russian extends LanguageWithModel {
       new LongSentenceRule(messages, userConfig, 50),
       new LongParagraphRule(messages, this, userConfig),
       new ParagraphRepeatBeginningRule(messages, this),
-      // TODO(W27): RussianFillerWordsRule(messages, this, userConfig)
+      new RussianFillerWordsRule(messages, this, userConfig),
       new PunctuationMarkAtParagraphEnd2(messages, this),
       // specific to Russian:
       new MorfologikRussianYOSpellerRule(messages, this, userConfig, altLanguages), // This rule must set off by default!!!
-      // TODO(W26/W27): RussianUnpairedBracketsRule, RussianCompoundRule, RussianSimpleReplaceRule, RussianSimpleWordRepeatRule,
-      // RussianWordCoherencyRule, RussianWordRepeatRule, RussianWordRootRepeatRule, RussianVerbConjugationRule, RussianDashRule, RussianSpecificCaseRule
+      new RussianUnpairedBracketsRule(messages, this),
+      new RussianCompoundRule(messages, this, userConfig),
+      new RussianSimpleReplaceRule(messages),
+      new RussianSimpleWordRepeatRule(messages, this),
+      new RussianWordCoherencyRule(messages),
+      new RussianWordRepeatRule(messages),
+      new RussianWordRootRepeatRule(messages),
+      new RussianVerbConjugationRule(messages),
+      new RussianDashRule(messages),
+      new RussianSpecificCaseRule(messages),
     ];
   }
 
