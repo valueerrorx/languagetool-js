@@ -1,0 +1,334 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "description": "ru /v2/check: POST/GET, language variants, auto-detection, options, JSON data, empty text",
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru",
+    "text": "Материал из Википедии — свободной энциклопедии"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru-RU",
+    "text": "Материал из Википедии — свободной энциклопедии"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru",
+    "text": "Материал из Википедии — свободной энциклопедии",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru",
+    "text": "Он вышел из-за дома."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru-RU",
+    "text": "Он вышел из-за дома."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru",
+    "text": "Он вышел из-за дома.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru",
+    "text": "Он – Иван."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru-RU",
+    "text": "Он – Иван."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru",
+    "text": "Он – Иван.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru",
+    "text": "На экономичном саммите обсуждались злободневные темы."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru-RU",
+    "text": "На экономичном саммите обсуждались злободневные темы."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru",
+    "text": "На экономичном саммите обсуждались злободневные темы.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru",
+    "text": "прейскурант цен"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru-RU",
+    "text": "прейскурант цен"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru",
+    "text": "прейскурант цен",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru",
+    "text": "Он увидел собаку хромавшую на задние лапы."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru-RU",
+    "text": "Он увидел собаку хромавшую на задние лапы."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru",
+    "text": "Он увидел собаку хромавшую на задние лапы.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru",
+    "text": "Коренья дерева высохли."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru-RU",
+    "text": "Коренья дерева высохли."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru",
+    "text": "Коренья дерева высохли.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru",
+    "text": "Она – закадычная подруга."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru-RU",
+    "text": "Она – закадычная подруга."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru",
+    "text": "Она – закадычная подруга.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "auto",
+    "text": "Это случилось 31 ноября 2014 г. Это случилось 31 апреля 2014 г. Это случилось 30 ноября 2014 г. Это случилось 30 февраля 2014 г. Это случилось 28 февраля 2014 г."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "auto",
+    "text": "Это случилось 31 ноября 2014 г. Это случилось 31 апреля 2014 г. Это случилось 30 ноября 2014 г. Это случилось 30 февраля 2014 г. Это случилось 28 февраля 2014 г.",
+    "preferredVariants": "ru-RU"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru",
+    "text": "Он – Иван.",
+    "enabledOnly": "true",
+    "enabledRules": "MORFOLOGIK_RULE_RU_RU,MORFOLOGIK_RULE_RU_RU_YO,RU_COMPOUNDS"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru",
+    "text": "Он – Иван.",
+    "disabledRules": "MORFOLOGIK_RULE_RU_RU,MORFOLOGIK_RULE_RU_RU_YO,RU_COMPOUNDS"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru",
+    "text": "На экономичном саммите обсуждались злободневные темы.",
+    "motherTongue": "en"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru",
+    "text": "На экономичном саммите обсуждались злободневные темы.",
+    "mode": "textLevelOnly"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru",
+    "text": "На экономичном саммите обсуждались злободневные темы.",
+    "mode": "allButTextLevelOnly",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru",
+    "text": ""
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru",
+    "text": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru",
+    "data": "{\"annotation\":[{\"text\":\"Он – Иван.\"},{\"markup\":\"<b>\"},{\"text\":\" На экономичном саммите обсуждались злободневные темы.\"}]}"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru",
+    "text": "Он – Иван.",
+    "enableTempOffRules": "true",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru",
+    "text": "Он – Иван.",
+    "c": "1"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "ru",
+    "text": "дом дом. не не. и и. по по. что что. ПО по.",
+    "enabledRules": "MORFOLOGIK_RULE_RU_RU"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/languages",
+   "languagesList": true
+  }
+ ]
+}

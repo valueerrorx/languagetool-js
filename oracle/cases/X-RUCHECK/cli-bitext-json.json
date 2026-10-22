@@ -1,0 +1,25 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths",
+  "logTimestamp"
+ ],
+ "description": "ru CLI bitext-json",
+ "args": [
+  "-l",
+  "ru",
+  "-m",
+  "en",
+  "-b2",
+  "--json",
+  "input.txt"
+ ],
+ "files": {
+  "input.txt": "There is a dog.\tНет собаки.\nThere is no dog.\tНет собаки.\n"
+ }
+}
