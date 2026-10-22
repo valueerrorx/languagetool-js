@@ -12,7 +12,7 @@ describe('LanguagesTest', () => {
   it('testGet', () => {
     expect(Languages.get().length).toBe(Languages.getWithDemoLanguage().length);
     expect(Languages.get().map((l) => l.getShortCodeWithCountryAndVariant())).toEqual([
-      'de', 'de-DE', 'de-AT', 'de-CH', 'en', 'en-US', 'en-GB', 'en-AU', 'en-CA', 'en-NZ', 'en-ZA', 'fr', 'fr-CA', 'fr-CH', 'fr-BE', 'it', 'pl-PL', 'ru-RU', 'sk-SK', 'sl-SI']);
+      'de', 'de-DE', 'de-AT', 'de-CH', 'en', 'en-US', 'en-GB', 'en-AU', 'en-CA', 'en-NZ', 'en-ZA', 'es', 'es-AR', 'fr', 'fr-CA', 'fr-CH', 'fr-BE', 'it', 'pl-PL', 'ru-RU', 'sk-SK', 'sl-SI']);
   });
 
   // Java: LanguagesTest#testGetIsUnmodifiable
@@ -116,7 +116,7 @@ describe('LanguagesTest', () => {
 
   // Java: Languages#getLongCodeToLangMapping order (fixture X-LANG-REGISTRY/lists, in-scope entries)
   it('longCodeToLangMapping keeps the Java HashMap order', () => {
-    expect(Languages.getLongCodeToLangMapping().keySet()).toEqual(['en-US', 'en-CA', 'en-ZA', 'sl-SI', 'de-AT', 'fr-CH', 'en-AU', 'de-CH', 'de-DE', 'sk-SK', 'fr-CA', 'it-IT', 'en-NZ', 'pl-PL', 'ru-RU', 'fr-BE', 'de-LU', 'fr-FR', 'en-GB']);
+    expect(Languages.getLongCodeToLangMapping().keySet()).toEqual(['en-US', 'en-CA', 'en-ZA', 'sl-SI', 'de-AT', 'fr-CH', 'en-AU', 'de-CH', 'de-DE', 'sk-SK', 'es-ES', 'fr-CA', 'it-IT', 'en-NZ', 'pl-PL', 'ru-RU', 'es-AR', 'fr-BE', 'de-LU', 'fr-FR', 'en-GB']);
     expect(Languages.getLanguageForShortCode('fr-FR').getShortCodeWithCountryAndVariant()).toBe('fr');
   });
 
