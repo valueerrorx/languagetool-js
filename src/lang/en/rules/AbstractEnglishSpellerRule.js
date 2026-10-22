@@ -154,9 +154,7 @@ export class AbstractEnglishSpellerRule extends MorfologikSpellerRule {
     this.addExamplePair(Example.wrong('This <marker>sentenc</marker> contains a spelling mistake.'),
       Example.fixed('This <marker>sentence</marker> contains a spelling mistake.'));
     const languageSpecificIgnoreFile = javaReplace(this.getSpellingFileName(), '.txt', `_${language.getShortCodeWithCountryAndVariant()}.txt`);
-    for (const ignoreWord of this.wordListLoader.loadWords(languageSpecificIgnoreFile)) {
-      this.addIgnoreWords(ignoreWord);
-    }
+    this.addIgnoreWordsList(this.wordListLoader.loadWords(languageSpecificIgnoreFile));
     this.translator = BeoLingusTranslator.getInstance(globalConfig);
     this.topSuggestions = getTopSuggestions();
     this.topSuggestionsIgnoreCase = getTopSuggestionsIgnoreCase();

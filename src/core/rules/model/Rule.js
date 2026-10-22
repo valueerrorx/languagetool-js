@@ -6,6 +6,7 @@ import { IncorrectExample } from './Examples.js';
 import { ITSIssueType } from './ITSIssueType.js';
 import { Tag, ToneTag } from './Tag.js';
 import { UserConfig } from './UserConfig.js';
+import { RuleSet } from '../../patterns/RuleSet.js';
 import { getMessageBundle } from '../../resources/ResourceBundleTools.js';
 
 const MISC = new Category(CategoryIds.MISC, 'Miscellaneous');
@@ -116,9 +117,19 @@ export class Rule {
     if (antiPatterns.length !== 0) {
       // we need a copy of the sentence, not reference to the old one
       let immunizedSentence = sentence.copy(sentence);
-      for (let i = 0; i < antiPatterns.length; i++) {
+      let patterns = antiPatterns;
+      if (antiPatterns.length >= 64) {
+        // JS: anti-patterns whose token hint is not in the sentence are skipped by replace() (canBeIgnoredFor); preselect them by hint
+        let cache = this.antiPatternRuleSet;
+        if (cache === undefined || cache.source !== antiPatterns || cache.length !== antiPatterns.length) {
+          cache = { source: antiPatterns, length: antiPatterns.length, ruleSet: RuleSet.textHinted(antiPatterns) };
+          this.antiPatternRuleSet = cache;
+        }
+        patterns = cache.ruleSet.rulesForSentence(sentence);
+      }
+      for (let i = 0; i < patterns.length; i++) {
         try {
-          immunizedSentence = antiPatterns[i].replace(immunizedSentence);
+          immunizedSentence = patterns[i].replace(immunizedSentence);
         } catch (e) {
           if (e instanceof IOException) throw new RuntimeException(e);
           throw e;

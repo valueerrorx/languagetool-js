@@ -72,13 +72,24 @@ export class BufferedReader {
   // Java: BufferedReader#BufferedReader(Reader)
   constructor(text) {
     if (text === null || text === undefined) throw new NullPointerException();
-    this.lines = readerLines(text);
+    this.text_ = text; // JS: decoded text (or a thunk producing it); split into lines on the first readLine
+    this.lines_ = null;
     this.next = 0;
+  }
+
+  // JS: lazily split lines (most readers of cached dictionaries are never read)
+  get lines() {
+    if (this.lines_ === null) {
+      this.lines_ = readerLines(typeof this.text_ === 'function' ? this.text_() : this.text_);
+      this.text_ = null;
+    }
+    return this.lines_;
   }
 
   // Java: BufferedReader#readLine()
   readLine() {
-    return this.next < this.lines.length ? this.lines[this.next++] : null;
+    const lines = this.lines;
+    return this.next < lines.length ? lines[this.next++] : null;
   }
 }
 

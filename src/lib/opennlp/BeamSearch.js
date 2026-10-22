@@ -13,6 +13,7 @@ export class BeamSearch {
     this.size = size;
     this.model = model;
     this.probs = new Float64Array(model.getNumOutcomes());
+    this.scoresByContext = new WeakMap(); // JS: eval results of cached context arrays
     if (cacheSize > 0) throw new Error('BeamSearch contextsCache is not used by LanguageTool');
   }
 
@@ -30,7 +31,16 @@ export class BeamSearch {
         const tmpOutcomes = top.getOutcomes();
         const outcomes = tmpOutcomes.slice();
         const contexts = cg.getContext(i, sequence, outcomes, additionalContext);
-        const scores = this.model.eval(contexts, this.probs);
+        let scores;
+        if (cg.cachesContexts === true) { // JS: the generator returns the same array for equal contexts; eval is a pure function of it
+          scores = this.scoresByContext.get(contexts);
+          if (scores === undefined) {
+            scores = Float64Array.from(this.model.eval(contexts, this.probs));
+            this.scoresByContext.set(contexts, scores);
+          }
+        } else {
+          scores = this.model.eval(contexts, this.probs);
+        }
         const tempScores = Float64Array.from(scores);
         tempScores.sort();
         const min = tempScores[Math.max(0, scores.length - this.size)];

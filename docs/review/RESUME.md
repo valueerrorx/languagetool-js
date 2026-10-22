@@ -16,3 +16,4 @@ W42 todo:
 - DEV-026 also applies to it/ru/es etc.: a null LM gives an empty list (it currently throws an NPE; IT-0052 rulelist-direct needs a deviations.json entry).
 - cli `--list` / rule-file-list: Java lists about 40 languages. Needs a dev006 listCut in the cli comparator (it/sk/sl cli-rule-file-list).
 - Corpus: only de/en/fr exist. W42 should fetch it/pl/sl/sk/ru/es texts (oracle/scripts/fetch-corpus.mjs + gen-corpus.mjs) and run an X-CORPUS run for each.
+- Harness note: chained X-CHUNK, X-ENCHUNK and X-DECHUNK runs fail because chunk-run.mjs mutates the shared MultiWordChunker.getInstance cache. Run each ID on its own, or let the adapter use new MultiWordChunker(). This is not a src bug.

@@ -20,62 +20,84 @@ function getPrefixes(lex) {
 
 // Java: DefaultPOSContextGenerator#getContext(int,String[],String[],Object[]); contextsCache is a pure memo of this result and is not ported
 const posContextGenerator = {
+  cachesContexts: true,
+  // JS: per sequence cache by (index, previous two tags); the beam asks for the same contexts repeatedly
   getContext(index, sequence, priorDecisions) {
-    let next;
-    let nextnext;
-    let prev;
-    let prevprev;
-    let tagprev;
-    let tagprevprev;
-    const lex = sequence[index];
-    if (sequence.length > index + 1) {
-      next = sequence[index + 1];
-      if (sequence.length > index + 2) nextnext = sequence[index + 2];
-      else nextnext = SE;
-    } else {
-      next = SE;
-      nextnext = null;
+    let perIndex = posContextCache.get(sequence);
+    if (perIndex === undefined) {
+      perIndex = [];
+      posContextCache.set(sequence, perIndex);
     }
-    if (index - 1 >= 0) {
-      prev = sequence[index - 1];
-      tagprev = priorDecisions[index - 1];
-      if (index - 2 >= 0) {
-        prevprev = sequence[index - 2];
-        tagprevprev = priorDecisions[index - 2];
-      } else {
-        prevprev = SB;
-        tagprevprev = null;
-      }
-    } else {
-      prev = SB;
-      prevprev = null;
-      tagprev = null;
-      tagprevprev = null;
+    let m = perIndex[index];
+    if (m === undefined) perIndex[index] = m = new Map();
+    const key = (index < 2 ? '' : String(priorDecisions[index - 2])) + '\u0000' + (index < 1 ? '' : String(priorDecisions[index - 1]));
+    let ctx = m.get(key);
+    if (ctx === undefined) {
+      ctx = computeContext(index, sequence, priorDecisions);
+      m.set(key, ctx);
     }
-    const e = [];
-    e.push('default');
-    e.push('w=' + lex);
-    // dict == null for model version < 1.8
-    for (const s of getSuffixes(lex)) e.push('suf=' + s);
-    for (const p of getPrefixes(lex)) e.push('pre=' + p);
-    if (lex.indexOf('-') !== -1) e.push('h');
-    if (/[A-Z]/.test(lex)) e.push('c');
-    if (/[0-9]/.test(lex)) e.push('d');
-    if (prev !== null) {
-      e.push('p=' + prev);
-      if (tagprev !== null) e.push('t=' + tagprev);
-      if (prevprev !== null) {
-        e.push('pp=' + prevprev);
-        if (tagprevprev !== null) e.push('t2=' + tagprevprev + ',' + tagprev);
-      }
-    }
-    if (next !== null) {
-      e.push('n=' + next);
-      if (nextnext !== null) e.push('nn=' + nextnext);
-    }
-    return e;
+    return ctx;
   },
 };
+
+const posContextCache = new WeakMap();
+
+// Java: DefaultPOSContextGenerator#getContext(int,String[],String[],Object[])
+function computeContext(index, sequence, priorDecisions) {
+  let next;
+  let nextnext;
+  let prev;
+  let prevprev;
+  let tagprev;
+  let tagprevprev;
+  const lex = sequence[index];
+  if (sequence.length > index + 1) {
+    next = sequence[index + 1];
+    if (sequence.length > index + 2) nextnext = sequence[index + 2];
+    else nextnext = SE;
+  } else {
+    next = SE;
+    nextnext = null;
+  }
+  if (index - 1 >= 0) {
+    prev = sequence[index - 1];
+    tagprev = priorDecisions[index - 1];
+    if (index - 2 >= 0) {
+      prevprev = sequence[index - 2];
+      tagprevprev = priorDecisions[index - 2];
+    } else {
+      prevprev = SB;
+      tagprevprev = null;
+    }
+  } else {
+    prev = SB;
+    prevprev = null;
+    tagprev = null;
+    tagprevprev = null;
+  }
+  const e = [];
+  e.push('default');
+  e.push('w=' + lex);
+  // dict == null for model version < 1.8
+  for (const s of getSuffixes(lex)) e.push('suf=' + s);
+  for (const p of getPrefixes(lex)) e.push('pre=' + p);
+  if (lex.indexOf('-') !== -1) e.push('h');
+  if (/[A-Z]/.test(lex)) e.push('c');
+  if (/[0-9]/.test(lex)) e.push('d');
+  if (prev !== null) {
+    e.push('p=' + prev);
+    if (tagprev !== null) e.push('t=' + tagprev);
+    if (prevprev !== null) {
+      e.push('pp=' + prevprev);
+      if (tagprevprev !== null) e.push('t2=' + tagprevprev + ',' + tagprev);
+    }
+  }
+  if (next !== null) {
+    e.push('n=' + next);
+    if (nextnext !== null) e.push('nn=' + nextnext);
+  }
+  return e;
+}
 
 // Java: opennlp.tools.postag.DefaultPOSSequenceValidator
 class DefaultPOSSequenceValidator {
@@ -108,12 +130,14 @@ export class POSTaggerME {
 
   // Java: POSTaggerME#tag(String[])
   tag(toks) {
+    posContextCache.delete(toks);
     this.bestSequence = this.model.bestSequence(toks, null, this.contextGen, this.sequenceValidator);
     return this.bestSequence.getOutcomes().slice();
   }
 
   // Java: POSTaggerME#topKSequences(String[])
   topKSequences(sentence) {
+    posContextCache.delete(sentence);
     return this.model.bestSequencesDefault(this.size, sentence, null, this.contextGen, this.sequenceValidator);
   }
 

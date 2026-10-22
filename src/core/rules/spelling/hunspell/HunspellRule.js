@@ -493,7 +493,8 @@ export class HunspellRule extends SpellingCheckRule {
       }
       ignoreFileContents.set(key, lines);
     }
-    for (const w of ignoreFileContents.get(key)) this.wordsToBeIgnored.add(w);
+    const lines = ignoreFileContents.get(key);
+    this.applyIgnorePlan(this.ignorePlanFor(lines, 'direct', (addWord, addCompound, addSingle) => { for (const w of lines) addSingle(w); })); // JS: plan of adding the lines unchanged
   }
 
   // Java: HunspellRule#isInIgnoredSet(String)

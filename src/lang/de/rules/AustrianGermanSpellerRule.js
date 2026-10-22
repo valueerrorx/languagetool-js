@@ -23,9 +23,7 @@ export class AustrianGermanSpellerRule extends GermanSpellerRule {
   // Java: AustrianGermanSpellerRule#init()
   init() {
     super.init();
-    for (const ignoreWord of this.variantWordListLoader.loadWords('/de/hunspell/spelling-de-AT.txt')) {
-      this.addIgnoreWords(ignoreWord);
-    }
+    this.addIgnoreWordsList(this.variantWordListLoader.loadWords('/de/hunspell/spelling-de-AT.txt'));
   }
 
   // Java: AustrianGermanSpellerRule#getLanguageVariantSpellingFileName()

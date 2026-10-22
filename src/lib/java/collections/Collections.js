@@ -19,6 +19,16 @@ function isIndexProp(prop) {
 function listView(list, blockedMethods, blockIndexSet, noopMethods = [], arrayIndexErrors = false) {
   return new Proxy(list, {
     get(target, prop) {
+      if (typeof prop === 'string') { // perf: plain non-negative index (the hot path of list reads)
+        const c = prop.charCodeAt(0);
+        if (c >= 48 && c <= 57 && isIndexProp(prop)) {
+          if (arrayIndexErrors && Number(prop) >= target.length) {
+            throw new ArrayIndexOutOfBoundsException(`Index ${prop} out of bounds for length ${target.length}`);
+          }
+          const v = target[prop];
+          return typeof v === 'function' ? v.bind(target) : v;
+        }
+      }
       if (noopMethods.includes(prop)) return noop;
       if (blockedMethods.includes(prop)) return uoe;
       if (arrayIndexErrors && isIndexProp(prop) && (Number(prop) >= target.length || Number(prop) < 0)) {

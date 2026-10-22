@@ -2,6 +2,8 @@
 import { UnsupportedOperationException } from '../../lib/java/errors.js';
 import { unmodifiableList } from '../../lib/java/collections/Collections.js';
 
+const hintIndexCache = [[], []]; // JS: most recently used first, per withLemmaHints
+
 export class RuleSet {
   static FQCN = 'org.languagetool.rules.patterns.RuleSet';
   // set by the AbstractTokenBasedRule port (F25+): class whose instances carry `tokenHints`
@@ -55,32 +57,10 @@ export class RuleSet {
   // Java: RuleSet#hinted(List,boolean); BitSets as sorted index arrays / byte masks
   static hinted(rules, withLemmaHints) {
     const allRules = unmodifiableList(rules);
-    const byToken = new Map();
-    const byLemma = new Map();
-    const unclassified = [];
     const TokenBased = RuleSet.abstractTokenBasedRuleClass;
-    for (let i = 0; i < allRules.length; i++) {
-      const rule = allRules[i];
-      let classified = false;
-      if (TokenBased !== null && rule instanceof TokenBased) {
-        const tokenHints = rule.tokenHints;
-        const firstHint = tokenHints === null || tokenHints === undefined ? null
-          : withLemmaHints ? tokenHints[0]
-            : (tokenHints.find((th) => !th.inflected) ?? null);
-        if (firstHint !== null && firstHint !== undefined) {
-          classified = true;
-          const map = firstHint.inflected ? byLemma : byToken;
-          for (const hint of firstHint.lowerCaseValues) {
-            let set = map.get(hint);
-            if (set === undefined) map.set(hint, set = []);
-            if (set[set.length - 1] !== i) set.push(i);
-          }
-        }
-      }
-      if (!classified) {
-        unclassified.push(i);
-      }
-    }
+    // JS: the hint index only depends on the token-based rules (identity) and their positions; reuse it across pipelines
+    const cached = RuleSet.findHintIndex(Array.isArray(rules) ? rules : allRules, withLemmaHints, TokenBased);
+    const { byToken, byLemma, unclassified } = cached;
     return new (class extends RuleSet {
       allRules() {
         return allRules;
@@ -104,6 +84,61 @@ export class RuleSet {
         return result;
       }
     })();
+  }
+
+  // JS: memo of RuleSet#hinted index structures (rule lists that agree in token-based rule identity and positions)
+  static findHintIndex(allRules, withLemmaHints, TokenBased) {
+    const n = allRules.length;
+    const entries = hintIndexCache[withLemmaHints ? 1 : 0];
+    for (let e = 0; e < entries.length; e++) {
+      const entry = entries[e];
+      const sig = entry.sig;
+      if (sig.length !== n) continue;
+      let same = true;
+      for (let i = 0; i < n; i++) {
+        const rule = allRules[i];
+        if (TokenBased !== null && rule instanceof TokenBased ? rule !== sig[i] : sig[i] !== null) {
+          same = false;
+          break;
+        }
+      }
+      if (same) {
+        if (e > 0) { entries.splice(e, 1); entries.unshift(entry); }
+        return entry;
+      }
+    }
+    const byToken = new Map();
+    const byLemma = new Map();
+    const unclassified = [];
+    const sig = new Array(n);
+    for (let i = 0; i < n; i++) {
+      const rule = allRules[i];
+      let classified = false;
+      sig[i] = null;
+      if (TokenBased !== null && rule instanceof TokenBased) {
+        sig[i] = rule;
+        const tokenHints = rule.tokenHints;
+        const firstHint = tokenHints === null || tokenHints === undefined ? null
+          : withLemmaHints ? tokenHints[0]
+            : (tokenHints.find((th) => !th.inflected) ?? null);
+        if (firstHint !== null && firstHint !== undefined) {
+          classified = true;
+          const map = firstHint.inflected ? byLemma : byToken;
+          for (const hint of firstHint.lowerCaseValues) {
+            let set = map.get(hint);
+            if (set === undefined) map.set(hint, set = []);
+            if (set[set.length - 1] !== i) set.push(i);
+          }
+        }
+      }
+      if (!classified) {
+        unclassified.push(i);
+      }
+    }
+    const entry = { sig, byToken, byLemma, unclassified };
+    entries.unshift(entry);
+    if (entries.length > 16) entries.pop();
+    return entry;
   }
 
   // Java: RuleSet#filterList(BitSet,List); includedIndices = ascending set-bit indices

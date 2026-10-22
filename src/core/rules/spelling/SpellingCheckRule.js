@@ -48,6 +48,9 @@ function distinct(list) {
   return out;
 }
 
+const NO_TOKENIZER = {}; // key of plans without tokenizing
+const IGNORE_ROOT = { set: new Set(), sorted: null, sortedCI: null, children: new Map() }; // composition of plans: empty ignore set
+const IGNORE_LIST_PLANS = new WeakMap(); // perf: cached word list -> tokenizer -> { single, multi }
 const SINGLE_TOKEN_LINES = new WeakMap(); // perf: tokenizer -> memo of ignore lines (<= 1 token / token lists)
 
 // Java: SpellingCheckRule (abstract: getId, getDescription, match, isMisspelled)
@@ -74,9 +77,14 @@ export class SpellingCheckRule extends Rule {
     this.considerIgnoreWords = true;
     this.convertsCase = false;
     this.wordsToBeIgnored = new Set();
+    this.ignoreNode = IGNORE_ROOT; // JS: null as soon as wordsToBeIgnored is no composition of plans
+    this.ignoreShared = false; // JS: wordsToBeIgnored is the Set of the memo node (copy on write)
+    this.dictFromNode = false;
+    this.dictFromNodeCI = false;
     this.ignoreWordsWithLength = 0;
     if (userConfig !== null && userConfig !== undefined) {
       for (const w of userConfig.getAcceptedWords()) this.wordsToBeIgnored.add(w);
+      if (this.wordsToBeIgnored.size !== 0) this.ignoreNode = null;
     }
     this.setLocQualityIssueType(ITSIssueType.Misspelling);
   }
@@ -173,11 +181,14 @@ export class SpellingCheckRule extends Rule {
 
   // Java: SpellingCheckRule#addIgnoreTokens(List)
   addIgnoreTokens(tokens) {
+    this.markIgnoreDirty();
     for (const t of tokens) this.wordsToBeIgnored.add(t);
   }
 
   // Java: SpellingCheckRule#updateIgnoredWordDictionary()
   updateIgnoredWordDictionary() {
+    this.dictFromNode = false;
+    this.dictFromNodeCI = false;
     this.wordsToBeIgnoredDictionaryIgnoreCase = null;
     this.wordsToBeIgnoredDictionary = null;
   }
@@ -286,19 +297,13 @@ export class SpellingCheckRule extends Rule {
 
   // Java: SpellingCheckRule#init()
   init() {
-    for (const ignoreWord of this.wordListLoader.loadWords(this.getIgnoreFileName())) {
-      this.addIgnoreWords(ignoreWord);
-    }
+    this.addIgnoreWordsList(this.wordListLoader.loadWords(this.getIgnoreFileName()));
     if (this.getSpellingFileName() !== null) {
-      for (const ignoreWord of this.wordListLoader.loadWords(this.getSpellingFileName())) {
-        this.addIgnoreWords(ignoreWord);
-      }
+      this.addIgnoreWordsList(this.wordListLoader.loadWords(this.getSpellingFileName()));
     }
     for (const fileName of this.getAdditionalSpellingFileNames()) {
       if (getDataBroker().resourceExists(fileName)) {
-        for (const ignoreWord of this.wordListLoader.loadWords(fileName)) {
-          this.addIgnoreWords(ignoreWord);
-        }
+        this.addIgnoreWordsList(this.wordListLoader.loadWords(fileName));
       }
     }
     this.updateIgnoredWordDictionary();
@@ -391,9 +396,104 @@ export class SpellingCheckRule extends Rule {
     }
   }
 
+  // JS: for (String line : lines) addIgnoreWords(line) over a (cached, immutable) list; lines are classified once per list
+  addIgnoreWordsList(lines) {
+    if (this.addIgnoreWords !== SpellingCheckRule.prototype.addIgnoreWords || lines.length < 64) {
+      for (const line of lines) this.addIgnoreWords(line);
+      return;
+    }
+    const plan = this.ignorePlanFor(lines, '', (addWord) => {
+      for (const line of lines) addWord(line);
+    });
+    this.applyIgnorePlan(plan);
+  }
+
+  // JS: plan { single, multi, compounds } of the words fed by `feed(addWord, addCompound, addSingle)`; memo per list, tokenizer and variant key
+  ignorePlanFor(lines, variantKey, feed) {
+    const tokenize = this.tokenizeNewWords();
+    const tokenizer = tokenize ? this.language.getWordTokenizer() : NO_TOKENIZER;
+    let perList = IGNORE_LIST_PLANS.get(lines);
+    if (perList === undefined) {
+      perList = new Map();
+      IGNORE_LIST_PLANS.set(lines, perList);
+    }
+    let perTokenizer = perList.get(tokenizer);
+    if (perTokenizer === undefined) {
+      perTokenizer = new Map();
+      perList.set(tokenizer, perTokenizer);
+    }
+    let plan = perTokenizer.get(variantKey);
+    if (plan === undefined) {
+      // same classification as addIgnoreWords: single tokens (kept in order) and multi-token lines
+      const single = new Set();
+      const multi = [];
+      const compounds = [];
+      feed((word) => {
+        if (!tokenize || tokenizer.tokenize(word).length <= 1) single.add(word);
+        else multi.push(word);
+      }, (word) => compounds.push(word), (word) => single.add(word));
+      plan = { single, multi, compounds, antiPatterns: new Map() };
+      perTokenizer.set(variantKey, plan);
+    }
+    return plan;
+  }
+
+  // JS: applies a plan; while the ignore set is exactly a known composition of plans, its content is copied from the memo
+  applyIgnorePlan(plan) {
+    const node = this.ignoreNode;
+    if (node !== null) {
+      let child = node.children.get(plan);
+      if (child === undefined) {
+        child = { set: null, sorted: null, sortedCI: null, children: new Map() };
+        node.children.set(plan, child);
+      }
+      if (child.set === null) {
+        const set = this.ignoreShared ? new Set(this.wordsToBeIgnored) : this.wordsToBeIgnored;
+        for (const w of plan.single) set.add(w);
+        child.set = set;
+      }
+      this.wordsToBeIgnored = child.set; // shared and never mutated: markIgnoreDirty copies it before the first change
+      this.ignoreShared = true;
+      this.ignoreNode = child;
+    } else {
+      for (const w of plan.single) this.wordsToBeIgnored.add(w);
+    }
+    for (const w of plan.compounds) this.wordsToBeIgnoredInCompounds.add(w);
+    // multi-token lines are processed in list order relative to each other (single lines do not touch antiPatterns)
+    if (plan.multi.length !== 0) {
+      // the anti-pattern rules of multi-token lines are stateless: shared by all rules of the same language
+      let rules = plan.antiPatterns.get(this.language);
+      if (rules === undefined) {
+        rules = [];
+        const before = this.antiPatterns.length;
+        for (const w of plan.multi) SpellingCheckRule.prototype.addIgnoreWords.call(this, w);
+        for (let i = before; i < this.antiPatterns.length; i++) rules.push(this.antiPatterns[i]);
+        plan.antiPatterns.set(this.language, rules);
+      } else {
+        for (const r of rules) this.antiPatterns.push(r);
+      }
+    }
+  }
+
+  // JS: wordsToBeIgnored is changed outside a plan; keeps the sorted dictionaries a Java rule would already hold
+  markIgnoreDirty() {
+    const node = this.ignoreNode;
+    if (node === null) return;
+    this.ignoreNode = null;
+    if (this.ignoreShared) {
+      this.wordsToBeIgnored = new Set(this.wordsToBeIgnored);
+      this.ignoreShared = false;
+    }
+    if (this.dictFromNode) this.wordsToBeIgnoredDictionary = node.sorted;
+    if (this.dictFromNodeCI) this.wordsToBeIgnoredDictionaryIgnoreCase = node.sortedCI;
+    this.dictFromNode = false;
+    this.dictFromNodeCI = false;
+  }
+
   // Java: SpellingCheckRule#addIgnoreWords(String)
   addIgnoreWords(line) {
     if (!this.tokenizeNewWords()) {
+      this.markIgnoreDirty();
       this.wordsToBeIgnored.add(line);
     } else {
       // if line consists of several words (separated by " "), a DisambiguationPatternRule
@@ -413,6 +513,7 @@ export class SpellingCheckRule extends Rule {
         this.ignoreMemo = memo;
       }
       if (memo.single.has(line)) {
+        this.markIgnoreDirty();
         this.wordsToBeIgnored.add(line);
         return;
       }
@@ -435,6 +536,7 @@ export class SpellingCheckRule extends Rule {
         this.antiPatterns.push(new DPR('INTERNAL_ANTIPATTERN', '(no description)', this.language,
           patternTokens, null, null, DPR.DisambiguatorAction.IGNORE_SPELLING));
       } else {
+        this.markIgnoreDirty();
         this.wordsToBeIgnored.add(line);
       }
     }
@@ -485,7 +587,18 @@ export class SpellingCheckRule extends Rule {
     }
     const comparator = caseSensitive ? javaCompare : CASE_INSENSITIVE_ORDER;
     let array = caseSensitive ? this.wordsToBeIgnoredDictionary : this.wordsToBeIgnoredDictionaryIgnoreCase;
-    if (array === null) {
+    const node = this.ignoreNode;
+    if (array === null && node !== null) {
+      // JS: the sorted dictionary of a composition of plans is shared by all rules with the same ignore set
+      array = caseSensitive ? node.sorted : node.sortedCI;
+      if (array === null) {
+        array = caseSensitive ? [...this.wordsToBeIgnored].sort() : [...this.wordsToBeIgnored].sort(comparator);
+        if (caseSensitive) node.sorted = array;
+        else node.sortedCI = array;
+      }
+      if (caseSensitive) this.dictFromNode = true;
+      else this.dictFromNodeCI = true;
+    } else if (array === null) {
       array = caseSensitive ? [...this.wordsToBeIgnored].sort() : [...this.wordsToBeIgnored].sort(comparator); // stable, as Stream#sorted; default sort = UTF-16 code unit order = String#compareTo
       if (caseSensitive) {
         this.wordsToBeIgnoredDictionary = array;

@@ -376,6 +376,26 @@ export class GermanSpellerRule extends CompoundAwareHunspellRule {
     }
   }
 
+  // JS: for (String line : lines) addIgnoreWords(line) over a cached list; expansion and classification are done once per list and variant
+  addIgnoreWordsList(lines) {
+    if (this.addIgnoreWords !== GermanSpellerRule.prototype.addIgnoreWords || this.expandLine !== GermanSpellerRule.prototype.expandLine || lines.length < 64) {
+      super.addIgnoreWordsList(lines);
+      return;
+    }
+    const swiss = this.language.getShortCodeWithCountryAndVariant() === 'de-CH';
+    const plan = this.ignorePlanFor(lines, swiss ? 'de-CH' : 'de', (addWord, addCompound) => {
+      for (const origLine of lines) { // GermanSpellerRule#addIgnoreWords(String)
+        const line = swiss ? javaReplace(origLine, 'ß', 'ss') : origLine;
+        if (origLine.endsWith('-*')) {
+          addCompound(substring(line, 0, line.length - 2));
+          continue;
+        }
+        for (const word of this.expandLine(line)) addWord(word);
+      }
+    });
+    this.applyIgnorePlan(plan);
+  }
+
   // Java: GermanSpellerRule#expandLine(String)
   expandLine(line) {
     return this.lineExpander.expandLine(line);

@@ -219,7 +219,7 @@ export class MorfologikMultiSpeller {
     for (const plainTextPath of plainTextPaths) {
       streams.push(getDataBroker().getFromResourceDirAsStream(plainTextPath));
     }
-    return new BufferedReader(decodeUtf8Java(Buffer.concat(streams)));
+    return new BufferedReader(() => decodeUtf8Java(Buffer.concat(streams))); // JS: decoded lazily
   }
 
   // all static caches of a fresh JVM (oracle adapters start each case file with empty caches)

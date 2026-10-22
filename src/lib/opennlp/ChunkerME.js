@@ -66,9 +66,25 @@ function chunkContext(i, toks, tags, preds) {
 }
 
 // Java: opennlp.tools.util.TokenTag#create(String[],String[]) + ChunkerContextGenerator adapter
+// JS: per sequence cache of the context arrays by (index, outcome[i-2], outcome[i-1]); the beam asks for the same contexts repeatedly
+const chunkContextCache = new WeakMap();
 const chunkContextGenerator = {
+  cachesContexts: true,
   getContext(index, sequence, priorDecisions) {
-    return chunkContext(index, sequence.map((t) => t.token), sequence.map((t) => t.tag), priorDecisions);
+    let st = chunkContextCache.get(sequence);
+    if (st === undefined) {
+      st = { toks: sequence.map((t) => t.token), tags: sequence.map((t) => t.tag), perIndex: [] };
+      chunkContextCache.set(sequence, st);
+    }
+    let m = st.perIndex[index];
+    if (m === undefined) st.perIndex[index] = m = new Map();
+    const key = (index < 2 ? '' : String(priorDecisions[index - 2])) + '\u0000' + (index < 1 ? '' : String(priorDecisions[index - 1]));
+    let ctx = m.get(key);
+    if (ctx === undefined) {
+      ctx = chunkContext(index, st.toks, st.tags, priorDecisions);
+      m.set(key, ctx);
+    }
+    return ctx;
   },
 };
 
