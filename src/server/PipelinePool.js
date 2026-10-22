@@ -35,6 +35,8 @@ function configureFromRules(lt, config) {
   lt.setConfigValues(config.getConfigurableValues());
 }
 
+let lmWarned = false;
+
 export class PipelinePool {
   static FQCN = 'org.languagetool.server.PipelinePool';
 
@@ -90,7 +92,11 @@ export class PipelinePool {
     lt.setMaxErrorsPerWordRate(config.getMaxErrorsPerWordRate());
     lt.disableRules(disabledRuleIds);
     if (withLanguageModel) {
-      throw notPortedYet('PipelinePool#createPipeline language model rules (DEV-001)');
+      // DEV-001: language model rules are unavailable; build the pipeline without them (warn once)
+      if (!lmWarned) {
+        lmWarned = true;
+        logger.warn('Language model rules are not available in this build (DEV-001); pipelines are created without them');
+      }
     }
     if (config.getRulesConfigFile() !== null) {
       this.configureFromRulesFile(lt, lang);
