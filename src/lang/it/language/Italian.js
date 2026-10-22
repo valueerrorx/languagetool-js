@@ -1,9 +1,8 @@
 // Java: org.languagetool.language.Italian
-import { NullPointerException } from '../../../lib/java/errors.js';
 import { LanguageWithModel } from '../../../core/LanguageWithModel.js';
 import { LanguageMaintainedState } from '../../../core/LanguageMaintainedState.js';
 import { Contributor } from '../../../core/language/Contributor.js';
-import { createComponent, notPortedYet } from '../../../core/language/components.js';
+import { createComponent } from '../../../core/language/components.js';
 import { registerClass } from '../../../core/resources/ClassBroker.js';
 import { SRXSentenceTokenizer } from '../../../core/text/tokenizers/SRXSentenceTokenizer.js';
 import { WhitespaceBeforePunctuationRule } from '../../../core/rules/WhitespaceBeforePunctuationRule.js';
@@ -68,10 +67,8 @@ export class Italian extends LanguageWithModel {
   }
 
   // Java: Italian#getRelevantLanguageModelRules(ResourceBundle,LanguageModel,UserConfig)
-  getRelevantLanguageModelRules(messages, languageModel) {
-    // ItalianConfusionProbabilityRule: the constructor dereferences the language model (Objects.requireNonNull)
-    if (languageModel === null || languageModel === undefined) throw new NullPointerException();
-    throw notPortedYet('Italian#getRelevantLanguageModelRules (ngram rules, DEV-001)');
+  getRelevantLanguageModelRules() {
+    return []; // ItalianConfusionProbabilityRule needs a language model (ngram, DEV-001); DEV-026: null model gives an empty list
   }
 
   // Java: Italian#createDefaultDisambiguator()
