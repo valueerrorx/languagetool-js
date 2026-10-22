@@ -575,6 +575,20 @@ export class Speller {
   // Java: Speller#areEqual(char,char)
   areEqual(x, y) {
     if (x === y) return true;
+    // not Java: the result depends on the two chars and the (fixed) metadata only, memoised
+    if (this.eqCache === undefined) this.eqCache = new Map();
+    const key = ((x & 0xffff) * 65536) + (y & 0xffff);
+    let r = this.eqCache.get(key);
+    if (r === undefined) {
+      r = this.areEqualUncached(x, y);
+      this.eqCache.set(key, r);
+    }
+    return r;
+  }
+
+  // Java: Speller#areEqual(char,char)
+  areEqualUncached(x, y) {
+    if (x === y) return true;
     const md = this.dictionaryMetadata;
     const equivalentChars = md.getEquivalentChars();
     if (equivalentChars !== null && equivalentChars !== undefined) {
@@ -582,17 +596,29 @@ export class Speller {
       if (chars !== undefined && chars.includes(String.fromCharCode(y))) return true;
     }
     if (md.isIgnoringDiacritics()) {
-      const xn = Normalizer.normalize(String.fromCharCode(x), Normalizer.Form.NFD);
-      const yn = Normalizer.normalize(String.fromCharCode(y), Normalizer.Form.NFD);
-      if (xn.charCodeAt(0) === yn.charCodeAt(0)) return true;
-      if (md.isConvertingCase() && isLetter(xn.charCodeAt(0))) {
+      const xn0 = this.nfdFirst(x);
+      const yn0 = this.nfdFirst(y);
+      if (xn0 === yn0) return true;
+      if (md.isConvertingCase() && isLetter(xn0)) {
         // case-insensitive match ignoring diacritics
-        const diffCase = isLowerCase(xn.charCodeAt(0)) !== isLowerCase(yn.charCodeAt(0));
-        if (diffCase) return charToLowerCase(xn.charCodeAt(0)) === charToLowerCase(yn.charCodeAt(0));
+        const diffCase = isLowerCase(xn0) !== isLowerCase(yn0);
+        if (diffCase) return charToLowerCase(xn0) === charToLowerCase(yn0);
       }
-      return xn.charCodeAt(0) === yn.charCodeAt(0);
+      return xn0 === yn0;
     }
     return false;
+  }
+
+  // not Java: first char of Normalizer.normalize(String.valueOf(c), NFD), memoised per char
+  nfdFirst(c) {
+    if (this.nfdCache === undefined) this.nfdCache = new Int32Array(65536).fill(-1);
+    const k = c & 0xffff;
+    let r = this.nfdCache[k];
+    if (r < 0) {
+      r = Normalizer.normalize(String.fromCharCode(k), Normalizer.Form.NFD).charCodeAt(0);
+      this.nfdCache[k] = r;
+    }
+    return r;
   }
 
   // Java: Speller#cuted(int,int,int)
@@ -628,9 +654,15 @@ export class Speller {
   // Java: Speller#matchAnyToTwo(int,int,int,String,char)
   matchAnyToTwo(wordIndex, candIndex, lastIdx, lastWord, lastChar) {
     if (candIndex > 0 && candIndex < this.candidate.length && wordIndex > 0) {
-      const twoCharString = String.fromCharCode(this.candidate[candIndex - 1], this.candidate[candIndex]);
-      const patterns = this.replacementsAnyToTwo.get(twoCharString);
+      // not Java: lookup by numeric key (the map is fixed after construction)
+      if (this.anyToTwoCodes === undefined || this.anyToTwoSource !== this.replacementsAnyToTwo) {
+        this.anyToTwoSource = this.replacementsAnyToTwo;
+        this.anyToTwoCodes = new Map();
+        for (const [k, v] of this.replacementsAnyToTwo) if (k.length === 2) this.anyToTwoCodes.set(k.charCodeAt(0) * 65536 + k.charCodeAt(1), v);
+      }
+      const patterns = this.anyToTwoCodes.size === 0 ? undefined : this.anyToTwoCodes.get(this.candidate[candIndex - 1] * 65536 + this.candidate[candIndex]);
       if (patterns !== undefined) {
+        const twoCharString = String.fromCharCode(this.candidate[candIndex - 1], this.candidate[candIndex]);
         for (const p of patterns) {
           if (p.startAnchor && (wordIndex - 1) !== 0) continue;
           if (p.chars.length === 2 && wordIndex < this.wordLen && this.candidate[candIndex - 1] === this.wordProcessed[wordIndex - 1]

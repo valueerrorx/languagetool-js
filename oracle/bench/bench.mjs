@@ -11,7 +11,8 @@ const arg = (n, d) => { const i = process.argv.indexOf(`--${n}`); return i < 0 ?
 const NPARA = Number(arg('paras', 20));
 const PASSES = Number(arg('passes', 3));
 const OUT = arg('out', join(ROOT, 'docs/review/F73-bench.md'));
-const LANGS = [['de', 'de-DE'], ['en', 'en-US'], ['fr', 'fr']];
+const ALL = { de: 'de-DE', en: 'en-US', fr: 'fr', it: 'it', es: 'es', pl: 'pl-PL', ru: 'ru-RU', sk: 'sk-SK', sl: 'sl-SI' };
+const LANGS = arg('langs', 'de,en,fr').split(',').map((s) => [s, ALL[s]]);
 const JAVA_OPTS = ['-Duser.language=en', '-Duser.country=US', '-Dfile.encoding=UTF-8'];
 const ENV = { PATH: '/usr/bin:/bin', HOME: tmpdir(), LANG: 'C.UTF-8', LC_ALL: 'C.UTF-8', TZ: 'Europe/Vienna' };
 const work = mkdtempSync(join(tmpdir(), 'ltbench-'));
@@ -88,7 +89,7 @@ for (const impl of ['java', 'js']) {
   R.cli[impl] = {};
   for (const [s, lang] of LANGS) { R.cli[impl][s] = benchCli(impl, s, lang); console.log('cli', impl, s, Math.round(R.cli[impl][s].median)); }
 }
-let port = 19000;
+let port = Number(arg('port', 19000));
 for (const impl of ['java', 'js']) { R.server[impl] = await benchServer(impl, port++); console.log('server', impl, JSON.stringify(R.server[impl])); }
 
 const f = (x) => Math.round(x);

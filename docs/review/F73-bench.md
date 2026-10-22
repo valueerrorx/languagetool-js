@@ -106,3 +106,26 @@ Changes (results unchanged):
 - Not done: lazy per-language registration (imports cost about 0.4 s of 3-8 s; the registry in register.js is side-effect based), regex engine time in AbstractUnitConversionRule (about 0.2 s de).
 
 Checks: X-CLI-BASIC, X-LANGUAGES, X-LANG-REGISTRY all pass; X-CORPUS cli-de/en/fr 148 pass; X-CORPUS-W2 cli-* 80 pass; X-CLI-OPTS sample (adl, list, b2 and names a-h) 102 pass, 2 not ported (adl-undetectable, as before); vitest tests/cli tests/core tests/lib pass; lint clean.
+
+## F73 round 4 (wave-2 languages it, es, pl, ru, sk, sl)
+
+`npm run bench -- --langs it,es,pl,ru,sk,sl --port 19800` (new options `--langs`, `--port`; language codes it, es, pl-PL, ru-RU, sk-SK, sl-SI). Same method as above (CLI: 3 paragraphs, median of 3; server: 20 paragraphs x 3 passes after warm-up). JS speed >1 = JS faster. Load average about 3-7.
+
+| lang | CLI Java ms | CLI JS before | CLI JS after | warm chars/s Java | warm JS before | warm JS after |
+|---|---|---|---|---|---|---|
+| it | 1547 | 1.32x | 1.36x | 2821 | 2.49x | 7.91x (run noise) |
+| es | 2644 | 1.49x | 1.51x | 9549 | 0.70x | 1.29x |
+| pl | 2424 | 1.07x | 1.28x | 2375 | 4.39x | 5.39x |
+| ru | 2169 | 0.24x | 1.10x | 2223 | 6.36x | 7.07x |
+| sk | 1958 | 0.81x | 1.18x | 2311 | 1.14x | 2.34x |
+| sl | 1626 | 1.44x | 1.42x | 3524 | 3.08x | 5.17x |
+
+Below the target before: ru CLI (0.24x), sk CLI (0.81x), es warm (0.70x). Profiles with `node --cpu-prof` (CLI; server with LTJS_CHECK_BACKEND=inline).
+
+Hotspots and changes (results unchanged):
+- ru CLI: 5.7 of 7.8 s in `AhoCorasickDoubleArrayTrie#build`: `queue.shift()` on a huge array (quadratic) and a sort per `addEmit` even for empty emit lists. Index-based queue, no-op for empty lists. 9.6 s -> 2.0 s.
+- sk CLI: 0.55 s in the first exec of the combined SRX exception pattern (7.5 MB RegExp source, `\b` expands to Java word-class tables; V8 two-byte compile of the huge class lists). RuleManager now also keeps the exception rules as separate lazily compiled patterns with a pre-check (set of the first char of the lookahead / last char of the lookbehind, derived from the parsed Java pattern); the combined pattern is still parsed eagerly (same syntax errors) and used when the text has surrogate pairs or a rule has a back reference. Same boolean result (any alternative matches at the break). 2.5 s -> 2.0 s (also helps de/en/fr).
+- es warm: Speller#areEqual (NFD normalisation per call) memoised per char pair, matchAnyToTwo uses a numeric key instead of building a string, and `SpellingCheckRule#addIgnoreWordsList` uses the shared ignore plans for lists below 64 lines too (a small first list switched the rule to the per-word path, copying about 47k words per request). 3.96 s -> 2.4 s for 60 requests.
+- Tried and dropped: `v8.setFlagsFromString('--no-regexp-tier-up')` in bin/lt-cli.mjs saves 0.5 s but segfaulted at runtime (flag changed after V8 init).
+
+Checks: X-CORPUS-W2 cli/h/http for es, es-AR, it, pl-PL, ru-RU, sk-SK, sl-SI all pass (240); X-ESCHECK, X-ITCHECK, X-PLCHECK, X-RUCHECK, X-SKCHECK, X-SLCHECK slices spelling-*, rule*, examples-0*, junit-* pass (only the DEV-026 rulelist-direct as before); shared code touched, so X-CORPUS cli de/en/fr and http de/en/fr pass; vitest tests/lib tests/core tests/lang tests/cli pass; lint clean.

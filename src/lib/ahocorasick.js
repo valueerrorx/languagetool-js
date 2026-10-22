@@ -24,7 +24,9 @@ class State {
 
   // Java: State#addEmit(int) / addEmit(Collection)
   addEmit(keywords) {
-    for (const k of Array.isArray(keywords) ? keywords : [keywords]) {
+    const list = Array.isArray(keywords) ? keywords : [keywords];
+    if (list.length === 0) return; // emits stay sorted, nothing to add
+    for (const k of list) {
       if (!this.emits.includes(k)) this.emits.push(k);
     }
     this.emits.sort((a, b) => b - a);
@@ -81,8 +83,8 @@ export class AhoCorasickDoubleArrayTrie {
       queue.push(s);
       if (s.emits.length > 0) s.output = s.emits.slice();
     }
-    while (queue.length > 0) {
-      const cur = queue.shift();
+    for (let qi = 0; qi < queue.length; qi++) {
+      const cur = queue[qi];
       for (const [transition, target] of cur.success) {
         queue.push(target);
         let trace = cur.failure;

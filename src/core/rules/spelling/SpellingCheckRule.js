@@ -398,7 +398,7 @@ export class SpellingCheckRule extends Rule {
 
   // JS: for (String line : lines) addIgnoreWords(line) over a (cached, immutable) list; lines are classified once per list
   addIgnoreWordsList(lines) {
-    if (this.addIgnoreWords !== SpellingCheckRule.prototype.addIgnoreWords || lines.length < 64) {
+    if (this.addIgnoreWords !== SpellingCheckRule.prototype.addIgnoreWords || lines.length < 1) {
       for (const line of lines) this.addIgnoreWords(line);
       return;
     }

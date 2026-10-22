@@ -18,6 +18,77 @@ function languageRulesToString(languageRuleList) {
   return s;
 }
 
+const PAIR = /[\uD800-\uDBFF][\uDC00-\uDFFF]/;
+const ZERO_WIDTH = new Set(['bound', 'look', 'begin', 'end', 'caret', 'dollar', 'lastMatch', 'empty']);
+
+// not Java: set of code points the first (last) consumed char of the node must be in, null = unknown or the node may be empty
+function edgeSet(n, last) {
+  switch (n.k) {
+    case 'set': return n.set;
+    case 'group': case 'atomic': return edgeSet(n.body, last);
+    case 'loop': return n.min >= 1 ? edgeSet(n.body, last) : null;
+    case 'alt': {
+      let u = null;
+      for (const a of n.alts) {
+        const x = edgeSet(a, last);
+        if (x === null) return null;
+        u = u === null ? x : u.union(x);
+      }
+      return u;
+    }
+    case 'seq': {
+      for (let j = 0; j < n.items.length; j++) {
+        const it = n.items[last ? n.items.length - 1 - j : j];
+        if (ZERO_WIDTH.has(it.k)) continue;
+        return edgeSet(it, last);
+      }
+      return null;
+    }
+    default: return null;
+  }
+}
+
+// not Java: one exception rule as its own pattern with a cheap pre-check of the chars around the break
+class ExceptionAlt {
+  constructor(str, before, after) {
+    this.str = str;
+    this.before = before;
+    this.after = after;
+    this.info = undefined;
+    this.pat = null;
+  }
+
+  // the pre-check (null sets = no constraint); a pattern that does not compile gets none
+  edges(document) {
+    if (this.info === undefined) {
+      let lastSet = null;
+      let firstSet = null;
+      try {
+        if (this.before.length > 0) lastSet = edgeSet(compile(document, this.before).root, true);
+        if (this.after.length > 0) firstSet = edgeSet(compile(document, this.after).root, false);
+      } catch (e) {
+        lastSet = null;
+        firstSet = null;
+      }
+      this.info = { lastSet, firstSet };
+    }
+    return this.info;
+  }
+
+  // false when the chars at pos make a match impossible (text without surrogate pairs)
+  mayMatchAt(document, text, pos) {
+    const { lastSet, firstSet } = this.edges(document);
+    if (lastSet !== null && (pos <= 0 || pos > text.length || !lastSet.has(text.charCodeAt(pos - 1)))) return false;
+    if (firstSet !== null && (pos < 0 || pos >= text.length || !firstSet.has(text.charCodeAt(pos)))) return false;
+    return true;
+  }
+
+  pattern(document) {
+    if (this.pat === null) this.pat = compile(document, this.str);
+    return this.pat;
+  }
+}
+
 // Java: net.loomchild.segment.srx.RuleManager
 class RuleManager {
   // Java: RuleManager#RuleManager(SrxDocument,List,int)
@@ -26,6 +97,8 @@ class RuleManager {
     this.maxLookbehindConstructLength = maxLookbehindConstructLength;
     this.breakRuleList = [];
     this.exceptionPatternMap = new Map();
+    this.exceptionRules = []; // not Java: the exception rules in order, with the count seen by each break rule
+    this.exceptionCountMap = new Map();
     let exceptionPatternStringBuilder = '';
     for (const languageRule of languageRuleList) {
       for (const rule of languageRule.getRuleList()) {
@@ -34,7 +107,9 @@ class RuleManager {
           const exceptionPattern = exceptionPatternStringBuilder.length > 0
             ? compile(this.document, exceptionPatternStringBuilder) : null;
           this.exceptionPatternMap.set(rule, exceptionPattern);
+          this.exceptionCountMap.set(rule, this.exceptionRules.length);
         } else {
+          this.exceptionRules.push(new ExceptionAlt(this.createExceptionPatternString(rule), finitize(rule.getBeforePattern(), this.maxLookbehindConstructLength), rule.getAfterPattern()));
           if (exceptionPatternStringBuilder.length > 0) exceptionPatternStringBuilder += '|';
           exceptionPatternStringBuilder += this.createExceptionPatternString(rule);
         }
@@ -51,6 +126,24 @@ class RuleManager {
   getExceptionPattern(rule) {
     const p = this.exceptionPatternMap.get(rule);
     return p === undefined ? null : p;
+  }
+
+  // not Java: true when one of the first n exception rules matches at pos (same result as lookingAt of the combined exception pattern)
+  anyException(rule, combined, text, pos, textHasPair) {
+    const n = this.exceptionCountMap.get(rule);
+    if (textHasPair || !this.splitable()) return combined.matcher(text).match(pos, 0);
+    for (let i = 0; i < n; i++) {
+      const alt = this.exceptionRules[i];
+      if (!alt.mayMatchAt(this.document, text, pos)) continue;
+      if (alt.pattern(this.document).matcher(text).match(pos, 0)) return true;
+    }
+    return false;
+  }
+
+  // not Java: the alternatives are independent patterns unless one uses a back reference (group numbers differ)
+  splitable() {
+    if (this.splitOk === undefined) this.splitOk = !this.exceptionRules.some((a) => /\\[1-9k]/.test(a.before) || /\\[1-9k]/.test(a.after));
+    return this.splitOk;
   }
 
   // Java: RuleManager#createExceptionPatternString(Rule)
@@ -250,7 +343,8 @@ export class SrxTextIterator {
   isException(ruleMatcher) {
     const pattern = this.ruleManager.getExceptionPattern(ruleMatcher.getRule());
     if (pattern !== null) {
-      return !pattern.matcher(this.text).match(ruleMatcher.getBreakPosition(), 0); // lookingAt() on region [break,length) with transparent bounds
+      if (this.textHasPair === undefined) this.textHasPair = PAIR.test(this.text);
+      return !this.ruleManager.anyException(ruleMatcher.getRule(), pattern, this.text, ruleMatcher.getBreakPosition(), this.textHasPair); // lookingAt() on region [break,length) with transparent bounds
     }
     return true;
   }
