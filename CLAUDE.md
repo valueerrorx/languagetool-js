@@ -1,6 +1,6 @@
 # LT-JS (Java -> JavaScript port)
 
-Faithful port of an existing Java application to JavaScript with 100% feature parity.
+Port of LanguageTool (Java) to JavaScript: detection quality >= the original, compatible interfaces, 9 languages (de, en, fr, it, es, sl, ru, sk, pl).
 Goal: docs/GOAL.md. Parity contract: docs/INVENTORY.md. Semantics rules: docs/SEMANTICS.md.
 Architecture: docs/ARCHITECTURE.md, docs/PORT-MAP.md. Progress: docs/PLAN.md.
 Decisions: docs/DECISIONS.md. Approved deviations: docs/DEVIATIONS.md. Review notes: docs/REVIEW-NOTES.md.
@@ -23,7 +23,7 @@ Decisions: docs/DECISIONS.md. Approved deviations: docs/DEVIATIONS.md. Review no
 ## Conventions
 - Code comments: one short line. Every ported function carries `// Java: Class#method(signature)`.
 - Keep Java structure and naming recognisable for side-by-side review.
-- No behaviour changes, no improvements. Java bugs are reproduced unless approved in docs/DEVIATIONS.md.
+- D-056/D-057: detection must be >= Java, and interfaces (API, CLI, output formats) stay compatible. Better or faster code is allowed. Java bugs are fixed, each with a one-line entry in docs/DEVIATIONS.md.
 
 ## Commands
 - install: `npm install`
