@@ -14,6 +14,7 @@ import { PhraseRepeatRule } from '../../src/core/rules/PhraseRepeatRule.js';
 import { JLanguageTool } from '../../src/core/JLanguageTool.js';
 import { errorOf, languageFor } from './_check-pipe-common.mjs';
 import { recordPreLanguageFilter, runCase } from './check2.mjs';
+import { isPortedBase } from '../lib/scope.mjs';
 import { notPorted } from './_pipe-common.mjs';
 import { UnitConversionRule as EnUnitConversionRule } from '../../src/lang/en/rules/UnitConversionRule.js';
 import { UnitConversionRuleUS } from '../../src/lang/en/rules/UnitConversionRuleUS.js';
@@ -36,8 +37,7 @@ export function run(a) {
   } catch (e) {
     throw notPorted(`style-check: language ${a.lang}`);
   }
-  const code = l.getShortCode();
-  if (code === 'en' || code === 'de' || code === 'fr') return check(a, l);
+  if (isPortedBase(l.getShortCode())) return check(a, l);
   throw notPorted(`style-check: language ${a.lang}`);
 }
 
