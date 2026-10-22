@@ -1,6 +1,6 @@
 # Resume (lead)
 State 2026-10-22: wave 1 + wave 2 (W01-W42) done, 9 languages. 1071 verified; 8 ported: CLI-0045/SRV-0015 cannot be oracled, SRV-0181/CORE-0233 DEV-001, CORE-0266 test rules, CORE-0423/0424/0426 only used by out-of-scope languages. npm test 1294 pass.
-Next: reviewer audit wave 2, F73 perf round 2 (warm de/en < 0.8).
+Done: final parity sweep (docs/review/FINAL-parity-sweep.md), 0 real fails; perf rounds 1-4: all 9 languages >= Java (CLI and warm). Open: nothing mandatory.
 Notes: npm test now long (EnglishPatternRuleTest 190 s); parity.mjs supports LTJS_CASE=<regex>.
 Rules:
 - D-052 token budget: sonnet only, short prompts, no reviewer unless fixtures thin, one round.
