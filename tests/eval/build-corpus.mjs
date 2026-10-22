@@ -1,5 +1,5 @@
 // Compiles tests/eval/<lang>/src/corpus-*.txt (markup) into one gold JSON per text and validates the offsets.
-// Usage: node tests/eval/build-corpus.mjs [--lang de] [--check]   (--check: validate existing JSON only)
+// Usage: node tests/eval/build-corpus.mjs [--lang de] [--dir de-heldout] [--check]   (--check: validate existing JSON only; --dir: corpus dir under tests/eval, default <lang>)
 import { readFileSync, writeFileSync, readdirSync, mkdirSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -8,7 +8,7 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const args = process.argv.slice(2);
 const lang = args.includes('--lang') ? args[args.indexOf('--lang') + 1] : 'de';
 const checkOnly = args.includes('--check');
-const DIR = path.join(HERE, lang);
+const DIR = path.join(HERE, args.includes('--dir') ? args[args.indexOf('--dir') + 1] : lang);
 const SRC = path.join(DIR, 'src');
 
 const ERR_TYPES = { d: 'das_dass', cm: 'comma_missing', cs: 'comma_superfluous', o: 'other' };

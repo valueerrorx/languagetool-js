@@ -1,5 +1,5 @@
 // Eval runner: checks every gold text with Java or JS LanguageTool (one HTTP server, POST /v2/check) and scores against gold.
-// Usage: node tests/eval/run.mjs --engine java|js --lang de-DE [--level picky] [--disable RULE[,RULE]] [--port N] [--out file]
+// Usage: node tests/eval/run.mjs --engine java|js --lang de-DE [--level picky] [--disable RULE[,RULE]] [--port N] [--out file] [--dir de-heldout]
 //        node tests/eval/run.mjs --rescore tests/eval/results/<file>.json   (score stored raw matches against the current gold)
 import { spawn } from 'node:child_process';
 import { readFileSync, writeFileSync, readdirSync, mkdirSync, mkdtempSync, rmSync } from 'node:fs';
@@ -14,7 +14,7 @@ const LT = path.join(ROOT, 'oracle/java-src/languagetool-standalone/target/Langu
 export const TYPES = ['das_dass', 'comma_missing', 'comma_superfluous', 'other'];
 
 function parseArgs(argv) {
-  const o = { engine: null, lang: 'de-DE', level: null, disable: [], port: null, out: null };
+  const o = { engine: null, lang: 'de-DE', level: null, disable: [], port: null, out: null, dir: null };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--engine') o.engine = argv[++i];
@@ -24,12 +24,13 @@ function parseArgs(argv) {
     else if (a === '--port') o.port = Number(argv[++i]);
     else if (a === '--out') o.out = argv[++i];
     else if (a === '--rescore') o.rescore = argv[++i];
+    else if (a === '--dir') o.dir = argv[++i];
     else throw new Error(`unknown argument ${a}`);
   }
   if (o.rescore) return o;
   if (o.engine !== 'java' && o.engine !== 'js') throw new Error('--engine java|js required');
   o.port ??= o.engine === 'java' ? 19870 : 19871;
-  if (o.port < 19860 || o.port > 19879) throw new Error('port must be in 19860-19879');
+  if (o.port < 19850 || o.port > 19879) throw new Error('port must be in 19850-19879');
   return o;
 }
 
@@ -67,8 +68,8 @@ async function check(port, text, opts) {
   return JSON.parse(body).matches;
 }
 
-export function loadGold(lang) {
-  const dir = path.join(HERE, lang.split('-')[0]);
+export function loadGold(lang, sub = null) {
+  const dir = path.join(HERE, sub ?? lang.split('-')[0]);
   return readdirSync(dir).filter((f) => f.endsWith('.json')).sort().map((f) => JSON.parse(readFileSync(path.join(dir, f), 'utf8')));
 }
 
@@ -196,11 +197,11 @@ async function main() {
   const opts = parseArgs(process.argv.slice(2));
   if (opts.rescore) {
     const prev = JSON.parse(readFileSync(opts.rescore, 'utf8'));
-    Object.assign(opts, { engine: prev.engine, lang: prev.lang, level: prev.level === 'default' ? null : prev.level, disable: prev.disable, out: opts.rescore });
-    report(opts, loadGold(opts.lang), fromRaw(prev.raw), prev.ms);
+    Object.assign(opts, { engine: prev.engine, lang: prev.lang, level: prev.level === 'default' ? null : prev.level, disable: prev.disable, dir: opts.dir ?? prev.dir ?? null, out: opts.rescore });
+    report(opts, loadGold(opts.lang, opts.dir), fromRaw(prev.raw), prev.ms);
     return;
   }
-  const gold = loadGold(opts.lang);
+  const gold = loadGold(opts.lang, opts.dir);
   const srv = await startServer(opts.engine, opts.port);
   const kill = () => { try { process.kill(srv.child.pid, 'SIGKILL'); } catch { /* gone */ } rmSync(srv.workDir, { recursive: true, force: true }); };
   process.on('SIGINT', () => { kill(); process.exit(130); });
@@ -223,7 +224,7 @@ function report(opts, gold, results, ms) {
   mkdirSync(outDir, { recursive: true });
   const out = opts.out ?? path.join(outDir, `${opts.lang}-${opts.engine}-${opts.level ?? 'default'}${opts.disable.length ? '-disable' : ''}.json`);
   const raw = Object.fromEntries(Object.entries(results).map(([id, ms2]) => [id, ms2.map((m) => ({ ruleId: m.rule.id, categoryId: m.rule.category?.id, offset: m.offset, length: m.length, message: m.message, replacements: (m.replacements ?? []).map((r) => r.value) }))]));
-  writeFileSync(out, `${JSON.stringify({ engine: opts.engine, lang: opts.lang, level: opts.level ?? 'default', disable: opts.disable, texts: gold.length, ms, stats, details, raw }, null, 2)}\n`);
+  writeFileSync(out, `${JSON.stringify({ engine: opts.engine, lang: opts.lang, level: opts.level ?? 'default', disable: opts.disable, ...(opts.dir ? { dir: opts.dir } : {}), texts: gold.length, ms, stats, details, raw }, null, 2)}\n`);
   console.log(`-> ${path.relative(ROOT, out)}`);
 }
 
