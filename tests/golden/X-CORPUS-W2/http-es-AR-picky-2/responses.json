@@ -1,0 +1,4936 @@
+[
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Spanish (voseo)",
+        "code": "es-AR",
+        "detectedLanguage": {
+          "name": "Spanish",
+          "code": "es",
+          "confidence": 0.99999547,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "En una tipografía cuidada, utilice el carácter adecuado de guion largo (raya).",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "—"
+            }
+          ],
+          "offset": 0,
+          "length": 2,
+          "context": {
+            "text": "--Si yo no pretendía tanto... Con el rabil...",
+            "offset": 0,
+            "length": 2
+          },
+          "sentence": "--Si yo no pretendía tanto...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "GUION_LARGO",
+            "subId": "4",
+            "sourceFile": "grammar.xml",
+            "description": "Guion largo",
+            "issueType": "typographical",
+            "urls": [
+              {
+                "value": "https://www.rae.es/dpd/raya"
+              }
+            ],
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 9
+        },
+        {
+          "message": "En una tipografía cuidada, use el carácter de puntos suspensivos.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "…"
+            }
+          ],
+          "offset": 26,
+          "length": 3,
+          "context": {
+            "text": "--Si yo no pretendía tanto... Con el rabillo me contentaba, ó con med...",
+            "offset": 26,
+            "length": 3
+          },
+          "sentence": "--Si yo no pretendía tanto...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PUNTOS_SUSPENSIVOS",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Carácter de puntos suspensivos",
+            "issueType": "typographical",
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 7
+        },
+        {
+          "message": "La conjunción «o» se escribe siempre sin tilde, incluso entre cifras.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "o"
+            }
+          ],
+          "offset": 60,
+          "length": 1,
+          "context": {
+            "text": "... tanto... Con el rabillo me contentaba, ó con media hoja que V. le arrancase... ¡...",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "Con el rabillo me contentaba, ó con media hoja que V. le arrancase...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "O_NO_TILDE",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "ó/o",
+            "issueType": "uncategorized",
+            "urls": [
+              {
+                "value": "https://www.rae.es/espanol-al-dia/la-conjuncion-o-siempre-sin-tilde-incluso-entre-cifras"
+              }
+            ],
+            "category": {
+              "id": "CAMBIOS_NORMA",
+              "name": "Cambios en las normas lingüísticas"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "En una tipografía cuidada, use el carácter de puntos suspensivos.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "…"
+            }
+          ],
+          "offset": 96,
+          "length": 3,
+          "context": {
+            "text": "...ba, ó con media hoja que V. le arrancase... ¡Una gardenia para mí solo! No sé cómo ...",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "Con el rabillo me contentaba, ó con media hoja que V. le arrancase...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PUNTOS_SUSPENSIVOS",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Carácter de puntos suspensivos",
+            "issueType": "typographical",
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 7
+        },
+        {
+          "message": "En una tipografía cuidada, use el carácter de puntos suspensivos.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "…"
+            }
+          ],
+          "offset": 146,
+          "length": 3,
+          "context": {
+            "text": "...ardenia para mí solo! No sé cómo lucirla... No se me va á sujetar en el ojal... A v...",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "No sé cómo lucirla...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PUNTOS_SUSPENSIVOS",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Carácter de puntos suspensivos",
+            "issueType": "typographical",
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 7
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "a"
+            },
+            {
+              "value": "Å"
+            }
+          ],
+          "offset": 162,
+          "length": 1,
+          "context": {
+            "text": "...solo! No sé cómo lucirla... No se me va á sujetar en el ojal... A ver si V. consi...",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "No se me va á sujetar en el ojal...",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "En una tipografía cuidada, use el carácter de puntos suspensivos.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "…"
+            }
+          ],
+          "offset": 182,
+          "length": 3,
+          "context": {
+            "text": "...irla... No se me va á sujetar en el ojal... A ver si V. consigue, con esos deditos....",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "No se me va á sujetar en el ojal...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PUNTOS_SUSPENSIVOS",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Carácter de puntos suspensivos",
+            "issueType": "typographical",
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 7
+        },
+        {
+          "message": "En una tipografía cuidada, use el carácter de puntos suspensivos.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "…"
+            }
+          ],
+          "offset": 224,
+          "length": 3,
+          "context": {
+            "text": ".... A ver si V. consigue, con esos deditos...",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "A ver si V. consigue, con esos deditos...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PUNTOS_SUSPENSIVOS",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Carácter de puntos suspensivos",
+            "issueType": "typographical",
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 7
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          29
+        ],
+        [
+          30,
+          99
+        ],
+        [
+          100,
+          127
+        ],
+        [
+          128,
+          149
+        ],
+        [
+          150,
+          185
+        ],
+        [
+          186,
+          227
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 29,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 30,
+          "to": 99,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 100,
+          "to": 127,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 128,
+          "to": 149,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 150,
+          "to": 185,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 186,
+          "to": 227,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Spanish (voseo)",
+        "code": "es-AR",
+        "detectedLanguage": {
+          "name": "Spanish",
+          "code": "es",
+          "confidence": 0.9999951,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "a"
+            },
+            {
+              "value": "Å"
+            }
+          ],
+          "offset": 125,
+          "length": 1,
+          "context": {
+            "text": "...n alfiler sujeté la gardenia, cuyo olor á pomada me subía al cerebro, mezclado co...",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "Introduje el rabo postizo de la flor en el ojal de Pacheco, y tomando de mi corpiño un alfiler sujeté la gardenia, cuyo olor á pomada me subía al cerebro, mezclado con otro perfume fino, procedente, sin duda, del pelo de mi acompañante.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "e"
+            }
+          ],
+          "offset": 412,
+          "length": 1,
+          "context": {
+            "text": "...cias, me contempló de un modo expresivo é interrogador. En aquel momento casi me ...",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "Sentí un calor extraordinario en el rostro, y al levantarlo, mis ojos se tropezaron con los del meridional, que en vez de darme las gracias, me contempló de un modo expresivo é interrogador.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "a"
+            },
+            {
+              "value": "Å"
+            }
+          ],
+          "offset": 484,
+          "length": 1,
+          "context": {
+            "text": "... casi me arrepentí de la humorada de ir á la feria; pero ya...",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "En aquel momento casi me arrepentí de la humorada de ir á la feria; pero ya...",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "En una tipografía cuidada, use el carácter de puntos suspensivos.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "…"
+            }
+          ],
+          "offset": 503,
+          "length": 3,
+          "context": {
+            "text": "...de la humorada de ir á la feria; pero ya...",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "En aquel momento casi me arrepentí de la humorada de ir á la feria; pero ya...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PUNTOS_SUSPENSIVOS",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Carácter de puntos suspensivos",
+            "issueType": "typographical",
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 7
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          236
+        ],
+        [
+          237,
+          427
+        ],
+        [
+          428,
+          506
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 236,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 237,
+          "to": 427,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 428,
+          "to": 506,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Spanish (voseo)",
+        "code": "es-AR",
+        "detectedLanguage": {
+          "name": "Spanish",
+          "code": "es",
+          "confidence": 0.9999957,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "a"
+            },
+            {
+              "value": "Å"
+            }
+          ],
+          "offset": 80,
+          "length": 1,
+          "context": {
+            "text": ".... Bajábamos de la plazuela de la Cebada á la calle de Toledo. Una marea de gente,...",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "Bajábamos de la plazuela de la Cebada á la calle de Toledo.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "a"
+            },
+            {
+              "value": "Å"
+            }
+          ],
+          "offset": 192,
+          "length": 1,
+          "context": {
+            "text": "... pradera, rodeaba el coche y le impedía á veces rodar. Entre la multitud domingue...",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "Una marea de gente, que también descendía hacia la pradera, rodeaba el coche y le impedía á veces rodar.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "a"
+            },
+            {
+              "value": "Å"
+            }
+          ],
+          "offset": 464,
+          "length": 1,
+          "context": {
+            "text": "...rlina. Pacheco sacó la cabeza y le dijo á una no sé qué.",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "Pacheco sacó la cabeza y le dijo á una no sé qué.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          41
+        ],
+        [
+          42,
+          101
+        ],
+        [
+          102,
+          206
+        ],
+        [
+          207,
+          345
+        ],
+        [
+          346,
+          430
+        ],
+        [
+          431,
+          480
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 41,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 42,
+          "to": 101,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 102,
+          "to": 206,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 207,
+          "to": 345,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 346,
+          "to": 430,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 431,
+          "to": 480,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Spanish (voseo)",
+        "code": "es-AR",
+        "detectedLanguage": {
+          "name": "Spanish",
+          "code": "es",
+          "confidence": 0.99999666,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Error de concordancia.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "su mil"
+            },
+            {
+              "value": "sus miles"
+            }
+          ],
+          "offset": 117,
+          "length": 7,
+          "context": {
+            "text": "...esco aspecto de la calle de Toledo, con sus mil tabernillas, sus puestos ambulantes de ...",
+            "offset": 43,
+            "length": 7
+          },
+          "sentence": "Hice como si no oyese el piropo y desvié la conversación, hablando del pintoresco aspecto de la calle de Toledo, con sus mil tabernillas, sus puestos ambulantes de quincalla, sus anticuadas tiendas y sus paradores que se conservan lo mismito que en tiempo de Carlos IV.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "AGREEMENT_DET_NOUN",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Concordancias determinante y sustantivo",
+            "issueType": "inconsistency",
+            "category": {
+              "id": "AGREEMENT_NOUNS",
+              "name": "Concordancia en grupos nominales"
+            }
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 5
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "ternillas"
+            }
+          ],
+          "offset": 125,
+          "length": 11,
+          "context": {
+            "text": "...ecto de la calle de Toledo, con sus mil tabernillas, sus puestos ambulantes de quincalla, s...",
+            "offset": 43,
+            "length": 11
+          },
+          "sentence": "Hice como si no oyese el piropo y desvié la conversación, hablando del pintoresco aspecto de la calle de Toledo, con sus mil tabernillas, sus puestos ambulantes de quincalla, sus anticuadas tiendas y sus paradores que se conservan lo mismito que en tiempo de Carlos IV.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Posible error de ortografía.",
+          "shortMessage": "Posible error",
+          "replacements": [
+            {
+              "value": "a hurtadillas"
+            }
+          ],
+          "offset": 575,
+          "length": 13,
+          "context": {
+            "text": "...s pensamientos de la dueña. Yo también, á hurtadillas, procuraba enterarme de los más mínimos...",
+            "offset": 43,
+            "length": 13
+          },
+          "sentence": "Yo también, á hurtadillas, procuraba enterarme de los más mínimos ápices de la cara de Pacheco.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "ES_MULTITOKEN_SPELLING_TWO",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "errores de ortografía en nombres propios (dos elementos)",
+            "issueType": "misspelling",
+            "category": {
+              "id": "MULTITOKEN_SPELLING",
+              "name": "Errores ortográficos"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 3
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          269
+        ],
+        [
+          270,
+          562
+        ],
+        [
+          563,
+          658
+        ],
+        [
+          659,
+          734
+        ],
+        [
+          735,
+          839
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 269,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 270,
+          "to": 562,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 563,
+          "to": 658,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 659,
+          "to": 734,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 735,
+          "to": 839,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Spanish (voseo)",
+        "code": "es-AR",
+        "detectedLanguage": {
+          "name": "Spanish",
+          "code": "es",
+          "confidence": 0.99999815,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Si es pasado, se escribe con tilde. Si es imperativo, puede que falte una coma.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": " imaginé"
+            },
+            {
+              "value": ", imagine"
+            }
+          ],
+          "offset": 5,
+          "length": 8,
+          "context": {
+            "text": "Nadie imagine maliciosamente que se me había pasado l...",
+            "offset": 5,
+            "length": 8
+          },
+          "sentence": "Nadie imagine maliciosamente que se me había pasado lo de oir misa.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "SUBJUNTIVO_PASADO",
+            "subId": "2",
+            "sourceFile": "grammar.xml",
+            "description": "confusión cante/canté",
+            "issueType": "misspelling",
+            "category": {
+              "id": "DIACRITICS",
+              "name": "Diacríticos (tilde)"
+            }
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": -1
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "oír"
+            },
+            {
+              "value": "ir"
+            },
+            {
+              "value": "oye"
+            },
+            {
+              "value": "oyó"
+            },
+            {
+              "value": "oía"
+            },
+            {
+              "value": "oirá"
+            },
+            {
+              "value": "oí"
+            },
+            {
+              "value": "oiré"
+            },
+            {
+              "value": "oíd"
+            },
+            {
+              "value": "oís"
+            },
+            {
+              "value": "Loir"
+            },
+            {
+              "value": "MIR"
+            },
+            {
+              "value": "Mir"
+            },
+            {
+              "value": "OIT"
+            },
+            {
+              "value": "Oia"
+            },
+            {
+              "value": "Oier"
+            },
+            {
+              "value": "Oix"
+            },
+            {
+              "value": "mir"
+            },
+            {
+              "value": "sir"
+            },
+            {
+              "value": "o ir"
+            }
+          ],
+          "offset": 58,
+          "length": 3,
+          "context": {
+            "text": "...ciosamente que se me había pasado lo de oir misa. Tratamos de romper por entre el g...",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "Nadie imagine maliciosamente que se me había pasado lo de oir misa.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "¿Quería decir «pará»?",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "pará"
+            }
+          ],
+          "offset": 156,
+          "length": 5,
+          "context": {
+            "text": "...izarnos en la ermita, abierta de par en par á los devotos; pero éstos eran tantos, y ...",
+            "offset": 43,
+            "length": 5
+          },
+          "sentence": "Tratamos de romper por entre el gentío y de deslizarnos en la ermita, abierta de par en par á los devotos; pero éstos eran tantos, y tan apiñados, y tan groseros, y tan mal olientes, que si porfío en llegar á la nave, me sacan de allí desmayada ó difunta.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "ES_SPLIT_WORDS",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "palabras mal partidas",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CONFUSIONS",
+              "name": "Confusiones"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 2
+        },
+        {
+          "message": "La tilde es innecesaria según la norma actual. Se puede usar en caso de ambigüedad cuando es un pronombre.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "estos"
+            }
+          ],
+          "offset": 180,
+          "length": 5,
+          "context": {
+            "text": "...ierta de par en par á los devotos; pero éstos eran tantos, y tan apiñados, y tan gros...",
+            "offset": 43,
+            "length": 5
+          },
+          "sentence": "Tratamos de romper por entre el gentío y de deslizarnos en la ermita, abierta de par en par á los devotos; pero éstos eran tantos, y tan apiñados, y tan groseros, y tan mal olientes, que si porfío en llegar á la nave, me sacan de allí desmayada ó difunta.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "ESTE_ESE_AQUEL_NOTILDE",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "éste, ése, aquél -> este, ese aquel",
+            "issueType": "uncategorized",
+            "urls": [
+              {
+                "value": "https://languagetool.org/insights/es/publicacion/cuando-lleva-tilde-este/"
+              }
+            ],
+            "category": {
+              "id": "CAMBIOS_NORMA",
+              "name": "Cambios en las normas lingüísticas"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "a"
+            },
+            {
+              "value": "Å"
+            }
+          ],
+          "offset": 275,
+          "length": 1,
+          "context": {
+            "text": "...n mal olientes, que si porfío en llegar á la nave, me sacan de allí desmayada ó d...",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "Tratamos de romper por entre el gentío y de deslizarnos en la ermita, abierta de par en par á los devotos; pero éstos eran tantos, y tan apiñados, y tan groseros, y tan mal olientes, que si porfío en llegar á la nave, me sacan de allí desmayada ó difunta.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "La conjunción «o» se escribe siempre sin tilde, incluso entre cifras.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "o"
+            }
+          ],
+          "offset": 313,
+          "length": 1,
+          "context": {
+            "text": "...r á la nave, me sacan de allí desmayada ó difunta. Pacheco jugaba los brazos y lo...",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "Tratamos de romper por entre el gentío y de deslizarnos en la ermita, abierta de par en par á los devotos; pero éstos eran tantos, y tan apiñados, y tan groseros, y tan mal olientes, que si porfío en llegar á la nave, me sacan de allí desmayada ó difunta.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "O_NO_TILDE",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "ó/o",
+            "issueType": "uncategorized",
+            "urls": [
+              {
+                "value": "https://www.rae.es/espanol-al-dia/la-conjuncion-o-siempre-sin-tilde-incluso-entre-cifras"
+              }
+            ],
+            "category": {
+              "id": "CAMBIOS_NORMA",
+              "name": "Cambios en las normas lingüísticas"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "La tilde es innecesaria según la norma actual. Con el sentido de «solamente» (adv.), cuando hay riesgo de ambigüedad con el adj. «solo», puede escribirse «sólo» (DRAE).",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "solo"
+            },
+            {
+              "value": "solamente"
+            },
+            {
+              "value": "únicamente"
+            }
+          ],
+          "offset": 393,
+          "length": 4,
+          "context": {
+            "text": "...os puños, según podía, para defenderme; sólo lograba que nos apretasen más y que oyé...",
+            "offset": 43,
+            "length": 4
+          },
+          "sentence": "Pacheco jugaba los brazos y los puños, según podía, para defenderme; sólo lograba que nos apretasen más y que oyésemos juramentos y blasfemias atroces.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "SOLO",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "sólo/solo",
+            "issueType": "uncategorized",
+            "urls": [
+              {
+                "value": "https://languagetool.org/insights/es/publicacion/cuando-se-acentua-solo/"
+              }
+            ],
+            "category": {
+              "id": "CAMBIOS_NORMA",
+              "name": "Cambios en las normas lingüísticas"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          67
+        ],
+        [
+          68,
+          323
+        ],
+        [
+          324,
+          475
+        ],
+        [
+          476,
+          496
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 67,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 68,
+          "to": 323,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 324,
+          "to": 475,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 476,
+          "to": 496,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Spanish (voseo)",
+        "code": "es-AR",
+        "detectedLanguage": {
+          "name": "Spanish",
+          "code": "es",
+          "confidence": 0.9999957,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "En una tipografía cuidada, utilice el carácter adecuado de guion largo (raya).",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "—"
+            }
+          ],
+          "offset": 0,
+          "length": 2,
+          "context": {
+            "text": "--Puede, puede que no se equivoque V. much...",
+            "offset": 0,
+            "length": 2
+          },
+          "sentence": "--Puede, puede que no se equivoque V. mucho.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "GUION_LARGO",
+            "subId": "4",
+            "sourceFile": "grammar.xml",
+            "description": "Guion largo",
+            "issueType": "typographical",
+            "urls": [
+              {
+                "value": "https://www.rae.es/dpd/raya"
+              }
+            ],
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 9
+        },
+        {
+          "message": "En una tipografía cuidada, use el carácter de puntos suspensivos.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "…"
+            }
+          ],
+          "offset": 105,
+          "length": 3,
+          "context": {
+            "text": "... pasearse los ratoncitos por el estómago... Ya hemos visto el Santo; volvámonos á M...",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "A estas horas suelen pasearse los ratoncitos por el estómago...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PUNTOS_SUSPENSIVOS",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Carácter de puntos suspensivos",
+            "issueType": "typographical",
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 7
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "a"
+            },
+            {
+              "value": "Å"
+            }
+          ],
+          "offset": 145,
+          "length": 1,
+          "context": {
+            "text": "...... Ya hemos visto el Santo; volvámonos á Madrid y podrá V. almorzar, si gusta ac...",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "Ya hemos visto el Santo; volvámonos á Madrid y podrá V. almorzar, si gusta acompañarme...",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "En una tipografía cuidada, use el carácter de puntos suspensivos.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "…"
+            }
+          ],
+          "offset": 195,
+          "length": 3,
+          "context": {
+            "text": "... podrá V. almorzar, si gusta acompañarme...",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "Ya hemos visto el Santo; volvámonos á Madrid y podrá V. almorzar, si gusta acompañarme...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PUNTOS_SUSPENSIVOS",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Carácter de puntos suspensivos",
+            "issueType": "typographical",
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 7
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          44
+        ],
+        [
+          45,
+          108
+        ],
+        [
+          109,
+          198
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 44,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 45,
+          "to": 108,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 109,
+          "to": 198,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Spanish (voseo)",
+        "code": "es-AR",
+        "detectedLanguage": {
+          "name": "Spanish",
+          "code": "es",
+          "confidence": 0.999997,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "En una tipografía cuidada, utilice el carácter adecuado de guion largo (raya).",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "—"
+            }
+          ],
+          "offset": 0,
+          "length": 2,
+          "context": {
+            "text": "--Que me pongo de rodillas aquí mismo...--...",
+            "offset": 0,
+            "length": 2
+          },
+          "sentence": "--Que me pongo de rodillas aquí mismo...--exclamaba el muy truhán.--Ea, un sí de esa boquita...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "GUION_LARGO",
+            "subId": "4",
+            "sourceFile": "grammar.xml",
+            "description": "Guion largo",
+            "issueType": "typographical",
+            "urls": [
+              {
+                "value": "https://www.rae.es/dpd/raya"
+              }
+            ],
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 9
+        },
+        {
+          "message": "En una tipografía cuidada, use el carácter de puntos suspensivos.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "…"
+            }
+          ],
+          "offset": 37,
+          "length": 3,
+          "context": {
+            "text": "--Que me pongo de rodillas aquí mismo...--exclamaba el muy truhán.--Ea, un sí de...",
+            "offset": 37,
+            "length": 3
+          },
+          "sentence": "--Que me pongo de rodillas aquí mismo...--exclamaba el muy truhán.--Ea, un sí de esa boquita...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PUNTOS_SUSPENSIVOS",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Carácter de puntos suspensivos",
+            "issueType": "typographical",
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 7
+        },
+        {
+          "message": "En una tipografía cuidada, utilice el carácter adecuado de guion largo (raya).",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "—"
+            }
+          ],
+          "offset": 40,
+          "length": 2,
+          "context": {
+            "text": "...--Que me pongo de rodillas aquí mismo...--exclamaba el muy truhán.--Ea, un sí de e...",
+            "offset": 43,
+            "length": 2
+          },
+          "sentence": "--Que me pongo de rodillas aquí mismo...--exclamaba el muy truhán.--Ea, un sí de esa boquita...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "GUION_LARGO",
+            "subId": "4",
+            "sourceFile": "grammar.xml",
+            "description": "Guion largo",
+            "issueType": "typographical",
+            "urls": [
+              {
+                "value": "https://www.rae.es/dpd/raya"
+              }
+            ],
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 9
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "truhan"
+            },
+            {
+              "value": "truhana"
+            },
+            {
+              "value": "Truman"
+            },
+            {
+              "value": "trucan"
+            },
+            {
+              "value": "trufan"
+            }
+          ],
+          "offset": 59,
+          "length": 6,
+          "context": {
+            "text": "...odillas aquí mismo...--exclamaba el muy truhán.--Ea, un sí de esa boquita... ¡Usted ve...",
+            "offset": 43,
+            "length": 6
+          },
+          "sentence": "--Que me pongo de rodillas aquí mismo...--exclamaba el muy truhán.--Ea, un sí de esa boquita...",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "En una tipografía cuidada, utilice el carácter adecuado de guion largo (raya).",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "—"
+            }
+          ],
+          "offset": 66,
+          "length": 2,
+          "context": {
+            "text": "... aquí mismo...--exclamaba el muy truhán.--Ea, un sí de esa boquita... ¡Usted verá ...",
+            "offset": 43,
+            "length": 2
+          },
+          "sentence": "--Que me pongo de rodillas aquí mismo...--exclamaba el muy truhán.--Ea, un sí de esa boquita...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "GUION_LARGO",
+            "subId": "4",
+            "sourceFile": "grammar.xml",
+            "description": "Guion largo",
+            "issueType": "typographical",
+            "urls": [
+              {
+                "value": "https://www.rae.es/dpd/raya"
+              }
+            ],
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 9
+        },
+        {
+          "message": "En una tipografía cuidada, use el carácter de puntos suspensivos.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "…"
+            }
+          ],
+          "offset": 92,
+          "length": 3,
+          "context": {
+            "text": "...el muy truhán.--Ea, un sí de esa boquita... ¡Usted verá el gran almuerso del siglo!...",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "--Que me pongo de rodillas aquí mismo...--exclamaba el muy truhán.--Ea, un sí de esa boquita...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PUNTOS_SUSPENSIVOS",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Carácter de puntos suspensivos",
+            "issueType": "typographical",
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 7
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "almuerzo"
+            }
+          ],
+          "offset": 116,
+          "length": 8,
+          "context": {
+            "text": "...í de esa boquita... ¡Usted verá el gran almuerso del siglo! Fuera escrúpulos... ¿Se ha p...",
+            "offset": 43,
+            "length": 8
+          },
+          "sentence": "¡Usted verá el gran almuerso del siglo!",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "En una tipografía cuidada, use el carácter de puntos suspensivos.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "…"
+            }
+          ],
+          "offset": 152,
+          "length": 3,
+          "context": {
+            "text": "...ran almuerso del siglo! Fuera escrúpulos... ¿Se ha pensao V. que mañana voy yo á co...",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "Fuera escrúpulos...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PUNTOS_SUSPENSIVOS",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Carácter de puntos suspensivos",
+            "issueType": "typographical",
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 7
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "pensar"
+            },
+            {
+              "value": "pensado"
+            },
+            {
+              "value": "pensó"
+            },
+            {
+              "value": "pensad"
+            },
+            {
+              "value": "pensalo"
+            },
+            {
+              "value": "pensaos"
+            },
+            {
+              "value": "pensá"
+            },
+            {
+              "value": "pensás"
+            }
+          ],
+          "offset": 163,
+          "length": 6,
+          "context": {
+            "text": "...o del siglo! Fuera escrúpulos... ¿Se ha pensao V. que mañana voy yo á contárselo á la ...",
+            "offset": 43,
+            "length": 6
+          },
+          "sentence": "¿Se ha pensao V. que mañana voy yo á contárselo á la señá duquesa de Sahagún?",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "a"
+            },
+            {
+              "value": "Å"
+            }
+          ],
+          "offset": 191,
+          "length": 1,
+          "context": {
+            "text": "...s... ¿Se ha pensao V. que mañana voy yo á contárselo á la señá duquesa de Sahagún...",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "¿Se ha pensao V. que mañana voy yo á contárselo á la señá duquesa de Sahagún?",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "a"
+            },
+            {
+              "value": "Å"
+            }
+          ],
+          "offset": 204,
+          "length": 1,
+          "context": {
+            "text": "...ensao V. que mañana voy yo á contárselo á la señá duquesa de Sahagún? A este prob...",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "¿Se ha pensao V. que mañana voy yo á contárselo á la señá duquesa de Sahagún?",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "cena"
+            },
+            {
+              "value": "Sena"
+            },
+            {
+              "value": "seña"
+            },
+            {
+              "value": "ceña"
+            },
+            {
+              "value": "SENA"
+            },
+            {
+              "value": "cená"
+            },
+            {
+              "value": "sena"
+            },
+            {
+              "value": "sea"
+            },
+            {
+              "value": "será"
+            },
+            {
+              "value": "señal"
+            },
+            {
+              "value": "pena"
+            },
+            {
+              "value": "seno"
+            },
+            {
+              "value": "cera"
+            },
+            {
+              "value": "seca"
+            },
+            {
+              "value": "seda"
+            },
+            {
+              "value": "leña"
+            },
+            {
+              "value": "peña"
+            },
+            {
+              "value": "sana"
+            },
+            {
+              "value": "senda"
+            },
+            {
+              "value": "sepa"
+            },
+            {
+              "value": "sera"
+            },
+            {
+              "value": "señas"
+            },
+            {
+              "value": "suena"
+            },
+            {
+              "value": "vena"
+            },
+            {
+              "value": "cenar"
+            },
+            {
+              "value": "cenas"
+            },
+            {
+              "value": "cepa"
+            },
+            {
+              "value": "cesa"
+            },
+            {
+              "value": "sueña"
+            },
+            {
+              "value": "ceja"
+            },
+            {
+              "value": "mena"
+            },
+            {
+              "value": "seta"
+            },
+            {
+              "value": "AENA"
+            },
+            {
+              "value": "ceba"
+            },
+            {
+              "value": "nena"
+            },
+            {
+              "value": "saña"
+            },
+            {
+              "value": "cenan"
+            },
+            {
+              "value": "ceño"
+            },
+            {
+              "value": "ceñía"
+            },
+            {
+              "value": "cela"
+            },
+            {
+              "value": "censa"
+            },
+            {
+              "value": "cenó"
+            },
+            {
+              "value": "sema"
+            },
+            {
+              "value": "serna"
+            },
+            {
+              "value": "siena"
+            },
+            {
+              "value": "ceno"
+            },
+            {
+              "value": "tena"
+            },
+            {
+              "value": "cene"
+            },
+            {
+              "value": "senas"
+            },
+            {
+              "value": "cerna"
+            },
+            {
+              "value": "Aena"
+            },
+            {
+              "value": "Dena"
+            },
+            {
+              "value": "Ena"
+            },
+            {
+              "value": "Feña"
+            },
+            {
+              "value": "Lena"
+            },
+            {
+              "value": "Mena"
+            },
+            {
+              "value": "Peña"
+            },
+            {
+              "value": "Rena"
+            },
+            {
+              "value": "Seba"
+            },
+            {
+              "value": "Senan"
+            },
+            {
+              "value": "Seno"
+            },
+            {
+              "value": "Sesa"
+            },
+            {
+              "value": "Seva"
+            },
+            {
+              "value": "Siena"
+            },
+            {
+              "value": "Sèina"
+            },
+            {
+              "value": "Tena"
+            },
+            {
+              "value": "cebá"
+            },
+            {
+              "value": "ceca"
+            },
+            {
+              "value": "ceda"
+            },
+            {
+              "value": "cegá"
+            },
+            {
+              "value": "cejá"
+            },
+            {
+              "value": "celá"
+            },
+            {
+              "value": "cema"
+            },
+            {
+              "value": "cenad"
+            },
+            {
+              "value": "cenal"
+            },
+            {
+              "value": "cenia"
+            },
+            {
+              "value": "censá"
+            },
+            {
+              "value": "cenás"
+            },
+            {
+              "value": "cené"
+            },
+            {
+              "value": "cení"
+            },
+            {
+              "value": "cesá"
+            },
+            {
+              "value": "ceñas"
+            },
+            {
+              "value": "ceñí"
+            },
+            {
+              "value": "jena"
+            },
+            {
+              "value": "mená"
+            },
+            {
+              "value": "pená"
+            },
+            {
+              "value": "saná"
+            },
+            {
+              "value": "secá"
+            },
+            {
+              "value": "sedá"
+            },
+            {
+              "value": "segá"
+            },
+            {
+              "value": "sela"
+            },
+            {
+              "value": "sentá"
+            },
+            {
+              "value": "seño"
+            },
+            {
+              "value": "soná"
+            },
+            {
+              "value": "soñá"
+            },
+            {
+              "value": "teña"
+            }
+          ],
+          "offset": 209,
+          "length": 4,
+          "context": {
+            "text": "... V. que mañana voy yo á contárselo á la señá duquesa de Sahagún? A este probetico......",
+            "offset": 43,
+            "length": 4
+          },
+          "sentence": "¿Se ha pensao V. que mañana voy yo á contárselo á la señá duquesa de Sahagún?",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "profético"
+            },
+            {
+              "value": "protético"
+            }
+          ],
+          "offset": 241,
+          "length": 9,
+          "context": {
+            "text": "...lo á la señá duquesa de Sahagún? A este probetico..., ¡una limosna de armuerso!.",
+            "offset": 43,
+            "length": 9
+          },
+          "sentence": "A este probetico..., ¡una limosna de armuerso!.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "En una tipografía cuidada, use el carácter de puntos suspensivos.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "…"
+            }
+          ],
+          "offset": 250,
+          "length": 3,
+          "context": {
+            "text": "...eñá duquesa de Sahagún? A este probetico..., ¡una limosna de armuerso!.",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "A este probetico..., ¡una limosna de armuerso!.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PUNTOS_SUSPENSIVOS",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Carácter de puntos suspensivos",
+            "issueType": "typographical",
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 7
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "arquero"
+            },
+            {
+              "value": "arqueros"
+            },
+            {
+              "value": "almuerzo"
+            },
+            {
+              "value": "armero"
+            },
+            {
+              "value": "armeros"
+            },
+            {
+              "value": "Armero"
+            },
+            {
+              "value": "Arnuero"
+            },
+            {
+              "value": "amuermo"
+            },
+            {
+              "value": "amuermó"
+            }
+          ],
+          "offset": 271,
+          "length": 8,
+          "context": {
+            "text": "...n? A este probetico..., ¡una limosna de armuerso!.",
+            "offset": 43,
+            "length": 8
+          },
+          "sentence": "A este probetico..., ¡una limosna de armuerso!.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          95
+        ],
+        [
+          96,
+          135
+        ],
+        [
+          136,
+          155
+        ],
+        [
+          156,
+          233
+        ],
+        [
+          234,
+          281
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 95,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 96,
+          "to": 135,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 136,
+          "to": 155,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 156,
+          "to": 233,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 234,
+          "to": 281,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Spanish (voseo)",
+        "code": "es-AR",
+        "detectedLanguage": {
+          "name": "Spanish",
+          "code": "es",
+          "confidence": 0.999993,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "En una tipografía cuidada, utilice el carácter adecuado de guion largo (raya).",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "—"
+            }
+          ],
+          "offset": 0,
+          "length": 2,
+          "context": {
+            "text": "--En un minuto se le avisa... Que se procu...",
+            "offset": 0,
+            "length": 2
+          },
+          "sentence": "--En un minuto se le avisa...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "GUION_LARGO",
+            "subId": "4",
+            "sourceFile": "grammar.xml",
+            "description": "Guion largo",
+            "issueType": "typographical",
+            "urls": [
+              {
+                "value": "https://www.rae.es/dpd/raya"
+              }
+            ],
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 9
+        },
+        {
+          "message": "En una tipografía cuidada, use el carácter de puntos suspensivos.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "…"
+            }
+          ],
+          "offset": 26,
+          "length": 3,
+          "context": {
+            "text": "--En un minuto se le avisa... Que se procure cochera aquí... Y si no,...",
+            "offset": 26,
+            "length": 3
+          },
+          "sentence": "--En un minuto se le avisa...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PUNTOS_SUSPENSIVOS",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Carácter de puntos suspensivos",
+            "issueType": "typographical",
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 7
+        },
+        {
+          "message": "En una tipografía cuidada, use el carácter de puntos suspensivos.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "…"
+            }
+          ],
+          "offset": 57,
+          "length": 3,
+          "context": {
+            "text": "... le avisa... Que se procure cochera aquí... Y si no, que se vuelva á Madrid hasta l...",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "Que se procure cochera aquí...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PUNTOS_SUSPENSIVOS",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Carácter de puntos suspensivos",
+            "issueType": "typographical",
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 7
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "a"
+            },
+            {
+              "value": "Å"
+            }
+          ],
+          "offset": 84,
+          "length": 1,
+          "context": {
+            "text": "... cochera aquí... Y si no, que se vuelva á Madrid hasta la puesta del sol... Esper...",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "Y si no, que se vuelva á Madrid hasta la puesta del sol...",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "En una tipografía cuidada, use el carácter de puntos suspensivos.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "…"
+            }
+          ],
+          "offset": 116,
+          "length": 3,
+          "context": {
+            "text": "... vuelva á Madrid hasta la puesta del sol... Espere V., buscaré alguno que lleve el ...",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "Y si no, que se vuelva á Madrid hasta la puesta del sol...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PUNTOS_SUSPENSIVOS",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Carácter de puntos suspensivos",
+            "issueType": "typographical",
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 7
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "recto"
+            },
+            {
+              "value": "recae"
+            },
+            {
+              "value": "recayó"
+            },
+            {
+              "value": "recaló"
+            },
+            {
+              "value": "recio"
+            },
+            {
+              "value": "recado"
+            },
+            {
+              "value": "recabó"
+            },
+            {
+              "value": "recato"
+            },
+            {
+              "value": "recalo"
+            },
+            {
+              "value": "recabo"
+            },
+            {
+              "value": "Recas"
+            },
+            {
+              "value": "recamo"
+            },
+            {
+              "value": "recamó"
+            },
+            {
+              "value": "recató"
+            },
+            {
+              "value": "recavo"
+            },
+            {
+              "value": "recavó"
+            },
+            {
+              "value": "recazo"
+            },
+            {
+              "value": "recaé"
+            },
+            {
+              "value": "recaí"
+            },
+            {
+              "value": "recho"
+            }
+          ],
+          "offset": 159,
+          "length": 5,
+          "context": {
+            "text": "... Espere V., buscaré alguno que lleve el recao... No la he de dejar aquí solita pa que...",
+            "offset": 43,
+            "length": 5
+          },
+          "sentence": "Espere V., buscaré alguno que lleve el recao...",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "En una tipografía cuidada, use el carácter de puntos suspensivos.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "…"
+            }
+          ],
+          "offset": 164,
+          "length": 3,
+          "context": {
+            "text": "...re V., buscaré alguno que lleve el recao... No la he de dejar aquí solita pa que se...",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "Espere V., buscaré alguno que lleve el recao...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PUNTOS_SUSPENSIVOS",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Carácter de puntos suspensivos",
+            "issueType": "typographical",
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 7
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "la"
+            },
+            {
+              "value": "a"
+            },
+            {
+              "value": "ha"
+            },
+            {
+              "value": "ya"
+            },
+            {
+              "value": "da"
+            },
+            {
+              "value": "paz"
+            },
+            {
+              "value": "va"
+            },
+            {
+              "value": "par"
+            },
+            {
+              "value": "pan"
+            },
+            {
+              "value": "ca"
+            },
+            {
+              "value": "pH"
+            },
+            {
+              "value": "PE"
+            },
+            {
+              "value": "ka"
+            },
+            {
+              "value": "ta"
+            },
+            {
+              "value": "EPA"
+            },
+            {
+              "value": "ja"
+            },
+            {
+              "value": "pi"
+            },
+            {
+              "value": "púa"
+            },
+            {
+              "value": "pía"
+            },
+            {
+              "value": "APA"
+            },
+            {
+              "value": "Apa"
+            },
+            {
+              "value": "CPA"
+            },
+            {
+              "value": "Ea"
+            },
+            {
+              "value": "IA"
+            },
+            {
+              "value": "PAC"
+            },
+            {
+              "value": "PC"
+            },
+            {
+              "value": "PD"
+            },
+            {
+              "value": "PDA"
+            },
+            {
+              "value": "POA"
+            },
+            {
+              "value": "PP"
+            },
+            {
+              "value": "Pan"
+            },
+            {
+              "value": "Pao"
+            },
+            {
+              "value": "Pat"
+            },
+            {
+              "value": "Pau"
+            },
+            {
+              "value": "Paz"
+            },
+            {
+              "value": "Pla"
+            },
+            {
+              "value": "Pía"
+            },
+            {
+              "value": "Ra"
+            },
+            {
+              "value": "SA"
+            },
+            {
+              "value": "Spa"
+            },
+            {
+              "value": "ba"
+            },
+            {
+              "value": "ea"
+            },
+            {
+              "value": "epa"
+            },
+            {
+              "value": "fa"
+            },
+            {
+              "value": "oa"
+            },
+            {
+              "value": "opa"
+            },
+            {
+              "value": "opá"
+            },
+            {
+              "value": "paf"
+            },
+            {
+              "value": "pe"
+            },
+            {
+              "value": "pea"
+            },
+            {
+              "value": "pia"
+            },
+            {
+              "value": "poa"
+            },
+            {
+              "value": "spa"
+            },
+            {
+              "value": "upa"
+            },
+            {
+              "value": "upá"
+            },
+            {
+              "value": "za"
+            },
+            {
+              "value": "Å"
+            },
+            {
+              "value": "Ía"
+            },
+            {
+              "value": "PSA"
+            }
+          ],
+          "offset": 198,
+          "length": 2,
+          "context": {
+            "text": "... recao... No la he de dejar aquí solita pa que se la coma un lobo; eso sí que no.",
+            "offset": 43,
+            "length": 2
+          },
+          "sentence": "No la he de dejar aquí solita pa que se la coma un lobo; eso sí que no.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          29
+        ],
+        [
+          30,
+          60
+        ],
+        [
+          61,
+          119
+        ],
+        [
+          120,
+          167
+        ],
+        [
+          168,
+          239
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 29,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 30,
+          "to": 60,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 61,
+          "to": 119,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 120,
+          "to": 167,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 168,
+          "to": 239,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Spanish (voseo)",
+        "code": "es-AR",
+        "detectedLanguage": {
+          "name": "Spanish",
+          "code": "es",
+          "confidence": 0.99999696,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Si no equivale a ‘pero’ o ‘sino’, se escribe con tilde.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "Más"
+            }
+          ],
+          "offset": 283,
+          "length": 3,
+          "context": {
+            "text": "...rvativo contra aquel calor del Senegal. Mas no se veía rastro de edificio grande en...",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "Mas no se veía rastro de edificio grande en toda la extensión del cerro, ni antes ni después.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "MAS",
+            "subId": "2",
+            "sourceFile": "grammar.xml",
+            "description": "mas/más",
+            "issueType": "misspelling",
+            "urls": [
+              {
+                "value": "https://languagetool.org/insights/es/publicacion/mas-con-tilde-o-sin-tilde/"
+              }
+            ],
+            "category": {
+              "id": "DIACRITICS",
+              "name": "Diacríticos (tilde)"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 3
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "a"
+            },
+            {
+              "value": "Å"
+            }
+          ],
+          "offset": 419,
+          "length": 1,
+          "context": {
+            "text": "...s únicas murallas blancas que distinguí á mi derecha eran las tapias de la Sacram...",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "Las únicas murallas blancas que distinguí á mi derecha eran las tapias de la Sacramental, á cuyo amparo descansaban los muertos sin enterarse de las locuras que del otro lado cometíamos los vivos.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "a"
+            },
+            {
+              "value": "Å"
+            }
+          ],
+          "offset": 467,
+          "length": 1,
+          "context": {
+            "text": "...echa eran las tapias de la Sacramental, á cuyo amparo descansaban los muertos sin...",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "Las únicas murallas blancas que distinguí á mi derecha eran las tapias de la Sacramental, á cuyo amparo descansaban los muertos sin enterarse de las locuras que del otro lado cometíamos los vivos.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "a"
+            },
+            {
+              "value": "Å"
+            }
+          ],
+          "offset": 582,
+          "length": 1,
+          "context": {
+            "text": "...otro lado cometíamos los vivos. Amenacé á Pacheco con el palo de la sombrilla:",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "Amenacé á Pacheco con el palo de la sombrilla:",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          72
+        ],
+        [
+          73,
+          140
+        ],
+        [
+          141,
+          282
+        ],
+        [
+          283,
+          376
+        ],
+        [
+          377,
+          573
+        ],
+        [
+          574,
+          620
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 72,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 73,
+          "to": 140,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 141,
+          "to": 282,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 283,
+          "to": 376,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 377,
+          "to": 573,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 574,
+          "to": 620,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Spanish (voseo)",
+        "code": "es-AR",
+        "detectedLanguage": {
+          "name": "Spanish",
+          "code": "es",
+          "confidence": 0.9999939,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "En una tipografía cuidada, utilice el carácter adecuado de guion largo (raya).",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "—"
+            }
+          ],
+          "offset": 0,
+          "length": 2,
+          "context": {
+            "text": "--¡Hombre..., pues de veras que tiene grac...",
+            "offset": 0,
+            "length": 2
+          },
+          "sentence": "--¡Hombre..., pues de veras que tiene gracia!",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "GUION_LARGO",
+            "subId": "4",
+            "sourceFile": "grammar.xml",
+            "description": "Guion largo",
+            "issueType": "typographical",
+            "urls": [
+              {
+                "value": "https://www.rae.es/dpd/raya"
+              }
+            ],
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 9
+        },
+        {
+          "message": "En una tipografía cuidada, use el carácter de puntos suspensivos.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "…"
+            }
+          ],
+          "offset": 9,
+          "length": 3,
+          "context": {
+            "text": "--¡Hombre..., pues de veras que tiene gracia! ¿No as...",
+            "offset": 9,
+            "length": 3
+          },
+          "sentence": "--¡Hombre..., pues de veras que tiene gracia!",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PUNTOS_SUSPENSIVOS",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Carácter de puntos suspensivos",
+            "issueType": "typographical",
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 7
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "a"
+            },
+            {
+              "value": "Å"
+            }
+          ],
+          "offset": 133,
+          "length": 1,
+          "context": {
+            "text": "...gníficas? ¡Y me trae V. con tanta flema á asarme por estos vericuetos! Al menos e...",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "¡Y me trae V. con tanta flema á asarme por estos vericuetos!",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "En una tipografía cuidada, use el carácter de puntos suspensivos.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "…"
+            }
+          ],
+          "offset": 181,
+          "length": 3,
+          "context": {
+            "text": "... por estos vericuetos! Al menos entérese... Pregunte á cualquiera, ¡al primero que ...",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "Al menos entérese...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PUNTOS_SUSPENSIVOS",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Carácter de puntos suspensivos",
+            "issueType": "typographical",
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 7
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "a"
+            },
+            {
+              "value": "Å"
+            }
+          ],
+          "offset": 194,
+          "length": 1,
+          "context": {
+            "text": "...ricuetos! Al menos entérese... Pregunte á cualquiera, ¡al primero que pase!",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "Pregunte á cualquiera, ¡al primero que pase!",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          45
+        ],
+        [
+          46,
+          102
+        ],
+        [
+          103,
+          163
+        ],
+        [
+          164,
+          184
+        ],
+        [
+          185,
+          229
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 45,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 46,
+          "to": 102,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 103,
+          "to": 163,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 164,
+          "to": 184,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 185,
+          "to": 229,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Spanish (voseo)",
+        "code": "es-AR",
+        "detectedLanguage": {
+          "name": "Spanish",
+          "code": "es",
+          "confidence": 0.9999938,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "a"
+            },
+            {
+              "value": "Å"
+            }
+          ],
+          "offset": 131,
+          "length": 1,
+          "context": {
+            "text": "... en situaciones tales se nos desarrolla á las mujeres, me manifesté satisfecha. A...",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "Al ver que él se mostraba disgustado, yo, por ese instinto de contradicción humorística que en situaciones tales se nos desarrolla á las mujeres, me manifesté satisfecha.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "_ carácter"
+            }
+          ],
+          "offset": 243,
+          "length": 10,
+          "context": {
+            "text": "...radaba comer en un merendero. Tenía más _carácter_. Era más nuevo é imprevisto, y hasta me...",
+            "offset": 43,
+            "length": 10
+          },
+          "sentence": "Tenía más _carácter_.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "e"
+            }
+          ],
+          "offset": 269,
+          "length": 1,
+          "context": {
+            "text": "...ro. Tenía más _carácter_. Era más nuevo é imprevisto, y hasta menos clandestino y...",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "Era más nuevo é imprevisto, y hasta menos clandestino y peligroso.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          170
+        ],
+        [
+          171,
+          232
+        ],
+        [
+          233,
+          254
+        ],
+        [
+          255,
+          321
+        ],
+        [
+          322,
+          426
+        ],
+        [
+          427,
+          498
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 170,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 171,
+          "to": 232,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 233,
+          "to": 254,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 255,
+          "to": 321,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 322,
+          "to": 426,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 427,
+          "to": 498,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Spanish (voseo)",
+        "code": "es-AR",
+        "detectedLanguage": {
+          "name": "Spanish",
+          "code": "es",
+          "confidence": 0.99999624,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "En una tipografía cuidada, utilice el carácter adecuado de guion largo (raya).",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "—"
+            }
+          ],
+          "offset": 0,
+          "length": 2,
+          "context": {
+            "text": "--¿He de ser yo? Pues tráiganos de too eso...",
+            "offset": 0,
+            "length": 2
+          },
+          "sentence": "--¿He de ser yo?",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "GUION_LARGO",
+            "subId": "4",
+            "sourceFile": "grammar.xml",
+            "description": "Guion largo",
+            "issueType": "typographical",
+            "urls": [
+              {
+                "value": "https://www.rae.es/dpd/raya"
+              }
+            ],
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 9
+        },
+        {
+          "message": "Construcción incorrecta.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "se too"
+            },
+            {
+              "value": "te too"
+            },
+            {
+              "value": "de todo"
+            },
+            {
+              "value": "de tono"
+            },
+            {
+              "value": "de tío"
+            },
+            {
+              "value": "de tomo"
+            },
+            {
+              "value": "de toro"
+            },
+            {
+              "value": "de tos"
+            },
+            {
+              "value": "de zoo"
+            },
+            {
+              "value": "de ton"
+            }
+          ],
+          "offset": 32,
+          "length": 6,
+          "context": {
+            "text": "--¿He de ser yo? Pues tráiganos de too eso que hemos dicho, niña bonita..., hu...",
+            "offset": 32,
+            "length": 6
+          },
+          "sentence": "Pues tráiganos de too eso que hemos dicho, niña bonita..., huevos, magras, ternera, lata de sardinas...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PREP_VERB",
+            "subId": "4",
+            "sourceFile": "grammar.xml",
+            "description": "Combinación imposible: preposición + verbo conjugado",
+            "issueType": "grammar",
+            "category": {
+              "id": "GRAMMAR",
+              "name": "Gramática"
+            }
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 5
+        },
+        {
+          "message": "En una tipografía cuidada, use el carácter de puntos suspensivos.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "…"
+            }
+          ],
+          "offset": 71,
+          "length": 3,
+          "context": {
+            "text": "... de too eso que hemos dicho, niña bonita..., huevos, magras, ternera, lata de sardi...",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "Pues tráiganos de too eso que hemos dicho, niña bonita..., huevos, magras, ternera, lata de sardinas...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PUNTOS_SUSPENSIVOS",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Carácter de puntos suspensivos",
+            "issueType": "typographical",
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 7
+        },
+        {
+          "message": "En una tipografía cuidada, use el carácter de puntos suspensivos.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "…"
+            }
+          ],
+          "offset": 117,
+          "length": 3,
+          "context": {
+            "text": "...uevos, magras, ternera, lata de sardinas... ¡Ay! y lo primero de too se va V. á tra...",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "Pues tráiganos de too eso que hemos dicho, niña bonita..., huevos, magras, ternera, lata de sardinas...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PUNTOS_SUSPENSIVOS",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Carácter de puntos suspensivos",
+            "issueType": "typographical",
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 7
+        },
+        {
+          "message": "Posible error de puntuación o mayúsculas.",
+          "shortMessage": "Error de puntuación",
+          "replacements": [
+            {
+              "value": "! Y"
+            },
+            {
+              "value": "!, y"
+            }
+          ],
+          "offset": 124,
+          "length": 3,
+          "context": {
+            "text": "...magras, ternera, lata de sardinas... ¡Ay! y lo primero de too se va V. á traer por ...",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "¡Ay! y lo primero de too se va V. á traer por los aires una boteya e mansaniya y unas cañitas...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "CAPITALIZATION_AFTER_QUESTION_MARK",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Mayúscula después de interrogante",
+            "issueType": "typographical",
+            "category": {
+              "id": "TYPOGRAPHY",
+              "name": "Tipografía"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 2
+        },
+        {
+          "message": "Construcción incorrecta.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "se too"
+            },
+            {
+              "value": "te too"
+            },
+            {
+              "value": "de todo"
+            },
+            {
+              "value": "de tono"
+            },
+            {
+              "value": "de tío"
+            },
+            {
+              "value": "de tomo"
+            },
+            {
+              "value": "de toro"
+            },
+            {
+              "value": "de tos"
+            },
+            {
+              "value": "de zoo"
+            },
+            {
+              "value": "de ton"
+            }
+          ],
+          "offset": 139,
+          "length": 6,
+          "context": {
+            "text": "..., lata de sardinas... ¡Ay! y lo primero de too se va V. á traer por los aires una bote...",
+            "offset": 43,
+            "length": 6
+          },
+          "sentence": "¡Ay! y lo primero de too se va V. á traer por los aires una boteya e mansaniya y unas cañitas...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PREP_VERB",
+            "subId": "4",
+            "sourceFile": "grammar.xml",
+            "description": "Combinación imposible: preposición + verbo conjugado",
+            "issueType": "grammar",
+            "category": {
+              "id": "GRAMMAR",
+              "name": "Gramática"
+            }
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 5
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "a"
+            },
+            {
+              "value": "Å"
+            }
+          ],
+          "offset": 155,
+          "length": 1,
+          "context": {
+            "text": "...as... ¡Ay! y lo primero de too se va V. á traer por los aires una boteya e mansan...",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "¡Ay! y lo primero de too se va V. á traer por los aires una boteya e mansaniya y unas cañitas...",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "botella"
+            },
+            {
+              "value": "botellas"
+            },
+            {
+              "value": "botera"
+            },
+            {
+              "value": "boteja"
+            },
+            {
+              "value": "botéis"
+            },
+            {
+              "value": "bótela"
+            },
+            {
+              "value": "votéis"
+            },
+            {
+              "value": "vótela"
+            },
+            {
+              "value": "bote ya"
+            }
+          ],
+          "offset": 181,
+          "length": 6,
+          "context": {
+            "text": "... too se va V. á traer por los aires una boteya e mansaniya y unas cañitas... Y aseitun...",
+            "offset": 43,
+            "length": 6
+          },
+          "sentence": "¡Ay! y lo primero de too se va V. á traer por los aires una boteya e mansaniya y unas cañitas...",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "manganiya"
+            }
+          ],
+          "offset": 190,
+          "length": 9,
+          "context": {
+            "text": "...a V. á traer por los aires una boteya e mansaniya y unas cañitas... Y aseitunas.",
+            "offset": 43,
+            "length": 9
+          },
+          "sentence": "¡Ay! y lo primero de too se va V. á traer por los aires una boteya e mansaniya y unas cañitas...",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "En una tipografía cuidada, use el carácter de puntos suspensivos.",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "…"
+            }
+          ],
+          "offset": 214,
+          "length": 3,
+          "context": {
+            "text": "...es una boteya e mansaniya y unas cañitas... Y aseitunas.",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "¡Ay! y lo primero de too se va V. á traer por los aires una boteya e mansaniya y unas cañitas...",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "PUNTOS_SUSPENSIVOS",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "Carácter de puntos suspensivos",
+            "issueType": "typographical",
+            "category": {
+              "id": "ACCURATE_TYPOGRAPHY",
+              "name": "tipografía avanzada"
+            },
+            "tags": [
+              "picky"
+            ]
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": 7
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "aceitunas"
+            },
+            {
+              "value": "aceituna"
+            },
+            {
+              "value": "aceitunos"
+            },
+            {
+              "value": "aceitunís"
+            }
+          ],
+          "offset": 220,
+          "length": 9,
+          "context": {
+            "text": "... boteya e mansaniya y unas cañitas... Y aseitunas.",
+            "offset": 43,
+            "length": 9
+          },
+          "sentence": "Y aseitunas.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          16
+        ],
+        [
+          17,
+          120
+        ],
+        [
+          121,
+          217
+        ],
+        [
+          218,
+          230
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 16,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 17,
+          "to": 120,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 121,
+          "to": 217,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 218,
+          "to": 230,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Spanish (voseo)",
+        "code": "es-AR",
+        "detectedLanguage": {
+          "name": "Spanish",
+          "code": "es",
+          "confidence": 0.9999947,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "a"
+            },
+            {
+              "value": "Å"
+            }
+          ],
+          "offset": 219,
+          "length": 1,
+          "context": {
+            "text": "...ena disposición de ánimo el encontrarme á cubierto del terrible sol.",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "Aquellas ordinarieces, como diría mi paisano el filósofo, me abrían el apetito de par en par. Y aumentaba mi buena disposición de ánimo el encontrarme á cubierto del terrible sol.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          67
+        ],
+        [
+          68,
+          247
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 67,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 68,
+          "to": 247,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Spanish (voseo)",
+        "code": "es-AR",
+        "detectedLanguage": {
+          "name": "Spanish",
+          "code": "es",
+          "confidence": 0.99999475,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "a"
+            },
+            {
+              "value": "Å"
+            }
+          ],
+          "offset": 18,
+          "length": 1,
+          "context": {
+            "text": "Verdad que estaba á cubierto lo mismo que el que sale al ca...",
+            "offset": 18,
+            "length": 1
+          },
+          "sentence": "Verdad que estaba á cubierto lo mismo que el que sale al campo á las doce del día bajo un paraguas.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "a"
+            },
+            {
+              "value": "Å"
+            }
+          ],
+          "offset": 63,
+          "length": 1,
+          "context": {
+            "text": "...ierto lo mismo que el que sale al campo á las doce del día bajo un paraguas. El s...",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "Verdad que estaba á cubierto lo mismo que el que sale al campo á las doce del día bajo un paraguas.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "a"
+            },
+            {
+              "value": "Å"
+            }
+          ],
+          "offset": 343,
+          "length": 1,
+          "context": {
+            "text": "...l abierto frente de la tienda, entraban á oleadas, á torrentes, no sólo la luz y ...",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "Por entre las esteras mal juntas del techo, al través de la lona, y sobre todo, por el abierto frente de la tienda, entraban á oleadas, á torrentes, no sólo la luz y el calor del astro, sino el ruido, el oleaje del humano mar, los gritos, las disputas, las canciones, las risotadas, los rasgueos y punteos de guitarra y vihuela, el infernal paso doble, el _¡Viva España!_ de los duros pianos mecánicos.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Se ha encontrado un posible error ortográfico.",
+          "shortMessage": "Error de ortografía",
+          "replacements": [
+            {
+              "value": "a"
+            },
+            {
+              "value": "Å"
+            }
+          ],
+          "offset": 354,
+          "length": 1,
+          "context": {
+            "text": "...rente de la tienda, entraban á oleadas, á torrentes, no sólo la luz y el calor de...",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "Por entre las esteras mal juntas del techo, al través de la lona, y sobre todo, por el abierto frente de la tienda, entraban á oleadas, á torrentes, no sólo la luz y el calor del astro, sino el ruido, el oleaje del humano mar, los gritos, las disputas, las canciones, las risotadas, los rasgueos y punteos de guitarra y vihuela, el infernal paso doble, el _¡Viva España!_ de los duros pianos mecánicos.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_ES",
+            "description": "Posible error de ortografía",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Posible error ortográfico"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "La tilde es innecesaria según la norma actual. Con el sentido de «solamente» (adv.), cuando hay riesgo de ambigüedad con el adj. «solo», puede escribirse «sólo» (DRAE).",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "solo"
+            },
+            {
+              "value": "solamente"
+            },
+            {
+              "value": "únicamente"
+            }
+          ],
+          "offset": 370,
+          "length": 4,
+          "context": {
+            "text": "...da, entraban á oleadas, á torrentes, no sólo la luz y el calor del astro, sino el ru...",
+            "offset": 43,
+            "length": 4
+          },
+          "sentence": "Por entre las esteras mal juntas del techo, al través de la lona, y sobre todo, por el abierto frente de la tienda, entraban á oleadas, á torrentes, no sólo la luz y el calor del astro, sino el ruido, el oleaje del humano mar, los gritos, las disputas, las canciones, las risotadas, los rasgueos y punteos de guitarra y vihuela, el infernal paso doble, el _¡Viva España!_ de los duros pianos mecánicos.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "SOLO",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "sólo/solo",
+            "issueType": "uncategorized",
+            "urls": [
+              {
+                "value": "https://languagetool.org/insights/es/publicacion/cuando-se-acentua-solo/"
+              }
+            ],
+            "category": {
+              "id": "CAMBIOS_NORMA",
+              "name": "Cambios en las normas lingüísticas"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          99
+        ],
+        [
+          100,
+          217
+        ],
+        [
+          218,
+          620
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 99,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 100,
+          "to": 217,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 218,
+          "to": 620,
+          "detectedLanguages": [
+            {
+              "language": "es",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

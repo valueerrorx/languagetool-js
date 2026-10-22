@@ -1,0 +1,2272 @@
+[
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Italian",
+        "code": "it",
+        "detectedLanguage": {
+          "name": "Italian",
+          "code": "it",
+          "confidence": 0.999999,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "L'uso della d eufonica dovrebbe essere limitato ai casi d'incontro della stessa vocale: \"a un\".",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "a un"
+            }
+          ],
+          "offset": 496,
+          "length": 5,
+          "context": {
+            "text": "...e stette aspettando Renzo con timore e, ad un tempo, con impazienza.",
+            "offset": 43,
+            "length": 5
+          },
+          "sentence": "Assaporato dolorosamente questo momento, don Abbondio ricapitolò subito i suoi disegni della notte, si confermò in essi, gli ordinò meglio, s'alzò, e stette aspettando Renzo con timore e, ad un tempo, con impazienza.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "ST_03_001",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "eufoniche",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT10",
+              "name": "Stile - Leggibilità"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          83
+        ],
+        [
+          84,
+          307
+        ],
+        [
+          308,
+          524
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 83,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 84,
+          "to": 307,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 308,
+          "to": 524,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Italian",
+        "code": "it",
+        "detectedLanguage": {
+          "name": "Italian",
+          "code": "it",
+          "confidence": 0.99999726,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Trovato un probabile errore di battitura.",
+          "shortMessage": "Errore di battitura",
+          "replacements": [
+            {
+              "value": "poiché"
+            },
+            {
+              "value": "piche"
+            },
+            {
+              "value": "pliche"
+            },
+            {
+              "value": "poche"
+            },
+            {
+              "value": "polche"
+            },
+            {
+              "value": "porche"
+            },
+            {
+              "value": "psiche"
+            }
+          ],
+          "offset": 84,
+          "length": 6,
+          "context": {
+            "text": "...disse Renzo, cominciando ad alterarsi, «poichè me ne ha già rotta bastantemente la tes...",
+            "offset": 43,
+            "length": 6
+          },
+          "sentence": "«Bisogna ben ch'io ne sappia qualche cosa,» disse Renzo, cominciando ad alterarsi, «poichè me ne ha già rotta bastantemente la testa, questi giorni addietro.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_IT_IT",
+            "description": "Probabile errore di battitura",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Possibile errore di battitura"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Questa frase non inizia con una maiuscola",
+          "shortMessage": "Uso delle maiuscole",
+          "replacements": [
+            {
+              "value": "Non"
+            }
+          ],
+          "offset": 193,
+          "length": 3,
+          "context": {
+            "text": "...tro. Ma ora non s'è sbrigato ogni cosa? non s'è fatto tutto ciò che s'aveva a fare?...",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "non s'è fatto tutto ciò che s'aveva a fare?»",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "UPPERCASE_SENTENCE_START",
+            "description": "Controlla che la frase inizi con una maiuscola",
+            "issueType": "typographical",
+            "category": {
+              "id": "CASING",
+              "name": "Uso delle maiuscole"
+            }
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": -1
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          157
+        ],
+        [
+          158,
+          192
+        ],
+        [
+          193,
+          237
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 157,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 158,
+          "to": 192,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 193,
+          "to": 237,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Italian",
+        "code": "it",
+        "detectedLanguage": {
+          "name": "Italian",
+          "code": "it",
+          "confidence": 0.9999965,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Questa frase non inizia con una maiuscola",
+          "shortMessage": "Uso delle maiuscole",
+          "replacements": [
+            {
+              "value": "Via"
+            }
+          ],
+          "offset": 140,
+          "length": 3,
+          "context": {
+            "text": "...olpa addosso a me. Posso parlar meglio? via, per una settimana.»",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "via, per una settimana.»",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "UPPERCASE_SENTENCE_START",
+            "description": "Controlla che la frase inizi con una maiuscola",
+            "issueType": "typographical",
+            "category": {
+              "id": "CASING",
+              "name": "Uso delle maiuscole"
+            }
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": -1
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          118
+        ],
+        [
+          119,
+          139
+        ],
+        [
+          140,
+          164
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 118,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 119,
+          "to": 139,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 140,
+          "to": 164,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Italian",
+        "code": "it",
+        "detectedLanguage": {
+          "name": "Italian",
+          "code": "it",
+          "confidence": 0.9999977,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "I puntini di sospensione si usano sempre nel numero di tre, per indicare la sospensione del discorso: \"...\".",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "..."
+            }
+          ],
+          "offset": 33,
+          "length": 4,
+          "context": {
+            "text": "«Quando vi dico che non so niente.... In difesa del mio padrone, posso parlar...",
+            "offset": 33,
+            "length": 4
+          },
+          "sentence": "«Quando vi dico che non so niente....",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "GR_09_002",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "puntini di sospensione (...)",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT6",
+              "name": "Grammatica - Punteggiatura"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Trovato un probabile errore di battitura.",
+          "shortMessage": "Errore di battitura",
+          "replacements": [
+            {
+              "value": "perché"
+            },
+            {
+              "value": "parche"
+            },
+            {
+              "value": "pecche"
+            },
+            {
+              "value": "pesche"
+            },
+            {
+              "value": "petche"
+            },
+            {
+              "value": "porche"
+            },
+            {
+              "value": "purché"
+            }
+          ],
+          "offset": 80,
+          "length": 6,
+          "context": {
+            "text": "... difesa del mio padrone, posso parlare; perchè mi fa male sentire che gli si dia caric...",
+            "offset": 43,
+            "length": 6
+          },
+          "sentence": "In difesa del mio padrone, posso parlare; perchè mi fa male sentire che gli si dia carico di voler far dispiacere a qualcheduno.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_IT_IT",
+            "description": "Probabile errore di battitura",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Possibile errore di battitura"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Questa frase non inizia con una maiuscola",
+          "shortMessage": "Uso delle maiuscole",
+          "replacements": [
+            {
+              "value": "Se"
+            }
+          ],
+          "offset": 179,
+          "length": 2,
+          "context": {
+            "text": "...r dispiacere a qualcheduno. Pover'uomo! se pecca, è per troppa bontà. C'è bene a q...",
+            "offset": 43,
+            "length": 2
+          },
+          "sentence": "se pecca, è per troppa bontà.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "UPPERCASE_SENTENCE_START",
+            "description": "Controlla che la frase inizi con una maiuscola",
+            "issueType": "typographical",
+            "category": {
+              "id": "CASING",
+              "name": "Uso delle maiuscole"
+            }
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": -1
+        },
+        {
+          "message": "I puntini di sospensione si usano sempre nel numero di tre, per indicare la sospensione del discorso: \"...\".",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "..."
+            }
+          ],
+          "offset": 293,
+          "length": 4,
+          "context": {
+            "text": "...potenti, degli uomini senza timor di Dio....»",
+            "offset": 43,
+            "length": 4
+          },
+          "sentence": "C'è bene a questo mondo de' birboni, de' prepotenti, degli uomini senza timor di Dio....»",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "GR_09_002",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "puntini di sospensione (...)",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT6",
+              "name": "Grammatica - Punteggiatura"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          37
+        ],
+        [
+          38,
+          166
+        ],
+        [
+          167,
+          178
+        ],
+        [
+          179,
+          208
+        ],
+        [
+          209,
+          298
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 37,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 38,
+          "to": 166,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 167,
+          "to": 178,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 179,
+          "to": 208,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 209,
+          "to": 298,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Italian",
+        "code": "it",
+        "detectedLanguage": {
+          "name": "Italian",
+          "code": "it",
+          "confidence": 0.9999975,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Questa frase non inizia con una maiuscola",
+          "shortMessage": "Uso delle maiuscole",
+          "replacements": [
+            {
+              "value": "Che"
+            }
+          ],
+          "offset": 6,
+          "length": 3,
+          "context": {
+            "text": "«Che? che? che?» balbettò il povero sorpreso, con...",
+            "offset": 6,
+            "length": 3
+          },
+          "sentence": "che?",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "UPPERCASE_SENTENCE_START",
+            "description": "Controlla che la frase inizi con una maiuscola",
+            "issueType": "typographical",
+            "category": {
+              "id": "CASING",
+              "name": "Uso delle maiuscole"
+            }
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": -1
+        },
+        {
+          "message": "Questa frase non inizia con una maiuscola",
+          "shortMessage": "Uso delle maiuscole",
+          "replacements": [
+            {
+              "value": "Che"
+            }
+          ],
+          "offset": 11,
+          "length": 3,
+          "context": {
+            "text": "«Che? che? che?» balbettò il povero sorpreso, con un v...",
+            "offset": 11,
+            "length": 3
+          },
+          "sentence": "che?» balbettò il povero sorpreso, con un volto fatto in un istante bianco e floscio, come un cencio che esca del bucato.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "UPPERCASE_SENTENCE_START",
+            "description": "Controlla che la frase inizi con una maiuscola",
+            "issueType": "typographical",
+            "category": {
+              "id": "CASING",
+              "name": "Uso delle maiuscole"
+            }
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": -1
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          5
+        ],
+        [
+          6,
+          10
+        ],
+        [
+          11,
+          132
+        ],
+        [
+          133,
+          213
+        ],
+        [
+          214,
+          339
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 5,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 6,
+          "to": 10,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 11,
+          "to": 132,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 133,
+          "to": 213,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 214,
+          "to": 339,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Italian",
+        "code": "it",
+        "detectedLanguage": {
+          "name": "Italian",
+          "code": "it",
+          "confidence": 0.99999744,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "I puntini di sospensione si usano sempre nel numero di tre, per indicare la sospensione del discorso: \"...\".",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "..."
+            }
+          ],
+          "offset": 310,
+          "length": 4,
+          "context": {
+            "text": "...anche lui dal canto suo, «giurate almeno....» gli disse.",
+            "offset": 43,
+            "length": 4
+          },
+          "sentence": "Don Abbondio gli andò dietro, e, mentre quegli girava la chiave nella toppa, se gli accostò, e, con volto serio e ansioso, alzandogli davanti agli occhi le tre prime dita della destra, come per aiutarlo anche lui dal canto suo, «giurate almeno....» gli disse.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "GR_09_002",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "puntini di sospensione (...)",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT6",
+              "name": "Grammatica - Punteggiatura"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          66
+        ],
+        [
+          67,
+          326
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 66,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 67,
+          "to": 326,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Italian",
+        "code": "it",
+        "detectedLanguage": {
+          "name": "Italian",
+          "code": "it",
+          "confidence": 0.9999975,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Trovato un probabile errore di battitura.",
+          "shortMessage": "Errore di battitura",
+          "replacements": [
+            {
+              "value": "ronzio"
+            },
+            {
+              "value": "Aronzio"
+            },
+            {
+              "value": "Oronzio"
+            },
+            {
+              "value": "ponzio"
+            },
+            {
+              "value": "ronzi"
+            },
+            {
+              "value": "ronzii"
+            },
+            {
+              "value": "ronzino"
+            },
+            {
+              "value": "ronzo"
+            },
+            {
+              "value": "ronzò"
+            }
+          ],
+          "offset": 331,
+          "length": 6,
+          "context": {
+            "text": "...el cortile, e sentì un misto e continuo ronzío che veniva da una stanza di sopra. S'im...",
+            "offset": 43,
+            "length": 6
+          },
+          "sentence": "Renzo entrò nel cortile, e sentì un misto e continuo ronzío che veniva da una stanza di sopra.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_IT_IT",
+            "description": "Probabile errore di battitura",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Possibile errore di battitura"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Questa frase non inizia con una maiuscola",
+          "shortMessage": "Uso delle maiuscole",
+          "replacements": [
+            {
+              "value": "Lo"
+            }
+          ],
+          "offset": 611,
+          "length": 2,
+          "context": {
+            "text": "...gli corse incontro gridando: «lo sposo! lo sposo!»",
+            "offset": 43,
+            "length": 2
+          },
+          "sentence": "lo sposo!»",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "UPPERCASE_SENTENCE_START",
+            "description": "Controlla che la frase inizi con una maiuscola",
+            "issueType": "typographical",
+            "category": {
+              "id": "CASING",
+              "name": "Uso delle maiuscole"
+            }
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": -1
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          168
+        ],
+        [
+          169,
+          277
+        ],
+        [
+          278,
+          372
+        ],
+        [
+          373,
+          525
+        ],
+        [
+          526,
+          610
+        ],
+        [
+          611,
+          621
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 168,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 169,
+          "to": 277,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 278,
+          "to": 372,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 373,
+          "to": 525,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 526,
+          "to": 610,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 611,
+          "to": 621,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Italian",
+        "code": "it",
+        "detectedLanguage": {
+          "name": "Italian",
+          "code": "it",
+          "confidence": 0.9999932,
+          "source": "+fallback"
+        }
+      },
+      "matches": [],
+      "sentenceRanges": [
+        [
+          0,
+          34
+        ],
+        [
+          35,
+          219
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 34,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 35,
+          "to": 219,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Italian",
+        "code": "it",
+        "detectedLanguage": {
+          "name": "Italian",
+          "code": "it",
+          "confidence": 0.99999547,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "I puntini di sospensione si usano sempre nel numero di tre, per indicare la sospensione del discorso: \"...\".",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "..."
+            }
+          ],
+          "offset": 558,
+          "length": 4,
+          "context": {
+            "text": "...ro stata consigliata, e tenevo per certo.... e questa mattina, ero tanto lontana da ...",
+            "offset": 43,
+            "length": 4
+          },
+          "sentence": "Ma io facevo per bene, ed ero stata consigliata, e tenevo per certo....",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "GR_09_002",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "puntini di sospensione (...)",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT6",
+              "name": "Grammatica - Punteggiatura"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Questa frase non inizia con una maiuscola",
+          "shortMessage": "Uso delle maiuscole",
+          "replacements": [
+            {
+              "value": "E"
+            }
+          ],
+          "offset": 563,
+          "length": 1,
+          "context": {
+            "text": "...ata consigliata, e tenevo per certo.... e questa mattina, ero tanto lontana da pe...",
+            "offset": 43,
+            "length": 1
+          },
+          "sentence": "e questa mattina, ero tanto lontana da pensare....»",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "UPPERCASE_SENTENCE_START",
+            "description": "Controlla che la frase inizi con una maiuscola",
+            "issueType": "typographical",
+            "category": {
+              "id": "CASING",
+              "name": "Uso delle maiuscole"
+            }
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": -1
+        },
+        {
+          "message": "I puntini di sospensione si usano sempre nel numero di tre, per indicare la sospensione del discorso: \"...\".",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "..."
+            }
+          ],
+          "offset": 609,
+          "length": 4,
+          "context": {
+            "text": "...ta mattina, ero tanto lontana da pensare....» Qui le parole furon troncate da un vio...",
+            "offset": 43,
+            "length": 4
+          },
+          "sentence": "e questa mattina, ero tanto lontana da pensare....»",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "GR_09_002",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "puntini di sospensione (...)",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT6",
+              "name": "Grammatica - Punteggiatura"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Trovato un probabile errore di battitura.",
+          "shortMessage": "Errore di battitura",
+          "replacements": [
+            {
+              "value": "furono"
+            },
+            {
+              "value": "furor"
+            }
+          ],
+          "offset": 629,
+          "length": 5,
+          "context": {
+            "text": "...o lontana da pensare....» Qui le parole furon troncate da un violento scoppio di pian...",
+            "offset": 43,
+            "length": 5
+          },
+          "sentence": "Qui le parole furon troncate da un violento scoppio di pianto.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_IT_IT",
+            "description": "Probabile errore di battitura",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Possibile errore di battitura"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          191
+        ],
+        [
+          192,
+          456
+        ],
+        [
+          457,
+          490
+        ],
+        [
+          491,
+          562
+        ],
+        [
+          563,
+          614
+        ],
+        [
+          615,
+          677
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 191,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 192,
+          "to": 456,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 457,
+          "to": 490,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 491,
+          "to": 562,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 563,
+          "to": 614,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 615,
+          "to": 677,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Italian",
+        "code": "it",
+        "detectedLanguage": {
+          "name": "Italian",
+          "code": "it",
+          "confidence": 0.9999978,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Questa frase non inizia con una maiuscola",
+          "shortMessage": "Uso delle maiuscole",
+          "replacements": [
+            {
+              "value": "No"
+            }
+          ],
+          "offset": 5,
+          "length": 2,
+          "context": {
+            "text": "«Ah! no, Renzo, per amor del cielo!» gridò Luci...",
+            "offset": 5,
+            "length": 2
+          },
+          "sentence": "no, Renzo, per amor del cielo!» gridò Lucia.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "UPPERCASE_SENTENCE_START",
+            "description": "Controlla che la frase inizi con una maiuscola",
+            "issueType": "typographical",
+            "category": {
+              "id": "CASING",
+              "name": "Uso delle maiuscole"
+            }
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": -1
+        },
+        {
+          "message": "Trovato un probabile errore di battitura.",
+          "shortMessage": "Errore di battitura",
+          "replacements": [
+            {
+              "value": "faccia"
+            },
+            {
+              "value": "facciamo"
+            },
+            {
+              "value": "faccia m"
+            }
+          ],
+          "offset": 145,
+          "length": 7,
+          "context": {
+            "text": "... poveri; e come volete che ci aiuti, se facciam del male?»",
+            "offset": 43,
+            "length": 7
+          },
+          "sentence": "Il Signore c'è anche per i poveri; e come volete che ci aiuti, se facciam del male?»",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_IT_IT",
+            "description": "Probabile errore di battitura",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Possibile errore di battitura"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          4
+        ],
+        [
+          5,
+          49
+        ],
+        [
+          50,
+          78
+        ],
+        [
+          79,
+          163
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 4,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 5,
+          "to": 49,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 50,
+          "to": 78,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 79,
+          "to": 163,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Italian",
+        "code": "it",
+        "detectedLanguage": {
+          "name": "Italian",
+          "code": "it",
+          "confidence": 0.99999785,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "I puntini di sospensione si usano sempre nel numero di tre, per indicare la sospensione del discorso: \"...\".",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "..."
+            }
+          ],
+          "offset": 225,
+          "length": 4,
+          "context": {
+            "text": "...ò: «vorrei sapere da lei che ha studiato....»",
+            "offset": 43,
+            "length": 4
+          },
+          "sentence": "Renzo, ritto davanti alla tavola, con una mano nel cocuzzolo del cappello, che faceva girar con l'altra, ricominciò: «vorrei sapere da lei che ha studiato....»",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "GR_09_002",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "puntini di sospensione (...)",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT6",
+              "name": "Grammatica - Punteggiatura"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          41
+        ],
+        [
+          42,
+          70
+        ],
+        [
+          71,
+          230
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 41,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 42,
+          "to": 70,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 71,
+          "to": 230,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Italian",
+        "code": "it",
+        "detectedLanguage": {
+          "name": "Italian",
+          "code": "it",
+          "confidence": 0.999997,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "Trovato un probabile errore di battitura.",
+          "shortMessage": "Errore di battitura",
+          "replacements": [
+            {
+              "value": "_ Si"
+            }
+          ],
+          "offset": 57,
+          "length": 3,
+          "context": {
+            "text": "..., c'è ben altro; e poi vedremo la pena. _Si testifichi, o non si testifichi; che un...",
+            "offset": 43,
+            "length": 3
+          },
+          "sentence": "_Si testifichi, o non si testifichi; che uno si parta dal luogo dove abita_, eccetera; _che quello paghi un debito; quell'altro non lo molesti, quello vada al suo molino_: tutto questo non ha che far con noi.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_IT_IT",
+            "description": "Probabile errore di battitura",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Possibile errore di battitura"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Trovato un probabile errore di battitura.",
+          "shortMessage": "Errore di battitura",
+          "replacements": [
+            {
+              "value": "abita"
+            },
+            {
+              "value": "abitai"
+            },
+            {
+              "value": "abitar"
+            }
+          ],
+          "offset": 126,
+          "length": 6,
+          "context": {
+            "text": "...ifichi; che uno si parta dal luogo dove abita_, eccetera; _che quello paghi un debito;...",
+            "offset": 43,
+            "length": 6
+          },
+          "sentence": "_Si testifichi, o non si testifichi; che uno si parta dal luogo dove abita_, eccetera; _che quello paghi un debito; quell'altro non lo molesti, quello vada al suo molino_: tutto questo non ha che far con noi.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_IT_IT",
+            "description": "Probabile errore di battitura",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Possibile errore di battitura"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Trovato un probabile errore di battitura.",
+          "shortMessage": "Errore di battitura",
+          "replacements": [
+            {
+              "value": "_ che"
+            }
+          ],
+          "offset": 144,
+          "length": 4,
+          "context": {
+            "text": "... parta dal luogo dove abita_, eccetera; _che quello paghi un debito; quell'altro non...",
+            "offset": 43,
+            "length": 4
+          },
+          "sentence": "_Si testifichi, o non si testifichi; che uno si parta dal luogo dove abita_, eccetera; _che quello paghi un debito; quell'altro non lo molesti, quello vada al suo molino_: tutto questo non ha che far con noi.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_IT_IT",
+            "description": "Probabile errore di battitura",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Possibile errore di battitura"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Trovato un probabile errore di battitura.",
+          "shortMessage": "Errore di battitura",
+          "replacements": [
+            {
+              "value": "molino"
+            }
+          ],
+          "offset": 220,
+          "length": 7,
+          "context": {
+            "text": "...ltro non lo molesti, quello vada al suo molino_: tutto questo non ha che far con noi. A...",
+            "offset": 43,
+            "length": 7
+          },
+          "sentence": "_Si testifichi, o non si testifichi; che uno si parta dal luogo dove abita_, eccetera; _che quello paghi un debito; quell'altro non lo molesti, quello vada al suo molino_: tutto questo non ha che far con noi.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_IT_IT",
+            "description": "Probabile errore di battitura",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Possibile errore di battitura"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Trovato un probabile errore di battitura.",
+          "shortMessage": "Errore di battitura",
+          "replacements": [
+            {
+              "value": "_ quel"
+            }
+          ],
+          "offset": 279,
+          "length": 5,
+          "context": {
+            "text": "...to non ha che far con noi. Ah ci siamo: _quel prete non faccia quello che è obbligato...",
+            "offset": 43,
+            "length": 5
+          },
+          "sentence": "Ah ci siamo: _quel prete non faccia quello che è obbligato per l'uficio suo, o faccia cose che non gli toccano_.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_IT_IT",
+            "description": "Probabile errore di battitura",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Possibile errore di battitura"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Trovato un probabile errore di battitura.",
+          "shortMessage": "Errore di battitura",
+          "replacements": [
+            {
+              "value": "ufficio"
+            },
+            {
+              "value": "ufficiò"
+            }
+          ],
+          "offset": 331,
+          "length": 6,
+          "context": {
+            "text": "...non faccia quello che è obbligato per l'uficio suo, o faccia cose che non gli toccano_...",
+            "offset": 43,
+            "length": 6
+          },
+          "sentence": "Ah ci siamo: _quel prete non faccia quello che è obbligato per l'uficio suo, o faccia cose che non gli toccano_.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_IT_IT",
+            "description": "Probabile errore di battitura",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Possibile errore di battitura"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Trovato un probabile errore di battitura.",
+          "shortMessage": "Errore di battitura",
+          "replacements": [
+            {
+              "value": "toccano"
+            }
+          ],
+          "offset": 369,
+          "length": 8,
+          "context": {
+            "text": "...l'uficio suo, o faccia cose che non gli toccano_. Eh?»",
+            "offset": 43,
+            "length": 8
+          },
+          "sentence": "Ah ci siamo: _quel prete non faccia quello che è obbligato per l'uficio suo, o faccia cose che non gli toccano_.",
+          "type": {
+            "typeName": "UnknownWord"
+          },
+          "rule": {
+            "id": "MORFOLOGIK_RULE_IT_IT",
+            "description": "Probabile errore di battitura",
+            "issueType": "misspelling",
+            "category": {
+              "id": "TYPOS",
+              "name": "Possibile errore di battitura"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          56
+        ],
+        [
+          57,
+          265
+        ],
+        [
+          266,
+          378
+        ],
+        [
+          379,
+          383
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 56,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 57,
+          "to": 265,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 266,
+          "to": 378,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 379,
+          "to": 383,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Italian",
+        "code": "it",
+        "detectedLanguage": {
+          "name": "Italian",
+          "code": "it",
+          "confidence": 0.9999965,
+          "source": "+fallback"
+        }
+      },
+      "matches": [
+        {
+          "message": "I puntini di sospensione si usano sempre nel numero di tre, per indicare la sospensione del discorso: \"...\".",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "..."
+            }
+          ],
+          "offset": 382,
+          "length": 4,
+          "context": {
+            "text": "...urato comincia a cavar fuori certe scuse.... basta, per non tediarla, io l'ho fatto ...",
+            "offset": 43,
+            "length": 4
+          },
+          "sentence": "Ecco che il signor curato comincia a cavar fuori certe scuse....",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "GR_09_002",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "puntini di sospensione (...)",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT6",
+              "name": "Grammatica - Punteggiatura"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        },
+        {
+          "message": "Questa frase non inizia con una maiuscola",
+          "shortMessage": "Uso delle maiuscole",
+          "replacements": [
+            {
+              "value": "Basta"
+            }
+          ],
+          "offset": 387,
+          "length": 5,
+          "context": {
+            "text": "... comincia a cavar fuori certe scuse.... basta, per non tediarla, io l'ho fatto parlar...",
+            "offset": 43,
+            "length": 5
+          },
+          "sentence": "basta, per non tediarla, io l'ho fatto parlar chiaro, com'era giusto; e lui m'ha confessato che gli era stato proibito, pena la vita, di far questo matrimonio.",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "UPPERCASE_SENTENCE_START",
+            "description": "Controlla che la frase inizi con una maiuscola",
+            "issueType": "typographical",
+            "category": {
+              "id": "CASING",
+              "name": "Uso delle maiuscole"
+            }
+          },
+          "ignoreForIncompleteSentence": true,
+          "contextForSureMatch": -1
+        },
+        {
+          "message": "I puntini di sospensione si usano sempre nel numero di tre, per indicare la sospensione del discorso: \"...\".",
+          "shortMessage": "",
+          "replacements": [
+            {
+              "value": "..."
+            }
+          ],
+          "offset": 577,
+          "length": 4,
+          "context": {
+            "text": "...trimonio. Quel prepotente di don Rodrigo....»",
+            "offset": 43,
+            "length": 4
+          },
+          "sentence": "Quel prepotente di don Rodrigo....»",
+          "type": {
+            "typeName": "Other"
+          },
+          "rule": {
+            "id": "GR_09_002",
+            "subId": "1",
+            "sourceFile": "grammar.xml",
+            "description": "puntini di sospensione (...)",
+            "issueType": "uncategorized",
+            "category": {
+              "id": "CAT6",
+              "name": "Grammatica - Punteggiatura"
+            }
+          },
+          "ignoreForIncompleteSentence": false,
+          "contextForSureMatch": 0
+        }
+      ],
+      "sentenceRanges": [
+        [
+          0,
+          72
+        ],
+        [
+          73,
+          321
+        ],
+        [
+          322,
+          386
+        ],
+        [
+          387,
+          546
+        ],
+        [
+          547,
+          582
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 72,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 73,
+          "to": 321,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 322,
+          "to": 386,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 387,
+          "to": 546,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 547,
+          "to": 582,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "contentType": "application/json",
+    "accessControlAllowOrigin": null,
+    "body": {
+      "software": {
+        "name": "LanguageTool",
+        "version": "6.9-SNAPSHOT",
+        "buildDate": "2026-10-12 18:33:54 +0200",
+        "apiVersion": 1,
+        "premium": false,
+        "premiumHint": "You might be missing errors only the Premium version can find. Contact us at support<at>languagetoolplus.com.",
+        "status": ""
+      },
+      "warnings": {
+        "incompleteResults": false
+      },
+      "language": {
+        "name": "Italian",
+        "code": "it",
+        "detectedLanguage": {
+          "name": "Italian",
+          "code": "it",
+          "confidence": 0.99999857,
+          "source": "+fallback"
+        }
+      },
+      "matches": [],
+      "sentenceRanges": [
+        [
+          0,
+          77
+        ],
+        [
+          78,
+          173
+        ],
+        [
+          174,
+          187
+        ]
+      ],
+      "extendedSentenceRanges": [
+        {
+          "from": 0,
+          "to": 77,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 78,
+          "to": 173,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        },
+        {
+          "from": 174,
+          "to": 187,
+          "detectedLanguages": [
+            {
+              "language": "it",
+              "rate": 1
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
