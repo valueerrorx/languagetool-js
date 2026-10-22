@@ -9,8 +9,7 @@ import { LanguageIdentifierService } from '../core/language/identifier/LanguageI
 import { createComponent, notPortedYet } from '../core/language/components.js';
 import { correctText, profileRulesOnLine, selectRules } from '../core/Tools.js';
 import { ApiPrintMode, filterXML, readerToString } from '../core/text/StringTools.js';
-import { AmericanEnglish } from '../lang/en/language/AmericanEnglish.js';
-import { English } from '../lang/en/language/English.js';
+import { getClassBroker } from '../core/resources/LtStatics.js';
 import { Exception, FileNotFoundException, IllegalArgumentException, NullPointerException, RuntimeException } from '../lib/java/errors.js';
 import { BufferedReader, inputStreamReader } from '../lib/java/io.js';
 import { File } from '../lib/java/io/File.js';
@@ -197,7 +196,7 @@ export class Main {
       let language = this.detectLanguageOfString(text);
       if (language === null) {
         errPrintln('Could not detect language well enough, using American English');
-        language = AmericanEnglish.getInstance();
+        language = getClassBroker().forName('org.languagetool.language.AmericanEnglish').getInstance(); // class lookup: lang-en may live in a separate package
       }
       this.changeLanguage(language, this.options.getMotherTongue(), this.options.getDisabledRules(), this.options.getEnabledRules());
       errPrintln(`Using ${language.getName()} for file ${filename}`);
@@ -262,7 +261,7 @@ export class Main {
             let language = this.detectLanguageOfString(line);
             if (language === null) {
               errPrintln('Could not detect language well enough, using American English');
-              language = AmericanEnglish.getInstance();
+              language = getClassBroker().forName('org.languagetool.language.AmericanEnglish').getInstance(); // class lookup: lang-en may live in a separate package
             }
             errPrintln(`Language used is: ${language.getName()}`);
             language.getSentenceTokenizer().setSingleLineBreaksMarksParagraph(this.options.isSingleLineBreakMarksParagraph());
@@ -458,7 +457,7 @@ export class Main {
         errPrintln('No language specified, using English (no spell checking active, '
           + "specify a language variant like 'en-GB' if available)");
       }
-      options.setLanguage(new English());
+      options.setLanguage(new (getClassBroker().forName('org.languagetool.language.English'))());
     } else if (!options.isApplySuggestions()) {
       languageHint = `Expected text language: ${options.getLanguage().getName()}`;
     }

@@ -10,7 +10,21 @@ export const RESOURCE_DIR = '/org/languagetool/resource'; // Java: ResourceDataB
 export const RULES_DIR = '/org/languagetool/rules'; // Java: ResourceDataBroker#RULES_DIR
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
+// resource roots in classpath order: the dev repo has resources/ (or $LTJS_RESOURCES); the core package ships resources/ at the same relative place
+// and every @ltjs/lang-<code> package adds its own resources/ via addResourceRoot (first root wins, getResources collects all roots)
 export const RESOURCES_ROOT = process.env.LTJS_RESOURCES ?? path.resolve(HERE, '../../../resources');
+const resourceRoots = [RESOURCES_ROOT];
+
+// registers an additional resource root (a directory in classpath layout); a no-op for a root that is already registered
+export function addResourceRoot(dir) {
+  const root = path.resolve(dir instanceof URL ? fileURLToPath(dir) : dir);
+  if (!resourceRoots.includes(root)) resourceRoots.push(root);
+}
+
+// the registered resource roots in lookup order
+export function getResourceRoots() {
+  return [...resourceRoots];
+}
 
 // java.net.URL of a classpath resource (file based)
 export class ResourceUrl {
@@ -41,11 +55,20 @@ function readResourceFile(file) {
 }
 
 // maps a classpath resource name (no leading slash) to a file below the resources root, or null
-function locate(name, copy = 0) {
-  const base = copy === 0 ? RESOURCES_ROOT : path.join(RESOURCES_ROOT, '.dup', String(copy));
+function locateIn(root, name, copy) {
+  const base = copy === 0 ? root : path.join(root, '.dup', String(copy));
   const f = path.resolve(base, name);
   if (f !== base && !f.startsWith(base + path.sep)) return null;
   return existsSync(f) ? f : null;
+}
+
+// first root that holds the resource (copy 0)
+function locate(name) {
+  for (const root of resourceRoots) {
+    const f = locateIn(root, name, 0);
+    if (f !== null) return f;
+  }
+  return null;
 }
 
 // Java: Class#resolveName(String) for ResourceDataBroker.class
@@ -71,10 +94,12 @@ export function getResource(name) {
 // Java: ResourceDataBroker.class.getClassLoader().getResources(String)
 export function getResources(name) {
   const out = [];
-  for (let copy = 0; ; copy++) {
-    const f = locate(name, copy);
-    if (f === null) break;
-    out.push(new ResourceUrl(f));
+  for (const root of resourceRoots) {
+    for (let copy = 0; ; copy++) {
+      const f = locateIn(root, name, copy);
+      if (f === null) break;
+      out.push(new ResourceUrl(f));
+    }
   }
   return out;
 }

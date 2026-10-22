@@ -12,7 +12,9 @@
     "parity": "node oracle/parity.mjs",
     "test": "vitest run --passWithNoTests",
     "lint": "eslint .",
-    "bench": "node oracle/bench/bench.mjs"
+    "bench": "node oracle/bench/bench.mjs",
+    "build": "node scripts/build-packages.mjs",
+    "smoke:packages": "node scripts/smoke-packages.mjs"
   },
   "devDependencies": {
     "eslint": "^9.0.0",
