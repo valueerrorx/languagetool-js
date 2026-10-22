@@ -26,6 +26,12 @@ const EN_MONTHS_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug',
 const EN_GB_MONTHS_SHORT = EN_MONTHS_SHORT.map((m) => (m === 'Sep' ? 'Sept' : m));
 
 // de/de_DE/de_AT/de_CH names (JDK 17 CLDR, probe-verified)
+// pl/pl_PL names (JDK 17 CLDR, probe-verified; month LONG = genitive, LONG_STANDALONE = nominative)
+const PL_DAYS_LONG = ['niedziela', 'poniedziałek', 'wtorek', 'środa', 'czwartek', 'piątek', 'sobota'];
+const PL_DAYS_SHORT = ['niedz.', 'pon.', 'wt.', 'śr.', 'czw.', 'pt.', 'sob.'];
+const PL_MONTHS_LONG = ['stycznia', 'lutego', 'marca', 'kwietnia', 'maja', 'czerwca', 'lipca', 'sierpnia', 'września', 'października', 'listopada', 'grudnia'];
+const PL_MONTHS_LONG_STANDALONE = ['styczeń', 'luty', 'marzec', 'kwiecień', 'maj', 'czerwiec', 'lipiec', 'sierpień', 'wrzesień', 'październik', 'listopad', 'grudzień'];
+const PL_MONTHS_SHORT = ['sty', 'lut', 'mar', 'kwi', 'maj', 'cze', 'lip', 'sie', 'wrz', 'paź', 'lis', 'gru'];
 const FR_DAYS_LONG = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
 const FR_DAYS_SHORT = ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'];
 const FR_MONTHS_LONG = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
@@ -350,7 +356,7 @@ export class Calendar {
     return other instanceof Calendar && this.getTimeBig() === other.getTimeBig();
   }
 
-  // Java: Calendar#getDisplayName(int,int,Locale) (DAY_OF_WEEK/MONTH with style SHORT/LONG, JDK 17 CLDR names of the locales en, en_US, en_GB, de, de_DE, de_AT, de_CH, fr, fr_FR/CH/BE/CA; probe-verified)
+  // Java: Calendar#getDisplayName(int,int,Locale) (DAY_OF_WEEK/MONTH with style SHORT/LONG, JDK 17 CLDR names of the locales en, en_US, en_GB, de, de_DE, de_AT, de_CH, fr, fr_FR/CH/BE/CA, pl, pl_PL; probe-verified)
   getDisplayName(field, style, locale) {
     if (locale === null || locale === undefined) throw new NullPointerException();
     const base = style & ~0x8000; // standalone flag
@@ -382,6 +388,13 @@ export class Calendar {
       if (field === DAY_OF_WEEK) return (frLong ? FR_DAYS_LONG : FR_DAYS_SHORT)[frValue - 1];
       if (frLong) return FR_MONTHS_LONG[frValue];
       return (country === 'CA' ? FR_CA_MONTHS_SHORT : FR_MONTHS_SHORT)[frValue];
+    }
+    if (locale.getLanguage() === 'pl' && locale.getVariant() === '' && (country === '' || country === 'PL')) {
+      const plValue = this.get(field);
+      const plLong = (style & 0x7fff) === 2;
+      if (field === DAY_OF_WEEK) return (plLong ? PL_DAYS_LONG : PL_DAYS_SHORT)[plValue - 1];
+      if (plLong) return ((style & 0x8000) !== 0 ? PL_MONTHS_LONG_STANDALONE : PL_MONTHS_LONG)[plValue];
+      return PL_MONTHS_SHORT[plValue];
     }
     if (locale.getLanguage() !== 'en' || locale.getVariant() !== '' || (country !== '' && country !== 'US' && country !== 'GB')) {
       throw new UnsupportedOperationException(`Calendar#getDisplayName locale ${locale} not ported`);
