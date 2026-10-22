@@ -9,7 +9,7 @@ Rules:
 - Verified only if every Java class exists and fixtures fully pass in all languages (partial = ported). W-lines: "| ids: ... | done: <note> | status: done". Porters sometimes forget inventory updates: check with grep.
 - Never `npm run parity` full (too heavy) and never `--all`; run per case.
 - Commit: git add -A -- . ':!oracle/cases/X-CLI-BASIC.bak' (user deletes that dir himself), trailer Co-Authored-By/Claude-Session lines.
-- Agents must leave no background wait loops.
+- Agents must leave no background wait loops. Never use `until ! pgrep -f X`: it matches its own bash command line and loops forever (24 orphans found on 2026-10-22).
 Status cmds: python3 docs/tools/plan_check.py ; cat docs/inventory/*.md | grep -cE '\| verified \|\s*$'
 
 W42 todo:
