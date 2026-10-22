@@ -22,6 +22,16 @@ import { UppercaseSentenceStartRule } from '../../../core/rules/UppercaseSentenc
 import { MultipleWhitespaceRule } from '../../../core/rules/MultipleWhitespaceRule.js';
 import { LongSentenceRule } from '../../../core/rules/LongSentenceRule.js';
 import { LongParagraphRule } from '../../../core/rules/LongParagraphRule.js';
+import { CompoundRule } from '../rules/CompoundRule.js';
+import { QuestionMarkRule } from '../rules/QuestionMarkRule.js';
+import { SimpleReplaceRule } from '../rules/SimpleReplaceRule.js';
+import { SimpleReplaceVerbsRule } from '../rules/SimpleReplaceVerbsRule.js';
+import { SpanishRepeatedWordsRule } from '../rules/SpanishRepeatedWordsRule.js';
+import { SpanishUnpairedBracketsRule } from '../rules/SpanishUnpairedBracketsRule.js';
+import { SpanishWikipediaRule } from '../rules/SpanishWikipediaRule.js';
+import { SpanishWordRepeatBeginningRule } from '../rules/SpanishWordRepeatBeginningRule.js';
+import { SpanishWordRepeatRule } from '../rules/SpanishWordRepeatRule.js';
+import { SpanishWrongWordInContextRule } from '../rules/SpanishWrongWordInContextRule.js';
 import { MorfologikSpanishSpellerRule } from '../rules/MorfologikSpanishSpellerRule.js';
 import { SpanishTagger } from '../tagging/SpanishTagger.js';
 import { SpanishSynthesizer } from '../synthesis/SpanishSynthesizer.js';
@@ -30,8 +40,8 @@ import { ID2PRIO_ENTRIES } from './id2prioSpanish.js';
 
 const LANGUAGE_SHORT_CODE = 'es-ES';
 
-// TODO W38-W40: set to true once the es filters used by grammar.xml/style.xml exist (src/lang/es/rules, filterRegistry); until then no XML pattern rules are loaded
-export const ES_XML_RULES_ENABLED = false;
+// XML pattern rules (grammar.xml/style.xml) enabled in W38 (es filters ported); keep true
+export const ES_XML_RULES_ENABLED = true;
 
 let instantiationTrace = null; // Java: Spanish#instantiationTrace
 
@@ -137,23 +147,23 @@ export class Spanish extends LanguageWithModel {
         Example.wrong('En su opinión<marker> ,</marker> no era verdad.'),
         Example.fixed('En su opinión<marker>,</marker> no era verdad.')),
       new DoublePunctuationRule(messages),
-      // TODO W37: new SpanishUnpairedBracketsRule(messages),
-      // TODO W37: new QuestionMarkRule(messages),
+      new SpanishUnpairedBracketsRule(messages),
+      new QuestionMarkRule(messages),
       new MorfologikSpanishSpellerRule(messages, this, userConfig, altLanguages),
       new UppercaseSentenceStartRule(messages, this,
         Example.wrong('Venta al público. <marker>ha</marker> subido mucho.'),
         Example.fixed('Venta al público. <marker>Ha</marker> subido mucho.')),
-      // TODO W37: new SpanishWordRepeatRule(messages, this),
+      new SpanishWordRepeatRule(messages, this),
       new MultipleWhitespaceRule(messages, this),
-      // TODO W36: new SpanishWikipediaRule(messages),
-      // TODO W37: new SpanishWrongWordInContextRule(messages, this),
+      new SpanishWikipediaRule(messages),
+      new SpanishWrongWordInContextRule(messages, this),
       new LongSentenceRule(messages, userConfig, 60),
       new LongParagraphRule(messages, this, userConfig),
-      // TODO W36: new SimpleReplaceRule(messages, this),
-      // TODO W36: new SimpleReplaceVerbsRule(messages, this),
-      // TODO W37: new SpanishWordRepeatBeginningRule(messages, this),
-      // TODO W36: new CompoundRule(messages, this, userConfig),
-      // TODO W37: new SpanishRepeatedWordsRule(messages),
+      new SimpleReplaceRule(messages, this),
+      new SimpleReplaceVerbsRule(messages, this),
+      new SpanishWordRepeatBeginningRule(messages, this),
+      new CompoundRule(messages, this, userConfig),
+      new SpanishRepeatedWordsRule(messages),
     ];
   }
 

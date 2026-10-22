@@ -1,5 +1,5 @@
 // org.languagetool.rules.AbstractAdvancedSynthesizerFilter
-import { IllegalArgumentException } from '../../lib/java/errors.js';
+import { IllegalArgumentException, NullPointerException } from '../../lib/java/errors.js';
 import { Integer } from '../../lib/java/int.js';
 import { Pattern } from '../../lib/java/regex/index.js';
 import { javaReplace, toUpperCase } from '../../lib/java/strings.js';
@@ -88,6 +88,7 @@ export class AbstractAdvancedSynthesizerFilter extends RuleFilter {
     const language = this.getLanguageFromRuleMatch(match);
     const synth = language.getSynthesizer();
     const replacements = synth.synthesize(token, desiredPostag, true);
+    if (replacements === null) throw new NullPointerException(); // Java: replacements.length on null (invalid synthesis regexp)
     if (replacements.length > 0) {
       const newMatch = new RuleMatch(match.getRule(), match.getSentence(), match.getFromPos(), match.getToPos(), match.getMessage(), match.getShortMessage());
       newMatch.setType(match.getType());
