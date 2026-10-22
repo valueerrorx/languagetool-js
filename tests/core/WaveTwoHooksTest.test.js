@@ -5,6 +5,7 @@ import { Locale } from '../../src/lib/java/Locale.js';
 import { Calendar } from '../../src/lib/java/Calendar.js';
 import { hasClass } from '../../src/core/resources/ClassBroker.js';
 import '../../src/core/patterns/filterRegistry.js';
+import '../../src/lang/register.js';
 
 describe('wave-2 hooks', () => {
   it('Language defaults', () => {

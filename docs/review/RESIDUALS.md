@@ -52,3 +52,8 @@ Port gap closed: `DictionarySpellMatchFilter` (src/core/rules/DictionarySpellMat
 Counts: 25 verified, 17 stay ported (12 wave-2/out-of-scope language parts, 3 DEV-001, 2 unoracled). Steps flipped to verified: F35, F60, F70, F71.
 
 Observed, not mine: X-CLI-BITEXT (120 cases) does not finish within 590 s in one parity process (run per case); X-SRV-START failures args-config-last, args-port-last, https-config-last, lm-last and X-SRV-BASIC start-fail-config-no-arg, start-fail-port-missing are DEV-020 (Missing value for option) not yet mapped in oracle/deviations.json.
+
+
+## W42 re-check (2026-10-22)
+
+Wave 2 (it/es/sl/ru/sk/pl) is ported, so the W2 blocker class is gone. Per case re-run: X-BITEXT (ff-pairs: only ja, sv notPorted; load-resource: gl; tools-bitext: gl), X-TOOLS (lm-warning: nl, zh; misc paragraphEnd: uk, ja, zh; util: DEV-007 ics), X-SPELLRULE (misc-multitoken: pt, ca, nl), X-ENCHECK (mothertongue-es passes, mothertongue-nl notPorted), X-REPLACE (ca, nl, uk, fa, km), X-CLI-OPTS adl-* (adl-no-lang-arg-mixed passes; adl-undetectable and json-stdin-adl-undetectable stay notPorted: Java detects ca). Every request that is still notPorted belongs to an out-of-scope language (DEV-006), so no ID of the table above changed status: CORE-0057, 0237, 0292, 0293, 0300, 0328, 0450, EN-0002, CLI-0044 stay ported with an OOS-only blocker. Wave-1 steps closed (all IDs verified): F44, F45, F48, F62. Still open: F37 (CORE-0423/0424/0426 OOS), F39, F40, F41 (CORE-0233 DEV-001), F42, F50 (EN-0002 nl), F66 (SRV-0015 unoracled, SRV-0181 DEV-001).

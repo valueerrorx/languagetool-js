@@ -120,9 +120,9 @@ const LANGS = [['en-US', EN, T.en], ['de-DE', DE, T.de], ['fr', FR, T.fr]];
       post(C, { ...q, preferredVariants: 'xx', multilingual: 'true' }), post(C, { ...q, forcePreferredLanguages: 'true' }), post(C, { ...q, noopLanguages: 'en', multilingual: 'true' }));
   }
   // other languages: out-of-scope winners (DEV-008)
-  reqs.push(dev006(A(ES)), dev006(A(ES, { preferredVariants: 'es-AR' })), dev006(A('Dit is een vrij lange nederlandse zin,, die die de detector zonder problemen kan herkennen.')), dev006(A(ES, { noopLanguages: 'es' })), dev006(A(ES, { preferredLanguages: 'en' })));
+  reqs.push(A(ES), A(ES, { preferredVariants: 'es-AR' }), dev006(A('Dit is een vrij lange nederlandse zin,, die die de detector zonder problemen kan herkennen.')), A(ES, { noopLanguages: 'es' }), A(ES, { preferredLanguages: 'en' }));
   // degenerate texts
-  const D6 = new Set(['a', 'Hello', 'Bonjour', 'Hallo', '日本語のテキストです。', 'Hello,, wörld.', 'x'.repeat(300)]);
+  const D6 = new Set(['a', 'Bonjour', '日本語のテキストです。', 'Hello,, wörld.', 'x'.repeat(300)]);
   for (const t of ['', ' ', 'Ok.', '1234 5678', 'a', '!!!', 'Hello', 'Bonjour', 'Hallo', 'Ünï', '日本語のテキストです。', 'http://example.org/foo', 'Hello,, wörld.', 'x'.repeat(300), 'The the. Le le. Das das.']) reqs.push(D6.has(t) ? dev006(A(t)) : A(t));
   reqs.push(get(C, { language: 'auto', text: EL, ...ONLY(ALL), preferredVariants: 'en-GB' }));
   reqs.push(post(C, { language: 'auto', text: EL, enabledRules: 'DOUBLE_PUNCTUATION', enabledOnly: 'true' }));
@@ -150,7 +150,7 @@ const LANGS = [['en-US', EN, T.en], ['de-DE', DE, T.de], ['fr', FR, T.fr]];
   for (const [l, rules, t] of LANGS) reqs.push(mk(l, 'de', t, ONLY(rules)), mk(l, 'fr', t, ONLY(rules)), mk(l, 'en', t, ONLY(rules)));
   for (const mt of ['xx', 'XX', '', ' ', 'de-XX', 'english', 'auto', 'de_DE', 'x'.repeat(100)]) reqs.push(mk('en-US', mt, EN_FF));
   reqs.push(mk('auto', 'de', EN_FF), mk('auto', 'en', DE_FF), mk('auto', 'de', FR_FF), mk('auto', 'fr', EN_FF));
-  reqs.push(dev006(mk('en-US', 'es', EN_FF)), dev006(mk('en-US', 'pt', EN_FF)), dev006(mk('en-US', 'nl', EN_FF)), dev006(mk('de-DE', 'ru', DE_FF)), dev006(mk('fr', 'it', FR_FF)));
+  reqs.push(mk('en-US', 'es', EN_FF), dev006(mk('en-US', 'pt', EN_FF)), dev006(mk('en-US', 'nl', EN_FF)), mk('de-DE', 'ru', DE_FF), mk('fr', 'it', FR_FF));
   for (const lv of ['picky', 'default']) reqs.push(mk('en-US', 'fr', EN_FF, { level: lv }), mk('de-DE', 'en', DE_FF, { level: lv }), mk('fr', 'en', FR_FF, { level: lv }), mk('de-DE', 'fr', DE_FF, { level: lv }), mk('en-GB', 'de', EN_FF, { level: lv }));
   reqs.push(mk('de-DE', 'en', DE_FF, { enabledCategories: 'FALSE_FRIENDS', enabledOnly: 'true' }), mk('de-DE', 'en', DE_FF, { disabledCategories: 'FALSE_FRIENDS' }), mk('fr', 'en', FR_FF, { enabledCategories: 'FALSE_FRIENDS', enabledOnly: 'true' }), mk('en-US', 'fr', EN_FF, { enabledCategories: 'FALSE_FRIENDS', enabledOnly: 'true' }), mk('de-DE', 'en', DE_FF, { enabledCategories: 'FALSE_FRIENDS', enabledOnly: 'true', mode: 'textLevelOnly' }), mk('de-DE', 'en', DE_FF, { enabledCategories: 'FALSE_FRIENDS', enabledOnly: 'true', level: 'picky' }), mk('fr', 'en', FR_FF, { enabledCategories: 'FALSE_FRIENDS', enabledOnly: 'true', level: 'picky' }), mk('en-US', 'fr', 'The change is an issue. Please queue up.', { level: 'picky' }), mk('en-US', 'fr', 'He will retire. Do not hurt the nurse.', { level: 'picky' }), mk('de-DE', 'en', DE_FF, { level: 'picky', disabledCategories: 'FALSE_FRIENDS' }), mk('de-DE', 'en', DE_FF, { level: 'picky', disabledRules: 'ACTUAL' }), mk('auto', 'en', DE_FF, { level: 'picky' }), mk('auto', 'en', FR_FF, { level: 'picky' }));
   write('mother-tongue', 'motherTongue: false friends per pair, invalid values, auto (SRV-0125)', { requests: reqs });
@@ -168,7 +168,7 @@ const LANGS = [['en-US', EN, T.en], ['de-DE', DE, T.de], ['fr', FR, T.fr]];
   const e = { language: 'en-US', text: T.en, ...ONLY(EN) };
   for (const alt of ['de-DE', 'de', 'fr', 'fr-FR', 'en-GB', 'en', 'de-DE,fr-FR', 'de-DE, fr-FR', 'de-DE,', ',', '', 'xx', 'de-XX', 'en-US', 'en-GB,en-AU', 'DE-de', 'fr-CA,de-AT,en-NZ', ' de-DE']) reqs.push(post(C, { ...e, altLanguages: alt }));
   reqs.push(post(C, { language: 'de-DE', text: T.de, ...ONLY(DE), altLanguages: 'en-US' }), post(C, { language: 'fr', text: T.fr, ...ONLY(FR), altLanguages: 'en-US,de-DE' }), post(C, { language: 'auto', text: T.en, ...ONLY(ALL), altLanguages: 'de-DE' }), post(C, { language: 'auto', text: T.en, ...ONLY(ALL), altLanguages: 'de' }));
-  reqs.push(dev006(post(C, { ...e, altLanguages: 'es-ES' })), dev006(post(C, { ...e, altLanguages: 'pt' })), dev006(post(C, { ...e, altLanguages: 'ca-ES' })), dev006(post(C, { ...e, altLanguages: 'nl' })));
+  reqs.push(post(C, { ...e, altLanguages: 'es-ES' }), dev006(post(C, { ...e, altLanguages: 'pt' })), dev006(post(C, { ...e, altLanguages: 'ca-ES' })), dev006(post(C, { ...e, altLanguages: 'nl' })));
   write('enabled-only-alt', 'enabledOnly truthiness and conflicts, altLanguages parsing/validation (SRV-0126)', { requests: reqs });
 }
 
@@ -254,7 +254,7 @@ const LANGS = [['en-US', EN, T.en], ['de-DE', DE, T.de], ['fr', FR, T.fr]];
     post(C, { language: 'en-US', text: 'This is a house.', sourceText: 'Das ist ein Haus.', sourceLanguage: 'auto' }), post(C, { language: 'auto', text: 'This is a house.', sourceText: 'Das ist ein Haus.', sourceLanguage: 'de-DE' }), post(C, { language: 'en-US', text: 'This is a house.', sourceText: '', sourceLanguage: 'de-DE' }),
     post(C, { language: 'en-US', text: '', sourceText: 'Das ist ein Haus.', sourceLanguage: 'de-DE' }), post(C, { language: 'en-US', text: 'This is a house.', sourceLanguage: 'de-DE' }), post(C, { language: 'en-US', text: 'This is a house.', sourceText: 'Das ist ein Haus.', sourceLanguage: 'de' }),
     post(C, { language: 'en-US', data: JSON.stringify({ text: 'This is a house.' }), sourceText: 'Das ist ein Haus.', sourceLanguage: 'de-DE' }), post(C, { language: 'en-US', text: 'a'.repeat(20), sourceText: 'b'.repeat(20), sourceLanguage: 'de-DE' }), post(C, { language: 'en-US', text: 'One. Two.', sourceText: 'Eins.', sourceLanguage: 'de-DE' }),
-    post(C, { language: 'en-US', text: 'This is a house.', sourceText: 'Das ist ein Haus.', sourceLanguage: 'de-DE', level: 'picky', mode: 'all' }), dev006(post(C, { language: 'en-US', text: 'This is a house.', sourceText: 'Esta es una casa.', sourceLanguage: 'es' })));
+    post(C, { language: 'en-US', text: 'This is a house.', sourceText: 'Das ist ein Haus.', sourceLanguage: 'de-DE', level: 'picky', mode: 'all' }), post(C, { language: 'en-US', text: 'This is a house.', sourceText: 'Esta es una casa.', sourceLanguage: 'es' }));
   write('bitext', 'sourceText + sourceLanguage bitext checks per language pair and errors (SRV-0136)', { requests: reqs });
 }
 

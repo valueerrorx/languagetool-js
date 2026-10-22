@@ -43,12 +43,10 @@ for (const cls of [AbstractAdvancedSynthesizerFilter, AbstractDateCheckFilter, A
   registerClass(cls.FQCN, cls);
 }
 
-// filter classes of out-of-scope languages referenced by rule files (ca/es/nl/ru, DEV-006); de/en/fr are registered by src/lang/register.js
+// filter classes of out-of-scope languages referenced by rule files (ca/nl, DEV-006); the nine ported languages register their filters in src/lang/register.js
 const PENDING_RULE_FILTERS = [
   'org.languagetool.rules.ca.CatalanSuppressMisspelledSuggestionsFilter',
-  'org.languagetool.rules.es.FindSuggestionsFilter',
   'org.languagetool.rules.nl.DutchNumberInWordFilter',
-  'org.languagetool.rules.ru.RussianSuppressMisspelledSuggestionsFilter',
 ];
 
 // class that loads and instantiates like the Java filter but throws notPorted when the filter runs

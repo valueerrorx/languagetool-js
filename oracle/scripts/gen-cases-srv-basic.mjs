@@ -81,7 +81,7 @@ const DE_TEXTS = ['Das ist ein Test,, ok.', 'Das das ist falsch.', 'Er sagte (ha
     de(auto('Ok.')), // detected de-DE (expected detectedLanguage German, D-051)
     auto('1234 5678'),
     auto(''),
-    dev006(auto('Esta es una frase española bastante larga,, que que el detector puede reconocer sin problemas.')),
+    auto('Esta es una frase española bastante larga,, que que el detector puede reconocer sin problemas.'),
     dev006(auto('Dit is een vrij lange nederlandse zin,, die die de detector zonder problemen kan herkennen.')),
     get('/v2/check', { language: 'auto', text: 'This is a longer english sentence,, that the the detector can handle.', ...ONLY(ALL) }),
   ];
@@ -167,7 +167,7 @@ const DE_TEXTS = ['Das ist ein Test,, ok.', 'Das das ist falsch.', 'Er sagte (ha
     get('/v2/check', { text: T }),
     lang('xx'), lang('XX'), lang('en-XX'), lang('de-XX'), lang('en-US-foo'), lang('EN-us'), lang('en_US'), lang('english'), lang(' en-US'), lang('en-US '), lang('auto-detect'), lang('AUTO'), lang('%'), lang('x'.repeat(300)),
     lang('en'), lang('fr-FR'), de(lang('de')),
-    dev006(lang('es')), dev006(lang('es-ES')), dev006(lang('pt-PT')), dev006(lang('pt')), dev006(lang('ca-ES')), dev006(lang('nl')), dev006(lang('ru-RU')), dev006(lang('ar')), dev006(lang('zh-CN')), dev006(lang('ja-JP')),
+    lang('es'), lang('es-ES'), dev006(lang('pt-PT')), dev006(lang('pt')), dev006(lang('ca-ES')), dev006(lang('nl')), lang('ru-RU'), dev006(lang('ar')), dev006(lang('zh-CN')), dev006(lang('ja-JP')),
     post('/v2/check', { text: T, language: 'en-US', enabled: 'DOUBLE_PUNCTUATION' }),
     post('/v2/check', { text: T, language: 'en-US', disabled: 'DOUBLE_PUNCTUATION' }),
     post('/v2/check', { text: T, language: 'en-US', preferredvariants: 'en-GB' }),
