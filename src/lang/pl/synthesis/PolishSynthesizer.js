@@ -3,6 +3,7 @@ import { DictionaryLookup } from '../../../lib/fsa/DictionaryLookup.js';
 import { Pattern, PatternSyntaxException } from '../../../lib/java/regex/index.js';
 import { JavaHashSet } from '../../../lib/java/collections/JavaHashSet.js';
 import { javaSplit, javaReplace } from '../../../lib/java/strings.js';
+import { NullPointerException } from '../../../lib/java/errors.js';
 import { registerComponent, sharedComponent } from '../../../core/language/components.js';
 import { BaseSynthesizer } from '../../../core/tagging/synthesis/BaseSynthesizer.js';
 import { loadWords } from '../../../core/tagging/synthesis/SynthesizerTools.js';
@@ -106,6 +107,7 @@ export class PolishSynthesizer extends BaseSynthesizer {
 
   // Java: PolishSynthesizer#getPosTagCorrection(String)
   getPosTagCorrection(posTag) {
+    if (posTag === null || posTag === undefined) throw new NullPointerException('Cannot invoke "String.contains(java.lang.CharSequence)" because "posTag" is null');
     if (posTag.includes('.')) {
       const tags = javaSplit(posTag, ':');
       let pos = -1;

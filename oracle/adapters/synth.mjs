@@ -5,7 +5,7 @@ import { Languages } from '../../src/core/Languages.js';
 import { getDataBroker } from '../../src/core/resources/LtStatics.js';
 import { AnalyzedToken } from '../../src/core/AnalyzedToken.js';
 import { ManualSynthesizer } from '../../src/core/tagging/synthesis/ManualSynthesizer.js';
-import { IllegalArgumentException } from '../../src/lib/java/errors.js';
+import { IllegalArgumentException, NullPointerException } from '../../src/lib/java/errors.js';
 import { err, safe, str } from './_text-common.mjs';
 
 // Java: SynthOps#strs(JsonNode)
@@ -57,8 +57,10 @@ export function run(a) {
           let t = new AnalyzedToken(str(c.tok), c.tokTag !== undefined ? str(c.tokTag) : null, str(c.lemma));
           const tag = str(c.tag);
           if (c.tokNull === true) t = null;
-          if (c.re !== undefined) return s.synthesize(t, tag, c.re);
-          return s.synthesize(t, tag);
+          // Java: Arrays.asList(null array) throws NPE
+          const r = c.re !== undefined ? s.synthesize(t, tag, c.re) : s.synthesize(t, tag);
+          if (r === null || r === undefined) throw new NullPointerException();
+          return r;
         }
         case 'spell': return s.getSpelledNumber(str(c.n));
         case 'roman': return s.getRomanNumber(str(c.n));
