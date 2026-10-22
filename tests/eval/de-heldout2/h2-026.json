@@ -1,0 +1,56 @@
+{
+  "id": "h2-026",
+  "genre": "technical documentation (API)",
+  "control": false,
+  "text": "Authentifizierung\n\nJede Anfrage an die API muss einen gültigen Token enthalten. Den Token erhalten Sie über den Endpunkt /auth/token. Beachten Sie, dass ein Token nach 60 Minuten abläuft. Danach liefert der Server den Statuscode 401 zurück, das heißt, die Anfrage wird abgewiesen.\n\nDas Antwortobjekt enthält ein Feld refresh_token, das Sie zum Erneuern des Zugriffs verwenden können. Speichern Sie diesen Wert sicher, da er 30 Tage gültig ist.\n\nWenn Sie mehrere Dienste betreiben, empfehlen wir, für jeden Dienst einen eigenen Client anzulegen. So stellen Sie sicher, das ein kompromittierter Schlüssel nicht alle Systeme gefährdet. Achten Sie außerdem darauf, das Schlüssel niemals im Quellcode eines öffentlichen Repositorys landen.\n\nDas Format des Headers sieht folgendermaßen aus: Authorization: Bearer TOKEN. Fehlt das Präfix „Bearer“, wird die Anfrage abgelehnt, auch wenn der Token selbst korrekt ist. Ein häufiger Fehler ist, das Leerzeichen am Ende des Tokens mitkopiert werden.",
+  "errors": [
+    {
+      "offset": 568,
+      "length": 3,
+      "original": "das",
+      "correction": "dass",
+      "type": "das_dass"
+    },
+    {
+      "offset": 661,
+      "length": 3,
+      "original": "das",
+      "correction": "dass",
+      "type": "das_dass"
+    },
+    {
+      "offset": 934,
+      "length": 3,
+      "original": "das",
+      "correction": "dass",
+      "type": "das_dass"
+    }
+  ],
+  "negatives": [
+    {
+      "offset": 148,
+      "length": 4,
+      "original": "dass",
+      "type": "das_dass"
+    },
+    {
+      "offset": 241,
+      "length": 9,
+      "original": "das heißt",
+      "type": "das_dass"
+    },
+    {
+      "offset": 332,
+      "length": 3,
+      "original": "das",
+      "type": "das_dass"
+    },
+    {
+      "offset": 820,
+      "length": 3,
+      "original": "das",
+      "type": "das_dass"
+    }
+  ],
+  "optional": []
+}

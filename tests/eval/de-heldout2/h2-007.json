@@ -1,0 +1,90 @@
+{
+  "id": "h2-007",
+  "genre": "technical documentation",
+  "control": false,
+  "text": "Installation des Backup-Agenten\n\nBevor Sie beginnen, stellen Sie sicher, dass auf dem Zielsystem mindestens 2 GB freier Speicher vorhanden sind. Laden Sie anschließend das Installationspaket herunter, das zu Ihrer Betriebssystemversion passt.\n\nFühren Sie das Skript install.sh mit Root-Rechten aus. Beachten Sie, das der Agent nach der Installation automatisch als Dienst gestartet wird. Wenn Sie das nicht möchten, setzen Sie in der Konfigurationsdatei den Parameter autostart auf false.\n\nDer Agent legt ein Verzeichnis an, in dem die Protokolle gespeichert werden. Prüfen Sie regelmäßig, ob das Verzeichnis zu groß wird. Standardmäßig werden Protokolle nach 30 Tagen gelöscht, so das normalerweise kein manuelles Aufräumen nötig ist.\n\nHinweis: Wenn die Firewall Port 8443 blockiert, kann der Agent keine Verbindung zum Server aufbauen. In diesem Fall erscheint im Protokoll die Meldung „connection refused“, das heißt, die Verbindung wurde aktiv abgelehnt. Sorgen Sie dafür, das der Port für ausgehende Verbindungen freigegeben ist.\n\nNach erfolgreicher Einrichtung zeigt die Weboberfläche das Symbol eines grünen Hakens. Dass bedeutet, dass die erste Sicherung erfolgreich abgeschlossen wurde.",
+  "errors": [
+    {
+      "offset": 313,
+      "length": 3,
+      "original": "das",
+      "correction": "dass",
+      "type": "das_dass"
+    },
+    {
+      "offset": 679,
+      "length": 6,
+      "original": "so das",
+      "correction": "sodass",
+      "type": "das_dass",
+      "alternatives": [
+        "so dass"
+      ]
+    },
+    {
+      "offset": 977,
+      "length": 3,
+      "original": "das",
+      "correction": "dass",
+      "type": "das_dass"
+    },
+    {
+      "offset": 1123,
+      "length": 4,
+      "original": "Dass",
+      "correction": "Das",
+      "type": "das_dass"
+    }
+  ],
+  "negatives": [
+    {
+      "offset": 73,
+      "length": 4,
+      "original": "dass",
+      "type": "das_dass"
+    },
+    {
+      "offset": 168,
+      "length": 3,
+      "original": "das",
+      "type": "das_dass"
+    },
+    {
+      "offset": 201,
+      "length": 3,
+      "original": "das",
+      "type": "das_dass"
+    },
+    {
+      "offset": 397,
+      "length": 3,
+      "original": "das",
+      "type": "das_dass"
+    },
+    {
+      "offset": 593,
+      "length": 3,
+      "original": "das",
+      "type": "das_dass"
+    },
+    {
+      "offset": 910,
+      "length": 9,
+      "original": "das heißt",
+      "type": "das_dass"
+    },
+    {
+      "offset": 1091,
+      "length": 3,
+      "original": "das",
+      "type": "das_dass"
+    },
+    {
+      "offset": 1138,
+      "length": 4,
+      "original": "dass",
+      "type": "das_dass"
+    }
+  ],
+  "optional": []
+}

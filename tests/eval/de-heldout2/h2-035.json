@@ -1,0 +1,68 @@
+{
+  "id": "h2-035",
+  "genre": "internal wiki (technical)",
+  "control": false,
+  "text": "Deployment-Prozess für das Kundenportal\n\nJedes Release wird zuerst auf der Staging-Umgebung getestet. Erst wenn das QA-Team sein Okay gegeben hat, darf das Deployment auf Produktion erfolgen. Bitte stellt sicher, das vorher ein Datenbank-Backup erstellt wurde.\n\nDas Skript deploy.sh, dass im Repository unter /tools liegt, übernimmt die meisten Schritte automatisch. Es prüft unter anderem, ob alle Migrationen erfolgreich durchgelaufen sind. Schlägt eine Migration fehl, bricht das Skript ab, das heißt, es wird nichts auf Produktion ausgerollt.\n\nWichtig: Deployments am Freitagnachmittag sind nicht erlaubt. Wir hatten in der Vergangenheit zu oft das Problem, das Fehler erst am Wochenende auffielen und niemand erreichbar war. Ausnahmen sind nur bei kritischen Sicherheitsupdates möglich, und auch dann nur nach Rücksprache mit der Teamleitung.\n\nNach dem Deployment schreibt bitte eine kurze Nachricht in den Kanal #releases. Das hilft dem Support, Kundenanfragen richtig einzuordnen.",
+  "errors": [
+    {
+      "offset": 213,
+      "length": 3,
+      "original": "das",
+      "correction": "dass",
+      "type": "das_dass"
+    },
+    {
+      "offset": 284,
+      "length": 4,
+      "original": "dass",
+      "correction": "das",
+      "type": "das_dass"
+    },
+    {
+      "offset": 662,
+      "length": 3,
+      "original": "das",
+      "correction": "dass",
+      "type": "das_dass"
+    }
+  ],
+  "negatives": [
+    {
+      "offset": 112,
+      "length": 3,
+      "original": "das",
+      "type": "das_dass"
+    },
+    {
+      "offset": 152,
+      "length": 3,
+      "original": "das",
+      "type": "das_dass"
+    },
+    {
+      "offset": 479,
+      "length": 3,
+      "original": "das",
+      "type": "das_dass"
+    },
+    {
+      "offset": 494,
+      "length": 9,
+      "original": "das heißt",
+      "type": "das_dass"
+    },
+    {
+      "offset": 649,
+      "length": 3,
+      "original": "das",
+      "type": "das_dass"
+    },
+    {
+      "offset": 929,
+      "length": 3,
+      "original": "Das",
+      "type": "das_dass"
+    }
+  ],
+  "optional": []
+}
