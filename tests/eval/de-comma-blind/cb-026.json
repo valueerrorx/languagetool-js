@@ -1,0 +1,76 @@
+{
+  "id": "cb-026",
+  "genre": "technical documentation (API)",
+  "control": false,
+  "text": "Authentifizierung über die REST-Schnittstelle\n\nJede Anfrage an die Schnittstelle muss einen gültigen Token enthalten der im Header übertragen wird. Den Token erhalten Sie, indem Sie sich mit Benutzername und Passwort am Endpunkt /auth/login anmelden.\n\nEin Token ist 60 Minuten gültig danach muss er erneuert werden. Wenn ein abgelaufener Token verwendet wird antwortet der Server mit dem Statuscode 401. Um unnötige Anmeldungen zu vermeiden sollten Clients den Token zwischenspeichern.\n\nDer Token darf nicht in Logdateien, oder URLs auftauchen, da er sonst von Dritten missbraucht werden kann. Beachten Sie, dass jeder Benutzer höchstens fünf aktive Tokens gleichzeitig besitzen kann. Weitere Informationen zu Berechtigungen finden Sie im Abschnitt 4.2. Tokens, die nicht mehr benötigt werden, sollten Sie über den Endpunkt /auth/logout widerrufen. Alle Zeitangaben beziehen sich auf die Serverzeit.",
+  "errors": [
+    {
+      "offset": 107,
+      "length": 13,
+      "original": "enthalten der",
+      "correction": "enthalten, der",
+      "type": "comma_missing"
+    },
+    {
+      "offset": 277,
+      "length": 13,
+      "original": "gültig danach",
+      "correction": "gültig, danach",
+      "type": "comma_missing"
+    },
+    {
+      "offset": 354,
+      "length": 14,
+      "original": "wird antwortet",
+      "correction": "wird, antwortet",
+      "type": "comma_missing"
+    },
+    {
+      "offset": 431,
+      "length": 17,
+      "original": "vermeiden sollten",
+      "correction": "vermeiden, sollten",
+      "type": "comma_missing"
+    },
+    {
+      "offset": 511,
+      "length": 16,
+      "original": "Logdateien, oder",
+      "correction": "Logdateien oder",
+      "type": "comma_superfluous"
+    }
+  ],
+  "negatives": [
+    {
+      "offset": 167,
+      "length": 10,
+      "original": "Sie, indem",
+      "type": "comma"
+    },
+    {
+      "offset": 533,
+      "length": 14,
+      "original": "auftauchen, da",
+      "type": "comma"
+    },
+    {
+      "offset": 603,
+      "length": 9,
+      "original": "Sie, dass",
+      "type": "comma"
+    },
+    {
+      "offset": 754,
+      "length": 11,
+      "original": "Tokens, die",
+      "type": "comma"
+    },
+    {
+      "offset": 786,
+      "length": 15,
+      "original": "werden, sollten",
+      "type": "comma"
+    }
+  ],
+  "optional": []
+}

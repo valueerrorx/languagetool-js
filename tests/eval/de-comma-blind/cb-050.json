@@ -1,0 +1,95 @@
+{
+  "id": "cb-050",
+  "genre": "technical documentation (workflow)",
+  "control": false,
+  "text": "Richtlinien für Merge-Requests\n\nBevor Sie einen Merge-Request erstellen, stellen Sie sicher, dass alle Tests erfolgreich durchlaufen. Jeder Merge-Request sollte nur eine Änderung enthalten die sich klar beschreiben lässt. Große Änderungen teilen Sie bitte in mehrere kleine Schritte auf damit die Überprüfung einfacher wird.\n\nDie Beschreibung, muss erklären, was geändert wurde und warum. Wenn sich eine öffentliche Schnittstelle ändert passen Sie bitte auch die Dokumentation an.\n\nMindestens eine Person aus dem Team muss den Code prüfen, und freigeben, bevor er zusammengeführt wird. Kommentare sollten sachlich und konstruktiv sein. Neue Funktionen, brauchen immer eigene Tests. Nach der Freigabe führt das Team den Merge-Request zusammen und löscht den Branch. Bei Konflikten ist die Person zuständig, die den Merge-Request erstellt hat. Halten Sie die Branches möglichst kurzlebig.",
+  "errors": [
+    {
+      "offset": 179,
+      "length": 13,
+      "original": "enthalten die",
+      "correction": "enthalten, die",
+      "type": "comma_missing"
+    },
+    {
+      "offset": 283,
+      "length": 9,
+      "original": "auf damit",
+      "correction": "auf, damit",
+      "type": "comma_missing"
+    },
+    {
+      "offset": 330,
+      "length": 18,
+      "original": "Beschreibung, muss",
+      "correction": "Beschreibung muss",
+      "type": "comma_superfluous"
+    },
+    {
+      "offset": 430,
+      "length": 13,
+      "original": "ändert passen",
+      "correction": "ändert, passen",
+      "type": "comma_missing"
+    },
+    {
+      "offset": 532,
+      "length": 11,
+      "original": "prüfen, und",
+      "correction": "prüfen und",
+      "type": "comma_superfluous"
+    },
+    {
+      "offset": 641,
+      "length": 20,
+      "original": "Funktionen, brauchen",
+      "correction": "Funktionen brauchen",
+      "type": "comma_superfluous"
+    }
+  ],
+  "negatives": [
+    {
+      "offset": 62,
+      "length": 18,
+      "original": "erstellen, stellen",
+      "type": "comma"
+    },
+    {
+      "offset": 85,
+      "length": 12,
+      "original": "sicher, dass",
+      "type": "comma"
+    },
+    {
+      "offset": 349,
+      "length": 13,
+      "original": "erklären, was",
+      "type": "comma"
+    },
+    {
+      "offset": 544,
+      "length": 16,
+      "original": "freigeben, bevor",
+      "type": "comma"
+    },
+    {
+      "offset": 605,
+      "length": 12,
+      "original": "sachlich und",
+      "type": "comma"
+    },
+    {
+      "offset": 733,
+      "length": 12,
+      "original": "zusammen und",
+      "type": "comma"
+    },
+    {
+      "offset": 795,
+      "length": 14,
+      "original": "zuständig, die",
+      "type": "comma"
+    }
+  ],
+  "optional": []
+}
