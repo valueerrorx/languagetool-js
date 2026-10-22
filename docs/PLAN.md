@@ -161,7 +161,7 @@ Line format: `- [ ] Wnn <title> | java: <files> | js: <files> | ids: <inventory 
 ## Phase 6: Delivery and improvements (D-060..D-062)
 - [x] P01 Package layout: @ltjs/core (core, server, CLI, startServer/check API) + @ltjs/lang-<code> x9 (resources per language, license files), workspace build, `npm pack` tarballs | done: src/index.js API (check/startServer/listLanguages), multi-root resource resolver (addResourceRoot), src/lang/discover.js, scripts/build-packages.mjs (npm run build -> dist/packages, dist/tarballs); dev register.js unchanged | status: done
 - [x] P02 Electron/embedding: library API docs (check, startServer, worker usage), example app script, smoke test from packed tarballs | done: docs/EMBEDDING.md, examples/electron-minimal (utilityProcess), scripts/smoke-packages.mjs (npm run smoke:packages, port 19890) passes | status: done
-- [ ] I01 Eval corpus de: annotated texts with das/dass and comma errors (gold offsets + corrections) plus clean control texts; eval runner (recall, precision, false alarms) for Java and JS | status: todo
+- [x] I01 Eval corpus de: annotated texts with das/dass and comma errors (gold offsets + corrections) plus clean control texts; eval runner (recall, precision, false alarms) for Java and JS | status: done
 - [ ] I02 Improvement layer infrastructure: LTJS_* rule files, default on, toggle (API option + parity off) | status: todo
 - [ ] I03 de das/dass rules (iterate with eval, no new false alarms) | status: todo
 - [ ] I04 de comma rules (iterate with eval) | status: todo
