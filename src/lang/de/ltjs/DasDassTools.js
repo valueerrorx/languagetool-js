@@ -8,11 +8,14 @@ const LOWER = /^\p{Ll}/u;
 
 // tokens that end a clause (das/dass clauses are analysed up to here)
 const BOUNDARY = new Set([',', ';', ':', '.', '!', '?', '(', ')', '[', ']', '"', '„', '“', '”', '»', '«', '‚', '‘', '’', '–', '—', '-', '--', '…', '/',
-  'und', 'oder', 'sowie', 'bzw', 'sondern', 'denn']);
+  'und', 'oder', 'sowie', 'bzw', 'sondern', 'denn',
+  // subordinating conjunctions start a new clause even without a comma ('dass er sehen würde solange er lebte')
+  'weil', 'obwohl', 'obgleich', 'wenn', 'falls', 'sobald', 'solange', 'sofern', 'bevor', 'nachdem', 'ehe', 'sodass', 'ob', 'dass']);
 
 // pronouns that can be the neuter antecedent of a relative 'das'
 const NEUTER_PRONOUNS = new Set(['was', 'etwas', 'nichts', 'alles', 'vieles', 'einiges', 'manches', 'weniges', 'dasjenige', 'dasselbe', 'jenes', 'welches', 'eines', 'keines', 'beides', 'folgendes', 'anderes', 'mehreres']);
 const SUBJECT_PRONOUNS = new Set(['man', 'jemand', 'niemand', 'etwas', 'nichts', 'jeder', 'keiner']);
+const PERSON_PRONOUNS = new Set(['man', 'jemand', 'niemand']); // never between an article and its noun
 
 // all POS tags of a token (without null)
 export function tags(t) {
@@ -104,7 +107,7 @@ export function verbFinal(tokens, s, e) {
   let c = last;
   while (c - 1 >= s && isVerb(tokens[c - 1])) c--;
   if (c <= s) return null;
-  if (lower(tokens[c - 1]) === 'zu') return null;
+  if (lower(tokens[c - 1]) === 'zu' && (c === last || !isStrictFiniteVerb(tokens[last]))) return null; // 'das Auto zu reparieren', not 'zu schätzen begann'
   for (let j = s; j < last; j++) {
     if (isStrictFiniteVerb(tokens[j])) return null;
   }
@@ -135,7 +138,8 @@ const NEUTER_HEAD = /^(SUB|EIG):(NOM|AKK):SIN:NEU/;
 export function articleReading(tokens, s, vf) {
   let j = s;
   let skipped = 0;
-  while (j < vf.clusterStart && skipped < 3 && (hasTag(tokens[j], /^(ADJ|PA1|PA2|ADV|PRO:IND)/) || isUnknown(tokens[j])) && isLowerCase(tokens[j])) {
+  while (j < vf.clusterStart && skipped < 3 && (hasTag(tokens[j], /^(ADJ|PA1|PA2|ADV|PRO:IND)/) || isUnknown(tokens[j])) && isLowerCase(tokens[j])
+    && !PERSON_PRONOUNS.has(lower(tokens[j]))) { // 'das man Quellen prüfen muss': no article before 'man'
     j++;
     skipped++;
   }
@@ -149,7 +153,7 @@ const ATTRIBUTE = /^(PRP|ART|PRO:POS|PRO:DEM|ADJ|ZAL|SUB|EIG|PA1|PA2)/;
 export function articleReadingV2(tokens, s, vf) {
   let j = s;
   let skipped = 0;
-  while (j < vf.clusterStart && skipped < 3 && hasTag(tokens[j], /^(ADJ|PA1|PA2|ADV|PRO:IND)/) && isLowerCase(tokens[j])) {
+  while (j < vf.clusterStart && skipped < 3 && hasTag(tokens[j], /^(ADJ|PA1|PA2|ADV|PRO:IND)/) && isLowerCase(tokens[j]) && !PERSON_PRONOUNS.has(lower(tokens[j]))) {
     j++;
     skipped++;
   }
@@ -239,10 +243,20 @@ export function hasNeuterAntecedentBefore(tokens, k) {
   return false;
 }
 
+// sentence-initial conjunctions that the tagger also reads as nouns ('Aber' -> das Aber)
+const INITIAL_CONJUNCTIONS = new Set(['aber', 'doch', 'denn', 'und', 'oder', 'sondern', 'also', 'jedoch']);
+
+// sentence-initial imperative that is also read as a nominalised infinitive ('Achten Sie darauf,', 'Bedenken wir,')
+export function isImperativeInitial(tokens, j) {
+  return j === 1 && tokens.length > 2 && (tokens[2].getToken() === 'Sie' || tokens[2].getToken() === 'wir')
+    && (hasTag(tokens[1], /^SUB:.*:INF/) || hasTag(tokens[1], /^VER:(INF|[13]:PLU)/));
+}
+
 // a possible neuter singular antecedent of a relative 'das' in tokens [from, to)
 export function hasNeuterAntecedent(tokens, from, to) {
   for (let j = from; j < to; j++) {
     const t = tokens[j];
+    if (j === 1 && (INITIAL_CONJUNCTIONS.has(lower(t)) || isImperativeInitial(tokens, 1))) continue; // 'Aber können wir', 'Achten Sie'
     // a capitalised adjective before its noun ('Neuere archäologische Funde') is no noun
     if (hasTag(t, /^ADJ/) && j + 1 < tokens.length && hasTag(tokens[j + 1], /^(SUB|ADJ|PA1|PA2)/)) continue;
     if (hasTag(t, /^(SUB|EIG):[A-Z]+:SIN:NEU/)) {
@@ -333,12 +347,15 @@ export function coreArguments(tokens, s, c) {
     if (hasTag(t, /^(ART|PRO:POS|PRO:DEM|PRO:IND)/) && isLowerCase(t) && j + 1 < c && !SUBJECT_PRONOUNS.has(lower(t))
         && (hasTag(tokens[j + 1], /^(ADJ|PA1|PA2|SUB|EIG|ZAL)/) || (isUnknown(tokens[j + 1]) && isUpperCase(tokens[j + 1])))
         && !hasTag(tokens[j + 1], /^(VER|PRP|KON)/)) {
-      if (det === null) det = features(t, /^(ART|PRO:POS|PRO:DEM|PRO:IND)/);
+      if (det === null && lower(t) !== 'dessen' && lower(t) !== 'deren') det = features(t, /^(ART|PRO:POS|PRO:DEM|PRO:IND)/); // a genitive possessor: no case of the noun
       continue;
     }
     let arg = null;
     if (hasTag(t, /^(SUB|EIG)/)) {
-      arg = { cases: agreeingCases(det, features(t, /^(SUB|EIG)/)), time: [...lemmas(t, /^SUB/)].some((l) => TIME_NOUNS.has(l)) };
+      const nf = features(t, /^(SUB|EIG)/);
+      const nomNumbers = new Set([...nf].filter((f) => f.startsWith('NOM:') && agreeingCases(det, new Set([f])).size > 0).map((f) => f.split(':')[1]));
+      const pluralNoun = nomNumbers.size > 0 && !nomNumbers.has('SIN') && !hasTag(t, /^EIG/) && !/^\p{Lu}{2}/u.test(t.getToken()); // not 'die USA'
+      arg = { cases: agreeingCases(det, nf), time: [...lemmas(t, /^SUB/)].some((l) => TIME_NOUNS.has(l)), pluralNoun };
     } else if (isUnknown(t) && isUpperCase(t)) {
       arg = { cases: new Set(['NOM', 'AKK', 'DAT']), time: false };
     } else if (hasTag(t, /^(PRO:PER|PRO:REF)/) || SUBJECT_PRONOUNS.has(lower(t)) || hasTag(t, /^PRO:(IND|DEM):(NOM|AKK|DAT|GEN)/)) {
@@ -348,7 +365,7 @@ export function coreArguments(tokens, s, c) {
         if (m) cs.add(m[1]);
       }
       if (cs.size === 0) cs.add('NOM').add('AKK');
-      arg = { cases: cs, time: false };
+      arg = { cases: cs, time: false, dativePronoun: cs.has('DAT') && hasTag(t, /^PRO:(PER|REF)/) };
     } else if ((hasTag(t, /^ADJ:(NOM|AKK|DAT|GEN)/) || hasTag(t, /^ZAL/)) && isLowerCase(t) && !nounAhead(tokens, j + 1, c)) {
       // adjective or number without noun ('dass wenige kamen', 'dass zwei fehlen')
       const cs = casesOf(features(t, /^ADJ/));

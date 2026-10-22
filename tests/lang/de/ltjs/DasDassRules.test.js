@@ -40,6 +40,15 @@ const CASES = {
       ['Wir hoffen, das Sie zufrieden sind.', 'das->dass'],
       ['Seinen Austritt begründete er damit, das er sich bedroht fühlte.', 'das->dass'],
       ['In Experimenten konnte gezeigt werden, das eine höhere Dosis besser wirkt.', 'das->dass'],
+      ['Beachten Sie bitte darauf, das die Tür abends verschlossen bleibt.', 'das->dass'],
+      ['Im Studium habe ich gelernt, das man Quellen prüfen muss.', 'das->dass'],
+      ['Wir danken für Ihr Vertrauen und hoffen, das Sie wiederkommen.', 'das->dass'],
+      ['Für die Anmeldung reicht es aus, das Sie das Formular abschicken.', 'das->dass'],
+      ['Sie hatte versprochen, das sie anrufen würde sobald sie ankommt.', 'das->dass'],
+      ['Beim Abbiegen muss man aufpassen, das man niemanden übersieht.', 'das->dass'],
+      ['Aber können wir uns darauf verständigen, das jeder seinen Teller abräumt?', 'das->dass'],
+      ['Diese Reformen führten dazu, das die Opposition die Regierung zu unterstützen begann.', 'das->dass'],
+      ['Für die Statik bedeutet dies, das die Wand verstärkt werden muss.', 'das->dass'],
     ],
     good: [
       'Ich glaube, das ist richtig.',
@@ -52,6 +61,10 @@ const CASES = {
       'Ich habe gehört, das Konzert wurde abgesagt.',
       'Er hat mir das Geld gegeben, das ich brauchte.',
       'Wir haben gesehen, dass das Haus brennt.',
+      'Ich habe ein Lied gelernt, das mir gefällt.',
+      'Er musste auf das Kind aufpassen, das krank war.',
+      'Ich habe das Buch gekauft und gelesen, das er empfohlen hat.',
+      'Wir haben ein Haus gesehen und gehofft, das wir kaufen können.',
     ],
   },
   LTJS_DAS_DASS_NOMEN: {
@@ -109,9 +122,11 @@ const CASES = {
   LTJS_SODASS: {
     bad: [
       ['Der Zug hatte Verspätung, so das wir den Anschluss verpassten.', 'so das->sodass'],
+      ['Im Winter sinkt die Kaltluft ab, so das es im Tal kälter ist als am Hang.', 'so das->sodass'],
     ],
     good: [
       'Er sagte, so das Gerücht, nichts.',
+      'Die Lage sei ernst, so das Ministerium am Montag in Berlin.',
       'Der Zug hatte Verspätung, sodass wir den Anschluss verpassten.',
     ],
   },
@@ -119,6 +134,7 @@ const CASES = {
     bad: [
       ['Das du so früh kommst, freut mich.', 'Das->Dass'],
       ['Das er gewonnen hat, wundert niemanden.', 'Das->Dass'],
+      ['Das Kinder lernen müssen, sorgfältig mit Geld umzugehen, ist klar.', 'Das->Dass'],
     ],
     good: [
       'Das Kind schläft, sagt sie.',
@@ -131,12 +147,68 @@ const CASES = {
       ['Das Auto, dass er gekauft hat, ist rot.', 'dass->das'],
       ['Das Programm, dass wir installiert haben, läuft stabil.', 'dass->das'],
       ['Ein Bericht liegt vor, ein Gutachten, dass im Auftrag der Stadt erstellt wurde.', 'dass->das'],
+      ['Insgesamt ein solides Fahrrad, dass ich empfehlen kann.', 'dass->das'],
+      ['Er hielt ein Versprechen, dass er seiner Mutter gegeben hatte.', 'dass->das'],
+      ['Im Fenster sah er ein Plakat in dem alten Kino, dass ihn überraschte.', 'dass->das'],
+      ['Wir haben ein Hotel am See gebucht, dass uns Freunde empfohlen hatten.', 'dass->das'],
+      ['Sie kam zurück und brachte ein Foto mit, dass sie im Urlaub gemacht hatte.', 'dass->das'],
+      ['Bitte wählen Sie ein Kennwort, dass Sie sonst nirgends verwenden.', 'dass->das'],
+      ['Im Ort wurde ein Museum errichtet, dass bis 1990 bestand.', 'dass->das'],
+      ['Das ist ein Problem, dass die Leute stört.', 'dass->das'],
     ],
     good: [
+      'Es ist ein Zeichen, dass man uns braucht.',
+      'Er hat dem Kind empfohlen, dass es das Buch kauft.',
+      'Das Gefühl, dass man gebraucht wird, ist schön.',
+      'Ich habe ihm das Buch gegeben, dass er es lesen kann.',
+      'Er schrieb ein Buch, dass er danach empfohlen hat, die Regeln zu ändern.',
+      'Es ist allgemein bekannt, dass er Briefmarken sammelt.',
       'Das Gefühl, dass alles gut wird, ist schön.',
       'Das Ergebnis, dass die Preise steigen, überrascht niemanden.',
       'Das Versprechen, dass er kommt, hat er gehalten.',
       'Er erhielt die Nachricht, dass sein Vater gestorben sei.',
+    ],
+  },
+  LTJS_DAS_DASS_KOMMA: {
+    bad: [
+      ['Vor der Abreise erfuhr er, das der Zug ausfällt.', 'das->dass'],
+      ['Allerdings machte er deutlich, das er bleiben wollte.', 'das->dass'],
+      ['Sie glaubt, das Maria eine Kollegin, mit der sie oft streitet, unterstützen wird.', 'das->dass'],
+    ],
+    good: [
+      'Er las ein Buch, das ihm gefiel.',
+      'Er sah etwas, das ihn erschreckte.',
+      'Wir besuchten Berlin, das uns gefiel.',
+      'Er traf ihn in Wien, das er liebte.',
+      'Das Nachdenken darüber, welches die Faktoren seien, unter denen sich Demokratien entwickeln, hat begonnen.',
+    ],
+  },
+  LTJS_OHNE_DASS: {
+    bad: [
+      ['Er verließ den Raum, ohne das jemand etwas bemerkte.', 'das->dass'],
+      ['Sie half mir, anstatt das sie sich beschwerte.', 'das->dass'],
+    ],
+    good: [
+      'Das ist ein Werkzeug, ohne das man nicht arbeiten kann.',
+      'Er ging ohne das Geld nach Hause.',
+      'Er kam, ohne das Auto zu nehmen.',
+      'Sie erhalten das Gerät pünktlich ohne das zusätzliche Kosten entstehen.',
+    ],
+  },
+  LTJS_DASS_STATT_DAS: {
+    bad: [
+      ['Ist dass für Sie in Ordnung?', 'dass->das'],
+      ['Wenn Sie Fragen haben, teilen Sie uns dass bitte mit.', 'dass->das'],
+      ['Geben Sie Salz dazu, dass verbessert den Geschmack.', 'dass->das'],
+      ['Melden Sie sich bei der Verwaltung, dass Büro ist morgens geöffnet.', 'dass->das'],
+    ],
+    good: [
+      'Ich hoffe, dass gesagt wird, was los ist.',
+      'Ich weiß, dass Geld fehlt.',
+      'Ich glaube schon, dass.',
+      'Er sagte, dass er, wie immer, pünktlich komme.',
+      'Es gibt Einigkeit darüber, dass bestimmte Kompetenzen dazugehören, z. B. Lesen.',
+      'Was kann ich dafür, dass die Macht auf krummen Beinen Wandelt?',
     ],
   },
 };

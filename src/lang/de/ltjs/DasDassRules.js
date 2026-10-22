@@ -6,8 +6,8 @@ import { ITSIssueType } from '../../../core/rules/model/ITSIssueType.js';
 import { Example } from '../../../core/rules/model/Examples.js';
 import { getUrl } from '../../../core/Tools.js';
 import {
-  hasTag, lower, isLowerCase, isUpperCase, isFiniteVerb, isVerb, verbLemmas, lemmas,
-  clauseEnd, clauseStart, verbFinal, hasSubjectCandidate, articleReading, articleReadingV2, hasNeuterAntecedentBefore, relativeImpossible, coreArgumentCount, coreArguments, NP_CHAIN, dassFor, dasFor,
+  hasTag, isUnknown, isStrictFiniteVerb, lower, isLowerCase, isUpperCase, isFiniteVerb, isVerb, verbLemmas, lemmas,
+  clauseEnd, clauseStart, verbFinal, isImperativeInitial, hasSubjectCandidate, articleReading, articleReadingV2, hasNeuterAntecedentBefore, hasNeuterAntecedent, relativeImpossible, coreArgumentCount, coreArguments, NP_CHAIN, dassFor, dasFor,
 } from './DasDassTools.js';
 
 const URL = 'https://languagetool.org/insights/de/beitrag/das-versus-dass/';
@@ -31,7 +31,7 @@ const DASS_VERBS = new Set([
   'schildern', 'festhalten', 'vermerken', 'hinzufügen', 'ergänzen', 'argumentieren', 'urteilen', 'herausstellen', 'akzeptieren',
   'hinnehmen', 'notieren', 'prüfen', 'überprüfen', 'kontrollieren', 'vorsehen', 'regeln', 'bestimmen', 'nahelegen', 'andeuten',
   'signalisieren', 'suggerieren', 'implizieren', 'besagen', 'ermitteln', 'berechnen', 'angeben', 'aussagen', 'bekräftigen',
-  'monieren', 'begründen', 'ausrechnen', 'vorrechnen',
+  'monieren', 'begründen', 'ausrechnen', 'vorrechnen', 'lernen', 'aufpassen', 'anführen',
 ]);
 
 // verbs that need a correlate in the clause before the comma ('davon ausgehen', 'kann es sein', 'stimmt es')
@@ -45,7 +45,7 @@ const CORRELATE_VERBS = new Map([
   ['erinnern', ['daran']], ['denken', ['daran']], ['glauben', ['daran']], ['zweifeln', ['daran']], ['gewöhnen', ['daran']],
   ['sein', ['es']], ['stimmen', ['es']], ['heißen', ['es']], ['scheinen', ['es']], ['passieren', ['es']], ['geschehen', ['es']],
   ['vorkommen', ['es']], ['auffallen', ['es']], ['gelingen', ['es']], ['feststehen', ['es']], ['ergeben', ['es', 'sich']],
-  ['zeigen', ['es', 'sich']], ['herausstellen', ['sich']],
+  ['zeigen', ['es', 'sich']], ['herausstellen', ['sich']], ['ausreichen', ['es']], ['genügen', ['es']], ['reichen', ['es']],
 ]);
 
 // neuter nouns that take a dass clause (no relative 'das' after them); compounds ending in one of them count too
@@ -77,13 +77,13 @@ const DASS_ADJECTIVES = new Set([
   'ausgeschlossen', 'verwunderlich', 'bedauerlich', 'erfreulich', 'unerlässlich', 'zwingend', 'vorstellbar', 'undenkbar',
   'selbstverständlich', 'okay', 'ok', 'fair', 'unfair', 'gerecht', 'ungerecht', 'praktisch', 'hilfreich', 'angenehm',
   'unangenehm', 'lustig', 'schlimm', 'schlecht', 'sauer', 'wütend', 'überrascht', 'erstaunt', 'gespannt', 'zuversichtlich',
-  'optimistisch', 'pessimistisch', 'einverstanden', 'erfreut', 'gewohnt', 'unbedingt', 'eindeutig', 'offen', 'fest',
+  'optimistisch', 'pessimistisch', 'einverstanden', 'erfreut', 'gewohnt', 'unbedingt', 'eindeutig', 'offen', 'fest', 'deutlich',
 ]);
-const COPULAS = new Set(['sein', 'werden', 'bleiben', 'scheinen', 'finden', 'halten']);
+const COPULAS = new Set(['sein', 'werden', 'bleiben', 'scheinen', 'finden', 'halten', 'machen', 'erachten']);
 
 // words that may stand between a dass verb and the comma ('meinte aber,', 'sagte mir gestern,')
 const SKIPPABLE = /^(ADV|PRO:PER|PRO:REF|NEG|PA2:PRD|ADJ:PRD)/;
-const SKIPPABLE_WORDS = new Set(['aber', 'doch', 'jedoch', 'auch', 'ja', 'nur', 'allerdings', 'nicht', 'immer', 'schon', 'noch', 'es', 'selbst', 'sofort']);
+const SKIPPABLE_WORDS = new Set(['aber', 'doch', 'jedoch', 'auch', 'ja', 'nur', 'allerdings', 'nicht', 'immer', 'schon', 'noch', 'es', 'selbst', 'sofort', 'dies']);
 
 const DETERMINER = /^(ART|PRO:POS|PRO:DEM|PRO:IND)/;
 
@@ -121,19 +121,20 @@ class LtjsDasDassRule extends Rule {
 
 // ', das' + verb-final clause with its own subject; das is not an article of a following noun (V2) - the conjunction reading
 function dassClause(tokens, i, sentenceStart = false) {
-  const clause = verbFinalClause(tokens, i); // also across und/oder: 'das sie ihn und Robert beobachtete'
+  const clause = verbFinalClause(tokens, i, !sentenceStart); // also across und/oder: 'das sie ihn und Robert beobachtete'
   if (clause === null) return null;
-  const { s, e, vf } = clause;
-  if (!hasSubjectCandidate(tokens, s, vf.clusterStart)) return null;
-  if (sentenceStart ? articleReadingV2(tokens, s, vf) : articleReading(tokens, s, vf)) return null;
-  return { s, e, vf };
+  const { s, vf } = clause;
+  const ct = clause.tokens;
+  if (!hasSubjectCandidate(ct, s, vf.clusterStart)) return null;
+  if (sentenceStart ? articleReadingV2(ct, s, vf) : articleReading(ct, s, vf)) return null;
+  return clause;
 }
 
-const COORDINATION = new Set(['und', 'oder', 'sowie']);
+const COORDINATION = new Set(['und', 'oder', 'sowie', 'sondern']);
 
 // no relative 'das' possible: no neuter antecedent before the comma at k, or the clause has no role left for it
 function noRelativeDas(tokens, k, clause) {
-  return !hasNeuterAntecedentBefore(tokens, k) || relativeImpossible(tokens, clause.s, clause.vf);
+  return !hasNeuterAntecedentBefore(tokens, k) || relativeImpossible(clause.tokens, clause.s, clause.vf);
 }
 
 const isDas = (t) => t.getToken() === 'das';
@@ -160,10 +161,35 @@ export class LtjsDasDassVerbRule extends LtjsDasDassRule {
     const verb = findDassVerb(tokens, i - 1);
     if (verb === null) return null;
     const clause = dassClause(tokens, i);
-    if (clause === null || !noRelativeDas(tokens, i - 1, clause)) return null;
+    if (clause === null || !(verbConjunct(tokens, i - 1) || noRelativeDasAfterPrefield(tokens, i - 1) || noRelativeDas(tokens, i - 1, clause))) return null;
     return this.dassMatch(sentence, tokens[i],
       `Meinten Sie die Konjunktion 'dass'? Nach '${verb}' folgt hier vermutlich ein mit 'dass' eingeleiteter Nebensatz.`);
   }
+}
+
+// the comma at k ends a coordinated verb phrase without nouns ('danken Ihnen für Ihr Verständnis und hoffen,'): a noun before
+// 'und' cannot be the antecedent of a relative clause after it
+function verbConjunct(tokens, k) {
+  let j = k - 1;
+  while (j > 1 && (isVerb(tokens[j]) || hasTag(tokens[j], SKIPPABLE) || SKIPPABLE_WORDS.has(lower(tokens[j]))) && isLowerCase(tokens[j])
+    && !hasTag(tokens[j], /^(SUB|EIG|ART|PRO:(DEM|POS|IND))/)) j--;
+  const v = j + 1;
+  return v < k && ['und', 'oder', 'aber'].includes(tokens[j].getToken()) && isFiniteVerb(tokens[v]) && !hasTag(tokens[v], /^(ADJ|PA2|SUB)/);
+}
+
+// main clause from sentence start to the comma at k with a prepositional phrase or adverb before the finite verb
+// ('In einem Praktikum bei X habe ich gelernt,'): nouns there cannot be the antecedent of a relative clause after the comma
+function noRelativeDasAfterPrefield(tokens, k) {
+  if (k < 4 || !hasTag(tokens[1], /^(PRP|ADV)/) || hasTag(tokens[1], /^(KON|PRO)/)) return false;
+  let f = 2;
+  while (f < k && !(isFiniteVerb(tokens[f]) && isLowerCase(tokens[f]) && !hasTag(tokens[f], /^(ART|PRO|ADJ|SUB|PRP)/))) {
+    if (isVerb(tokens[f]) && !hasTag(tokens[f], /^(SUB|ADJ)/)) return false;
+    if (!/^[\p{L}\d]/u.test(tokens[f].getToken())) return false; // only words: no comma, quote or bracket before the verb
+    f++;
+  }
+  if (f >= k - 1) return false;
+  for (let j = f + 1; j < k; j++) if (!/^[\p{L}\d]/u.test(tokens[j].getToken())) return false;
+  return !hasNeuterAntecedent(tokens, f + 1, k);
 }
 
 const DA_CORRELATES = new Set(['darauf', 'davon', 'damit', 'dafür', 'daran', 'darüber', 'dazu', 'darin', 'dadurch', 'danach', 'darum',
@@ -172,11 +198,17 @@ const DA_CORRELATES = new Set(['darauf', 'davon', 'damit', 'dafür', 'daran', 'd
 // a verb reading (with a separated particle) that takes a dass clause
 function isDassVerb(t, particle, clauseWords) {
   for (const l of verbLemmas(t)) {
-    for (const lemma of particle !== null ? [particle + l, l] : [l]) {
-      const correlates = CORRELATE_VERBS.get(lemma);
-      if (correlates !== undefined && correlates.some((c) => clauseWords.has(c))) return true;
-      if (DASS_VERBS.has(lemma)) return true;
-    }
+    if (isDassLemma(particle !== null ? [particle + l, l] : [l], clauseWords)) return true;
+  }
+  return false;
+}
+
+// one of the lemmas takes a dass clause (directly or with a correlate among the clause words)
+function isDassLemma(candidates, clauseWords) {
+  for (const lemma of candidates) {
+    const correlates = CORRELATE_VERBS.get(lemma);
+    if (correlates !== undefined && correlates.some((c) => clauseWords.has(c))) return true;
+    if (DASS_VERBS.has(lemma)) return true;
   }
   return false;
 }
@@ -195,6 +227,11 @@ function findDassVerb(tokens, k) {
     if (particle === null && !sawVerb && j === k - 1 && hasTag(t, /^ZUS/) && isLowerCase(t) && !isVerb(t)) {
       particle = lower(t);
       continue;
+    }
+    if (isImperativeInitial(tokens, j)) { // 'Achten Sie darauf,' (tagged as noun only)
+      const l = lower(t);
+      if (correlate || isDassLemma(particle !== null ? [particle + l, l] : [l], clauseWords)) return t.getToken();
+      break;
     }
     if (isVerb(t)) {
       sawVerb = true;
@@ -255,7 +292,7 @@ export class LtjsDasDassNounRule extends LtjsDasDassRule {
     }
     const clause = dassClause(tokens, i);
     if (clause === null) return null;
-    if (neuterNoun ? !relativeImpossible(tokens, clause.s, clause.vf) : !noRelativeDas(tokens, i - 1, clause)) return null;
+    if (neuterNoun ? !relativeImpossible(clause.tokens, clause.s, clause.vf) : !noRelativeDas(tokens, i - 1, clause)) return null;
     return this.dassMatch(sentence, tokens[i], msg);
   }
 }
@@ -392,13 +429,22 @@ export class LtjsSodassRule extends LtjsDasDassRule {
 
   matchAt(sentence, tokens, i) {
     if (!isDas(tokens[i]) || tokens[i - 1].getToken() !== 'so' || !isComma(tokens[i - 2])) return null;
-    if (dassClause(tokens, i) === null) return null;
+    if (dassClause(tokens, i) === null && !finiteVerbInClause(tokens, i)) return null;
     const so = tokens[i - 1];
     const m = new RuleMatch(this, sentence, so.getStartPos(), tokens[i].getEndPos(),
       "Meinten Sie die Konjunktion 'sodass' (auch: 'so dass')? Hier leitet 'so das' vermutlich einen Folgesatz ein.", "Konjunktion 'sodass'");
     m.setSuggestedReplacements(['sodass', 'so dass']);
     return m;
   }
+}
+
+// a finite verb after the first word of the clause after index i (also across und/oder): ', so das es hier kälter ist als im Tal'
+// (', so das Ministerium' reports a source and has no verb)
+function finiteVerbInClause(tokens, i) {
+  let e = clauseEnd(tokens, i + 1);
+  if (e < tokens.length && COORDINATION.has(tokens[e].getToken())) e = clauseEnd(tokens, e + 1);
+  for (let j = i + 2; j < e; j++) if (isStrictFiniteVerb(tokens[j]) || isMainClauseVerb(tokens[j])) return true;
+  return false;
 }
 
 // Java: none (LTJS). 'Das er kommt, freut mich.' -> Dass (subject clause before the finite verb of the main clause)
@@ -420,8 +466,14 @@ export class LtjsDassSentenceStartRule extends LtjsDasDassRule {
   matchAt(sentence, tokens, i) {
     if (i !== 1 || tokens[i].getToken() !== 'Das') return null;
     const c = dassClause(tokens, i, true);
-    if (c === null || !isComma(tokens[c.e])) return null;
-    const after = tokens[c.e + 1];
+    const ct = c?.tokens;
+    if (c === null || !isComma(ct[c.e])) return null;
+    let after = ct[c.e + 1];
+    if (after !== undefined && !isFiniteVerb(after)) { // a zu-infinitive of the clause first ('Das Schüler lernen müssen, verantwortungsvoll ... umzugehen, ist')
+      const e2 = clauseEnd(ct, c.e + 1);
+      const z = ct[e2 - 1];
+      if (isComma(ct[e2]) && (hasTag(z, /^VER:EIZ/) || (lower(ct[e2 - 2]) === 'zu' && hasTag(z, /^VER:INF/)))) after = ct[e2 + 1];
+    }
     if (after === undefined || !isFiniteVerb(after) || !isLowerCase(after)) return null;
     return this.dassMatch(sentence, tokens[i],
       "Meinten Sie die Konjunktion 'Dass'? Der Nebensatz am Satzanfang ist hier vermutlich das Subjekt oder Objekt des folgenden Hauptsatzes.");
@@ -455,9 +507,11 @@ export class LtjsDassRelativeRule extends LtjsDasDassRule {
   matchAt(sentence, tokens, i) {
     const t = tokens[i];
     if (t.getToken() !== 'dass' || !isComma(tokens[i - 1]) || i < 3) return null;
+    const gapNoun = objectGapAntecedent(tokens, i);
+    if (gapNoun !== null) return this.relativeMatch(sentence, t, gapNoun);
     const last = tokens[i - 2];
     if (!(hasTag(last, /^(SUB|EIG)/) && isUpperCase(last))) return null;
-    const clause = verbFinalClause(tokens, i);
+    const clause = verbFinalClause(tokens, i, false);
     if (clause === null) return null;
     const { s, e, vf } = clause;
     const args = coreArguments(tokens, s, vf.clusterStart).filter((a) => !a.time);
@@ -485,12 +539,105 @@ export class LtjsDassRelativeRule extends LtjsDasDassRule {
       if (coreArgumentCount(tokens, s, vf.clusterStart) > 1) return null;
     }
     if (noun !== tokens[i - 2] && nounIsObjectOfVerb(tokens, tokens.indexOf(noun))) return null;
+    return this.relativeMatch(sentence, t, noun);
+  }
+
+  // dass (token t) -> das, relative to noun
+  relativeMatch(sentence, t, noun) {
     const m = new RuleMatch(this, sentence, t.getStartPos(), t.getEndPos(),
       `Meinten Sie das Relativpronomen 'das'? Der Nebensatz bezieht sich vermutlich auf '${noun.getToken()}'; 'dass' ist eine Konjunktion.`,
       "Relativpronomen 'das'");
     m.setSuggestedReplacement(dasFor(t));
     return m;
   }
+}
+
+// verbs that need an accusative object in the active voice ('dass er gemalt hatte' lacks one: 'das er gemalt hatte')
+const OBJECT_VERBS = new Set([
+  'betreffen', 'verwenden', 'benutzen', 'nutzen', 'überraschen', 'besitzen', 'enthalten', 'benötigen', 'brauchen', 'kaufen',
+  'kennen', 'erhalten', 'bekommen', 'bauen', 'herstellen', 'entwickeln', 'erfinden', 'bestellen', 'mieten', 'buchen', 'reparieren',
+  'malen', 'zeichnen', 'beschreiben', 'gebrauchen', 'gestalten', 'organisieren', 'verfassen', 'übersetzen', 'veröffentlichen',
+  'produzieren', 'verursachen', 'auslösen', 'beeinflussen', 'prägen', 'erschaffen', 'bevorzugen', 'erwerben', 'betreiben',
+  'beinhalten', 'umfassen', 'lieben', 'hassen', 'genießen', 'besuchen', 'bewohnen', 'komponieren', 'anschauen', 'ansehen',
+  'besichtigen', 'fotografieren', 'aufbauen', 'einrichten', 'renovieren', 'ausprobieren', 'testen', 'empfangen', 'machen',
+]);
+// verbs with a dative and an accusative object: a personal pronoun there is the dative ('dass uns eine Freundin empfohlen hatte')
+const DATIVE_OBJECT_VERBS = new Set([
+  'geben', 'schenken', 'empfehlen', 'weiterempfehlen', 'anbieten', 'liefern', 'schicken', 'senden', 'leihen', 'verkaufen',
+  'mitbringen', 'überlassen', 'vererben', 'vermieten', 'verschenken', 'beibringen', 'schulden',
+]);
+const OBJECT_CLAUSE_WORDS = new Set(['dass', 'ob', 'wie', 'was', 'wer', 'wo', 'warum', 'wann', 'wieso', 'weshalb', 'welche', 'welcher', 'welches', 'wohin', 'woher']);
+
+// the verb-final clause after 'dass' at i lacks the accusative object of its verb and has exactly one subject candidate
+function objectGap(tokens, clause) {
+  const { s, e, vf } = clause;
+  const cluster = tokens.slice(vf.clusterStart, vf.last + 1);
+  const all = new Set(cluster.flatMap((x) => [...verbLemmas(x)]));
+  if ((all.has('werden') || all.has('sein') || all.has('bleiben')) && cluster.some((x) => hasTag(x, /^VER:PA2/))) return false; // passive, sein-perfect
+  for (let j = s; j < vf.clusterStart; j++) {
+    if (lower(tokens[j]) === 'es' && all.has('geben')) return false; // 'dass es ... gegeben hat': existential
+    if (lower(tokens[j]) === 'bis' && j > s && (hasTag(tokens[j - 1], /^ZAL/) || /^\d/.test(tokens[j - 1].getToken()))) return false; // '1.000 bis 2.300 Infizierte' is no PP
+  }
+  const main = new Set(cluster.flatMap((x) => [...lemmas(x, /^VER:(?!AUX|MOD)/)]));
+  const dative = [...main].some((l) => DATIVE_OBJECT_VERBS.has(l));
+  if (!dative && ![...main].some((l) => OBJECT_VERBS.has(l))) return false;
+  if (e < tokens.length && (tokens[e].getToken() === ':' || (isComma(tokens[e]) && objectClauseFollows(tokens, e + 1)))) return false;
+  let count = 0;
+  let nominative = false;
+  for (const a of coreArguments(tokens, s, vf.clusterStart)) {
+    if (a.time || !(a.cases.has('NOM') || a.cases.has('AKK'))) continue;
+    if (dative && a.dativePronoun) continue;
+    count++;
+    if (a.cases.has('NOM')) nominative = true;
+  }
+  return count === 1 && nominative;
+}
+
+// the verb-final clause has no subject candidate (or only plural nouns), an active verb that agrees with 'das' (3rd person singular only)
+// and some other word ('ein Museum errichtet, dass bis 1948 bestand', 'das Crescendo, dass seine Briefe kennzeichnet')
+function subjectGap(tokens, clause) {
+  const { s, vf } = clause;
+  if (vf.clusterStart === s) return false;
+  if (coreArguments(tokens, s, vf.clusterStart).some((a) => !a.time && a.cases.has('NOM') && !a.pluralNoun)) return false;
+  if (hasTag(tokens[vf.last], /^VER:(AUX:|MOD:)?[13]:PLU/)) return false; // 2nd person plural: no noun subject
+  for (let j = s; j < vf.clusterStart; j++) if (lower(tokens[j]) === 'es' || hasTag(tokens[j], /^PRO:(PER|IND|DEM):NOM/) || (isUnknown(tokens[j]) && !/^\d/.test(tokens[j].getToken()))) return false;
+  const cluster = tokens.slice(vf.clusterStart, vf.last + 1);
+  if (cluster.some((x) => [...verbLemmas(x)].some((l) => l === 'sein' || l === 'werden' || l === 'bleiben'))) return false;
+  return hasTag(tokens[vf.last], /^VER:(AUX:|MOD:)?3:SIN/);
+}
+
+// an object clause or zu-infinitive starts at index j ('dass er empfohlen hat, die Tür zu schließen')
+function objectClauseFollows(tokens, j) {
+  if (j >= tokens.length) return false;
+  if (OBJECT_CLAUSE_WORDS.has(lower(tokens[j]))) return true;
+  const e = clauseEnd(tokens, j);
+  for (let x = j; x < e; x++) if (hasTag(tokens[x], /^VER:EIZ/) || (lower(tokens[x]) === 'zu' && x + 1 < e && hasTag(tokens[x + 1], /^VER:INF/))) return true;
+  return false;
+}
+
+// the antecedent of 'dass' at i if the clause lacks its object: the neuter noun before the comma (or head of its chain),
+// or a neuter noun of the main clause before a final verb or particle ('brachte ein Bild mit, dass er gemalt hatte')
+function objectGapAntecedent(tokens, i) {
+  const clause = verbFinalClause(tokens, i, false);
+  if (clause === null) return null;
+  const k = i - 1;
+  const last = tokens[k - 1];
+  const nounBefore = hasTag(last, /^(SUB|EIG)/) && isUpperCase(last);
+  const og = objectGap(tokens, clause);
+  if (!og && !subjectGap(tokens, clause)) return null;
+  if (nounBefore) return isNeuterAntecedentNoun(tokens, k - 1) ? last : chainHead(tokens, k - 1);
+  if (!isLowerCase(last) || !(isVerb(last) || hasTag(last, /^(ZUS|PRP)/)) || findDassVerb(tokens, k) !== null) return null; // PRP before a comma: a particle
+  if ([...lemmas(last, /^(ADJ|PA2)/), lower(last)].some((l) => DASS_ADJECTIVES.has(l))) return null; // 'bekannt, dass'
+  const cs = clauseStart(tokens, k);
+  let found = null;
+  for (let x = cs; x < k - 1; x++) {
+    const w = lower(tokens[x]);
+    if (w === 'es' || w === 'so' || DA_CORRELATES.has(w)) return null;
+    if (hasTag(tokens[x], /^(SUB|EIG)/) && isUpperCase(tokens[x]) && isNeuterAntecedentNoun(tokens, x) && (og || !isDassNounNeuter(tokens[x]))) {
+      found = tokens[x]; // the nearest one; a missing subject alone does not override a noun with a dass clause ('ein Szenario zugrunde liegt, dass')
+    }
+  }
+  return found;
 }
 
 const NEUTER_ONLY_DETERMINERS = new Set(['das', 'dieses', 'jenes', 'jedes', 'manches', 'welches']);
@@ -533,8 +680,9 @@ function nounIsObjectOfVerb(tokens, n) {
   return false;
 }
 
-// verb-final clause after index i (one retry across und/oder), without further checks
-function verbFinalClause(tokens, i) {
+// verb-final clause after index i (one retry across und/oder/sondern, one embedded relative clause and a comparison after
+// the verb are skipped), without further checks; tokens of the result: the sentence without the embedded clause
+function verbFinalClause(tokens, i, embedded = true) {
   const s = i + 1;
   let e = clauseEnd(tokens, s);
   let vf = verbFinal(tokens, s, e);
@@ -542,18 +690,158 @@ function verbFinalClause(tokens, i) {
     e = clauseEnd(tokens, e + 1);
     vf = verbFinal(tokens, s, e);
   }
-  return vf === null ? null : { s, e, vf };
+  if (vf !== null || !embedded) return vf === null ? null : { s, e, vf, tokens };
+  for (let j = s + 2; j < e; j++) { // 'dass ... kürzere Strecken gebraucht werden als bei Rückenwind'
+    if ((tokens[j].getToken() === 'als' || tokens[j].getToken() === 'wie') && (vf = verbFinal(tokens, s, j)) !== null) return { s, e: j, vf, tokens };
+  }
+  const e2 = embeddedClauseEnd(tokens, s, e);
+  if (e2 < 0 || embeddedClauseEnd(tokens, s, e2) >= 0 || startsRelative(tokens, e2 + 1)) return null; // 'welches ..., unter denen ...'
+  const view = [...tokens.slice(0, e), ...tokens.slice(e2 + 1)];
+  e = clauseEnd(view, e);
+  vf = verbFinal(view, s, e);
+  return vf === null ? null : { s, e, vf, tokens: view };
+}
+
+const RELATIVE_WORDS = new Set(['der', 'die', 'das', 'dem', 'den', 'deren', 'dessen', 'denen', 'welcher', 'welche', 'welches', 'welchem', 'welchen', 'wo', 'wie']);
+
+// a relative clause starts at r ('die', 'mit der')
+function startsRelative(tokens, r) {
+  if (r < tokens.length && hasTag(tokens[r], /^PRP/) && isLowerCase(tokens[r])) r++;
+  return r < tokens.length && RELATIVE_WORDS.has(tokens[r].getToken());
+}
+
+// index of the comma that closes a verb-final relative (or 'wie') clause after the comma at e ('dass Augusta, mit der sie ... hatte, einen Groll hegte'), else -1
+function embeddedClauseEnd(tokens, s, e) {
+  if (e <= s || !isComma(tokens[e]) || e + 2 >= tokens.length) return -1;
+  if (!startsRelative(tokens, e + 1)) return -1;
+  const r = hasTag(tokens[e + 1], /^PRP/) && isLowerCase(tokens[e + 1]) ? e + 2 : e + 1;
+  const e2 = clauseEnd(tokens, r + 1);
+  if (e2 - r > 15 || !isComma(tokens[e2]) || verbFinal(tokens, r + 1, e2) === null) return -1;
+  return e2;
+}
+
+// Java: none (LTJS). 'Er machte klar, das er bleibt.' -> dass: ', das' + verb-final clause with its own subject and no neuter word before
+export class LtjsDasDassCommaRule extends LtjsDasDassRule {
+  constructor(messages, language) {
+    super(messages, language);
+    this.addExamplePair(Example.wrong('Vor der Abreise erfuhr er, <marker>das</marker> der Zug ausfällt.'),
+      Example.fixed('Vor der Abreise erfuhr er, <marker>dass</marker> der Zug ausfällt.'));
+  }
+
+  getId() {
+    return 'LTJS_DAS_DASS_KOMMA';
+  }
+
+  getDescription() {
+    return "'das' statt 'dass' nach Komma ohne sächliches Bezugswort";
+  }
+
+  matchAt(sentence, tokens, i) {
+    if (!isDas(tokens[i]) || !isComma(tokens[i - 1]) || i < 3) return null;
+    for (let j = 1; j < i - 1; j++) if (possibleNeuterWord(tokens, j)) return null;
+    if (dassClause(tokens, i) === null) return null;
+    return this.dassMatch(sentence, tokens[i],
+      "Meinten Sie die Konjunktion 'dass'? Der Nebensatz hat ein eigenes Subjekt und das Verb am Ende, und davor steht kein sächliches Bezugswort für ein Relativpronomen 'das'.");
+  }
+}
+
+// a word that could be (part of) a neuter antecedent: neuter singular noun or name, unknown word, pronoun like 'etwas', abbreviation, number
+function possibleNeuterWord(tokens, j) {
+  const t = tokens[j];
+  if (hasTag(t, /^(SUB|EIG):[A-Z]+:SIN:(NEU|NOG)/) || hasTag(t, /^(ABK|ZAL)/) || NEUTER_WORDS.has(lower(t))) return !(j === 1 && isImperativeInitial(tokens, 1));
+  if (hasTag(t, /^PRO:(DEM|IND):[A-Z]+:SIN:NEU/) && !(j + 1 < tokens.length && (hasTag(tokens[j + 1], /^(SUB|EIG|ADJ|PA1|PA2)/) || isUpperCase(tokens[j + 1])))) return true; // 'hinter dem, das'
+  if (!/^[\p{L}]/u.test(t.getToken())) return /\d/.test(t.getToken()) || ['"', '„', '“', '»', '«', '(', ')', '‚', '‘', '’', ':', ';', '/', '–', '-'].includes(t.getToken());
+  return isUnknown(t) || (isUpperCase(t) && j > 1 && !hasTag(t, /^(SUB|EIG)/));
+}
+const NEUTER_WORDS = new Set(['was', 'etwas', 'nichts', 'alles', 'vieles', 'einiges', 'manches', 'weniges', 'dasjenige', 'dasselbe', 'jenes',
+  'welches', 'eines', 'keines', 'beides', 'folgendes', 'anderes', 'mehreres', 'dies', 'dieses', 'das', 'jedes', 'sowas', 'solches']);
+
+const OHNE = new Set(['ohne', 'statt', 'anstatt']);
+
+// Java: none (LTJS). '... erhalten ohne das zusätzliche Kosten entstehen' -> ohne dass
+export class LtjsOhneDassRule extends LtjsDasDassRule {
+  constructor(messages, language) {
+    super(messages, language);
+    this.addExamplePair(Example.wrong('Er verließ den Raum, ohne <marker>das</marker> jemand etwas merkte.'),
+      Example.fixed('Er verließ den Raum, ohne <marker>dass</marker> jemand etwas merkte.'));
+  }
+
+  getId() {
+    return 'LTJS_OHNE_DASS';
+  }
+
+  getDescription() {
+    return "'ohne das', '(an)statt das' statt 'ohne dass', '(an)statt dass'";
+  }
+
+  matchAt(sentence, tokens, i) {
+    if (!isDas(tokens[i]) || i < 3 || !OHNE.has(tokens[i - 1].getToken())) return null;
+    // ', ohne das' may start a relative clause ('ein Werkzeug, ohne das man nicht arbeiten kann'); without the comma Java's
+    // COMMA_IN_FRONT_RELATIVE_CLAUSE flags 'erhalten ohne das' and an overlapping match here would replace its comma suggestion
+    if (!isComma(tokens[i - 2]) || hasNeuterAntecedentBefore(tokens, i - 2)) return null;
+    if (dassClause(tokens, i) === null) return null;
+    return this.dassMatch(sentence, tokens[i],
+      `Meinten Sie die Konjunktion '${tokens[i - 1].getToken()} dass'? Hier folgt ein Nebensatz mit eigenem Subjekt und Verb am Ende.`);
+  }
+}
+
+// Java: none (LTJS). ', dass verhindert eine körnige Konsistenz', 'Ist dass für Sie in Ordnung?' -> das
+export class LtjsDassStattDasRule extends LtjsDasDassRule {
+  constructor(messages, language) {
+    super(messages, language);
+    this.addExamplePair(Example.wrong('Ist <marker>dass</marker> für Sie in Ordnung?'),
+      Example.fixed('Ist <marker>das</marker> für Sie in Ordnung?'));
+  }
+
+  getId() {
+    return 'LTJS_DASS_STATT_DAS';
+  }
+
+  getDescription() {
+    return "'dass' statt Artikel oder Pronomen 'das'";
+  }
+
+  matchAt(sentence, tokens, i) {
+    const t = tokens[i];
+    if (t.getToken() !== 'dass' || i + 1 >= tokens.length || verbFinalClause(tokens, i) !== null) return null;
+    const s = i + 1;
+    const e = clauseEnd(tokens, s);
+    const next = tokens[s];
+    let msg = null;
+    // not attributive ('dass bestimmte Kompetenzen', 'dass bestimmte medizinische Wirkstoffe nicht gelangen können')
+    if (isMainClauseVerb(next) && e > s + 1 && !isUpperCase(tokens[s + 1]) && !hasTag(tokens[s + 1], /^(SUB|EIG|ADJ|PA1|PA2)/) && !isFiniteVerb(tokens[e - 1])) {
+      msg = "Meinten Sie das Pronomen 'das'? Auf 'dass' folgt hier direkt ein konjugiertes Verb; ein Nebensatz mit 'dass' hat das Verb am Ende.";
+    } else if (hasTag(next, /^SUB:[A-Z]+:SIN:NEU/) && isUpperCase(next) && s + 1 < e && isMainClauseVerb(tokens[s + 1]) && e > s + 2) {
+      msg = `Meinten Sie den Artikel 'das'? '${next.getToken()}' ist hier das Subjekt eines Hauptsatzes.`;
+    } else if (i > 1 && e >= s + 2 && e < tokens.length && hasTag(tokens[e], /^SENT_END$/) && ['.', '?', '!'].includes(tokens[e].getToken())) {
+      for (let j = s; j < e; j++) { // only known words, none of them can be a verb (unknown words may be verbs: 'giebt', 'gerathe')
+        const w = tokens[j];
+        if (!/^[\p{L}\d]/u.test(w.getToken()) || isUnknown(w) || (isVerb(w) && !hasTag(w, /^(ADV|ADJ|PRP|ZUS|SUB|KON|ART|PRO)/))) return null;
+      }
+      msg = "Meinten Sie das Pronomen 'das'? Der Satzteil nach 'dass' hat kein Verb; ein Nebensatz mit 'dass' braucht eines.";
+    }
+    if (msg === null) return null;
+    const m = new RuleMatch(this, sentence, t.getStartPos(), t.getEndPos(), msg, "Artikel/Pronomen 'das'");
+    m.setSuggestedReplacement(dasFor(t));
+    return m;
+  }
+}
+
+// a lowercase finite verb that is no article, pronoun, adjective, adverb, noun, preposition, conjunction or number
+function isMainClauseVerb(t) {
+  return isFiniteVerb(t) && isLowerCase(t) && !hasTag(t, /^(ART|PRO|ADJ|ADV|SUB|PRP|KON|ZAL)/);
 }
 
 // rule ids of the layer for German (registered for switching the layer off per request)
 export const LTJS_GERMAN_RULE_IDS = Object.freeze([
   'LTJS_DAS_DAS', 'LTJS_DAS_DASS_VERB', 'LTJS_DAS_DASS_NOMEN', 'LTJS_DAS_DASS_ADJ', 'LTJS_SO_ADJ_DASS', 'LTJS_SODASS',
-  'LTJS_DASS_SATZANFANG', 'LTJS_DASS_RELATIVPRONOMEN',
+  'LTJS_DASS_SATZANFANG', 'LTJS_DASS_RELATIVPRONOMEN', 'LTJS_DAS_DASS_KOMMA', 'LTJS_OHNE_DASS', 'LTJS_DASS_STATT_DAS',
 ]);
 
 // the LTJS rules for German (appended to German#getRelevantRules when the layer is on)
 export function getLtjsGermanRules(messages, language) {
-  return [ // equal matches of two rules: the later rule wins (CleanOverlappingFilter), so the generic 'das das' rule comes first
+  return [ // equal matches of two rules: the later rule wins (CleanOverlappingFilter), so the generic rules come first
+    new LtjsDasDassCommaRule(messages, language),
     new LtjsDasDasRule(messages, language),
     new LtjsDasDassVerbRule(messages, language),
     new LtjsDasDassNounRule(messages, language),
@@ -562,6 +850,8 @@ export function getLtjsGermanRules(messages, language) {
     new LtjsSodassRule(messages, language),
     new LtjsDassSentenceStartRule(messages, language),
     new LtjsDassRelativeRule(messages, language),
+    new LtjsOhneDassRule(messages, language),
+    new LtjsDassStattDasRule(messages, language),
   ];
 }
 

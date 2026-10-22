@@ -4,15 +4,15 @@
   "level": "default",
   "disable": [],
   "texts": 60,
-  "ms": 13195,
+  "ms": 13067,
   "stats": {
     "das_dass": {
       "gold": 75,
-      "found": 71,
-      "flaggedOnly": 1,
+      "found": 72,
+      "flaggedOnly": 0,
       "missed": 3,
       "falseAlarms": 0,
-      "recall": 0.9466666666666667,
+      "recall": 0.96,
       "flaggedRecall": 0.96,
       "precision": 1
     },
@@ -230,6 +230,26 @@
               "endgültig"
             ],
             "class": "other"
+          }
+        ]
+      },
+      {
+        "id": "de-002",
+        "type": "das_dass",
+        "original": "Das",
+        "correction": "Dass",
+        "offset": 674,
+        "context": "n aufstellen, statt alles zu verbieten. Das Schüler lernen müssen, verantwortungsvo",
+        "by": [
+          {
+            "ruleId": "LTJS_DASS_SATZANFANG",
+            "offset": 674,
+            "length": 3,
+            "covered": "Das",
+            "replacements": [
+              "Dass"
+            ],
+            "class": "das_dass"
           }
         ]
       },
@@ -3023,29 +3043,6 @@
     ],
     "flaggedOnly": [
       {
-        "id": "de-002",
-        "type": "das_dass",
-        "original": "Das",
-        "correction": "Dass",
-        "offset": 674,
-        "context": "n aufstellen, statt alles zu verbieten. Das Schüler lernen müssen, verantwortungsvo",
-        "by": [
-          {
-            "ruleId": "DE_AGREEMENT",
-            "offset": 674,
-            "length": 11,
-            "covered": "Das Schüler",
-            "replacements": [
-              "Der Schüler",
-              "Den Schüler",
-              "Dem Schüler",
-              "Die Schüler"
-            ],
-            "class": "other"
-          }
-        ]
-      },
-      {
         "id": "de-041",
         "type": "comma_missing",
         "original": "werden bleiben",
@@ -3942,16 +3939,13 @@
         ]
       },
       {
-        "ruleId": "DE_AGREEMENT",
+        "ruleId": "LTJS_DASS_SATZANFANG",
         "categoryId": "GRAMMAR",
         "offset": 674,
-        "length": 11,
-        "message": "Möglicherweise passen das Nomen und die Wörter, die das Nomen beschreiben, grammatisch nicht zusammen.",
+        "length": 3,
+        "message": "Meinten Sie die Konjunktion ‚Dass‘? Der Nebensatz am Satzanfang ist hier vermutlich das Subjekt oder Objekt des folgenden Hauptsatzes.",
         "replacements": [
-          "Der Schüler",
-          "Den Schüler",
-          "Dem Schüler",
-          "Die Schüler"
+          "Dass"
         ]
       }
     ],
