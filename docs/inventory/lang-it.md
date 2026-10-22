@@ -77,9 +77,9 @@ Row format: `| ID | behaviour (one line) | Java source (path#member) | Java test
 
 | ID | behaviour | Java source | Java tests | fixtures | status |
 |---|---|---|---|---|---|
-| IT-0060 | Demo text "Inserite qui il vostro testo... Oppure controlate direttamente questo ed avrete un assaggio di quali errori possono essere identificati con LanguageTool." yields rule ids [MORFOLOGIK_RULE_IT_IT, ST_03_001] in order | T/rules/it/ItalianTest.java#testLanguage | ItalianTest | - | todo |
-| IT-0061 | LanguageSpecificTest checks for Italian: word list validity, no line breaks in messages, no quotes around suggestions, Java rule examples, confusion set loading, coherency baseforms, replace-rule replacements, disambiguation examples; note: the testConfusionSetLoading sub-check belongs to the `later` item IT-0049 (ngram), not to this ID | CORE test LanguageSpecificTest#runTests | ItalianTest | - | todo |
-| IT-0062 | Concurrency: parallel checks with a shared Italian instance give identical results | T/ItalianConcurrencyTest.java (AbstractLanguageConcurrencyTest) | ItalianConcurrencyTest | - | todo |
+| IT-0060 | Demo text "Inserite qui il vostro testo... Oppure controlate direttamente questo ed avrete un assaggio di quali errori possono essere identificati con LanguageTool." yields rule ids [MORFOLOGIK_RULE_IT_IT, ST_03_001] in order | T/rules/it/ItalianTest.java#testLanguage | ItalianTest | - | verified |
+| IT-0061 | LanguageSpecificTest checks for Italian: word list validity, no line breaks in messages, no quotes around suggestions, Java rule examples, confusion set loading, coherency baseforms, replace-rule replacements, disambiguation examples; note: the testConfusionSetLoading sub-check belongs to the `later` item IT-0049 (ngram), not to this ID | CORE test LanguageSpecificTest#runTests | ItalianTest | - | verified |
+| IT-0062 | Concurrency: parallel checks with a shared Italian instance give identical results | T/ItalianConcurrencyTest.java (AbstractLanguageConcurrencyTest) | ItalianConcurrencyTest | - | verified |
 
 ## Test class mapping
 
