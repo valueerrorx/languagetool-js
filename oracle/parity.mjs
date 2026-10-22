@@ -1,4 +1,6 @@
 // npm run parity [-- <ID>...]   (docs/ORACLE.md section 9)
+// Java parity runs without the LTJS rule layer (D-061): set before any language builds its rule list; child processes inherit it.
+process.env.LTJS_EXTRA_RULES = '0';
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';

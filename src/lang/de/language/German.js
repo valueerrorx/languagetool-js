@@ -69,6 +69,10 @@ import { StyleTooOftenUsedVerbRule } from '../rules/StyleTooOftenUsedVerbRule.js
 import { StyleTooOftenUsedNounRule } from '../rules/StyleTooOftenUsedNounRule.js';
 import { StyleTooOftenUsedAdjectiveRule } from '../rules/StyleTooOftenUsedAdjectiveRule.js';
 import { ID2PRIO_ENTRIES } from './id2prioGerman.js';
+import { isExtraRulesEnabled, registerExtraRuleIds } from '../../../core/ltjs/extraRules.js';
+import { getLtjsGermanRules, LTJS_GERMAN_RULE_IDS } from '../ltjs/DasDassRules.js';
+
+registerExtraRuleIds('de', LTJS_GERMAN_RULE_IDS); // LTJS layer (D-061)
 
 const TYPOGRAPHY_PATTERN = Pattern.compile('\\b([a-zA-Z]\\.)([a-zA-Z]\\.)');
 const AI_DE_GGEC_MISSING_PUNCT = Pattern.compile('AI_DE_GGEC_MISSING_PUNCTUATION_\\d+_DASH_J(_|AE)HRIG|AI_DE_GGEC_REPLACEMENT_CONFUSION', Pattern.CASE_INSENSITIVE);
@@ -158,7 +162,7 @@ export class German extends LanguageWithModel {
 
   // Java: German#getRelevantRules(ResourceBundle,UserConfig,Language,List)
   getRelevantRules(messages, userConfig) {
-    return [
+    const rules = [
       new GermanCommaWhitespaceRule(messages,
         Example.wrong('Die Partei<marker> ,</marker> die die letzte Wahl gewann.'),
         Example.fixed('Die Partei<marker>,</marker> die die letzte Wahl gewann.'),
@@ -219,6 +223,8 @@ export class German extends LanguageWithModel {
       new StyleTooOftenUsedNounRule(messages, this, userConfig),
       new StyleTooOftenUsedAdjectiveRule(messages, this, userConfig),
     ];
+    if (isExtraRulesEnabled()) rules.push(...getLtjsGermanRules(messages, this)); // LTJS layer (D-061), not in Java
+    return rules;
   }
 
   // Java: German#getNonStrictCompoundSplitter()

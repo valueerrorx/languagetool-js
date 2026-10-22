@@ -117,6 +117,13 @@ Each block: approach, library decision, verification. "Equal" always means the O
 ### 3.13 Logging
 - Java log statements that matter to operators are kept with level and message text through a minimal logger (`src/lib/log.js`, console format free). Log output is not part of parity (D-044) except text the CLI/API returns. See open question 1.
 
+### 3.14 LTJS rule layer (D-061, DEV-028)
+- Own detection rules beyond Java, ids `LTJS_*`, category GRAMMAR or PUNCTUATION, German messages in LT style with suggestions. Not part of Java parity.
+- Code: `src/core/ltjs/extraRules.js` (switch, id registry), `src/lang/<code>/ltjs/` (rules; de: `DasDassRules.js` = 8 rule classes, `DasDassTools.js` = clause analysis on the tagged and disambiguated tokens: verb-final clause, subject, article reading, neuter antecedent, case roles). The language adds them at the end of `getRelevantRules` (German) and registers their ids; they ship in `@ltjs/lang-<code>` with the rest of `src/lang/<code>/`.
+- Switch: on by default; env `LTJS_EXTRA_RULES=0` removes the rules from every rule list (read when a JLanguageTool builds its rules); `check(text, {extraRules: false})` and `/v2/check` parameter `ltjsExtraRules=false` disable them per call/request; single rules via `disabledRules`.
+- Parity and ported Java tests run with the layer off: `oracle/parity.mjs` sets `LTJS_EXTRA_RULES=0` (inherited by the cli/http adapter processes, which also set it), `vitest.config.js` sets it for all tests; `tests/lang/de/ltjs/` switches it on.
+- Quality gate: annotated eval corpus (`tests/eval/`, recall and false alarms vs Java) plus clean prose (no new matches allowed).
+
 ## 4. Error model
 - Errors that reach API/CLI output keep the Java exception class name and message text where the text is visible: server error bodies (`Error: Internal Error: java.lang.IllegalArgumentException: ...`, `new RuntimeException(cause)` message = `cause.toString()`), CLI messages and the first line of an uncaught exception (`Exception in thread "main" <fqcn>: <message>` + `Caused by:` lines). `src/lib/java/errors.js` (built) provides the hierarchy and constructor semantics.
 - Not reproduced (D-044): stack frame lines (DEV-003 moot), JDK helpful NullPointerException texts, StackOverflow/OOM thresholds (DEV-004). Dereferences of null that Java turns into an NPE visible in output throw a `NullPointerException` with the message seen in the fixture.

@@ -1,5 +1,6 @@
 // Eval runner: checks every gold text with Java or JS LanguageTool (one HTTP server, POST /v2/check) and scores against gold.
 // Usage: node tests/eval/run.mjs --engine java|js --lang de-DE [--level picky] [--disable RULE[,RULE]] [--port N] [--out file] [--dir de-heldout]
+//        JS runs with the LTJS rule layer (D-061) unless LTJS_EXTRA_RULES=0 is set.
 //        node tests/eval/run.mjs --rescore tests/eval/results/<file>.json   (score stored raw matches against the current gold)
 import { spawn } from 'node:child_process';
 import { readFileSync, writeFileSync, readdirSync, mkdirSync, mkdtempSync, rmSync } from 'node:fs';
@@ -30,7 +31,7 @@ function parseArgs(argv) {
   if (o.rescore) return o;
   if (o.engine !== 'java' && o.engine !== 'js') throw new Error('--engine java|js required');
   o.port ??= o.engine === 'java' ? 19870 : 19871;
-  if (o.port < 19850 || o.port > 19879) throw new Error('port must be in 19850-19879');
+  if (o.port < 19840 || o.port > 19879) throw new Error('port must be in 19840-19879');
   return o;
 }
 

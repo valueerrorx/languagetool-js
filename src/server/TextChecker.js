@@ -42,6 +42,7 @@ import { Language } from '../core/Language.js';
 import { formatFixed } from '../lib/java/Formatter.js';
 import { ErrorRateTooHighException } from '../core/check/ErrorRateTooHighException.js';
 import { LoggerFactory } from '../lib/slf4j/Logger.js';
+import { getExtraRuleIds, parseExtraRulesFlag } from '../core/ltjs/extraRules.js';
 import { valueOf } from '../lib/java/Objects.js';
 import { doubleToString } from '../lib/java/toString.js';
 import { currentTimeMillis } from '../lib/java/clock.js';
@@ -367,6 +368,11 @@ export class TextChecker {
     }
     if (enabledRules.length === 0 && enabledCategories.length === 0 && useEnabledOnly) {
       throw new BadRequestException('You must specify enabled rules or categories when using enabledOnly=true');
+    }
+
+    // LTJS layer (D-061, not in Java): ltjsExtraRules=false|0 switches the layer's rules off for this request
+    if (!parseExtraRulesFlag(params.get('ltjsExtraRules')) && !useEnabledOnly) {
+      disabledRules = [...disabledRules, ...getExtraRuleIds(lang.getShortCode())];
     }
 
     const enableTempOffRules = params.get('enableTempOffRules') === 'true';

@@ -46,6 +46,7 @@ const result = await check('Das ist ein Fehlr.', {
   disabledCategories: [],
   enabledOnly: false,       // only the enabled rules/categories
   level: 'default',         // or 'picky'
+  extraRules: true,         // LTJS rule layer (rules beyond Java, ids LTJS_*), default true; env LTJS_EXTRA_RULES=0 removes it
 });
 result.matches;             // LanguageTool /v2/check JSON: offset, length, message, replacements, rule, ...
 
