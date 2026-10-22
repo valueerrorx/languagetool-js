@@ -54,7 +54,7 @@ export function run(a) {
     results.push(safe(() => {
       switch (c.m) {
         case 'synthesize': {
-          let t = new AnalyzedToken(str(c.tok), null, str(c.lemma));
+          let t = new AnalyzedToken(str(c.tok), c.tokTag !== undefined ? str(c.tokTag) : null, str(c.lemma));
           const tag = str(c.tag);
           if (c.tokNull === true) t = null;
           if (c.re !== undefined) return s.synthesize(t, tag, c.re);

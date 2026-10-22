@@ -1,0 +1,334 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "description": "it /v2/check: POST/GET, language variants, auto-detection, options, JSON data, empty text",
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "it",
+    "text": "Da Wikipedia, l'enciclopedia libera."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "it-IT",
+    "text": "Da Wikipedia, l'enciclopedia libera."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "it",
+    "text": "Da Wikipedia, l'enciclopedia libera.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "it",
+    "text": "Inserite qui il vostro testo... Oppure controlate direttamente questo ed avrete un assaggio di quali errori possono essere identificati con LanguageTool."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "it-IT",
+    "text": "Inserite qui il vostro testo... Oppure controlate direttamente questo ed avrete un assaggio di quali errori possono essere identificati con LanguageTool."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "it",
+    "text": "Inserite qui il vostro testo... Oppure controlate direttamente questo ed avrete un assaggio di quali errori possono essere identificati con LanguageTool.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "it",
+    "text": "Mi insegni uno trucco?"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "it-IT",
+    "text": "Mi insegni uno trucco?"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "it",
+    "text": "Mi insegni uno trucco?",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "it",
+    "text": "Chiunque può apprezzare i risultati ottenuti."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "it-IT",
+    "text": "Chiunque può apprezzare i risultati ottenuti."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "it",
+    "text": "Chiunque può apprezzare i risultati ottenuti.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "it",
+    "text": "El 29/2/1900."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "it-IT",
+    "text": "El 29/2/1900."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "it",
+    "text": "El 29/2/1900.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "it",
+    "text": "La mamma a fatto la spesa."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "it-IT",
+    "text": "La mamma a fatto la spesa."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "it",
+    "text": "La mamma a fatto la spesa.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "it",
+    "text": "Tu navighi ma ti dirigi nella direzione sbagliata."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "it-IT",
+    "text": "Tu navighi ma ti dirigi nella direzione sbagliata."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "it",
+    "text": "Tu navighi ma ti dirigi nella direzione sbagliata.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "it",
+    "text": "El 29 febbraio de 2010."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "it-IT",
+    "text": "El 29 febbraio de 2010."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "it",
+    "text": "El 29 febbraio de 2010.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "auto",
+    "text": "Bisogna cogliere la meglio occasione. Bisogna cogliere l'occasione migliore. Bisogna cogliere le meglio occasioni. Evitiamo di fare una peggio figura. Evitiamo di fare delle peggio figure."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "auto",
+    "text": "Bisogna cogliere la meglio occasione. Bisogna cogliere l'occasione migliore. Bisogna cogliere le meglio occasioni. Evitiamo di fare una peggio figura. Evitiamo di fare delle peggio figure.",
+    "preferredVariants": "it-IT"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "it",
+    "text": "Mi insegni uno trucco?",
+    "enabledOnly": "true",
+    "enabledRules": "ITALIAN_WORD_REPEAT_RULE,MORFOLOGIK_RULE_IT_IT,COMMA_PARENTHESIS_WHITESPACE"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "it",
+    "text": "Mi insegni uno trucco?",
+    "disabledRules": "ITALIAN_WORD_REPEAT_RULE,MORFOLOGIK_RULE_IT_IT,COMMA_PARENTHESIS_WHITESPACE"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "it",
+    "text": "Chiunque può apprezzare i risultati ottenuti.",
+    "motherTongue": "en"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "it",
+    "text": "Chiunque può apprezzare i risultati ottenuti.",
+    "mode": "textLevelOnly"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "it",
+    "text": "Chiunque può apprezzare i risultati ottenuti.",
+    "mode": "allButTextLevelOnly",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "it",
+    "text": ""
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "it",
+    "text": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "it",
+    "data": "{\"annotation\":[{\"text\":\"Mi insegni uno trucco?\"},{\"markup\":\"<b>\"},{\"text\":\" Chiunque può apprezzare i risultati ottenuti.\"}]}"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "it",
+    "text": "Mi insegni uno trucco?",
+    "enableTempOffRules": "true",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "it",
+    "text": "Mi insegni uno trucco?",
+    "c": "1"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "it",
+    "text": "così così. passo passo. piano piano. via via. Così così. COSÌ COSÌ.",
+    "enabledRules": "ITALIAN_WORD_REPEAT_RULE"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/languages",
+   "languagesList": true
+  }
+ ]
+}

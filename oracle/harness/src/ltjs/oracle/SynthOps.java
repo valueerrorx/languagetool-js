@@ -38,7 +38,7 @@ final class SynthOps {
 
   /**
    * {impl:"lang", lang, calls:[{m, ...}]} -> {class, results[]}
-   * m: synthesize {tok, lemma, tag, re?(bool; absent = 2-arg overload)} | spell {n} | roman {n} | possibleTags | targetPosTag {tags, target} | posTagCorrection {tag} | lookup {lemma, tag} (protected, reflective)
+   * m: synthesize {tok, tokTag?, lemma, tag, re?(bool; absent = 2-arg overload)} | spell {n} | roman {n} | possibleTags | targetPosTag {tags, target} | posTagCorrection {tag} | lookup {lemma, tag} (protected, reflective)
    * {impl:"manual", content? | lang+file?, calls:[{m:"lookup", lemma, tag} | {m:"possibleTags"}]} -> {class, results[]}
    */
   static Object synth(JsonNode a) throws Exception {
@@ -90,7 +90,7 @@ final class SynthOps {
       results.add(safe(() -> {
         switch (m) {
           case "synthesize": {
-            AnalyzedToken t = new AnalyzedToken(str(c.get("tok")), null, str(c.get("lemma")));
+            AnalyzedToken t = new AnalyzedToken(str(c.get("tok")), c.has("tokTag") ? str(c.get("tokTag")) : null, str(c.get("lemma")));
             String tag = str(c.get("tag"));
             if (c.has("tokNull") && c.get("tokNull").asBoolean()) t = null;
             if (c.has("re")) return Arrays.asList(s.synthesize(t, tag, c.get("re").asBoolean()));
