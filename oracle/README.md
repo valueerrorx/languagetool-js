@@ -46,3 +46,6 @@ Generator `node oracle/scripts/gen-cases-w2check.mjs [sl|sk]`; scope helper orac
 
 ## Wave-2 oracle (W13/W18: X-ITCHECK, X-PLCHECK)
 Generator `node oracle/scripts/gen-cases-w13check.mjs [it|pl]` (inputs only; needs the Java harness for rule-example counts and tagger-harvested synth lemma/tag pairs). SynthOps `synthesize` accepts an optional `tokTag` (POS tag of the source token; needed for PolishSynthesizer negation). Details: docs/review/W13-oracle.md. Bulk runs: `ORACLE_CONTINUE=1 ORACLE_CASES='<regex>' node oracle/run.mjs X-PLCHECK` (pl needs several slices of < 10 min).
+
+## Wave-2 oracle (W31: X-ESCHECK)
+Generator `node oracle/scripts/gen-cases-w31check.mjs [es]` (derived from gen-cases-w23check.mjs; adds Language hook cases lang-priority/lang-filter/lang-typo/prepare-line, sr-word/sr-misc multitoken speller cases and direct filter-run cases for every es filter). Details and slices: docs/review/W31-oracle.md. Use `ORACLE_PORT_MIN=19500 ORACLE_PORT_MAX=19599`.

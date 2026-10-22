@@ -1,0 +1,24 @@
+{
+ "kind": "cli",
+ "clock": "fixed",
+ "compare": "cli",
+ "normalize": [
+  "buildDate",
+  "commit",
+  "stackFrames",
+  "paths",
+  "logTimestamp"
+ ],
+ "description": "es CLI enable-es-rules",
+ "args": [
+  "-l",
+  "es",
+  "-e",
+  "ES_WIKIPEDIA_COMMON_ERRORS,SPANISH_WORD_REPEAT_BEGINNING_RULE,ES_REPEATEDWORDS",
+  "--level",
+  "PICKY",
+  "--json",
+  "-"
+ ],
+ "stdin": "Mañana me voy. Mañana vuelvo. Mañana se acabó todo. Es excelente. Fue un resultado excelente. Esto es a basto. Vos tenés razón, che."
+}

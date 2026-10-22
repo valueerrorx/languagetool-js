@@ -1,0 +1,378 @@
+{
+ "kind": "http",
+ "clock": "fixed",
+ "compare": "api",
+ "normalize": [
+  "buildDate",
+  "commit"
+ ],
+ "description": "es /v2/check: POST/GET, language variants, auto-detection, options, JSON data, empty text, voseo",
+ "serverArgs": [],
+ "requests": [
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es",
+    "text": "Al cabo de 28 años, el vicealcalde de Busan, Baek Seung Taek, realiza una visita a Badajoz."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "es-AR",
+    "text": "Al cabo de 28 años, el vicealcalde de Busan, Baek Seung Taek, realiza una visita a Badajoz."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es",
+    "text": "Al cabo de 28 años, el vicealcalde de Busan, Baek Seung Taek, realiza una visita a Badajoz.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es",
+    "text": "Helmut Khol"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "es-AR",
+    "text": "Helmut Khol"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es",
+    "text": "Helmut Khol",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es",
+    "text": "Keith deja claras sus intenciones."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "es-AR",
+    "text": "Keith deja claras sus intenciones."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es",
+    "text": "Keith deja claras sus intenciones.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es",
+    "text": "Mientras que las compañías de software espía ven una compra de exploits como un pago"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "es-AR",
+    "text": "Mientras que las compañías de software espía ven una compra de exploits como un pago"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es",
+    "text": "Mientras que las compañías de software espía ven una compra de exploits como un pago",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es",
+    "text": "Son incomodos."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "es-AR",
+    "text": "Son incomodos."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es",
+    "text": "Son incomodos.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es",
+    "text": "Se continua."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "es-AR",
+    "text": "Se continua."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es",
+    "text": "Se continua.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es",
+    "text": "Ha dispuestos que sea así."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "es-AR",
+    "text": "Ha dispuestos que sea así."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es",
+    "text": "Ha dispuestos que sea así.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es",
+    "text": "El otro de Inglaterra."
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/check",
+   "params": {
+    "language": "es-AR",
+    "text": "El otro de Inglaterra."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es",
+    "text": "El otro de Inglaterra.",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "auto",
+    "text": "IR 0.52 dentro de límites. LA semana pasada no vino. EL 2 de diciembre. UN 2 de diciembre. NO lo veo."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "auto",
+    "text": "IR 0.52 dentro de límites. LA semana pasada no vino. EL 2 de diciembre. UN 2 de diciembre. NO lo veo.",
+    "preferredVariants": "es-AR"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es",
+    "text": "Keith deja claras sus intenciones.",
+    "enabledOnly": "true",
+    "enabledRules": "MORFOLOGIK_RULE_ES,ES_COMPOUNDS,ES_SIMPLE_REPLACE_SIMPLE"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es",
+    "text": "Keith deja claras sus intenciones.",
+    "disabledRules": "MORFOLOGIK_RULE_ES,ES_COMPOUNDS,ES_SIMPLE_REPLACE_SIMPLE"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es",
+    "text": "Mientras que las compañías de software espía ven una compra de exploits como un pago",
+    "motherTongue": "en"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es",
+    "text": "Mientras que las compañías de software espía ven una compra de exploits como un pago",
+    "mode": "textLevelOnly"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es",
+    "text": "Mientras que las compañías de software espía ven una compra de exploits como un pago",
+    "mode": "allButTextLevelOnly",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es",
+    "text": ""
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es",
+    "text": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es",
+    "data": "{\"annotation\":[{\"text\":\"Keith deja claras sus intenciones.\"},{\"markup\":\"<b>\"},{\"text\":\" Mientras que las compañías de software espía ven una compra de exploits como un pago\"}]}"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es",
+    "text": "Keith deja claras sus intenciones.",
+    "enableTempOffRules": "true",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es",
+    "text": "Keith deja claras sus intenciones.",
+    "c": "1"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es",
+    "text": "Mañana me voy. Mañana vuelvo. Mañana se acabó todo.",
+    "enabledRules": "SPANISH_WORD_REPEAT_BEGINNING_RULE",
+    "level": "picky"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es-ES",
+    "text": "Keith deja claras sus intenciones."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es-MX",
+    "text": "Keith deja claras sus intenciones."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es-AR",
+    "text": "Vos tenés razón.",
+    "enabledRules": "VOSEO"
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es-AR",
+    "text": "Vos tienes razón y vos querés."
+   }
+  },
+  {
+   "method": "POST",
+   "path": "/v2/check",
+   "params": {
+    "language": "es",
+    "text": "Hola, cómo estás?",
+    "enabledRules": "ES_QUESTION_MARK",
+    "enabledOnly": "true"
+   }
+  },
+  {
+   "method": "GET",
+   "path": "/v2/languages",
+   "languagesList": true
+  }
+ ]
+}
