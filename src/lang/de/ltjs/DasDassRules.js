@@ -827,6 +827,47 @@ export class LtjsDassStattDasRule extends LtjsDasDassRule {
   }
 }
 
+// Java: none (LTJS). 'Ich glaube das es geht.' -> 'glaube, dass': dass verb + 'das' + verb-final clause with its own subject, comma and dass both missing
+export class LtjsDasDassOhneKommaRule extends LtjsDasDassRule {
+  constructor(messages, language) {
+    super(messages, language);
+    this.addExamplePair(Example.wrong('Ich <marker>glaube das</marker> es morgen regnet.'),
+      Example.fixed('Ich <marker>glaube, dass</marker> es morgen regnet.'));
+  }
+
+  getId() {
+    return 'LTJS_DAS_DASS_OHNE_KOMMA';
+  }
+
+  getDescription() {
+    return "Fehlendes Komma und 'das' statt 'dass' nach Verben des Sagens und Denkens";
+  }
+
+  matchAt(sentence, tokens, i) {
+    if (!isDas(tokens[i]) || i < 2 || !isLowerCase(tokens[i])) return null;
+    // the dass verb directly before 'das' (one personal pronoun may stand between: 'sagt er das', 'glaubst du das')
+    let v = i - 1;
+    if (hasTag(tokens[v], /^PRO:(PER|REF)/) && isLowerCase(tokens[v]) && !isMainClauseVerb(tokens[v]) && v > 1) v--;
+    const verb = tokens[v];
+    if (!(isMainClauseVerb(verb) || (v === 1 && isFiniteVerb(verb) && !hasTag(verb, /^(ART|PRO|ADJ|ADV|SUB|PRP|KON|ZAL)/))) || !isStrictFiniteVerb(verb) || [...verbLemmas(verb)].every((l) => !PLAIN_DASS_VERBS.has(l))) return null;
+    // the first word of the clause is a nominative personal pronoun: no article/relative reading of 'das' is possible
+    const next = tokens[i + 1];
+    if (next === undefined || !isLowerCase(next) || !hasTag(next, /^PRO:PER:NOM/) || NOT_SUBJECT.has(lower(next))) return null;
+    const clause = dassClause(tokens, i);
+    if (clause === null) return null;
+    const m = new RuleMatch(this, sentence, tokens[i - 1].getStartPos(), tokens[i].getEndPos(),
+      `Hier scheint ein Komma zu fehlen, und vermutlich ist die Konjunktion 'dass' gemeint: Nach '${verb.getToken()}' folgt hier ein Nebensatz mit eigenem Subjekt und dem Verb am Ende.`, "Komma und Konjunktion 'dass'");
+    m.setSuggestedReplacement(`${tokens[i - 1].getToken()}, dass`);
+    return m;
+  }
+}
+
+// verbs of saying and thinking whose object is normally a dass clause, never a noun phrase 'das' (a plain 'das' object is common for the others)
+const PLAIN_DASS_VERBS = new Set(['sagen', 'meinen', 'glauben', 'denken', 'hoffen', 'wissen', 'befürchten', 'fürchten', 'vermuten', 'behaupten',
+  'annehmen', 'erzählen', 'berichten', 'versprechen', 'bezweifeln', 'merken', 'bemerken', 'feststellen', 'erkennen', 'betonen', 'versichern',
+  'beteuern', 'schwören', 'wünschen', 'ahnen', 'spüren', 'fühlen', 'erwarten', 'verlangen', 'mitteilen', 'hören', 'sehen']);
+const NOT_SUBJECT = new Set(['mich', 'dich', 'ihn', 'uns', 'euch', 'ihnen', 'ihm', 'mir', 'dir']);
+
 // a lowercase finite verb that is no article, pronoun, adjective, adverb, noun, preposition, conjunction or number
 function isMainClauseVerb(t) {
   return isFiniteVerb(t) && isLowerCase(t) && !hasTag(t, /^(ART|PRO|ADJ|ADV|SUB|PRP|KON|ZAL)/);
@@ -835,7 +876,7 @@ function isMainClauseVerb(t) {
 // rule ids of the LTJS das/dass rules for German
 export const LTJS_DAS_DASS_RULE_IDS = Object.freeze([
   'LTJS_DAS_DAS', 'LTJS_DAS_DASS_VERB', 'LTJS_DAS_DASS_NOMEN', 'LTJS_DAS_DASS_ADJ', 'LTJS_SO_ADJ_DASS', 'LTJS_SODASS',
-  'LTJS_DASS_SATZANFANG', 'LTJS_DASS_RELATIVPRONOMEN', 'LTJS_DAS_DASS_KOMMA', 'LTJS_OHNE_DASS', 'LTJS_DASS_STATT_DAS',
+  'LTJS_DASS_SATZANFANG', 'LTJS_DASS_RELATIVPRONOMEN', 'LTJS_DAS_DASS_KOMMA', 'LTJS_OHNE_DASS', 'LTJS_DASS_STATT_DAS', 'LTJS_DAS_DASS_OHNE_KOMMA',
 ]);
 
 // the LTJS das/dass rules for German
@@ -852,6 +893,7 @@ export function getLtjsGermanDasDassRules(messages, language) {
     new LtjsDassRelativeRule(messages, language),
     new LtjsOhneDassRule(messages, language),
     new LtjsDassStattDasRule(messages, language),
+    new LtjsDasDassOhneKommaRule(messages, language),
   ];
 }
 
