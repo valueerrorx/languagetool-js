@@ -8,6 +8,7 @@ Decision D-060. Packages are built from the dev repo; nothing is published, the 
 |---|---|
 | `@valueerror/ltjs-core` | core, server, CLI, public API, shared resources (segment.srx, message bundles, language detection data) |
 | `@valueerror/ltjs-lang-<code>` | `de en es fr it pl ru sk sl`: language code and resources (dictionaries, rules), LICENSE, NOTICE, `licenses/` |
+| `@valueerror/ltjs-lang-de-at`, `@valueerror/ltjs-lang-de-ch` | optional German variants (D-066): only the variant data (`de_AT.*` / `de_CH.*` hunspell and morfologik files, `spelling-de-AT/CH.txt`, `de-CH/grammar.xml`, frami README); peer dependencies `ltjs-core` and `ltjs-lang-de` (which holds the variant classes) |
 
 All packages are ES modules and need Node >= 24 (in Electron: a release that bundles Node 24 or newer).
 Language packages have `@valueerror/ltjs-core` as peer dependency, core lists them as optional peer dependencies.
@@ -24,12 +25,15 @@ Install into an application (core plus the languages you need):
 
 ```
 npm install ./valueerror-ltjs-core-0.1.0.tgz ./valueerror-ltjs-lang-de-0.1.0.tgz ./valueerror-ltjs-lang-en-0.1.0.tgz
+# optional: Austrian / Swiss German
+npm install ./valueerror-ltjs-lang-de-at-0.1.0.tgz ./valueerror-ltjs-lang-de-ch-0.1.0.tgz
 ```
 
 Language discovery: when `@valueerror/ltjs-core` is loaded, `src/lang/register.js` tries `import('@valueerror/ltjs-lang-<code>')` for the nine
 known codes. An installed package registers its language classes and adds its own `resources/` directory as an additional
 resource root (resolved with `import.meta.url`); a missing package is skipped. Only installed languages exist: they appear in
 `listLanguages()`, in `GET /v2/languages` and are accepted as `language`. Other import errors are not swallowed.
+`ltjs-lang-de` lists only `de` and `de-DE` in its `language-module.properties`; `de-AT` / `de-CH` appear (and are accepted) only when the matching variant package is installed, otherwise they are rejected like any uninstalled language. Variant packages are imported after `ltjs-lang-de` and are skipped when it is missing. Language auto-detection is unaffected (it returns `de` / `de-DE`).
 Without any language package nothing can be checked.
 
 ## Library API

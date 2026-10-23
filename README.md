@@ -40,7 +40,7 @@ console.log(result.matches);  // /v2/check-JSON
 const srv = await startServer({ port: 8081 });  // { port, host, server, close() }
 ```
 
-Npm-Pakete: `@valueerror/ltjs-core` plus je Sprache `@valueerror/ltjs-lang-<code>`. `npm run build` erzeugt sie in `dist/packages` (Tarballs in `dist/tarballs/valueerror-ltjs-<name>-<version>.tgz`); `npm run smoke:packages` prüft sie, `npm run publish:packages -- --dry-run` simuliert die Veröffentlichung (veröffentlicht wird später).
+Npm-Pakete: `@valueerror/ltjs-core` plus je Sprache `@valueerror/ltjs-lang-<code>`; Österreich und Schweiz sind eigene Pakete `@valueerror/ltjs-lang-de-at` und `@valueerror/ltjs-lang-de-ch` (Variantenwörterbücher, brauchen `ltjs-lang-de`; ohne sie sind `de-AT`/`de-CH` nicht verfügbar). Installation z. B. `npm install @valueerror/ltjs-core @valueerror/ltjs-lang-de @valueerror/ltjs-lang-de-at @valueerror/ltjs-lang-de-ch`. `npm run build` erzeugt sie in `dist/packages` (Tarballs in `dist/tarballs/valueerror-ltjs-<name>-<version>.tgz`); `npm run smoke:packages` prüft sie, `npm run publish:packages -- --dry-run` simuliert die Veröffentlichung (veröffentlicht wird später).
 
 ## Verbesserungen gegenüber dem Original
 
@@ -128,7 +128,9 @@ npm-Tarball nach Entfernen ungenutzter Dateien, und entpackt:
 | Paket | Tarball | entpackt |
 |---|---|---|
 | core | 3,0 MB | 11 MB |
-| lang-de | 21,9 MB | 50 MB |
+| lang-de (de, de-DE, gemeinsame Daten) | 11,4 MB | 32 MB |
+| lang-de-at | 5,3 MB | 9,5 MB |
+| lang-de-ch | 5,3 MB | 9,5 MB |
 | lang-en | 15,5 MB | 26 MB |
 | lang-es | 3,6 MB | 8,1 MB |
 | lang-fr | 3,0 MB | 14 MB |
@@ -137,7 +139,7 @@ npm-Tarball nach Entfernen ungenutzter Dateien, und entpackt:
 | lang-ru | 6,0 MB | 11 MB |
 | lang-sk | 2,7 MB | 4,5 MB |
 | lang-sl | 0,3 MB | 0,6 MB |
-| gesamt Tarballs | 61 MB | |
+| gesamt Tarballs | 63,5 MB | |
 
 ## Nicht portiert
 

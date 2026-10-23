@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const PKGS = path.join(ROOT, 'dist/packages');
 const TARBALLS = path.join(ROOT, 'dist/tarballs');
-const CODES = ['de', 'en', 'es', 'fr', 'it', 'pl', 'ru', 'sk', 'sl'];
+const CODES = ['de', 'de-at', 'de-ch', 'en', 'es', 'fr', 'it', 'pl', 'ru', 'sk', 'sl']; // the variants after lang-de (D-066)
 const dryRun = process.argv.includes('--dry-run');
 
 for (const name of ['core', ...CODES.map((c) => `lang-${c}`)]) {

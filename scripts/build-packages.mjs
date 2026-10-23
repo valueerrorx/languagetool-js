@@ -13,6 +13,13 @@ const TARBALLS = path.join(DIST, 'tarballs');
 const VERSION = '0.1.0';
 const CODES = ['de', 'en', 'es', 'fr', 'it', 'pl', 'ru', 'sk', 'sl'];
 const NAMES = { de: 'German', en: 'English', es: 'Spanish', fr: 'French', it: 'Italian', pl: 'Polish', ru: 'Russian', sk: 'Slovak', sl: 'Slovenian' };
+// German variant packages (D-066): only the variant dictionaries/word lists/rules; the classes stay in lang-de, the variant is listed by its own language-module.properties
+const VARIANTS = {
+  'de-at': { base: 'de', name: 'German (Austria)', cls: 'AustrianGerman', example: 'de-AT', files: /^org\/languagetool\/resource\/de\/hunspell\/(de_AT[._]|spelling-de-AT\.txt$)/ },
+  'de-ch': { base: 'de', name: 'German (Swiss)', cls: 'SwissGerman', example: 'de-CH', files: /^org\/languagetool\/(resource\/de\/hunspell\/(de_CH[._]|spelling-de-CH\.txt$)|rules\/de\/de-CH\/)/ },
+};
+const VARIANT_CODES = Object.keys(VARIANTS);
+const SHARED_VARIANT_LICENSES = ['org/languagetool/resource/de/hunspell/COPYING_GPLv2.txt', 'org/languagetool/resource/de/hunspell/COPYING_GPLv3.txt'];
 const DICT_JAR = { de: 'german-pos-dict', en: 'english-pos-dict', es: 'spanish-pos-dict', fr: 'french-pos-dict' };
 const LICENSE_FILE = /(licen[sc]e|copying|readme)/i;
 
@@ -36,6 +43,7 @@ function copyTo(target, from) {
 
 // which package a resources/ file belongs to: a language code or 'core'
 function classify(rel) {
+  for (const [v, def] of Object.entries(VARIANTS)) if (def.files.test(rel)) return v;
   let m = /^org\/languagetool\/resource\/([a-z]{2})\/(.*)$/.exec(rel);
   if (m && CODES.includes(m[1])) {
     // common words and external profiles of the language detection stay in core (detection covers every distribution language)
@@ -85,7 +93,7 @@ mkdirSync(PKGS, { recursive: true });
 mkdirSync(TARBALLS, { recursive: true });
 const rootPkg = JSON.parse(readFileSync(path.join(ROOT, 'package.json'), 'utf8'));
 
-const byPackage = new Map([['core', []], ...CODES.map((c) => [c, []])]);
+const byPackage = new Map([['core', []], ...CODES.map((c) => [c, []]), ...VARIANT_CODES.map((c) => [c, []])]);
 for (const [rel, abs] of walk(RES)) byPackage.get(classify(rel)).push([rel, abs]);
 
 const commonPackageFields = {
@@ -97,7 +105,7 @@ const commonPackageFields = {
   repository: { type: 'git', url: 'git+https://github.com/valueerrorx/languagetool-js.git' },
   homepage: 'https://github.com/valueerrorx/languagetool-js#readme',
   bugs: { url: 'https://github.com/valueerrorx/languagetool-js/issues' },
-  keywords: ['languagetool', 'grammar', 'spellcheck', 'spell-checker', 'proofreading', 'grammar-checker', 'style-checker', 'nlp', 'german', 'english', 'french', 'spanish', 'italian', 'polish', 'russian', 'slovak', 'slovenian'],
+  keywords: ['languagetool', 'grammar', 'spellcheck', 'spell-checker', 'proofreading', 'grammar-checker', 'style-checker', 'nlp', 'german', 'austrian-german', 'swiss-german', 'english', 'french', 'spanish', 'italian', 'polish', 'russian', 'slovak', 'slovenian'],
   publishConfig: { access: 'public' },
 };
 
@@ -169,8 +177,8 @@ ${READMEFOOT}`);
     bin: { ltjs: 'bin/lt-cli.mjs', 'ltjs-server': 'bin/lt-server.mjs' },
     files: ['src', 'bin', 'resources', 'licenses', 'LICENSE', 'NOTICE', 'README.md'],
     dependencies: { express: rootPkg.dependencies.express },
-    peerDependencies: Object.fromEntries(CODES.map((c) => [`@valueerror/ltjs-lang-${c}`, `^${VERSION}`])),
-    peerDependenciesMeta: Object.fromEntries(CODES.map((c) => [`@valueerror/ltjs-lang-${c}`, { optional: true }])),
+    peerDependencies: Object.fromEntries([...CODES, ...VARIANT_CODES].map((c) => [`@valueerror/ltjs-lang-${c}`, `^${VERSION}`])),
+    peerDependenciesMeta: Object.fromEntries([...CODES, ...VARIANT_CODES].map((c) => [`@valueerror/ltjs-lang-${c}`, { optional: true }])),
   });
 }
 
@@ -197,6 +205,14 @@ for (const code of CODES) {
       licenseFiles.push(rel);
       copyTo(path.join(dir, 'licenses', rel.replace(/^org\/languagetool\//, '').replace(/\//g, '_')), abs);
     }
+  }
+  if (code === 'de') {
+    // the variants are listed by their own packages (a missing variant package behaves like an uninstalled language)
+    const props = path.join(dir, 'resources/META-INF/org/languagetool/language-module.properties');
+    const text = readFileSync(props, 'utf8');
+    const stripped = text.replace(/,org\.languagetool\.language\.(AustrianGerman|SwissGerman)\b/g, '');
+    if (stripped === text) throw new Error('German language-module.properties has no variant classes');
+    writeFileSync(props, stripped);
   }
   if (DICT_JAR[code]) copyTo(path.join(dir, 'licenses', `${DICT_JAR[code]}.pom.xml`), path.join(ROOT, `packaging/licenses/${DICT_JAR[code]}.pom.xml`));
   copyTo(path.join(dir, 'licenses/LGPL-2.1.txt'), path.join(ROOT, 'packaging/licenses/LGPL-2.1.txt'));
@@ -249,9 +265,74 @@ ${READMEFOOT}`);
   });
 }
 
+// ---- @valueerror/ltjs-lang-de-at, @valueerror/ltjs-lang-de-ch (D-066)
+for (const code of VARIANT_CODES) {
+  const v = VARIANTS[code];
+  const dir = path.join(PKGS, `lang-${code}`);
+  const licenseFiles = [];
+  for (const [rel, abs] of byPackage.get(code)) {
+    copyTo(path.join(dir, 'resources', rel), abs);
+    if (LICENSE_FILE.test(path.basename(rel))) {
+      licenseFiles.push(rel);
+      copyTo(path.join(dir, 'licenses', rel.replace(/^org\/languagetool\//, '').replace(/\//g, '_')), abs);
+    }
+  }
+  for (const rel of SHARED_VARIANT_LICENSES) {
+    licenseFiles.push(rel);
+    copyTo(path.join(dir, 'licenses', rel.replace(/^org\/languagetool\//, '').replace(/\//g, '_')), path.join(RES, rel));
+  }
+  mkdirSync(path.join(dir, 'resources/META-INF/org/languagetool'), { recursive: true });
+  writeFileSync(path.join(dir, 'resources/META-INF/org/languagetool/language-module.properties'), `languageClasses=org.languagetool.language.${v.cls}\n`);
+  copyTo(path.join(dir, 'licenses/LGPL-2.1.txt'), path.join(ROOT, 'packaging/licenses/LGPL-2.1.txt'));
+  copyTo(path.join(dir, 'LICENSE'), path.join(ROOT, 'packaging/licenses/GPL-3.0.txt'));
+  writeFileSync(path.join(dir, 'resource-root.js'),
+    `// registers the resources/ directory of this package as an additional resource root of @valueerror/ltjs-core\nimport { addResourceRoot } from '@valueerror/ltjs-core/src/core/resources/ResourceDataBroker.js';\n\naddResourceRoot(new URL('./resources/', import.meta.url));\n`);
+  writeFileSync(path.join(dir, 'index.js'),
+    `// ${v.name}: variant data of @valueerror/ltjs-lang-${v.base}; the language class ${v.cls} is part of that package and is listed by this package's language-module.properties\nimport '@valueerror/ltjs-lang-${v.base}';\nimport './resource-root.js';\n`);
+  writeFileSync(path.join(dir, 'NOTICE'), [
+    `@valueerror/ltjs-lang-${code}: ${v.name} variant data of LT-JS, a JavaScript port of LanguageTool (https://languagetool.org).`,
+    'LT-JS is a port of LanguageTool (LGPL-2.1-or-later, licenses/LGPL-2.1.txt), distributed under GPL-3.0-or-later (LICENSE).',
+    'Data files keep their own licenses (see licenses/).',
+    '',
+    'The files below resources/ are unchanged copies of the variant files of the LanguageTool German module (variant hunspell/morfologik dictionaries, word lists, rules).',
+    'The hunspell dictionary data (frami) keeps its own licenses; the license and readme files of the sources are copied to licenses/:',
+    ...licenseFiles.map((f) => `  - ${f}`),
+    '',
+  ].join('\n'));
+  writeFileSync(path.join(dir, 'README.md'), `# @valueerror/ltjs-lang-${code}
+
+${v.name} variant data (dictionaries, word lists${code === 'de-ch' ? ', rules' : ''}) for LT-JS (JavaScript port of LanguageTool). Adds the language \`${v.example}\` to @valueerror/ltjs-lang-${v.base}; without this package \`${v.example}\` is not available.
+
+## Install
+
+\`\`\`
+npm install @valueerror/ltjs-core @valueerror/ltjs-lang-${v.base} @valueerror/ltjs-lang-${code}
+\`\`\`
+
+## Usage
+
+\`\`\`js
+import { check } from '@valueerror/ltjs-core';
+
+const result = await check('...', { language: '${v.example}' });
+console.log(result.matches);
+\`\`\`
+${READMEFOOT}`);
+  writeJson(path.join(dir, 'package.json'), {
+    name: `@valueerror/ltjs-lang-${code}`,
+    description: `${v.name} variant data for @valueerror/ltjs-lang-${v.base}`,
+    ...commonPackageFields,
+    main: './index.js',
+    exports: { '.': './index.js', './package.json': './package.json' },
+    sideEffects: true,
+    files: ['index.js', 'resource-root.js', 'resources', 'licenses', 'LICENSE', 'NOTICE', 'README.md'],
+    peerDependencies: { '@valueerror/ltjs-core': `^${VERSION}`, [`@valueerror/ltjs-lang-${v.base}`]: `^${VERSION}` },
+  });
+}
+
 // ---- npm pack
 const sizes = [];
-for (const name of ['core', ...CODES.map((c) => `lang-${c}`)]) {
+for (const name of ['core', ...CODES.map((c) => `lang-${c}`), ...VARIANT_CODES.map((c) => `lang-${c}`)]) {
   const dir = path.join(PKGS, name);
   execFileSync('npm', ['pack', '--pack-destination', TARBALLS, '--silent'], { cwd: dir, stdio: ['ignore', 'pipe', 'inherit'] });
   const tgz = path.join(TARBALLS, `valueerror-ltjs-${name}-${VERSION}.tgz`);
