@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const TARBALLS = path.join(ROOT, 'dist/tarballs');
 const PORT = 19890;
-const tgz = (n) => path.join(TARBALLS, readdirSync(TARBALLS).find((f) => f === `ltjs-${n}-0.1.0.tgz`) ?? `missing-${n}`);
+const tgz = (n) => path.join(TARBALLS, readdirSync(TARBALLS).find((f) => f === `valueerror-ltjs-${n}-0.1.0.tgz`) ?? `missing-${n}`);
 
 const dir = mkdtempSync(path.join(tmpdir(), 'ltjs-smoke-'));
 try {
@@ -17,7 +17,7 @@ try {
   run('npm', ['install', '--silent', '--no-audit', '--no-fund', tgz('core'), tgz('lang-de'), tgz('lang-en')]);
   writeFileSync(path.join(dir, 'smoke.mjs'), `
 import assert from 'node:assert/strict';
-import { check, startServer, listLanguages } from '@ltjs/core';
+import { check, startServer, listLanguages } from '@valueerror/ltjs-core';
 
 const r = await check('Das ist ein Fehlr.', { language: 'de-DE' });
 assert.ok(r.matches.some((m) => m.rule.id === 'GERMAN_SPELLER_RULE'), 'speller match expected: ' + JSON.stringify(r.matches));

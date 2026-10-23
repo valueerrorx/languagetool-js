@@ -6,27 +6,27 @@ Decision D-060. Packages are built from the dev repo; nothing is published, the 
 
 | Package | Content |
 |---|---|
-| `@ltjs/core` | core, server, CLI, public API, shared resources (segment.srx, message bundles, language detection data) |
-| `@ltjs/lang-<code>` | `de en es fr it pl ru sk sl`: language code and resources (dictionaries, rules), LICENSE, NOTICE, `licenses/` |
+| `@valueerror/ltjs-core` | core, server, CLI, public API, shared resources (segment.srx, message bundles, language detection data) |
+| `@valueerror/ltjs-lang-<code>` | `de en es fr it pl ru sk sl`: language code and resources (dictionaries, rules), LICENSE, NOTICE, `licenses/` |
 
 All packages are ES modules and need Node >= 24 (in Electron: a release that bundles Node 24 or newer).
-Language packages have `@ltjs/core` as peer dependency, core lists them as optional peer dependencies.
+Language packages have `@valueerror/ltjs-core` as peer dependency, core lists them as optional peer dependencies.
 
 ## Build and install
 
 ```
 # resources/ is committed; npm run resources:update -- --java <LanguageTool checkout> refreshes it
-npm run build         # dist/packages/<name>/ and dist/tarballs/ltjs-<name>-0.1.0.tgz
+npm run build         # dist/packages/<name>/ and dist/tarballs/valueerror-ltjs-<name>-0.1.0.tgz
 npm run smoke:packages
 ```
 
 Install into an application (core plus the languages you need):
 
 ```
-npm install ./ltjs-core-0.1.0.tgz ./ltjs-lang-de-0.1.0.tgz ./ltjs-lang-en-0.1.0.tgz
+npm install ./valueerror-ltjs-core-0.1.0.tgz ./valueerror-ltjs-lang-de-0.1.0.tgz ./valueerror-ltjs-lang-en-0.1.0.tgz
 ```
 
-Language discovery: when `@ltjs/core` is loaded, `src/lang/register.js` tries `import('@ltjs/lang-<code>')` for the nine
+Language discovery: when `@valueerror/ltjs-core` is loaded, `src/lang/register.js` tries `import('@valueerror/ltjs-lang-<code>')` for the nine
 known codes. An installed package registers its language classes and adds its own `resources/` directory as an additional
 resource root (resolved with `import.meta.url`); a missing package is skipped. Only installed languages exist: they appear in
 `listLanguages()`, in `GET /v2/languages` and are accepted as `language`. Other import errors are not swallowed.
@@ -35,7 +35,7 @@ Without any language package nothing can be checked.
 ## Library API
 
 ```js
-import { check, startServer, listLanguages } from '@ltjs/core';
+import { check, startServer, listLanguages } from '@valueerror/ltjs-core';
 
 const result = await check('Das ist ein Fehlr.', {
   language: 'de-DE',        // required: 'de', 'de-DE', 'en-US', ... or 'auto'
@@ -67,7 +67,7 @@ await server.close();
 ## Command line
 
 `npx ltjs -l de-DE file.txt` (same options as the Java command line tool) and `npx ltjs-server --port 8081`.
-`ltjs` without `-l` uses English and therefore needs `@ltjs/lang-en`.
+`ltjs` without `-l` uses English and therefore needs `@valueerror/ltjs-lang-en`.
 
 ## Electron
 
@@ -75,12 +75,12 @@ Loading the packages and the first check cost seconds of CPU time and several hu
 blocks the thread it runs on. Do not run it in the main process or in a renderer. Use
 
 - `utilityProcess.fork()` (recommended, an own Node process; see `examples/electron-minimal/`), or
-- a `worker_threads` Worker in a Node-capable process (same code: `import { check } from '@ltjs/core'` in the worker, `parentPort` for messages), or
+- a `worker_threads` Worker in a Node-capable process (same code: `import { check } from '@valueerror/ltjs-core'` in the worker, `parentPort` for messages), or
 - `startServer()` inside a utility process and plain HTTP from the renderer or main process.
 
 Start the process at app start-up (or lazily on first use) and warm it with a dummy `check()` per language you need, so the user's first
 real check is fast. Keep one long-lived process; do not fork per check. Make the packages available outside `app.asar`
-(`asarUnpack: ["node_modules/@ltjs/**"]` for electron-builder), because the resources are read with `fs`.
+(`asarUnpack: ["node_modules/@valueerror/**"]` for electron-builder), because the resources are read with `fs`.
 
 `examples/electron-minimal/main.js` forks `checker-process.js`, waits for its `ready` message and sends one check
 (`npm install` and `npm start` in that directory after `npm run build`; not part of CI).

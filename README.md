@@ -40,7 +40,7 @@ console.log(result.matches);  // /v2/check-JSON
 const srv = await startServer({ port: 8081 });  // { port, host, server, close() }
 ```
 
-Npm-Pakete: `@ltjs/core` plus je Sprache `@ltjs/lang-<code>`. `npm run build` erzeugt sie in `dist/packages` (nicht veröffentlicht); `npm run smoke:packages` prüft sie.
+Npm-Pakete: `@valueerror/ltjs-core` plus je Sprache `@valueerror/ltjs-lang-<code>`. `npm run build` erzeugt sie in `dist/packages` (Tarballs in `dist/tarballs/valueerror-ltjs-<name>-<version>.tgz`); `npm run smoke:packages` prüft sie, `npm run publish:packages -- --dry-run` simuliert die Veröffentlichung (veröffentlicht wird später).
 
 ## Verbesserungen gegenüber dem Original
 

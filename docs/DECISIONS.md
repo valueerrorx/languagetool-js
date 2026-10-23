@@ -76,3 +76,4 @@ Format: D-nnn | date | decision
 - D-062 | 2026-10-22 | User: the first improvement focus is German das/dass plus commas. It is measured on an annotated error corpus (recall and false alarms, Java vs JS); false alarms must not increase.
 - D-063 (2026-10-22): Node engines stay >=24 (user works with Node 25). No package rebuild per step; build only on request.
 - D-064 | 2026-10-23 | User: LT-JS code is licensed GPL-3.0-or-later (LGPL-2.1 §3 conversion of the LanguageTool code). Dictionary/data licenses stay unchanged. Repo is published publicly on GitHub as valueerrorx/languagetool-js.
+- D-065 | 2026-10-23 | User: publish on npm under the user's own scope: @valueerror/ltjs-core and @valueerror/ltjs-lang-<code> (replaces @ltjs/*). Publishing itself is done by the user (npm login).

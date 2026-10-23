@@ -1,4 +1,4 @@
-// Public API of @ltjs/core: check(), startServer(), listLanguages().
+// Public API of @valueerror/ltjs-core: check(), startServer(), listLanguages().
 import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';

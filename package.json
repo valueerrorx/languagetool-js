@@ -3,6 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "license": "GPL-3.0-or-later",
+  "author": "Thomas Weissel",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valueerrorx/languagetool-js.git"
+  },
+  "homepage": "https://github.com/valueerrorx/languagetool-js#readme",
+  "bugs": {
+    "url": "https://github.com/valueerrorx/languagetool-js/issues"
+  },
   "type": "module",
   "engines": {
     "node": ">=24"
@@ -16,7 +25,8 @@
     "lint": "eslint .",
     "bench": "node oracle/bench/bench.mjs",
     "build": "node scripts/build-packages.mjs",
-    "smoke:packages": "node scripts/smoke-packages.mjs"
+    "smoke:packages": "node scripts/smoke-packages.mjs",
+    "publish:packages": "node scripts/publish-packages.mjs"
   },
   "devDependencies": {
     "eslint": "^9.0.0",

@@ -1,5 +1,5 @@
-// Utility process: loads @ltjs/core once, warms it up and answers check/ping requests from the main process.
-import { check, listLanguages } from '@ltjs/core';
+// Utility process: loads @valueerror/ltjs-core once, warms it up and answers check/ping requests from the main process.
+import { check, listLanguages } from '@valueerror/ltjs-core';
 
 const port = process.parentPort;
 

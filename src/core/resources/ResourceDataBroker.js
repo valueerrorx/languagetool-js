@@ -11,7 +11,7 @@ export const RULES_DIR = '/org/languagetool/rules'; // Java: ResourceDataBroker#
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 // resource roots in classpath order: the dev repo has resources/ (or $LTJS_RESOURCES); the core package ships resources/ at the same relative place
-// and every @ltjs/lang-<code> package adds its own resources/ via addResourceRoot (first root wins, getResources collects all roots)
+// and every @valueerror/ltjs-lang-<code> package adds its own resources/ via addResourceRoot (first root wins, getResources collects all roots)
 export const RESOURCES_ROOT = process.env.LTJS_RESOURCES ?? path.resolve(HERE, '../../../resources');
 const resourceRoots = [RESOURCES_ROOT];
 

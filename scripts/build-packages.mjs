@@ -1,4 +1,4 @@
-// npm run build: creates dist/packages/<name>/ (@ltjs/core + @ltjs/lang-<code> x9) from src/ and resources/, then `npm pack` into dist/tarballs/ (D-060).
+// npm run build: creates dist/packages/<name>/ (@valueerror/ltjs-core + @valueerror/ltjs-lang-<code> x9) from src/ and resources/, then `npm pack` into dist/tarballs/ (D-060).
 import { execFileSync } from 'node:child_process';
 import { copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
@@ -54,7 +54,7 @@ function classify(rel) {
   return 'core';
 }
 
-// rewrites a relative import of a language file that leaves src/lang/<code>/ into an @ltjs/core specifier
+// rewrites a relative import of a language file that leaves src/lang/<code>/ into an @valueerror/ltjs-core specifier
 function rewriteImports(file, code, text) {
   const langDir = path.join(SRC, 'lang', code);
   return text.replace(/(\bfrom\s*|\bimport\s*\(\s*|\bimport\s+)(['"])(\.{1,2}\/[^'"\n]+)\2/g, (all, pre, q, spec) => {
@@ -63,7 +63,7 @@ function rewriteImports(file, code, text) {
     if (!target.startsWith(SRC + path.sep)) throw new Error(`${file}: import ${spec} leaves src/`);
     if (target.startsWith(path.join(SRC, 'lang') + path.sep)) throw new Error(`${file}: import ${spec} reaches into another language`);
     if (!existsSync(target)) throw new Error(`${file}: import ${spec} does not exist`);
-    return `${pre}${q}@ltjs/core/src/${path.relative(SRC, target).split(path.sep).join('/')}${q}`;
+    return `${pre}${q}@valueerror/ltjs-core/src/${path.relative(SRC, target).split(path.sep).join('/')}${q}`;
   });
 }
 
@@ -93,10 +93,25 @@ const commonPackageFields = {
   license: 'GPL-3.0-or-later',
   type: 'module',
   engines: { node: '>=24' },
-  homepage: 'https://languagetool.org',
+  author: 'Thomas Weissel',
+  repository: { type: 'git', url: 'git+https://github.com/valueerrorx/languagetool-js.git' },
+  homepage: 'https://github.com/valueerrorx/languagetool-js#readme',
+  bugs: { url: 'https://github.com/valueerrorx/languagetool-js/issues' },
+  keywords: ['languagetool', 'grammar', 'spellcheck', 'spell-checker', 'proofreading', 'grammar-checker', 'style-checker', 'nlp', 'german', 'english', 'french', 'spanish', 'italian', 'polish', 'russian', 'slovak', 'slovenian'],
+  publishConfig: { access: 'public' },
 };
 
-// ---- @ltjs/core
+const READMEFOOT = `
+## Documentation
+
+See the [README on GitHub](https://github.com/valueerrorx/languagetool-js#readme) and docs/EMBEDDING.md in the repository.
+
+## Licence
+
+GPL-3.0-or-later (see LICENSE, NOTICE and licenses/). This is a JavaScript port of [LanguageTool](https://languagetool.org) (LGPL-2.1-or-later); credit to the LanguageTool authors and to the authors of the bundled dictionaries (see NOTICE).
+`;
+
+// ---- @valueerror/ltjs-core
 {
   const dir = path.join(PKGS, 'core');
   for (const [rel, abs] of walk(SRC)) {
@@ -109,36 +124,57 @@ const commonPackageFields = {
   const lines = readFileSync(path.join(SRC, 'lang/register.js'), 'utf8').split('\n');
   const coreLines = lines.filter((l) => !/^import '\.\/[a-z]{2}\//.test(l));
   writeFileSync(path.join(dir, 'src/lang/register.js'),
-    `${coreLines.join('\n').trimEnd()}\nimport { discoverLanguagePackages } from './discover.js';\n\n// registers the installed @ltjs/lang-<code> packages\nexport const installedLanguages = await discoverLanguagePackages();\n`);
+    `${coreLines.join('\n').trimEnd()}\nimport { discoverLanguagePackages } from './discover.js';\n\n// registers the installed @valueerror/ltjs-lang-<code> packages\nexport const installedLanguages = await discoverLanguagePackages();\n`);
   for (const f of readdirSync(path.join(ROOT, 'bin'))) copyTo(path.join(dir, 'bin', f), path.join(ROOT, 'bin', f));
   for (const [rel, abs] of byPackage.get('core')) copyTo(path.join(dir, 'resources', rel), abs);
   copyTo(path.join(dir, 'LICENSE'), path.join(ROOT, 'packaging/licenses/GPL-3.0.txt'));
   copyTo(path.join(dir, 'licenses/LGPL-2.1.txt'), path.join(ROOT, 'packaging/licenses/LGPL-2.1.txt'));
   writeFileSync(path.join(dir, 'NOTICE'), [
-    'LT-JS (@ltjs/core) is a JavaScript port of LanguageTool (https://languagetool.org, LGPL-2.1-or-later, licenses/LGPL-2.1.txt), distributed under GPL-3.0-or-later (LICENSE).',
+    'LT-JS (@valueerror/ltjs-core) is a JavaScript port of LanguageTool (https://languagetool.org, LGPL-2.1-or-later, licenses/LGPL-2.1.txt), distributed under GPL-3.0-or-later (LICENSE).',
     'Data files keep their own licenses (see licenses/).',
     '',
     'resources/ holds the LanguageTool core resources (rules, message bundles, segment.srx, language detection data) unchanged.',
     'resources/LICENSE (Apache License 2.0) and the files below resources/ keep the licenses of the bundled third-party data.',
-    'Language data (dictionaries, rules) ships in the @ltjs/lang-<code> packages with their own NOTICE.',
+    'Language data (dictionaries, rules) ships in the @valueerror/ltjs-lang-<code> packages with their own NOTICE.',
     '',
   ].join('\n'));
-  writeFileSync(path.join(dir, 'README.md'), `# @ltjs/core\n\nJavaScript port of LanguageTool: library API (\`check\`, \`startServer\`, \`listLanguages\`), CLI (\`ltjs\`) and LT-compatible HTTP server (\`ltjs-server\`).\nInstall at least one language package (@ltjs/lang-de, @ltjs/lang-en, ...). See docs/EMBEDDING.md of the repository.\n`);
+  writeFileSync(path.join(dir, 'README.md'), `# @valueerror/ltjs-core
+
+JavaScript port of LanguageTool: library API (\`check\`, \`startServer\`, \`listLanguages\`), CLI (\`ltjs\`) and LT-compatible HTTP server (\`ltjs-server\`).
+Install at least one language package (\`@valueerror/ltjs-lang-<code>\`: de en es fr it pl ru sk sl).
+
+## Install
+
+\`\`\`
+npm install @valueerror/ltjs-core @valueerror/ltjs-lang-de
+\`\`\`
+
+## Usage
+
+\`\`\`js
+import { check } from '@valueerror/ltjs-core';
+
+const result = await check('Ich glaube, das es geht.', { language: 'de-DE' });
+console.log(result.matches);
+\`\`\`
+
+CLI: \`npx ltjs -l de-DE file.txt\`, server: \`npx ltjs-server --port 8081\`.
+${READMEFOOT}`);
   writeJson(path.join(dir, 'package.json'), {
-    name: '@ltjs/core',
-    description: 'LanguageTool port to JavaScript: core, server and CLI (languages in @ltjs/lang-* packages)',
+    name: '@valueerror/ltjs-core',
+    description: 'LanguageTool port to JavaScript: core, server and CLI (languages in @valueerror/ltjs-lang-* packages)',
     ...commonPackageFields,
     main: './src/index.js',
     exports: { '.': './src/index.js', './register': './src/lang/register.js', './src/*': './src/*', './package.json': './package.json' },
     bin: { ltjs: 'bin/lt-cli.mjs', 'ltjs-server': 'bin/lt-server.mjs' },
     files: ['src', 'bin', 'resources', 'licenses', 'LICENSE', 'NOTICE', 'README.md'],
     dependencies: { express: rootPkg.dependencies.express },
-    peerDependencies: Object.fromEntries(CODES.map((c) => [`@ltjs/lang-${c}`, `^${VERSION}`])),
-    peerDependenciesMeta: Object.fromEntries(CODES.map((c) => [`@ltjs/lang-${c}`, { optional: true }])),
+    peerDependencies: Object.fromEntries(CODES.map((c) => [`@valueerror/ltjs-lang-${c}`, `^${VERSION}`])),
+    peerDependenciesMeta: Object.fromEntries(CODES.map((c) => [`@valueerror/ltjs-lang-${c}`, { optional: true }])),
   });
 }
 
-// ---- @ltjs/lang-<code>
+// ---- @valueerror/ltjs-lang-<code>
 const registerLines = readFileSync(path.join(SRC, 'lang/register.js'), 'utf8').split('\n');
 for (const code of CODES) {
   const dir = path.join(PKGS, `lang-${code}`);
@@ -166,12 +202,12 @@ for (const code of CODES) {
   copyTo(path.join(dir, 'licenses/LGPL-2.1.txt'), path.join(ROOT, 'packaging/licenses/LGPL-2.1.txt'));
   copyTo(path.join(dir, 'LICENSE'), path.join(ROOT, 'packaging/licenses/GPL-3.0.txt'));
   writeFileSync(path.join(dir, 'resource-root.js'),
-    `// registers the resources/ directory of this package as an additional resource root of @ltjs/core\nimport { addResourceRoot } from '@ltjs/core/src/core/resources/ResourceDataBroker.js';\n\naddResourceRoot(new URL('./resources/', import.meta.url));\n`);
+    `// registers the resources/ directory of this package as an additional resource root of @valueerror/ltjs-core\nimport { addResourceRoot } from '@valueerror/ltjs-core/src/core/resources/ResourceDataBroker.js';\n\naddResourceRoot(new URL('./resources/', import.meta.url));\n`);
   const own = registerLines.filter((l) => l.startsWith(`import './${code}/`)).map((l) => l.replace(`import './${code}/`, `import './src/lang/${code}/`));
   writeFileSync(path.join(dir, 'index.js'),
     `// ${NAMES[code]}: registers the language classes (Java: language-module.properties of languagetool-language-modules/${code}) and the resource root\nimport './resource-root.js';\n${own.join('\n')}\n`);
   const notice = [
-    `@ltjs/lang-${code}: ${NAMES[code]} language data and code of LT-JS, a JavaScript port of LanguageTool (https://languagetool.org).`,
+    `@valueerror/ltjs-lang-${code}: ${NAMES[code]} language data and code of LT-JS, a JavaScript port of LanguageTool (https://languagetool.org).`,
     'LT-JS is a port of LanguageTool (LGPL-2.1-or-later, licenses/LGPL-2.1.txt), distributed under GPL-3.0-or-later (LICENSE).',
     'Data files keep their own licenses (see licenses/).',
     '',
@@ -182,16 +218,34 @@ for (const code of CODES) {
     '',
   ].join('\n');
   writeFileSync(path.join(dir, 'NOTICE'), notice);
-  writeFileSync(path.join(dir, 'README.md'), `# @ltjs/lang-${code}\n\n${NAMES[code]} language package of LT-JS (LanguageTool port). Install together with @ltjs/core; @ltjs/core discovers it at runtime.\n`);
+  writeFileSync(path.join(dir, 'README.md'), `# @valueerror/ltjs-lang-${code}
+
+${NAMES[code]} language package of LT-JS (JavaScript port of LanguageTool). @valueerror/ltjs-core discovers it at runtime.
+
+## Install
+
+\`\`\`
+npm install @valueerror/ltjs-core @valueerror/ltjs-lang-${code}
+\`\`\`
+
+## Usage
+
+\`\`\`js
+import { check } from '@valueerror/ltjs-core';
+
+const result = await check('...', { language: '${code}' });
+console.log(result.matches);
+\`\`\`
+${READMEFOOT}`);
   writeJson(path.join(dir, 'package.json'), {
-    name: `@ltjs/lang-${code}`,
-    description: `${NAMES[code]} language data and rules for @ltjs/core`,
+    name: `@valueerror/ltjs-lang-${code}`,
+    description: `${NAMES[code]} language data and rules for @valueerror/ltjs-core`,
     ...commonPackageFields,
     main: './index.js',
     exports: { '.': './index.js', './package.json': './package.json' },
     sideEffects: true,
     files: ['index.js', 'resource-root.js', 'src', 'resources', 'licenses', 'LICENSE', 'NOTICE', 'README.md'],
-    peerDependencies: { '@ltjs/core': `^${VERSION}` },
+    peerDependencies: { '@valueerror/ltjs-core': `^${VERSION}` },
   });
 }
 
@@ -200,7 +254,7 @@ const sizes = [];
 for (const name of ['core', ...CODES.map((c) => `lang-${c}`)]) {
   const dir = path.join(PKGS, name);
   execFileSync('npm', ['pack', '--pack-destination', TARBALLS, '--silent'], { cwd: dir, stdio: ['ignore', 'pipe', 'inherit'] });
-  const tgz = path.join(TARBALLS, `ltjs-${name}-${VERSION}.tgz`);
+  const tgz = path.join(TARBALLS, `valueerror-ltjs-${name}-${VERSION}.tgz`);
   sizes.push(`${name}: ${(statSync(tgz).size / 1048576).toFixed(1)} MB tarball`);
 }
 console.log(`packages in ${path.relative(ROOT, PKGS)}, tarballs in ${path.relative(ROOT, TARBALLS)}`);
