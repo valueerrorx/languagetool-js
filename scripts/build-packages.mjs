@@ -90,7 +90,7 @@ for (const [rel, abs] of walk(RES)) byPackage.get(classify(rel)).push([rel, abs]
 
 const commonPackageFields = {
   version: VERSION,
-  license: 'LGPL-2.1-or-later',
+  license: 'GPL-3.0-or-later',
   type: 'module',
   engines: { node: '>=24' },
   homepage: 'https://languagetool.org',
@@ -112,10 +112,11 @@ const commonPackageFields = {
     `${coreLines.join('\n').trimEnd()}\nimport { discoverLanguagePackages } from './discover.js';\n\n// registers the installed @ltjs/lang-<code> packages\nexport const installedLanguages = await discoverLanguagePackages();\n`);
   for (const f of readdirSync(path.join(ROOT, 'bin'))) copyTo(path.join(dir, 'bin', f), path.join(ROOT, 'bin', f));
   for (const [rel, abs] of byPackage.get('core')) copyTo(path.join(dir, 'resources', rel), abs);
-  copyTo(path.join(dir, 'LICENSE'), path.join(ROOT, 'packaging/licenses/LGPL-2.1.txt'));
+  copyTo(path.join(dir, 'LICENSE'), path.join(ROOT, 'packaging/licenses/GPL-3.0.txt'));
   copyTo(path.join(dir, 'licenses/LGPL-2.1.txt'), path.join(ROOT, 'packaging/licenses/LGPL-2.1.txt'));
   writeFileSync(path.join(dir, 'NOTICE'), [
-    'LT-JS (@ltjs/core) is a JavaScript port of LanguageTool (https://languagetool.org), licensed under the GNU Lesser General Public License 2.1 (LICENSE).',
+    'LT-JS (@ltjs/core) is a JavaScript port of LanguageTool (https://languagetool.org, LGPL-2.1-or-later, licenses/LGPL-2.1.txt), distributed under GPL-3.0-or-later (LICENSE).',
+    'Data files keep their own licenses (see licenses/).',
     '',
     'resources/ holds the LanguageTool core resources (rules, message bundles, segment.srx, language detection data) unchanged.',
     'resources/LICENSE (Apache License 2.0) and the files below resources/ keep the licenses of the bundled third-party data.',
@@ -163,7 +164,7 @@ for (const code of CODES) {
   }
   if (DICT_JAR[code]) copyTo(path.join(dir, 'licenses', `${DICT_JAR[code]}.pom.xml`), path.join(ROOT, `packaging/licenses/${DICT_JAR[code]}.pom.xml`));
   copyTo(path.join(dir, 'licenses/LGPL-2.1.txt'), path.join(ROOT, 'packaging/licenses/LGPL-2.1.txt'));
-  copyTo(path.join(dir, 'LICENSE'), path.join(ROOT, 'packaging/licenses/LGPL-2.1.txt'));
+  copyTo(path.join(dir, 'LICENSE'), path.join(ROOT, 'packaging/licenses/GPL-3.0.txt'));
   writeFileSync(path.join(dir, 'resource-root.js'),
     `// registers the resources/ directory of this package as an additional resource root of @ltjs/core\nimport { addResourceRoot } from '@ltjs/core/src/core/resources/ResourceDataBroker.js';\n\naddResourceRoot(new URL('./resources/', import.meta.url));\n`);
   const own = registerLines.filter((l) => l.startsWith(`import './${code}/`)).map((l) => l.replace(`import './${code}/`, `import './src/lang/${code}/`));
@@ -171,7 +172,8 @@ for (const code of CODES) {
     `// ${NAMES[code]}: registers the language classes (Java: language-module.properties of languagetool-language-modules/${code}) and the resource root\nimport './resource-root.js';\n${own.join('\n')}\n`);
   const notice = [
     `@ltjs/lang-${code}: ${NAMES[code]} language data and code of LT-JS, a JavaScript port of LanguageTool (https://languagetool.org).`,
-    'LanguageTool is licensed under the GNU Lesser General Public License 2.1 (LICENSE).',
+    'LT-JS is a port of LanguageTool (LGPL-2.1-or-later, licenses/LGPL-2.1.txt), distributed under GPL-3.0-or-later (LICENSE).',
+    'Data files keep their own licenses (see licenses/).',
     '',
     'The files below resources/ are unchanged copies of the LanguageTool language module (rules, dictionaries, word lists)',
     DICT_JAR[code] ? `and of the ${DICT_JAR[code]} dictionary package (license: ${dictLicenseSummary(DICT_JAR[code])}; pom in licenses/${DICT_JAR[code]}.pom.xml).` : 'and of the dictionaries bundled with it.',

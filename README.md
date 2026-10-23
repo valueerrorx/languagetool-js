@@ -154,4 +154,4 @@ LTJS_CASE='<regex>' npm run parity -- <ID>  # einzelner Fall
 
 ## Lizenz
 
-LGPL 2.1 oder später, wie das Original. Lizenzen der Sprachdaten liegen im Ordner `licenses/` der jeweiligen Pakete.
+LT-JS steht unter GPL-3.0-or-later (siehe `LICENSE`). Es basiert auf LanguageTool (LGPL-2.1-or-later, Umstellung nach §3 der LGPL-2.1). Die Wörterbuch- und Sprachdaten behalten ihre eigenen Lizenzen (Ordner `licenses/` der Pakete).

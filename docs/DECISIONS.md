@@ -75,3 +75,4 @@ Format: D-nnn | date | decision
 - D-061 | 2026-10-22 | User: detection improvements live in a separate rule layer with their own IDs (LTJS_*). The layer is on by default and can be disabled per rule or as a whole. Java parity runs with the layer disabled.
 - D-062 | 2026-10-22 | User: the first improvement focus is German das/dass plus commas. It is measured on an annotated error corpus (recall and false alarms, Java vs JS); false alarms must not increase.
 - D-063 (2026-10-22): Node engines stay >=24 (user works with Node 25). No package rebuild per step; build only on request.
+- D-064 | 2026-10-23 | User: LT-JS code is licensed GPL-3.0-or-later (LGPL-2.1 §3 conversion of the LanguageTool code). Dictionary/data licenses stay unchanged. Repo is published publicly on GitHub as valueerrorx/languagetool-js.
