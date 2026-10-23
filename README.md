@@ -4,6 +4,8 @@ LT-JS ist ein Port von [LanguageTool](https://languagetool.org) 6.9-SNAPSHOT (Ja
 Die Schnittstellen sind kompatibel: Kommandozeile wie `languagetool-commandline`, HTTP-Server mit `/v2/check`-API wie der LanguageTool-Server, dazu eine JS-API.
 Mit abgeschalteter LTJS-Regelschicht ist das Ergebnis identisch zu Java, geprüft mit Golden-Fixtures aus echten Java-Läufen.
 
+LT-JS ist ein Port des Open-Source-Projekts [LanguageTool](https://languagetool.org) ([GitHub](https://github.com/languagetool-org/languagetool)); alle Regeln, Wörterbücher und die Logik stammen aus diesem Projekt und seiner Community.
+
 ## Installation und Nutzung
 
 ```bash
@@ -151,6 +153,23 @@ LTJS_CASE='<regex>' npm run parity -- <ID>  # einzelner Fall
 ```
 
 `npm run oracle -- <ID>` erzeugt Golden-Fixtures neu und braucht den Java-Build (siehe `CLAUDE.md`, `docs/inventory/BUILD.md`).
+
+## Danksagung
+
+- LanguageTool ([languagetool.org](https://languagetool.org), [GitHub](https://github.com/languagetool-org/languagetool)) ist freie Software unter LGPL 2.1 oder später. Die Grammatik- und Stilregeln, die Sprachlogik und die Wörterbücher stammen aus diesem Projekt und den Beiträgen seiner Community (Regel- und Wörterbuchpflege je Sprache).
+- Mitgelieferte Wörterbuch- und Sprachdaten je Sprache (Lizenzen laut den Dateien in `resources/` und `packaging/licenses/`):
+  - Deutsch: Part-of-Speech-Wörterbuch CC BY-SA 4.0, ursprünglich auf Basis von Morphy, Entwickler Daniel Naber. Rechtschreibung: Hunspell-Wörterbuch „frami“ (GPL v2 oder v3), basierend auf igerman98 von Björn Jacke, Erweiterung von Franz Michael Baumann; dazu die deutsche Wortliste von Jan Schreiber (gemeinfrei).
+  - Englisch: Part-of-Speech-Wörterbuch LGPL 2.1, Entwickler Jaume Ortolà. Part Of Speech Database von Kevin Atkinson (Moby Part-of-Speech II und WordNet), Automatically Generated Inflection Database (AGID) von Kevin Atkinson, 12dicts von Alan Beale (gemeinfrei, mit Bitte um Namensnennung).
+  - Französisch: Part-of-Speech-Wörterbuch CC BY-SA 4.0, Entwickler Jaume Ortolà, Daten laut POM-Angabe ursprünglich auf Basis von Morphy. Rechtschreibwörterbuch und Lexique von Olivier R. (Grammalecte), MPL 2.0.
+  - Spanisch: LGPL 2.1, `spanish-dict-tools` von Jaume Ortolà.
+  - Italienisch: Morph-it!, CC BY-SA 2.0 und LGPL.
+  - Polnisch: Morfologik / PoliMorf von Marcin Miłkowski (BSD-Lizenz, 2 Klauseln); Rechtschreibwörterbuch aus sjp.pl (GPL, LGPL, MPL und CC-SA).
+  - Russisch: Wörterbuch von AOT (www.aot.ru), LGPL; Konvertierung und Häufigkeitsdaten von Yakov Reztsov.
+  - Slowakisch: Daten von Zdenko Podobný auf Basis des Slowakischen Nationalkorpus, LGPL; Rechtschreibprüfung aus dem Projekt sk-spell (GPL 2, LGPL 2.1 oder MPL 1.1 nach Wahl).
+  - Slowenisch: Rechtschreibwörterbuch von Amebis d.o.o., Tomaž Erjavec, Aleš Košir und Primož Peterlin (LGPL/GPL). Ein Part-of-Speech-Wörterbuch mit eigener Quellenangabe ist in den Dateien nicht genannt.
+- Spracherkennungsprofile (`resources/languages`): überwiegend von Nakatani Shuyo, im Projekt [optimaize/language-detector](https://github.com/optimaize/language-detector) weitergeführt (laut `resources/README.md`).
+- LT-JS ist ein unabhängiges Projekt und weder mit der LanguageTool GmbH noch dem LanguageTool-Projekt verbunden oder von ihnen empfohlen.
+- Die vollständigen Lizenztexte liegen in `resources/` bzw. im Ordner `licenses/` der Pakete.
 
 ## Lizenz
 
