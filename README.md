@@ -45,7 +45,7 @@ Npm-Pakete: `@ltjs/core` plus je Sprache `@ltjs/lang-<code>`. `npm run build` er
 ## Verbesserungen gegenüber dem Original
 
 - **LTJS-Regelschicht** (zusätzliche Regeln, Standard an; DEV-028, Code in `src/lang/de/ltjs/`):
-  - 11 das/dass-Regeln: `LTJS_DAS_DAS`, `LTJS_DAS_DASS_VERB`, `LTJS_DAS_DASS_NOMEN`, `LTJS_DAS_DASS_ADJ`, `LTJS_SO_ADJ_DASS`, `LTJS_SODASS`, `LTJS_DASS_SATZANFANG`, `LTJS_DASS_RELATIVPRONOMEN`, `LTJS_DAS_DASS_KOMMA`, `LTJS_OHNE_DASS`, `LTJS_DASS_STATT_DAS`.
+  - 12 das/dass-Regeln: `LTJS_DAS_DAS`, `LTJS_DAS_DASS_VERB`, `LTJS_DAS_DASS_NOMEN`, `LTJS_DAS_DASS_ADJ`, `LTJS_SO_ADJ_DASS`, `LTJS_SODASS`, `LTJS_DASS_SATZANFANG`, `LTJS_DASS_RELATIVPRONOMEN`, `LTJS_DAS_DASS_KOMMA`, `LTJS_OHNE_DASS`, `LTJS_DASS_STATT_DAS`, `LTJS_DAS_DASS_OHNE_KOMMA`.
   - 10 Kommaregeln Deutsch: `LTJS_KOMMA_VORFELD`, `_NEBENSATZ`, `_RELATIVSATZ`, `_INFINITIV`, `_ABER`, `_NEBENSATZ_ENDE`, `_UND_PRAEDIKAT`, `_SUBJEKT_VERB`, `_PRAEPOSITIONALOBJEKT`, `_NACH_UND`.
   - Abschalten: Umgebungsvariable `LTJS_EXTRA_RULES=0`, `check(text, {extraRules: false})`, Server-Parameter `ltjsExtraRules=false`, einzeln über `disabledRules`.
 - **Java-Bugs behoben** (15 Einträge DEV-013 bis DEV-027 in `docs/DEVIATIONS.md`), zum Beispiel:

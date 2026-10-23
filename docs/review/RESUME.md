@@ -1,5 +1,5 @@
 # Resume (lead)
-State 2026-10-22: wave 1 + wave 2 (W01-W42) done, 9 languages. 1071 verified; 8 ported: CLI-0045/SRV-0015 cannot be oracled, SRV-0181/CORE-0233 DEV-001, CORE-0266 test rules, CORE-0423/0424/0426 only used by out-of-scope languages. npm test 1294 pass.
+State 2026-10-23: port done (W01-W42), improvement phase I01-I07 done (LTJS layer: 12 das/dass + 10 comma rules, I06 unused resources dropped). Public repo github.com/valueerrorx/languagetool-js (GPL-3.0-or-later, D-064), resources/ committed; lead may not git push (user pushes). 2026-10-22 state: 1071 verified; 8 ported: CLI-0045/SRV-0015 cannot be oracled, SRV-0181/CORE-0233 DEV-001, CORE-0266 test rules, CORE-0423/0424/0426 only used by out-of-scope languages. npm test 1294 pass.
 Done: final parity sweep (docs/review/FINAL-parity-sweep.md), 0 real fails; perf rounds 1-4: all 9 languages >= Java (CLI and warm). Open: nothing mandatory.
 Notes: npm test now long (EnglishPatternRuleTest 190 s); parity.mjs supports LTJS_CASE=<regex>.
 Rules:

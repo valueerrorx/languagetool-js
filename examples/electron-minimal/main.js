@@ -1,44 +1,26 @@
-// Electron main process: runs LanguageTool in a utilityProcess so the UI thread never blocks (startup and checks take seconds).
-import { app, utilityProcess } from 'electron';
-import { fileURLToPath } from 'node:url';
+// Electron main process: runs LanguageTool in a supervised utilityProcess so the UI thread never blocks.
+import { app } from 'electron';
+import { createLtClient } from './lt-client.js';
 
-const child = utilityProcess.fork(fileURLToPath(new URL('./checker-process.js', import.meta.url)), [], { serviceName: 'ltjs' });
-let nextId = 1;
-const pending = new Map();
+const lt = createLtClient({ languages: ['de-DE'] });
+lt.on('ready', (languages) => console.log('LanguageTool ready, languages:', languages.join(', ')));
+lt.on('error', (e) => console.error('LanguageTool gave up:', e.message));
 
-child.on('message', (msg) => {
-  if (msg.type === 'ready') {
-    console.log('LanguageTool ready, languages:', msg.languages.join(', '));
-    run();
-    return;
-  }
-  const done = pending.get(msg.id);
-  if (done) {
-    pending.delete(msg.id);
-    if (msg.error) done.reject(new Error(msg.error));
-    else done.resolve(msg.result);
-  }
-});
-
-// sends a check request to the utility process and resolves with the LanguageTool result object
-function check(text, options) {
-  return new Promise((resolve, reject) => {
-    const id = nextId++;
-    pending.set(id, { resolve, reject });
-    child.postMessage({ id, text, options });
-  });
+// checks one German sentence and prints the matches
+async function show() {
+  const result = await lt.check('Das ist ein Fehlr.', { language: 'de-DE' });
+  for (const m of result.matches) console.log(`${m.rule.id} at ${m.offset}: ${m.message}`, m.replacements.slice(0, 3).map((r) => r.value));
 }
 
-async function run() {
+app.whenReady().then(async () => {
   try {
-    const result = await check('Das ist ein Fehlr.', { language: 'de-DE' });
-    for (const m of result.matches) console.log(`${m.rule.id} at ${m.offset}: ${m.message}`, m.replacements.slice(0, 3).map((r) => r.value));
+    console.log('starting the utility process (first start loads the language data)...');
+    await lt.start();
+    await show();
+    await lt.restart(); // e.g. after updating the resources
+    await show();
   } finally {
-    child.kill();
+    lt.stop();
     app.quit();
   }
-}
-
-app.whenReady().then(() => {
-  console.log('waiting for the utility process (first start loads the language data)...');
 });
