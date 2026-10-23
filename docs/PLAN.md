@@ -166,3 +166,4 @@ Line format: `- [ ] Wnn <title> | java: <files> | js: <files> | ids: <inventory 
 - [x] I03 de das/dass rules (iterate with eval, no new false alarms) | status: done
 - [x] I04 de comma rules (iterate with eval) | status: done
 - [x] I05 de das/dass round 2 (dev+held-out misses) + blind held-out set 2 | status: done
+- [x] I06 Drop unused resource files from resources/ and packages (traced: 203 files, ~9 MB) | status: done

@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { readZipEntries } from './lib/zip.mjs';
 import { writeBuildInfo } from './build-info.mjs';
 import { buildDescriptors } from './lib/language-descriptors.mjs';
+import { isExcluded } from './lib/resource-excludes.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = process.env.LTJS_JAVA_SRC ?? path.join(ROOT, 'oracle/java-src');
@@ -77,6 +78,9 @@ for (const line of readFileSync(path.join(DIST_ROOT, 'META-INF/org/languagetool/
 }
 const descriptors = Buffer.from(`${JSON.stringify(buildDescriptors(SRC, classNames), null, 1)}\n`);
 add('ltjs/detection-languages.json', 'generated', () => descriptors);
+
+// I06: drop files that no runtime path reads (scripts/lib/resource-excludes.mjs)
+for (const rel of [...files.keys()]) if (isExcluded(rel)) files.delete(rel);
 
 rmSync(OUT, { recursive: true, force: true });
 const manifest = [];
