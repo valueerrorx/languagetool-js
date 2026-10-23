@@ -164,5 +164,5 @@ Line format: `- [ ] Wnn <title> | java: <files> | js: <files> | ids: <inventory 
 - [x] I01 Eval corpus de: annotated texts with das/dass and comma errors (gold offsets + corrections) plus clean control texts; eval runner (recall, precision, false alarms) for Java and JS | status: done
 - [x] I02 Improvement layer infrastructure: LTJS_* rule files, default on, toggle (API option + parity off) | status: done
 - [x] I03 de das/dass rules (iterate with eval, no new false alarms) | status: done
-- [ ] I04 de comma rules (iterate with eval) | status: todo
+- [x] I04 de comma rules (iterate with eval) | status: done
 - [x] I05 de das/dass round 2 (dev+held-out misses) + blind held-out set 2 | status: done

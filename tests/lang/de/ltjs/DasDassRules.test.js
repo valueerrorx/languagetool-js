@@ -4,7 +4,8 @@ import '../../../../src/lang/register.js';
 import { Languages } from '../../../../src/core/Languages.js';
 import { JLanguageTool } from '../../../../src/core/JLanguageTool.js';
 import { messagesFor, newLt } from '../../../support/ruleTestSupport.js';
-import { getLtjsGermanRules, LTJS_GERMAN_RULE_IDS } from '../../../../src/lang/de/ltjs/DasDassRules.js';
+import { getLtjsGermanDasDassRules, LTJS_DAS_DASS_RULE_IDS } from '../../../../src/lang/de/ltjs/DasDassRules.js';
+import { LTJS_GERMAN_RULE_IDS } from '../../../../src/lang/de/ltjs/GermanLtjsRules.js';
 import { parseExtraRulesFlag, getExtraRuleIds, isExtraRulesEnabled } from '../../../../src/core/ltjs/extraRules.js';
 import { check } from '../../../../src/index.js';
 import { V2TextChecker } from '../../../../src/server/TextChecker.js';
@@ -14,7 +15,7 @@ import { Headers } from '../../../../src/server/HttpExchange.js';
 import { AnnotatedTextBuilder } from '../../../../src/core/text/AnnotatedTextBuilder.js';
 
 const deDE = Languages.getLanguageForShortCode('de-DE');
-const rules = Object.fromEntries(getLtjsGermanRules(messagesFor(deDE), deDE).map((r) => [r.getId(), r]));
+const rules = Object.fromEntries(getLtjsGermanDasDassRules(messagesFor(deDE), deDE).map((r) => [r.getId(), r]));
 const lt = newLt(deDE);
 
 // matches of one rule as "covered->suggestion"
@@ -215,7 +216,7 @@ const CASES = {
 
 describe('LTJS das/dass rules', () => {
   it('has one rule per registered id', () => {
-    expect(Object.keys(rules).sort()).toEqual([...LTJS_GERMAN_RULE_IDS].sort());
+    expect(Object.keys(rules).sort()).toEqual([...LTJS_DAS_DASS_RULE_IDS].sort());
     for (const r of Object.values(rules)) {
       expect(r.getId().startsWith('LTJS_')).toBe(true);
       expect(r.getCategory().getId().toString()).toBe('GRAMMAR');

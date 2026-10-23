@@ -70,7 +70,7 @@ import { StyleTooOftenUsedNounRule } from '../rules/StyleTooOftenUsedNounRule.js
 import { StyleTooOftenUsedAdjectiveRule } from '../rules/StyleTooOftenUsedAdjectiveRule.js';
 import { ID2PRIO_ENTRIES } from './id2prioGerman.js';
 import { isExtraRulesEnabled, registerExtraRuleIds } from '../../../core/ltjs/extraRules.js';
-import { getLtjsGermanRules, LTJS_GERMAN_RULE_IDS } from '../ltjs/DasDassRules.js';
+import { getLtjsGermanRules, LTJS_GERMAN_RULE_IDS } from '../ltjs/GermanLtjsRules.js';
 
 registerExtraRuleIds('de', LTJS_GERMAN_RULE_IDS); // LTJS layer (D-061)
 
@@ -360,6 +360,9 @@ export class German extends LanguageWithModel {
         return -1;
       }
       return 1;
+    }
+    if (id.startsWith('LTJS_KOMMA_')) {
+      return -60; // LTJS layer (D-061), not in Java: overlapping Java matches (incl. all Java comma rules) win
     }
     return super.getPriorityForId(id);
   }

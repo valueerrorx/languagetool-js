@@ -5,7 +5,7 @@
   "disable": [],
   "dir": "de-heldout",
   "texts": 50,
-  "ms": 13873,
+  "ms": 13974,
   "stats": {
     "das_dass": {
       "gold": 78,
@@ -19,22 +19,22 @@
     },
     "comma_missing": {
       "gold": 104,
-      "found": 72,
-      "flaggedOnly": 2,
-      "missed": 30,
+      "found": 98,
+      "flaggedOnly": 1,
+      "missed": 5,
       "falseAlarms": 1,
-      "recall": 0.6923076923076923,
-      "flaggedRecall": 0.7115384615384616,
-      "precision": 0.9866666666666667
+      "recall": 0.9423076923076923,
+      "flaggedRecall": 0.9519230769230769,
+      "precision": 0.99
     },
     "comma_superfluous": {
       "gold": 26,
-      "found": 8,
+      "found": 23,
       "flaggedOnly": 0,
-      "missed": 18,
+      "missed": 3,
       "falseAlarms": 0,
-      "recall": 0.3076923076923077,
-      "flaggedRecall": 0.3076923076923077,
+      "recall": 0.8846153846153846,
+      "flaggedRecall": 0.8846153846153846,
       "precision": 1
     },
     "other": {
@@ -107,6 +107,26 @@
               "nur, dass"
             ],
             "class": "comma_missing"
+          }
+        ]
+      },
+      {
+        "id": "dh-001",
+        "type": "comma_superfluous",
+        "original": "ausgeliehen, und",
+        "correction": "ausgeliehen und",
+        "offset": 665,
+        "context": "isch Tim. Er hat sich auch mein Fahrrad ausgeliehen, und es mit einem Platten zurückgebracht. Un",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_UND_PRAEDIKAT",
+            "offset": 665,
+            "length": 16,
+            "covered": "ausgeliehen, und",
+            "replacements": [
+              "ausgeliehen und"
+            ],
+            "class": "comma_superfluous"
           }
         ]
       },
@@ -213,6 +233,26 @@
       {
         "id": "dh-002",
         "type": "comma_missing",
+        "original": "erklärt wie",
+        "correction": "erklärt, wie",
+        "offset": 333,
+        "context": "ege der dasselbe Modell besitzt hat mir erklärt wie man die Registrierung umgehen kann. Ich",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_NEBENSATZ",
+            "offset": 333,
+            "length": 11,
+            "covered": "erklärt wie",
+            "replacements": [
+              "erklärt, wie"
+            ],
+            "class": "comma_missing"
+          }
+        ]
+      },
+      {
+        "id": "dh-002",
+        "type": "comma_missing",
         "original": "lohnt muss",
         "correction": "lohnt, muss",
         "offset": 591,
@@ -245,6 +285,26 @@
             "covered": " wer",
             "replacements": [
               ", wer"
+            ],
+            "class": "comma_missing"
+          }
+        ]
+      },
+      {
+        "id": "dh-004",
+        "type": "comma_missing",
+        "original": "einzubinden da",
+        "correction": "einzubinden, da",
+        "offset": 332,
+        "context": "u Kaya schlägt vor, die Klassen 7 und 8 einzubinden da diese im letzten Jahr kaum beteiligt wa",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_NEBENSATZ",
+            "offset": 332,
+            "length": 14,
+            "covered": "einzubinden da",
+            "replacements": [
+              "einzubinden, da"
             ],
             "class": "comma_missing"
           }
@@ -411,6 +471,46 @@
         ]
       },
       {
+        "id": "dh-005",
+        "type": "comma_superfluous",
+        "original": "Scheibe, und",
+        "correction": "Scheibe und",
+        "offset": 772,
+        "context": " längst geschlossen. Sie klopfte an die Scheibe, und wartete. Nach einer Weile öffnete ein a",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_UND_PRAEDIKAT",
+            "offset": 772,
+            "length": 12,
+            "covered": "Scheibe, und",
+            "replacements": [
+              "Scheibe und"
+            ],
+            "class": "comma_superfluous"
+          }
+        ]
+      },
+      {
+        "id": "dh-006",
+        "type": "comma_missing",
+        "original": "Stunde was",
+        "correction": "Stunde, was",
+        "offset": 151,
+        "context": "wollten. Die Fahrt dauerte nur gut eine Stunde was uns ehrlich gesagt überrascht hat. Coim",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_NEBENSATZ",
+            "offset": 151,
+            "length": 10,
+            "covered": "Stunde was",
+            "replacements": [
+              "Stunde, was"
+            ],
+            "class": "comma_missing"
+          }
+        ]
+      },
+      {
         "id": "dh-006",
         "type": "comma_missing",
         "original": "Hügel sodass",
@@ -485,6 +585,26 @@
             "covered": " dass",
             "replacements": [
               ", dass"
+            ],
+            "class": "comma_missing"
+          }
+        ]
+      },
+      {
+        "id": "dh-007",
+        "type": "comma_missing",
+        "original": "vorliegen erhalten",
+        "correction": "vorliegen, erhalten",
+        "offset": 374,
+        "context": "r nur der Karton.  Sobald uns die Fotos vorliegen erhalten Sie von uns einen Rücksendeschein, den ",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_VORFELD",
+            "offset": 374,
+            "length": 18,
+            "covered": "vorliegen erhalten",
+            "replacements": [
+              "vorliegen, erhalten"
             ],
             "class": "comma_missing"
           }
@@ -573,6 +693,66 @@
       {
         "id": "dh-008",
         "type": "comma_missing",
+        "original": "ein damit",
+        "correction": "ein, damit",
+        "offset": 461,
+        "context": "men werden, wir sammeln sie aber abends ein damit die Kinder ausreichend schlafen. Kinder",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_NEBENSATZ",
+            "offset": 461,
+            "length": 9,
+            "covered": "ein damit",
+            "replacements": [
+              "ein, damit"
+            ],
+            "class": "comma_missing"
+          }
+        ]
+      },
+      {
+        "id": "dh-008",
+        "type": "comma_missing",
+        "original": "Kinder die",
+        "correction": "Kinder, die",
+        "offset": 504,
+        "context": " damit die Kinder ausreichend schlafen. Kinder die regelmäßig Medikamente nehmen müssen, g",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_RELATIVSATZ",
+            "offset": 504,
+            "length": 10,
+            "covered": "Kinder die",
+            "replacements": [
+              "Kinder, die"
+            ],
+            "class": "comma_missing"
+          }
+        ]
+      },
+      {
+        "id": "dh-008",
+        "type": "comma_superfluous",
+        "original": "Euro, muss",
+        "correction": "Euro muss",
+        "offset": 625,
+        "context": "bei Frau Peters ab.  Der Betrag von 245 Euro, muss bis zum 30. April auf dem Konto des För",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_SUBJEKT_VERB",
+            "offset": 625,
+            "length": 10,
+            "covered": "Euro, muss",
+            "replacements": [
+              "Euro muss"
+            ],
+            "class": "comma_superfluous"
+          }
+        ]
+      },
+      {
+        "id": "dh-008",
+        "type": "comma_missing",
         "original": "hoffen dass",
         "correction": "hoffen, dass",
         "offset": 906,
@@ -585,6 +765,46 @@
             "covered": " dass",
             "replacements": [
               ", dass"
+            ],
+            "class": "comma_missing"
+          }
+        ]
+      },
+      {
+        "id": "dh-009",
+        "type": "comma_superfluous",
+        "original": "waschen, und",
+        "correction": "waschen und",
+        "offset": 238,
+        "context": " in Würfel schneiden. Den Lauch putzen, waschen, und in feine Ringe schneiden. Die Zwiebel f",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_UND_PRAEDIKAT",
+            "offset": 238,
+            "length": 12,
+            "covered": "waschen, und",
+            "replacements": [
+              "waschen und"
+            ],
+            "class": "comma_superfluous"
+          }
+        ]
+      },
+      {
+        "id": "dh-009",
+        "type": "comma_missing",
+        "original": "lassen bis",
+        "correction": "lassen, bis",
+        "offset": 484,
+        "context": "schen und alles etwa 20 Minuten köcheln lassen bis die Kartoffeln weich sind. Achten Sie d",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_NEBENSATZ",
+            "offset": 484,
+            "length": 10,
+            "covered": "lassen bis",
+            "replacements": [
+              "lassen, bis"
             ],
             "class": "comma_missing"
           }
@@ -632,6 +852,26 @@
       },
       {
         "id": "dh-009",
+        "type": "comma_missing",
+        "original": "hatten sich",
+        "correction": "hatten, sich",
+        "offset": 868,
+        "context": "en Tag noch besser weil die Aromen Zeit hatten sich zu verbinden. Wenn Sie die Suppe einfri",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_INFINITIV",
+            "offset": 868,
+            "length": 11,
+            "covered": "hatten sich",
+            "replacements": [
+              "hatten, sich"
+            ],
+            "class": "comma_missing"
+          }
+        ]
+      },
+      {
+        "id": "dh-009",
         "type": "das_dass",
         "original": "dass",
         "correction": "das",
@@ -665,6 +905,26 @@
             "covered": " sofern",
             "replacements": [
               ", sofern"
+            ],
+            "class": "comma_missing"
+          }
+        ]
+      },
+      {
+        "id": "dh-010",
+        "type": "comma_missing",
+        "original": "Recht Auskunft",
+        "correction": "Recht, Auskunft",
+        "offset": 458,
+        "context": "flichtung besteht. Betroffene haben das Recht Auskunft über die sie betreffenden Daten zu verl",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_INFINITIV",
+            "offset": 458,
+            "length": 14,
+            "covered": "Recht Auskunft",
+            "replacements": [
+              "Recht, Auskunft"
             ],
             "class": "comma_missing"
           }
@@ -713,6 +973,26 @@
         ]
       },
       {
+        "id": "dh-010",
+        "type": "comma_superfluous",
+        "original": "Informationen, erhalten",
+        "correction": "Informationen erhalten",
+        "offset": 772,
+        "context": " ausübt bleibt davon unberührt. Weitere Informationen, erhalten Sie bei der Hausverwaltung oder unter d",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_SUBJEKT_VERB",
+            "offset": 772,
+            "length": 23,
+            "covered": "Informationen, erhalten",
+            "replacements": [
+              "Informationen erhalten"
+            ],
+            "class": "comma_superfluous"
+          }
+        ]
+      },
+      {
         "id": "dh-012",
         "type": "das_dass",
         "original": "das",
@@ -749,6 +1029,26 @@
               "Wassertank, der"
             ],
             "class": "comma_missing"
+          }
+        ]
+      },
+      {
+        "id": "dh-012",
+        "type": "comma_superfluous",
+        "original": "herausnehmen, und",
+        "correction": "herausnehmen und",
+        "offset": 356,
+        "context": " als gedacht: Die Brühgruppe lässt sich herausnehmen, und unter dem Wasserhahn abspülen. Der Hers",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_UND_PRAEDIKAT",
+            "offset": 356,
+            "length": 17,
+            "covered": "herausnehmen, und",
+            "replacements": [
+              "herausnehmen und"
+            ],
+            "class": "comma_superfluous"
           }
         ]
       },
@@ -1203,6 +1503,26 @@
       },
       {
         "id": "dh-017",
+        "type": "comma_missing",
+        "original": "nennen damit",
+        "correction": "nennen, damit",
+        "offset": 209,
+        "context": " Können Sie mir bitte die Bestellnummer nennen damit ich nachsehen kann? Kundin: Ja, sie lau",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_NEBENSATZ",
+            "offset": 209,
+            "length": 12,
+            "covered": "nennen damit",
+            "replacements": [
+              "nennen, damit"
+            ],
+            "class": "comma_missing"
+          }
+        ]
+      },
+      {
+        "id": "dh-017",
         "type": "das_dass",
         "original": "das",
         "correction": "dass",
@@ -1258,6 +1578,26 @@
               "das"
             ],
             "class": "das_dass"
+          }
+        ]
+      },
+      {
+        "id": "dh-017",
+        "type": "comma_superfluous",
+        "original": "eingetragen, und",
+        "correction": "eingetragen und",
+        "offset": 867,
+        "context": "g enthalten. Ich habe den Samstag jetzt eingetragen, und Ihnen eine neue Bestätigung geschickt. ",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_UND_PRAEDIKAT",
+            "offset": 867,
+            "length": 16,
+            "covered": "eingetragen, und",
+            "replacements": [
+              "eingetragen und"
+            ],
+            "class": "comma_superfluous"
           }
         ]
       },
@@ -1383,6 +1723,26 @@
       },
       {
         "id": "dh-020",
+        "type": "comma_missing",
+        "original": "werden da",
+        "correction": "werden, da",
+        "offset": 336,
+        "context": "und Schuhe dürfen dort nicht abgestellt werden da sie im Brandfall den Weg versperren kön",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_NEBENSATZ",
+            "offset": 336,
+            "length": 9,
+            "covered": "werden da",
+            "replacements": [
+              "werden, da"
+            ],
+            "class": "comma_missing"
+          }
+        ]
+      },
+      {
+        "id": "dh-020",
         "type": "das_dass",
         "original": "das",
         "correction": "dass",
@@ -1498,6 +1858,46 @@
               "hängen, auf die"
             ],
             "class": "comma_missing"
+          }
+        ]
+      },
+      {
+        "id": "dh-021",
+        "type": "comma_missing",
+        "original": "schreibt was",
+        "correction": "schreibt, was",
+        "offset": 432,
+        "context": "an den Kühlschrank hängen auf die jeder schreibt was fehlt. Selin: Gute Idee. Ich kaufe nach",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_NEBENSATZ",
+            "offset": 432,
+            "length": 12,
+            "covered": "schreibt was",
+            "replacements": [
+              "schreibt, was"
+            ],
+            "class": "comma_missing"
+          }
+        ]
+      },
+      {
+        "id": "dh-021",
+        "type": "comma_superfluous",
+        "original": "ein, und",
+        "correction": "ein und",
+        "offset": 488,
+        "context": "lt. Selin: Gute Idee. Ich kaufe nachher ein, und bringe gleich zwei Packungen mit. Paula",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_UND_PRAEDIKAT",
+            "offset": 488,
+            "length": 8,
+            "covered": "ein, und",
+            "replacements": [
+              "ein und"
+            ],
+            "class": "comma_superfluous"
           }
         ]
       },
@@ -1787,6 +2187,26 @@
       },
       {
         "id": "dh-026",
+        "type": "comma_missing",
+        "original": "ich wie",
+        "correction": "ich, wie",
+        "offset": 111,
+        "context": "teif vorgestellt. Umso überraschter war ich wie entspannt die Stimmung in den Straßen i",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_NEBENSATZ",
+            "offset": 111,
+            "length": 7,
+            "covered": "ich wie",
+            "replacements": [
+              "ich, wie"
+            ],
+            "class": "comma_missing"
+          }
+        ]
+      },
+      {
+        "id": "dh-026",
         "type": "das_dass",
         "original": "dass",
         "correction": "das",
@@ -1971,6 +2391,26 @@
         ]
       },
       {
+        "id": "dh-027",
+        "type": "comma_missing",
+        "original": "besteht melden",
+        "correction": "besteht, melden",
+        "offset": 595,
+        "context": "s die Störung nach Donnerstag weiterhin besteht melden Sie sich bitte direkt bei unserer techn",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_VORFELD",
+            "offset": 595,
+            "length": 14,
+            "covered": "besteht melden",
+            "replacements": [
+              "besteht, melden"
+            ],
+            "class": "comma_missing"
+          }
+        ]
+      },
+      {
         "id": "dh-029",
         "type": "comma_missing",
         "original": "Großmutter die",
@@ -2007,6 +2447,46 @@
               "dass"
             ],
             "class": "das_dass"
+          }
+        ]
+      },
+      {
+        "id": "dh-029",
+        "type": "comma_superfluous",
+        "original": "abgießen, und",
+        "correction": "abgießen und",
+        "offset": 463,
+        "context": "n und im Speckfett anbraten. Die Linsen abgießen, und zusammen mit 1,5 Litern Wasser dazugebe",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_UND_PRAEDIKAT",
+            "offset": 463,
+            "length": 13,
+            "covered": "abgießen, und",
+            "replacements": [
+              "abgießen und"
+            ],
+            "class": "comma_superfluous"
+          }
+        ]
+      },
+      {
+        "id": "dh-029",
+        "type": "comma_missing",
+        "original": "dazu damit",
+        "correction": "dazu, damit",
+        "offset": 627,
+        "context": " Kartoffeln kommen erst nach 20 Minuten dazu damit sie nicht zerfallen.  Zum Schluss mit E",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_NEBENSATZ",
+            "offset": 627,
+            "length": 10,
+            "covered": "dazu damit",
+            "replacements": [
+              "dazu, damit"
+            ],
+            "class": "comma_missing"
           }
         ]
       },
@@ -2069,6 +2549,26 @@
             "covered": "auszuüben",
             "replacements": [
               "auszuüben,"
+            ],
+            "class": "comma_missing"
+          }
+        ]
+      },
+      {
+        "id": "dh-030",
+        "type": "comma_missing",
+        "original": "Entschluss diesen",
+        "correction": "Entschluss, diesen",
+        "offset": 349,
+        "context": " einer eindeutigen Erklärung über Ihren Entschluss diesen Vertrag zu widerrufen, informieren. Zur",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_INFINITIV",
+            "offset": 349,
+            "length": 17,
+            "covered": "Entschluss diesen",
+            "replacements": [
+              "Entschluss, diesen"
             ],
             "class": "comma_missing"
           }
@@ -2240,6 +2740,26 @@
       },
       {
         "id": "dh-031",
+        "type": "comma_superfluous",
+        "original": "Karte, und",
+        "correction": "Karte und",
+        "offset": 516,
+        "context": "es gibt. Jana: Super. Ich übernehme die Karte, und besorge Blumen. Mama: Ihr seid toll. Ic",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_UND_PRAEDIKAT",
+            "offset": 516,
+            "length": 10,
+            "covered": "Karte, und",
+            "replacements": [
+              "Karte und"
+            ],
+            "class": "comma_superfluous"
+          }
+        ]
+      },
+      {
+        "id": "dh-031",
         "type": "das_dass",
         "original": "dass",
         "correction": "das",
@@ -2397,6 +2917,26 @@
             "covered": " warum",
             "replacements": [
               ", warum"
+            ],
+            "class": "comma_missing"
+          }
+        ]
+      },
+      {
+        "id": "dh-034",
+        "type": "comma_missing",
+        "original": "müssen was",
+        "correction": "müssen, was",
+        "offset": 324,
+        "context": "t, dass auch die Balkone saniert werden müssen was zusätzliche Zeit erfordert.  Beschluss:",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_NEBENSATZ",
+            "offset": 324,
+            "length": 10,
+            "covered": "müssen was",
+            "replacements": [
+              "müssen, was"
             ],
             "class": "comma_missing"
           }
@@ -2729,6 +3269,26 @@
       },
       {
         "id": "dh-038",
+        "type": "comma_missing",
+        "original": "Kinder die",
+        "correction": "Kinder, die",
+        "offset": 633,
+        "context": "ilen Sie uns dass bitte bis Montag mit. Kinder die nicht teilnehmen werden in der Parallel",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_RELATIVSATZ",
+            "offset": 633,
+            "length": 10,
+            "covered": "Kinder die",
+            "replacements": [
+              "Kinder, die"
+            ],
+            "class": "comma_missing"
+          }
+        ]
+      },
+      {
+        "id": "dh-038",
         "type": "das_dass",
         "original": "das",
         "correction": "dass",
@@ -2744,6 +3304,26 @@
               "dass"
             ],
             "class": "das_dass"
+          }
+        ]
+      },
+      {
+        "id": "dh-039",
+        "type": "comma_superfluous",
+        "original": "dazugeben, und",
+        "correction": "dazugeben und",
+        "offset": 239,
+        "context": "chüssel vermischen. Dann Eier und Milch dazugeben, und alles mit dem Schneebessen glatt rühren",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_UND_PRAEDIKAT",
+            "offset": 239,
+            "length": 14,
+            "covered": "dazugeben, und",
+            "replacements": [
+              "dazugeben und"
+            ],
+            "class": "comma_superfluous"
           }
         ]
       },
@@ -2806,6 +3386,26 @@
             "covered": "rührt weil",
             "replacements": [
               "rührt, weil"
+            ],
+            "class": "comma_missing"
+          }
+        ]
+      },
+      {
+        "id": "dh-039",
+        "type": "comma_missing",
+        "original": "warten bis",
+        "correction": "warten, bis",
+        "offset": 541,
+        "context": " eine kleine Kelle Teig hineingeben und warten bis sich an der Oberfläche Bläschen bilden.",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_NEBENSATZ",
+            "offset": 541,
+            "length": 10,
+            "covered": "warten bis",
+            "replacements": [
+              "warten, bis"
             ],
             "class": "comma_missing"
           }
@@ -3097,6 +3697,26 @@
       },
       {
         "id": "dh-043",
+        "type": "comma_missing",
+        "original": "lernen wie",
+        "correction": "lernen, wie",
+        "offset": 596,
+        "context": "Methoden einzuarbeiten. Gerne würde ich lernen wie Forschungsergebnisse in die klinische P",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_NEBENSATZ",
+            "offset": 596,
+            "length": 10,
+            "covered": "lernen wie",
+            "replacements": [
+              "lernen, wie"
+            ],
+            "class": "comma_missing"
+          }
+        ]
+      },
+      {
+        "id": "dh-043",
         "type": "comma_superfluous",
         "original": "Unterlagen, finden",
         "correction": "Unterlagen finden",
@@ -3199,6 +3819,26 @@
       },
       {
         "id": "dh-045",
+        "type": "comma_missing",
+        "original": "Ortes den",
+        "correction": "Ortes, den",
+        "offset": 425,
+        "context": "andschrift ein Datum und der Name eines Ortes den keiner von uns kannte. Ich habe lange g",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_RELATIVSATZ",
+            "offset": 425,
+            "length": 9,
+            "covered": "Ortes den",
+            "replacements": [
+              "Ortes, den"
+            ],
+            "class": "comma_missing"
+          }
+        ]
+      },
+      {
+        "id": "dh-045",
         "type": "das_dass",
         "original": "das",
         "correction": "dass",
@@ -3214,6 +3854,46 @@
               "dass"
             ],
             "class": "das_dass"
+          }
+        ]
+      },
+      {
+        "id": "dh-045",
+        "type": "comma_superfluous",
+        "original": "lassen, und",
+        "correction": "lassen und",
+        "offset": 710,
+        "context": "Rolle mehr. Ich habe das Foto einrahmen lassen, und es neben mein Bett gehängt. Manchmal gl",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_UND_PRAEDIKAT",
+            "offset": 710,
+            "length": 11,
+            "covered": "lassen, und",
+            "replacements": [
+              "lassen und"
+            ],
+            "class": "comma_superfluous"
+          }
+        ]
+      },
+      {
+        "id": "dh-046",
+        "type": "comma_missing",
+        "original": "gewöhnungsbedürftiger als",
+        "correction": "gewöhnungsbedürftiger, als",
+        "offset": 56,
+        "context": "chottland, Teil 2  Der Linksverkehr ist gewöhnungsbedürftiger als ich dachte. Vor allem in Kreisverkehren",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_NEBENSATZ",
+            "offset": 56,
+            "length": 25,
+            "covered": "gewöhnungsbedürftiger als",
+            "replacements": [
+              "gewöhnungsbedürftiger, als"
+            ],
+            "class": "comma_missing"
           }
         ]
       },
@@ -3279,6 +3959,26 @@
       },
       {
         "id": "dh-046",
+        "type": "comma_superfluous",
+        "original": "Handzeichen, und",
+        "correction": "Handzeichen und",
+        "offset": 530,
+        "context": "imischen bedanken sich mit einem kurzen Handzeichen, und fahren weiter.  Abends saßen wir in ein",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_UND_PRAEDIKAT",
+            "offset": 530,
+            "length": 16,
+            "covered": "Handzeichen, und",
+            "replacements": [
+              "Handzeichen und"
+            ],
+            "class": "comma_superfluous"
+          }
+        ]
+      },
+      {
+        "id": "dh-046",
         "type": "das_dass",
         "original": "dass",
         "correction": "das",
@@ -3318,6 +4018,26 @@
               "Amoksphäre"
             ],
             "class": "other"
+          }
+        ]
+      },
+      {
+        "id": "dh-047",
+        "type": "comma_missing",
+        "original": "haben klicken",
+        "correction": "haben, klicken",
+        "offset": 89,
+        "context": "etzen?  Wenn Sie Ihr Passwort vergessen haben klicken Sie auf der Anmeldeseite auf den entspr",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_VORFELD",
+            "offset": 89,
+            "length": 13,
+            "covered": "haben klicken",
+            "replacements": [
+              "haben, klicken"
+            ],
+            "class": "comma_missing"
           }
         ]
       },
@@ -3382,6 +4102,46 @@
         ]
       },
       {
+        "id": "dh-047",
+        "type": "comma_superfluous",
+        "original": "Sicherheitsgründen, können",
+        "correction": "Sicherheitsgründen können",
+        "offset": 594,
+        "context": "ss Sie nirgendwo anders verwenden.  Aus Sicherheitsgründen, können unsere Mitarbeiter Ihr Passwort nicht t",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_SUBJEKT_VERB",
+            "offset": 594,
+            "length": 26,
+            "covered": "Sicherheitsgründen, können",
+            "replacements": [
+              "Sicherheitsgründen können"
+            ],
+            "class": "comma_superfluous"
+          }
+        ]
+      },
+      {
+        "id": "dh-047",
+        "type": "comma_superfluous",
+        "original": "uns, über",
+        "correction": "uns über",
+        "offset": 696,
+        "context": "ht telefonisch zurücksetzen. Wir freuen uns, über Ihr Feedback zu dieser Hilfeseite.",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_PRAEPOSITIONALOBJEKT",
+            "offset": 696,
+            "length": 9,
+            "covered": "uns, über",
+            "replacements": [
+              "uns über"
+            ],
+            "class": "comma_superfluous"
+          }
+        ]
+      },
+      {
         "id": "dh-048",
         "type": "das_dass",
         "original": "das",
@@ -3398,6 +4158,26 @@
               "dass"
             ],
             "class": "das_dass"
+          }
+        ]
+      },
+      {
+        "id": "dh-048",
+        "type": "comma_missing",
+        "original": "finden behandeln",
+        "correction": "finden, behandeln",
+        "offset": 316,
+        "context": "en Kamm.  Sollten Sie Läuse oder Nissen finden behandeln Sie diese bitte mit einem Mittel aus de",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_VORFELD",
+            "offset": 316,
+            "length": 16,
+            "covered": "finden behandeln",
+            "replacements": [
+              "finden, behandeln"
+            ],
+            "class": "comma_missing"
           }
         ]
       },
@@ -3466,6 +4246,26 @@
         ]
       },
       {
+        "id": "dh-048",
+        "type": "comma_missing",
+        "original": "daran Mützen",
+        "correction": "daran, Mützen",
+        "offset": 661,
+        "context": " Homepage.  Bitte erinnern Sie Ihr Kind daran Mützen und Kämme nicht mit anderen zu teilen. ",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_INFINITIV",
+            "offset": 661,
+            "length": 12,
+            "covered": "daran Mützen",
+            "replacements": [
+              "daran, Mützen"
+            ],
+            "class": "comma_missing"
+          }
+        ]
+      },
+      {
         "id": "dh-050",
         "type": "das_dass",
         "original": "das",
@@ -3520,6 +4320,26 @@
             "covered": " sofern",
             "replacements": [
               ", sofern"
+            ],
+            "class": "comma_missing"
+          }
+        ]
+      },
+      {
+        "id": "dh-050",
+        "type": "comma_missing",
+        "original": "gestattet im",
+        "correction": "gestattet, im",
+        "offset": 466,
+        "context": " Fahrzeug nicht verlassen. Es ist nicht gestattet im Hof Fahrzeuge zu waschen oder Reparatur",
+        "by": [
+          {
+            "ruleId": "LTJS_KOMMA_INFINITIV",
+            "offset": 466,
+            "length": 12,
+            "covered": "gestattet im",
+            "replacements": [
+              "gestattet, im"
             ],
             "class": "comma_missing"
           }
@@ -3608,55 +4428,9 @@
             "class": "comma_missing"
           }
         ]
-      },
-      {
-        "id": "dh-047",
-        "type": "comma_missing",
-        "original": "haben klicken",
-        "correction": "haben, klicken",
-        "offset": 89,
-        "context": "etzen?  Wenn Sie Ihr Passwort vergessen haben klicken Sie auf der Anmeldeseite auf den entspr",
-        "sameSentence": true,
-        "by": [
-          {
-            "ruleId": "SUBJUNKTION_KOMMA_2",
-            "offset": 57,
-            "length": 4,
-            "covered": "Wenn",
-            "replacements": [],
-            "class": "comma_missing"
-          }
-        ]
       }
     ],
     "missed": [
-      {
-        "id": "dh-001",
-        "type": "comma_superfluous",
-        "original": "ausgeliehen, und",
-        "correction": "ausgeliehen und",
-        "offset": 665,
-        "context": "isch Tim. Er hat sich auch mein Fahrrad ausgeliehen, und es mit einem Platten zurückgebracht. Un",
-        "overlapping": []
-      },
-      {
-        "id": "dh-002",
-        "type": "comma_missing",
-        "original": "erklärt wie",
-        "correction": "erklärt, wie",
-        "offset": 333,
-        "context": "ege der dasselbe Modell besitzt hat mir erklärt wie man die Registrierung umgehen kann. Ich",
-        "overlapping": []
-      },
-      {
-        "id": "dh-004",
-        "type": "comma_missing",
-        "original": "einzubinden da",
-        "correction": "einzubinden, da",
-        "offset": 332,
-        "context": "u Kaya schlägt vor, die Klassen 7 und 8 einzubinden da diese im letzten Jahr kaum beteiligt wa",
-        "overlapping": []
-      },
       {
         "id": "dh-004",
         "type": "comma_superfluous",
@@ -3664,114 +4438,6 @@
         "correction": "Lautsprecheranlage ist",
         "offset": 428,
         "context": "n.  2. Kosten Die Rechnung für die neue Lautsprecheranlage, ist höher ausgefallen als geplant. Herr Ost",
-        "overlapping": []
-      },
-      {
-        "id": "dh-005",
-        "type": "comma_superfluous",
-        "original": "Scheibe, und",
-        "correction": "Scheibe und",
-        "offset": 772,
-        "context": " längst geschlossen. Sie klopfte an die Scheibe, und wartete. Nach einer Weile öffnete ein a",
-        "overlapping": []
-      },
-      {
-        "id": "dh-006",
-        "type": "comma_missing",
-        "original": "Stunde was",
-        "correction": "Stunde, was",
-        "offset": 151,
-        "context": "wollten. Die Fahrt dauerte nur gut eine Stunde was uns ehrlich gesagt überrascht hat. Coim",
-        "overlapping": []
-      },
-      {
-        "id": "dh-007",
-        "type": "comma_missing",
-        "original": "vorliegen erhalten",
-        "correction": "vorliegen, erhalten",
-        "offset": 374,
-        "context": "r nur der Karton.  Sobald uns die Fotos vorliegen erhalten Sie von uns einen Rücksendeschein, den ",
-        "overlapping": []
-      },
-      {
-        "id": "dh-008",
-        "type": "comma_missing",
-        "original": "ein damit",
-        "correction": "ein, damit",
-        "offset": 461,
-        "context": "men werden, wir sammeln sie aber abends ein damit die Kinder ausreichend schlafen. Kinder",
-        "overlapping": []
-      },
-      {
-        "id": "dh-008",
-        "type": "comma_missing",
-        "original": "Kinder die",
-        "correction": "Kinder, die",
-        "offset": 504,
-        "context": " damit die Kinder ausreichend schlafen. Kinder die regelmäßig Medikamente nehmen müssen, g",
-        "overlapping": []
-      },
-      {
-        "id": "dh-008",
-        "type": "comma_superfluous",
-        "original": "Euro, muss",
-        "correction": "Euro muss",
-        "offset": 625,
-        "context": "bei Frau Peters ab.  Der Betrag von 245 Euro, muss bis zum 30. April auf dem Konto des För",
-        "overlapping": []
-      },
-      {
-        "id": "dh-009",
-        "type": "comma_superfluous",
-        "original": "waschen, und",
-        "correction": "waschen und",
-        "offset": 238,
-        "context": " in Würfel schneiden. Den Lauch putzen, waschen, und in feine Ringe schneiden. Die Zwiebel f",
-        "overlapping": []
-      },
-      {
-        "id": "dh-009",
-        "type": "comma_missing",
-        "original": "lassen bis",
-        "correction": "lassen, bis",
-        "offset": 484,
-        "context": "schen und alles etwa 20 Minuten köcheln lassen bis die Kartoffeln weich sind. Achten Sie d",
-        "overlapping": []
-      },
-      {
-        "id": "dh-009",
-        "type": "comma_missing",
-        "original": "hatten sich",
-        "correction": "hatten, sich",
-        "offset": 868,
-        "context": "en Tag noch besser weil die Aromen Zeit hatten sich zu verbinden. Wenn Sie die Suppe einfri",
-        "overlapping": []
-      },
-      {
-        "id": "dh-010",
-        "type": "comma_missing",
-        "original": "Recht Auskunft",
-        "correction": "Recht, Auskunft",
-        "offset": 458,
-        "context": "flichtung besteht. Betroffene haben das Recht Auskunft über die sie betreffenden Daten zu verl",
-        "overlapping": []
-      },
-      {
-        "id": "dh-010",
-        "type": "comma_superfluous",
-        "original": "Informationen, erhalten",
-        "correction": "Informationen erhalten",
-        "offset": 772,
-        "context": " ausübt bleibt davon unberührt. Weitere Informationen, erhalten Sie bei der Hausverwaltung oder unter d",
-        "overlapping": []
-      },
-      {
-        "id": "dh-012",
-        "type": "comma_superfluous",
-        "original": "herausnehmen, und",
-        "correction": "herausnehmen und",
-        "offset": 356,
-        "context": " als gedacht: Die Brühgruppe lässt sich herausnehmen, und unter dem Wasserhahn abspülen. Der Hers",
         "overlapping": []
       },
       {
@@ -3793,111 +4459,12 @@
         "overlapping": []
       },
       {
-        "id": "dh-017",
-        "type": "comma_missing",
-        "original": "nennen damit",
-        "correction": "nennen, damit",
-        "offset": 209,
-        "context": " Können Sie mir bitte die Bestellnummer nennen damit ich nachsehen kann? Kundin: Ja, sie lau",
-        "overlapping": []
-      },
-      {
-        "id": "dh-017",
-        "type": "comma_superfluous",
-        "original": "eingetragen, und",
-        "correction": "eingetragen und",
-        "offset": 867,
-        "context": "g enthalten. Ich habe den Samstag jetzt eingetragen, und Ihnen eine neue Bestätigung geschickt. ",
-        "overlapping": []
-      },
-      {
-        "id": "dh-020",
-        "type": "comma_missing",
-        "original": "werden da",
-        "correction": "werden, da",
-        "offset": 336,
-        "context": "und Schuhe dürfen dort nicht abgestellt werden da sie im Brandfall den Weg versperren kön",
-        "overlapping": []
-      },
-      {
         "id": "dh-020",
         "type": "comma_missing",
         "original": "verursacht haftet",
         "correction": "verursacht, haftet",
         "offset": 666,
         "context": "egt.  4. Haftung Wer Schäden am Gebäude verursacht haftet dafür nach den gesetzlichen Vorschrifte",
-        "overlapping": []
-      },
-      {
-        "id": "dh-021",
-        "type": "comma_missing",
-        "original": "schreibt was",
-        "correction": "schreibt, was",
-        "offset": 432,
-        "context": "an den Kühlschrank hängen auf die jeder schreibt was fehlt. Selin: Gute Idee. Ich kaufe nach",
-        "overlapping": []
-      },
-      {
-        "id": "dh-021",
-        "type": "comma_superfluous",
-        "original": "ein, und",
-        "correction": "ein und",
-        "offset": 488,
-        "context": "lt. Selin: Gute Idee. Ich kaufe nachher ein, und bringe gleich zwei Packungen mit. Paula",
-        "overlapping": []
-      },
-      {
-        "id": "dh-026",
-        "type": "comma_missing",
-        "original": "ich wie",
-        "correction": "ich, wie",
-        "offset": 111,
-        "context": "teif vorgestellt. Umso überraschter war ich wie entspannt die Stimmung in den Straßen i",
-        "overlapping": []
-      },
-      {
-        "id": "dh-027",
-        "type": "comma_missing",
-        "original": "besteht melden",
-        "correction": "besteht, melden",
-        "offset": 595,
-        "context": "s die Störung nach Donnerstag weiterhin besteht melden Sie sich bitte direkt bei unserer techn",
-        "overlapping": []
-      },
-      {
-        "id": "dh-029",
-        "type": "comma_superfluous",
-        "original": "abgießen, und",
-        "correction": "abgießen und",
-        "offset": 463,
-        "context": "n und im Speckfett anbraten. Die Linsen abgießen, und zusammen mit 1,5 Litern Wasser dazugebe",
-        "overlapping": []
-      },
-      {
-        "id": "dh-029",
-        "type": "comma_missing",
-        "original": "dazu damit",
-        "correction": "dazu, damit",
-        "offset": 627,
-        "context": " Kartoffeln kommen erst nach 20 Minuten dazu damit sie nicht zerfallen.  Zum Schluss mit E",
-        "overlapping": []
-      },
-      {
-        "id": "dh-030",
-        "type": "comma_missing",
-        "original": "Entschluss diesen",
-        "correction": "Entschluss, diesen",
-        "offset": 349,
-        "context": " einer eindeutigen Erklärung über Ihren Entschluss diesen Vertrag zu widerrufen, informieren. Zur",
-        "overlapping": []
-      },
-      {
-        "id": "dh-031",
-        "type": "comma_superfluous",
-        "original": "Karte, und",
-        "correction": "Karte und",
-        "offset": 516,
-        "context": "es gibt. Jana: Super. Ich übernehme die Karte, und besorge Blumen. Mama: Ihr seid toll. Ic",
         "overlapping": []
       },
       {
@@ -3910,66 +4477,12 @@
         "overlapping": []
       },
       {
-        "id": "dh-034",
-        "type": "comma_missing",
-        "original": "müssen was",
-        "correction": "müssen, was",
-        "offset": 324,
-        "context": "t, dass auch die Balkone saniert werden müssen was zusätzliche Zeit erfordert.  Beschluss:",
-        "overlapping": []
-      },
-      {
-        "id": "dh-038",
-        "type": "comma_missing",
-        "original": "Kinder die",
-        "correction": "Kinder, die",
-        "offset": 633,
-        "context": "ilen Sie uns dass bitte bis Montag mit. Kinder die nicht teilnehmen werden in der Parallel",
-        "overlapping": []
-      },
-      {
         "id": "dh-038",
         "type": "comma_missing",
         "original": "teilnehmen werden",
         "correction": "teilnehmen, werden",
         "offset": 650,
         "context": " bitte bis Montag mit. Kinder die nicht teilnehmen werden in der Parallelklasse betreut. Wir hoff",
-        "overlapping": []
-      },
-      {
-        "id": "dh-039",
-        "type": "comma_superfluous",
-        "original": "dazugeben, und",
-        "correction": "dazugeben und",
-        "offset": 239,
-        "context": "chüssel vermischen. Dann Eier und Milch dazugeben, und alles mit dem Schneebessen glatt rühren",
-        "overlapping": []
-      },
-      {
-        "id": "dh-039",
-        "type": "comma_missing",
-        "original": "warten bis",
-        "correction": "warten, bis",
-        "offset": 541,
-        "context": " eine kleine Kelle Teig hineingeben und warten bis sich an der Oberfläche Bläschen bilden.",
-        "overlapping": []
-      },
-      {
-        "id": "dh-043",
-        "type": "comma_missing",
-        "original": "lernen wie",
-        "correction": "lernen, wie",
-        "offset": 596,
-        "context": "Methoden einzuarbeiten. Gerne würde ich lernen wie Forschungsergebnisse in die klinische P",
-        "overlapping": []
-      },
-      {
-        "id": "dh-045",
-        "type": "comma_missing",
-        "original": "Ortes den",
-        "correction": "Ortes, den",
-        "offset": 425,
-        "context": "andschrift ein Datum und der Name eines Ortes den keiner von uns kannte. Ich habe lange g",
         "overlapping": []
       },
       {
@@ -3982,84 +4495,12 @@
         "overlapping": []
       },
       {
-        "id": "dh-045",
-        "type": "comma_superfluous",
-        "original": "lassen, und",
-        "correction": "lassen und",
-        "offset": 710,
-        "context": "Rolle mehr. Ich habe das Foto einrahmen lassen, und es neben mein Bett gehängt. Manchmal gl",
-        "overlapping": []
-      },
-      {
-        "id": "dh-046",
-        "type": "comma_missing",
-        "original": "gewöhnungsbedürftiger als",
-        "correction": "gewöhnungsbedürftiger, als",
-        "offset": 56,
-        "context": "chottland, Teil 2  Der Linksverkehr ist gewöhnungsbedürftiger als ich dachte. Vor allem in Kreisverkehren",
-        "overlapping": []
-      },
-      {
-        "id": "dh-046",
-        "type": "comma_superfluous",
-        "original": "Handzeichen, und",
-        "correction": "Handzeichen und",
-        "offset": 530,
-        "context": "imischen bedanken sich mit einem kurzen Handzeichen, und fahren weiter.  Abends saßen wir in ein",
-        "overlapping": []
-      },
-      {
-        "id": "dh-047",
-        "type": "comma_superfluous",
-        "original": "Sicherheitsgründen, können",
-        "correction": "Sicherheitsgründen können",
-        "offset": 594,
-        "context": "ss Sie nirgendwo anders verwenden.  Aus Sicherheitsgründen, können unsere Mitarbeiter Ihr Passwort nicht t",
-        "overlapping": []
-      },
-      {
-        "id": "dh-047",
-        "type": "comma_superfluous",
-        "original": "uns, über",
-        "correction": "uns über",
-        "offset": 696,
-        "context": "ht telefonisch zurücksetzen. Wir freuen uns, über Ihr Feedback zu dieser Hilfeseite.",
-        "overlapping": []
-      },
-      {
-        "id": "dh-048",
-        "type": "comma_missing",
-        "original": "finden behandeln",
-        "correction": "finden, behandeln",
-        "offset": 316,
-        "context": "en Kamm.  Sollten Sie Läuse oder Nissen finden behandeln Sie diese bitte mit einem Mittel aus de",
-        "overlapping": []
-      },
-      {
-        "id": "dh-048",
-        "type": "comma_missing",
-        "original": "daran Mützen",
-        "correction": "daran, Mützen",
-        "offset": 661,
-        "context": " Homepage.  Bitte erinnern Sie Ihr Kind daran Mützen und Kämme nicht mit anderen zu teilen. ",
-        "overlapping": []
-      },
-      {
         "id": "dh-050",
         "type": "comma_missing",
         "original": "bestimmt die",
         "correction": "bestimmt, die",
         "offset": 110,
         "context": "nd ausschließlich für Mieter des Hauses bestimmt die einen gültigen Parkausweis besitzen. Wi",
-        "overlapping": []
-      },
-      {
-        "id": "dh-050",
-        "type": "comma_missing",
-        "original": "gestattet im",
-        "correction": "gestattet, im",
-        "offset": 466,
-        "context": " Fahrzeug nicht verlassen. Es ist nicht gestattet im Hof Fahrzeuge zu waschen oder Reparatur",
         "overlapping": []
       }
     ],
@@ -4447,7 +4888,17 @@
         "context": "Ihre Mithilfe!  Mit freundlichen Grüßen Die Klassenleitung der 2b"
       }
     ],
-    "duplicates": []
+    "duplicates": [
+      {
+        "id": "dh-047",
+        "ruleId": "SUBJUNKTION_KOMMA_2",
+        "offset": 57,
+        "length": 4,
+        "covered": "Wenn",
+        "replacements": [],
+        "class": "comma_missing"
+      }
+    ]
   },
   "raw": {
     "dh-001": [
@@ -4504,6 +4955,16 @@
         ]
       },
       {
+        "ruleId": "LTJS_KOMMA_UND_PRAEDIKAT",
+        "categoryId": "PUNCTUATION",
+        "offset": 665,
+        "length": 16,
+        "message": "Vor ‚und'/'oder‘ steht kein Komma, wenn der zweite Teil kein eigenes Subjekt hat.",
+        "replacements": [
+          "ausgeliehen und"
+        ]
+      },
+      {
         "ruleId": "RELATIVPRONOMEN_STATT_DASS",
         "categoryId": "CONFUSED_WORDS",
         "offset": 746,
@@ -4556,6 +5017,16 @@
         ]
       },
       {
+        "ruleId": "LTJS_KOMMA_NEBENSATZ",
+        "categoryId": "PUNCTUATION",
+        "offset": 333,
+        "length": 11,
+        "message": "Hier scheint ein Komma zu fehlen: ‚wie‘ leitet einen Nebensatz ein, der mit Komma abgetrennt wird.",
+        "replacements": [
+          "erklärt, wie"
+        ]
+      },
+      {
         "ruleId": "KOMMA_ZWISCHEN_HAUPT_UND_NEBENSATZ_2",
         "categoryId": "HILFESTELLUNG_KOMMASETZUNG",
         "offset": 591,
@@ -4593,6 +5064,16 @@
         "message": "Indirekte Fragen werden mit Komma vom Hauptsatz abgetrennt.",
         "replacements": [
           ", wer"
+        ]
+      },
+      {
+        "ruleId": "LTJS_KOMMA_NEBENSATZ",
+        "categoryId": "PUNCTUATION",
+        "offset": 332,
+        "length": 14,
+        "message": "Hier scheint ein Komma zu fehlen: ‚da‘ leitet einen Nebensatz ein, der mit Komma abgetrennt wird.",
+        "replacements": [
+          "einzubinden, da"
         ]
       },
       {
@@ -4703,6 +5184,16 @@
         "replacements": [
           "das"
         ]
+      },
+      {
+        "ruleId": "LTJS_KOMMA_UND_PRAEDIKAT",
+        "categoryId": "PUNCTUATION",
+        "offset": 772,
+        "length": 12,
+        "message": "Vor ‚und'/'oder‘ steht kein Komma, wenn der zweite Teil kein eigenes Subjekt hat.",
+        "replacements": [
+          "Scheibe und"
+        ]
       }
     ],
     "dh-006": [
@@ -4714,6 +5205,16 @@
         "message": "Folgt dem Doppelpunkt weder ein Substantiv noch eine wörtliche Rede oder ein vollständiger Hauptsatz, schreibt man klein weiter.",
         "replacements": [
           "von"
+        ]
+      },
+      {
+        "ruleId": "LTJS_KOMMA_NEBENSATZ",
+        "categoryId": "PUNCTUATION",
+        "offset": 151,
+        "length": 10,
+        "message": "Hier scheint ein Komma zu fehlen: ‚was‘ leitet einen Nebensatz ein, der mit Komma abgetrennt wird.",
+        "replacements": [
+          "Stunde, was"
         ]
       },
       {
@@ -4759,6 +5260,16 @@
         ]
       },
       {
+        "ruleId": "LTJS_KOMMA_VORFELD",
+        "categoryId": "PUNCTUATION",
+        "offset": 374,
+        "length": 18,
+        "message": "Hier scheint ein Komma zu fehlen: Der vorangestellte Nebensatz endet mit dem Verb, danach beginnt der Hauptsatz.",
+        "replacements": [
+          "vorliegen, erhalten"
+        ]
+      },
+      {
         "ruleId": "RELATIVPRONOMEN_STATT_DASS",
         "categoryId": "CONFUSED_WORDS",
         "offset": 590,
@@ -4801,6 +5312,36 @@
         ]
       },
       {
+        "ruleId": "LTJS_KOMMA_NEBENSATZ",
+        "categoryId": "PUNCTUATION",
+        "offset": 461,
+        "length": 9,
+        "message": "Hier scheint ein Komma zu fehlen: ‚damit‘ leitet einen Nebensatz ein, der mit Komma abgetrennt wird.",
+        "replacements": [
+          "ein, damit"
+        ]
+      },
+      {
+        "ruleId": "LTJS_KOMMA_RELATIVSATZ",
+        "categoryId": "PUNCTUATION",
+        "offset": 504,
+        "length": 10,
+        "message": "Hier scheint ein Komma zu fehlen: Ein Relativsatz wird mit Komma abgetrennt.",
+        "replacements": [
+          "Kinder, die"
+        ]
+      },
+      {
+        "ruleId": "LTJS_KOMMA_SUBJEKT_VERB",
+        "categoryId": "PUNCTUATION",
+        "offset": 625,
+        "length": 10,
+        "message": "Zwischen dem Satzglied vor dem Verb und dem Verb steht kein Komma.",
+        "replacements": [
+          "Euro muss"
+        ]
+      },
+      {
         "ruleId": "SUBJUNKTION_KOMMA",
         "categoryId": "PUNCTUATION",
         "offset": 912,
@@ -4812,6 +5353,26 @@
       }
     ],
     "dh-009": [
+      {
+        "ruleId": "LTJS_KOMMA_UND_PRAEDIKAT",
+        "categoryId": "PUNCTUATION",
+        "offset": 238,
+        "length": 12,
+        "message": "Vor ‚und'/'oder‘ steht kein Komma, wenn der zweite Teil kein eigenes Subjekt hat.",
+        "replacements": [
+          "waschen und"
+        ]
+      },
+      {
+        "ruleId": "LTJS_KOMMA_NEBENSATZ",
+        "categoryId": "PUNCTUATION",
+        "offset": 484,
+        "length": 10,
+        "message": "Hier scheint ein Komma zu fehlen: ‚bis‘ leitet einen Nebensatz ein, der mit Komma abgetrennt wird.",
+        "replacements": [
+          "lassen, bis"
+        ]
+      },
       {
         "ruleId": "LTJS_DAS_DASS_VERB",
         "categoryId": "GRAMMAR",
@@ -4862,6 +5423,16 @@
         ]
       },
       {
+        "ruleId": "LTJS_KOMMA_INFINITIV",
+        "categoryId": "PUNCTUATION",
+        "offset": 868,
+        "length": 11,
+        "message": "Hier scheint ein Komma zu fehlen: Die Infinitivgruppe hängt von einem Verweiswort oder Substantiv ab und wird mit Komma abgetrennt.",
+        "replacements": [
+          "hatten, sich"
+        ]
+      },
+      {
         "ruleId": "LTJS_DASS_STATT_DAS",
         "categoryId": "GRAMMAR",
         "offset": 982,
@@ -4884,6 +5455,16 @@
         ]
       },
       {
+        "ruleId": "LTJS_KOMMA_INFINITIV",
+        "categoryId": "PUNCTUATION",
+        "offset": 458,
+        "length": 14,
+        "message": "Hier scheint ein Komma zu fehlen: Die Infinitivgruppe hängt von einem Verweiswort oder Substantiv ab und wird mit Komma abgetrennt.",
+        "replacements": [
+          "Recht, Auskunft"
+        ]
+      },
+      {
         "ruleId": "RELATIVPRONOMEN_STATT_DASS",
         "categoryId": "CONFUSED_WORDS",
         "offset": 543,
@@ -4903,6 +5484,16 @@
           "ausübt, bleibt",
           "ausübt",
           "bleibt"
+        ]
+      },
+      {
+        "ruleId": "LTJS_KOMMA_SUBJEKT_VERB",
+        "categoryId": "PUNCTUATION",
+        "offset": 772,
+        "length": 23,
+        "message": "Zwischen dem Satzglied vor dem Verb und dem Verb steht kein Komma.",
+        "replacements": [
+          "Informationen erhalten"
         ]
       }
     ],
@@ -4936,6 +5527,16 @@
         "message": "Das Verb „ist“ kommt versehentlich doppelt vor. Oder fehlt vielleicht ein Komma?",
         "replacements": [
           ""
+        ]
+      },
+      {
+        "ruleId": "LTJS_KOMMA_UND_PRAEDIKAT",
+        "categoryId": "PUNCTUATION",
+        "offset": 356,
+        "length": 17,
+        "message": "Vor ‚und'/'oder‘ steht kein Komma, wenn der zweite Teil kein eigenes Subjekt hat.",
+        "replacements": [
+          "herausnehmen und"
         ]
       },
       {
@@ -5212,6 +5813,16 @@
     ],
     "dh-017": [
       {
+        "ruleId": "LTJS_KOMMA_NEBENSATZ",
+        "categoryId": "PUNCTUATION",
+        "offset": 209,
+        "length": 12,
+        "message": "Hier scheint ein Komma zu fehlen: ‚damit‘ leitet einen Nebensatz ein, der mit Komma abgetrennt wird.",
+        "replacements": [
+          "nennen, damit"
+        ]
+      },
+      {
         "ruleId": "LTJS_DAS_DASS_VERB",
         "categoryId": "GRAMMAR",
         "offset": 375,
@@ -5239,6 +5850,16 @@
         "message": "Meinten Sie das Pronomen ‚das‘? Der Satzteil nach ‚dass‘ hat kein Verb; ein Nebensatz mit ‚dass‘ braucht eines.",
         "replacements": [
           "das"
+        ]
+      },
+      {
+        "ruleId": "LTJS_KOMMA_UND_PRAEDIKAT",
+        "categoryId": "PUNCTUATION",
+        "offset": 867,
+        "length": 16,
+        "message": "Vor ‚und'/'oder‘ steht kein Komma, wenn der zweite Teil kein eigenes Subjekt hat.",
+        "replacements": [
+          "eingetragen und"
         ]
       }
     ],
@@ -5337,6 +5958,16 @@
         ]
       },
       {
+        "ruleId": "LTJS_KOMMA_NEBENSATZ",
+        "categoryId": "PUNCTUATION",
+        "offset": 336,
+        "length": 9,
+        "message": "Hier scheint ein Komma zu fehlen: ‚da‘ leitet einen Nebensatz ein, der mit Komma abgetrennt wird.",
+        "replacements": [
+          "werden, da"
+        ]
+      },
+      {
         "ruleId": "DE_CASE",
         "categoryId": "CASING",
         "offset": 407,
@@ -5416,6 +6047,26 @@
         "message": "Sowohl angehängte als auch eingeschobene Relativsätze werden durch Kommas vom Hauptsatz getrennt.",
         "replacements": [
           "hängen, auf die"
+        ]
+      },
+      {
+        "ruleId": "LTJS_KOMMA_NEBENSATZ",
+        "categoryId": "PUNCTUATION",
+        "offset": 432,
+        "length": 12,
+        "message": "Hier scheint ein Komma zu fehlen: ‚was‘ leitet einen Nebensatz ein, der mit Komma abgetrennt wird.",
+        "replacements": [
+          "schreibt, was"
+        ]
+      },
+      {
+        "ruleId": "LTJS_KOMMA_UND_PRAEDIKAT",
+        "categoryId": "PUNCTUATION",
+        "offset": 488,
+        "length": 8,
+        "message": "Vor ‚und'/'oder‘ steht kein Komma, wenn der zweite Teil kein eigenes Subjekt hat.",
+        "replacements": [
+          "ein und"
         ]
       },
       {
@@ -5625,6 +6276,16 @@
     "dh-025": [],
     "dh-026": [
       {
+        "ruleId": "LTJS_KOMMA_NEBENSATZ",
+        "categoryId": "PUNCTUATION",
+        "offset": 111,
+        "length": 7,
+        "message": "Hier scheint ein Komma zu fehlen: ‚wie‘ leitet einen Nebensatz ein, der mit Komma abgetrennt wird.",
+        "replacements": [
+          "ich, wie"
+        ]
+      },
+      {
         "ruleId": "DASS_MIT_VERB",
         "categoryId": "CONFUSED_WORDS",
         "offset": 197,
@@ -5735,6 +6396,16 @@
           "Wegzug",
           "Umrechnung"
         ]
+      },
+      {
+        "ruleId": "LTJS_KOMMA_VORFELD",
+        "categoryId": "PUNCTUATION",
+        "offset": 595,
+        "length": 14,
+        "message": "Hier scheint ein Komma zu fehlen: Der vorangestellte Nebensatz endet mit dem Verb, danach beginnt der Hauptsatz.",
+        "replacements": [
+          "besteht, melden"
+        ]
       }
     ],
     "dh-028": [],
@@ -5757,6 +6428,26 @@
         "message": "Meinten Sie die Konjunktion ‚dass‘? Nach ‚… ist,‘ steht hier vermutlich ein Nebensatz mit ‚dass‘.",
         "replacements": [
           "dass"
+        ]
+      },
+      {
+        "ruleId": "LTJS_KOMMA_UND_PRAEDIKAT",
+        "categoryId": "PUNCTUATION",
+        "offset": 463,
+        "length": 13,
+        "message": "Vor ‚und'/'oder‘ steht kein Komma, wenn der zweite Teil kein eigenes Subjekt hat.",
+        "replacements": [
+          "abgießen und"
+        ]
+      },
+      {
+        "ruleId": "LTJS_KOMMA_NEBENSATZ",
+        "categoryId": "PUNCTUATION",
+        "offset": 627,
+        "length": 10,
+        "message": "Hier scheint ein Komma zu fehlen: ‚damit‘ leitet einen Nebensatz ein, der mit Komma abgetrennt wird.",
+        "replacements": [
+          "dazu, damit"
         ]
       },
       {
@@ -5808,6 +6499,16 @@
         "message": "Wenn es sich hier um eine Infinitivgruppe (‚zu‘ + Grundform) handelt, muss in der Regel ein Komma gesetzt werden.",
         "replacements": [
           "auszuüben,"
+        ]
+      },
+      {
+        "ruleId": "LTJS_KOMMA_INFINITIV",
+        "categoryId": "PUNCTUATION",
+        "offset": 349,
+        "length": 17,
+        "message": "Hier scheint ein Komma zu fehlen: Die Infinitivgruppe hängt von einem Verweiswort oder Substantiv ab und wird mit Komma abgetrennt.",
+        "replacements": [
+          "Entschluss, diesen"
         ]
       },
       {
@@ -5908,6 +6609,16 @@
         "message": "Hier sollte ein Komma eingefügt werden, wenn es sich um einen Haupt- und Nebensatz oder zwei Hauptsätze handelt.",
         "replacements": [
           "mal, ob"
+        ]
+      },
+      {
+        "ruleId": "LTJS_KOMMA_UND_PRAEDIKAT",
+        "categoryId": "PUNCTUATION",
+        "offset": 516,
+        "length": 10,
+        "message": "Vor ‚und'/'oder‘ steht kein Komma, wenn der zweite Teil kein eigenes Subjekt hat.",
+        "replacements": [
+          "Karte und"
         ]
       },
       {
@@ -6022,6 +6733,16 @@
         "message": "Indirekte Fragen werden mit Komma vom Hauptsatz abgetrennt.",
         "replacements": [
           ", warum"
+        ]
+      },
+      {
+        "ruleId": "LTJS_KOMMA_NEBENSATZ",
+        "categoryId": "PUNCTUATION",
+        "offset": 324,
+        "length": 10,
+        "message": "Hier scheint ein Komma zu fehlen: ‚was‘ leitet einen Nebensatz ein, der mit Komma abgetrennt wird.",
+        "replacements": [
+          "müssen, was"
         ]
       },
       {
@@ -6226,6 +6947,16 @@
         ]
       },
       {
+        "ruleId": "LTJS_KOMMA_RELATIVSATZ",
+        "categoryId": "PUNCTUATION",
+        "offset": 633,
+        "length": 10,
+        "message": "Hier scheint ein Komma zu fehlen: Ein Relativsatz wird mit Komma abgetrennt.",
+        "replacements": [
+          "Kinder, die"
+        ]
+      },
+      {
         "ruleId": "RELATIVPRONOMEN_STATT_DASS",
         "categoryId": "CONFUSED_WORDS",
         "offset": 711,
@@ -6237,6 +6968,16 @@
       }
     ],
     "dh-039": [
+      {
+        "ruleId": "LTJS_KOMMA_UND_PRAEDIKAT",
+        "categoryId": "PUNCTUATION",
+        "offset": 239,
+        "length": 14,
+        "message": "Vor ‚und'/'oder‘ steht kein Komma, wenn der zweite Teil kein eigenes Subjekt hat.",
+        "replacements": [
+          "dazugeben und"
+        ]
+      },
       {
         "ruleId": "GERMAN_SPELLER_RULE",
         "categoryId": "TYPOS",
@@ -6284,6 +7025,16 @@
         "message": "Hier sollte ein Komma eingefügt werden, wenn es sich um einen Haupt- und Nebensatz oder zwei Hauptsätze handelt.",
         "replacements": [
           "rührt, weil"
+        ]
+      },
+      {
+        "ruleId": "LTJS_KOMMA_NEBENSATZ",
+        "categoryId": "PUNCTUATION",
+        "offset": 541,
+        "length": 10,
+        "message": "Hier scheint ein Komma zu fehlen: ‚bis‘ leitet einen Nebensatz ein, der mit Komma abgetrennt wird.",
+        "replacements": [
+          "warten, bis"
         ]
       },
       {
@@ -6482,6 +7233,16 @@
         ]
       },
       {
+        "ruleId": "LTJS_KOMMA_NEBENSATZ",
+        "categoryId": "PUNCTUATION",
+        "offset": 596,
+        "length": 10,
+        "message": "Hier scheint ein Komma zu fehlen: ‚wie‘ leitet einen Nebensatz ein, der mit Komma abgetrennt wird.",
+        "replacements": [
+          "lernen, wie"
+        ]
+      },
+      {
         "ruleId": "FEHLERHAFTES_KOMMA_ALLG",
         "categoryId": "HILFESTELLUNG_KOMMASETZUNG",
         "offset": 688,
@@ -6537,6 +7298,16 @@
         ]
       },
       {
+        "ruleId": "LTJS_KOMMA_RELATIVSATZ",
+        "categoryId": "PUNCTUATION",
+        "offset": 425,
+        "length": 9,
+        "message": "Hier scheint ein Komma zu fehlen: Ein Relativsatz wird mit Komma abgetrennt.",
+        "replacements": [
+          "Ortes, den"
+        ]
+      },
+      {
         "ruleId": "RELATIVPRONOMEN_STATT_DASS",
         "categoryId": "CONFUSED_WORDS",
         "offset": 502,
@@ -6545,9 +7316,29 @@
         "replacements": [
           "dass"
         ]
+      },
+      {
+        "ruleId": "LTJS_KOMMA_UND_PRAEDIKAT",
+        "categoryId": "PUNCTUATION",
+        "offset": 710,
+        "length": 11,
+        "message": "Vor ‚und'/'oder‘ steht kein Komma, wenn der zweite Teil kein eigenes Subjekt hat.",
+        "replacements": [
+          "lassen und"
+        ]
       }
     ],
     "dh-046": [
+      {
+        "ruleId": "LTJS_KOMMA_NEBENSATZ",
+        "categoryId": "PUNCTUATION",
+        "offset": 56,
+        "length": 25,
+        "message": "Hier scheint ein Komma zu fehlen: ‚als‘ leitet einen Nebensatz ein, der mit Komma abgetrennt wird.",
+        "replacements": [
+          "gewöhnungsbedürftiger, als"
+        ]
+      },
       {
         "ruleId": "LTJS_DAS_DASS_VERB",
         "categoryId": "GRAMMAR",
@@ -6594,6 +7385,16 @@
         ]
       },
       {
+        "ruleId": "LTJS_KOMMA_UND_PRAEDIKAT",
+        "categoryId": "PUNCTUATION",
+        "offset": 530,
+        "length": 16,
+        "message": "Vor ‚und'/'oder‘ steht kein Komma, wenn der zweite Teil kein eigenes Subjekt hat.",
+        "replacements": [
+          "Handzeichen und"
+        ]
+      },
+      {
         "ruleId": "LTJS_DASS_RELATIVPRONOMEN",
         "categoryId": "GRAMMAR",
         "offset": 660,
@@ -6628,6 +7429,16 @@
         "replacements": []
       },
       {
+        "ruleId": "LTJS_KOMMA_VORFELD",
+        "categoryId": "PUNCTUATION",
+        "offset": 89,
+        "length": 13,
+        "message": "Hier scheint ein Komma zu fehlen: Der vorangestellte Nebensatz endet mit dem Verb, danach beginnt der Hauptsatz.",
+        "replacements": [
+          "haben, klicken"
+        ]
+      },
+      {
         "ruleId": "RELATIVPRONOMEN_STATT_DASS",
         "categoryId": "CONFUSED_WORDS",
         "offset": 272,
@@ -6656,6 +7467,26 @@
         "replacements": [
           "das"
         ]
+      },
+      {
+        "ruleId": "LTJS_KOMMA_SUBJEKT_VERB",
+        "categoryId": "PUNCTUATION",
+        "offset": 594,
+        "length": 26,
+        "message": "Zwischen dem Satzglied vor dem Verb und dem Verb steht kein Komma.",
+        "replacements": [
+          "Sicherheitsgründen können"
+        ]
+      },
+      {
+        "ruleId": "LTJS_KOMMA_PRAEPOSITIONALOBJEKT",
+        "categoryId": "PUNCTUATION",
+        "offset": 696,
+        "length": 9,
+        "message": "Vor dem Präpositionalobjekt mit ‚über‘ steht kein Komma.",
+        "replacements": [
+          "uns über"
+        ]
       }
     ],
     "dh-048": [
@@ -6667,6 +7498,16 @@
         "message": "Meinten Sie die Konjunktion ‚dass‘? Nach ‚mitteilen‘ folgt hier vermutlich ein mit ‚dass‘ eingeleiteter Nebensatz.",
         "replacements": [
           "dass"
+        ]
+      },
+      {
+        "ruleId": "LTJS_KOMMA_VORFELD",
+        "categoryId": "PUNCTUATION",
+        "offset": 316,
+        "length": 16,
+        "message": "Hier scheint ein Komma zu fehlen: Der vorangestellte Nebensatz endet mit dem Verb, danach beginnt der Hauptsatz.",
+        "replacements": [
+          "finden, behandeln"
         ]
       },
       {
@@ -6720,6 +7561,16 @@
         ]
       },
       {
+        "ruleId": "LTJS_KOMMA_INFINITIV",
+        "categoryId": "PUNCTUATION",
+        "offset": 661,
+        "length": 12,
+        "message": "Hier scheint ein Komma zu fehlen: Die Infinitivgruppe hängt von einem Verweiswort oder Substantiv ab und wird mit Komma abgetrennt.",
+        "replacements": [
+          "daran, Mützen"
+        ]
+      },
+      {
         "ruleId": "DE_CASE",
         "categoryId": "CASING",
         "offset": 769,
@@ -6760,6 +7611,16 @@
         "message": "Hier scheint ein Komma zu fehlen.",
         "replacements": [
           ", sofern"
+        ]
+      },
+      {
+        "ruleId": "LTJS_KOMMA_INFINITIV",
+        "categoryId": "PUNCTUATION",
+        "offset": 466,
+        "length": 12,
+        "message": "Hier scheint ein Komma zu fehlen: Die Infinitivgruppe hängt von einem Verweiswort oder Substantiv ab und wird mit Komma abgetrennt.",
+        "replacements": [
+          "gestattet, im"
         ]
       },
       {

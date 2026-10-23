@@ -832,14 +832,14 @@ function isMainClauseVerb(t) {
   return isFiniteVerb(t) && isLowerCase(t) && !hasTag(t, /^(ART|PRO|ADJ|ADV|SUB|PRP|KON|ZAL)/);
 }
 
-// rule ids of the layer for German (registered for switching the layer off per request)
-export const LTJS_GERMAN_RULE_IDS = Object.freeze([
+// rule ids of the LTJS das/dass rules for German
+export const LTJS_DAS_DASS_RULE_IDS = Object.freeze([
   'LTJS_DAS_DAS', 'LTJS_DAS_DASS_VERB', 'LTJS_DAS_DASS_NOMEN', 'LTJS_DAS_DASS_ADJ', 'LTJS_SO_ADJ_DASS', 'LTJS_SODASS',
   'LTJS_DASS_SATZANFANG', 'LTJS_DASS_RELATIVPRONOMEN', 'LTJS_DAS_DASS_KOMMA', 'LTJS_OHNE_DASS', 'LTJS_DASS_STATT_DAS',
 ]);
 
-// the LTJS rules for German (appended to German#getRelevantRules when the layer is on)
-export function getLtjsGermanRules(messages, language) {
+// the LTJS das/dass rules for German
+export function getLtjsGermanDasDassRules(messages, language) {
   return [ // equal matches of two rules: the later rule wins (CleanOverlappingFilter), so the generic rules come first
     new LtjsDasDassCommaRule(messages, language),
     new LtjsDasDasRule(messages, language),
