@@ -17,16 +17,16 @@ Language packages have `@valueerror/ltjs-core` as peer dependency, core lists th
 
 ```
 # resources/ is committed; npm run resources:update -- --java <LanguageTool checkout> refreshes it
-npm run build         # dist/packages/<name>/ and dist/tarballs/valueerror-ltjs-<name>-0.1.0.tgz
+npm run build         # dist/packages/<name>/ and dist/tarballs/valueerror-ltjs-<name>-0.1.1.tgz
 npm run smoke:packages
 ```
 
 Install into an application (core plus the languages you need):
 
 ```
-npm install ./valueerror-ltjs-core-0.1.0.tgz ./valueerror-ltjs-lang-de-0.1.0.tgz ./valueerror-ltjs-lang-en-0.1.0.tgz
+npm install ./valueerror-ltjs-core-0.1.1.tgz ./valueerror-ltjs-lang-de-0.1.1.tgz ./valueerror-ltjs-lang-en-0.1.1.tgz
 # optional: Austrian / Swiss German
-npm install ./valueerror-ltjs-lang-de-at-0.1.0.tgz ./valueerror-ltjs-lang-de-ch-0.1.0.tgz
+npm install ./valueerror-ltjs-lang-de-at-0.1.1.tgz ./valueerror-ltjs-lang-de-ch-0.1.1.tgz
 ```
 
 Language discovery: when `@valueerror/ltjs-core` is loaded, `src/lang/register.js` tries `import('@valueerror/ltjs-lang-<code>')` for the nine

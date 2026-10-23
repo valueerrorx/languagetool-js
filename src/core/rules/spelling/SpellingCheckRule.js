@@ -15,7 +15,7 @@ import { isMixedCase, uppercaseFirstChar } from '../../text/StringTools.js';
 import { Pattern } from '../../../lib/java/regex/index.js';
 import { Locale } from '../../../lib/java/Locale.js';
 import { binarySearch, listGet } from '../../../lib/java/arrays.js';
-import { commonPrefix } from '../../../lib/java/Strings.js';
+import { commonPrefix } from '../../../lib/guava/Strings.js';
 import { AbstractMethodError, RuntimeException, IOException, IllegalStateException } from '../../../lib/java/errors.js';
 import { CASE_INSENSITIVE_ORDER, javaCompare, javaSplit, javaTrim, toLowerCase } from '../../../lib/java/strings.js';
 

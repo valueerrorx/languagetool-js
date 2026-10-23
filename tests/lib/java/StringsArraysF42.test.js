@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { binarySearch } from '../../../src/lib/java/arrays.js';
-import { commonPrefix } from '../../../src/lib/java/Strings.js';
+import { commonPrefix } from '../../../src/lib/guava/Strings.js';
 import { javaCompare } from '../../../src/lib/java/strings.js';
 
 describe('Arrays#binarySearch(T[],T,Comparator)', () => {

@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const TARBALLS = path.join(ROOT, 'dist/tarballs');
 const PORT = 19890;
-const tgz = (n) => path.join(TARBALLS, readdirSync(TARBALLS).find((f) => f === `valueerror-ltjs-${n}-0.1.0.tgz`) ?? `missing-${n}`);
+const tgz = (n) => path.join(TARBALLS, readdirSync(TARBALLS).find((f) => f === `valueerror-ltjs-${n}-0.1.1.tgz`) ?? `missing-${n}`);
 
 const dir = mkdtempSync(path.join(tmpdir(), 'ltjs-smoke-'));
 const dir2 = mkdtempSync(path.join(tmpdir(), 'ltjs-smoke-variants-'));

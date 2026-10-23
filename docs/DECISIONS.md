@@ -78,3 +78,5 @@ Format: D-nnn | date | decision
 - D-064 | 2026-10-23 | User: LT-JS code is licensed GPL-3.0-or-later (LGPL-2.1 §3 conversion of the LanguageTool code). Dictionary/data licenses stay unchanged. Repo is published publicly on GitHub as valueerrorx/languagetool-js.
 - D-065 | 2026-10-23 | User: publish on npm under the user's own scope: @valueerror/ltjs-core and @valueerror/ltjs-lang-<code> (replaces @ltjs/*). Publishing itself is done by the user (npm login).
 - D-066 | 2026-10-23 | User: German variants as separate npm packages: @valueerror/ltjs-lang-de (de, de-DE and shared data) plus optional @valueerror/ltjs-lang-de-at and @valueerror/ltjs-lang-de-ch (variant dictionaries). Results with all installed stay identical; dev repo layout unchanged.
+- D-067 | 2026-10-23 | User: hotfix 0.1.1 for the case collision src/lib/java/Strings.js vs strings.js (Guava helper moved to src/lib/guava/Strings.js, build guard against case-only path collisions); commit and publish 0.1.1 by Claude.
+- D-068 | 2026-10-23 | User: the NaN bit pattern is not observable; StrictMath tests compare NaN results with isNaN instead of raw bits (macOS gives 7ff8..., Linux golden fff8...).

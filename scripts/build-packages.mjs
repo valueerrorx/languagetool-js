@@ -10,7 +10,7 @@ const RES = path.join(ROOT, 'resources');
 const DIST = path.join(ROOT, 'dist');
 const PKGS = path.join(DIST, 'packages');
 const TARBALLS = path.join(DIST, 'tarballs');
-const VERSION = '0.1.0';
+const VERSION = '0.1.1';
 const CODES = ['de', 'en', 'es', 'fr', 'it', 'pl', 'ru', 'sk', 'sl'];
 const NAMES = { de: 'German', en: 'English', es: 'Spanish', fr: 'French', it: 'Italian', pl: 'Polish', ru: 'Russian', sk: 'Slovak', sl: 'Slovenian' };
 // German variant packages (D-066): only the variant dictionaries/word lists/rules; the classes stay in lang-de, the variant is listed by its own language-module.properties
@@ -88,6 +88,22 @@ function dictLicenseSummary(jar) {
   return m ? `${m[1].trim()} (${m[2].trim()})` : 'see the pom';
 }
 
+// fails the build when paths differ only by case (they overwrite each other on macOS/Windows)
+function assertNoCaseCollisions(label, paths) {
+  const seen = new Map();
+  const bad = [];
+  for (const p of paths) {
+    const k = p.toLowerCase();
+    if (seen.has(k) && seen.get(k) !== p) bad.push(`${seen.get(k)} <-> ${p}`);
+    else seen.set(k, p);
+  }
+  if (bad.length) {
+    console.error(`case-only path collisions in ${label}:\n  ${bad.join('\n  ')}`);
+    process.exit(1);
+  }
+}
+
+assertNoCaseCollisions('git ls-files', execFileSync('git', ['ls-files'], { cwd: ROOT, encoding: 'utf8', maxBuffer: 1 << 28 }).split('\n').filter(Boolean));
 rmSync(DIST, { recursive: true, force: true });
 mkdirSync(PKGS, { recursive: true });
 mkdirSync(TARBALLS, { recursive: true });
@@ -332,6 +348,7 @@ ${READMEFOOT}`);
 
 // ---- npm pack
 const sizes = [];
+for (const d of readdirSync(PKGS)) assertNoCaseCollisions(`package ${d}`, walk(path.join(PKGS, d)).map(([rel]) => rel));
 for (const name of ['core', ...CODES.map((c) => `lang-${c}`), ...VARIANT_CODES.map((c) => `lang-${c}`)]) {
   const dir = path.join(PKGS, name);
   execFileSync('npm', ['pack', '--pack-destination', TARBALLS, '--silent'], { cwd: dir, stdio: ['ignore', 'pipe', 'inherit'] });
