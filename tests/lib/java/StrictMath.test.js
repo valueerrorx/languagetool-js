@@ -31,7 +31,7 @@ describe('StrictMath fdlibm port (S04)', () => {
     expect(StrictMath.sin(1e22)).toBe(-0.8522008497671888);
     expect(StrictMath.cos(0.1)).toBe(0.9950041652780257);
     expect(StrictMath.pow(10, 23)).toBe(9.999999999999999e22);
-    expect(bits(StrictMath.pow(1, Infinity))).toBe('fff8000000000000');
+    expect(Number.isNaN(StrictMath.pow(1, Infinity))).toBe(true); // NaN bits not observable (D-068)
     expect(StrictMath.atan2(1e22, -1)).toBe(1.5707963267948968);
     expect(StrictMath.hypot(3, 4)).toBe(5);
     expect(StrictMath.cbrt(27)).toBe(3);
@@ -51,7 +51,7 @@ describe('Math intrinsics model (S04)', () => {
     expect(JMath.tan(1e22)).toBe(-1.6287782256068988);
     expect(libm.sin(-1)).toBe(-0.8414709848078965);
     expect(libm.log(0)).toBe(-Infinity);
-    expect(bits(libm.log(-1))).toBe('fff8000000000000');
+    expect(Number.isNaN(libm.log(-1))).toBe(true); // NaN bits not observable (D-068)
   });
 });
 
