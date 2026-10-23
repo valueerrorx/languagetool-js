@@ -14,6 +14,10 @@ Decisions: docs/DECISIONS.md. Approved deviations: docs/DEVIATIONS.md. Review no
 - Run (env D-018: `TZ=Europe/Vienna`, `-Duser.language=en -Duser.country=US -Dfile.encoding=UTF-8`): CLI `java -jar $LT/languagetool-commandline.jar -l de-DE <file>`; server `cd $LT && java -cp languagetool-server.jar org.languagetool.server.HTTPServer --port 8081`. Never use the Maven runtime classpath (registers test language xx).
 - Tests: `JAVA_HOME=/usr/lib/jvm/java-17-openjdk mvn -B test -pl <module>` (e.g. languagetool-core, languagetool-language-modules/de), `-Dtest=Class`. Baseline: core 300/0F, cli 46/0F, server 69/0F.
 
+## Privacy and network (user rule, 2026-10-23)
+- Never put personal data (email, name, paths with user names, tokens) into any network request, header, URL or payload. Applies to every agent.
+- Agents do no web downloads unless the user explicitly asks for that specific download.
+
 ## Target stack
 - JavaScript (ES modules), Node.js 24
 - Target runtime: Express server + CLI (D-004)
