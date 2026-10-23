@@ -155,3 +155,15 @@ LTJS_CASE='<regex>' npm run parity -- <ID>  # einzelner Fall
 ## Lizenz
 
 LT-JS steht unter GPL-3.0-or-later (siehe `LICENSE`). Es basiert auf LanguageTool (LGPL-2.1-or-later, Umstellung nach §3 der LGPL-2.1). Die Wörterbuch- und Sprachdaten behalten ihre eigenen Lizenzen (Ordner `licenses/` der Pakete).
+
+## Ressourcen aktualisieren
+
+Das Verzeichnis `resources/` (Regeln, Wörterbücher, Modelle) ist im Repository enthalten. Zum Ausführen von LT-JS wird daher kein Java und kein LanguageTool-Checkout benötigt.
+
+Wenn LanguageTool (Java) verbessert wurde, werden die Daten so übernommen:
+
+```
+npm run resources:update -- --java /pfad/zu/languagetool [--build]
+```
+
+Ohne `--java` gelten die Umgebungsvariable `LTJS_JAVA_SRC`, dann `oracle/java-src`. Mit `--build` wird vorher per Maven gebaut (JDK 17 und `mvn` nötig). Das Skript erzeugt `resources/` neu, zeigt hinzugefügte, entfernte und geänderte Dateien je Sprache und warnt vor Java-Klassen (z. B. Filter in `grammar.xml`), die in LT-JS nicht portiert sind. Danach `npm test` und `LTJS_CASE=<id> npm run parity` ausführen. Die Golden-Fixtures stammen vom festgelegten Java-Commit, Abweichungen nach einem Update sind erwartet.

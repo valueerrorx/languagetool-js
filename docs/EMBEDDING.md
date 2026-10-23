@@ -15,7 +15,7 @@ Language packages have `@ltjs/core` as peer dependency, core lists them as optio
 ## Build and install
 
 ```
-npm run resources     # once, needs oracle/java-src (see docs/inventory/BUILD.md)
+# resources/ is committed; npm run resources:update -- --java <LanguageTool checkout> refreshes it
 npm run build         # dist/packages/<name>/ and dist/tarballs/ltjs-<name>-0.1.0.tgz
 npm run smoke:packages
 ```
