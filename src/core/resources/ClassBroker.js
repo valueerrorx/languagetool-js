@@ -35,6 +35,15 @@ export function hasClass(fqcn) {
   return registry.has(fqcn);
 }
 
+// returns classes registered under an FQCN prefix (no Language import → no cycle); Languages filters instanceof
+export function getRegisteredClassesWithPrefix(prefix) {
+  const out = [];
+  for (const [fqcn, cls] of registry) {
+    if (fqcn.startsWith(prefix)) out.push(cls);
+  }
+  return out;
+}
+
 // Java: Class#getConstructors(); a class declares them in static JAVA_CONSTRUCTORS ({params, text}), default is one public no-arg constructor
 export function getConstructors(cls) {
   if (Object.hasOwn(cls, 'JAVA_CONSTRUCTORS')) return cls.JAVA_CONSTRUCTORS;

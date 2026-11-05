@@ -1,11 +1,11 @@
 // Java: org.languagetool.language.identifier.detector.CommonWordsDetector (all distribution languages, D-051/DEV-008)
-import { existsSync, readFileSync } from 'node:fs';
 import { isSpaceChar } from '../../../../lib/java/Character.js';
 import { IOException } from '../../../../lib/java/errors.js';
 import { decodeUtf8, scannerLines } from '../../../../lib/java/io.js';
 import { Pattern } from '../../../../lib/java/regex/index.js';
 import { javaMatches, toLowerCase } from '../../../../lib/java/strings.js';
 import { getDataBroker } from '../../../resources/LtStatics.js';
+import { getResourceAsStream } from '../../../resources/ResourceDataBroker.js';
 import { getAll, getLanguageForShortCode } from '../DetectionLanguages.js';
 
 let word2langs = null; // Java: static Map<String, List<Language>> word2langs (filled once)
@@ -53,10 +53,12 @@ export class CommonWordsDetector {
       if (path !== null) {
         if (dataBroker.resourceExists(path)) {
           stream = dataBroker.getFromResourceDirAsStream(path);
-        } else if (existsSync(path)) {
-          stream = readFileSync(path);
         } else {
-          throw new IOException(`Common words file not found for ${lang}: ${path}`);
+          // the Java fs fallback read the same class-path name from disk; the broker resolves it identically
+          stream = getResourceAsStream(dataBroker.getCompleteResourceUrl(path));
+          if (stream === null) {
+            throw new IOException(`Common words file not found for ${lang}: ${path}`);
+          }
         }
       } else {
         if (!javaMatches(lang.getShortCode(), 'ja|km')) {

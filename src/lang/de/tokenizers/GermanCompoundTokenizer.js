@@ -1,8 +1,8 @@
 // Java: org.languagetool.tokenizers.de.GermanCompoundTokenizer (split German nouns using jwordsplitter)
 import { GermanWordSplitter } from '../../../lib/wordsplitter/GermanWordSplitter.js';
 import { getWords } from '../../../lib/wordsplitter/EmbeddedGermanDictionary.js';
-import { readFileSync, existsSync } from 'node:fs';
 import { readerLines } from '../../../lib/java/io.js';
+import { addResourceRoot, getResourceAsStream } from '../../../core/resources/ResourceDataBroker.js';
 import { MalformedInputException } from '../../../lib/java/errors.js';
 import { InputTooLongException } from '../../../lib/wordsplitter/InputTooLongException.js';
 
@@ -300,11 +300,15 @@ export class GermanCompoundTokenizer {
       return;
     }
     const tokenizer = new GermanCompoundTokenizer();
-    if (existsSync(args[0])) {
+    // the file argument is read through the resource broker (its directory becomes a resource root)
+    const slash = args[0].lastIndexOf('/');
+    addResourceRoot(slash < 0 ? '.' : args[0].slice(0, slash));
+    const fileBytes = getResourceAsStream(slash < 0 ? `/${args[0]}` : `/${args[0].slice(slash + 1)}`);
+    if (fileBytes !== null) {
       println(`Working on lines from ${args[0]}:`);
       let text;
       try {
-        text = new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(readFileSync(args[0]));
+        text = new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(fileBytes);
       } catch (e) {
         if (e instanceof TypeError) throw new MalformedInputException('Input length = 1');
         throw e;

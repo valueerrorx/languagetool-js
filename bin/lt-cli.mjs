@@ -30,7 +30,7 @@ function uncaught(e) {
 configureLogging('cli'); // logback.xml of the commandline jar
 
 try {
-  Main.main(process.argv.slice(2));
+  await Main.main(process.argv.slice(2));
 } catch (e) {
   uncaught(e);
 }

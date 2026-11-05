@@ -1,5 +1,5 @@
 // java.io.File (Unix path semantics: normalisation, name/parent, absolute path against user.dir).
-import { existsSync } from 'node:fs';
+import { getResource } from '../../../core/resources/ResourceDataBroker.js';
 import { NullPointerException } from '../errors.js';
 
 // Java: UnixFileSystem#normalize(String)
@@ -79,7 +79,9 @@ export class File {
 
   // Java: File#exists()
   exists() {
-    return existsSync(this.path === '' ? '' : this.path);
+    if (this.path === '') return false; // java.io.File("") is the user dir, which is not a broker resource
+    const name = this.path.startsWith('/') ? this.path : `/${this.path}`;
+    return getResource(name) !== null;
   }
 
   // Java: File#toString()

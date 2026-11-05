@@ -1227,8 +1227,8 @@ export class JLanguageTool {
   }
 
   // Java: JLanguageTool#removeTemporaryFiles()
-  static removeTemporaryFiles() {
-    removeTemporaryFiles();
+  static async removeTemporaryFiles() {
+    await removeTemporaryFiles();
   }
 
   // Java: JLanguageTool#applyCustomFilters(List,AnnotatedText)

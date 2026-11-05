@@ -131,10 +131,10 @@ export class Main {
   }
 
   // Java: Main#cleanUp()
-  cleanUp() {
+  async cleanUp() {
     this.lt.shutdown();
     if (this.srcLt !== null) this.srcLt.shutdown();
-    JLanguageTool.removeTemporaryFiles();
+    await JLanguageTool.removeTemporaryFiles();
   }
 
   // Java: Main#setProfilingMode()
@@ -412,7 +412,7 @@ export class Main {
   }
 
   // Java: Main#main(String[])
-  static main(args) {
+  static async main(args) {
     const commandLineParser = new CommandLineParser();
     let options = null;
     try {
@@ -504,7 +504,7 @@ export class Main {
     } else {
       prg.runOnFile(options.getFilename(), options.getEncoding(), options.isXmlFiltering());
     }
-    prg.cleanUp();
+    await prg.cleanUp();
   }
 
   // Java: Main#printLanguages()

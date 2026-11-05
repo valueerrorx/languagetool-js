@@ -1,5 +1,7 @@
 // Lazy loaders for the generated JDK 17 (Unicode 13) tables in this directory (scripts/gen-unicode-tables.mjs).
-import { readFileSync } from 'node:fs';
+import { addResourceRoot, getResourceAsStream } from '../../../core/resources/ResourceDataBroker.js';
+
+addResourceRoot(new URL('.', import.meta.url)); // the *.json tables live next to this module, not under resources/
 
 const cache = new Map();
 
@@ -7,7 +9,9 @@ const cache = new Map();
 export function loadJson(name) {
   let t = cache.get(name);
   if (t === undefined) {
-    t = JSON.parse(readFileSync(new URL(`./${name}.json`, import.meta.url), 'utf8'));
+    const bytes = getResourceAsStream(`/${name}.json`);
+    if (bytes === null) throw new Error(`ENOENT: no such file or directory, open './${name}.json'`);
+    t = JSON.parse(new TextDecoder('utf-8').decode(bytes));
     cache.set(name, t);
   }
   return t;

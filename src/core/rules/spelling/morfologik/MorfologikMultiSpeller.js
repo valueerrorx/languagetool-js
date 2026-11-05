@@ -1,5 +1,4 @@
 // Java: org.languagetool.rules.spelling.morfologik.MorfologikMultiSpeller
-import { existsSync, readFileSync } from 'node:fs';
 import { CFSA2Serializer } from '../../../../lib/fsa/CFSA2Serializer.js';
 import { Dictionary } from '../../../../lib/fsa/DictionaryLookup.js';
 import { FSABuilder, LEXICAL_ORDERING } from '../../../../lib/fsa/FSABuilder.js';
@@ -332,7 +331,7 @@ export class MorfologikMultiSpeller {
     linesCopy.sort(LEXICAL_ORDERING);
     const fsa = FSABuilder.build(linesCopy);
     const fsaBytes = new CFSA2Serializer().serialize(fsa);
-    const metadata = existsSync(infoPath) ? readFileSync(infoPath) : getDataBroker().getFromResourceDirAsStream(infoPath);
+    const metadata = getDataBroker().getFromResourceDirAsStream(infoPath);
     const dict = Dictionary.readImages(fsaBytes, metadata);
     if (!isUserDict) {
       dicPathToDict.set(cacheKey, dict);

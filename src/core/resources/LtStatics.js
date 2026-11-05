@@ -1,5 +1,4 @@
 // Static members of JLanguageTool for resources: data/class broker, password authenticator switch, temporary files, message bundles.
-import { rmdirSync, unlinkSync } from 'node:fs';
 import { DefaultResourceDataBroker } from './ResourceDataBroker.js';
 import { DefaultClassBroker } from './ClassBroker.js';
 
@@ -46,7 +45,9 @@ export function addTemporaryFile(file) {
 }
 
 // Java: JLanguageTool#removeTemporaryFiles() (file = path string or object with delete())
-export function removeTemporaryFiles() {
+export async function removeTemporaryFiles() {
+  // lazily docked: temp-file cleanup only runs from the cli/server, never on the check() path
+  const { rmdirSync, unlinkSync } = await import('node:fs');
   for (const file of temporaryFiles) {
     if (typeof file === 'string') {
       try { unlinkSync(file); } catch { try { rmdirSync(file); } catch { /* File.delete() returns false */ } }

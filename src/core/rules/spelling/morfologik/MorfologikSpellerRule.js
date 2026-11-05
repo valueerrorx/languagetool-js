@@ -17,7 +17,6 @@ import { Locale } from '../../../../lib/java/Locale.js';
 import { AbstractMethodError, IOException, RuntimeException } from '../../../../lib/java/errors.js';
 import { containsAny } from '../../../../lib/java/StringUtils.js';
 import { charAt, equalsIgnoreCase, javaSplit, javaTrim, substring, toLowerCase } from '../../../../lib/java/strings.js';
-import { existsSync } from 'node:fs';
 
 // do not use very frequent words in split word suggestions ex. to *thow != tot how
 const MAX_FREQUENCY_FOR_SPLITTING = 21; // 0..21
@@ -240,7 +239,7 @@ export class MorfologikSpellerRule extends SpellingCheckRule {
       return;
     }
     let binaryDict = null;
-    if (getDataBroker().resourceExists(this.getFileName()) || existsSync(this.getFileName())) {
+    if (getDataBroker().resourceExists(this.getFileName())) {
       binaryDict = this.getFileName();
     }
     if (binaryDict === null) {

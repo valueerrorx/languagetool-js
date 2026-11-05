@@ -54,21 +54,187 @@ function readResourceFile(file) {
   return readFileSync(file);
 }
 
-// maps a classpath resource name (no leading slash) to a file below the resources root, or null
-function locateIn(root, name, copy) {
-  const base = copy === 0 ? root : path.join(root, '.dup', String(copy));
-  const f = path.resolve(base, name);
-  if (f !== base && !f.startsWith(base + path.sep)) return null;
-  return existsSync(f) ? f : null;
+// synchronous resource backend: reads by class-path resource name (relative, no leading slash) —
+//   read(name) -> Buffer/Uint8Array or null, isDirectory(name) -> boolean, readDirectory(name) -> string[] or null.
+// Node uses the FsResourceBackend below; the browser uses a MemoryResourceBackend filled eagerly by
+// preloadResources() before any check, because the core reads resources synchronously.
+
+// fs-backed sync resource backend (the default): locates class-path names below the resource roots
+// (first root wins; copy N of a file lives below <root>/.dup/N) and reads bytes synchronously
+export class FsResourceBackend {
+  // maps a classpath resource name (no leading slash) to a file below the resources root, or null
+  locateIn(root, name, copy) {
+    const base = copy === 0 ? root : path.join(root, '.dup', String(copy));
+    const f = path.resolve(base, name);
+    if (f !== base && !f.startsWith(base + path.sep)) return null;
+    return existsSync(f) ? f : null;
+  }
+
+  // first root that holds the resource (copy 0)
+  locate(name) {
+    for (const root of resourceRoots) {
+      const f = this.locateIn(root, name, 0);
+      if (f !== null) return f;
+    }
+    return null;
+  }
+
+  // backend: reads a resource by class-path name (Buffer, or null when absent)
+  read(name) {
+    const f = this.locate(name);
+    return f === null ? null : readResourceFile(f);
+  }
+
+  // backend: is the class-path name a directory below some root?
+  isDirectory(name) {
+    for (const root of resourceRoots) {
+      const f = this.locateIn(root, name, 0);
+      if (f !== null) return statSync(f).isDirectory();
+    }
+    return false;
+  }
+
+  // backend: entry names of a class-path directory, or null
+  readDirectory(name) {
+    for (const root of resourceRoots) {
+      const f = this.locateIn(root, name, 0);
+      if (f !== null) return statSync(f).isDirectory() ? readdirSync(f) : null;
+    }
+    return null;
+  }
+
+  // Java: ClassLoader#getResource (file based)
+  getUrl(name) {
+    const f = this.locate(name);
+    return f === null ? null : new ResourceUrl(f);
+  }
+
+  // Java: ClassLoader#getResources (all roots, byte-exact copies 0..n)
+  getUrls(name) {
+    const out = [];
+    for (const root of resourceRoots) {
+      for (let copy = 0; ; copy++) {
+        const f = this.locateIn(root, name, copy);
+        if (f === null) break;
+        out.push(new ResourceUrl(f));
+      }
+    }
+    return out;
+  }
 }
 
-// first root that holds the resource (copy 0)
-function locate(name) {
-  for (const root of resourceRoots) {
-    const f = locateIn(root, name, 0);
-    if (f !== null) return f;
+// resource URL of the memory store: identifier = class-path name, bytes served from the owning backend
+class MemoryResourceUrl {
+  constructor(name, backend) {
+    this.name = name;
+    this.backend = backend;
   }
-  return null;
+
+  // Java: URL#toString()
+  toString() {
+    return `memory:${this.name}`;
+  }
+
+  // Java: URL#getPath()
+  getPath() {
+    return this.name;
+  }
+
+  // Java: URL#openStream()
+  openStream() {
+    return this.backend.read(this.name);
+  }
+}
+
+// in-memory sync resource backend (the browser path): file bytes and explicit directory listings,
+// keyed by class-path resource name; populate via set()/setDirectory() or preloadResources()
+export class MemoryResourceBackend {
+  constructor() {
+    this.files = new Map(); // class-path name -> Uint8Array
+    this.directoryEntries = new Map(); // class-path directory name -> entry names
+  }
+
+  // stores the bytes of a file under a class-path resource name
+  set(name, bytes) {
+    this.files.set(name, bytes);
+  }
+
+  // stores the explicit directory listing of a class-path directory (entry names as given)
+  setDirectory(name, entries) {
+    this.directoryEntries.set(name, entries);
+  }
+
+  // backend: reads a resource by class-path name (Buffer/Uint8Array, or null when absent)
+  read(name) {
+    if (this.files.has(name)) return this.files.get(name);
+    const entries = this.directoryEntries.get(name);
+    return entries === undefined ? null : Buffer.from(entries.map((n) => `${n}\n`).join(''), 'utf8');
+  }
+
+  // backend: is the class-path name a directory?
+  isDirectory(name) {
+    return this.directoryEntries.has(name);
+  }
+
+  // backend: entry names of a class-path directory, or null
+  readDirectory(name) {
+    return this.directoryEntries.get(name) ?? null;
+  }
+
+  // Java: ClassLoader#getResource
+  getUrl(name) {
+    return this.files.has(name) || this.directoryEntries.has(name) ? new MemoryResourceUrl(name, this) : null;
+  }
+
+  // Java: ClassLoader#getResources
+  getUrls(name) {
+    const url = this.getUrl(name);
+    return url === null ? [] : [url];
+  }
+}
+
+let fsBackend = null; // the shared default (file system) backend
+let current = null; // the active sync resource backend (null = the default fs backend)
+
+// the default fs backend; addResourceRoot always targets it, even while another backend is active
+function defaultFsBackend() {
+  if (fsBackend === null) fsBackend = new FsResourceBackend();
+  return fsBackend;
+}
+
+// the active sync resource backend (defaults to the fs backend)
+function currentBackend() {
+  return current === null ? defaultFsBackend() : current;
+}
+
+// swaps the active sync resource backend (tests; the browser installs the preloaded memory store)
+export function setResourceBackend(backend) {
+  current = backend;
+}
+
+// restores the default fs backend as the active sync resource backend
+export function resetToFsBackend() {
+  current = null;
+}
+
+/**
+ * Preloads the browser resource store: fetches every explicit manifest entry (class-path names, e.g.
+ * 'org/languagetool/rules/de/grammar.xml') via the async fetchImpl(url) and activates a
+ * MemoryResourceBackend with them as the current backend. The app must pass the full manifest
+ * (count/files) because fetch cannot enumerate directories. stripPrefix: URL prefix dropped from an
+ * entry to form its class-path key. fetchImpl: async (url) => Response|Uint8Array.
+ */
+export async function preloadResources({ fetchImpl, entries = [], stripPrefix } = {}) {
+  if (fetchImpl === undefined || fetchImpl === null) {
+    throw new Error('preloadResources: fetchImpl is required (fetch cannot list directories; pass an explicit manifest of class-path entry names)');
+  }
+  const backend = new MemoryResourceBackend();
+  for (const entry of entries) {
+    const data = await fetchImpl(entry);
+    const key = stripPrefix && entry.startsWith(stripPrefix) ? entry.slice(stripPrefix.length) : entry;
+    backend.set(key, data instanceof Uint8Array ? data : new Uint8Array(await data.arrayBuffer()));
+  }
+  setResourceBackend(backend);
 }
 
 // Java: Class#resolveName(String) for ResourceDataBroker.class
@@ -81,33 +247,22 @@ function resolveName(name) {
 export function getResourceAsStream(name) {
   const resolved = resolveName(name);
   if (resolved === 'org/languagetool/broker/') return Buffer.alloc(0); // the package directory entry of the core jar: empty stream (name "")
-  const f = locate(resolved);
-  return f === null ? null : readResourceFile(f);
+  return currentBackend().read(resolved);
 }
 
 // Java: ResourceDataBroker.class.getResource(String)
 export function getResource(name) {
-  const f = locate(resolveName(name));
-  return f === null ? null : new ResourceUrl(f);
+  return currentBackend().getUrl(resolveName(name));
 }
 
 // Java: ResourceDataBroker.class.getClassLoader().getResources(String)
 export function getResources(name) {
-  const out = [];
-  for (const root of resourceRoots) {
-    for (let copy = 0; ; copy++) {
-      const f = locateIn(root, name, copy);
-      if (f === null) break;
-      out.push(new ResourceUrl(f));
-    }
-  }
-  return out;
+  return currentBackend().getUrls(name);
 }
 
 // classpath loader for ResourceBundle.getBundle (one function so the bundle cache is shared)
 function bundleLoader(name) {
-  const f = locate(name);
-  return f === null ? null : readFileSync(f);
+  return currentBackend().read(name);
 }
 
 // Java: org.languagetool.broker.DefaultResourceDataBroker
