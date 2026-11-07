@@ -6,6 +6,7 @@ import { messagesFor, newLt } from '../../../support/ruleTestSupport.js';
 import { getLtjsGermanCommaRules, LTJS_KOMMA_RULE_IDS } from '../../../../src/lang/de/ltjs/KommaRules.js';
 import { LTJS_GERMAN_RULE_IDS, getLtjsGermanRules } from '../../../../src/lang/de/ltjs/GermanLtjsRules.js';
 import { LTJS_DAS_DASS_RULE_IDS } from '../../../../src/lang/de/ltjs/DasDassRules.js';
+import { LTJS_RELATIV_RULE_IDS } from '../../../../src/lang/de/ltjs/RelativRules.js';
 
 const deDE = Languages.getLanguageForShortCode('de-DE');
 const rules = Object.fromEntries(getLtjsGermanCommaRules(messagesFor(deDE), deDE).map((r) => [r.getId(), r]));
@@ -194,8 +195,8 @@ describe('LTJS comma rules', () => {
     }
   });
 
-  it('the layer registers das/dass and comma rules', () => {
-    expect([...LTJS_GERMAN_RULE_IDS].sort()).toEqual([...LTJS_DAS_DASS_RULE_IDS, ...LTJS_KOMMA_RULE_IDS].sort());
+  it('the layer registers das/dass, comma and relative pronoun rules', () => {
+    expect([...LTJS_GERMAN_RULE_IDS].sort()).toEqual([...LTJS_DAS_DASS_RULE_IDS, ...LTJS_KOMMA_RULE_IDS, ...LTJS_RELATIV_RULE_IDS].sort());
     expect(getLtjsGermanRules(messagesFor(deDE), deDE).map((r) => r.getId()).sort()).toEqual([...LTJS_GERMAN_RULE_IDS].sort());
   });
 
