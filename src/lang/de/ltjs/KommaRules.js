@@ -344,7 +344,9 @@ export class LtjsKommaNebensatzRule extends LtjsKommaRule {
     const prev = tokens[i - 1];
     // comparatives before 'als' ('gewöhnungsbedürftiger als', 'mehr als ich dachte')
     const comparative = w === 'als' && isLowerCase(prev) && (COMPARATIVES.has(lower(prev)) || (hasTag(prev, /^ADJ/) && !CLAUSE_MODIFIERS.has(lower(prev))));
-    if (!endsClause(prev) && !comparative) return null;
+    // 'gut ist so wie es ist': the comma goes before 'so' or between 'so' and 'wie'
+    const soWie = w === 'wie' && prev.getToken() === 'so' && i >= 3 && endsClause(tokens[i - 2]);
+    if (!endsClause(prev) && !comparative && !soWie) return null;
     let s = i + 1;
     if ((w === 'als' || w === 'wie') && ['ob', 'wenn', 'dass'].includes(tokens[s]?.getToken())) s++;
     if (s >= tokens.length || !isWord(tokens[s])) return null;
@@ -366,11 +368,17 @@ export class LtjsKommaNebensatzRule extends LtjsKommaRule {
     if (!(wword && W_SUBJECT.has(w)) && !ownSubject) return null;
     if (w === 'was' && !ownSubject && !(vf.clusterStart < vf.last || isOnlyFinite(tokens[vf.last]))) return null;
     if (w === 'was' && isUpperCase(tokens[s]) && hasTag(tokens[s], /^(SUB|ADJ)/) && !hasTag(tokens[s], /^SUB:NOM/)) return null; // 'was Neues'
-    const before = clauseBefore(tokens, i);
+    const k = soWie ? i - 1 : i; // first token of the subordinate clause
+    const before = clauseBefore(tokens, k);
     if (!before.complete) return null;
-    if (ambiguousWithOpenClause(tokens, vf, before) || (before.open && ambiguous && (!isNoun(prev) || laterNonFinite(tokens, e)))) return null;
-    if (segmentStartAt(tokens, i) === i - 1 && !isVerb(prev) && !isNoun(prev)) return null; // '-- ähnlich wie wir ...'
-    return this.missingComma(sentence, tokens, i, `Hier scheint ein Komma zu fehlen: '${w}' leitet einen Nebensatz ein, der mit Komma abgetrennt wird.`);
+    if (ambiguousWithOpenClause(tokens, vf, before) || (before.open && ambiguous && (!isNoun(tokens[k - 1]) || laterNonFinite(tokens, e)))) return null;
+    if (segmentStartAt(tokens, k) === k - 1 && !isVerb(tokens[k - 1]) && !isNoun(tokens[k - 1])) return null; // '-- ähnlich wie wir ...'
+    const msg = `Hier scheint ein Komma zu fehlen: '${soWie ? 'so wie' : w}' leitet einen Nebensatz ein, der mit Komma abgetrennt wird.`;
+    if (!soWie) return this.missingComma(sentence, tokens, i, msg);
+    const a = tokens[i - 2].getToken();
+    const m = new RuleMatch(this, sentence, tokens[i - 2].getStartPos(), t.getEndPos(), msg, 'Komma fehlt');
+    m.setSuggestedReplacements([`${a}, so wie`, `${a} so, wie`]);
+    return m;
   }
 }
 

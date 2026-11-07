@@ -692,7 +692,10 @@ function verbFinalClause(tokens, i, embedded = true) {
   }
   if (vf !== null || !embedded) return vf === null ? null : { s, e, vf, tokens };
   for (let j = s + 2; j < e; j++) { // 'dass ... kürzere Strecken gebraucht werden als bei Rückenwind'
-    if ((tokens[j].getToken() === 'als' || tokens[j].getToken() === 'wie') && (vf = verbFinal(tokens, s, j)) !== null) return { s, e: j, vf, tokens };
+    const w = tokens[j].getToken();
+    if (w !== 'als' && w !== 'wie') continue;
+    const k = w === 'wie' && j - 1 >= s + 2 && tokens[j - 1].getToken() === 'so' ? j - 1 : j; // 'dass es gut ist so wie es ist'
+    if ((vf = verbFinal(tokens, s, k)) !== null) return { s, e: k, vf, tokens };
   }
   const e2 = embeddedClauseEnd(tokens, s, e);
   if (e2 < 0 || embeddedClauseEnd(tokens, s, e2) >= 0 || startsRelative(tokens, e2 + 1)) return null; // 'welches ..., unter denen ...'
