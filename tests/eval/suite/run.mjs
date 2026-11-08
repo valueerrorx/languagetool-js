@@ -1,6 +1,7 @@
 // Error suite: texts with deliberately placed, annotated errors; reports what LanguageTool finds and compares with a baseline.
-// Usage: node tests/eval/suite/run.mjs [--lang de|en] [--engine js|java] [--ltjs off] [--level picky] [--type T[,T]]
+// Usage: node tests/eval/suite/run.mjs [--lang de|en] [--set DIR] [--engine js|java] [--ltjs off] [--level picky] [--type T[,T]]
 //        [--update-baseline] [--verbose] [--port N]
+//   --set DIR: text set in tests/eval/suite/DIR/texts.txt (default: the language); sets named *-blind print numbers only.
 //   JS runs in-process (src/index.js check()), Java through its HTTP server (tests/eval/run.mjs startServer).
 //   Each text is checked twice: as written (detection of the annotated errors) and corrected (every match is a false alarm).
 //   Exit 1 on regressions against tests/eval/suite/baseline/<config>.json (error found before and now worse, or a new false alarm).
@@ -22,10 +23,11 @@ export const TYPES = {
 export const LEVELS = ['exact', 'flagged', 'speller', 'missed'];
 
 function parseArgs(argv) {
-  const o = { lang: 'de', engine: 'js', ltjs: true, level: null, types: null, update: false, verbose: false, port: null };
+  const o = { lang: 'de', set: null, engine: 'js', ltjs: true, level: null, types: null, update: false, verbose: false, port: null };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--lang') o.lang = argv[++i];
+    else if (a === '--set') o.set = argv[++i];
     else if (a === '--engine') o.engine = argv[++i];
     else if (a === '--ltjs') o.ltjs = argv[++i] !== 'off';
     else if (a === '--level') o.level = argv[++i];
@@ -38,7 +40,9 @@ function parseArgs(argv) {
   if (!TYPES[o.lang]) throw new Error('--lang de|en');
   if (o.engine !== 'js' && o.engine !== 'java') throw new Error('--engine js|java');
   o.port ??= o.engine === 'java' ? 19872 : 19873;
-  o.config = `${o.lang}-${o.engine}${o.engine === 'js' && !o.ltjs ? '-noltjs' : ''}${o.level ? `-${o.level}` : ''}`;
+  o.set ??= o.lang;
+  o.blind = o.set.endsWith('-blind'); // held-out set: only numbers are printed, rule developers do not read it
+  o.config = `${o.set}-${o.engine}${o.engine === 'js' && !o.ltjs ? '-noltjs' : ''}${o.level ? `-${o.level}` : ''}`;
   return o;
 }
 
@@ -69,9 +73,9 @@ export function corrected(t) {
   return s;
 }
 
-// Reads <lang>/*.txt; throws on markup problems.
-export function loadTexts(lang) {
-  const dir = path.join(HERE, lang);
+// Reads <set>/texts.txt (set defaults to the language); throws on markup problems.
+export function loadTexts(lang, set = lang) {
+  const dir = path.join(HERE, set);
   const src = readFileSync(path.join(dir, 'texts.txt'), 'utf8');
   const texts = [];
   let cur = null;
@@ -176,7 +180,7 @@ export function diffBaseline(base, errors, falseAlarms) {
 
 async function main() {
   const o = parseArgs(process.argv.slice(2));
-  let texts = loadTexts(o.lang);
+  let texts = loadTexts(o.lang, o.set);
   if (o.types) texts = texts.map((t) => ({ ...t, errors: t.errors.filter((e) => o.types.includes(e.type)) }));
   let kill = () => {};
   if (o.engine === 'js') {
@@ -197,9 +201,13 @@ async function main() {
   console.log(`Fehler-Suite ${o.config}: ${texts.length} Texte, ${errors.length} Fehler, ${Date.now() - t0} ms`);
   console.log(summary(o.lang, errors, falseAlarms));
   const missed = errors.filter((e) => e.level === 'missed' || (o.verbose && e.level === 'speller'));
-  if (missed.length) console.log(`\nnicht erkannt${o.verbose ? ' (oder nur Speller)' : ''}:\n${missed.map((e) => `  [${e.type}] ${e.original} => ${e.correction}  (${e.level}) …${e.context}…`).join('\n')}`);
-  if (falseAlarms.length) console.log(`\nFehlalarme:\n${falseAlarms.map((f) => `  ${f.id} ${f.ruleId} '${f.covered}': ${f.message}`).join('\n')}`);
-  if (o.verbose && unannotated.length) console.log(`\nweitere Treffer in den Fehlertexten (nicht annotiert):\n${unannotated.map((u) => `  ${u.id} ${u.ruleId} '${u.covered}'`).join('\n')}`);
+  if (o.blind) {
+    const byRule = {};
+    for (const f of falseAlarms) byRule[f.ruleId] = (byRule[f.ruleId] ?? 0) + 1;
+    if (falseAlarms.length) console.log(`\nFehlalarme je Regel: ${Object.entries(byRule).map(([r, n]) => `${r} ${n}`).join(', ')}`);
+  } else if (missed.length) console.log(`\nnicht erkannt${o.verbose ? ' (oder nur Speller)' : ''}:\n${missed.map((e) => `  [${e.type}] ${e.original} => ${e.correction}  (${e.level}) …${e.context}…`).join('\n')}`);
+  if (!o.blind && falseAlarms.length) console.log(`\nFehlalarme:\n${falseAlarms.map((f) => `  ${f.id} ${f.ruleId} '${f.covered}': ${f.message}`).join('\n')}`);
+  if (!o.blind && o.verbose && unannotated.length) console.log(`\nweitere Treffer in den Fehlertexten (nicht annotiert):\n${unannotated.map((u) => `  ${u.id} ${u.ruleId} '${u.covered}'`).join('\n')}`);
 
   const outDir = path.join(HERE, '..', 'results');
   mkdirSync(outDir, { recursive: true });
@@ -218,6 +226,11 @@ async function main() {
   }
   if (!existsSync(basePath)) { console.log(`keine Baseline (${path.relative(ROOT, basePath)}), anlegen mit --update-baseline`); return; }
   const { regressions, improvements, newKeys } = diffBaseline(JSON.parse(readFileSync(basePath, 'utf8')), errors, falseAlarms);
+  if (o.blind) { // counts only, the keys contain words of the texts
+    console.log(`\nBaseline: ${improvements.length} besser, ${regressions.length} schlechter, ${newKeys.length} neu`);
+    if (regressions.length) process.exitCode = 1;
+    return;
+  }
   if (improvements.length) console.log(`\nVerbesserungen gegenüber Baseline (${improvements.length}):\n${improvements.map((x) => `  ${x}`).join('\n')}`);
   if (newKeys.length) console.log(`\nneue Fehler ohne Baseline-Eintrag: ${newKeys.length} (Baseline mit --update-baseline aktualisieren)`);
   if (regressions.length) {

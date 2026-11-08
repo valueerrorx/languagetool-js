@@ -6,6 +6,7 @@ Testtexte in aktueller Rechtschreibung mit absichtlich gesetzten und markierten 
 
 - `de/texts.txt`, `en/texts.txt`: die Texte. Fehler sind markiert als `{{falsch=>richtig|typ}}`; weitere richtige Varianten mit `;;` (`{{falsch=>richtig;;variante|typ}}`). Kopfzeile pro Text: `### <id> | <sprache> | <genre>`, z. B. `### de-g03 | de-AT | Forumsbeitrag`.
 - Alles außerhalb der Markierungen muss korrekt sein. Die korrigierte Fassung (alle Fehler ersetzt) wird mitgeprüft: jeder Treffer dort ist ein Fehlalarm.
+- `de-blind/texts.txt`: BLINDER Satz (50 Texte, 398 Fehler, 5 Kontrolltexte), getrennt von der Regelentwicklung geschrieben. Wer Regeln baut, liest ihn nicht und schreibt keine Regeln nach seinen Fehlern; er dient nur zum ehrlichen Messen. Aufruf mit `--set de-blind`, die Ausgabe zeigt dann nur Zahlen (keine Wörter, keine Fundstellen).
 - Texte ohne Markierung sind Kontrolltexte (z. B. `de-k02` mit österreichischem Wortschatz).
 - `baseline/<config>.json`: gespeicherter Stand pro Konfiguration (Erkennungsstufe je Fehler, bekannte Fehlalarme).
 - Typen Deutsch: kongruenz, kasus, subjekt_verb, verbform, pronomen, vergleich, verwechslung, gross_klein, getrennt_zusammen, rechtschreibung, wiederholung, ausdruck, das_dass, komma. Englisch: agreement, verb_form, pronoun, confusion, article, comparison, preposition, capitalization, spelling, word_choice, repetition.
@@ -28,6 +29,7 @@ node tests/eval/suite/run.mjs --lang de --ltjs off         # ohne LTJS-Regelschi
 node tests/eval/suite/run.mjs --lang de --engine java      # Java-Original (Pfad wie tests/eval/run.mjs, LTJS_EVAL_JDK / LTJS_EVAL_LT überschreiben)
 node tests/eval/suite/run.mjs --lang de --type kasus,kongruenz --verbose
 node tests/eval/suite/run.mjs --lang de --update-baseline  # Baseline neu schreiben (nur nach bewusster Prüfung!)
+node tests/eval/suite/run.mjs --set de-blind               # blinder Satz, nur Zahlen
 ```
 
 Ausgabe: Tabelle pro Typ, Liste der nicht erkannten Fehler, Fehlalarme, Vergleich mit der Baseline; Rohdaten in `tests/eval/results/suite-<config>.json`. Exit-Code 1 bei Verschlechterung (ein Fehler wird schlechter erkannt als in der Baseline, oder ein neuer Fehlalarm).
@@ -36,5 +38,6 @@ Ausgabe: Tabelle pro Typ, Liste der nicht erkannten Fehler, Fehlalarme, Vergleic
 
 1. Suite laufen lassen, nicht erkannte Fehler ansehen.
 2. Regel bauen, Suite erneut laufen lassen: Verbesserungen werden aufgelistet, Verschlechterungen lassen den Lauf scheitern.
-3. Erst wenn es keine Verschlechterung gibt, Baseline mit `--update-baseline` aktualisieren und mit committen.
-4. Neue Testfälle in `texts.txt` ergänzen (bestehende IDs nicht umbenennen: der Baseline-Schlüssel ist `<text-id>:<falsch>=><richtig>`).
+3. Zusätzlich `--set de-blind` laufen lassen: keine Verschlechterung, keine neuen Fehlalarme. Der blinde Satz zeigt, ob die Regel über die Entwicklungstexte hinaus trägt.
+4. Erst wenn es keine Verschlechterung gibt, Baseline mit `--update-baseline` aktualisieren und mit committen.
+5. Neue Testfälle in `de/texts.txt` ergänzen (nie in `de-blind/`) (bestehende IDs nicht umbenennen: der Baseline-Schlüssel ist `<text-id>:<falsch>=><richtig>`).
