@@ -51,6 +51,7 @@ const GOOD = [
   'Er bekommt eine Beifahrerin, Case, aus dem Frauengefängnis, die ihm hilft.', // apposition
   'Selbst innerhalb der Bewegung gibt es seit langem Stimmen, die sich dagegen erheben.',
   'Dort liegt der Tierfriedhof Les Jardins du Souvenir, der 1989 eröffnet wurde.', // foreign name
+  'Sie suchten nach „Macho“-Sängern mit Bart, die auch tanzen können.', // unknown compound
 ];
 
 describe('LTJS relative pronoun rule', () => {

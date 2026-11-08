@@ -98,6 +98,7 @@ const CASES = {
       'Die Gruppe der von Hegel verfassten Texte ist groß.',
       'Er gab dem Mann die Hand.',
       'Die Kosten, die entstehen, trägt der Mieter.',
+      'Somit sind bereits 2280 Quadratmeter der insgesamt circa 6600 Quadratmeter vermietet.',
     ],
   },
   LTJS_KOMMA_INFINITIV: {

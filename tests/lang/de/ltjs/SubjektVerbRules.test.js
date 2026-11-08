@@ -50,6 +50,7 @@ const GOOD = [
   'Interessierte können an Testfahrten teilnehmen.', // bare nominalized adjective
   'Unbekannte hatten zuvor rund 140 Meter Kabel gestohlen.',
   'Graphen ist extrem leitfähig.',
+  'Seine haben ein gutes Ergebnis eingefahren.', // possessive pronoun, no name
   'Zeitungen bitte vorher bündeln.',
   'Andere Angeklagte sollen verurteilt worden sein.',
   'Jedes Jahr werden mehr als 30.000 Kinder behandelt.', // time adverbial

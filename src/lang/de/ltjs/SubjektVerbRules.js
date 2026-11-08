@@ -84,7 +84,7 @@ export class LtjsSubjektVerbRule extends Rule {
     if (!isUpperCase(head) || !hasTag(head, /^(SUB|EIG)/) || !isMainFinite(verb) || !isLowerCase(verb)) return null;
     // a determiner opens the noun phrase: bare nouns are often names, nominalized adjectives or mass nouns ('Interessierte können',
     // 'Graphen ist', 'Nissen kam'); time nouns are adverbials
-    const bareName = v - 1 === s && hasTag(head, /^EIG/) && !hasTag(head, /^SUB/); // 'Lisa kommen später'
+    const bareName = v - 1 === s && hasTag(head, /^EIG/) && !hasTag(head, /^(SUB|PRO)/); // not 'Seine haben' (possessive) // 'Lisa kommen später'
     if (!bareName && (v - 1 === s || !hasTag(tokens[s], /^(ART|PRO:(POS|DEM|IND))/))) return null;
     if (TIME.has(head.getToken())) return null;
     // coordinated verbs ('Diese Chance wollen und werden wir nutzen'); an infinitive subject ('Gut rechnen können ist …')

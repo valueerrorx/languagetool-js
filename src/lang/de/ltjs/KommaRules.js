@@ -484,6 +484,8 @@ export class LtjsKommaRelativsatzRule extends LtjsKommaRule {
     const e = clauseEnd(tokens, s);
     const vf = verbFinalLoose(tokens, s, e, false);
     if (vf === null || articleOfNounPhrase(tokens, r, vf)) return null;
+    // genitive article before a measure: '2280 Quadratmeter der insgesamt circa 6600 Quadratmeter'
+    if (rel === 'der' && tokens.slice(s, s + 3).some((x, k) => /^\d/.test(x.getToken()) && hasTag(tokens[s + k + 1], /^SUB/))) return null;
     if ((rel === 'deren' || rel === 'dessen') && !(isNoun(tokens[s]) || hasTag(tokens[s], /^(ADJ|PA1|PA2|ZAL)/))) return null; // 'wenn der Mensch dessen gewahr werde'
     // a pronoun that cannot be the subject needs a subject in the clause ('den keiner kannte'; not 'dem der natürlichen Beute entsprechen')
     if (['dem', 'den', 'denen', 'welchem'].includes(rel) && !subjectAgrees(tokens, s, vf)) return null;

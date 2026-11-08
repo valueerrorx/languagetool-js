@@ -97,7 +97,7 @@ export class LtjsRelativpronomenRule extends Rule {
       if (/^(und|oder|sowie)$/.test(t.getToken()) && anyNoun) coordinated = true;
       if (hasTag(t, /^PRP/) && isLowerCase(t)) pp = true;
       if ((hasTag(t, /^ZAL/) && !hasTag(t, /^ART/)) || /^\d/.test(t.getToken())) return null; // measure: '42 Prozent, die'
-      if (!isUpperCase(t) || !hasTag(t, /^(SUB|EIG)/)) continue;
+      if (!(isUpperCase(t) || /^-\p{Lu}/u.test(t.getToken())) || !hasTag(t, /^(SUB|EIG)/)) continue; // also '„Macho“-Sängern'
       if (hasTag(t, /^SUB:.*:ADJ$/) || (hasTag(t, /^SUB/) && tags(t).filter((p) => p.startsWith('SUB')).every((p) => p.endsWith(':INF')))) return null; // nominalised adjective ('einem Heurigen, den'): gender follows the referent; nominalised infinitive ('seit langem Stimmen'): the plural reading may be lost
       const gn = genderNumber(t);
       if (gn.size === 0) return null; // gender unknown
@@ -108,7 +108,7 @@ export class LtjsRelativpronomenRule extends Rule {
     if (coordinated && allowed.has('PLU')) return null; // 'ein BMW und ein Audi, die'
     // the antecedent may stand before the chain: apposition ('Case, aus dem Gefängnis, die'), hyphenated compound ('„Macho“-Sängern mit Bart, die')
     const stop = tokens[j];
-    if (j > 0 && (pp && stop.getToken() === ',' || /^-\p{Lu}/u.test(stop.getToken()))) return null;
+    if (j > 0 && (pp && stop.getToken() === ',' || /^-\p{Lu}/u.test(stop.getToken()) || (isUnknown(stop) && /\p{Lu}/u.test(stop.getToken())))) return null;
     // foreign name around the stop ('Les Jardins du Souvenir, der')
     if ([j - 1, j - 2].some((x) => x > 0 && isUnknown(tokens[x]) && isUpperCase(tokens[x]))) return null;
     const headGn = [...genderNumber(head)];
