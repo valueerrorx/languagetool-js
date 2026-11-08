@@ -1,5 +1,4 @@
 // Port of net.loomchild.segment.srx.io.Srx2SaxParser (XSD validation is not ported, D-048).
-import { Buffer } from 'node:buffer';
 import { SAXParseException, parseXml, parserOptions } from '../../core/resources/xml.js';
 import { decodeUtf8 } from '../java/io.js';
 import { LanguageRule, Rule, SrxDocument } from './SrxDocument.js';

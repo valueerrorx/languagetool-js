@@ -1,8 +1,8 @@
 // org.languagetool.rules.spelling.symspell.implementation.SymSpell (MIT, Hampus Londogard; counts are Java longs = BigInt)
+import { readFileSync, existsSync } from '../../../../resources/files.js';
 import { EditDistance } from './EditDistance.js';
 import { SuggestItem } from './SuggestItem.js';
 import { SuggestionStage } from './SuggestionStage.js';
-import { getResourceAsStream } from '../../../../resources/ResourceDataBroker.js';
 import { arrayGet } from '../../../../../lib/java/arrays.js';
 import { BufferedReader } from '../../../../../lib/java/io.js';
 import { decodeUtf8Java } from '../../../../../lib/java/charset.js';
@@ -170,13 +170,12 @@ export class SymSpell {
   // Java: SymSpell#loadDictionary(String,int,int) / (InputStream,int,int) / (BufferedReader,int,int)
   loadDictionary(corpus, termIndex, countIndex) {
     if (typeof corpus === 'string') {
-      const bytes = getResourceAsStream(corpus.startsWith('/') ? corpus : `/${corpus}`);
-      if (bytes === null) {
+      if (!existsSync(corpus)) {
         return false;
       }
       let br = null;
       try {
-        br = new BufferedReader(decodeUtf8Java(bytes));
+        br = new BufferedReader(decodeUtf8Java(readFileSync(corpus)));
       } catch (ex) {
         if (!(ex instanceof IOException)) throw ex;
         process.stdout.write(`${ex.message}\n`);
@@ -223,13 +222,12 @@ export class SymSpell {
 
   // Java: SymSpell#createDictionary(String)
   createDictionary(corpus) {
-    const bytes = typeof corpus === 'string' ? getResourceAsStream(corpus.startsWith('/') ? corpus : `/${corpus}`) : null;
-    if (bytes === null) {
+    if (!existsSync(corpus)) {
       return false;
     }
     const staging = new SuggestionStage(16384);
     try {
-      const br = new BufferedReader(decodeUtf8Java(bytes));
+      const br = new BufferedReader(decodeUtf8Java(readFileSync(corpus)));
       for (let line; (line = br.readLine()) !== null;) {
         this.parseWords(line).forEach((key) => this.createDictionaryEntry(key, 1, staging));
       }

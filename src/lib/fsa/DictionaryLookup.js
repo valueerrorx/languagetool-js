@@ -1,5 +1,5 @@
 // morfologik-stemming Dictionary, WordData, DictionaryLookup, DictionaryIterator (byte-buffer faithful, buffers reused as in Java).
-import { getResourceAsStream, getResourceRoots } from '../../core/resources/ResourceDataBroker.js';
+import { readFileSync } from '../../core/resources/files.js';
 import { FileNotFoundException, NoSuchFileException, NullPointerException, RuntimeException } from '../java/errors.js';
 import { ByteBuf, bytesToString, clearAndEnsureCapacity } from './buffers.js';
 import { ByteSequenceIterator, FSATraversal, MatchResult, readFSA } from './FSA.js';
@@ -322,18 +322,12 @@ export class Dictionary {
   }
 }
 
-// fs path of a broker resource (absolute below a root) -> class-path name with a leading slash
-function resourceName(path) {
-  for (const root of getResourceRoots()) {
-    const prefix = root.endsWith('/') ? root : root + '/';
-    if (path.startsWith(prefix)) return `/${path.slice(prefix.length)}`;
-  }
-  return path.startsWith('/') ? path : `/${path}`;
-}
-
-// reads a resource as one Buffer; missing -> the given Java exception
+// reads a file as one Buffer; ENOENT -> the given Java exception
 function readOrThrow(path, ErrorClass, message) {
-  const bytes = getResourceAsStream(resourceName(path));
-  if (bytes === null) throw new ErrorClass(message(path));
-  return bytes;
+  try {
+    return readFileSync(path);
+  } catch (e) {
+    if (e.code === 'ENOENT') throw new ErrorClass(message(path));
+    throw e;
+  }
 }

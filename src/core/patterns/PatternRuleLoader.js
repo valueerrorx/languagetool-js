@@ -1,25 +1,20 @@
 // org.languagetool.rules.patterns.PatternRuleLoader (parses grammar.xml files into pattern rules)
+import { readFileSync } from '../resources/files.js';
 import { IOException, JavaError, NoSuchFileException, NullPointerException, Throwable } from '../../lib/java/errors.js';
 import { registerComponent } from '../language/components.js';
-import { getResourceAsStream, getResourceRoots } from '../resources/ResourceDataBroker.js';
 import { parseXml, parserOptions } from '../resources/xml.js';
 import { PatternRuleHandler } from './PatternRuleHandler.js';
 
-// fs path of a broker resource (absolute below a root) -> class-path name with a leading slash
-function resourceName(path) {
-  for (const root of getResourceRoots()) {
-    const prefix = root.endsWith('/') ? root : root + '/';
-    if (path.startsWith(prefix)) return `/${path.slice(prefix.length)}`;
-  }
-  return path.startsWith('/') ? path : `/${path}`;
-}
-
-// Java: Files.newInputStream(Path) + reading it: returns the bytes; a missing file fails on the first read
+// Java: Files.newInputStream(Path) + reading it: returns the bytes; a directory fails on the first read
 function readFileBytes(file) {
   const path = file.getAbsolutePath();
-  const bytes = getResourceAsStream(resourceName(path));
-  if (bytes === null) throw new NoSuchFileException(file.getPath());
-  return { bytes, error: null };
+  try {
+    return { bytes: readFileSync(path), error: null };
+  } catch (e) {
+    if (e.code === 'ENOENT' || e.code === 'ENOTDIR') throw new NoSuchFileException(file.getPath());
+    if (e.code === 'EISDIR') return { bytes: null, error: new IOException('Is a directory') };
+    throw new IOException(`${file.getPath()}: ${e.message}`);
+  }
 }
 
 // Java: PatternRuleLoader

@@ -1,7 +1,5 @@
 // Resource access on the classpath layout under resources/ (D: byte-exact copies, see scripts/resources.mjs).
-import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
-import path from 'node:path';
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import { IS_NODE, fs, path, fileURLToPath, pathToFileURL } from '#platform';
 import { RuntimeException, NullPointerException } from '../../lib/java/errors.js';
 import { ResourceBundle } from '../../lib/java/ResourceBundle.js';
 import { readerLines, decodeUtf8 } from '../../lib/java/io.js';
@@ -9,14 +7,17 @@ import { readerLines, decodeUtf8 } from '../../lib/java/io.js';
 export const RESOURCE_DIR = '/org/languagetool/resource'; // Java: ResourceDataBroker#RESOURCE_DIR
 export const RULES_DIR = '/org/languagetool/rules'; // Java: ResourceDataBroker#RULES_DIR
 
-const HERE = path.dirname(fileURLToPath(import.meta.url));
 // resource roots in classpath order: the dev repo has resources/ (or $LTJS_RESOURCES); the core package ships resources/ at the same relative place
-// and every @valueerror/ltjs-lang-<code> package adds its own resources/ via addResourceRoot (first root wins, getResources collects all roots)
-export const RESOURCES_ROOT = process.env.LTJS_RESOURCES ?? path.resolve(HERE, '../../../resources');
-const resourceRoots = [RESOURCES_ROOT];
+// and every @valueerror/ltjs-lang-<code> package adds its own resources/ via addResourceRoot (first root wins, getResources collects all roots).
+// Browser: no file system, no roots; the resources come from preloadResources() (memory backend).
+export const RESOURCES_ROOT = IS_NODE
+  ? process.env.LTJS_RESOURCES ?? path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../resources')
+  : null;
+const resourceRoots = IS_NODE ? [RESOURCES_ROOT] : [];
 
-// registers an additional resource root (a directory in classpath layout); a no-op for a root that is already registered
+// registers an additional resource root (a directory in classpath layout); a no-op for a root that is already registered (and in the browser)
 export function addResourceRoot(dir) {
+  if (!IS_NODE) return;
   const root = path.resolve(dir instanceof URL ? fileURLToPath(dir) : dir);
   if (!resourceRoots.includes(root)) resourceRoots.push(root);
 }
@@ -50,8 +51,8 @@ export class ResourceUrl {
 
 // reads a file, or the listing of a directory (FileURLConnection)
 function readResourceFile(file) {
-  if (statSync(file).isDirectory()) return Buffer.from(readdirSync(file).map((n) => `${n}\n`).join(''), 'utf8');
-  return readFileSync(file);
+  if (fs.statSync(file).isDirectory()) return Buffer.from(fs.readdirSync(file).map((n) => `${n}\n`).join(''), 'utf8');
+  return fs.readFileSync(file);
 }
 
 // synchronous resource backend: reads by class-path resource name (relative, no leading slash) —
@@ -67,7 +68,7 @@ export class FsResourceBackend {
     const base = copy === 0 ? root : path.join(root, '.dup', String(copy));
     const f = path.resolve(base, name);
     if (f !== base && !f.startsWith(base + path.sep)) return null;
-    return existsSync(f) ? f : null;
+    return fs.existsSync(f) ? f : null;
   }
 
   // first root that holds the resource (copy 0)
@@ -89,7 +90,7 @@ export class FsResourceBackend {
   isDirectory(name) {
     for (const root of resourceRoots) {
       const f = this.locateIn(root, name, 0);
-      if (f !== null) return statSync(f).isDirectory();
+      if (f !== null) return fs.statSync(f).isDirectory();
     }
     return false;
   }
@@ -98,7 +99,7 @@ export class FsResourceBackend {
   readDirectory(name) {
     for (const root of resourceRoots) {
       const f = this.locateIn(root, name, 0);
-      if (f !== null) return statSync(f).isDirectory() ? readdirSync(f) : null;
+      if (f !== null) return fs.statSync(f).isDirectory() ? fs.readdirSync(f) : null;
     }
     return null;
   }
@@ -186,10 +187,16 @@ export class MemoryResourceBackend {
     return this.files.has(name) || this.directoryEntries.has(name) ? new MemoryResourceUrl(name, this) : null;
   }
 
-  // Java: ClassLoader#getResources
+  // Java: ClassLoader#getResources (copy N of a name is stored as .dup/N/<name>, as in the fs layout)
   getUrls(name) {
-    const url = this.getUrl(name);
-    return url === null ? [] : [url];
+    const out = [];
+    for (let copy = 0; ; copy++) {
+      const key = copy === 0 ? name : `.dup/${copy}/${name}`;
+      const url = this.getUrl(key);
+      if (url === null) break;
+      out.push(url);
+    }
+    return out;
   }
 }
 
@@ -221,19 +228,32 @@ export function resetToFsBackend() {
  * Preloads the browser resource store: fetches every explicit manifest entry (class-path names, e.g.
  * 'org/languagetool/rules/de/grammar.xml') via the async fetchImpl(url) and activates a
  * MemoryResourceBackend with them as the current backend. The app must pass the full manifest
- * (count/files) because fetch cannot enumerate directories. stripPrefix: URL prefix dropped from an
- * entry to form its class-path key. fetchImpl: async (url) => Response|Uint8Array.
+ * because fetch cannot enumerate directories (scripts/browser-manifest.mjs writes one).
+ * entries: { url, name } (manifest of scripts/browser-manifest.mjs) or URL strings whose class-path key is the URL minus stripPrefix;
+ * directories: { 'class/path/dir': [entry names] } for the listings the core reads;
+ * fetchImpl: async (url) => Response|Uint8Array (default: globalThis.fetch); concurrency: parallel fetches.
  */
-export async function preloadResources({ fetchImpl, entries = [], stripPrefix } = {}) {
-  if (fetchImpl === undefined || fetchImpl === null) {
+export async function preloadResources({ fetchImpl = globalThis.fetch, entries = [], stripPrefix, directories = {}, concurrency = 8 } = {}) {
+  if (typeof fetchImpl !== 'function') {
     throw new Error('preloadResources: fetchImpl is required (fetch cannot list directories; pass an explicit manifest of class-path entry names)');
   }
   const backend = new MemoryResourceBackend();
-  for (const entry of entries) {
-    const data = await fetchImpl(entry);
-    const key = stripPrefix && entry.startsWith(stripPrefix) ? entry.slice(stripPrefix.length) : entry;
-    backend.set(key, data instanceof Uint8Array ? data : new Uint8Array(await data.arrayBuffer()));
-  }
+  let next = 0;
+  const worker = async () => {
+    while (next < entries.length) {
+      const entry = entries[next++];
+      const url = typeof entry === 'string' ? entry : entry.url;
+      let data = await fetchImpl(url);
+      if (!(data instanceof Uint8Array)) {
+        if (data.ok === false) throw new Error(`preloadResources: ${url}: HTTP ${data.status}`);
+        data = new Uint8Array(await data.arrayBuffer());
+      }
+      const key = typeof entry !== 'string' ? entry.name : stripPrefix && url.startsWith(stripPrefix) ? url.slice(stripPrefix.length) : url;
+      backend.set(key, Buffer.from(data.buffer, data.byteOffset, data.byteLength)); // the core reads resources with the Buffer API
+    }
+  };
+  await Promise.all(Array.from({ length: Math.max(1, concurrency) }, worker));
+  for (const [dir, names] of Object.entries(directories)) backend.setDirectory(dir, names);
   setResourceBackend(backend);
 }
 

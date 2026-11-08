@@ -1,8 +1,21 @@
 // Hunspell 1.7.5 compiled to WASM (own emscripten build, scripts/build-hunspell-wasm.sh), byte-level C API wrapper (D-013).
 import initializer from './wasm/hunspell.js';
 
-const m = await initializer();
+let m = null;
 let counter = 0;
+
+// instantiates the WASM module once; wasmBinary (bytes) skips the file/fetch lookup of hunspell.wasm
+export async function initHunspellWasm(wasmBinary) {
+  if (m === null) m = await initializer(wasmBinary ? { wasmBinary } : {});
+  return m;
+}
+
+// Node: ready at import (as before); browsers/workers: initHunspellWasm() before the first Hunspell dictionary
+if (globalThis.process?.getBuiltinModule) await initHunspellWasm();
+
+function assertReady() {
+  if (m === null) throw new Error('Hunspell WASM not initialized: call initHunspellWasm() first (browser entry: preloadResources() does it)');
+}
 
 // allocates a NUL-terminated byte string in WASM memory
 function allocBytes(bytes) {
@@ -22,6 +35,7 @@ function cstrLen(p) {
 export class WasmHunspell {
   // C: Hunspell_create(affpath, dpath), files written to the in-memory FS
   constructor(affBytes, dicBytes) {
+    assertReady(); // throws while the WASM module is not initialized
     const id = `hs${counter++}`;
     m.FS.writeFile(`${id}.aff`, affBytes);
     m.FS.writeFile(`${id}.dic`, dicBytes);

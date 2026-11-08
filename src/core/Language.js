@@ -1,4 +1,5 @@
 // Java: org.languagetool.Language (abstract base class of all languages; later steps fill the component hooks via src/core/language/components.js)
+import { existsSync, readFileSync } from './resources/files.js';
 import { AbstractMethodError, FileNotFoundException, IOException, MissingResourceException } from '../lib/java/errors.js';
 import { Locale } from '../lib/java/Locale.js';
 import { Pattern } from '../lib/java/regex/index.js';
@@ -6,7 +7,6 @@ import { equalsIgnoreCase, javaReplace, stringHashCode } from '../lib/java/strin
 import { replaceOnce } from '../lib/java/StringUtils.js';
 import { JavaHashMap } from '../lib/java/collections/JavaHashMap.js';
 import { getDataBroker } from './resources/LtStatics.js';
-import { getResource, getResourceAsStream } from './resources/ResourceDataBroker.js';
 import { getMessageBundleForLanguage } from './resources/ResourceBundleTools.js';
 import { CUSTOM_PATTERN_FILE, PATTERN_FILE, STYLE_FILE } from './JLanguageToolConstants.js';
 import { LanguageMaintainedState } from './LanguageMaintainedState.js';
@@ -426,8 +426,8 @@ export class Language {
       let is = getDataBroker().getAsStream(fileName);
       let ignore = false;
       if (is === null) { // files loaded via the dialog
-        if (getResource(fileName) !== null) {
-          is = getResourceAsStream(fileName);
+        if (existsSync(fileName)) {
+          is = readFileSync(fileName);
         } else if (fileName.includes('-test-')) {
           // ignore, used for testing
           ignore = true;

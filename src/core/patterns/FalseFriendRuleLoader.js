@@ -1,32 +1,30 @@
 // org.languagetool.rules.patterns.FalseFriendRuleLoader (loads false-friends.xml for a text language / mother tongue pair)
+import { existsSync, readFileSync, statSync } from '../resources/files.js';
 import { FileNotFoundException, IOException, NullPointerException, SAXException } from '../../lib/java/errors.js';
 import { equalsIgnoreCase } from '../../lib/java/strings.js';
 import { MessageFormat } from '../../lib/java/MessageFormat.js';
 import { Objects } from '../../lib/java/Objects.js';
 import { File } from '../../lib/java/io/File.js';
 import { registerComponent } from '../language/components.js';
-import { getResourceAsStream, getResourceRoots } from '../resources/ResourceDataBroker.js';
 import { getDataBroker } from '../resources/LtStatics.js';
 import { parseXml, parserOptions } from '../resources/xml.js';
 import { MESSAGE_BUNDLE } from '../resources/ResourceBundleTools.js';
 import { ShortDescriptionProvider } from '../ShortDescriptionProvider.js';
 import { FalseFriendRuleHandler } from './FalseFriendRuleHandler.js';
 
-// fs path of a broker resource (absolute below a root) -> class-path name with a leading slash
-function resourceName(path) {
-  for (const root of getResourceRoots()) {
-    const prefix = root.endsWith('/') ? root : root + '/';
-    if (path.startsWith(prefix)) return `/${path.slice(prefix.length)}`;
-  }
-  return path.startsWith('/') ? path : `/${path}`;
-}
-
 // Java: new FileInputStream(File) + reading it
 function readFile(file) {
   const path = file.getPath();
-  const bytes = getResourceAsStream(resourceName(file.getAbsolutePath()));
-  if (bytes === null) throw new FileNotFoundException(`${path} (No such file or directory)`);
-  return bytes;
+  try {
+    return readFileSync(file.getAbsolutePath());
+  } catch (e) {
+    if (e.code === 'ENOENT' || e.code === 'ENOTDIR' || e.code === 'EISDIR' || e.code === 'EACCES') {
+      let reason = 'No such file or directory';
+      if (existsSync(file.getAbsolutePath())) reason = statSync(file.getAbsolutePath()).isDirectory() ? 'Is a directory' : 'Permission denied';
+      throw new FileNotFoundException(`${path} (${reason})`);
+    }
+    throw e;
+  }
 }
 
 // Java: FalseFriendRuleLoader

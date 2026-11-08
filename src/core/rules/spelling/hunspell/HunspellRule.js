@@ -3,7 +3,7 @@ import { SpellingCheckRule, HIGH_CONFIDENCE, LANGUAGETOOL, LANGUAGETOOLER } from
 import { ForeignLanguageChecker } from '../ForeignLanguageChecker.js';
 import { VagueSpellChecker } from '../VagueSpellChecker.js';
 import { RuleWithLanguage } from '../RuleWithLanguage.js';
-import { Hunspell, dictionaryResourcePath } from './Hunspell.js';
+import { Hunspell } from './Hunspell.js';
 import { RuleMatch } from '../../model/RuleMatch.js';
 import { SuggestedReplacement } from '../../model/SuggestedReplacement.js';
 import { Categories } from '../../model/Category.js';
@@ -13,7 +13,6 @@ import { AnalyzedSentence } from '../../../AnalyzedSentence.js';
 import { SENTENCE_START_TAGNAME } from '../../../JLanguageToolConstants.js';
 import { Languages } from '../../../Languages.js';
 import { getDataBroker } from '../../../resources/LtStatics.js';
-import { getResourceAsStream } from '../../../resources/ResourceDataBroker.js';
 import { stringForSpeller } from '../../../text/StringTools.js';
 import * as Tools from '../../../Tools.js';
 import { Pattern } from '../../../../lib/java/regex/index.js';
@@ -24,6 +23,7 @@ import { scannerLines } from '../../../../lib/java/io.js';
 import { IOException, IllegalArgumentException, RuntimeException } from '../../../../lib/java/errors.js';
 import { isAllUpperCase } from '../../../../lib/java/StringUtils.js';
 import { equalsIgnoreCase, javaReplace, toLowerCase } from '../../../../lib/java/strings.js';
+import { existsSync, readFileSync } from '../../../resources/files.js';
 import { LoggerFactory } from '../../../../lib/slf4j/Logger.js';
 
 const logger = LoggerFactory.getLogger('org.languagetool.rules.spelling.hunspell.HunspellRule');
@@ -64,12 +64,12 @@ function computeNonWordPattern(stream) {
 function nonWordPatternFromPath(affPath) {
   if (!nonWordPatterns.has(affPath)) {
     let p;
-    const aff = getResourceAsStream(dictionaryResourcePath(affPath));
-    if (aff === null) {
+    try {
+      p = computeNonWordPattern(readFileSync(affPath));
+    } catch (e) {
+      if (!(e && e.code !== undefined && typeof e.syscall === 'string')) throw e;
       logger.error(`Could not read aff file: ${affPath}`);
       p = Pattern.compile(NON_ALPHABETIC);
-    } else {
-      p = computeNonWordPattern(aff);
     }
     nonWordPatterns.set(affPath, p);
   }
@@ -460,7 +460,7 @@ export class HunspellRule extends SpellingCheckRule {
           nonWordPatterns.set(key, computeNonWordPattern(getDataBroker().getFromResourceDirAsStream(aff)));
         }
         this.nonWordPattern = nonWordPatterns.get(key);
-      } else if (getResourceAsStream(dictionaryResourcePath(`${shortDicPath}.dic`)) !== null) {
+      } else if (existsSync(`${shortDicPath}.dic`)) {
         // for dynamic languages
         const affPath = `${shortDicPath}.aff`;
         this.hunspell = Hunspell.getDictionary(`${shortDicPath}.dic`, affPath);

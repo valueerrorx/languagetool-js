@@ -26,3 +26,5 @@ emcc -O2 -DDETCLOCK_TICK_NS=${DETCLOCK_TICK_NS:-100} -DDETCLOCK_CPD_NS=${DETCLOC
   -o "${1:?output dir}/hunspell.js" -sMODULARIZE=1 -sEXPORT_ES6=1 -sENVIRONMENT=node -sALLOW_MEMORY_GROWTH=1 \
   -sEXPORTED_FUNCTIONS='["_Hunspell_create","_Hunspell_destroy","_Hunspell_spell","_Hunspell_suggest","_Hunspell_add","_Hunspell_free_list","_Hunspell_get_dic_encoding","_malloc","_free"]' \
   -sEXPORTED_RUNTIME_METHODS='["FS","HEAPU8","HEAPU32"]'
+# browser/worker support: runtime Node detection instead of the static 'module' import
+node "$(dirname "$0")/patch-hunspell-glue.mjs" "$1/hunspell.js"

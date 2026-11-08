@@ -1,4 +1,5 @@
 // Java: org.languagetool.language.identifier.DefaultLanguageIdentifier (optimaize fallback only; fastText/ngram: DEV-001)
+import { readFileSync } from '../../resources/files.js';
 import { FileNotFoundException, RuntimeException, ZipException } from '../../../lib/java/errors.js';
 import { JMath } from '../../../lib/java/numbers.js';
 import { javaTrim } from '../../../lib/java/strings.js';
@@ -93,9 +94,10 @@ function buildShared() {
 
 // Java: new NGramDetector(File,int) -> new ZipFile(File): only the failures of opening the archive (loading the model: DEV-001)
 function openZipFile(file) {
-  const name = file.toString().startsWith('/') ? file.toString() : `/${file.toString()}`;
-  const buf = getResourceAsStream(name);
-  if (buf === null) {
+  let buf;
+  try {
+    buf = readFileSync(file.toString());
+  } catch {
     throw new RuntimeException(`Could not load ngram data language identification from ${file}`, new FileNotFoundException(`${file} (No such file or directory)`));
   }
   if (buf.length === 0 || buf.lastIndexOf(Buffer.from([0x50, 0x4b, 0x05, 0x06])) < Math.max(0, buf.length - 65557)) {

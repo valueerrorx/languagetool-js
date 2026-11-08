@@ -1,5 +1,6 @@
 // Java: org.languagetool.tagging.MorfologikTagger
-import { Dictionary, DictionaryLookup } from '../../lib/fsa/DictionaryLookup.js';import { IOException, NullPointerException, RuntimeException } from '../../lib/java/errors.js';
+import { Dictionary, DictionaryLookup } from '../../lib/fsa/DictionaryLookup.js';
+import { IOException, NullPointerException, RuntimeException } from '../../lib/java/errors.js';
 import { getDataBroker } from '../resources/LtStatics.js';
 import { TaggedWord } from './TaggedWord.js';
 

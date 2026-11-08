@@ -1,7 +1,8 @@
 // SAX-style XML loading that reproduces the Xerces (JAXP default, non-validating, not namespace aware) event stream used by LT's rule loaders.
 import { Exception, FileNotFoundException, SAXException, UnsupportedEncodingException } from '../../lib/java/errors.js';
 import { getDataBroker } from './LtStatics.js';
-import { getResourceAsStream, getResourceRoots, addResourceRoot } from './ResourceDataBroker.js';
+import { existsSync, readFileSync } from './files.js';
+import { IS_NODE, fileURLToPath, path } from '#platform';
 
 // latin1 = byte value -> charCodeAt, as java.io (and Buffer.toString('latin1')); TextDecoder lacks a true latin1.
 function utf8ToString(u8) {
@@ -14,12 +15,12 @@ function latin1ToString(u8) {
   return out;
 }
 
-// file: URL -> absolute path (path/url modules are Node-imports; the browser entry must stay free of node:)
+// file: URL -> absolute path (Node: url.fileURLToPath; browsers: plain decoding, no node: imports there)
 function fileUrlToPath(url) {
-  return decodeURIComponent(url.slice('file://'.length));
+  return IS_NODE ? fileURLToPath(url) : decodeURIComponent(url.slice('file://'.length));
 }
 
-// minimal path.posix.join for the baseDir + relative systemId case (no node:path)
+// minimal path.posix.join for the baseDir + relative systemId case (browsers, no node:path)
 function posixJoin(...parts) {
   const segs = [];
   const rooted = parts[0].startsWith('/');
@@ -35,21 +36,10 @@ function posixJoin(...parts) {
   return (rooted ? '/' : '') + segs.join('/');
 }
 
-// reads the file of an external file: systemId via the resource broker (memory backends cannot read arbitrary paths);
-// class-path names first, then the file's own directory as a resource root, as Java would read it from disk
+// reads the file of an external file: systemId (Node: from disk; browsers: through the resource broker, see files.js)
 function readExternalFile(file) {
-  for (const root of getResourceRoots()) {
-    const prefix = root.endsWith('/') ? root : root + '/';
-    if (file.startsWith(prefix)) {
-      const bytes = getResourceAsStream('/' + file.slice(prefix.length));
-      if (bytes !== null) return bytes;
-    }
-  }
-  const slash = file.lastIndexOf('/');
-  addResourceRoot(slash < 0 ? file : file.slice(0, slash + 1));
-  const bytes = getResourceAsStream('/' + (slash < 0 ? file : file.slice(slash + 1)));
-  if (bytes !== null) return bytes;
-  throw new FileNotFoundException(file);
+  if (!existsSync(file)) throw new FileNotFoundException(file);
+  return readFileSync(file);
 }
 
 // Java: org.xml.sax.SAXParseException
@@ -880,7 +870,9 @@ class XmlParser {
   // Java: XMLEntityManager#expandSystemId + EntityResolver / default URL resolution
   loadExternal(ent) {
     let sys = ent.sys;
-    if (!/^[A-Za-z][A-Za-z0-9+.-]*:/.test(sys)) sys = 'file://' + posixJoin(this.baseDir.replace(/\\/g, '/'), sys);
+    if (!/^[A-Za-z][A-Za-z0-9+.-]*:/.test(sys)) {
+      sys = 'file://' + (IS_NODE ? path.posix.join(this.baseDir.split(path.sep).join('/'), sys) : posixJoin(this.baseDir.replace(/\\/g, '/'), sys));
+    }
     let bytes = null;
     if (this.resolver !== null) bytes = this.resolver.resolveEntity(ent.pub, sys);
     if (bytes === null) {

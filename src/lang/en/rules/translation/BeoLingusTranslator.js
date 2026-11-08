@@ -1,6 +1,6 @@
 // org.languagetool.rules.en.translation.BeoLingusTranslator (German / English translator, D-019)
+import { readFileSync } from '../../../../core/resources/files.js';
 import { Languages } from '../../../../core/Languages.js';
-import { getResourceAsStream } from '../../../../core/resources/ResourceDataBroker.js';
 import { GlobalConfig } from '../../../../core/rules/model/GlobalConfig.js';
 import { DataSource } from '../../../../core/rules/translation/DataSource.js';
 import { TranslationEntry } from '../../../../core/rules/translation/TranslationEntry.js';
@@ -30,9 +30,14 @@ const verbsWithTo = new Set(['afford', 'agree', 'aim', 'appear', 'arrange',
 
 // Java: Files.readAllLines(Path) (UTF-8, strict)
 function readAllLines(file) {
-  const name = file.getAbsolutePath().startsWith('/') ? file.getAbsolutePath() : `/${file.getAbsolutePath()}`;
-  const buf = getResourceAsStream(name);
-  if (buf === null) throw new NoSuchFileException(file.getPath());
+  let buf;
+  try {
+    buf = readFileSync(file.getAbsolutePath());
+  } catch (e) {
+    if (e.code === 'ENOENT' || e.code === 'ENOTDIR') throw new NoSuchFileException(file.getPath());
+    if (e.code === 'EISDIR') throw new IOException('Is a directory');
+    throw new IOException(`${file.getPath()}: ${e.message}`);
+  }
   let text;
   try {
     text = new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(buf);

@@ -16,7 +16,18 @@
   "exports": {
     ".": {
       "node": "./src/index.js",
-      "browser": "./src/browser-entry.js"
+      "browser": "./src/browser-entry.js",
+      "default": "./src/browser-entry.js"
+    }
+  },
+  "imports": {
+    "#platform": {
+      "node": "./src/core/platform/node.js",
+      "default": "./src/core/platform/browser.js"
+    },
+    "#unicode-tables": {
+      "node": "./src/lib/java/unicode/bundled.node.js",
+      "default": "./src/lib/java/unicode/bundled.browser.js"
     }
   },
   "engines": {
@@ -40,6 +51,8 @@
     "vitest": "^3.0.0"
   },
   "dependencies": {
-    "express": "^5.3.0"
+    "buffer": "^6.0.3",
+    "express": "^5.3.0",
+    "fflate": "^0.8.2"
   }
 }

@@ -1,14 +1,8 @@
 // Java: org.languagetool.rules.spelling.hunspell.Hunspell (cache + resource loading; always the stream path, as for JAR resources)
+import { readFileSync } from '../../../resources/files.js';
 import { RuntimeException } from '../../../../lib/java/errors.js';
-import { getResourceAsStream } from '../../../resources/ResourceDataBroker.js';
 import { getDataBroker } from '../../../resources/LtStatics.js';
 import { DumontsHunspellDictionary } from './DumontsHunspellDictionary.js';
-
-// resource-dir-relative dictionary paths (e.g. /de/hunspell/de_DE) resolve like getFromResourceDirAsStream
-export function dictionaryResourcePath(name) {
-  const n = name.startsWith('/') ? name : `/${name}`;
-  return n.startsWith('/org/languagetool/resource') ? n : `/org/languagetool/resource${n}`;
-}
 
 const resourceCache = new Map(); // Java: Hunspell#resourceCache (key dicPath + affPath)
 const pathCache = new Map(); // Java: Hunspell#pathCache (key dictionary path + affix path)
@@ -22,20 +16,28 @@ export class Hunspell {
     pathCache.clear();
   }
 
-  // Java: Hunspell#getDictionary(Path,Path) (files on disk, e.g. dynamic languages; reads via the resource broker)
+  // Java: Hunspell#getDictionary(Path,Path) (files on disk, e.g. dynamic languages)
   static getDictionary(dictionary, affix) {
     const key = `${dictionary}\u0000${affix}`;
     const cached = pathCache.get(key);
     if (cached !== undefined && !cached.isClosed()) return cached;
-    const dicBytes = getResourceAsStream(dictionaryResourcePath(dictionary));
-    if (dicBytes === null) throw new RuntimeException(`ENOENT: no such file or directory, open '${dictionary}'`);
-    let affBytes = getResourceAsStream(dictionaryResourcePath(affix));
-    if (affBytes === null) {
-      // libhunspell prints the error and still loads the .dic with default affix settings (native stderr)
-      process.stderr.write(`error: ${affix}: cannot open\nerror: ${affix}: cannot open\n`);
-      affBytes = new Uint8Array(0);
+    let dict;
+    try {
+      const dicBytes = readFileSync(dictionary);
+      let affBytes;
+      try {
+        affBytes = readFileSync(affix);
+      } catch (e) {
+        if (e.code !== 'ENOENT') throw e;
+        // libhunspell prints the error and still loads the .dic with default affix settings (native stderr)
+        process.stderr.write(`error: ${affix}: cannot open\nerror: ${affix}: cannot open\n`);
+        affBytes = Buffer.alloc(0);
+      }
+      dict = new DumontsHunspellDictionary(dicBytes, affBytes, false);
+    } catch (e) {
+      if (e && e.code !== undefined && typeof e.syscall === 'string') throw new RuntimeException(e.message); // Java: IOException wrapped
+      throw e;
     }
-    const dict = new DumontsHunspellDictionary(dicBytes, affBytes, false);
     pathCache.set(key, dict);
     return dict;
   }
