@@ -10,8 +10,8 @@ import { fileURLToPath } from 'node:url';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(HERE, '../..');
-const JDK = '/usr/lib/jvm/java-17-openjdk';
-const LT = path.join(ROOT, 'oracle/java-src/languagetool-standalone/target/LanguageTool-6.9-SNAPSHOT/LanguageTool-6.9-SNAPSHOT');
+const JDK = process.env.LTJS_EVAL_JDK ?? '/usr/lib/jvm/java-17-openjdk'; // env overrides for machines with another JDK/LT location
+const LT = process.env.LTJS_EVAL_LT ?? path.join(ROOT, 'oracle/java-src/languagetool-standalone/target/LanguageTool-6.9-SNAPSHOT/LanguageTool-6.9-SNAPSHOT');
 export const TYPES = ['das_dass', 'comma_missing', 'comma_superfluous', 'other'];
 
 function parseArgs(argv) {
@@ -36,7 +36,7 @@ function parseArgs(argv) {
 }
 
 // Starts one server and waits for /v2/healthcheck; returns {child, workDir}.
-async function startServer(engine, port) {
+export async function startServer(engine, port) {
   const workDir = mkdtempSync(path.join(tmpdir(), 'ltjs-eval-'));
   const env = { ...process.env, TZ: 'Europe/Vienna', LANG: 'C.UTF-8', LC_ALL: 'C.UTF-8', HOME: workDir };
   const child = engine === 'java'

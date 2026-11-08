@@ -47,6 +47,12 @@ Npm-Pakete: `@valueerror/ltjs-core` plus je Sprache `@valueerror/ltjs-lang-<code
 - **LTJS-Regelschicht** (zusätzliche Regeln, Standard an; DEV-028, Code in `src/lang/de/ltjs/`):
   - 12 das/dass-Regeln: `LTJS_DAS_DAS`, `LTJS_DAS_DASS_VERB`, `LTJS_DAS_DASS_NOMEN`, `LTJS_DAS_DASS_ADJ`, `LTJS_SO_ADJ_DASS`, `LTJS_SODASS`, `LTJS_DASS_SATZANFANG`, `LTJS_DASS_RELATIVPRONOMEN`, `LTJS_DAS_DASS_KOMMA`, `LTJS_OHNE_DASS`, `LTJS_DASS_STATT_DAS`, `LTJS_DAS_DASS_OHNE_KOMMA`.
   - 10 Kommaregeln Deutsch: `LTJS_KOMMA_VORFELD`, `_NEBENSATZ`, `_RELATIVSATZ`, `_INFINITIV`, `_ABER`, `_NEBENSATZ_ENDE`, `_UND_PRAEDIKAT`, `_SUBJEKT_VERB`, `_PRAEPOSITIONALOBJEKT`, `_NACH_UND`.
+  - 1 Relativpronomen-Regel: `LTJS_RELATIVPRONOMEN` (Genus/Numerus passt nicht zum Bezugswort, z. B. „Das Protokoll, den du geschickt hast").
+  - 1 Subjekt-Verb-Regel: `LTJS_SUBJEKT_VERB` (Numerus von Subjekt am Satzanfang und Verb passt nicht, z. B. „Die Ergebnisse ist interessant").
+  - 2 Präpositionsregeln: `LTJS_PRAEP_DATIV` (kein Dativ nach mit/nach/bei/seit/von/zu/aus, z. B. „Nach die Matura" → „Nach der Matura", Vorschlag für die ganze Nominalgruppe) und `LTJS_PRAEP_WECHSEL` (Akkusativ nach in/vor/hinter/unter/neben/zwischen bei Verben ohne Bewegung, z. B. „Wir warten unter einen Baum").
+  - 1 Perfektregel: `LTJS_PERFEKT_SEIN` („haben" statt „sein" bei Bewegungs-/Zustandsverben, z. B. „Unser Bus hat abgefahren" → „ist").
+  - 5 Vergleichs-/Ausdrucksregeln: `LTJS_MEHR_WIE` („mehr wie zwei Millionen" → „mehr als"), `LTJS_SO_ALS` („so hoch als" → „so hoch wie"), `LTJS_DESTO_JE` („Desto … desto" → „Je … desto"), `LTJS_W_DASS` („warum dass" → „warum"), `LTJS_SEIT_SEID` („Seit ihr …?" → „Seid ihr …?").
+  - 2 Verwechslungsregeln: `LTJS_FIEL_VIEL` („zu fiel Salz" → „zu viel"), `LTJS_WEN_WENN` („Wen ihr Tipps habt" → „Wenn").
   - Abschalten: Umgebungsvariable `LTJS_EXTRA_RULES=0`, `check(text, {extraRules: false})`, Server-Parameter `ltjsExtraRules=false`, einzeln über `disabledRules`.
 - **Java-Bugs behoben** (15 Einträge DEV-013 bis DEV-027 in `docs/DEVIATIONS.md`), zum Beispiel:
   - DEV-013: `DifferentPunctuationRule` wirft bei Ziel `?` eine `IllegalArgumentException` (Exit 1 bzw. HTTP 500), jetzt ein normaler Treffer.

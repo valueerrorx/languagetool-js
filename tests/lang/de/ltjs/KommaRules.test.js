@@ -6,6 +6,12 @@ import { messagesFor, newLt } from '../../../support/ruleTestSupport.js';
 import { getLtjsGermanCommaRules, LTJS_KOMMA_RULE_IDS } from '../../../../src/lang/de/ltjs/KommaRules.js';
 import { LTJS_GERMAN_RULE_IDS, getLtjsGermanRules } from '../../../../src/lang/de/ltjs/GermanLtjsRules.js';
 import { LTJS_DAS_DASS_RULE_IDS } from '../../../../src/lang/de/ltjs/DasDassRules.js';
+import { LTJS_RELATIV_RULE_IDS } from '../../../../src/lang/de/ltjs/RelativRules.js';
+import { LTJS_SUBJEKT_VERB_RULE_IDS } from '../../../../src/lang/de/ltjs/SubjektVerbRules.js';
+import { LTJS_PRAEP_KASUS_RULE_IDS } from '../../../../src/lang/de/ltjs/PraepKasusRules.js';
+import { LTJS_PERFEKT_RULE_IDS } from '../../../../src/lang/de/ltjs/PerfektRules.js';
+import { LTJS_AUSDRUCK_RULE_IDS } from '../../../../src/lang/de/ltjs/AusdruckRules.js';
+import { LTJS_VERWECHSLUNG_RULE_IDS } from '../../../../src/lang/de/ltjs/VerwechslungRules.js';
 
 const deDE = Languages.getLanguageForShortCode('de-DE');
 const rules = Object.fromEntries(getLtjsGermanCommaRules(messagesFor(deDE), deDE).map((r) => [r.getId(), r]));
@@ -50,8 +56,19 @@ const CASES = {
       ['Er fragte mich wann der Zug abfährt.', 'mich wann->mich, wann'],
       ['Hat jemand eine Idee woran das liegen könnte?', 'Idee woran->Idee, woran'],
       ['Wir brauchen eine Liste, auf die jeder schreibt was fehlt.', 'schreibt was->schreibt, was'],
+      ['Es ist gut so wie es ist.', 'gut so wie->gut, so wie'],
+      ['Ich sage, dass es gut ist so wie es ist.', 'ist so wie->ist, so wie'],
+      ['Ich mache es so wie er es will.', 'es so wie->es, so wie'],
+      ['Habt ihr Tipps wie wir ihm das abgewöhnen können?', 'Tipps wie->Tipps, wie'],
+      ['Ich habe versucht, das Fenster am Abend zu schließen wie es im Handbuch beschrieben wird.', 'schließen wie->schließen, wie'],
     ],
     good: [
+      'Es ist gut, so wie es ist.',
+      'Es ist gut so, wie es ist.',
+      'Er ist so groß wie sein Vater.',
+      'Das Wetter ist heute so schön wie gestern.',
+      'Ich sehe das so wie du.',
+      'Mach es so wie ich.',
       'Er ist größer als sein Bruder.',
       'Sie arbeitet als Ärztin in Berlin.',
       'Er wurde als Kind adoptiert.',
@@ -62,6 +79,9 @@ const CASES = {
       'Das heißt man kann damit dieselben Aufgaben lösen.',
       'Der Fußball soll aus einem Material wie zum Beispiel Leder bestehen.',
       'Er wird als der historische Buddha bezeichnet.',
+      'Der Autokauf soll so einfach sein wie Sneakers shoppen.',
+      'Ein neuer Landtag kann so gut wie nie die Richter bestimmen.',
+      'Er nannte den König, der offenbar als eine Art Obereigentümer angesehen wurde.',
     ],
   },
   LTJS_KOMMA_RELATIVSATZ: {
@@ -78,6 +98,7 @@ const CASES = {
       'Die Gruppe der von Hegel verfassten Texte ist groß.',
       'Er gab dem Mann die Hand.',
       'Die Kosten, die entstehen, trägt der Mieter.',
+      'Somit sind bereits 2280 Quadratmeter der insgesamt circa 6600 Quadratmeter vermietet.',
     ],
   },
   LTJS_KOMMA_INFINITIV: {
@@ -136,6 +157,7 @@ const CASES = {
       'Er sagte, er sei krank, und ging nach Hause.',
       'Welche Rolle spielt dabei die Erfüllung, und ist denn die Übermacht so groß?',
       'Dann müsste eine Wanderung einsetzen, oder Unternehmen ihre Produktion verlagern.',
+      'Der Hund ist in den Teich gesprungen, und alle haben geklatscht.',
     ],
   },
   LTJS_KOMMA_SUBJEKT_VERB: {
@@ -152,6 +174,9 @@ const CASES = {
       'Die Sterblichkeitsraten, bezogen auf die Pandemie, sind gestiegen.',
       'Alle ökonomischen Kategorien, sei es Geld oder Kapital, sind historisch.',
       'Seiner Ausbildung nach Jurist, hielt er Vorträge.',
+      'Der Ex-Trainer, sagt Babbel, hätte das aufarbeiten müssen.',
+      'Der Boom, prophezeit er beim Netzwerk Stuggi nexxt, werde noch stärker.',
+      'Sandstrand unter echten Palmen, chillen im Liegestuhl, das bietet der Citybeach.',
     ],
   },
   LTJS_KOMMA_PRAEPOSITIONALOBJEKT: {
@@ -185,8 +210,8 @@ describe('LTJS comma rules', () => {
     }
   });
 
-  it('the layer registers das/dass and comma rules', () => {
-    expect([...LTJS_GERMAN_RULE_IDS].sort()).toEqual([...LTJS_DAS_DASS_RULE_IDS, ...LTJS_KOMMA_RULE_IDS].sort());
+  it('the layer registers das/dass, comma and relative pronoun rules', () => {
+    expect([...LTJS_GERMAN_RULE_IDS].sort()).toEqual([...LTJS_DAS_DASS_RULE_IDS, ...LTJS_KOMMA_RULE_IDS, ...LTJS_RELATIV_RULE_IDS, ...LTJS_SUBJEKT_VERB_RULE_IDS, ...LTJS_PRAEP_KASUS_RULE_IDS, ...LTJS_PERFEKT_RULE_IDS, ...LTJS_AUSDRUCK_RULE_IDS, ...LTJS_VERWECHSLUNG_RULE_IDS].sort());
     expect(getLtjsGermanRules(messagesFor(deDE), deDE).map((r) => r.getId()).sort()).toEqual([...LTJS_GERMAN_RULE_IDS].sort());
   });
 

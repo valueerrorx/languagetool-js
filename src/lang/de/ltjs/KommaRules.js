@@ -344,7 +344,9 @@ export class LtjsKommaNebensatzRule extends LtjsKommaRule {
     const prev = tokens[i - 1];
     // comparatives before 'als' ('gewöhnungsbedürftiger als', 'mehr als ich dachte')
     const comparative = w === 'als' && isLowerCase(prev) && (COMPARATIVES.has(lower(prev)) || (hasTag(prev, /^ADJ/) && !CLAUSE_MODIFIERS.has(lower(prev))));
-    if (!endsClause(prev) && !comparative) return null;
+    // 'gut ist so wie es ist': the comma goes before 'so' or between 'so' and 'wie'
+    const soWie = w === 'wie' && prev.getToken() === 'so' && i >= 3 && endsClause(tokens[i - 2]);
+    if (!endsClause(prev) && !comparative && !soWie) return null;
     let s = i + 1;
     if ((w === 'als' || w === 'wie') && ['ob', 'wenn', 'dass'].includes(tokens[s]?.getToken())) s++;
     if (s >= tokens.length || !isWord(tokens[s])) return null;
@@ -360,17 +362,28 @@ export class LtjsKommaNebensatzRule extends LtjsKommaRule {
     const lastVerb = tokens[vf.last];
     // 'als ... bezeichnet', 'wie die meinen', 'als die kritisierte': the verb may belong to the outer clause or be no verb at all
     if ((w === 'als' || w === 'wie') && ((vf.clusterStart === vf.last && hasParticiple(lastVerb)) || hasTag(lastVerb, /^(ADJ|PA1|PA2):(NOM|AKK|DAT|GEN)|^(PRO|SUB)/))) return null;
+    if (w === 'wie' && ['nie', 'immer', 'nichts', 'möglich'].includes(lower(tokens[s]))) return null; // 'so gut wie nie'
+    // 'so einfach sein wie Sneakers shoppen': comparison without a finite verb
+    if (w === 'wie' && tokens.slice(Math.max(0, i - 4), i).some((x) => x.getToken() === 'so') && !isOnlyFinite(lastVerb)) return null;
+    // 'der offenbar als … angesehen wurde': no finite verb before 'als'/'wie' in the segment, the verb belongs to the outer clause
+    if ((w === 'als' || w === 'wie') && zuInfinitiveStart(tokens, i - 1) < 0 && !tokens.slice(segmentStartAt(tokens, i), i).some((x) => isFiniteVerb(x) && !hasTag(x, /^(ADV|ADJ|ART|PRO|PRP|KON|ZAL|SUB)/))) return null;
     const ambiguous = AMBIGUOUS_SUBORDINATORS.has(w);
     // after a conjunction that is also a preposition/adverb the subject must be a sure nominative ('während der Tage' is no subject)
     const ownSubject = vf.clusterStart > s && (ambiguous ? subjectAgrees(tokens, s, vf) : hasSubjectCandidate(tokens, s, vf.clusterStart));
     if (!(wword && W_SUBJECT.has(w)) && !ownSubject) return null;
     if (w === 'was' && !ownSubject && !(vf.clusterStart < vf.last || isOnlyFinite(tokens[vf.last]))) return null;
     if (w === 'was' && isUpperCase(tokens[s]) && hasTag(tokens[s], /^(SUB|ADJ)/) && !hasTag(tokens[s], /^SUB:NOM/)) return null; // 'was Neues'
-    const before = clauseBefore(tokens, i);
+    const k = soWie ? i - 1 : i; // first token of the subordinate clause
+    const before = clauseBefore(tokens, k);
     if (!before.complete) return null;
-    if (ambiguousWithOpenClause(tokens, vf, before) || (before.open && ambiguous && (!isNoun(prev) || laterNonFinite(tokens, e)))) return null;
-    if (segmentStartAt(tokens, i) === i - 1 && !isVerb(prev) && !isNoun(prev)) return null; // '-- ähnlich wie wir ...'
-    return this.missingComma(sentence, tokens, i, `Hier scheint ein Komma zu fehlen: '${w}' leitet einen Nebensatz ein, der mit Komma abgetrennt wird.`);
+    if (ambiguousWithOpenClause(tokens, vf, before) || (before.open && ambiguous && (!isNoun(tokens[k - 1]) || laterNonFinite(tokens, e)))) return null;
+    if (segmentStartAt(tokens, k) === k - 1 && !isVerb(tokens[k - 1]) && !isNoun(tokens[k - 1])) return null; // '-- ähnlich wie wir ...'
+    const msg = `Hier scheint ein Komma zu fehlen: '${soWie ? 'so wie' : w}' leitet einen Nebensatz ein, der mit Komma abgetrennt wird.`;
+    if (!soWie) return this.missingComma(sentence, tokens, i, msg);
+    const a = tokens[i - 2].getToken();
+    const m = new RuleMatch(this, sentence, tokens[i - 2].getStartPos(), t.getEndPos(), msg, 'Komma fehlt');
+    m.setSuggestedReplacements([`${a}, so wie`, `${a} so, wie`]);
+    return m;
   }
 }
 
@@ -471,6 +484,8 @@ export class LtjsKommaRelativsatzRule extends LtjsKommaRule {
     const e = clauseEnd(tokens, s);
     const vf = verbFinalLoose(tokens, s, e, false);
     if (vf === null || articleOfNounPhrase(tokens, r, vf)) return null;
+    // genitive article before a measure: '2280 Quadratmeter der insgesamt circa 6600 Quadratmeter'
+    if (rel === 'der' && tokens.slice(s, s + 3).some((x, k) => /^\d/.test(x.getToken()) && hasTag(tokens[s + k + 1], /^SUB/))) return null;
     if ((rel === 'deren' || rel === 'dessen') && !(isNoun(tokens[s]) || hasTag(tokens[s], /^(ADJ|PA1|PA2|ZAL)/))) return null; // 'wenn der Mensch dessen gewahr werde'
     // a pronoun that cannot be the subject needs a subject in the clause ('den keiner kannte'; not 'dem der natürlichen Beute entsprechen')
     if (['dem', 'den', 'denen', 'welchem'].includes(rel) && !subjectAgrees(tokens, s, vf)) return null;
@@ -692,6 +707,7 @@ export class LtjsKommaUndPraedikatRule extends LtjsKommaRule {
       const t = tokens[j];
       if ((isFiniteVerb(t) && isLowerCase(t) && !isNonFiniteVerb(t) && !hasTag(t, /^(ADJ|ADV|PRP|SUB|ART|PRO|KON|ZAL)/)) || (isNominativePronoun(t) && lower(t) !== 'es')) return null;
       if (lower(t) === 'sie' || (j === v && isKonUnt(t))) return null;
+      if (isLowerCase(t) && hasTag(t, /^VER:(AUX|MOD):[123]:/)) return null; // own auxiliary: ', und alle haben geklatscht'
     }
     // two noun phrases or a sure nominative after 'und': the second part may have a subject of its own ('oder Unternehmen ihre Produktion verlagern')
     const args = coreArguments(tokens, v, e - 1).filter((a) => a.cases.has('NOM') || a.cases.has('AKK'));
@@ -827,7 +843,11 @@ export class LtjsKommaSubjektVerbRule extends LtjsKommaRule {
     if (hasParticiple(v) && !(isNominativePronoun(next) || next.getToken() === 'Sie')) return null; // ', bezogen auf ...,'
     if (!isWord(next) || ['du', 'ihr'].includes(lower(next))) return null;
     if (['sei', 'seien'].includes(v.getToken())) return null; // 'Alle Kategorien, sei es Geld oder Kapital, ...'
-    if (hasTag(next, /^(PRO:PER|EIG)/) && tokens.slice(k + 3, k + 6).some(isComma)) return null; // 'Der Alte, sagte er, ...', 'haben wir geschlossen,'
+    // parenthesis: 'Der Alte, sagte er, ...', 'Der Trainer, sagt Babbel, ...', 'haben wir geschlossen,'
+    if ((hasTag(next, /^(PRO:PER|EIG)/) || (isUnknown(next) && isUpperCase(next))) && tokens.slice(k + 3, k + 10).some(isComma)) return null;
+    // the verb does not agree with the head noun: an enumeration ('Sandstrand unter Palmen, chillen im Strandkorb, das bietet …')
+    const firstNoun = tokens.slice(1, k).find((t) => hasTag(t, /^SUB/) && isUpperCase(t));
+    if (firstNoun && hasTag(firstNoun, /^SUB:NOM:SIN/) && !hasTag(firstNoun, /^SUB:NOM:PLU/) && !personNumbers(v).has('3:SIN')) return null;
     // the verb must not start an enumeration or a clause of its own: no further finite verb
     if (!noFiniteVerb(tokens, k + 2, clauseEnd(tokens, k + 2))) return null;
     return this.superfluousComma(sentence, tokens, k, 'Zwischen dem Satzglied vor dem Verb und dem Verb steht kein Komma.');
