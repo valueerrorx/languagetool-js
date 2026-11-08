@@ -45,6 +45,12 @@ const GOOD = [
   'Der Lehrer, die uns unterrichten, sind krank.', // 'Lehrer' is also plural: no decision
   'Am Abend waren wir in einem Heurigen, den uns die Rezeptionistin empfohlen hatte.', // nominalised adjective
   'Mit dem Bekannten, den ich traf, sprach ich lange.',
+  // corpus false alarms (Leipzig news/wikipedia sample)
+  'Beschlagnahmt wurden zwei Fahrzeuge, ein BMW und ein Audi, die als Tatmittel dienten.', // coordination
+  'Dagegen stehen 42 Prozent, die ein Verbot ablehnen.', // measure
+  'Er bekommt eine Beifahrerin, Case, aus dem Frauengefängnis, die ihm hilft.', // apposition
+  'Selbst innerhalb der Bewegung gibt es seit langem Stimmen, die sich dagegen erheben.',
+  'Dort liegt der Tierfriedhof Les Jardins du Souvenir, der 1989 eröffnet wurde.', // foreign name
 ];
 
 describe('LTJS relative pronoun rule', () => {

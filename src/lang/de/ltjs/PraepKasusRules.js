@@ -79,6 +79,8 @@ export class LtjsPraepDativRule extends Rule {
     const p = prep.getToken().toLowerCase();
     if (!this.prepositions().has(p) || !hasTag(prep, /^PRP/)) return null;
     if (p === 'nach' && i >= 3 && tokens[i - 1].getToken() === 'und' && tokens[i - 2].getToken().toLowerCase() === 'nach') return null; // 'nach und nach'
+    if (p === 'nach' && isUpperCase(tokens[i - 1]) && hasTag(tokens[i - 1], /^SUB/)) return null; // postposition: 'der Sage nach den Besucher'
+    if (p === 'aus' && tokens.slice(Math.max(0, i - 4), i).some((x) => /^(von|vom)$/i.test(x.getToken()))) return null; // adverb: 'vom Garten aus den Rundbau'
     if (p === 'seit' && verbFinal(tokens, i + 1, clauseEnd(tokens, i + 1)) !== null) return null; // conjunction: 'Seit die Anlage lief, …'
     const det = tokens[i + 1];
     const w = det.getToken();

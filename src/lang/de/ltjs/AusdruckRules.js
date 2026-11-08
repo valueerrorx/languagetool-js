@@ -108,6 +108,8 @@ export class LtjsWDassRule extends LtjsPatternRule {
     const w = lower(tokens[i]);
     if (!W_WORDS.has(w) || lower(tokens[i + 1] ?? tokens[i]) !== 'dass') return null;
     if (i > 1 && ['so', 'als', 'ohne', 'statt', 'anstatt', 'außer', 'nur', 'ja'].includes(lower(tokens[i - 1]))) return null; // 'so wie dass'
+    // comparison: 'ebenso normal, wie dass die Rohstoffe lieferbar sind'
+    if (w === 'wie' && tokens.slice(Math.max(1, i - 5), i).some((x) => ['so', 'ebenso', 'genauso', 'gleich'].includes(lower(x)))) return null;
     return [i, i + 1, tokens[i].getToken(), `Nach '${tokens[i].getToken()}' steht kein 'dass'.`];
   }
 }

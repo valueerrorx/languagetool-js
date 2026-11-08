@@ -41,6 +41,9 @@ const GOOD = [
   'Er bittet um die Erlaubnis, mit zu kommen.',
   'Die Kinder kommen mit, die Eltern bleiben.',
   'Seit die Anlage automatisch lief, war das nicht mehr nötig.', // conjunction
+  'Eine Nacht auf dem Berg macht der Sage nach den Besucher zum Dichter.', // postposition
+  'Das sind meiner Meinung nach die Richtungen, in die man gehen muss.',
+  'Man betrat vom Garten aus den Rundbau.', // adverb 'aus'
 ];
 
 const rule2 = getLtjsGermanPraepKasusRules(messagesFor(deDE), deDE)[1];

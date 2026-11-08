@@ -41,6 +41,7 @@ const GOOD = [
   'Seit ihr Vater gestorben ist, lebt sie allein.',
   'Seit ihr hier wohnt, ist es ruhiger.',
   'Wie lange wohnt ihr schon hier, seit ihr umgezogen seid?',
+  'Das galt als ebenso normal, wie dass die Rohstoffe immer lieferbar sind.', // comparison
 ];
 
 describe('LTJS comparison and expression rules', () => {

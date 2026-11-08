@@ -88,17 +88,29 @@ export class LtjsRelativpronomenRule extends Rule {
     // candidate antecedents: every noun of the noun phrase chain before the comma; unknown capitalised words make it unsure
     const allowed = pronounClasses(w);
     let anyNoun = false;
-    for (let j = k - 1; j > 0 && NP_CHAIN(tokens[j]); j--) {
+    let j = k - 1;
+    let coordinated = false;
+    let pp = false;
+    for (; j > 0 && NP_CHAIN(tokens[j]); j--) {
       const t = tokens[j];
       if (isUnknown(t) && isUpperCase(t)) return null;
+      if (/^(und|oder|sowie)$/.test(t.getToken()) && anyNoun) coordinated = true;
+      if (hasTag(t, /^PRP/) && isLowerCase(t)) pp = true;
+      if ((hasTag(t, /^ZAL/) && !hasTag(t, /^ART/)) || /^\d/.test(t.getToken())) return null; // measure: '42 Prozent, die'
       if (!isUpperCase(t) || !hasTag(t, /^(SUB|EIG)/)) continue;
-      if (hasTag(t, /^SUB:.*:ADJ$/)) return null; // nominalised adjective ('einem Heurigen, den'): gender follows the referent
+      if (hasTag(t, /^SUB:.*:ADJ$/) || (hasTag(t, /^SUB/) && tags(t).filter((p) => p.startsWith('SUB')).every((p) => p.endsWith(':INF')))) return null; // nominalised adjective ('einem Heurigen, den'): gender follows the referent; nominalised infinitive ('seit langem Stimmen'): the plural reading may be lost
       const gn = genderNumber(t);
       if (gn.size === 0) return null; // gender unknown
       anyNoun = true;
       if ([...gn].some((x) => allowed.has(x))) return null;
     }
     if (!anyNoun) return null;
+    if (coordinated && allowed.has('PLU')) return null; // 'ein BMW und ein Audi, die'
+    // the antecedent may stand before the chain: apposition ('Case, aus dem Gefängnis, die'), hyphenated compound ('„Macho“-Sängern mit Bart, die')
+    const stop = tokens[j];
+    if (j > 0 && (pp && stop.getToken() === ',' || /^-\p{Lu}/u.test(stop.getToken()))) return null;
+    // foreign name around the stop ('Les Jardins du Souvenir, der')
+    if ([j - 1, j - 2].some((x) => x > 0 && isUnknown(tokens[x]) && isUpperCase(tokens[x]))) return null;
     const headGn = [...genderNumber(head)];
     const cases = GENITIVES.has(w) ? ['GEN'] : PRONOUN_CASES.get(w);
     const suggestions = [...new Set(cases.flatMap((c) => headGn.map((gn) => FORMS[c][gn])))].filter((s) => s !== w);

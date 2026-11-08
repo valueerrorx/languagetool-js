@@ -27,6 +27,8 @@ const BAD = [
   ['Viele Nutzer weiß nicht, wie das geht.', 'weiß->wissen'],
   ['Die Kinder spielte im Garten.', 'spielte->spielten'],
   ['Der Lehrer kommen gleich.', 'kommen->kommt'], // 'der' as nominative is singular only
+  ['Lisa kommen wahrscheinlich später.', 'kommen->kommt'], // bare first name
+  ['Der Gemeinderat haben am Dienstag den Bau beschlossen.', 'haben->hat'],
 ];
 
 const GOOD = [
@@ -44,6 +46,18 @@ const GOOD = [
   'Meine Eltern wohnen in Wien.',
   'Die Banane schälen, den Apfel entkernen und beides pürieren.', // recipe infinitives
   'Neuer Radweg beschlossen', // headline
+  // corpus false alarms (Leipzig news/wikipedia sample)
+  'Interessierte können an Testfahrten teilnehmen.', // bare nominalized adjective
+  'Unbekannte hatten zuvor rund 140 Meter Kabel gestohlen.',
+  'Graphen ist extrem leitfähig.',
+  'Zeitungen bitte vorher bündeln.',
+  'Andere Angeklagte sollen verurteilt worden sein.',
+  'Jedes Jahr werden mehr als 30.000 Kinder behandelt.', // time adverbial
+  'Die Gründe will Hartlapp nun genauer erforschen.', // name after the verb
+  'Das Dschungelcamp moderieren in diesem Jahr Sonja Zietlow und Jan Köppen.',
+  'Diese Chance wollen und werden wir nutzen.',
+  'Ein besonderes Merkmal waren die dreieckigen Lufteinlässe.', // plural predicative noun
+  'Ein positives Testergebnis haben allerdings auch 110 der 950 Patienten.',
   // known limit: a nominative noun phrase agreeing with the verb follows, read as fronted object (like 'Die Bücher kauft meine Mutter')
   'Viele Jugendliche verbringt ihre Freizeit vor dem Bildschirm.',
 ];

@@ -59,6 +59,8 @@ const CASES = {
       ['Es ist gut so wie es ist.', 'gut so wie->gut, so wie'],
       ['Ich sage, dass es gut ist so wie es ist.', 'ist so wie->ist, so wie'],
       ['Ich mache es so wie er es will.', 'es so wie->es, so wie'],
+      ['Habt ihr Tipps wie wir ihm das abgewöhnen können?', 'Tipps wie->Tipps, wie'],
+      ['Ich habe versucht, das Fenster am Abend zu schließen wie es im Handbuch beschrieben wird.', 'schließen wie->schließen, wie'],
     ],
     good: [
       'Es ist gut, so wie es ist.',
@@ -77,6 +79,9 @@ const CASES = {
       'Das heißt man kann damit dieselben Aufgaben lösen.',
       'Der Fußball soll aus einem Material wie zum Beispiel Leder bestehen.',
       'Er wird als der historische Buddha bezeichnet.',
+      'Der Autokauf soll so einfach sein wie Sneakers shoppen.',
+      'Ein neuer Landtag kann so gut wie nie die Richter bestimmen.',
+      'Er nannte den König, der offenbar als eine Art Obereigentümer angesehen wurde.',
     ],
   },
   LTJS_KOMMA_RELATIVSATZ: {
@@ -151,6 +156,7 @@ const CASES = {
       'Er sagte, er sei krank, und ging nach Hause.',
       'Welche Rolle spielt dabei die Erfüllung, und ist denn die Übermacht so groß?',
       'Dann müsste eine Wanderung einsetzen, oder Unternehmen ihre Produktion verlagern.',
+      'Der Hund ist in den Teich gesprungen, und alle haben geklatscht.',
     ],
   },
   LTJS_KOMMA_SUBJEKT_VERB: {
@@ -167,6 +173,9 @@ const CASES = {
       'Die Sterblichkeitsraten, bezogen auf die Pandemie, sind gestiegen.',
       'Alle ökonomischen Kategorien, sei es Geld oder Kapital, sind historisch.',
       'Seiner Ausbildung nach Jurist, hielt er Vorträge.',
+      'Der Ex-Trainer, sagt Babbel, hätte das aufarbeiten müssen.',
+      'Der Boom, prophezeit er beim Netzwerk Stuggi nexxt, werde noch stärker.',
+      'Sandstrand unter echten Palmen, chillen im Liegestuhl, das bietet der Citybeach.',
     ],
   },
   LTJS_KOMMA_PRAEPOSITIONALOBJEKT: {

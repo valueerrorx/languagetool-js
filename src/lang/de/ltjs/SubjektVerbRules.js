@@ -14,7 +14,14 @@ const QUANTITY = new Set(['Anzahl', 'Großteil', 'Gruppe', 'Hälfte', 'Handvoll'
   'Paar', 'Prozent', 'Reihe', 'Rest', 'Teil', 'Vielzahl', 'Zahl', 'Dutzend', 'Drittel', 'Viertel', 'Fünftel', 'Zehntel', 'Hundert', 'Tausend',
   'Million', 'Millionen', 'Milliarde', 'Milliarden', 'Gros', 'Bruchteil', 'Großzahl', 'Unmenge', 'Unzahl']);
 // determiners of count nouns in the plural (the tagger also reads 'viele' as feminine singular)
-const PLURAL_QUANTIFIER = new Set(['viele', 'einige', 'mehrere', 'wenige', 'manche', 'beide', 'zahlreiche', 'etliche']);
+const PLURAL_QUANTIFIER = new Set(['viele', 'einige', 'mehrere', 'wenige', 'manche', 'beide', 'zahlreiche', 'etliche', 'andere', 'weitere',
+  'verschiedene', 'sämtliche', 'alle']);
+// time nouns: 'Jedes Jahr werden Tausende behandelt' is an adverbial, not the subject
+const TIME = new Set(['Jahr', 'Monat', 'Woche', 'Tag', 'Wochenende', 'Mal', 'Morgen', 'Vormittag', 'Mittag', 'Nachmittag', 'Abend', 'Nacht',
+  'Stunde', 'Minute', 'Sekunde', 'Saison', 'Semester', 'Schuljahr', 'Quartal', 'Jahrzehnt', 'Jahrhundert', 'Frühling', 'Sommer', 'Herbst',
+  'Winter', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag']);
+// copulas: a plural predicative noun may agree with the verb ('Ein Merkmal waren die Lufteinlässe')
+const COPULA = new Set(['sein', 'bleiben']);
 const TENSE_ORDER = ['PRÄ', 'PRT', 'KJ2', 'KJ1'];
 const TENSE =/^VER:(?:AUX:|MOD:)?3:(?:SIN|PLU):(PRÄ|PRT|KJ1|KJ2)/;
 
@@ -75,6 +82,15 @@ export class LtjsSubjektVerbRule extends Rule {
     const head = tokens[v - 1];
     const verb = tokens[v];
     if (!isUpperCase(head) || !hasTag(head, /^(SUB|EIG)/) || !isMainFinite(verb) || !isLowerCase(verb)) return null;
+    // a determiner opens the noun phrase: bare nouns are often names, nominalized adjectives or mass nouns ('Interessierte können',
+    // 'Graphen ist', 'Nissen kam'); time nouns are adverbials
+    const bareName = v - 1 === s && hasTag(head, /^EIG/) && !hasTag(head, /^SUB/); // 'Lisa kommen später'
+    if (!bareName && (v - 1 === s || !hasTag(tokens[s], /^(ART|PRO:(POS|DEM|IND))/))) return null;
+    if (TIME.has(head.getToken())) return null;
+    // coordinated verbs ('Diese Chance wollen und werden wir nutzen'); an infinitive subject ('Gut rechnen können ist …')
+    if (hasTag(verb, /^(ADV|INJ)/)) return null; // 'Zeitungen bitte bündeln': 'bitte' is no verb here
+    const next = tokens[v + 1];
+    if (next !== undefined && (/^(und|oder|sowie)$/.test(next.getToken()) || isMainFinite(next) && isNonFiniteVerb(verb))) return null;
     for (let j = s + 1; j < v - 1; j++) if (hasTag(tokens[j], /^(SUB|EIG)/) && isUpperCase(tokens[j])) return null; // one noun only, no genitive attribute
     const subject = subjectNumbers(tokens, s, v - 1);
     if (subject.size !== 1) return null; // number unsure or no nominative reading ('Den Kindern gefällt')
@@ -85,10 +101,18 @@ export class LtjsSubjektVerbRule extends Rule {
     if (verbPn.has(wanted) || ![...verbPn].some((x) => x.startsWith('3:'))) return null;
     // another subject after the verb: fronted object ('Die Kinder hat er gesehen') or predicative noun ('Das Problem sind die Kosten')
     // (a measure phrase from a numeral on is no subject: 'dauert oft nur zwanzig Minuten')
+    if (wanted === '3:SIN' && verb.getReadings().some((r) => COPULA.has(r.getLemma()))) return null;
     let e = v + 1;
     while (e < clauseEnd(tokens, v + 1) && !hasTag(tokens[e], /^ZAL/) && !/^\d/.test(tokens[e].getToken())) e++;
+    if (/^(der|von)$/.test(tokens[e + 1]?.getToken() ?? '')) return null; // partitive subject: 'haben auch 110 der 950 Patienten'
     const after = nominativePersons(tokens, v + 1, e);
     if ([...after].some((x) => verbPn.has(x))) return null;
+    // a name or unknown word after the verb may be the subject ('Die Gründe will Hartlapp erforschen'), not after a preposition
+    for (let j = v + 1; j < e; j++) {
+      const t = tokens[j];
+      if (TIME.has(t.getToken()) || hasTag(tokens[j - 1], /^PRP/) || /^(am|im|vom|zum|beim)$/.test(tokens[j - 1].getToken())) continue; // 'am Dienstag'
+      if (isUpperCase(t) && (isUnknown(t) || hasTag(t, /^EIG/))) return null;
+    }
     const suggestions = this.suggestions(verb, wanted);
     if (!suggestions.length) return null;
     const plural = wanted === '3:PLU';
