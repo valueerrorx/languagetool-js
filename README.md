@@ -42,6 +42,10 @@ const srv = await startServer({ port: 8081 });  // { port, host, server, close()
 
 Npm-Pakete: `@valueerror/ltjs-core` plus je Sprache `@valueerror/ltjs-lang-<code>`; Österreich und Schweiz sind eigene Pakete `@valueerror/ltjs-lang-de-at` und `@valueerror/ltjs-lang-de-ch` (Variantenwörterbücher, brauchen `ltjs-lang-de`; ohne sie sind `de-AT`/`de-CH` nicht verfügbar). Installation z. B. `npm install @valueerror/ltjs-core @valueerror/ltjs-lang-de @valueerror/ltjs-lang-de-at @valueerror/ltjs-lang-de-ch`. `npm run build` erzeugt sie in `dist/packages` (Tarballs in `dist/tarballs/valueerror-ltjs-<name>-<version>.tgz`); `npm run smoke:packages` prüft sie, `npm run publish:packages -- --dry-run` simuliert die Veröffentlichung (veröffentlicht wird später).
 
+### Browser / iPad
+
+Dieselben Pakete laufen ab 0.3.0 auch ohne Node im Browser, Web Worker oder WKWebView (iPad): Bundler (esbuild, Vite, webpack) nehmen automatisch den Browser-Einstieg von `@valueerror/ltjs-core`, die Sprachpakete werden selbst importiert und die Ressourcen vor dem ersten Check mit `preloadResources()` geladen (Deutsch ca. 20 MB). Details in [docs/EMBEDDING.md](docs/EMBEDDING.md) (Abschnitt „Browser / Web Worker"), lauffähiges Beispiel mit Worker in [examples/browser-minimal](examples/browser-minimal/).
+
 ## Verbesserungen gegenüber dem Original
 
 - **LTJS-Regelschicht** (zusätzliche Regeln, Standard an; DEV-028, Code in `src/lang/de/ltjs/`):

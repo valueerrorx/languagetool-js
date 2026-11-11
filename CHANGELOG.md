@@ -1,6 +1,15 @@
 # Changelog
 
-## Unreleased
+## 0.3.0
+
+Browser build: the same packages run in a browser, Web Worker or WKWebView (iPad) without Node (docs/EMBEDDING.md, `examples/browser-minimal`).
+
+- `@valueerror/ltjs-core` exports `src/browser-entry.js` for non-Node environments (also `@valueerror/ltjs-core/browser`); Node keeps the full API
+- platform layer `#platform` (Node: fs/zlib/crypto, browser: fflate, SHA-256 in JS) and `#unicode-tables`; new dependencies `buffer`, `fflate`
+- `preloadResources({ entries, hunspellWasm })` loads the resources into memory (manifest from `scripts/browser-manifest.mjs`); hunspell WASM is loaded lazily
+- language packages are imported explicitly in the browser (no discovery); Node behaviour unchanged
+
+German LTJS layer:
 
 - `LTJS_FIELEN_VIELEN`: word confusion ('mit fielen Fehlern' -> vielen; Java finds it only with ngram data)
 

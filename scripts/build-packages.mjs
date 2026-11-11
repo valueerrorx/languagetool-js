@@ -10,7 +10,7 @@ const RES = path.join(ROOT, 'resources');
 const DIST = path.join(ROOT, 'dist');
 const PKGS = path.join(DIST, 'packages');
 const TARBALLS = path.join(DIST, 'tarballs');
-const VERSION = '0.2.0';
+const VERSION = '0.3.0';
 const CODES = ['de', 'en', 'es', 'fr', 'it', 'pl', 'ru', 'sk', 'sl'];
 const NAMES = { de: 'German', en: 'English', es: 'Spanish', fr: 'French', it: 'Italian', pl: 'Polish', ru: 'Russian', sk: 'Slovak', sl: 'Slovenian' };
 // German variant packages (D-066): only the variant dictionaries/word lists/rules; the classes stay in lang-de, the variant is listed by its own language-module.properties
