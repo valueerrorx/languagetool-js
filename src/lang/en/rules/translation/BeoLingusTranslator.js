@@ -1,5 +1,5 @@
 // org.languagetool.rules.en.translation.BeoLingusTranslator (German / English translator, D-019)
-import { readFileSync } from 'node:fs';
+import { readFileSync } from '../../../../core/resources/files.js';
 import { Languages } from '../../../../core/Languages.js';
 import { GlobalConfig } from '../../../../core/rules/model/GlobalConfig.js';
 import { DataSource } from '../../../../core/rules/translation/DataSource.js';

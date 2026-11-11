@@ -1,5 +1,5 @@
 // opennlp.tools.util.model.BaseModel + TokenizerModel/POSModel/ChunkerModel: zip container with manifest.properties and one GIS model (+ tags.tagdict for POS).
-import { inflateRawSync } from 'node:zlib';
+import { inflateRawSync } from '#platform';
 import { loadProperties } from '../java/Properties.js';
 import { IOException } from '../java/errors.js';
 import { GISModel } from './GISModel.js';

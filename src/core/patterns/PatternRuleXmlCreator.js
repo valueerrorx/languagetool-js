@@ -1,5 +1,4 @@
 // org.languagetool.rules.patterns.PatternRuleXmlCreator (rule XML as string from the rule files)
-import { Buffer } from 'node:buffer';
 import { isDigit } from '../../lib/java/Character.js';
 import { NullPointerException, RuntimeException, TransformerException, XPathExpressionException } from '../../lib/java/errors.js';
 import { notPortedYet } from '../language/components.js';

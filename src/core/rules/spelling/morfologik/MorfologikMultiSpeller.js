@@ -1,5 +1,5 @@
 // Java: org.languagetool.rules.spelling.morfologik.MorfologikMultiSpeller
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from '../../../resources/files.js';
 import { CFSA2Serializer } from '../../../../lib/fsa/CFSA2Serializer.js';
 import { Dictionary } from '../../../../lib/fsa/DictionaryLookup.js';
 import { FSABuilder, LEXICAL_ORDERING } from '../../../../lib/fsa/FSABuilder.js';

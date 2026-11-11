@@ -189,10 +189,18 @@ ${READMEFOOT}`);
     description: 'LanguageTool port to JavaScript: core, server and CLI (languages in @valueerror/ltjs-lang-* packages)',
     ...commonPackageFields,
     main: './src/index.js',
-    exports: { '.': './src/index.js', './register': './src/lang/register.js', './src/*': './src/*', './package.json': './package.json' },
+    // Node: full API (index.js); browsers/workers: check path on preloaded resources (browser-entry.js)
+    exports: {
+      '.': { node: './src/index.js', default: './src/browser-entry.js' },
+      './browser': './src/browser-entry.js',
+      './register': './src/lang/register.js',
+      './src/*': './src/*',
+      './package.json': './package.json',
+    },
+    imports: rootPkg.imports,
     bin: { ltjs: 'bin/lt-cli.mjs', 'ltjs-server': 'bin/lt-server.mjs' },
     files: ['src', 'bin', 'resources', 'licenses', 'LICENSE', 'NOTICE', 'README.md'],
-    dependencies: { express: rootPkg.dependencies.express },
+    dependencies: { buffer: rootPkg.dependencies.buffer, express: rootPkg.dependencies.express, fflate: rootPkg.dependencies.fflate },
     peerDependencies: Object.fromEntries([...CODES, ...VARIANT_CODES].map((c) => [`@valueerror/ltjs-lang-${c}`, `^${VERSION}`])),
     peerDependenciesMeta: Object.fromEntries([...CODES, ...VARIANT_CODES].map((c) => [`@valueerror/ltjs-lang-${c}`, { optional: true }])),
   });
@@ -234,7 +242,7 @@ for (const code of CODES) {
   copyTo(path.join(dir, 'licenses/LGPL-2.1.txt'), path.join(ROOT, 'packaging/licenses/LGPL-2.1.txt'));
   copyTo(path.join(dir, 'LICENSE'), path.join(ROOT, 'packaging/licenses/GPL-3.0.txt'));
   writeFileSync(path.join(dir, 'resource-root.js'),
-    `// registers the resources/ directory of this package as an additional resource root of @valueerror/ltjs-core\nimport { addResourceRoot } from '@valueerror/ltjs-core/src/core/resources/ResourceDataBroker.js';\n\naddResourceRoot(new URL('./resources/', import.meta.url));\n`);
+    `// registers the resources/ directory of this package as an additional resource root of @valueerror/ltjs-core\nimport { addResourceRoot } from '@valueerror/ltjs-core/src/core/resources/ResourceDataBroker.js';\n\naddResourceRoot(new URL(/* @vite-ignore */ './resources/', import.meta.url)); // Node only; browsers use preloadResources()\n`);
   const own = registerLines.filter((l) => l.startsWith(`import './${code}/`)).map((l) => l.replace(`import './${code}/`, `import './src/lang/${code}/`));
   writeFileSync(path.join(dir, 'index.js'),
     `// ${NAMES[code]}: registers the language classes (Java: language-module.properties of languagetool-language-modules/${code}) and the resource root\nimport './resource-root.js';\n${own.join('\n')}\n`);
@@ -302,7 +310,7 @@ for (const code of VARIANT_CODES) {
   copyTo(path.join(dir, 'licenses/LGPL-2.1.txt'), path.join(ROOT, 'packaging/licenses/LGPL-2.1.txt'));
   copyTo(path.join(dir, 'LICENSE'), path.join(ROOT, 'packaging/licenses/GPL-3.0.txt'));
   writeFileSync(path.join(dir, 'resource-root.js'),
-    `// registers the resources/ directory of this package as an additional resource root of @valueerror/ltjs-core\nimport { addResourceRoot } from '@valueerror/ltjs-core/src/core/resources/ResourceDataBroker.js';\n\naddResourceRoot(new URL('./resources/', import.meta.url));\n`);
+    `// registers the resources/ directory of this package as an additional resource root of @valueerror/ltjs-core\nimport { addResourceRoot } from '@valueerror/ltjs-core/src/core/resources/ResourceDataBroker.js';\n\naddResourceRoot(new URL(/* @vite-ignore */ './resources/', import.meta.url)); // Node only; browsers use preloadResources()\n`);
   writeFileSync(path.join(dir, 'index.js'),
     `// ${v.name}: variant data of @valueerror/ltjs-lang-${v.base}; the language class ${v.cls} is part of that package and is listed by this package's language-module.properties\nimport '@valueerror/ltjs-lang-${v.base}';\nimport './resource-root.js';\n`);
   writeFileSync(path.join(dir, 'NOTICE'), [

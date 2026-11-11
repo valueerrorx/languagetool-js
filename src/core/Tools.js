@@ -1,7 +1,7 @@
 // org.languagetool.tools.Tools (bitext helpers live in bitext/BitextTools.js)
 import { MessageFormat } from '../lib/java/MessageFormat.js';
 import { listGet } from '../lib/java/arrays.js';
-import { createHash } from 'node:crypto';
+import { sha256Hex } from '#platform';
 import { IOException, RuntimeException } from '../lib/java/errors.js';
 import { StringBuilder } from '../lib/java/strings.js';
 import { getDataBroker } from './resources/LtStatics.js';
@@ -82,7 +82,7 @@ export function getStream(path, requiredHash) {
     return is;
   }
   const data = getStream(path);
-  const computedHash = createHash('sha256').update(data).digest('hex');
+  const computedHash = sha256Hex(data);
   if (computedHash !== requiredHash) {
     throw new IOException(`Checksum mismatch for the file '${path}': expected ${requiredHash}, got ${computedHash}`);
   }

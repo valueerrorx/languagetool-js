@@ -1,11 +1,46 @@
 // SAX-style XML loading that reproduces the Xerces (JAXP default, non-validating, not namespace aware) event stream used by LT's rule loaders.
-import { Buffer } from 'node:buffer';
-import { TextDecoder } from 'node:util';
-import { existsSync, readFileSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
-import path from 'node:path';
 import { Exception, FileNotFoundException, SAXException, UnsupportedEncodingException } from '../../lib/java/errors.js';
 import { getDataBroker } from './LtStatics.js';
+import { existsSync, readFileSync } from './files.js';
+import { IS_NODE, fileURLToPath, path } from '#platform';
+
+// latin1 = byte value -> charCodeAt, as java.io (and Buffer.toString('latin1')); TextDecoder lacks a true latin1.
+function utf8ToString(u8) {
+  return new TextDecoder('utf-8', { ignoreBOM: true }).decode(u8);
+}
+
+function latin1ToString(u8) {
+  let out = '';
+  for (let i = 0; i < u8.length; i++) out += String.fromCharCode(u8[i]);
+  return out;
+}
+
+// file: URL -> absolute path (Node: url.fileURLToPath; browsers: plain decoding, no node: imports there)
+function fileUrlToPath(url) {
+  return IS_NODE ? fileURLToPath(url) : decodeURIComponent(url.slice('file://'.length));
+}
+
+// minimal path.posix.join for the baseDir + relative systemId case (browsers, no node:path)
+function posixJoin(...parts) {
+  const segs = [];
+  const rooted = parts[0].startsWith('/');
+  for (const part of parts) {
+    for (const seg of part.split('/')) {
+      if (seg === '' || seg === '.') continue;
+      if (seg === '..') {
+        if (segs.length > 0 && segs[segs.length - 1] !== '..') segs.pop();
+        else if (!rooted) segs.push('..');
+      } else segs.push(seg);
+    }
+  }
+  return (rooted ? '/' : '') + segs.join('/');
+}
+
+// reads the file of an external file: systemId (Node: from disk; browsers: through the resource broker, see files.js)
+function readExternalFile(file) {
+  if (!existsSync(file)) throw new FileNotFoundException(file);
+  return readFileSync(file);
+}
 
 // Java: org.xml.sax.SAXParseException
 export class SAXParseException extends SAXException {
@@ -149,7 +184,7 @@ function decodeUtf8(b) {
   const n = b.length;
   const cont = (k) => k < n && (b[k] & 0xC0) === 0x80;
   const fail = (nth, total) => {
-    const prefix = Buffer.from(b.subarray(0, i)).toString('utf8');
+    const prefix = utf8ToString(b.subarray(0, i));
     return { text: prefix, error: { index: prefix.length, message: `Invalid byte ${nth} of ${total}-byte UTF-8 sequence.` } };
   };
   while (i < n) {
@@ -177,12 +212,13 @@ function decodeUtf8(b) {
       return fail(1, 1);
     }
   }
-  return { text: Buffer.from(b).toString('utf8'), error: null };
+  return { text: utf8ToString(b), error: null };
 }
 
 // Java: XMLEntityManager#setupCurrentEntity (encoding detection and decoding); returns {text, error}
 function decodeDocument(bytes) {
-  const b = Buffer.from(bytes);
+  // bytes is always an ArrayBufferView here (parseXml string input is encoded by the caller)
+  const b = bytes;
   let enc = null;
   let skip = 0;
   if (b.length >= 3 && b[0] === 0xEF && b[1] === 0xBB && b[2] === 0xBF) skip = 3;
@@ -196,7 +232,7 @@ function decodeDocument(bytes) {
   }
   let kind = 'utf8';
   let label = null;
-  const head = body.subarray(0, 512).toString('latin1');
+  const head = latin1ToString(body.subarray(0, 512));
   const m = /^<\?xml[ \t\r\n]+version[ \t\r\n]*=[ \t\r\n]*(?:"[^"]*"|'[^']*')(?:[ \t\r\n]+encoding[ \t\r\n]*=[ \t\r\n]*(?:"([A-Za-z][A-Za-z0-9._-]*)"|'([A-Za-z][A-Za-z0-9._-]*)'))?/.exec(head);
   if (m && (m[1] || m[2])) {
     const e = (m[1] || m[2]).toUpperCase();
@@ -217,24 +253,24 @@ function decodeDocument(bytes) {
   }
   if (kind === 'utf16decl') {
     // the reader is switched after the declaration: the rest of the UTF-8 detected stream is decoded as UTF-16 (BOM, else big-endian)
-    const end = body.toString('latin1').indexOf('?>');
+    const end = latin1ToString(body).indexOf('?>');
     const declLen = end === -1 ? body.length : end + 2;
     let rest = body.subarray(declLen);
     let enc16 = 'utf-16be';
     if (rest.length >= 2 && rest[0] === 0xFF && rest[1] === 0xFE) { enc16 = 'utf-16le'; rest = rest.subarray(2); }
     else if (rest.length >= 2 && rest[0] === 0xFE && rest[1] === 0xFF) rest = rest.subarray(2);
-    return { text: body.subarray(0, declLen).toString('utf8') + new TextDecoder(enc16, { ignoreBOM: true }).decode(rest), error: null };
+    return { text: utf8ToString(body.subarray(0, declLen)) + new TextDecoder(enc16, { ignoreBOM: true }).decode(rest), error: null };
   }
-  if (kind === 'latin1') return { text: body.toString('latin1'), error: null };
+  if (kind === 'latin1') return { text: latin1ToString(body), error: null };
   if (kind === 'label') return { text: new TextDecoder(label, { ignoreBOM: true }).decode(body), error: null };
   if (kind === 'ascii') {
     let bad = -1;
     for (let i = 0; i < body.length; i++) if (body[i] > 127) { bad = i; break; }
-    if (bad === -1) return { text: body.toString('latin1'), error: null };
+    if (bad === -1) return { text: latin1ToString(body), error: null };
     // the reader fails on its first chunk, which starts after the XML declaration
-    const end = body.toString('latin1').indexOf('?>');
+    const end = latin1ToString(body).indexOf('?>');
     const declLen = end === -1 ? 0 : end + 2;
-    return { text: body.subarray(0, declLen).toString('latin1'), error: { index: declLen, message: `Byte "${body[bad]}" is not a member of the (7-bit) ASCII character set.` } };
+    return { text: latin1ToString(body.subarray(0, declLen)), error: { index: declLen, message: `Byte "${body[bad]}" is not a member of the (7-bit) ASCII character set.` } };
   }
   return decodeUtf8(body);
 }
@@ -248,7 +284,7 @@ function normalizeLineEnds(text, v11) {
 // Java: SAXParser#parse(InputStream,DefaultHandler) with the LT parser settings; input = Buffer/Uint8Array or string (UTF-8 encoded)
 export function parseXml(input, handler, options = {}) {
   const p = new XmlParser(handler, options);
-  const bytes = typeof input === 'string' ? Buffer.from(input, 'utf8') : input;
+  const bytes = typeof input === 'string' ? new TextEncoder().encode(input) : input;
   p.parse(bytes);
 }
 
@@ -834,14 +870,14 @@ class XmlParser {
   // Java: XMLEntityManager#expandSystemId + EntityResolver / default URL resolution
   loadExternal(ent) {
     let sys = ent.sys;
-    if (!/^[A-Za-z][A-Za-z0-9+.-]*:/.test(sys)) sys = 'file://' + path.posix.join(this.baseDir.split(path.sep).join('/'), sys);
+    if (!/^[A-Za-z][A-Za-z0-9+.-]*:/.test(sys)) {
+      sys = 'file://' + (IS_NODE ? path.posix.join(this.baseDir.split(path.sep).join('/'), sys) : posixJoin(this.baseDir.replace(/\\/g, '/'), sys));
+    }
     let bytes = null;
     if (this.resolver !== null) bytes = this.resolver.resolveEntity(ent.pub, sys);
     if (bytes === null) {
       if (!sys.startsWith('file:')) throw new SAXException(`${sys}`);
-      const f = fileURLToPath(sys);
-      if (!existsSync(f)) throw new FileNotFoundException(f);
-      bytes = readFileSync(f);
+      bytes = readExternalFile(fileUrlToPath(sys));
     }
     const dec = decodeDocument(bytes);
     let text = normalizeLineEnds(dec.text, this.v11);

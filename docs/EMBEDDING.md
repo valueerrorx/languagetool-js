@@ -88,3 +88,32 @@ real check is fast. Keep one long-lived process; do not fork per check. Make the
 
 `examples/electron-minimal/main.js` forks `checker-process.js`, waits for its `ready` message and sends one check
 (`npm install` and `npm start` in that directory after `npm run build`; not part of CI).
+
+## Browser / Web Worker (no Node, e.g. iPad)
+
+The same packages run in a browser or WKWebView. Node and browser share all code; only the entry point and a small platform
+layer differ, chosen by the package conditions (bundlers use `browser`/`default`, Node uses `node`, nothing to configure):
+
+- `@valueerror/ltjs-core` exports `src/browser-entry.js` in non-Node environments (also as `@valueerror/ltjs-core/browser`):
+  `check`, `listLanguages`, `preloadResources`, `initHunspellWasm`, `registerLanguage`, `setMemoryLimits`. No server/CLI.
+- `#platform` (package `imports`): Node side = `fs`/`path`/`zlib`/`crypto`; browser side = no file system, `fflate` for inflate,
+  SHA-256 in JS. `#unicode-tables` bundles the Unicode tables into the browser build. `src/browser-polyfills.js` sets the
+  `Buffer` (npm `buffer`) and a minimal `process` global when they are missing.
+- Language packages are not discovered in the browser: import them yourself (`import '@valueerror/ltjs-lang-de'`).
+- The core reads resources synchronously, so the app loads them into memory first:
+
+```js
+// in a module Web Worker, bundled with esbuild/Vite/webpack
+import { check, preloadResources } from '@valueerror/ltjs-core';
+import '@valueerror/ltjs-lang-de';
+
+const { entries } = await (await fetch('/manifest.json')).json();
+await preloadResources({ entries, hunspellWasm: new Uint8Array(await (await fetch('/hunspell.wasm')).arrayBuffer()) });
+const result = await check('Ich glaube, das es geht.', { language: 'de-AT' });
+```
+
+`node scripts/browser-manifest.mjs manifest.json node_modules/@valueerror/ltjs-core/resources=/res/core/
+node_modules/@valueerror/ltjs-lang-de/resources=/res/de/` writes the manifest (serve each resources directory under its URL prefix;
+roots in lookup order, core first). `hunspell.wasm` ships in `@valueerror/ltjs-core/src/lib/hunspell/wasm/`; without the
+`hunspellWasm` option it is fetched next to the bundle. German needs ~20 MB of resources; the first check of a language builds the
+rule set (seconds), later checks take milliseconds, so keep one worker alive. Complete example: `examples/browser-minimal/`.

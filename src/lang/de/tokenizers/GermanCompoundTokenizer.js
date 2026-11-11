@@ -1,7 +1,7 @@
 // Java: org.languagetool.tokenizers.de.GermanCompoundTokenizer (split German nouns using jwordsplitter)
 import { GermanWordSplitter } from '../../../lib/wordsplitter/GermanWordSplitter.js';
 import { getWords } from '../../../lib/wordsplitter/EmbeddedGermanDictionary.js';
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync } from '../../../core/resources/files.js';
 import { readerLines } from '../../../lib/java/io.js';
 import { MalformedInputException } from '../../../lib/java/errors.js';
 import { InputTooLongException } from '../../../lib/wordsplitter/InputTooLongException.js';

@@ -1,5 +1,5 @@
 // Java: org.languagetool.language.identifier.DefaultLanguageIdentifier (optimaize fallback only; fastText/ngram: DEV-001)
-import { readFileSync } from 'node:fs';
+import { readFileSync } from '../../resources/files.js';
 import { FileNotFoundException, RuntimeException, ZipException } from '../../../lib/java/errors.js';
 import { JMath } from '../../../lib/java/numbers.js';
 import { javaTrim } from '../../../lib/java/strings.js';

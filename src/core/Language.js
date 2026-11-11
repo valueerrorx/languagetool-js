@@ -1,5 +1,5 @@
 // Java: org.languagetool.Language (abstract base class of all languages; later steps fill the component hooks via src/core/language/components.js)
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from './resources/files.js';
 import { AbstractMethodError, FileNotFoundException, IOException, MissingResourceException } from '../lib/java/errors.js';
 import { Locale } from '../lib/java/Locale.js';
 import { Pattern } from '../lib/java/regex/index.js';

@@ -1,5 +1,5 @@
 // Java: org.languagetool.rules.spelling.hunspell.Hunspell (cache + resource loading; always the stream path, as for JAR resources)
-import { readFileSync } from 'node:fs';
+import { readFileSync } from '../../../resources/files.js';
 import { RuntimeException } from '../../../../lib/java/errors.js';
 import { getDataBroker } from '../../../resources/LtStatics.js';
 import { DumontsHunspellDictionary } from './DumontsHunspellDictionary.js';

@@ -1,5 +1,5 @@
 // org.languagetool.rules.patterns.PatternRuleLoader (parses grammar.xml files into pattern rules)
-import { readFileSync } from 'node:fs';
+import { readFileSync } from '../resources/files.js';
 import { IOException, JavaError, NoSuchFileException, NullPointerException, Throwable } from '../../lib/java/errors.js';
 import { registerComponent } from '../language/components.js';
 import { parseXml, parserOptions } from '../resources/xml.js';

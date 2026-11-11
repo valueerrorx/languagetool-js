@@ -1,5 +1,5 @@
 // morfologik-stemming Dictionary, WordData, DictionaryLookup, DictionaryIterator (byte-buffer faithful, buffers reused as in Java).
-import { readFileSync } from 'node:fs';
+import { readFileSync } from '../../core/resources/files.js';
 import { FileNotFoundException, NoSuchFileException, NullPointerException, RuntimeException } from '../java/errors.js';
 import { ByteBuf, bytesToString, clearAndEnsureCapacity } from './buffers.js';
 import { ByteSequenceIterator, FSATraversal, MatchResult, readFSA } from './FSA.js';

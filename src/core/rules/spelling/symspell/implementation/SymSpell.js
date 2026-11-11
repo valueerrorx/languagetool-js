@@ -1,5 +1,5 @@
 // org.languagetool.rules.spelling.symspell.implementation.SymSpell (MIT, Hampus Londogard; counts are Java longs = BigInt)
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync } from '../../../../resources/files.js';
 import { EditDistance } from './EditDistance.js';
 import { SuggestItem } from './SuggestItem.js';
 import { SuggestionStage } from './SuggestionStage.js';

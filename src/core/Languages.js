@@ -4,6 +4,7 @@ import { JavaHashMap } from '../lib/java/collections/JavaHashMap.js';
 import { javaCompare, javaSplit, equalsIgnoreCase } from '../lib/java/strings.js';
 import { getResources } from './resources/ResourceDataBroker.js';
 import { getClassBroker } from './resources/LtStatics.js';
+import { getRegisteredClassesWithPrefix } from './resources/ClassBroker.js';
 import { assureSet } from './text/StringTools.js';
 import { MultiKeyProperties } from './tools/MultiKeyProperties.js';
 import { DICTIONARY_FILENAME_EXTENSION } from './JLanguageToolConstants.js';
@@ -67,6 +68,21 @@ function getAllLanguages() {
           languageClassNames.add(className);
         }
       }
+    }
+  }
+  if (languages.length === 0) {
+    // Browser/worker memory backend: no module-properties file is preloaded (per-language resource manifest);
+    // enumerate the language classes the monolith register.js registered in the ClassBroker instead.
+    for (const cls of getRegisteredClassesWithPrefix('org.languagetool.language.')) {
+      if (languageClassNames.has(cls.FQCN) || typeof cls !== 'function' || !cls.prototype || !(cls.prototype instanceof Language)) continue;
+      if (languageClassNames.has(`${cls.FQCN}Premium`)) continue;
+      try {
+        languages.push(new cls());
+      } catch (e) {
+        if (e instanceof JavaError) throw e; // JavaError is imported in this file
+        throw new RuntimeException(`Object for language class '${cls.FQCN}' could not be created`, e);
+      }
+      languageClassNames.add(cls.FQCN);
     }
   }
   return languages;

@@ -1,5 +1,5 @@
 // org.languagetool.rules.patterns.FalseFriendRuleLoader (loads false-friends.xml for a text language / mother tongue pair)
-import { existsSync, readFileSync, statSync } from 'node:fs';
+import { existsSync, readFileSync, statSync } from '../resources/files.js';
 import { FileNotFoundException, IOException, NullPointerException, SAXException } from '../../lib/java/errors.js';
 import { equalsIgnoreCase } from '../../lib/java/strings.js';
 import { MessageFormat } from '../../lib/java/MessageFormat.js';

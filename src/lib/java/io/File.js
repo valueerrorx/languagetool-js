@@ -1,5 +1,5 @@
 // java.io.File (Unix path semantics: normalisation, name/parent, absolute path against user.dir).
-import { existsSync } from 'node:fs';
+import { existsSync } from '../../../core/resources/files.js';
 import { NullPointerException } from '../errors.js';
 
 // Java: UnixFileSystem#normalize(String)

@@ -1,5 +1,5 @@
 // Java: org.languagetool.language.identifier.detector.CommonWordsDetector (all distribution languages, D-051/DEV-008)
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from '../../../resources/files.js';
 import { isSpaceChar } from '../../../../lib/java/Character.js';
 import { IOException } from '../../../../lib/java/errors.js';
 import { decodeUtf8, scannerLines } from '../../../../lib/java/io.js';

@@ -23,7 +23,7 @@ import { scannerLines } from '../../../../lib/java/io.js';
 import { IOException, IllegalArgumentException, RuntimeException } from '../../../../lib/java/errors.js';
 import { isAllUpperCase } from '../../../../lib/java/StringUtils.js';
 import { equalsIgnoreCase, javaReplace, toLowerCase } from '../../../../lib/java/strings.js';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from '../../../resources/files.js';
 import { LoggerFactory } from '../../../../lib/slf4j/Logger.js';
 
 const logger = LoggerFactory.getLogger('org.languagetool.rules.spelling.hunspell.HunspellRule');

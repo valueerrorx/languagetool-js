@@ -17,7 +17,7 @@ import { Locale } from '../../../../lib/java/Locale.js';
 import { AbstractMethodError, IOException, RuntimeException } from '../../../../lib/java/errors.js';
 import { containsAny } from '../../../../lib/java/StringUtils.js';
 import { charAt, equalsIgnoreCase, javaSplit, javaTrim, substring, toLowerCase } from '../../../../lib/java/strings.js';
-import { existsSync } from 'node:fs';
+import { existsSync } from '../../../resources/files.js';
 
 // do not use very frequent words in split word suggestions ex. to *thow != tot how
 const MAX_FREQUENCY_FOR_SPLITTING = 21; // 0..21
