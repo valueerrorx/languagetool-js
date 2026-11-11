@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- `LTJS_FIELEN_VIELEN`: word confusion ('mit fielen Fehlern' -> vielen; Java finds it only with ngram data)
+
 ## 0.2.0
 
 German LTJS layer (D-061): new rules beyond Java LanguageTool. All on by default; off with `extraRules: false`, `LTJS_EXTRA_RULES=0` or one by one via `disabledRules`.

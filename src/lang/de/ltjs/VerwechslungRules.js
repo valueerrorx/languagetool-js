@@ -73,6 +73,40 @@ export class LtjsFielVielRule extends LtjsConfusionRule {
   }
 }
 
+// a noun at i, or attributive adjectives/participles followed by a noun
+function nounPhraseAt(tokens, i) {
+  for (let j = i; j < Math.min(tokens.length, i + 3); j++) {
+    const t = tokens[j];
+    if (hasTag(t, /^SUB/) && isUpperCase(t)) return true;
+    if (!(hasTag(t, /^(ADJ|PA[12])/) && isLowerCase(t))) return false;
+  }
+  return false;
+}
+
+// before 'fielen' these may end a phrase ('so', 'zu') or be postpositions ('Angaben zufolge fielen Schüsse', 'meiner Meinung nach fielen'),
+// so 'fielen' only counts as a quantifier when the clause has another finite verb
+const FIELEN_AMBIGUOUS = new Set(['zu', 'so', 'sehr', 'wie', 'zufolge', 'gegenüber', 'entlang', 'halber', 'wegen', 'nach', 'zuliebe',
+  'willen', 'hindurch', 'über', 'an', 'aus', 'lang', 'entgegen', 'gemäß', 'nahe', 'vorbei', 'herum', 'ab', 'um', 'durch', 'auf', 'vor']);
+
+// Java: only the ngram confusion set 'fielen -> vielen' (needs ngram data). 'Ein Satz mit fielen Fehlern' -> 'vielen':
+// 'fielen' (fallen) after a preposition or 'den' and before a noun phrase, or 'Fielen Dank'
+export class LtjsFielenVielenRule extends LtjsConfusionRule {
+  constructor(messages, language) {
+    super(messages, language, 'LTJS_FIELEN_VIELEN', 'Verwechslung „fielen" (fallen) und „vielen"',
+      'Ein Satz mit <marker>fielen</marker> Fehlern.', 'Ein Satz mit <marker>vielen</marker> Fehlern.');
+  }
+
+  matchAt(tokens, i) {
+    if (lower(tokens[i]) !== 'fielen') return null;
+    const prev = tokens[i - 1];
+    const p = lower(prev);
+    const thanks = tokens[i + 1]?.getToken() === 'Dank' && (i === 1 || isBoundary(prev)); // 'Fielen Dank!'
+    const quant = FIELEN_AMBIGUOUS.has(p) ? otherFinite(tokens, i) : hasTag(prev, /^PRP/) || p === 'den'; // 'die ihm zu fielen': zufielen
+    if (!thanks && !(quant && nounPhraseAt(tokens, i + 1))) return null;
+    return [cap('vielen', tokens[i]), "Meinten Sie 'vielen' (Menge)? 'fielen' ist eine Form von 'fallen'."];
+  }
+}
+
 const NOMINATIVE = new Set(['ich', 'du', 'er', 'sie', 'es', 'wir', 'ihr', 'man']);
 
 // Java: none (LTJS). 'Wen ihr Tipps habt, schreibt' -> 'Wenn': 'wen' (accusative) opening a clause in which it has no role:
@@ -104,9 +138,9 @@ export class LtjsWenWennRule extends LtjsConfusionRule {
 }
 
 // rule ids of the LTJS confusion rules for German
-export const LTJS_VERWECHSLUNG_RULE_IDS = Object.freeze(['LTJS_FIEL_VIEL', 'LTJS_WEN_WENN']);
+export const LTJS_VERWECHSLUNG_RULE_IDS = Object.freeze(['LTJS_FIEL_VIEL', 'LTJS_FIELEN_VIELEN', 'LTJS_WEN_WENN']);
 
 // the LTJS confusion rules for German
 export function getLtjsGermanVerwechslungRules(messages, language) {
-  return [new LtjsFielVielRule(messages, language), new LtjsWenWennRule(messages, language)];
+  return [new LtjsFielVielRule(messages, language), new LtjsFielenVielenRule(messages, language), new LtjsWenWennRule(messages, language)];
 }
